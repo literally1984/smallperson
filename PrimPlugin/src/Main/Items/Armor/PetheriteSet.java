@@ -1,4 +1,4 @@
-package Items.Armor;
+package Main.Items.Armor;
 
 import java.util.ArrayList;
 import java.util.List;

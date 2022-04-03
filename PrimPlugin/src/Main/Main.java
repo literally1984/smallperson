@@ -1,6 +1,7 @@
+package Main;
     import org.bukkit.plugin.java.JavaPlugin;
 
-import Items.Armor.PetheriteSet;
+import Main.Items.Armor.PetheriteSet;
 
 public class Main extends JavaPlugin {
 
