@@ -16,8 +16,6 @@ public class GetPetherite implements CommandExecutor {
             args[0] = sender.getName();
         }
         Player p = Bukkit.getPlayer(args[0]);
-
-        // TODO: FIX DIS THING
         Material mat = Material.matchMaterial(args[1]);
         if (cmd.getName().equalsIgnoreCase("pgivea")) {
             p.getInventory().addItem(new ItemStack(mat));
