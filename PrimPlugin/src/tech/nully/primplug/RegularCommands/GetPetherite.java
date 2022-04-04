@@ -1,10 +1,11 @@
-package Main.RegularCommands;
+package tech.nully.primplug.RegularCommands;
 
 import org.bukkit.Bukkit;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
+import org.bukkit.material.*;
 
 import net.minecraft.server.v1_5_R3.Material;
 

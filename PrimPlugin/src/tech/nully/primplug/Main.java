@@ -1,7 +1,7 @@
-package Main;
+package tech.nully.primplug;
     import org.bukkit.plugin.java.JavaPlugin;
 
-import Main.Items.Armor.PetheriteSet;
+import tech.nully.primplug.Items.Armor.PetheriteSet;
 
 public class Main extends JavaPlugin {
 
