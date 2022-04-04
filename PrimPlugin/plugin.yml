@@ -1,0 +1,12 @@
+name: PrimPlugin
+version: 1.0.0
+main: tech.nully.primplug.Main
+
+prefix: AstolfoTutorial
+authors: [BongoCat&ayonull]
+description: A custom coded plugin for primcraft
+website: https://nully.tech
+commands:
+  pgivea:
+    usage: /<command> <player> <item>
+    description: gives the target player a custom item

@@ -1,13 +1,13 @@
 package tech.nully.primplug.RegularCommands;
 
 import org.bukkit.Bukkit;
+import org.bukkit.Material;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
-import org.bukkit.material.*;
+import org.bukkit.inventory.ItemStack;
 
-import net.minecraft.server.v1_5_R3.Material;
 
 public class GetPetherite implements CommandExecutor {
     @Override
@@ -18,8 +18,9 @@ public class GetPetherite implements CommandExecutor {
         Player p = Bukkit.getPlayer(args[0]);
 
         // TODO: FIX DIS THING
+        Material mat = Material.matchMaterial(args[1]);
         if (cmd.getName().equalsIgnoreCase("pgivea")) {
-            p.getInventory().addItem(ItemStack(Material.getMaterial().equalsIgnoreCase(args[1])));
+            p.getInventory().addItem(new ItemStack(mat));
         }
         return true;
     }
