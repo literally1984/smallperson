@@ -1,0 +1,11 @@
+name: PrimPlugin
+version: 1.0
+main: tech.nully.primplug.Main
+authors: [BongoCat, ayonull]
+api-version: 1.5.2
+description: A custom coded plugin for primcraft
+website: "https://nully.tech"
+commands:
+  pgivea:
+    description: gives the target player a custom item
+    usage: /<command> <player> <item>
