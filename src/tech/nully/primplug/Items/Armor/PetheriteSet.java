@@ -12,10 +12,10 @@ import org.bukkit.inventory.meta.LeatherArmorMeta;
 
 public class PetheriteSet {
 
-    public static ItemStack PetheriteHelmet;
-    public static ItemStack PetheriteChestplate;
-    public static ItemStack PetheriteLeggings;
-    public static ItemStack PetheriteBoots;
+    public static ItemStack helm;
+    public static ItemStack ches;
+    public static ItemStack leg;
+    public static ItemStack boots;
 
     public static void init() {
         createPetheriteHelm();
@@ -43,7 +43,7 @@ public class PetheriteSet {
 
 
         PHelm.setItemMeta(PHelmMeta);
-        PetheriteHelmet = PHelm;
+        helm = PHelm;
     }
     private static void createPetheriteChestplate() {
         // DEFINE THE META -------------
@@ -64,7 +64,7 @@ public class PetheriteSet {
 
 
         PChest.setItemMeta(PChestMeta);
-        PetheriteChestplate = PChest;
+        ches = PChest;
     }
     private static void createPetheriteLeggings() {
         // DEFINE THE META -------------
@@ -85,7 +85,7 @@ public class PetheriteSet {
 
 
         PLeg.setItemMeta(PLegMeta);
-        PetheriteLeggings = PLeg;
+        leg = PLeg;
     }
     private static void createPetheriteBoots() {
         // DEFINE THE META -------------
@@ -106,6 +106,6 @@ public class PetheriteSet {
 
 
         PBoots.setItemMeta(PBootsMeta);
-        PetheriteBoots = PBoots;
+        boots = PBoots;
     }
 }

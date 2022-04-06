@@ -6,9 +6,6 @@ api-version: 1.5.2
 description: A custom coded plugin for primcraft
 website: "https://nully.tech"
 commands:
-  getp:
-    description: Gives the user a Petherite chestplate
-    usage: /<command>
-  getbod:
-    description: Gives the user a curse of despair
-    usage: /<command>
+  pgive:
+    description: Gives the user a custom item
+    usage: /<command> <item>
