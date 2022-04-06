@@ -23,7 +23,36 @@ public class Talisman {
         ItemStack BOD = new ItemStack(Material.RED_ROSE);
         ItemMeta BODMeta = (ItemMeta) BOD.getItemMeta();
         // SET THE META ----------------
-        BODMeta.setDisplayName(Color.BLUE+"[TALISMAN]"+Color.WHITE+" Blade of Despair");
+        BODMeta.setDisplayName(Color.BLUE+"[TALISMAN]"+Color.WHITE+" Curse of Despair");
+            // Lore ----------------------------------------------------
+        List<String> BODlore = new ArrayList<>();
+        BODlore.add(ChatColor.DARK_BLUE + "" + ChatColor.ITALIC + "It is said that strongest of wills have");
+        BODlore.add(ChatColor.DARK_BLUE + "" + ChatColor.ITALIC + "have been shattered by this curse. Once,");
+        BODlore.add(ChatColor.DARK_BLUE + "" + ChatColor.ITALIC + "a Legendary warrior of the ages used it");
+        BODlore.add("");
+        BODlore.add(ChatColor.RED + "Passive:");
+        BODlore.add(ChatColor.WHITE + "Increases attack damage by 15%");
+        BODlore.add("");
+        BODlore.add(ChatColor.GOLD + "Right-Click ability: Bloodthirst");
+        BODlore.add(ChatColor.WHITE + "Increases your attack damage by 50% and");
+        BODlore.add(ChatColor.WHITE + "lifesteal by 25%");
+        BODMeta.setLore(BODlore);
+
+        // Glowing effect
+
+        BODMeta.addEnchant(Enchantment.ARROW_DAMAGE, 1, false);
+
+        BOD.setItemMeta(BODMeta);
+        BladeOfDespair = BOD;
+    }
+
+
+    private static void createBOS() {
+        // DEFINE THE META -------------
+        ItemStack BOD = new ItemStack(Material.RED_ROSE);
+        ItemMeta BODMeta = (ItemMeta) BOD.getItemMeta();
+        // SET THE META ----------------
+        BODMeta.setDisplayName(Color.BLUE+"[TALISMAN]"+Color.WHITE+" Blessing of Durability");
             // Lore ----------------------------------------------------
         List<String> BODlore = new ArrayList<>();
         BODlore.add(ChatColor.DARK_BLUE + "" + ChatColor.ITALIC + "It is said that strongest of wills have");

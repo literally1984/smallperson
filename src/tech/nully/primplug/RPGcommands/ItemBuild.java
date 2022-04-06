@@ -1,29 +1,27 @@
 package tech.nully.primplug.RPGcommands;
 
+import org.bukkit.Bukkit;
+import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
-import org.bukkit.event.EventHandler;
-import tech.nully.primplug.Items.Talisman;
+import org.bukkit.inventory.Inventory;
 // I have to make this an @EventHandler
 public class ItemBuild implements CommandExecutor{
     @Override
     public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
-
-        // Checks if sender is a player
-        if (!(sender instanceof Player)) {
-            sender.sendMessage("Only players can use this command");
+        if (sender instanceof Player) {
+            sender.sendMessage("Only players may use this command!");
             return true;
         }
+        
 
-        // handles the command
-        Player p = (Player) sender;
         if (cmd.getName().equalsIgnoreCase("build")) {
-            if (p.getItemInHand() == Talisman.BladeOfDespair) {
-                // TODO: AYONULL CONTINUE DIS THING
+            Inventory inv = Bukkit.createInventory(null, 9, ChatColor.BLUE + "Talisman Bag");
+            return true;
+
         }
-    }
         return true;
     }
 }
