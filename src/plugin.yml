@@ -6,6 +6,9 @@ api-version: 1.5.2
 description: A custom coded plugin for primcraft
 website: "https://nully.tech"
 commands:
-  pgivea:
-    description: gives the target player a custom item
-    usage: /<command> <player> <item>
+  getp:
+    description: Gives the user a Petherite chestplate
+    usage: /<command>
+  getbod:
+    description: Gives the user a curse of despair
+    usage: /<command>

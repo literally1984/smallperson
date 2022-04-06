@@ -23,7 +23,7 @@ public class Talisman {
         ItemStack BOD = new ItemStack(Material.RED_ROSE);
         ItemMeta BODMeta = (ItemMeta) BOD.getItemMeta();
         // SET THE META ----------------
-        BODMeta.setDisplayName(Color.BLUE+"[TALISMAN]"+Color.WHITE+" Curse of Despair");
+        BODMeta.setDisplayName(ChatColor.BLUE+"[TALISMAN]"+ChatColor.WHITE+" Curse of Despair");
             // Lore ----------------------------------------------------
         List<String> BODlore = new ArrayList<>();
         BODlore.add(ChatColor.DARK_BLUE + "" + ChatColor.ITALIC + "It is said that strongest of wills have");
