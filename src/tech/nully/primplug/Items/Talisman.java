@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.bukkit.ChatColor;
-import org.bukkit.Color;
 import org.bukkit.Material;
 import org.bukkit.enchantments.Enchantment;
 import org.bukkit.inventory.ItemStack;
@@ -28,6 +27,8 @@ public class Talisman {
         BODMeta.setDisplayName(ChatColor.BLUE+"[TALISMAN]"+ChatColor.WHITE+" Curse of Despair");
             // Lore ----------------------------------------------------
         List<String> BODlore = new ArrayList<>();
+        BODlore.add(ChatColor.GOLD + "" + ChatColor.ITALIC + "Legendary artifact");
+        BODlore.add("");
         BODlore.add(ChatColor.YELLOW + "" + ChatColor.ITALIC + "It is said that strongest of wills");
         BODlore.add(ChatColor.YELLOW + "" + ChatColor.ITALIC + "have been shattered by this curse.");
         BODlore.add(ChatColor.YELLOW + "" + ChatColor.ITALIC + "Once, a Legendary warrior of the");
@@ -58,6 +59,8 @@ public class Talisman {
         BLODMeta.setDisplayName(ChatColor.BLUE+"[TALISMAN]"+ChatColor.WHITE+" Blessing of Durability");
             // Lore ----------------------------------------------------
         List<String> BLODlore = new ArrayList<>();
+        BLODlore.add(ChatColor.GOLD + "" + ChatColor.ITALIC + "Legendary artifact");
+        BLODlore.add("");
         BLODlore.add(ChatColor.YELLOW + "" + ChatColor.ITALIC + "Once, a brave warrior went on a");
         BLODlore.add(ChatColor.YELLOW + "" + ChatColor.ITALIC + "quest to slay a great evil and was");
         BLODlore.add(ChatColor.YELLOW + "" + ChatColor.ITALIC + "given this blessing by the gods");

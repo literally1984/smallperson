@@ -33,7 +33,7 @@ public class Drakon {
 
 
         // SET THE META ----------------
-        DRHelmMeta.setDisplayName(ChatColor.DARK_PURPLE + "[EPIC]" + ChatColor.WHITE + "Drakon Helmet");
+        DRHelmMeta.setDisplayName(ChatColor.DARK_PURPLE + "[EPIC]" + ChatColor.WHITE + " Drakon Helmet");
             // HelmLore
         List<String> Helmlore = new ArrayList<>();
         Helmlore.add(ChatColor.YELLOW + "" +ChatColor.ITALIC + "A helmet forged from the");
