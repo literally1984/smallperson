@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.bukkit.ChatColor;
+import org.bukkit.DyeColor;
 import org.bukkit.Material;
 import org.bukkit.enchantments.Enchantment;
 import org.bukkit.inventory.ItemStack;
@@ -13,10 +14,12 @@ public class Talisman {
 
     public static ItemStack BladeOfDespair;
     public static ItemStack BlessingOfDurability;
+    public static ItemStack MisoTheRabbit;
 
     public static void init() {
         createBOD();
         createBLOD();
+        createMiso();
     }
 
     private static void createBOD() {
@@ -24,7 +27,7 @@ public class Talisman {
         ItemStack BOD = new ItemStack(Material.RED_ROSE);
         ItemMeta BODMeta = (ItemMeta) BOD.getItemMeta();
         // SET THE META ----------------
-        BODMeta.setDisplayName(ChatColor.BLUE+"[TALISMAN]"+ChatColor.WHITE+" Curse of Despair");
+        BODMeta.setDisplayName(ChatColor.BLUE+"[TALISMAN]"+ChatColor.GOLD+" Curse of Despair");
             // Lore ----------------------------------------------------
         List<String> BODlore = new ArrayList<>();
         BODlore.add(ChatColor.GOLD + "" + ChatColor.ITALIC + "Legendary artifact");
@@ -56,7 +59,7 @@ public class Talisman {
         ItemStack BLOD = new ItemStack(Material.YELLOW_FLOWER);
         ItemMeta BLODMeta = (ItemMeta) BLOD.getItemMeta();
         // SET THE META ----------------
-        BLODMeta.setDisplayName(ChatColor.BLUE+"[TALISMAN]"+ChatColor.WHITE+" Blessing of Durability");
+        BLODMeta.setDisplayName(ChatColor.BLUE+"[TALISMAN]"+ChatColor.GOLD+" Blessing of Durability");
             // Lore ----------------------------------------------------
         List<String> BLODlore = new ArrayList<>();
         BLODlore.add(ChatColor.GOLD + "" + ChatColor.ITALIC + "Legendary artifact");
@@ -83,5 +86,38 @@ public class Talisman {
 
         BLOD.setItemMeta(BLODMeta);
         BlessingOfDurability = BLOD;
+    }
+    private static void createMiso() {
+        // DEFINE THE META -------------
+        ItemStack Miso = new ItemStack(Material.WOOL, 1, DyeColor.BROWN.getDyeData());
+        ItemMeta MisoMeta = (ItemMeta) Miso.getItemMeta();
+        // SET THE META ----------------
+        MisoMeta.setDisplayName(ChatColor.BLUE+"[TALISMAN]"+ChatColor.GOLD+" Miso the Rabbit");
+            // Lore ----------------------------------------------------
+        List<String> Misolore = new ArrayList<>();
+        Misolore.add(ChatColor.GOLD + "" + ChatColor.ITALIC + "Legendary artifact");
+        Misolore.add("");
+        Misolore.add(ChatColor.YELLOW + "" + ChatColor.ITALIC + "This artifact is said to be a");
+        Misolore.add(ChatColor.YELLOW + "" + ChatColor.ITALIC + "part of the spirit of a Rabbit");
+        Misolore.add(ChatColor.YELLOW + "" + ChatColor.ITALIC + "who served under the hero that");
+        Misolore.add(ChatColor.YELLOW + "" + ChatColor.ITALIC + "slew the greatest evil..");
+        Misolore.add("");
+        Misolore.add(ChatColor.RED + "Passive: Extra" + ChatColor.BOLD + "CHONK");
+        Misolore.add(ChatColor.WHITE + "With the power of "+ChatColor.BOLD+"CHONK,");
+        Misolore.add(ChatColor.WHITE + "The talisman increases the");
+        Misolore.add(ChatColor.WHITE + "HP of the user by 6 and defense");
+        Misolore.add(ChatColor.WHITE + "by 10.");
+        Misolore.add("");
+        Misolore.add(ChatColor.GOLD + "Right-Click ability: Giga floof");
+        Misolore.add(ChatColor.WHITE + "Grants the user regeneration 10");
+        Misolore.add(ChatColor.WHITE + "for 5 seconds");
+        MisoMeta.setLore(Misolore);
+
+        // Glowing effect
+
+        MisoMeta.addEnchant(Enchantment.ARROW_DAMAGE, 1, false);
+
+        Miso.setItemMeta(MisoMeta);
+        MisoTheRabbit = Miso;
     }
 }

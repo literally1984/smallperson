@@ -5,8 +5,9 @@ import org.bukkit.plugin.java.JavaPlugin;
 import tech.nully.primplug.Items.Talisman;
 import tech.nully.primplug.Items.Armor.Drakon;
 import tech.nully.primplug.Items.Armor.PetheriteSet;
+import tech.nully.primplug.Listeners.armorListeners;
+import tech.nully.primplug.Listeners.talismanListeners;
 import tech.nully.primplug.RegularCommands.GetPetherite;
-import tech.nully.primplug.mechanics.TalismanMods;
 
 public class Main extends JavaPlugin {
 
@@ -16,7 +17,8 @@ public class Main extends JavaPlugin {
         Talisman.init();
         Drakon.init();
         getCommand("pgive").setExecutor(new GetPetherite());
-        getServer().getPluginManager().registerEvents(new TalismanMods(), this);
+        getServer().getPluginManager().registerEvents(new talismanListeners(), this);
+        getServer().getPluginManager().registerEvents(new armorListeners(), this);
         getServer().getConsoleSender().sendMessage(
             ChatColor.LIGHT_PURPLE + "[PrimPlugin]" + ChatColor.GREEN + "PrimPlugin is now Enabled!");
     }

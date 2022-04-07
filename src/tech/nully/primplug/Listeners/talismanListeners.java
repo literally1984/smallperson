@@ -1,4 +1,4 @@
-package tech.nully.primplug.mechanics;
+package tech.nully.primplug.Listeners;
 
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
@@ -12,7 +12,7 @@ import org.bukkit.inventory.meta.ItemMeta;
 
 import tech.nully.primplug.Items.Talisman;
 
-public class TalismanMods implements Listener {
+public class talismanListeners implements Listener {
     static Player p;
     @EventHandler
     public static void OnRightClickTalisman(PlayerInteractEvent i) {
