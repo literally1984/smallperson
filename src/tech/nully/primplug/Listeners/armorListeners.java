@@ -11,7 +11,7 @@ import tech.nully.primplug.Items.Armor.Drakon;
 
 public class armorListeners implements Listener{
     @EventHandler
-    public static void PlayerDamageEvent(EntityDamageEvent dmg) {
+    public static void playerDamageEvent(EntityDamageEvent dmg) {
         EntityDamageByEntityEvent e = (EntityDamageByEntityEvent) dmg;
         ItemStack VictimHelm;
         ItemStack VictimChes;

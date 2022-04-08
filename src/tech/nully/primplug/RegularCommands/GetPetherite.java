@@ -7,6 +7,7 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
 import tech.nully.primplug.Items.Talisman;
+import tech.nully.primplug.Items.WASDPlaneKey;
 import tech.nully.primplug.Items.Armor.Drakon;
 import tech.nully.primplug.Items.Armor.PetheriteSet;
 
@@ -17,6 +18,7 @@ public class GetPetherite implements CommandExecutor {
             sender.sendMessage("Only players can execute this command!");
             return true;
         }
+        // Petherite helmet
         Player p = (Player) sender;
         if (!args[0].equals(null)) {
             switch (args[0]) {
@@ -25,7 +27,8 @@ public class GetPetherite implements CommandExecutor {
                     ChatColor.YELLOW + 
                     "You gave yourself a" + 
                     ChatColor.LIGHT_PURPLE + 
-                    "Petherite Helmet" + 
+                    //name
+                    " Petherite Helmet " + 
                     ChatColor.YELLOW + 
                     "!");
                 break;
@@ -34,7 +37,8 @@ public class GetPetherite implements CommandExecutor {
                     ChatColor.YELLOW + 
                     "You gave yourself a" + 
                     ChatColor.LIGHT_PURPLE + 
-                    "Petherite Chesplate" + 
+                    //name
+                    " Petherite Chesplate " + 
                     ChatColor.YELLOW + 
                     "!");
                 break;
@@ -43,7 +47,8 @@ public class GetPetherite implements CommandExecutor {
                     ChatColor.YELLOW + 
                     "You gave yourself a pair of" + 
                     ChatColor.LIGHT_PURPLE + 
-                    "Petherite Leggings" + 
+                    // name
+                    " Petherite Leggings " + 
                     ChatColor.YELLOW + 
                     "!");
                 break;
@@ -52,7 +57,8 @@ public class GetPetherite implements CommandExecutor {
                     ChatColor.YELLOW + 
                     "You gave yourself a pair of" + 
                     ChatColor.LIGHT_PURPLE + 
-                    "Petherite Boots" + 
+                    // name
+                    " Petherite Boots " + 
                     ChatColor.YELLOW + 
                     "!");
                 break;
@@ -62,14 +68,15 @@ public class GetPetherite implements CommandExecutor {
                     ChatColor.YELLOW + 
                     "You gave yourself a" + 
                     ChatColor.LIGHT_PURPLE + 
-                    "Curse of despair" + 
+                    // name
+                    " Curse of despair " + 
                     ChatColor.YELLOW + 
                     "Talisman!");
                 break;
                 case "blod": p.getInventory().addItem(Talisman.BlessingOfDurability);
                 sender.sendMessage(
                     ChatColor.YELLOW + 
-                    "You gave yourself a" + 
+                    " You gave yourself a " + 
                     ChatColor.LIGHT_PURPLE + 
                     "Blessing of Durability" + 
                     ChatColor.YELLOW + 
@@ -80,7 +87,7 @@ public class GetPetherite implements CommandExecutor {
                     ChatColor.YELLOW + 
                     "You gave yourself a" + 
                     ChatColor.LIGHT_PURPLE + 
-                    "Miso the Rabbit" + 
+                    " Miso the Rabbit " + 
                     ChatColor.YELLOW + 
                     "Talisman!");
                 break;
@@ -90,7 +97,7 @@ public class GetPetherite implements CommandExecutor {
                     ChatColor.YELLOW + 
                     "You gave yourself a" + 
                     ChatColor.LIGHT_PURPLE + 
-                    "Drakon Helmet!" + 
+                    " Drakon Helmet! " + 
                     ChatColor.YELLOW + 
                     "!");
                 break;
@@ -99,7 +106,7 @@ public class GetPetherite implements CommandExecutor {
                     ChatColor.YELLOW + 
                     "You gave yourself a" + 
                     ChatColor.LIGHT_PURPLE + 
-                    "Drakon Chestplate!" + 
+                    " Drakon Chestplate " + 
                     ChatColor.YELLOW + 
                     "!");
                 break;
@@ -108,7 +115,7 @@ public class GetPetherite implements CommandExecutor {
                     ChatColor.YELLOW + 
                     "You gave yourself a pair of" + 
                     ChatColor.LIGHT_PURPLE + 
-                    "Drakon Leggings!" + 
+                    " Drakon Leggings " + 
                     ChatColor.YELLOW + 
                     "!");
                 break;
@@ -117,13 +124,22 @@ public class GetPetherite implements CommandExecutor {
                     ChatColor.YELLOW + 
                     "You gave yourself a pair of" + 
                     ChatColor.LIGHT_PURPLE + 
-                    "Drakon Boots" + 
+                    " Drakon Boots " + 
+                    ChatColor.YELLOW + 
+                    "!");
+                break;
+                case "planekey": p.getInventory().addItem(WASDPlaneKey.PlaneKey);
+                sender.sendMessage(
+                    ChatColor.YELLOW + 
+                    "You gave yourself a " + 
+                    ChatColor.LIGHT_PURPLE + 
+                    " Plane key " + 
                     ChatColor.YELLOW + 
                     "!");
                 break;
             }
         } else {
-            sender.sendMessage("Please enter a valid item to give");
+            sender.sendMessage(ChatColor.RED + "Please enter a valid item to give");
         }
     return true;
     }

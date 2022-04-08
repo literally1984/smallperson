@@ -1,6 +1,8 @@
 {
     "java.project.referencedLibraries": [
-        "lib/**/*.jar"
+        "lib/**/*.jar",
+        "c:\\Users\\PC\\Downloads\\ProtocolLib-3.2.0.jar"
     ],
-    "java.dependency.packagePresentation": "hierarchical"
+    "java.dependency.packagePresentation": "flat",
+    "java.dependency.syncWithFolderExplorer": true
 }
