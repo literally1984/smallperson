@@ -11,6 +11,13 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 
 import tech.nully.primplug.Items.Talisman;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.util.*; 
+import java.nio.charset.StandardCharsets;
+import java.util.List;
+import java.nio.file.StandardOpenOption;
 
 public class talismanListeners implements Listener {
     static Player p;
@@ -34,6 +41,8 @@ public class talismanListeners implements Listener {
                          ChatColor.YELLOW + 
                          "Talisman to your Talisman Bag!");
                     }
+
+
             }
             // prevent talisman from being placed
             if (i.getAction() == Action.RIGHT_CLICK_BLOCK) {
