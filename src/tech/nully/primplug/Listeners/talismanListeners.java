@@ -23,6 +23,13 @@ import java.io.IOException;
 import java.io.BufferedReader;
 
 import tech.nully.primplug.Items.Talisman;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.util.*; 
+import java.nio.charset.StandardCharsets;
+import java.util.List;
+import java.nio.file.StandardOpenOption;
 
 public class talismanListeners implements Listener {
     static Player p;
@@ -65,6 +72,8 @@ public class talismanListeners implements Listener {
                          writer.write(talisman + "\n");
                          writer.close();
                     }
+
+
             }
             // prevent talisman from being placed
             if (i.getAction() == Action.RIGHT_CLICK_BLOCK) {
