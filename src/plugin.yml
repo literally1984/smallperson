@@ -9,6 +9,6 @@ commands:
   pgive:
     description: Gives the user a custom item
     usage: /<command> <item>
-  recipe:
+  recipes:
     description: Shows a GUI of avaliable recipes
     usage: /<command>

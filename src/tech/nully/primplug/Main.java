@@ -38,7 +38,7 @@ public class Main extends JavaPlugin {
         p.addPacketListener();
 
 
-        getCommand("recipe").setExecutor(new recipeCommand());
+        getCommand("recipes").setExecutor(new recipeCommand());
         getCommand("pgive").setExecutor(new GetPetherite());
         getServer().getPluginManager().registerEvents(new talismanListeners(), this);
         getServer().getConsoleSender().sendMessage("--------------------------------------------");
