@@ -112,5 +112,6 @@ public class recipeGUI {
         inv.setItem(10, Drakon.helm);
 
         player.openInventory(inv);
+        player.sendMessage("Opened GUI!");
     }
 }

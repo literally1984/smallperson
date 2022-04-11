@@ -18,6 +18,7 @@ public class recipeCommand implements CommandExecutor{
             Player p = (Player) sender;
             recipeGUI r = new recipeGUI();
             r.openGui(p);
+            p.sendMessage("command executed!");
             return true;
         }
         return true;

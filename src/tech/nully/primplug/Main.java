@@ -16,22 +16,31 @@ import tech.nully.primplug.planes.planes;
 import tech.nully.primplug.recipeBook.recipeCommand;
 
 public class Main extends JavaPlugin {
-    public ProtocolManager protocolManager;
+    private ProtocolManager manager = ProtocolLibrary.getProtocolManager();
+   
+    // getter
+    public ProtocolManager getProtocolManager() {
+        return manager;
+    }
 
     @Override
     public void onEnable() {
 
-        protocolManager = ProtocolLibrary.getProtocolManager();
+        manager = ProtocolLibrary.getProtocolManager();
 
         PetheriteSet.init();
         Talisman.init();
         Drakon.init();
         WASDPlaneKey.init();
+
+
+        planes p = new planes(this);
+        p.addPacketListener();
+
+
         getCommand("recipe").setExecutor(new recipeCommand());
         getCommand("pgive").setExecutor(new GetPetherite());
         getServer().getPluginManager().registerEvents(new talismanListeners(), this);
-        planes plane = new planes();
-        plane.protocolLib(protocolManager);
         getServer().getConsoleSender().sendMessage("--------------------------------------------");
         getServer().getConsoleSender().sendMessage("--------------------------------------------");
         getServer().getConsoleSender().sendMessage(
