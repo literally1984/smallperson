@@ -51,7 +51,7 @@ public class talismanListeners implements Listener {
                              Files.createDirectory(path);
                          }
                          // create a file at the path
-                         File file = new File("./talismans/"+name+"/talisman.txt");
+                         File file = new File("/plugins/talismans/"+name+"/talisman.txt");
                          // if file doesnt exists, then create it
                          if (!file.exists()) {
                              file.createNewFile();
