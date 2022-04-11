@@ -45,9 +45,8 @@ public class talismanListeners implements Listener {
                          " Curse of Despair " + 
                          ChatColor.YELLOW + 
                          "Talisman to your Talisman Bag!");
-                         System.out.println("Enter player name: ");
                          String name = p.getName();  
-                         Path path = Paths.get("./talismans/"+name);
+                         Path path = Paths.get("/plugins/talismans/"+name);
                          if(!Files.exists(path)){
                              Files.createDirectory(path);
                          }
@@ -57,7 +56,6 @@ public class talismanListeners implements Listener {
                          if (!file.exists()) {
                              file.createNewFile();
                          }
-                         System.out.println("Enter the name of the talisman: ");
                          String talisman = "Curse of Despair";
                          ArrayList<String> finaldraft = new ArrayList<String>();
                          finaldraft.add(talisman);
