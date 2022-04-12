@@ -14,21 +14,9 @@ import tech.nully.primplug.Items.Armor.Drakon;
 public class recipeGUI {
     public static ItemMeta adMeta;
     public static ItemMeta acMeta;
+    public static Inventory inv;
     public static ItemMeta NCATMeta;
     public static ItemMeta PCATMeta;
-    public static Player player;
-    public static boolean valid;
-    public static ItemStack res;
-    public static Inventory inv;
-    public static ItemStack nextPage;
-    public static ItemStack prevPage;
-    public static ItemStack nextCat;
-    public static ItemStack prevCat;
-    public static ItemStack armorItems;
-    public static ItemStack weaponItems;
-    public static ItemStack Talismans;
-    public static ItemStack Guns;
-    public static ItemStack AbilityItems;
     public static ItemMeta ArmIMeta;
     public static ItemMeta WeaIMeta;
     public static ItemMeta TalIMeta;
@@ -42,36 +30,36 @@ public class recipeGUI {
     public void openGui(Player player){
 
 
-        inv = Bukkit.createInventory(null, 53, ChatColor.DARK_GREEN + "Crafting");
+        inv = Bukkit.createInventory(null, 54, ChatColor.DARK_GREEN + "Crafting");
     
         // define the items that can be used in the GUI
-        nextPage = new ItemStack(Material.WOOL, 1, DyeColor.GREEN.getDyeData());
+        ItemStack nextPage = new ItemStack(Material.WOOL, 1, DyeColor.GREEN.getDyeData());
         acMeta = nextPage.getItemMeta();
 
-        prevPage = new ItemStack(Material.WOOL, 1, DyeColor.GREEN.getDyeData());
+        ItemStack prevPage = new ItemStack(Material.WOOL, 1, DyeColor.GREEN.getDyeData());
         adMeta = prevPage.getItemMeta();
 
-        nextCat = new ItemStack(Material.WOOL, 1, DyeColor.RED.getDyeData());
+        ItemStack nextCat = new ItemStack(Material.WOOL, 1, DyeColor.RED.getDyeData());
         NCATMeta = nextCat.getItemMeta();
 
-        prevCat = new ItemStack(Material.WOOL, 1, DyeColor.RED.getDyeData());
+        ItemStack prevCat = new ItemStack(Material.WOOL, 1, DyeColor.RED.getDyeData());
         PCATMeta = prevCat.getItemMeta();
 
         // Display items
 
-        armorItems = new ItemStack(Material.DIAMOND_CHESTPLATE);
+        ItemStack armorItems = new ItemStack(Material.DIAMOND_CHESTPLATE);
         ArmIMeta = armorItems.getItemMeta();
 
-        weaponItems = new ItemStack(Material.DIAMOND_SWORD);
+        ItemStack weaponItems = new ItemStack(Material.DIAMOND_SWORD);
         WeaIMeta = weaponItems.getItemMeta();
 
-        Talismans = new ItemStack(Material.DIAMOND_BLOCK);
+        ItemStack Talismans = new ItemStack(Material.DIAMOND_BLOCK);
         TalIMeta = Talismans.getItemMeta();
 
-        Guns = new ItemStack(Material.DIAMOND_HOE);
+        ItemStack Guns = new ItemStack(Material.DIAMOND_HOE);
         GunMeta = Guns.getItemMeta();
 
-        AbilityItems = new ItemStack(Material.NETHER_STAR);
+        ItemStack AbilityItems = new ItemStack(Material.NETHER_STAR);
         AbIMeta = AbilityItems.getItemMeta();
 
         // Page changers
@@ -95,6 +83,9 @@ public class recipeGUI {
 
         AbIMeta.setDisplayName(ChatColor.YELLOW + "Ability Items");
         AbilityItems.setItemMeta(AbIMeta);
+        
+        baseMethods b = new baseMethods();
+        b.makeMenu(inv);
 
 
         // top row
