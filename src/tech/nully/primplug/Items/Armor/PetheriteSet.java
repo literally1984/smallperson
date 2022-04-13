@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.bukkit.Bukkit;
+import org.bukkit.ChatColor;
 import org.bukkit.Color;
 import org.bukkit.Material;
 import org.bukkit.inventory.ItemStack;
@@ -11,19 +12,36 @@ import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.inventory.meta.LeatherArmorMeta;
 
 public class PetheriteSet {
-
+    
+    public static ItemStack obby;
     public static ItemStack helm;
     public static ItemStack ches;
     public static ItemStack leg;
     public static ItemStack boots;
 
     public static void init() {
+        createCondensedObby();
         createPetheriteHelm();
         createPetheriteChestplate();
         createPetheriteLeggings();
         createPetheriteBoots();
     }
+    private static void createCondensedObby() {
+        // DEFINE THE META -------------
+        ItemStack CObby = new ItemStack(Material.OBSIDIAN);
+        ItemMeta CObbyMeta = CObby.hasItemMeta() ? CObby.getItemMeta() : Bukkit.getItemFactory().getItemMeta(CObby.getType());
 
+
+        // SET THE META ----------------
+        CObbyMeta.setDisplayName("Condensed Obsidian");
+            // HelmLore
+        List<String> Helmlore = new ArrayList<>();
+        Helmlore.add(ChatColor.YELLOW + "Used to craft Petherite Shards");
+        CObbyMeta.setLore(Helmlore);
+
+        CObby.setItemMeta(CObbyMeta);
+        obby = CObby;
+    }
     private static void createPetheriteHelm() {
         // DEFINE THE META -------------
         ItemStack PHelm = new ItemStack(Material.LEATHER_HELMET);

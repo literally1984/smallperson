@@ -26,8 +26,6 @@ public class Main extends JavaPlugin {
     @Override
     public void onEnable() {
 
-        manager = ProtocolLibrary.getProtocolManager();
-
         PetheriteSet.init();
         Talisman.init();
         Drakon.init();
