@@ -15,6 +15,6 @@ public class armorcraftings {
         inv.clear();
         baseMethods b = new baseMethods();
         b.makeBaseCraft(inv);
-        inv.setItem(11, PetheriteSet.helm);
+        inv.setItem(11, );
     }
 }
