@@ -26,10 +26,11 @@ public class PetheriteSet {
         createPetheriteLeggings();
         createPetheriteBoots();
     }
+
     private static void createCondensedObby() {
         // DEFINE THE META -------------
         ItemStack CObby = new ItemStack(Material.OBSIDIAN);
-        ItemMeta CObbyMeta = CObby.hasItemMeta() ? CObby.getItemMeta() : Bukkit.getItemFactory().getItemMeta(CObby.getType());
+        ItemMeta CObbyMeta = CObby.getItemMeta();
 
 
         // SET THE META ----------------

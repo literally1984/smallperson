@@ -1,12 +1,6 @@
 package tech.nully.primplug.Listeners;
 
-import java.io.File;
-import java.io.FileWriter;
 import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
-import java.util.ArrayList;
 
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
@@ -41,26 +35,6 @@ public class talismanListeners implements Listener {
                         " Curse of Despair " + 
                         ChatColor.YELLOW + 
                         "Talisman to your Talisman Bag!");
-                        String name = p.getName();
-                        String path = "/plugins/PrimPlugin/talismans";
-                        Path p = Paths.get("/plugins/PrimPlugin/talismans");
-                        File e = (name+".txt")
-                        File f =  new File("/plugins/PrimPlugin/talismans/"+userFile);
-                        if(!File.exists(Paths.get(path, userFile))){
-                            Files.createDirectory(p);
-                        }
-                        // create a file at the path
-                        File file = new File("/plugins/PrimPlugin/talismans/"+name+"/talisman.txt");
-                        // if file doesnt exists, then create it
-                        if (!file.exists()) {
-                            file.createNewFile();
-                        }
-                        String talisman = "Curse of Despair";
-                        ArrayList<String> finaldraft = new ArrayList<String>();
-                        finaldraft.add(talisman);
-                        FileWriter writer = new FileWriter(file, true);
-                        writer.write(talisman + "\n");
-                        writer.close();
                 }
 
 
