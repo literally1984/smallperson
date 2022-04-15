@@ -1,4 +1,4 @@
-package tech.nully.primplug.Items.Armor;
+package tech.nully.primplug.Armor;
 
 import java.util.ArrayList;
 import java.util.List;

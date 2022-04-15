@@ -1,12 +1,15 @@
 package tech.nully.primplug.recipeBook.crafts;
 
-import org.bukkit.Bukkit;
+import org.bukkit.Material;
 import org.bukkit.inventory.Inventory;
+import org.bukkit.inventory.ItemStack;
 
-import tech.nully.primplug.Items.Armor.PetheriteSet;
 import tech.nully.primplug.recipeBook.baseMethods;
 
 public class armorcraftings {
+    public void init() {
+        
+    }
     public void PetheriteH(Inventory inv) {
         // avaliable slots are:
         //10 11 12
@@ -15,6 +18,7 @@ public class armorcraftings {
         inv.clear();
         baseMethods b = new baseMethods();
         b.makeBaseCraft(inv);
-        inv.setItem(11, );
+        ItemStack diaChes = new ItemStack(Material.getMaterial(310));
+        inv.setItem(11, diaChes);
     }
 }

@@ -1,4 +1,4 @@
-package tech.nully.primplug.Listeners;
+package tech.nully.primplug.Talismans;
 
 import java.io.IOException;
 
@@ -11,8 +11,6 @@ import org.bukkit.event.block.Action;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
-
-import tech.nully.primplug.Items.Talisman;
 
 public class talismanListeners implements Listener {
     static Player p;

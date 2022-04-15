@@ -6,12 +6,12 @@ import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
-import tech.nully.primplug.Items.Talisman;
-import tech.nully.primplug.Items.WASDPlaneKey;
-import tech.nully.primplug.Items.Armor.Drakon;
-import tech.nully.primplug.Items.Armor.PetheriteSet;
+import tech.nully.primplug.Armor.Drakon;
+import tech.nully.primplug.Armor.PetheriteSet;
+import tech.nully.primplug.Talismans.Talisman;
+import tech.nully.primplug.planes.WASDPlaneKey;
 
-public class GetPetherite implements CommandExecutor {
+public class giveCommand implements CommandExecutor {
     @Override
     public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
         if (!(sender instanceof Player)) {

@@ -1,9 +1,16 @@
-public class PetheriteSet {
+package tech.nully.primplug.phones;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import org.bukkit.Bukkit;
+import org.bukkit.Material;
+import org.bukkit.inventory.ItemStack;
+import org.bukkit.inventory.meta.ItemMeta;
+
+public class phone {
 
     public static ItemStack epikPhone;
-    public static ItemStack ches;
-    public static ItemStack leg;
-    public static ItemStack boots;
 
     public static void init() {
         createPhone();
@@ -26,3 +33,4 @@ public class PetheriteSet {
         phone.setItemMeta(phoneMeta);
         epikPhone = phone;
     }
+}

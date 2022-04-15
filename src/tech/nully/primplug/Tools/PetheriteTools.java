@@ -1,4 +1,4 @@
-package tech.nully.primplug.Items.Tools;
+package tech.nully.primplug.Tools;
 
 import java.util.ArrayList;
 import java.util.List;

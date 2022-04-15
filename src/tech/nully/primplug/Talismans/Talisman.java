@@ -1,4 +1,4 @@
-package tech.nully.primplug.Items;
+package tech.nully.primplug.Talismans;
 
 import java.util.ArrayList;
 import java.util.List;

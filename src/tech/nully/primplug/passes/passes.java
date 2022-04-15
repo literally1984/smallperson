@@ -1,22 +1,25 @@
 package tech.nully.primplug.passes;
 
-public class PetheriteSet {
+import java.util.ArrayList;
+import java.util.List;
+
+import org.bukkit.Bukkit;
+import org.bukkit.Material;
+import org.bukkit.enchantments.Enchantment;
+import org.bukkit.inventory.ItemStack;
+import org.bukkit.inventory.meta.ItemMeta;
+
+public class passes {
 
     public static ItemStack IDIppedPass;
-    public static ItemStack ches;
-    public static ItemStack leg;
-    public static ItemStack boots;
 
     public static void init() {
-        createPetheriteHelm();
-        createPetheriteChestplate();
-        createPetheriteLeggings();
-        createPetheriteBoots();
+        createIDppedPass();
     }
 
     private static void createIDppedPass() {
         // DEFINE THE META -------------
-        ItemStack IDIpped = new ItemStack(Material.LEATHER_HELMET);
+        ItemStack IDIpped = new ItemStack(Material.PAPER);
         ItemMeta IDIppedMeta = IDIpped.hasItemMeta() ? IDIpped.getItemMeta() : Bukkit.getItemFactory().getItemMeta(IDIpped.getType());
 
 
@@ -29,8 +32,11 @@ public class PetheriteSet {
         Helmlore.add("ultimate sigma male");
         IDIppedMeta.setLore(Helmlore);
 
+        IDIppedMeta.addEnchant(Enchantment.ARROW_FIRE, 1, false);
+
 
 
         IDIpped.setItemMeta(IDIppedMeta);
         IDIppedPass = IDIpped;
     }
+}
