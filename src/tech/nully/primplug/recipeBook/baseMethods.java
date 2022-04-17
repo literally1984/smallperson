@@ -15,24 +15,24 @@ public class baseMethods {
     public boolean isOnTalismanPage;
     public boolean isOnGunPage;
     public boolean isOnAbItemsPage;
-    public ItemMeta adMeta;
-    public ItemMeta acMeta;
+    public static ItemMeta adMeta;
+    public static ItemMeta acMeta;
     public Inventory inv;
-    public ItemMeta NCATMeta;
-    public ItemMeta PCATMeta;
-    public ItemMeta ArmIMeta;
-    public ItemMeta WeaIMeta;
-    public ItemMeta TalIMeta;
-    public ItemMeta GunMeta;
-    public ItemMeta AbIMeta;
+    public static ItemMeta NCATMeta;
+    public static ItemMeta PCATMeta;
+    public static ItemMeta ArmIMeta;
+    public static ItemMeta WeaIMeta;
+    public static ItemMeta TalIMeta;
+    public static ItemMeta GunMeta;
+    public static ItemMeta AbIMeta;
     public ItemStack Page1;
     public ItemStack Page2;
     public ItemStack Page3;
     public ItemStack Page4;
     public ItemStack Page5;
 
-    public void init() {
-
+    public static void init() {
+        createBaseItems();
     }
 // !CRAFTING
     // Making the border for a crafting UI
@@ -96,7 +96,7 @@ public class baseMethods {
     public void makeMenu(Inventory inv) {
         baseMeta.setDisplayName("");
         base.setItemMeta(baseMeta);
-        int[] edges = new int[]{1,10,19,28,37,46,9,18,27,36,45,54};
+        int[] edges = new int[]{1,10,19,28,37,46,9,18,27,36,45,53};
         inv.setItem(edges[0], base);
         inv.setItem(edges[1], base);
         inv.setItem(edges[2], base);
@@ -112,16 +112,16 @@ public class baseMethods {
     }
 
     //!Base GUI Items
-    private ItemStack prevCat;
-    private ItemStack armorItems;
-    private ItemStack weaponItems;
-    private ItemStack Talismans;
-    private ItemStack Guns;
-    private ItemStack nextCat;
-    private ItemStack prevPage;
-    private ItemStack nextPage;
-    private ItemStack AbilityItems;
-    public void createBaseItems() {
+    private static ItemStack prevCat;
+    private static ItemStack armorItems;
+    private static ItemStack weaponItems;
+    private static ItemStack Talismans;
+    private static ItemStack Guns;
+    private static ItemStack nextCat;
+    private static ItemStack prevPage;
+    private static ItemStack nextPage;
+    private static ItemStack AbilityItems;
+    private static void createBaseItems() {
                 // define the items that can be used in the GUI
                 nextPage = new ItemStack(Material.WOOL, 1, DyeColor.GREEN.getDyeData());
                 acMeta = nextPage.getItemMeta();

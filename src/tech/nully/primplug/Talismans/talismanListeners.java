@@ -3,6 +3,7 @@ package tech.nully.primplug.Talismans;
 import java.io.IOException;
 
 import org.bukkit.ChatColor;
+import org.bukkit.DyeColor;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -23,7 +24,9 @@ public class talismanListeners implements Listener {
         // For Curse of despair
         if (p.getItemInHand().getType() == Material.RED_ROSE) {
             if (i.getAction() == Action.RIGHT_CLICK_AIR) {
-                    if (handItemMeta.getDisplayName() == Talisman.BladeOfDespair.getItemMeta().getDisplayName()) {
+                talismanIdentifier I = new talismanIdentifier();
+                int handItemID = I.talismanRead(handItemMeta.getDisplayName());
+                    if (handItemID == I.TalismanName.get("COD")) {
                         // TODO ayonull make it with dis structure
                         p.getInventory().remove(Talisman.BladeOfDespair);
                         p.sendMessage(ChatColor.YELLOW + 
@@ -34,8 +37,6 @@ public class talismanListeners implements Listener {
                         ChatColor.YELLOW + 
                         "Talisman to your Talisman Bag!");
                 }
-
-
             }
             // prevent talisman from being placed
             if (i.getAction() == Action.RIGHT_CLICK_BLOCK) {

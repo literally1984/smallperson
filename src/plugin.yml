@@ -12,3 +12,6 @@ commands:
   recipes:
     description: Shows a GUI of avaliable recipes
     usage: /<command>
+  reforge:
+    description: reforge your current held item
+    usage: /<command>
