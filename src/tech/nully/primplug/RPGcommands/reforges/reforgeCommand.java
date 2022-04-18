@@ -18,9 +18,8 @@ public class reforgeCommand implements CommandExecutor{
 
         if (cmd.getName().equalsIgnoreCase("reforge")) {
             Player p = (Player) sender;
-            ItemStack handItem = p.getItemInHand();
-            reforges r = new reforges();
-            r.reforgeName(handItem);
+            reforgeGUI r = new reforgeGUI();
+            r.openReforgeGUI(p);
             return true;
         }
 

@@ -5,13 +5,13 @@ import org.bukkit.plugin.java.JavaPlugin;
 
 import tech.nully.primplug.Armor.Drakon;
 import tech.nully.primplug.Armor.PetheriteSet;
+import tech.nully.primplug.RPGcommands.reforges.reforgeClickListener;
 import tech.nully.primplug.RPGcommands.reforges.reforgeCommand;
 import tech.nully.primplug.RegularCommands.giveCommand;
 import tech.nully.primplug.Talismans.Talisman;
 import tech.nully.primplug.Talismans.talismanListeners;
 import tech.nully.primplug.phones.phoneListener;
 import tech.nully.primplug.planes.WASDPlaneKey;
-import tech.nully.primplug.recipeBook.baseMethods;
 import tech.nully.primplug.recipeBook.recipeCommand;
 
 public class Main extends JavaPlugin {
@@ -28,6 +28,7 @@ public class Main extends JavaPlugin {
 
 
         getServer().getPluginManager().registerEvents(new phoneListener(), this);
+        getServer().getPluginManager().registerEvents(new reforgeClickListener(), this);
         getCommand("recipes").setExecutor(new recipeCommand());
         getCommand("pgive").setExecutor(new giveCommand());
         getCommand("reforge").setExecutor(new reforgeCommand());

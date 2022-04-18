@@ -3,15 +3,23 @@ package tech.nully.primplug.RPGcommands.reforges;
 import java.util.Random;
 
 import org.bukkit.Bukkit;
+import org.bukkit.ChatColor;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 
 public class reforges {
     public void reforgeName(ItemStack reforge) {
         Random rand = new Random();
-        int pick = rand.nextInt(5);
         // weighted list of reforges
-        String[] reforgeList = {"Vampiric", "Vampiric", "Superior", "Common", "Tanky"};
+        String Common = ChatColor.GRAY + "Common";
+        String Vampiric = ChatColor.RED + "Vampiric";
+        String Tanky = ChatColor.BLACK + "Tanky";
+        String Superior = ChatColor.GOLD + "Superior";
+        String[] reforgeList = {Superior,
+        Common, Common, Common, Common, Common, Common,
+        Vampiric, Vampiric,
+        Tanky, Tanky, Tanky};
+        int pick = rand.nextInt(reforgeList.length - 1);
 
         // Identifies the meta
 

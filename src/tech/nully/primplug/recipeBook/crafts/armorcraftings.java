@@ -4,7 +4,7 @@ import org.bukkit.Material;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 
-import tech.nully.primplug.recipeBook.baseMethods;
+import tech.nully.primplug.baseMethods;
 
 public class armorcraftings {
     public void init() {

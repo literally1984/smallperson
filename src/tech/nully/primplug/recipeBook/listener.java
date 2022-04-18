@@ -4,6 +4,7 @@ import org.bukkit.ChatColor;
 import org.bukkit.event.Listener;
 import org.bukkit.event.inventory.InventoryClickEvent;
 
+import tech.nully.primplug.baseMethods;
 import tech.nully.primplug.recipeBook.GUIs.armorGUI;
 
 public class listener implements Listener{

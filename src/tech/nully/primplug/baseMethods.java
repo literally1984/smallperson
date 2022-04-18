@@ -1,6 +1,10 @@
-package tech.nully.primplug.recipeBook;
+package tech.nully.primplug;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import org.bukkit.Bukkit;
+import org.bukkit.ChatColor;
 import org.bukkit.DyeColor;
 import org.bukkit.Material;
 import org.bukkit.inventory.Inventory;
@@ -8,7 +12,7 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 
 public class baseMethods {
-    private ItemStack base = new ItemStack(Material.getMaterial(34));
+    public ItemStack base = new ItemStack(Material.getMaterial(34));
     private ItemMeta baseMeta = base.hasItemMeta() ? base.getItemMeta() : Bukkit.getItemFactory().getItemMeta(base.getType());
     public boolean isOnArmorPage;
     public boolean isOnWeaponPage;
@@ -96,19 +100,12 @@ public class baseMethods {
     public void makeMenu(Inventory inv) {
         baseMeta.setDisplayName("");
         base.setItemMeta(baseMeta);
-        int[] edges = new int[]{1,10,19,28,37,46,9,18,27,36,45,53};
-        inv.setItem(edges[0], base);
-        inv.setItem(edges[1], base);
-        inv.setItem(edges[2], base);
-        inv.setItem(edges[3], base);
-        inv.setItem(edges[4], base);
-        inv.setItem(edges[5], base);
-        inv.setItem(edges[6], base);
-        inv.setItem(edges[7], base);
-        inv.setItem(edges[8], base);
-        inv.setItem(edges[9], base);
-        inv.setItem(edges[10], base);
-        inv.setItem(edges[11], base);
+        for (int i = 0; i < 55; i =+ 9){
+            inv.setItem(i, base);
+        }
+        for (int i = 8; i < 62; i =+ 9){
+            inv.setItem(i, base);
+        }
     }
 
     //!Base GUI Items
@@ -121,6 +118,7 @@ public class baseMethods {
     private static ItemStack prevPage;
     private static ItemStack nextPage;
     private static ItemStack AbilityItems;
+    private static ItemStack reforgeAnvil;
     private static void createBaseItems() {
                 // define the items that can be used in the GUI
                 nextPage = new ItemStack(Material.WOOL, 1, DyeColor.GREEN.getDyeData());
@@ -173,6 +171,14 @@ public class baseMethods {
         
                 AbIMeta.setDisplayName("Ability Items");
                 AbilityItems.setItemMeta(AbIMeta);
+
+
+
+                reforgeAnvil = new ItemStack(Material.ANVIL);
+                ItemMeta reforgeAnvilMeta = reforgeAnvil.getItemMeta();
+                reforgeAnvilMeta.setDisplayName(ChatColor.GOLD + "Reforge");
+                List<String> reforgeAnvilLore = new ArrayList<>();
+                reforgeAnvilLore.add(ChatColor.YELLOW + "Click to reforge your item");
     }
 
     //! base GUI
@@ -191,5 +197,39 @@ public class baseMethods {
         inv.setItem(46, prevPage);
         inv.setItem(52, nextPage);
         // items
+    }
+
+    public void makeBaseReforgeGUI(Inventory inv) {
+        for (int i = 0; i < 54; i++) {
+            inv.setItem(i, base);
+        }
+        for (int i = 0; i < 9; i++) {
+            inv.setItem(i, new ItemStack(Material.WOOL, 1, DyeColor.GREEN.getWoolData()));
+        }
+        for (int i = 44; i < 54; i++) {
+            inv.setItem(i, new ItemStack(Material.WOOL, 1, DyeColor.GREEN.getWoolData()));
+        }
+        inv.setItem(13, new ItemStack(Material.getMaterial(0)));
+        inv.setItem(40, reforgeAnvil);
+    }
+    
+
+    public boolean checkIsArmor(ItemStack item) {
+        if (item.getType().toString().toLowerCase().contains("helmet") || 
+        item.getType().toString().toLowerCase().contains("chestplate") || 
+        item.getType().toString().toLowerCase().contains("leggings") || 
+        item.getType().toString().toLowerCase().contains("boots")) {
+            return true;
+        } else {
+        return false;
+        }
+    }
+    public boolean checkIsWeapon(ItemStack item) {
+        if (item.getType().toString().toLowerCase().contains("sword") || 
+        item.getType().toString().toLowerCase().contains("axe")) {
+            return true;
+        } else {
+        return false;
+        }
     }
 }

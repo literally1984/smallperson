@@ -26,7 +26,7 @@ public class PetheriteSet {
         createPetheriteLeggings();
         createPetheriteBoots();
     }
-
+    // ! condensed Obsidian
     private static void createCondensedObby() {
         // DEFINE THE META -------------
         ItemStack CObby = new ItemStack(Material.OBSIDIAN);
@@ -43,6 +43,9 @@ public class PetheriteSet {
         CObby.setItemMeta(CObbyMeta);
         obby = CObby;
     }
+
+
+    //! Petherite Helmet
     private static void createPetheriteHelm() {
         // DEFINE THE META -------------
         ItemStack PHelm = new ItemStack(Material.LEATHER_HELMET);
@@ -64,6 +67,8 @@ public class PetheriteSet {
         PHelm.setItemMeta(PHelmMeta);
         helm = PHelm;
     }
+
+    // ! Petherite Chesplate
     private static void createPetheriteChestplate() {
         // DEFINE THE META -------------
         ItemStack PChest = new ItemStack(Material.LEATHER_CHESTPLATE);
@@ -85,6 +90,9 @@ public class PetheriteSet {
         PChest.setItemMeta(PChestMeta);
         ches = PChest;
     }
+
+
+    // ! Petherite Leggings
     private static void createPetheriteLeggings() {
         // DEFINE THE META -------------
         ItemStack PLeg = new ItemStack(Material.LEATHER_LEGGINGS);
@@ -106,6 +114,7 @@ public class PetheriteSet {
         PLeg.setItemMeta(PLegMeta);
         leg = PLeg;
     }
+    // ! Petherite Boots
     private static void createPetheriteBoots() {
         // DEFINE THE META -------------
         ItemStack PBoots = new ItemStack(Material.LEATHER_BOOTS);
