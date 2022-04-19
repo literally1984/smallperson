@@ -67,7 +67,7 @@ public class upgradeGUIListener implements Listener{
             // checks if clicked item is damage upgrade item
             if (clickItem == baseMethods.damageUpgrade) {
                 if (up.isAtMax == false) {
-                    up.damageStat = up.damageStat + 1;
+                    up.damageStat++;
                     up.update(upgradeItem);
                     e.setCancelled(true);
                     return;
