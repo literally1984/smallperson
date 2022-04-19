@@ -9,6 +9,7 @@ import org.bukkit.entity.Player;
 import tech.nully.primplug.Armor.Drakon;
 import tech.nully.primplug.Armor.PetheriteSet;
 import tech.nully.primplug.Talismans.Talisman;
+import tech.nully.primplug.phones.phone;
 import tech.nully.primplug.planes.WASDPlaneKey;
 
 public class giveCommand implements CommandExecutor {
@@ -134,6 +135,14 @@ public class giveCommand implements CommandExecutor {
                     "You gave yourself a " + 
                     ChatColor.LIGHT_PURPLE + 
                     " Plane key " + 
+                    ChatColor.YELLOW + 
+                    "!");
+                case "phone": p.getInventory().addItem(phone.epikPhone);
+                sender.sendMessage(
+                    ChatColor.YELLOW + 
+                    "You gave yourself a " + 
+                    ChatColor.LIGHT_PURPLE + 
+                    " Phone " + 
                     ChatColor.YELLOW + 
                     "!");
                 break;

@@ -7,6 +7,7 @@ import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.DyeColor;
 import org.bukkit.Material;
+import org.bukkit.enchantments.Enchantment;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
@@ -118,7 +119,17 @@ public class baseMethods {
     private static ItemStack prevPage;
     private static ItemStack nextPage;
     private static ItemStack AbilityItems;
-    private static ItemStack reforgeAnvil;
+    public static ItemStack reforgeAnvil;
+    public static ItemStack level1Enchant;
+    public static ItemStack level2Enchant;
+    public static ItemStack level3Enchant;
+    public static List<String> level1EnchantLore = new ArrayList<>();
+    public static List<String> level2EnchantLore = new ArrayList<>();
+    public static List<String> level3EnchantLore = new ArrayList<>();
+    public static ItemStack damageUpgrade;
+    public static ItemStack defenseUpgrade;
+    public static ItemStack manaUpgrade;
+    public static ItemStack staminaUpgrade;
     private static void createBaseItems() {
                 // define the items that can be used in the GUI
                 nextPage = new ItemStack(Material.WOOL, 1, DyeColor.GREEN.getDyeData());
@@ -173,12 +184,77 @@ public class baseMethods {
                 AbilityItems.setItemMeta(AbIMeta);
 
 
-
+            // reforge anvil
                 reforgeAnvil = new ItemStack(Material.ANVIL);
                 ItemMeta reforgeAnvilMeta = reforgeAnvil.getItemMeta();
                 reforgeAnvilMeta.setDisplayName(ChatColor.GOLD + "Reforge");
                 List<String> reforgeAnvilLore = new ArrayList<>();
                 reforgeAnvilLore.add(ChatColor.YELLOW + "Click to reforge your item");
+                reforgeAnvilMeta.setLore(reforgeAnvilLore);
+                reforgeAnvilMeta.addEnchant(Enchantment.DURABILITY, 10, false);
+                reforgeAnvil.setItemMeta(reforgeAnvilMeta);
+
+            // Enchant Items
+                level1Enchant = new ItemStack(Material.ANVIL);
+                ItemMeta level1EnchantMeta = level1Enchant.getItemMeta();
+                level1EnchantMeta.setDisplayName(ChatColor.GOLD + "Level 9 Enchant");
+                level1EnchantMeta.setLore(level1EnchantLore);
+                level1Enchant.setItemMeta(level1EnchantMeta);
+
+                level2Enchant = new ItemStack(Material.ANVIL);
+                ItemMeta level2EnchantMeta = level1Enchant.getItemMeta();
+                level1EnchantMeta.setDisplayName(ChatColor.GOLD + "Level 16 Enchant");
+                level1EnchantMeta.setLore(level2EnchantLore);
+                level1Enchant.setItemMeta(level2EnchantMeta);
+
+                level3Enchant = new ItemStack(Material.ANVIL);
+                ItemMeta level3EnchantMeta = level1Enchant.getItemMeta();
+                level1EnchantMeta.setDisplayName(ChatColor.GOLD + "Level 30 Enchant");
+                level1EnchantMeta.setLore(level3EnchantLore);
+                level1Enchant.setItemMeta(level3EnchantMeta);
+                
+        // DamageUpgrade item
+                damageUpgrade = new ItemStack(Material.DIAMOND_SWORD);
+                ItemMeta damageUpgradeMeta = level1Enchant.getItemMeta();
+                damageUpgradeMeta.setDisplayName(ChatColor.GOLD + "Upgrade Damage");
+                List<String> damageUpgradeLore = new ArrayList<>();
+                reforgeAnvilLore.add(ChatColor.YELLOW + "Click to upgrade the damage of");
+                reforgeAnvilLore.add(ChatColor.YELLOW + "your item");
+                damageUpgradeMeta.setLore(damageUpgradeLore);
+                damageUpgradeMeta.addEnchant(Enchantment.DAMAGE_ALL, 10, false);
+                damageUpgrade.setItemMeta(damageUpgradeMeta);
+                
+        // defense upgrade item
+                defenseUpgrade = new ItemStack(Material.DIAMOND_CHESTPLATE);
+                ItemMeta defenseUpgradeMeta = level1Enchant.getItemMeta();
+                defenseUpgradeMeta.setDisplayName(ChatColor.GOLD + "Upgrade defense");
+                List<String> defenseUpgradeLore = new ArrayList<>();
+                reforgeAnvilLore.add(ChatColor.YELLOW + "Click to upgrade the damage of");
+                reforgeAnvilLore.add(ChatColor.YELLOW + "your item");
+                defenseUpgradeMeta.setLore(defenseUpgradeLore);
+                damageUpgradeMeta.addEnchant(Enchantment.PROTECTION_ENVIRONMENTAL, 10, false);
+                defenseUpgrade.setItemMeta(defenseUpgradeMeta);
+        // mana upgrade item
+                manaUpgrade = new ItemStack(Material.EXP_BOTTLE);
+                ItemMeta manaUpgradeMeta = level1Enchant.getItemMeta();
+                manaUpgradeMeta.setDisplayName(ChatColor.GOLD + "Upgrade mana");
+                List<String> manaUpgradeLore = new ArrayList<>();
+                reforgeAnvilLore.add(ChatColor.YELLOW + "Click to upgrade the damage of");
+                reforgeAnvilLore.add(ChatColor.YELLOW + "your item");
+                manaUpgradeMeta.setLore(manaUpgradeLore);
+                damageUpgradeMeta.addEnchant(Enchantment.LOOT_BONUS_BLOCKS, 10, false);
+                manaUpgrade.setItemMeta(manaUpgradeMeta);
+
+
+                staminaUpgrade = new ItemStack(Material.COOKED_BEEF);
+                ItemMeta staminaUpgradeMeta = level1Enchant.getItemMeta();
+                staminaUpgradeMeta.setDisplayName(ChatColor.GOLD + "Upgrade stamina");
+                List<String> staminaUpgradeLore = new ArrayList<>();
+                reforgeAnvilLore.add(ChatColor.YELLOW + "Click to upgrade the damage of");
+                reforgeAnvilLore.add(ChatColor.YELLOW + "your item");
+                staminaUpgradeMeta.setLore(staminaUpgradeLore);
+                damageUpgradeMeta.addEnchant(Enchantment.DURABILITY, 10, false);
+                staminaUpgrade.setItemMeta(staminaUpgradeMeta);
     }
 
     //! base GUI
@@ -204,10 +280,10 @@ public class baseMethods {
             inv.setItem(i, base);
         }
         for (int i = 0; i < 9; i++) {
-            inv.setItem(i, new ItemStack(Material.WOOL, 1, DyeColor.GREEN.getWoolData()));
+            inv.setItem(i, new ItemStack(Material.WOOL, 1, DyeColor.GREEN.getDyeData()));
         }
-        for (int i = 44; i < 54; i++) {
-            inv.setItem(i, new ItemStack(Material.WOOL, 1, DyeColor.GREEN.getWoolData()));
+        for (int i = 45; i < 54; i++) {
+            inv.setItem(i, new ItemStack(Material.WOOL, 1, DyeColor.GREEN.getDyeData()));
         }
         inv.setItem(13, new ItemStack(Material.getMaterial(0)));
         inv.setItem(40, reforgeAnvil);

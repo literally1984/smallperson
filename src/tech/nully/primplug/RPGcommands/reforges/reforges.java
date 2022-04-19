@@ -28,7 +28,7 @@ public class reforges {
         Bukkit.getItemFactory().getItemMeta(reforge.getType());
 
         // sets the desplayName of the item to the picked reforge
-        reforgeMeta.setDisplayName(reforgeList[pick] + reforgeMeta.getDisplayName());
+        reforgeMeta.setDisplayName(reforgeList[pick] +  " " + reforgeMeta.getDisplayName());
         reforge.setItemMeta(reforgeMeta);
     }
 }

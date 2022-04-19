@@ -1,5 +1,5 @@
 name: PrimPlugin
-version: 1.0
+version: 0.4
 main: tech.nully.primplug.Main
 authors: [BongoCat, ayonull]
 api-version: 1.5.2
@@ -13,5 +13,10 @@ commands:
     description: Shows a GUI of avaliable recipes
     usage: /<command>
   reforge:
+    aliases: re
     description: reforge your current held item
+    usage: /<command>
+  upgrade:
+    aliases: upg
+    description: Open the upgrade GUI
     usage: /<command>

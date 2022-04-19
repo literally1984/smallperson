@@ -1,6 +1,7 @@
 package tech.nully.primplug.RPGcommands.reforges;
 
-import org.bukkit.Material;
+import org.bukkit.Sound;
+import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.inventory.InventoryClickEvent;
@@ -13,25 +14,21 @@ public class reforgeClickListener implements Listener{
     public void onReforgeClick(InventoryClickEvent e) {
         reforgeGUI r = new reforgeGUI();
 
-        // checks if clicked item is anvil
+        // checks if inventory is the reforge inventory
         if (e.getInventory() == r.inv) {
-            baseMethods b = new baseMethods();
-            if (!(e.getCurrentItem() == new ItemStack(Material.ANVIL)) || !(e.getCurrentItem() == b.base)) {
+            ItemStack clickItem = e.getCurrentItem();
+            ItemStack reforgeItem = r.inv.getItem(13);
+            Player p = (Player) e.getWhoClicked();
 
-            // checks if the inventory is the reforge inventory
-                if (e.getCurrentItem() == new ItemStack(Material.ANVIL)) {
-
-                    // checks if the reforege slot is not air
-                    if (!(r.inv.getItem(13) == new ItemStack(Material.AIR))) {
-                        ItemStack rItem = r.inv.getItem(13);
-
-                        // checks if the reforge item is a armor piece or weapon
-                        if (b.checkIsArmor(rItem) == true || b.checkIsWeapon(rItem) == true) {
-                            reforges reforge = new reforges();
-                            reforge.reforgeName(rItem);
-                            }
-                    }
+            // If clicked item is not item in slot 13 (reforge item)
+            if (!(clickItem.getItemMeta() == reforgeItem.getItemMeta())) {
+                // If clicked item is the reforge anvil
+                if (clickItem == baseMethods.reforgeAnvil) {
+                    reforges re = new reforges();
+                    re.reforgeName(reforgeItem);
+                    p.playSound(p.getLocation(), Sound.ANVIL_USE, 100, 0);
                 }
+                e.setCancelled(true);
             }
         }
     }
