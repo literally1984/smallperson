@@ -14,13 +14,14 @@ public class upgradeGUI {
     public void openUpgradeGUI(Player p) {
         inv = Bukkit.createInventory(null, 54, ChatColor.BLACK + "Item Upgrades");
         baseMethods b = new baseMethods();
-        for (int i = 0; i < 54; i ++) {
+        for (int i = 0; i < 54; i++) {
             inv.setItem(i, b.base);
         }
-        inv.setItem(13, new ItemStack(Material.AIR));
-        inv.setItem(21, baseMethods.damageUpgrade);
-        inv.setItem(23, baseMethods.defenseUpgrade);
-        inv.setItem(39, baseMethods.manaUpgrade);
-        inv.setItem(41, baseMethods.staminaUpgrade);
+        inv.setItem(22, new ItemStack(Material.AIR));
+        inv.setItem(11, baseMethods.damageUpgrade);
+        inv.setItem(15, baseMethods.defenseUpgrade);
+        inv.setItem(29, baseMethods.manaUpgrade);
+        inv.setItem(33, baseMethods.staminaUpgrade);
+        p.openInventory(inv);
     }
 }

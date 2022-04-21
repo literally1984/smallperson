@@ -99,8 +99,6 @@ public class baseMethods {
 //!menu
     // making the morder for a menu UI
     public void makeMenu(Inventory inv) {
-        baseMeta.setDisplayName("");
-        base.setItemMeta(baseMeta);
         for (int i = 0; i < 55; i =+ 9){
             inv.setItem(i, base);
         }

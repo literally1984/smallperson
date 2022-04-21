@@ -13,10 +13,11 @@ import tech.nully.primplug.baseMethods;
 
 public class upgradeGUIListener implements Listener{
     @EventHandler
-    public void onUpgradeClick(InventoryClickEvent e) {
+    public void onInventoryClick(InventoryClickEvent e) {
         upgradeGUI u = new upgradeGUI();
         // Check if inventory is the upgrade inventory
-        if (e.getInventory() == u.inv) {
+        if (e.getInventory().getName().equalsIgnoreCase (u.inv.getName()) && !(e.getCurrentItem() == e.getInventory().getItem(22))) {
+            e.setCancelled(true);
 
             // some varaibble stuff
             ItemStack upgradeItem = u.inv.getItem(13);
@@ -60,49 +61,44 @@ public class upgradeGUIListener implements Listener{
                 manaUpgradeMeta.setLore(damageUpgradeLore);
             }
             // check if click item is the base item
-            if (clickItem == b.base) {
-                e.setCancelled(true);
+            if (clickItem.getItemMeta().getDisplayName().equals(b.base.getItemMeta().getDisplayName())) {
                 return;
             }
             // checks if clicked item is damage upgrade item
-            if (clickItem == baseMethods.damageUpgrade) {
+            if (clickItem.getItemMeta().getDisplayName().equals(baseMethods.damageUpgrade.getItemMeta().getDisplayName())) {
                 if (up.isAtMax == false) {
                     up.damageStat++;
                     up.update(upgradeItem);
-                    e.setCancelled(true);
                     return;
                 }
                 return;
             }
 
             // check if it is defense item which is clicked
-            if (clickItem == baseMethods.defenseUpgrade) {
+            if (clickItem.getItemMeta().getDisplayName().equals(baseMethods.defenseUpgrade.getItemMeta().getDisplayName())) {
                 if (up.isAtMax == false) {
                     up.defenseStat = up.defenseStat + 1;
                     up.update(upgradeItem);
-                    e.setCancelled(true);
                     return;
                 }
                 return;
             }
 
 
-            if (clickItem == baseMethods.staminaUpgrade) {
+            if (clickItem.getItemMeta().getDisplayName().equals(baseMethods.staminaUpgrade.getItemMeta().getDisplayName())) {
                 if (up.isAtMax == false) {
                     up.staminaStat = up.staminaStat + 1;
                     up.update(upgradeItem);
-                    e.setCancelled(true);
                     return;
                 }
                 return;
             }
 
 
-            if (clickItem == baseMethods.manaUpgrade) {
+            if (clickItem.getItemMeta().getDisplayName().equals(baseMethods.manaUpgrade.getItemMeta().getDisplayName())) {
                 if (up.isAtMax == false) {
                     up.manaStat = up.manaStat + 1;
                     up.update(upgradeItem);
-                    e.setCancelled(true);
                     return;
                 }
                 return;

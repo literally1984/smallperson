@@ -14,10 +14,11 @@ public class upgradeCommand implements CommandExecutor{
             return true;
         }
 
-        if (cmd.getName() == "upgrade") {
+        if (cmd.getName().equalsIgnoreCase("upgrade")) {
             Player p = (Player) sender;
             upgradeGUI up = new upgradeGUI();
             up.openUpgradeGUI(p);
+            return true;
         }
         return true;
     }

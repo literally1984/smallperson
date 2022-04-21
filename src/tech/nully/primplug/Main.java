@@ -14,6 +14,8 @@ import tech.nully.primplug.Talismans.talismanListeners;
 import tech.nully.primplug.phones.phoneListener;
 import tech.nully.primplug.planes.WASDPlaneKey;
 import tech.nully.primplug.recipeBook.recipeCommand;
+import tech.nully.primplug.recipeBook.recipeListener;
+import tech.nully.primplug.upgradeItems.upgradeCommand;
 import tech.nully.primplug.upgradeItems.upgradeGUIListener;
 
 public class Main extends JavaPlugin {
@@ -32,15 +34,21 @@ public class Main extends JavaPlugin {
         getServer().getPluginManager().registerEvents(new reforgeClickListener(), this);
         getServer().getPluginManager().registerEvents(new upgradeGUIListener(), this);
         getServer().getPluginManager().registerEvents(new listener(), this);
-        getCommand("recipes").setExecutor(new recipeCommand());
+        getServer().getPluginManager().registerEvents(new recipeListener(), this);
+
+
+
         getCommand("recipes").setExecutor(new recipeCommand());
         getCommand("pgive").setExecutor(new giveCommand());
         getCommand("reforge").setExecutor(new reforgeCommand());
+        getCommand("upgrade").setExecutor(new upgradeCommand());
         getServer().getPluginManager().registerEvents(new talismanListeners(), this);
+
+
         getServer().getConsoleSender().sendMessage("--------------------------------------------");
         getServer().getConsoleSender().sendMessage("--------------------------------------------");
         getServer().getConsoleSender().sendMessage(
-        ChatColor.LIGHT_PURPLE + "[PrimPlugin]" + ChatColor.GREEN + " PrimPlugin V0.1.4 is now Enabled! :D");
+        ChatColor.LIGHT_PURPLE + "[PrimPlugin]" + ChatColor.GREEN + " PrimPlugin V0.1.6 is now Enabled! :D");
         getServer().getConsoleSender().sendMessage("--------------------------------------------");
         getServer().getConsoleSender().sendMessage("--------------------------------------------");
         saveDefaultConfig();
