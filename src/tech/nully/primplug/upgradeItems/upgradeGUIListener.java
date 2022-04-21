@@ -3,6 +3,7 @@ package tech.nully.primplug.upgradeItems;
 import java.util.List;
 
 import org.bukkit.ChatColor;
+import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.inventory.InventoryClickEvent;
@@ -14,15 +15,19 @@ import tech.nully.primplug.baseMethods;
 public class upgradeGUIListener implements Listener{
     @EventHandler
     public void onInventoryClick(InventoryClickEvent e) {
+        Player p = (Player) e.getWhoClicked();
         upgradeGUI u = new upgradeGUI();
+        ItemStack clickItem = e.getCurrentItem();
         // Check if inventory is the upgrade inventory
-        if (e.getInventory().getName().equalsIgnoreCase (u.inv.getName()) && !(e.getCurrentItem() == e.getInventory().getItem(22))) {
+        if (clickItem == null) {
+            return;
+        }
+        if (e.getInventory().getName().equals(ChatColor.BLACK + "Item Upgrades") && !(e.getCurrentItem() == e.getInventory().getItem(22)) || !(e.getInventory().getName().equals(p.getInventory().getName()))) {
             e.setCancelled(true);
 
             // some varaibble stuff
             ItemStack upgradeItem = u.inv.getItem(13);
             baseMethods b = new baseMethods();
-            ItemStack clickItem = e.getCurrentItem();
             upgradeUpdate up = new upgradeUpdate();
             ItemMeta damageUpgradeMeta = baseMethods.damageUpgrade.getItemMeta();
             List<String> damageUpgradeLore = damageUpgradeMeta.getLore();

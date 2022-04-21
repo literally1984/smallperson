@@ -1,5 +1,6 @@
 package tech.nully.primplug.RPGcommands.reforges;
 
+import org.bukkit.ChatColor;
 import org.bukkit.Sound;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -15,14 +16,18 @@ public class reforgeClickListener implements Listener{
         Player player = (Player) e.getWhoClicked();
         player.sendMessage("ya clicked ur inv lmao");
         reforgeGUI r = new reforgeGUI();
+        ItemStack clickItem = e.getCurrentItem();
+
 
         // checks if inventory is the reforge inventory
-        if (e.getInventory().getName().equals(r.inv.getName()) &&  !(e.getCurrentItem() == e.getInventory().getItem(22))) {
-            e.setCancelled(true);
-            ItemStack clickItem = e.getCurrentItem();
-            ItemStack reforgeItem = r.inv.getItem(13);
+        if (clickItem == null) {
+            return;
+        }
+        if (e.getInventory().getName().equals(ChatColor.BLACK + "Reforge") &&  !(e.getCurrentItem() == e.getInventory().getItem(22)) || !(e.getInventory().getName().equals(player.getInventory().getName()))) {
             Player p = (Player) e.getWhoClicked();
             p.sendMessage("inventory check passed");
+            e.setCancelled(true);
+            ItemStack reforgeItem = r.inv.getItem(13);
 
 
             // If clicked item is not item in slot 13 (reforge item)
