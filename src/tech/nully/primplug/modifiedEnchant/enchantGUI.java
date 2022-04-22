@@ -14,7 +14,15 @@ public class enchantGUI {
         for (int i = 0; i < 54; i++) {
             inv.setItem(i, b.base);
         }
-        String[] possibleEnchants1 = {"Bane of Arthropods"};
+        int[] possibleLevel2 = {1, 2};
+        int[] possibleLevels3 = {1, 2, 3};
+        int[] possibleLevels5 = {1, 2, 3, 4, 5};
+
+
+        String[] possibleSwordEnchants = {"Bane of Arthropods", "Smite", "Sharpness", "Bane of Arthropods", };
+        String[][] possibleEnchants1 = {possibleSwordEnchants, };
+
+
         baseMethods.level1EnchantLore.add("");
         inv.setItem(37, baseMethods.level1Enchant);
 

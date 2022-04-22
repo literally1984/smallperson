@@ -5,6 +5,6 @@
         "c:\\Users\\PC\\Downloads\\Vault.jar",
         "c:\\Users\\PC\\Downloads\\ProtocolLib.jar"
     ],
-    "java.dependency.packagePresentation": "flat",
+    "java.dependency.packagePresentation": "hierarchical",
     "java.dependency.syncWithFolderExplorer": true
 }

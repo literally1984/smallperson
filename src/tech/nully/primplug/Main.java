@@ -6,7 +6,6 @@ import org.bukkit.plugin.java.JavaPlugin;
 import tech.nully.primplug.Armor.Drakon;
 import tech.nully.primplug.Armor.PetheriteSet;
 import tech.nully.primplug.Armor.listener;
-import tech.nully.primplug.RPGcommands.reforges.reforgeClickListener;
 import tech.nully.primplug.RPGcommands.reforges.reforgeCommand;
 import tech.nully.primplug.RegularCommands.giveCommand;
 import tech.nully.primplug.Talismans.Talisman;
@@ -14,7 +13,6 @@ import tech.nully.primplug.Talismans.talismanListeners;
 import tech.nully.primplug.phones.phoneListener;
 import tech.nully.primplug.planes.WASDPlaneKey;
 import tech.nully.primplug.recipeBook.recipeCommand;
-import tech.nully.primplug.recipeBook.recipeListener;
 import tech.nully.primplug.upgradeItems.upgradeCommand;
 import tech.nully.primplug.upgradeItems.upgradeGUIListener;
 
@@ -31,11 +29,8 @@ public class Main extends JavaPlugin {
 
 
         getServer().getPluginManager().registerEvents(new phoneListener(), this);
-        getServer().getPluginManager().registerEvents(new reforgeClickListener(), this);
         getServer().getPluginManager().registerEvents(new upgradeGUIListener(), this);
         getServer().getPluginManager().registerEvents(new listener(), this);
-        getServer().getPluginManager().registerEvents(new recipeListener(), this);
-
 
 
         getCommand("recipes").setExecutor(new recipeCommand());
@@ -48,7 +43,7 @@ public class Main extends JavaPlugin {
         getServer().getConsoleSender().sendMessage("--------------------------------------------");
         getServer().getConsoleSender().sendMessage("--------------------------------------------");
         getServer().getConsoleSender().sendMessage(
-        ChatColor.LIGHT_PURPLE + "[PrimPlugin]" + ChatColor.GREEN + " PrimPlugin V0.1.7 is now Enabled! :D");
+        ChatColor.LIGHT_PURPLE + "[PrimPlugin]" + ChatColor.GREEN + " PrimPlugin V0.1.9 is now Enabled! :D");
         getServer().getConsoleSender().sendMessage("--------------------------------------------");
         getServer().getConsoleSender().sendMessage("--------------------------------------------");
         saveDefaultConfig();

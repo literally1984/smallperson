@@ -23,5 +23,7 @@ public class upgradeUpdate {
         itemLore.add("Defense:" + defenseStat);
         itemLore.add("Mana:" + manaStat);
         itemLore.add("Stamina:" + staminaStat);
+        itemMeta.setLore(itemLore);
+        i.setItemMeta(itemMeta);
     }
 }

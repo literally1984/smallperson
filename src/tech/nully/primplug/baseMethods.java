@@ -99,12 +99,18 @@ public class baseMethods {
 //!menu
     // making the morder for a menu UI
     public void makeMenu(Inventory inv) {
-        for (int i = 0; i < 55; i =+ 9){
-            inv.setItem(i, base);
-        }
-        for (int i = 8; i < 62; i =+ 9){
-            inv.setItem(i, base);
-        }
+        inv.setItem(0, base);
+        inv.setItem(9, base);
+        inv.setItem(18, base);
+        inv.setItem(27, base);
+        inv.setItem(36, base);
+        inv.setItem(45, base);
+        inv.setItem(8, base);
+        inv.setItem(17, base);
+        inv.setItem(26, base);
+        inv.setItem(35, base);
+        inv.setItem(44, base);
+        inv.setItem(53, base);
     }
 
     //!Base GUI Items
