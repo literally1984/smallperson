@@ -2,13 +2,13 @@ package tech.nully.primplug.RPGcommands.reforges;
 
 import java.util.Random;
 
-import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
+import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 
 public class reforges {
-    public void reforgeName(ItemStack reforge) {
+    public void reforgeName(ItemStack reforge, Inventory inv) {
         Random rand = new Random();
         // weighted list of reforges
         String Common = ChatColor.GRAY + "Common";
@@ -23,12 +23,13 @@ public class reforges {
 
         // Identifies the meta
 
-        ItemMeta reforgeMeta = reforge.hasItemMeta() ? 
-        reforge.getItemMeta() : 
-        Bukkit.getItemFactory().getItemMeta(reforge.getType());
+        ItemMeta reforgeMeta = reforge.getItemMeta();
 
         // sets the desplayName of the item to the picked reforge
         reforgeMeta.setDisplayName(reforgeList[pick] +  " " + reforgeMeta.getDisplayName());
-        reforge.setItemMeta(reforgeMeta);
+        ItemStack resultItem = new ItemStack(reforge.getType());
+        resultItem.setItemMeta(reforgeMeta);
+        inv.setItem(13, resultItem);
+
     }
 }

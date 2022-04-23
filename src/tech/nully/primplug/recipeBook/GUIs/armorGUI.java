@@ -2,8 +2,8 @@ package tech.nully.primplug.recipeBook.GUIs;
 
 import org.bukkit.inventory.Inventory;
 
-import tech.nully.primplug.Armor.Drakon;
-import tech.nully.primplug.Armor.PetheriteSet;
+import tech.nully.primplug.Armor.armorItems.Drakon;
+import tech.nully.primplug.Armor.armorItems.PetheriteSet;
 
 public class armorGUI {
     public void OpenArmor(Inventory inv){

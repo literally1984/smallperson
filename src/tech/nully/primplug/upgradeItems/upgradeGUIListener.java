@@ -37,22 +37,23 @@ public class upgradeGUIListener implements Listener {
         // checks if inventory is the reforge inventory
         if (clickItem == b.base) {
             e.setCancelled(true);
-
+            return;
+        }
 
             // check if clicked item is reforge anvil
-            if (clickItem.getItemMeta().getDisplayName().equals(ChatColor.GOLD + "Reforge")) {
-                ItemStack reforgeItem = r.inv.getItem(13);
-                if (reforgeItem == new ItemStack(Material.AIR)) {
-                    return;
-                }
-                e.setCancelled(true);
-                Player p = (Player) e.getWhoClicked();
-                p.sendMessage("inventory check passed");
-                reforges re = new reforges();
-                re.reforgeName(reforgeItem);
-                p.playSound(p.getLocation(), Sound.ANVIL_USE, 100, 0);
+        if (clickItem.getItemMeta().getDisplayName().equals(ChatColor.GOLD + "Reforge")) {
+            ItemStack reforgeItem = r.inv.getItem(13);
+            if (reforgeItem == new ItemStack(Material.AIR)) {
+                return;
+            }
+            e.setCancelled(true);
+            Player p = (Player) e.getWhoClicked();
+            p.sendMessage("inventory check passed");
+            reforges re = new reforges();
+            re.reforgeName(reforgeItem, e.getInventory());
+            p.playSound(p.getLocation(), Sound.ANVIL_USE, 100, 0);
+            return;
         }
-    }
 
             // !UPGRADE GUI STUFF
             if (clickItem.getItemMeta().getDisplayName().equals(baseMethods.damageUpgrade.getItemMeta().getDisplayName()) ||
@@ -106,28 +107,28 @@ public class upgradeGUIListener implements Listener {
                 if (up.isAtMax == false) {
                     if (clickItem.getItemMeta().getDisplayName().equals(baseMethods.damageUpgrade.getItemMeta().getDisplayName())) {
                         up.damageStat++;
-                        up.update(upgradeItem);
+                        up.update(upgradeItem, e.getInventory());
                         return;
                     }
 
                     // check if it is defense item which is clicked
                     if (clickItem.getItemMeta().getDisplayName().equals(baseMethods.defenseUpgrade.getItemMeta().getDisplayName())) {
                         up.defenseStat = up.defenseStat + 1;
-                        up.update(upgradeItem);
+                        up.update(upgradeItem, e.getInventory());
                         return;
                     }
 
 
                     if (clickItem.getItemMeta().getDisplayName().equals(baseMethods.staminaUpgrade.getItemMeta().getDisplayName())) {
                         up.staminaStat = up.staminaStat + 1;
-                        up.update(upgradeItem);
+                        up.update(upgradeItem, e.getInventory());
                         return;
                     }
 
 
                     if (clickItem.getItemMeta().getDisplayName().equals(baseMethods.manaUpgrade.getItemMeta().getDisplayName())) {
                             up.manaStat = up.manaStat + 1;
-                            up.update(upgradeItem);
+                            up.update(upgradeItem, e.getInventory());
                             return;
                         }
                         return;

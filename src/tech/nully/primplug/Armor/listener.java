@@ -5,6 +5,8 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityDamageEvent;
 
+import tech.nully.primplug.Armor.armorItems.PetheriteSet;
+
 public class listener implements Listener{
     @EventHandler
     public void armorDamage(EntityDamageEvent e) {

@@ -19,7 +19,14 @@ public class enchantGUI {
         int[] possibleLevels5 = {1, 2, 3, 4, 5};
 
 
-        String[] possibleSwordEnchants = {"Bane of Arthropods", "Smite", "Sharpness", "Bane of Arthropods", };
+        String[] possibleSwordEnchants = {"Bane of Arthropods", "Smite", "Sharpness", "Fire Aspect", "Knockback", "Looting", "Unbreaking"};
+        String[] possibleAxeEnchants = {"Efficiency", "Silk Touch", "Unbreaking", "Sharpness"};
+        String[] possiblePickEnchants = {"Bane of Arthropods", "Fortune", "Silk Touch", "Efficency"};
+        String[] possibleHoeEnchants = {"Bane of Arthropods", "Smite", "Sharpness", "Fire Aspect"};
+        String[] possibleHelmEnchants = {"Bane of Arthropods", "Smite", "Sharpness", "Fire Aspect"};
+        String[] possibleChesEnchants = {"Bane of Arthropods", "Smite", "Sharpness", "Fire Aspect"};
+        String[] possibleLegEnchants = {"Bane of Arthropods", "Smite", "Sharpness", "Fire Aspect"};
+        String[] possibleBootEnchants = {"Bane of Arthropods", "Smite", "Sharpness", "Fire Aspect"};
         String[][] possibleEnchants1 = {possibleSwordEnchants, };
 
 

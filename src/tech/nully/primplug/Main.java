@@ -3,9 +3,9 @@ package tech.nully.primplug;
 import org.bukkit.ChatColor;
 import org.bukkit.plugin.java.JavaPlugin;
 
-import tech.nully.primplug.Armor.Drakon;
-import tech.nully.primplug.Armor.PetheriteSet;
 import tech.nully.primplug.Armor.listener;
+import tech.nully.primplug.Armor.armorItems.Drakon;
+import tech.nully.primplug.Armor.armorItems.PetheriteSet;
 import tech.nully.primplug.RPGcommands.reforges.reforgeCommand;
 import tech.nully.primplug.RegularCommands.giveCommand;
 import tech.nully.primplug.Talismans.Talisman;
@@ -43,7 +43,7 @@ public class Main extends JavaPlugin {
         getServer().getConsoleSender().sendMessage("--------------------------------------------");
         getServer().getConsoleSender().sendMessage("--------------------------------------------");
         getServer().getConsoleSender().sendMessage(
-        ChatColor.LIGHT_PURPLE + "[PrimPlugin]" + ChatColor.GREEN + " PrimPlugin V0.1.9 is now Enabled! :D");
+        ChatColor.LIGHT_PURPLE + "[PrimPlugin]" + ChatColor.GREEN + " PrimPlugin V0.1.10 is now Enabled! :D");
         getServer().getConsoleSender().sendMessage("--------------------------------------------");
         getServer().getConsoleSender().sendMessage("--------------------------------------------");
         saveDefaultConfig();

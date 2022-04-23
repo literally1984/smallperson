@@ -1,5 +1,5 @@
 name: PrimPlugin
-version: 0.1.9
+version: 0.1.10
 main: tech.nully.primplug.Main
 authors: [BongoCat, ayonull]
 api-version: 1.5.2
