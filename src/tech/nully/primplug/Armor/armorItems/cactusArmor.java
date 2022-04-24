@@ -66,8 +66,8 @@ public class cactusArmor {
         Helmlore.add(ChatColor.AQUA + "Attributes when on body:");
         Helmlore.add(ChatColor.AQUA + "Damage: +1");
         Helmlore.add(ChatColor.AQUA + "Defense: +10");
-        Helmlore.add(ChatColor.AQUA + "Mana:");
-        Helmlore.add(ChatColor.AQUA + "Stamina");
+        Helmlore.add(ChatColor.AQUA + "Mana: 10");
+        Helmlore.add(ChatColor.AQUA + "Stamina: 15");
         CacHelmMeta.setLore(Helmlore);
 
         // LEATHER ARMOR META
