@@ -50,9 +50,9 @@ public class talismanIdentifier {
     }
     // isTalisman checker
     public boolean isTalisman(ItemStack item) {
-        if (item == Talisman.BladeOfDespair || 
-        item == Talisman.BlessingOfDurability || 
-        item == Talisman.MisoTheRabbit) {
+        if (item.getItemMeta().getDisplayName() == Talisman.BladeOfDespair.getItemMeta().getDisplayName() || 
+        item.getItemMeta().getDisplayName() == Talisman.BlessingOfDurability.getItemMeta().getDisplayName() || 
+        item.getItemMeta().getDisplayName() == Talisman.MisoTheRabbit.getItemMeta().getDisplayName()) {
             return true;
         } else {
             return false;

@@ -2,31 +2,116 @@ package tech.nully.primplug.upgradeItems;
 
 import java.util.List;
 
-import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
-import org.bukkit.inventory.meta.ItemMeta;
 
 public class upgradeUpdate {
-    public int damageStat = 0;
-    public int defenseStat = 0;
-    public int staminaStat = 0;
-    public int manaStat = 0;
-    public int total = damageStat + defenseStat + staminaStat + manaStat;
-    public boolean isAtMax = false;
-    public void update(ItemStack i, Inventory inv) {
-        ItemMeta itemMeta = i.getItemMeta();
-        List<String> itemLore = itemMeta.getLore();
-        if (total >= 45) {
-            isAtMax = true;
+    public int getStatTotal(ItemStack i) {
+        List<String> itemLore = i.getItemMeta().getLore();
+        int DamageLine = 0;
+        for (String s : itemLore) {
+            if (s.contains("Damage: ")){
+                DamageLine = itemLore.indexOf(s);
+            }
         }
-        itemLore.add("Stats:" + total + "/45");
-        itemLore.add("Damage:" + damageStat);
-        itemLore.add("Defense:" + defenseStat);
-        itemLore.add("Mana:" + manaStat);
-        itemLore.add("Stamina:" + staminaStat);
-        itemMeta.setLore(itemLore);
-        ItemStack resultItem = new ItemStack(i.getType());
-        resultItem.setItemMeta(itemMeta);
-        inv.setItem(22, resultItem);
+        int DefenseLine = DamageLine+1;
+        int manaLine = DamageLine+2;
+        int staminaLine = DamageLine+3;
+
+        String[] DmageLineArr = itemLore.get(DamageLine).split(" ");
+        int damageInt = Integer.parseInt(DmageLineArr[1]);
+
+        String[] DefLineArr = itemLore.get(DefenseLine).split(" ");
+        int defeInt = Integer.parseInt(DefLineArr[1]);
+
+        String[] manaLineArr = itemLore.get(manaLine).split(" ");
+        int manaInt = Integer.parseInt(manaLineArr[1]);
+
+        String[] stamLineArr = itemLore.get(staminaLine).split(" ");
+        int stamInt = Integer.parseInt(stamLineArr[1]);
+
+        int total = damageInt + defeInt + manaInt + stamInt;
+
+        return total;
+    }
+
+    public void damageAdd(ItemStack i) {
+
+
+        List<String> itemLore = i.getItemMeta().getLore();
+        int correctLine = 0;
+
+
+        for (String s : itemLore) {
+            if (s.contains("Damage: ")){
+                correctLine = itemLore.indexOf(s);
+                break;
+            }
+        }
+        String[] loreArray = itemLore.get(correctLine).split(" ");
+        int damage = Integer.parseInt(loreArray[1]) + 1;
+        itemLore.set(correctLine, "Damage: " + damage);
+        i.getItemMeta().setLore(itemLore);
+        i.setItemMeta(i.getItemMeta());
+    }
+
+    public void defAdd(ItemStack i) {
+
+
+        List<String> itemLore = i.getItemMeta().getLore();
+        int correctLine = 0;
+
+
+        for (String s : itemLore) {
+            if (s.contains("Defense: ")){
+                correctLine = itemLore.indexOf(s);
+                break;
+            }
+        }
+        String[] loreArray = itemLore.get(correctLine).split(" ");
+        int defense = Integer.parseInt(loreArray[1]) + 1;
+        itemLore.set(correctLine, "Defense: " + defense);
+        i.getItemMeta().setLore(itemLore);
+        i.setItemMeta(i.getItemMeta());
+    }
+
+    public void manaAdd(ItemStack i) {
+
+
+        List<String> itemLore = i.getItemMeta().getLore();
+        int correctLine = 0;
+
+
+        for (String s : itemLore) {
+            if (s.contains("Mana: ")){
+                correctLine = itemLore.indexOf(s);
+                break;
+            }
+        }
+        String[] loreArray = itemLore.get(correctLine).split(" ");
+        int mana = Integer.parseInt(loreArray[1]) + 1;
+        itemLore.set(correctLine, "Mana: " + mana);
+        i.getItemMeta().setLore(itemLore);
+        i.setItemMeta(i.getItemMeta());
+    }
+
+    public void stamAdd(ItemStack i) {
+
+
+        List<String> itemLore = i.getItemMeta().getLore();
+        int correctLine = 0;
+
+
+        for (String s : itemLore) {
+            if (s.contains("Stamina: ")){
+                correctLine = itemLore.indexOf(s);
+                break;
+            }
+        }
+        String[] loreArray = itemLore.get(correctLine).split(" ");
+        int stamina = Integer.parseInt(loreArray[1]) + 1;
+        
+        itemLore.set(correctLine, "Stamina: " + stamina);
+        i.getItemMeta().setLore(itemLore);
+        i.setItemMeta(i.getItemMeta());
     }
 }
