@@ -7,6 +7,10 @@ import org.bukkit.entity.Player;
 
 public class manaListener {
     HashMap<String, Integer> PlayerMana = new HashMap<String, Integer>();
+    public void addStatsLore(ItemStack i) {
+        List<String> itemLore = i.getItemMeta().getLore();
+        
+    }
     public void setMaxManaHelm(Player p) {
         int index = 0;
         if ((!(p.getInventory().getHelmet() == null))) {

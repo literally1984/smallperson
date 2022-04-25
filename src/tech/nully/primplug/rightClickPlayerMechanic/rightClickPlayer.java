@@ -10,7 +10,7 @@ public class rightClickPlayer implements Listener {
     public void onPlayerShiftRC(PlayerInteractEntityEvent e) {
         if (e.getRightClicked() instanceof Player) {
             if (e.getPlayer().isSneaking() == true) {
-                
+                targetPlayerInv target = new targetPlayerInv
             }
             return;
         } else {
