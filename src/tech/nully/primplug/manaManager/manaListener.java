@@ -7,11 +7,8 @@ import org.bukkit.entity.Player;
 
 public class manaListener {
     HashMap<String, Integer> PlayerMana = new HashMap<String, Integer>();
-    public void addStatsLore(ItemStack i) {
-        List<String> itemLore = i.getItemMeta().getLore();
-        
-    }
-    public void setMaxManaHelm(Player p) {
+
+    public void setMaxMana(Player p) {
         int index = 0;
         if ((!(p.getInventory().getHelmet() == null))) {
             List<String> helmLore = p.getInventory().getHelmet().getItemMeta().getLore();
@@ -32,9 +29,6 @@ public class manaListener {
             } else if (PlayerMana.containsKey(p.getDisplayName())) {
                 PlayerMana.put(p.getDisplayName(), PlayerMana.get(p.getDisplayName() + addedMana));
             }
-
-
-
         }
 
 
@@ -114,10 +108,16 @@ public class manaListener {
     }
 
 
+
+
+
+
     
     public int getMana(Player p) {
         return PlayerMana.get(p.getDisplayName());
     }
+
+
 
 
 

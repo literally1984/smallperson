@@ -82,64 +82,54 @@ public class upgradeGUIListener implements Listener {
                 baseMethods.staminaUpgrade.setItemMeta(staminaUpgradeMeta);
                 baseMethods.manaUpgrade.setItemMeta(manaUpgradeMeta);
 
-                List<String>  upLore = upgradeItem.getItemMeta().getLore();
-                int indexOfAttributeLine = 0;
-                for (String s : upgradeItem.getItemMeta().getLore()) {
-                    if (s.contains("Attributes: ")) {
-                        indexOfAttributeLine = upLore.indexOf(s);
-                        break;
-                    }
+
+
+                if (up.getStatTotal(e.getCurrentItem()) >= 45) {
+                    damageUpgradeLore.add(ChatColor.RED + "You cannot upgrade your item because");
+                    damageUpgradeLore.add(ChatColor.RED + "your item is at it's maximum upgrades");
+
+                    defenseUpgradeLore.add(ChatColor.RED + "You cannot upgrade your item because");
+                    defenseUpgradeLore.add(ChatColor.RED + "your item is at it's maximum upgrades");
+
+                    staminaUpgradeLore.add(ChatColor.RED + "You cannot upgrade your item because");
+                    staminaUpgradeLore.add(ChatColor.RED + "your item is at it's maximum upgrades");
+
+                    manaUpgradeLore.add(ChatColor.RED + "You cannot upgrade your item because");
+                    manaUpgradeLore.add(ChatColor.RED + "your item is at it's maximum upgrades");
+
+                    damageUpgradeMeta.setLore(damageUpgradeLore);
+                    defenseUpgradeMeta.setLore(damageUpgradeLore);
+                    staminaUpgradeMeta.setLore(damageUpgradeLore);
+                    manaUpgradeMeta.setLore(damageUpgradeLore);
+                    return;
                 }
-                if (!(upLore.get(indexOfAttributeLine).contains("Attributes: "))) {
-                    
-                }
-                if ()
-                    if (up.getStatTotal(e.getCurrentItem()) >= 45) {
-                        damageUpgradeLore.add(ChatColor.RED + "You cannot upgrade your item because");
-                        damageUpgradeLore.add(ChatColor.RED + "your item is at it's maximum upgrades");
-
-                        defenseUpgradeLore.add(ChatColor.RED + "You cannot upgrade your item because");
-                        defenseUpgradeLore.add(ChatColor.RED + "your item is at it's maximum upgrades");
-
-                        staminaUpgradeLore.add(ChatColor.RED + "You cannot upgrade your item because");
-                        staminaUpgradeLore.add(ChatColor.RED + "your item is at it's maximum upgrades");
-
-                        manaUpgradeLore.add(ChatColor.RED + "You cannot upgrade your item because");
-                        manaUpgradeLore.add(ChatColor.RED + "your item is at it's maximum upgrades");
-
-                        damageUpgradeMeta.setLore(damageUpgradeLore);
-                        defenseUpgradeMeta.setLore(damageUpgradeLore);
-                        staminaUpgradeMeta.setLore(damageUpgradeLore);
-                        manaUpgradeMeta.setLore(damageUpgradeLore);
+                // check if click item is the base item
+                // checks if clicked item is damage upgrade item
+                if (up.getStatTotal(e.getCurrentItem()) >= 45) {
+                    if (clickItem.getItemMeta().getDisplayName().equals(baseMethods.damageUpgrade.getItemMeta().getDisplayName())) {
+                        up.damageAdd(upgradeItem);
                         return;
                     }
-                    // check if click item is the base item
-                    // checks if clicked item is damage upgrade item
-                    if (up.getStatTotal(e.getCurrentItem()) >= 45) {
-                        if (clickItem.getItemMeta().getDisplayName().equals(baseMethods.damageUpgrade.getItemMeta().getDisplayName())) {
-                            up.damageAdd(upgradeItem);
+
+                    // check if it is defense item which is clicked
+                    if (clickItem.getItemMeta().getDisplayName().equals(baseMethods.defenseUpgrade.getItemMeta().getDisplayName())) {
+                        up.defAdd(upgradeItem);
+                        return;
+                    }
+
+
+                    if (clickItem.getItemMeta().getDisplayName().equals(baseMethods.staminaUpgrade.getItemMeta().getDisplayName())) {
+                        up.stamAdd(upgradeItem);
+                        return;
+                    }
+
+
+                    if (clickItem.getItemMeta().getDisplayName().equals(baseMethods.manaUpgrade.getItemMeta().getDisplayName())) {
+                            up.manaAdd(upgradeItem);
                             return;
                         }
-
-                        // check if it is defense item which is clicked
-                        if (clickItem.getItemMeta().getDisplayName().equals(baseMethods.defenseUpgrade.getItemMeta().getDisplayName())) {
-                            up.defAdd(upgradeItem);
-                            return;
-                        }
-
-
-                        if (clickItem.getItemMeta().getDisplayName().equals(baseMethods.staminaUpgrade.getItemMeta().getDisplayName())) {
-                            up.stamAdd(upgradeItem);
-                            return;
-                        }
-
-
-                        if (clickItem.getItemMeta().getDisplayName().equals(baseMethods.manaUpgrade.getItemMeta().getDisplayName())) {
-                                up.manaAdd(upgradeItem);
-                                return;
-                            }
-                            return;
-                        }
+                        return;
                     }
                 }
             }
+        }

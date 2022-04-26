@@ -14,21 +14,21 @@ import org.bukkit.inventory.meta.LeatherArmorMeta;
 
 public class cactusArmor {
     
-    public static ItemStack cactusShard;
+    public static ItemStack Shard;
     public static ItemStack helm;
     public static ItemStack ches;
     public static ItemStack leg;
     public static ItemStack boots;
 
     public static void init() {
-        createCactusShard();
-        createPetheriteHelm();
-        createPetheriteChestplate();
-        createPetheriteLeggings();
-        createPetheriteBoots();
+        createCacShard();
+        createCacHelm();
+        createCacChestplate();
+        createCacLeggings();
+        createCacBoots();
     }
     // !  Obsidian
-    private static void createCactusShard() {
+    private static void createCacShard() {
         // DEFINE THE META -------------
         ItemStack CacShard = new ItemStack(Material.CACTUS);
         ItemMeta CacShardMeta = CacShard.getItemMeta();
@@ -45,12 +45,12 @@ public class cactusArmor {
         CacShardMeta.addEnchant(Enchantment.THORNS, 1, false);
 
         CacShard.setItemMeta(CacShardMeta);
-        cactusShard = CacShard;
+        Shard = CacShard;
     }
 
 
-    //! Petherite Helmet
-    private static void createPetheriteHelm() {
+    //! Cac Helmet
+    private static void createCacHelm() {
         // DEFINE THE META -------------
         ItemStack CacHelm = new ItemStack(Material.LEATHER_HELMET);
         ItemMeta CacHelmMeta = CacHelm.hasItemMeta() ? CacHelm.getItemMeta() : Bukkit.getItemFactory().getItemMeta(CacHelm.getType());
@@ -62,12 +62,17 @@ public class cactusArmor {
         List<String> Helmlore = new ArrayList<>();
         Helmlore.add("A very spikey armor piece, reflects");
         Helmlore.add("some damage back to the opponent when");
-        Helmlore.add("they hit you.");
-        Helmlore.add(ChatColor.AQUA + "Attributes when on body:");
-        Helmlore.add(ChatColor.AQUA + "Damage: +1");
-        Helmlore.add(ChatColor.AQUA + "Defense: +10");
-        Helmlore.add(ChatColor.AQUA + "Mana: 10");
-        Helmlore.add(ChatColor.AQUA + "Stamina: 15");
+        Helmlore.add("they hit you if you have the set bonus");
+        Helmlore.add("");
+        Helmlore.add(ChatColor.GOLD + "Set Bonus:");
+        Helmlore.add(ChatColor.GOLD + "Reflects 33% of the damage you take");
+        Helmlore.add(ChatColor.GOLD + "back to your opponent");
+        Helmlore.add("");
+        Helmlore.add(ChatColor.BLUE + "Attributes------");
+        Helmlore.add(ChatColor.BLUE + "Damage: 1");
+        Helmlore.add(ChatColor.BLUE + "Defense: 8");
+        Helmlore.add(ChatColor.BLUE + "Mana: 10");
+        Helmlore.add(ChatColor.BLUE + "Stamina: 15");
         CacHelmMeta.setLore(Helmlore);
 
         // LEATHER ARMOR META
@@ -79,42 +84,66 @@ public class cactusArmor {
         helm = CacHelm;
     }
 
-    // ! Petherite Chesplate
-    private static void createPetheriteChestplate() {
+    // ! Cac Chesplate
+    private static void createCacChestplate() {
         // DEFINE THE META -------------
-        ItemStack PChest = new ItemStack(Material.LEATHER_CHESTPLATE);
-        ItemMeta PChestMeta = PChest.hasItemMeta() ? PChest.getItemMeta() : Bukkit.getItemFactory().getItemMeta(PChest.getType());
+        ItemStack CacChest = new ItemStack(Material.LEATHER_CHESTPLATE);
+        ItemMeta CacChestMeta = CacChest.hasItemMeta() ? CacChest.getItemMeta() : Bukkit.getItemFactory().getItemMeta(CacChest.getType());
 
 
         // SET THE META ----------------
-        PChestMeta.setDisplayName("Petherite Chestplate");
+        CacChestMeta.setDisplayName("Cactus Chestplate");
             // ChestLore
         List<String> Chestlore = new ArrayList<>();
-        Chestlore.add("Its like a bootleg Netherite Chestplate");
-        PChestMeta.setLore(Chestlore);
+        Chestlore.add("A very spikey armor piece, reflects");
+        Chestlore.add("some damage back to the opponent when");
+        Chestlore.add("they hit you if you have the set bonus");
+        Chestlore.add("");
+        Chestlore.add(ChatColor.GOLD + "Set Bonus:");
+        Chestlore.add(ChatColor.GOLD + "Reflects 33% of the damage you take");
+        Chestlore.add(ChatColor.GOLD + "back to your opponent");
+        Chestlore.add("");
+        Chestlore.add(ChatColor.BLUE + "Attributes------");
+        Chestlore.add(ChatColor.BLUE + "Damage: 3");
+        Chestlore.add(ChatColor.BLUE + "Defense: 26");
+        Chestlore.add(ChatColor.BLUE + "Mana: 20");
+        Chestlore.add(ChatColor.BLUE + "Stamina: 30");
+        CacChestMeta.setLore(Chestlore);
 
         // LEATHER ARMOR META
-        LeatherArmorMeta leatherArmorMeta = (LeatherArmorMeta) PChestMeta;
+        LeatherArmorMeta leatherArmorMeta = (LeatherArmorMeta) CacChestMeta;
         leatherArmorMeta.setColor(Color.BLACK);
 
 
-        PChest.setItemMeta(PChestMeta);
-        ches = PChest;
+        CacChest.setItemMeta(CacChestMeta);
+        ches = CacChest;
     }
 
 
-    // ! Petherite Leggings
-    private static void createPetheriteLeggings() {
+    // ! Cac Leggings
+    private static void createCacLeggings() {
         // DEFINE THE META -------------
         ItemStack PLeg = new ItemStack(Material.LEATHER_LEGGINGS);
         ItemMeta PLegMeta = PLeg.hasItemMeta() ? PLeg.getItemMeta() : Bukkit.getItemFactory().getItemMeta(PLeg.getType());
 
 
         // SET THE META ----------------
-        PLegMeta.setDisplayName("Petherite Leggings");
+        PLegMeta.setDisplayName("Cac Leggings");
             // LegLore
         List<String> Leglore = new ArrayList<>();
-        Leglore.add("Its like bootleg Netherite Leggings");
+        Leglore.add("A very spikey armor piece, reflects");
+        Leglore.add("some damage back to the opponent when");
+        Leglore.add("they hit you if you have the set bonus");
+        Leglore.add("");
+        Leglore.add(ChatColor.GOLD + "Set Bonus:");
+        Leglore.add(ChatColor.GOLD + "Reflects 33% of the damage you take");
+        Leglore.add(ChatColor.GOLD + "back to your opponent");
+        Leglore.add("");
+        Leglore.add(ChatColor.BLUE + "Attributes------");
+        Leglore.add(ChatColor.BLUE + "Damage: 2");
+        Leglore.add(ChatColor.BLUE + "Defense: 21");
+        Leglore.add(ChatColor.BLUE + "Mana: 15");
+        Leglore.add(ChatColor.BLUE + "Stamina: 25");
         PLegMeta.setLore(Leglore);
 
         // LEATHER ARMOR META
@@ -125,26 +154,38 @@ public class cactusArmor {
         PLeg.setItemMeta(PLegMeta);
         leg = PLeg;
     }
-    // ! Petherite Boots
-    private static void createPetheriteBoots() {
+    // ! Cac Boots
+    private static void createCacBoots() {
         // DEFINE THE META -------------
-        ItemStack PBoots = new ItemStack(Material.LEATHER_BOOTS);
-        ItemMeta PBootsMeta = PBoots.hasItemMeta() ? PBoots.getItemMeta() : Bukkit.getItemFactory().getItemMeta(PBoots.getType());
+        ItemStack CacBoots = new ItemStack(Material.LEATHER_BOOTS);
+        ItemMeta CacBootsMeta = CacBoots.hasItemMeta() ? CacBoots.getItemMeta() : Bukkit.getItemFactory().getItemMeta(CacBoots.getType());
 
 
         // SET THE META ----------------
-        PBootsMeta.setDisplayName("Petherite Boots");
+        CacBootsMeta.setDisplayName("Cac Boots");
             // BootsLore
         List<String> Bootslore = new ArrayList<>();
-        Bootslore.add("Its like bootleg Netherite Boots");
-        PBootsMeta.setLore(Bootslore);
+        Bootslore.add("A very spikey armor piece, reflects");
+        Bootslore.add("some damage back to the opponent when");
+        Bootslore.add("they hit you if you have the set bonus");
+        Bootslore.add("");
+        Bootslore.add(ChatColor.GOLD + "Set Bonus:");
+        Bootslore.add(ChatColor.GOLD + "Reflects 33% of the damage you take");
+        Bootslore.add(ChatColor.GOLD + "back to your opponent");
+        Bootslore.add("");
+        Bootslore.add(ChatColor.BLUE + "Attributes------");
+        Bootslore.add(ChatColor.BLUE + "Damage: 1");
+        Bootslore.add(ChatColor.BLUE + "Defense: 8");
+        Bootslore.add(ChatColor.BLUE + "Mana: 7");
+        Bootslore.add(ChatColor.BLUE + "Stamina: 13");
+        CacBootsMeta.setLore(Bootslore);
 
         // LEATHER ARMOR META
-        LeatherArmorMeta leatherArmorMeta = (LeatherArmorMeta) PBootsMeta;
+        LeatherArmorMeta leatherArmorMeta = (LeatherArmorMeta) CacBootsMeta;
         leatherArmorMeta.setColor(Color.BLACK);
 
 
-        PBoots.setItemMeta(PBootsMeta);
-        boots = PBoots;
+        CacBoots.setItemMeta(CacBootsMeta);
+        boots = CacBoots;
     }
 }

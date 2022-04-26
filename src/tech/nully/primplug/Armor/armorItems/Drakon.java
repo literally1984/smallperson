@@ -41,8 +41,11 @@ public class Drakon {
         Helmlore.add(ChatColor.YELLOW + "" +ChatColor.ITALIC + "who guards the golden fleece..");
 
         Helmlore.add("");
-        Helmlore.add(ChatColor.BLUE + "+2 HP");
-        Helmlore.add(ChatColor.BLUE + "+16% defense");
+        Helmlore.add(ChatColor.BLUE + "Attributes------");
+        Helmlore.add(ChatColor.BLUE + "Damage: 3");
+        Helmlore.add(ChatColor.BLUE + "Defense: 14");
+        Helmlore.add(ChatColor.BLUE + "Mana: 7");
+        Helmlore.add(ChatColor.BLUE + "Stamina: 20");
         DRHelmMeta.setLore(Helmlore);
 
         // LEATHER ARMOR META
@@ -69,9 +72,12 @@ public class Drakon {
         cheslore.add(ChatColor.YELLOW + "" +ChatColor.ITALIC + "bones of the invincible dragon");
         cheslore.add(ChatColor.YELLOW + "" +ChatColor.ITALIC + "who guards the golden fleece..");
 
-        cheslore.add("");
-        cheslore.add(ChatColor.BLUE + "+2 HP");
-        cheslore.add(ChatColor.BLUE + "+35% defense");
+        cheslore.add("");        
+        cheslore.add(ChatColor.BLUE + "Attributes------");
+        cheslore.add(ChatColor.BLUE + "Damage: 5");
+        cheslore.add(ChatColor.BLUE + "Defense: 8");
+        cheslore.add(ChatColor.BLUE + "Mana: 10");
+        cheslore.add(ChatColor.BLUE + "Stamina: 15");
         DRchesMeta.setLore(cheslore);
 
         // LEATHER ARMOR META
@@ -98,8 +104,11 @@ public class Drakon {
         leglore.add(ChatColor.YELLOW + "" +ChatColor.ITALIC + "who guards the golden fleece..");
 
         leglore.add("");
-        leglore.add(ChatColor.BLUE + "+3 HP");
-        leglore.add(ChatColor.BLUE + "+25% defense");
+        leglore.add(ChatColor.BLUE + "Attributes------");
+        leglore.add(ChatColor.BLUE + "Damage: 1");
+        leglore.add(ChatColor.BLUE + "Defense: 8");
+        leglore.add(ChatColor.BLUE + "Mana: 10");
+        leglore.add(ChatColor.BLUE + "Stamina: 15");
         DRlegMeta.setLore(leglore);
 
         // LEATHER ARMOR META
