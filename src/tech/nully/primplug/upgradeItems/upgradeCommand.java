@@ -5,6 +5,8 @@ import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
+import tech.nully.primplug.upgradeItems.guis.upgradeGUI;
+
 public class upgradeCommand implements CommandExecutor{
 
     @Override

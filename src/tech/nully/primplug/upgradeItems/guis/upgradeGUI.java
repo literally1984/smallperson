@@ -1,4 +1,4 @@
-package tech.nully.primplug.upgradeItems;
+package tech.nully.primplug.upgradeItems.guis;
 
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;

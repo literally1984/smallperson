@@ -75,9 +75,9 @@ public class Drakon {
         cheslore.add("");        
         cheslore.add(ChatColor.BLUE + "Attributes------");
         cheslore.add(ChatColor.BLUE + "Damage: 5");
-        cheslore.add(ChatColor.BLUE + "Defense: 8");
-        cheslore.add(ChatColor.BLUE + "Mana: 10");
-        cheslore.add(ChatColor.BLUE + "Stamina: 15");
+        cheslore.add(ChatColor.BLUE + "Defense: 35");
+        cheslore.add(ChatColor.BLUE + "Mana: 13");
+        cheslore.add(ChatColor.BLUE + "Stamina: 25");
         DRchesMeta.setLore(cheslore);
 
         // LEATHER ARMOR META
@@ -136,8 +136,11 @@ public class Drakon {
         bootslore.add(ChatColor.YELLOW + "" +ChatColor.ITALIC + "who guards the golden fleece..");
 
         bootslore.add("");
-        bootslore.add(ChatColor.BLUE + "+2 HP");
-        bootslore.add(ChatColor.BLUE + "+16% defense");
+        bootslore.add(ChatColor.BLUE + "Attributes------");
+        bootslore.add(ChatColor.BLUE + "Damage: 3");
+        bootslore.add(ChatColor.BLUE + "Defense: 14");
+        bootslore.add(ChatColor.BLUE + "Mana: 7");
+        bootslore.add(ChatColor.BLUE + "Stamina: 17");
         DRbootsMeta.setLore(bootslore);
 
         // LEATHER ARMOR META

@@ -10,8 +10,8 @@ import org.bukkit.inventory.ItemStack;
 
 public class talismanListeners implements Listener {
     @EventHandler
-    public static void OnRightClickTalisman(PlayerInteractEvent i) {
-        if (i.getAction() == Action.RIGHT_CLICK_AIR || i.getAction() == Action.RIGHT_CLICK_AIR) {
+    public void OnRightClickTalisman(PlayerInteractEvent i) {
+        if (i.getAction() == Action.RIGHT_CLICK_AIR || i.getAction() == Action.RIGHT_CLICK_BLOCK) {
 
             Player p = i.getPlayer();
             talismanIdentifier t = new talismanIdentifier();

@@ -6,9 +6,9 @@ import org.bukkit.ChatColor;
 import org.bukkit.inventory.Recipe;
 import org.bukkit.plugin.java.JavaPlugin;
 
-import tech.nully.primplug.Armor.listener;
 import tech.nully.primplug.Armor.armorItems.Drakon;
 import tech.nully.primplug.Armor.armorItems.PetheriteSet;
+import tech.nully.primplug.Listeners.damageListener;
 import tech.nully.primplug.RPGcommands.reforges.reforgeCommand;
 import tech.nully.primplug.RegularCommands.giveCommand;
 import tech.nully.primplug.Talismans.Talisman;
@@ -19,8 +19,9 @@ import tech.nully.primplug.phones.phoneListener;
 import tech.nully.primplug.phones.phoneitems;
 import tech.nully.primplug.planes.WASDPlaneKey;
 import tech.nully.primplug.recipeBook.recipeCommand;
+import tech.nully.primplug.rightClickPlayerMechanic.rightClickPlayer;
 import tech.nully.primplug.upgradeItems.upgradeCommand;
-import tech.nully.primplug.upgradeItems.upgradeGUIListener;
+import tech.nully.primplug.upgradeItems.guis.upgradeGUIListener;
 
 public class Main extends JavaPlugin {
     public Iterator<Recipe> it = getServer().recipeIterator();
@@ -36,12 +37,14 @@ public class Main extends JavaPlugin {
         phoneitems.init();
         phone.init();
 
-        getServer().addRecipe(armorRecipes.cacHelm);
+        // recipes
+        armorRecipes.init();
 
 
         getServer().getPluginManager().registerEvents(new phoneListener(), this);
         getServer().getPluginManager().registerEvents(new upgradeGUIListener(), this);
-        getServer().getPluginManager().registerEvents(new listener(), this);
+        getServer().getPluginManager().registerEvents(new damageListener(), this);
+        getServer().getPluginManager().registerEvents(new rightClickPlayer(), this);
 
 
         getCommand("recipes").setExecutor(new recipeCommand());

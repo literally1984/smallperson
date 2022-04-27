@@ -1,4 +1,4 @@
-package tech.nully.primplug.upgradeItems;
+package tech.nully.primplug.upgradeItems.guis;
 
 import java.util.List;
 
@@ -15,6 +15,7 @@ import org.bukkit.inventory.meta.ItemMeta;
 import tech.nully.primplug.baseMethods;
 import tech.nully.primplug.RPGcommands.reforges.reforgeGUI;
 import tech.nully.primplug.RPGcommands.reforges.reforges;
+import tech.nully.primplug.upgradeItems.upgradeUpdate;
 
 public class upgradeGUIListener implements Listener {
     @EventHandler
