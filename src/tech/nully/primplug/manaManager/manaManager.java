@@ -5,12 +5,33 @@ import java.util.List;
 
 import org.bukkit.entity.Player;
 
-public class manaListener {
-    HashMap<String, Integer> PlayerMana = new HashMap<String, Integer>();
+public class manaManager {
+    private HashMap<String, Integer> PlayerMaxMana = new HashMap<String, Integer>();
+    private HashMap<String, Integer> PlayerMana = new HashMap<String, Integer>();
+
+    private void setManaHash(String pName, int addedMana) {
+        PlayerMaxMana.put(pName,addedMana);
+        PlayerMana.put(pName,addedMana);
+    }
+
+    public int getMaxMana(String s) {
+        int z = PlayerMaxMana.get(s);
+        return z;
+    }
+
+    public void addMana(String playerName, int amnt) {
+        PlayerMana.put(playerName, PlayerMana.get(playerName) + amnt);
+    }
+
+
+    public void subtractMana(String playerName, int amnt) {
+        PlayerMana.put(playerName, PlayerMana.get(playerName) - amnt);
+    }
+
 
     public void setMaxMana(Player p) {
         int index = 0;
-        if ((!(p.getInventory().getHelmet() == null))) {
+        if (p.getInventory().getHelmet() != null) {
             List<String> helmLore = p.getInventory().getHelmet().getItemMeta().getLore();
             for (String s : helmLore) { // example code
                 if (s.contains("Mana: ")) {
@@ -23,16 +44,16 @@ public class manaListener {
             int addedMana = Integer.parseInt(manaLineArr[1]);
 
             // checks if the player already has a spot in the hashmap
-            if (!(PlayerMana.containsKey(p.getDisplayName()))) {
-                PlayerMana.put(p.getDisplayName(),0+addedMana);
+            if (!(PlayerMaxMana.containsKey(p.getDisplayName()))) {
+                setManaHash(p.getDisplayName(),0+addedMana);
                 
-            } else if (PlayerMana.containsKey(p.getDisplayName())) {
-                PlayerMana.put(p.getDisplayName(), PlayerMana.get(p.getDisplayName() + addedMana));
+            } else if (PlayerMaxMana.containsKey(p.getDisplayName())) {
+                setManaHash(p.getDisplayName(), PlayerMaxMana.get(p.getDisplayName() + addedMana));
             }
         }
 
 
-        if ((!(p.getInventory().getChestplate() == null))) {
+        if (p.getInventory().getChestplate() != null) {
             List<String> ChesLore = p.getInventory().getChestplate().getItemMeta().getLore();
             for (String s : ChesLore) { // example code
                 if (s.contains("Mana: ")) {
@@ -45,11 +66,11 @@ public class manaListener {
             int addedMana = Integer.parseInt(manaLineArr[1]);
 
             // checks if the player already has a spot in the hashmap
-            if (!(PlayerMana.containsKey(p.getDisplayName()))) {
-                PlayerMana.put(p.getDisplayName(),0+addedMana);
+            if (!(PlayerMaxMana.containsKey(p.getDisplayName()))) {
+                setManaHash(p.getDisplayName(),0+addedMana);
                 
-            } else if (PlayerMana.containsKey(p.getDisplayName())) {
-                PlayerMana.put(p.getDisplayName(), PlayerMana.get(p.getDisplayName() + addedMana));
+            } else if (PlayerMaxMana.containsKey(p.getDisplayName())) {
+                setManaHash(p.getDisplayName(), PlayerMaxMana.get(p.getDisplayName() + addedMana));
             }
 
 
@@ -57,7 +78,7 @@ public class manaListener {
         }
 
 
-        if ((!(p.getInventory().getHelmet() == null))) {
+        if (p.getInventory().getHelmet() != null) {
             List<String> LegLore = p.getInventory().getLeggings().getItemMeta().getLore();
             for (String s : LegLore) { // example code
                 if (s.contains("Mana: ")) {
@@ -70,11 +91,11 @@ public class manaListener {
             int addedMana = Integer.parseInt(manaLineArr[1]);
 
             // checks if the player already has a spot in the hashmap
-            if (!(PlayerMana.containsKey(p.getDisplayName()))) {
-                PlayerMana.put(p.getDisplayName(),0+addedMana);
+            if (!(PlayerMaxMana.containsKey(p.getDisplayName()))) {
+                setManaHash(p.getDisplayName(),0+addedMana);
                 
-            } else if (PlayerMana.containsKey(p.getDisplayName())) {
-                PlayerMana.put(p.getDisplayName(), PlayerMana.get(p.getDisplayName() + addedMana));
+            } else if (PlayerMaxMana.containsKey(p.getDisplayName())) {
+                setManaHash(p.getDisplayName(), PlayerMaxMana.get(p.getDisplayName() + addedMana));
             }
 
 
@@ -82,7 +103,7 @@ public class manaListener {
         }
 
 
-        if ((!(p.getInventory().getHelmet() == null))) {
+        if (p.getInventory().getHelmet() != null) {
             List<String> BootsLore = p.getInventory().getBoots().getItemMeta().getLore();
             for (String s : BootsLore) { // example code
                 if (s.contains("Mana: ")) {
@@ -95,11 +116,11 @@ public class manaListener {
             int addedMana = Integer.parseInt(manaLineArr[1]);
 
             // checks if the player already has a spot in the hashmap
-            if (!(PlayerMana.containsKey(p.getDisplayName()))) {
-                PlayerMana.put(p.getDisplayName(),0+addedMana);
+            if (!(PlayerMaxMana.containsKey(p.getDisplayName()))) {
+                setManaHash(p.getDisplayName(),0+addedMana);
                 
-            } else if (PlayerMana.containsKey(p.getDisplayName())) {
-                PlayerMana.put(p.getDisplayName(), PlayerMana.get(p.getDisplayName() + addedMana));
+            } else if (PlayerMaxMana.containsKey(p.getDisplayName())) {
+                setManaHash(p.getDisplayName(), PlayerMaxMana.get(p.getDisplayName() + addedMana));
             }
 
 
@@ -113,8 +134,8 @@ public class manaListener {
 
 
     
-    public int getMana(Player p) {
-        return PlayerMana.get(p.getDisplayName());
+    public int getMana(String p) {
+        return PlayerMaxMana.get(p);
     }
 
 
@@ -122,6 +143,6 @@ public class manaListener {
 
 
     public void takeMana(Player p, int amnt) {
-        PlayerMana.put(p.getDisplayName(), PlayerMana.get(p.getDisplayName()) - amnt);
+        PlayerMaxMana.put(p.getDisplayName(), PlayerMaxMana.get(p.getDisplayName()) - amnt);
     }
 }

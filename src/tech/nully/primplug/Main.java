@@ -45,13 +45,12 @@ public class Main extends JavaPlugin {
         getServer().getPluginManager().registerEvents(new upgradeGUIListener(), this);
         getServer().getPluginManager().registerEvents(new damageListener(), this);
         getServer().getPluginManager().registerEvents(new rightClickPlayer(), this);
-
+        getServer().getPluginManager().registerEvents(new talismanListeners(), this);
 
         getCommand("recipes").setExecutor(new recipeCommand());
         getCommand("pgive").setExecutor(new giveCommand());
         getCommand("reforge").setExecutor(new reforgeCommand());
         getCommand("upgrade").setExecutor(new upgradeCommand());
-        getServer().getPluginManager().registerEvents(new talismanListeners(), this);
 
 
         getServer().getConsoleSender().sendMessage("--------------------------------------------");

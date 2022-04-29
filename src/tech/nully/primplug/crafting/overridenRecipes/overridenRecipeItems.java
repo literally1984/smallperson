@@ -5,12 +5,10 @@ import java.util.List;
 
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
-import org.bukkit.Color;
 import org.bukkit.Material;
 import org.bukkit.enchantments.Enchantment;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
-import org.bukkit.inventory.meta.LeatherArmorMeta;
 
 public class overridenRecipeItems {
     
@@ -64,7 +62,7 @@ public class overridenRecipeItems {
     // ! Cac Chesplate
     private static void createDiaChestplate() {
         // DEFINE THE META -------------
-        ItemStack DiaChest = new ItemStack(Material.LEATHER_CHESTPLATE);
+        ItemStack DiaChest = new ItemStack(Material.DIAMOND_CHESTPLATE);
         ItemMeta DiaChestMeta = DiaChest.hasItemMeta() ? DiaChest.getItemMeta() : Bukkit.getItemFactory().getItemMeta(DiaChest.getType());
 
 
@@ -79,9 +77,11 @@ public class overridenRecipeItems {
         Chestlore.add(ChatColor.BLUE + "Defense: 13");
         Chestlore.add(ChatColor.BLUE + "Mana: 15");
         Chestlore.add(ChatColor.BLUE + "Stamina: 15");
+        Chestlore.add("");
+        Chestlore.add(ChatColor.BLUE + "" + ChatColor.BOLD + "RARE");
         DiaChestMeta.setLore(Chestlore);
 
-        // LEATHER ARMOR META
+        // DIAMOND ARMOR META
         DiaChest.setItemMeta(DiaChestMeta);
         diaChes = DiaChest;
     }
@@ -90,12 +90,12 @@ public class overridenRecipeItems {
     // ! Cac Leggings
     private static void createCacLeggings() {
         // DEFINE THE META -------------
-        ItemStack PLeg = new ItemStack(Material.LEATHER_LEGGINGS);
+        ItemStack PLeg = new ItemStack(Material.DIAMOND_LEGGINGS);
         ItemMeta PLegMeta = PLeg.hasItemMeta() ? PLeg.getItemMeta() : Bukkit.getItemFactory().getItemMeta(PLeg.getType());
 
 
         // SET THE META ----------------
-        PLegMeta.setDisplayName("Cac Leggings");
+        PLegMeta.setDisplayName("Cactus Leggings");
             // LegLore
         List<String> Leglore = new ArrayList<>();
         Leglore.add("A very spikey armor piece, reflects");
@@ -113,9 +113,6 @@ public class overridenRecipeItems {
         Leglore.add(ChatColor.BLUE + "Stamina: 25");
         PLegMeta.setLore(Leglore);
 
-        // LEATHER ARMOR META
-        LeatherArmorMeta leatherArmorMeta = (LeatherArmorMeta) PLegMeta;
-        leatherArmorMeta.setColor(Color.BLACK);
 
 
         PLeg.setItemMeta(PLegMeta);
@@ -124,7 +121,7 @@ public class overridenRecipeItems {
     // ! Cac Boots
     private static void createCacBoots() {
         // DEFINE THE META -------------
-        ItemStack CacBoots = new ItemStack(Material.LEATHER_BOOTS);
+        ItemStack CacBoots = new ItemStack(Material.DIAMOND_BOOTS);
         ItemMeta CacBootsMeta = CacBoots.hasItemMeta() ? CacBoots.getItemMeta() : Bukkit.getItemFactory().getItemMeta(CacBoots.getType());
 
 
@@ -146,10 +143,6 @@ public class overridenRecipeItems {
         Bootslore.add(ChatColor.BLUE + "Mana: 7");
         Bootslore.add(ChatColor.BLUE + "Stamina: 13");
         CacBootsMeta.setLore(Bootslore);
-
-        // LEATHER ARMOR META
-        LeatherArmorMeta leatherArmorMeta = (LeatherArmorMeta) CacBootsMeta;
-        leatherArmorMeta.setColor(Color.BLACK);
 
 
         CacBoots.setItemMeta(CacBootsMeta);

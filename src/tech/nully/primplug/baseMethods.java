@@ -279,6 +279,9 @@ public class baseMethods {
         // items
     }
 
+
+
+
     public void makeBaseReforgeGUI(Inventory inv) {
         for (int i = 0; i < 54; i++) {
             inv.setItem(i, base);
@@ -294,6 +297,8 @@ public class baseMethods {
     }
     
 
+
+
     public boolean checkIsArmor(ItemStack item) {
         if (item.getType().toString().toLowerCase().contains("helmet") || 
         item.getType().toString().toLowerCase().contains("chestplate") || 
@@ -304,9 +309,13 @@ public class baseMethods {
         return false;
         }
     }
+
+
+
+
     public boolean checkIsWeapon(ItemStack item) {
         if (item.getType().toString().toLowerCase().contains("sword") || 
-        item.getType().toString().toLowerCase().contains("axe")) {
+            item.getType().toString().toLowerCase().contains("axe")) {
             return true;
         } else {
         return false;

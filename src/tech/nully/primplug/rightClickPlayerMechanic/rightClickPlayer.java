@@ -13,9 +13,6 @@ public class rightClickPlayer implements Listener {
                 targetPlayerInv target = new targetPlayerInv();
                 target.getPlayerInv((Player) e.getRightClicked());
             }
-            return;
-        } else {
-            return;
         }
     }
 }
