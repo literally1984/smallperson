@@ -112,7 +112,7 @@ public class defenseListener {
 
 
 
-    
+    // gets player defense from hashmap
     public int getdefense(Player p) {
         return Playerdefense.get(p.getDisplayName());
     }

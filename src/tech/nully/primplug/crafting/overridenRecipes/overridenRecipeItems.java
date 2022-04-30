@@ -19,7 +19,7 @@ public class overridenRecipeItems {
     public static ItemStack diaSword;
     public static ItemStack diaAxe;
     public static ItemStack ironHelm;
-    public static ItemStack ironChes;
+    public static ItemStack ironChes; 
     public static ItemStack ironLeg;
     public static ItemStack ironBoots;
     public static ItemStack ironSword;
@@ -31,6 +31,7 @@ public class overridenRecipeItems {
     public static void init() {
         createDiaHelm();
         createDiaChestplate();
+        createDiaLeggings();
     }
 
 
@@ -74,7 +75,7 @@ public class overridenRecipeItems {
         Chestlore.add("");
         Chestlore.add(ChatColor.BLUE + "Attributes------");
         Chestlore.add(ChatColor.BLUE + "Damage: 1");
-        Chestlore.add(ChatColor.BLUE + "Defense: 13");
+        Chestlore.add(ChatColor.BLUE + "Defense: 26");
         Chestlore.add(ChatColor.BLUE + "Mana: 15");
         Chestlore.add(ChatColor.BLUE + "Stamina: 15");
         Chestlore.add("");
@@ -88,35 +89,31 @@ public class overridenRecipeItems {
 
 
     // ! Cac Leggings
-    private static void createCacLeggings() {
+    private static void createDiaLeggings() {
         // DEFINE THE META -------------
-        ItemStack PLeg = new ItemStack(Material.DIAMOND_LEGGINGS);
-        ItemMeta PLegMeta = PLeg.hasItemMeta() ? PLeg.getItemMeta() : Bukkit.getItemFactory().getItemMeta(PLeg.getType());
+        ItemStack DiaLeg = new ItemStack(Material.DIAMOND_LEGGINGS);
+        ItemMeta DiaLegMeta = DiaLeg.hasItemMeta() ? DiaLeg.getItemMeta() : Bukkit.getItemFactory().getItemMeta(DiaLeg.getType());
 
 
         // SET THE META ----------------
-        PLegMeta.setDisplayName("Cactus Leggings");
+        DiaLegMeta.setDisplayName("Diamond Legplate");
             // LegLore
         List<String> Leglore = new ArrayList<>();
-        Leglore.add("A very spikey armor piece, reflects");
-        Leglore.add("some damage back to the opponent when");
-        Leglore.add("they hit you if you have the set bonus");
-        Leglore.add("");
-        Leglore.add(ChatColor.GOLD + "Set Bonus:");
-        Leglore.add(ChatColor.GOLD + "Reflects 33% of the damage you take");
-        Leglore.add(ChatColor.GOLD + "back to your opponent");
+        Leglore.add(ChatColor.LIGHT_PURPLE + "The good ol' vanilla diamond armor!");
         Leglore.add("");
         Leglore.add(ChatColor.BLUE + "Attributes------");
-        Leglore.add(ChatColor.BLUE + "Damage: 2");
-        Leglore.add(ChatColor.BLUE + "Defense: 21");
+        Leglore.add(ChatColor.BLUE + "Damage: 1");
+        Leglore.add(ChatColor.BLUE + "Defense: 13");
         Leglore.add(ChatColor.BLUE + "Mana: 15");
-        Leglore.add(ChatColor.BLUE + "Stamina: 25");
-        PLegMeta.setLore(Leglore);
+        Leglore.add(ChatColor.BLUE + "Stamina: 15");
+        Leglore.add("");
+        Leglore.add(ChatColor.BLUE + "" + ChatColor.BOLD + "RARE");
+        DiaLegMeta.setLore(Leglore);
 
 
 
-        PLeg.setItemMeta(PLegMeta);
-        diaLeg = PLeg;
+        DiaLeg.setItemMeta(DiaLegMeta);
+        diaLeg = DiaLeg;
     }
     // ! Cac Boots
     private static void createCacBoots() {

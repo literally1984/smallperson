@@ -8,7 +8,7 @@ import org.bukkit.plugin.java.JavaPlugin;
 
 import tech.nully.primplug.Armor.armorItems.Drakon;
 import tech.nully.primplug.Armor.armorItems.PetheriteSet;
-import tech.nully.primplug.Listeners.damageListener;
+import tech.nully.primplug.Listeners.playerDamageListener;
 import tech.nully.primplug.RPGcommands.reforges.reforgeCommand;
 import tech.nully.primplug.RegularCommands.giveCommand;
 import tech.nully.primplug.Talismans.Talisman;
@@ -43,7 +43,7 @@ public class Main extends JavaPlugin {
 
         getServer().getPluginManager().registerEvents(new phoneListener(), this);
         getServer().getPluginManager().registerEvents(new upgradeGUIListener(), this);
-        getServer().getPluginManager().registerEvents(new damageListener(), this);
+        getServer().getPluginManager().registerEvents(new playerDamageListener(), this);
         getServer().getPluginManager().registerEvents(new rightClickPlayer(), this);
         getServer().getPluginManager().registerEvents(new talismanListeners(), this);
 

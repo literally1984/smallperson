@@ -79,13 +79,16 @@ public class PetheriteSet {
         PChestMeta.setDisplayName("Petherite Chestplate");
             // ChestLore
         List<String> Chestlore = new ArrayList<>();
-        Chestlore.add("Its like a bootleg Netherite Chestplate");
+        Chestlore.add(ChatColor.LIGHT_PURPLE + "Totally an original idea lol");
+        Chestlore.add("");
+        Chestlore.add(ChatColor.BLUE + "Attributes------");
+        Chestlore.add(ChatColor.BLUE + "Damage: 1");
+        Chestlore.add(ChatColor.BLUE + "Defense: 8");
+        Chestlore.add(ChatColor.BLUE + "Mana: 7");
+        Chestlore.add(ChatColor.BLUE + "Stamina: 13");
+        Chestlore.add("");
+        Chestlore.add(ChatColor.DARK_PURPLE + "" + ChatColor.BOLD + "EPIC");
         PChestMeta.setLore(Chestlore);
-
-        // LEATHER ARMOR META
-        LeatherArmorMeta leatherArmorMeta = (LeatherArmorMeta) PChestMeta;
-        leatherArmorMeta.setColor(Color.BLACK);
-
 
         PChest.setItemMeta(PChestMeta);
         ches = PChest;
@@ -103,13 +106,17 @@ public class PetheriteSet {
         PLegMeta.setDisplayName("Petherite Leggings");
             // LegLore
         List<String> Leglore = new ArrayList<>();
-        Leglore.add("Its like bootleg Netherite Leggings");
+        Leglore.add(ChatColor.LIGHT_PURPLE + "Totally an original idea lol");
+        Leglore.add("");
+        Leglore.add(ChatColor.BLUE + "Attributes------");
+        Leglore.add(ChatColor.BLUE + "Damage: 1");
+        Leglore.add(ChatColor.BLUE + "Defense: 8");
+        Leglore.add(ChatColor.BLUE + "Mana: 7");
+        Leglore.add(ChatColor.BLUE + "Stamina: 13");
+        Leglore.add("");
+        Leglore.add(ChatColor.DARK_PURPLE + "" + ChatColor.BOLD + "EPIC");
+
         PLegMeta.setLore(Leglore);
-
-        // LEATHER ARMOR META
-        LeatherArmorMeta leatherArmorMeta = (LeatherArmorMeta) PLegMeta;
-        leatherArmorMeta.setColor(Color.BLACK);
-
 
         PLeg.setItemMeta(PLegMeta);
         leg = PLeg;
@@ -125,12 +132,12 @@ public class PetheriteSet {
         PBootsMeta.setDisplayName("Petherite Boots");
             // BootsLore
         List<String> Bootslore = new ArrayList<>();
-        Bootslore.add("Its like bootleg Netherite Boots");
+        Bootslore.add(ChatColor.BLUE + "Attributes------");
+        Bootslore.add(ChatColor.BLUE + "Damage: 1");
+        Bootslore.add(ChatColor.BLUE + "Defense: 8");
+        Bootslore.add(ChatColor.BLUE + "Mana: 7");
+        Bootslore.add(ChatColor.BLUE + "Stamina: 13");
         PBootsMeta.setLore(Bootslore);
-
-        // LEATHER ARMOR META
-        LeatherArmorMeta leatherArmorMeta = (LeatherArmorMeta) PBootsMeta;
-        leatherArmorMeta.setColor(Color.BLACK);
 
 
         PBoots.setItemMeta(PBootsMeta);
