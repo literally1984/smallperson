@@ -28,8 +28,6 @@ public class hardenedDiamond {
         HDiaHelmMeta.setDisplayName("Hardened Diamond Helmet");
             // HelmLore
         List<String> Helmlore = new ArrayList<>();
-        Helmlore.add(ChatColor.LIGHT_PURPLE + "A helmet made out of an extremely durable");
-        Helmlore.add(ChatColor.LIGHT_PURPLE + "material which grants a lot of protection");
         Helmlore.add("");
         Helmlore.add(ChatColor.BLUE + "Attributes------");
         Helmlore.add(ChatColor.BLUE + "Damage: 3");
@@ -37,6 +35,9 @@ public class hardenedDiamond {
         Helmlore.add(ChatColor.BLUE + "Mana: 8");
         Helmlore.add(ChatColor.BLUE + "Stamina: 13");
         Helmlore.add("");
+        Helmlore.add(ChatColor.LIGHT_PURPLE + "A helmet made out of an extremely durable");
+        Helmlore.add(ChatColor.LIGHT_PURPLE + "material which grants a lot of protection");
+        Helmlore.add("e");
         Helmlore.add(ChatColor.BLUE + "" + ChatColor.BOLD + "RARE");
         HDiaHelmMeta.setLore(Helmlore);
 
@@ -56,14 +57,15 @@ public class hardenedDiamond {
         HDiaChesMeta.setDisplayName("Hardened Diamond Chestplate");
             // ChesLore
         List<String> Cheslore = new ArrayList<>();
-        Cheslore.add(ChatColor.LIGHT_PURPLE + "A Chesplate made out of an extremely durable");
-        Cheslore.add(ChatColor.LIGHT_PURPLE + "material which grants a lot of protection");
         Cheslore.add("");
         Cheslore.add(ChatColor.BLUE + "Attributes------");
         Cheslore.add(ChatColor.BLUE + "Damage: 5");
         Cheslore.add(ChatColor.BLUE + "Defense: 32");
         Cheslore.add(ChatColor.BLUE + "Mana: 13");
         Cheslore.add(ChatColor.BLUE + "Stamina: 20");
+        Cheslore.add("");
+        Cheslore.add(ChatColor.LIGHT_PURPLE + "A Chesplate made out of an extremely durable");
+        Cheslore.add(ChatColor.LIGHT_PURPLE + "material which grants a lot of protection");
         Cheslore.add("");
         Cheslore.add(ChatColor.BLUE + "" + ChatColor.BOLD + "RARE");
         HDiaChesMeta.setLore(Cheslore);
@@ -83,14 +85,15 @@ public class hardenedDiamond {
         HDiaHelmMeta.setDisplayName("Hardened Diamond Helmet");
             // HelmLore
         List<String> Helmlore = new ArrayList<>();
-        Helmlore.add(ChatColor.LIGHT_PURPLE + "A helmet made out of an extremely durable");
-        Helmlore.add(ChatColor.LIGHT_PURPLE + "material which grants a lot of protection");
         Helmlore.add("");
-        Helmlore.add(ChatColor.BLUE + "Attributes------");
         Helmlore.add(ChatColor.BLUE + "Damage: 3");
         Helmlore.add(ChatColor.BLUE + "Defense: 18");
         Helmlore.add(ChatColor.BLUE + "Mana: 8");
         Helmlore.add(ChatColor.BLUE + "Stamina: 13");
+        Helmlore.add("");
+        Helmlore.add(ChatColor.LIGHT_PURPLE + "A helmet made out of an extremely durable");
+        Helmlore.add(ChatColor.LIGHT_PURPLE + "material which grants a lot of protection");
+        
         Helmlore.add("");
         Helmlore.add(ChatColor.BLUE + "" + ChatColor.BOLD + "RARE");
         HDiaHelmMeta.setLore(Helmlore);
@@ -102,27 +105,27 @@ public class hardenedDiamond {
 
     private static void createHDiaBoots() {
         // DEFINE THE META -------------
-        ItemStack HDiaHelm = new ItemStack(Material.DIAMOND_HELMET);
-        ItemMeta HDiaHelmMeta = HDiaHelm.getItemMeta();
+        ItemStack HDiaBoots = new ItemStack(Material.DIAMOND_BOOTS);
+        ItemMeta HDiaBootsMeta = HDiaBoots.getItemMeta();
 
 
         // SET THE META ----------------
-        HDiaHelmMeta.setDisplayName("Hardened Diamond Helmet");
-            // HelmLore
-        List<String> Helmlore = new ArrayList<>();
-        Helmlore.add(ChatColor.LIGHT_PURPLE + "A helmet made out of an extremely durable");
-        Helmlore.add(ChatColor.LIGHT_PURPLE + "material which grants a lot of protection");
-        Helmlore.add("");
-        Helmlore.add(ChatColor.BLUE + "Attributes------");
-        Helmlore.add(ChatColor.BLUE + "Damage: 3");
-        Helmlore.add(ChatColor.BLUE + "Defense: 18");
-        Helmlore.add(ChatColor.BLUE + "Mana: 8");
-        Helmlore.add(ChatColor.BLUE + "Stamina: 13");
-        Helmlore.add("");
-        Helmlore.add(ChatColor.BLUE + "" + ChatColor.BOLD + "RARE");
-        HDiaHelmMeta.setLore(Helmlore);
+        HDiaBootsMeta.setDisplayName("Hardened Diamond Bootset");
+            // BootsLore
+        List<String> Bootslore = new ArrayList<>();
+        Bootslore.add("");
+        Bootslore.add(ChatColor.BLUE + "Damage: 3");
+        Bootslore.add(ChatColor.BLUE + "Defense: 18");
+        Bootslore.add(ChatColor.BLUE + "Mana: 8");
+        Bootslore.add(ChatColor.BLUE + "Stamina: 13");
+        Bootslore.add("");
+        Bootslore.add(ChatColor.LIGHT_PURPLE + "A Bootset made out of an extremely durable");
+        Bootslore.add(ChatColor.LIGHT_PURPLE + "material which grants a lot of protection");
+        Bootslore.add("");
+        Bootslore.add(ChatColor.BLUE + "" + ChatColor.BOLD + "RARE");
+        HDiaBootsMeta.setLore(Bootslore);
 
-        HDiaHelm.setItemMeta(HDiaHelmMeta);
-        helm = HDiaHelm;
+        HDiaBoots.setItemMeta(HDiaBootsMeta);
+        boots = HDiaBoots;
     }
 }

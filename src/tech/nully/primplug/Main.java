@@ -4,6 +4,8 @@ import java.util.Iterator;
 
 import org.bukkit.ChatColor;
 import org.bukkit.inventory.Recipe;
+import org.bukkit.metadata.FixedMetadataValue;
+import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import tech.nully.primplug.Armor.armorItems.Drakon;
@@ -25,9 +27,11 @@ import tech.nully.primplug.upgradeItems.guis.upgradeGUIListener;
 
 public class Main extends JavaPlugin {
     public Iterator<Recipe> it = getServer().recipeIterator();
+    public Plugin main = this;
 
     @Override
     public void onEnable() {
+
 
         PetheriteSet.init();
         Talisman.init();

@@ -1,5 +1,6 @@
 package tech.nully.primplug.Listeners;
 
+import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.Action;
@@ -12,7 +13,17 @@ import tech.nully.primplug.manaManager.manaManager;
 public class armorPutOnEvent implements Listener{
     @EventHandler
     public void armorPutOnByInv(InventoryClickEvent e) {
+        baseMethods b = new baseMethods();
+        manaManager m = new manaManager();
+        if (e.getSlot() == 100 || e.getSlot() == 101 || e.getSlot() == 102 || e.getSlot() == 103) {
+            m.setMaxMana((Player) e.getWhoClicked());
+        }
 
+        if (b.checkIsArmor(e.getCurrentItem()) == true) {
+            if (e.isShiftClick() == true) {
+                m.setMaxMana((Player) e.getWhoClicked());
+            }
+        }
     }
 
     @EventHandler

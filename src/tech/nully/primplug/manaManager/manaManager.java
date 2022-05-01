@@ -6,25 +6,25 @@ import java.util.List;
 import org.bukkit.entity.Player;
 
 public class manaManager {
-    private HashMap<String, Integer> PlayerMaxMana = new HashMap<String, Integer>();
-    private HashMap<String, Integer> PlayerMana = new HashMap<String, Integer>();
+    private HashMap<Player, Integer> PlayerMaxMana = new HashMap<Player, Integer>();
+    private HashMap<Player, Integer> PlayerMana = new HashMap<Player, Integer>();
 
-    private void setManaHash(String pName, int addedMana) {
+    private void setManaHash(Player pName, int addedMana) {
         PlayerMaxMana.put(pName,addedMana);
         PlayerMana.put(pName,addedMana);
     }
 
-    public int getMaxMana(String s) {
+    public int getMaxMana(Player s) {
         int z = PlayerMaxMana.get(s);
         return z;
     }
 
-    public void addMana(String playerName, int amnt) {
+    public void addMana(Player playerName, int amnt) {
         PlayerMana.put(playerName, PlayerMana.get(playerName) + amnt);
     }
 
 
-    public void subtractMana(String playerName, int amnt) {
+    public void subtractMana(Player playerName, int amnt) {
         PlayerMana.put(playerName, PlayerMana.get(playerName) - amnt);
     }
 
@@ -44,11 +44,10 @@ public class manaManager {
             int addedMana = Integer.parseInt(manaLineArr[1]);
 
             // checks if the player already has a spot in the hashmap
-            if (!(PlayerMaxMana.containsKey(p.getDisplayName()))) {
-                setManaHash(p.getDisplayName(),0+addedMana);
-                
-            } else if (PlayerMaxMana.containsKey(p.getDisplayName())) {
-                setManaHash(p.getDisplayName(), PlayerMaxMana.get(p.getDisplayName() + addedMana));
+            if (!(PlayerMaxMana.containsKey(p))) {
+                setManaHash(p,0+addedMana);
+            } else if (PlayerMaxMana.containsKey(p)) {
+                setManaHash(p, PlayerMaxMana.get(p) + addedMana);
             }
         }
 
@@ -66,11 +65,11 @@ public class manaManager {
             int addedMana = Integer.parseInt(manaLineArr[1]);
 
             // checks if the player already has a spot in the hashmap
-            if (!(PlayerMaxMana.containsKey(p.getDisplayName()))) {
-                setManaHash(p.getDisplayName(),0+addedMana);
+            if (!(PlayerMaxMana.containsKey(p))) {
+                setManaHash(p,0+addedMana);
                 
-            } else if (PlayerMaxMana.containsKey(p.getDisplayName())) {
-                setManaHash(p.getDisplayName(), PlayerMaxMana.get(p.getDisplayName() + addedMana));
+            } else if (PlayerMaxMana.containsKey(p)) {
+                setManaHash(p, PlayerMaxMana.get(p) + addedMana);
             }
 
 
@@ -91,11 +90,11 @@ public class manaManager {
             int addedMana = Integer.parseInt(manaLineArr[1]);
 
             // checks if the player already has a spot in the hashmap
-            if (!(PlayerMaxMana.containsKey(p.getDisplayName()))) {
-                setManaHash(p.getDisplayName(),0+addedMana);
+            if (!(PlayerMaxMana.containsKey(p))) {
+                setManaHash(p,0+addedMana);
                 
-            } else if (PlayerMaxMana.containsKey(p.getDisplayName())) {
-                setManaHash(p.getDisplayName(), PlayerMaxMana.get(p.getDisplayName() + addedMana));
+            } else if (PlayerMaxMana.containsKey(p)) {
+                setManaHash(p, PlayerMaxMana.get(p) + addedMana);
             }
 
 
@@ -116,11 +115,11 @@ public class manaManager {
             int addedMana = Integer.parseInt(manaLineArr[1]);
 
             // checks if the player already has a spot in the hashmap
-            if (!(PlayerMaxMana.containsKey(p.getDisplayName()))) {
-                setManaHash(p.getDisplayName(),0+addedMana);
+            if (!(PlayerMaxMana.containsKey(p))) {
+                setManaHash(p,0+addedMana);
                 
-            } else if (PlayerMaxMana.containsKey(p.getDisplayName())) {
-                setManaHash(p.getDisplayName(), PlayerMaxMana.get(p.getDisplayName() + addedMana));
+            } else if (PlayerMaxMana.containsKey(p)) {
+                setManaHash(p, PlayerMaxMana.get(p) + addedMana);
             }
 
 
@@ -134,7 +133,7 @@ public class manaManager {
 
 
     
-    public int getMana(String p) {
+    public int getMana(Player p) {
         return PlayerMaxMana.get(p);
     }
 
@@ -143,6 +142,6 @@ public class manaManager {
 
 
     public void takeMana(Player p, int amnt) {
-        PlayerMaxMana.put(p.getDisplayName(), PlayerMaxMana.get(p.getDisplayName()) - amnt);
+        PlayerMaxMana.put(p, PlayerMaxMana.get(p) - amnt);
     }
 }

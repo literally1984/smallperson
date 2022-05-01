@@ -12,6 +12,7 @@ public class rightClickPlayer implements Listener {
             if (e.getPlayer().isSneaking() == true) {
                 targetPlayerInv target = new targetPlayerInv();
                 target.getPlayerInv((Player) e.getRightClicked());
+                // adds a for loop
             }
         }
     }

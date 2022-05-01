@@ -6,20 +6,22 @@ import java.util.TimerTask;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 
+import tech.nully.primplug.Main;
+
 public class passiveManaAdder {
     public void addMana() {
-        Timer timer = new Timer();
-
-    timer.schedule( new TimerTask() {
-        public void run() {
-            manaManager m = new manaManager();
-            for (Player p : Bukkit.getServer().getOnlinePlayers()) {
-                String pName = p.getDisplayName();
-                if (m.getMana(pName) <= m.getMaxMana(pName)) {
-                    m.addMana(pName, m.getMaxMana(pName)/20);
+        Main main = new Main();
+        manaManager m = new manaManager();
+        Bukkit.getServer().getScheduler().scheduleSyncRepeatingTask(main.main, new Runnable() {
+            public void run() {
+                for (Player p : Bukkit.getOnlinePlayers()) {
+                    if (m.getMana(p) < m.getMaxMana(p)) {
+                        m.addMana(p, m.getMaxMana(p)/70);
+                    } else {
+                        return;
                     }
                 }
             }
-        }, 0, 60*1000);
+        }, 15, 15);
     }
 }
