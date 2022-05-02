@@ -38,16 +38,12 @@ public class Main extends JavaPlugin {
         PetheriteSet.init();
         Talisman.init();
         Drakon.init();
-        WASDPlaneKey.init();
         baseMethods.init();
-        phoneitems.init();
-        phone.init();
 
         // recipes
         armorRecipes.init();
 
 
-        getServer().getPluginManager().registerEvents(new phoneListener(), this);
         getServer().getPluginManager().registerEvents(new upgradeGUIListener(), this);
         getServer().getPluginManager().registerEvents(new playerDamageListener(), this);
         getServer().getPluginManager().registerEvents(new rightClickPlayer(), this);
