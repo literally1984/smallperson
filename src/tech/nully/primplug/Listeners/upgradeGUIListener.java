@@ -1,4 +1,4 @@
-package tech.nully.primplug.upgradeItems.guis;
+package tech.nully.primplug.Listeners;
 
 import java.util.List;
 
@@ -16,6 +16,7 @@ import tech.nully.primplug.baseMethods;
 import tech.nully.primplug.RPGcommands.reforges.reforgeGUI;
 import tech.nully.primplug.RPGcommands.reforges.reforges;
 import tech.nully.primplug.upgradeItems.upgradeUpdate;
+import tech.nully.primplug.upgradeItems.guis.upgradeGUI;
 
 public class upgradeGUIListener implements Listener {
     @EventHandler
