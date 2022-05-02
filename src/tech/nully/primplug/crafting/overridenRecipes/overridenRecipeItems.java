@@ -45,13 +45,13 @@ public class overridenRecipeItems {
         DiaHelmMeta.setDisplayName("Diamond Helmet");
             // HelmLore
         List<String> Helmlore = new ArrayList<>();
-        Helmlore.add("The good ol' vanilla diamond armor!");
         Helmlore.add("");
-        Helmlore.add(ChatColor.BLUE + "Attributes------");
-        Helmlore.add(ChatColor.BLUE + "Damage: 1");
-        Helmlore.add(ChatColor.BLUE + "Defense: 13");
-        Helmlore.add(ChatColor.BLUE + "Mana: 15");
-        Helmlore.add(ChatColor.BLUE + "Stamina: 15");
+        Helmlore.add(ChatColor.RED + "Damage: " + ChatColor.GRAY + "1");
+        Helmlore.add(ChatColor.GREEN + "Defense: " + ChatColor.GRAY + "13");
+        Helmlore.add(ChatColor.BLUE + "Mana: " + ChatColor.GRAY + "15");
+        Helmlore.add(ChatColor.GOLD + "Stamina: " + ChatColor.GRAY + "15");
+        Helmlore.add("");
+        Helmlore.add("The good ol' vanilla diamond armor!");
         Helmlore.add("");
         Helmlore.add(ChatColor.BLUE + "" + ChatColor.BOLD + "RARE");
         DiaHelmMeta.setLore(Helmlore);
@@ -71,13 +71,13 @@ public class overridenRecipeItems {
         DiaChestMeta.setDisplayName("Diamond Chestplate");
             // ChestLore
         List<String> Chestlore = new ArrayList<>();
-        Chestlore.add(ChatColor.LIGHT_PURPLE + "The good ol' vanilla diamond armor!");
         Chestlore.add("");
-        Chestlore.add(ChatColor.BLUE + "Attributes------");
-        Chestlore.add(ChatColor.BLUE + "Damage: 1");
-        Chestlore.add(ChatColor.BLUE + "Defense: 26");
-        Chestlore.add(ChatColor.BLUE + "Mana: 15");
-        Chestlore.add(ChatColor.BLUE + "Stamina: 15");
+        Chestlore.add(ChatColor.RED+ "Damage: " + ChatColor.GRAY + "1");
+        Chestlore.add(ChatColor.GREEN + "Defense: " + ChatColor.GRAY + "26");
+        Chestlore.add(ChatColor.BLUE + "Mana: " + ChatColor.GRAY + "15");
+        Chestlore.add(ChatColor.GOLD + "Stamina: " + ChatColor.GRAY + "15");
+        Chestlore.add("");
+        Chestlore.add(ChatColor.LIGHT_PURPLE + "The good ol' vanilla diamond armor!");
         Chestlore.add("");
         Chestlore.add(ChatColor.BLUE + "" + ChatColor.BOLD + "RARE");
         DiaChestMeta.setLore(Chestlore);
@@ -96,16 +96,16 @@ public class overridenRecipeItems {
 
 
         // SET THE META ----------------
-        DiaLegMeta.setDisplayName("Diamond Legplate");
+        DiaLegMeta.setDisplayName("Diamond Chestplate");
             // LegLore
         List<String> Leglore = new ArrayList<>();
-        Leglore.add(ChatColor.LIGHT_PURPLE + "The good ol' vanilla diamond armor!");
         Leglore.add("");
-        Leglore.add(ChatColor.BLUE + "Attributes------");
-        Leglore.add(ChatColor.BLUE + "Damage: 1");
-        Leglore.add(ChatColor.BLUE + "Defense: 13");
-        Leglore.add(ChatColor.BLUE + "Mana: 15");
-        Leglore.add(ChatColor.BLUE + "Stamina: 15");
+        Leglore.add(ChatColor.BLUE + "Damage: " + ChatColor.GRAY + "1");
+        Leglore.add(ChatColor.BLUE + "Defense: " + ChatColor.GRAY + "13");
+        Leglore.add(ChatColor.BLUE + "Mana: " + ChatColor.GRAY + "15");
+        Leglore.add(ChatColor.BLUE + "Stamina: " + ChatColor.GRAY + "15");
+        Leglore.add("");
+        Leglore.add(ChatColor.LIGHT_PURPLE + "The good ol' vanilla diamond armor!");
         Leglore.add("");
         Leglore.add(ChatColor.BLUE + "" + ChatColor.BOLD + "RARE");
         DiaLegMeta.setLore(Leglore);
@@ -116,33 +116,29 @@ public class overridenRecipeItems {
         diaLeg = DiaLeg;
     }
     // ! Cac Boots
-    private static void createCacBoots() {
+    private static void createDiaBoots() {
         // DEFINE THE META -------------
-        ItemStack CacBoots = new ItemStack(Material.DIAMOND_BOOTS);
-        ItemMeta CacBootsMeta = CacBoots.hasItemMeta() ? CacBoots.getItemMeta() : Bukkit.getItemFactory().getItemMeta(CacBoots.getType());
+        ItemStack DiaBoots = new ItemStack(Material.DIAMOND_BOOTS);
+        ItemMeta DiaBootsMeta = DiaBoots.hasItemMeta() ? DiaBoots.getItemMeta() : Bukkit.getItemFactory().getItemMeta(DiaBoots.getType());
 
 
         // SET THE META ----------------
-        CacBootsMeta.setDisplayName("Cac Boots");
+        DiaBootsMeta.setDisplayName("Diamond Boots");
             // BootsLore
         List<String> Bootslore = new ArrayList<>();
-        Bootslore.add("A very spikey armor piece, reflects");
-        Bootslore.add("some damage back to the opponent when");
-        Bootslore.add("they hit you if you have the set bonus");
         Bootslore.add("");
-        Bootslore.add(ChatColor.GOLD + "Set Bonus:");
-        Bootslore.add(ChatColor.GOLD + "Reflects 33% of the damage you take");
-        Bootslore.add(ChatColor.GOLD + "back to your opponent");
+        Bootslore.add(ChatColor.BLUE + "Damage: " + ChatColor.GRAY + "1");
+        Bootslore.add(ChatColor.BLUE + "Defense: " + ChatColor.GRAY + "8");
+        Bootslore.add(ChatColor.BLUE + "Mana: " + ChatColor.GRAY + "7");
+        Bootslore.add(ChatColor.BLUE + "Stamina: " + ChatColor.GRAY + "13");
         Bootslore.add("");
-        Bootslore.add(ChatColor.BLUE + "Attributes------");
-        Bootslore.add(ChatColor.BLUE + "Damage: 1");
-        Bootslore.add(ChatColor.BLUE + "Defense: 8");
-        Bootslore.add(ChatColor.BLUE + "Mana: 7");
-        Bootslore.add(ChatColor.BLUE + "Stamina: 13");
-        CacBootsMeta.setLore(Bootslore);
+        Bootslore.add(ChatColor.LIGHT_PURPLE + "The good ol' vanilla diamond armor!");
+        Bootslore.add("");
+        Bootslore.add(ChatColor.BLUE + "" + ChatColor.BOLD + "RARE");
+        DiaBootsMeta.setLore(Bootslore);
 
 
-        CacBoots.setItemMeta(CacBootsMeta);
-        diaBoots = CacBoots;
+        DiaBoots.setItemMeta(DiaBootsMeta);
+        diaBoots = DiaBoots;
     }
 }

@@ -4,18 +4,19 @@ import java.util.Iterator;
 
 import org.bukkit.ChatColor;
 import org.bukkit.inventory.Recipe;
-import org.bukkit.metadata.FixedMetadataValue;
 import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import tech.nully.primplug.Armor.armorItems.Drakon;
 import tech.nully.primplug.Armor.armorItems.PetheriteSet;
 import tech.nully.primplug.Listeners.playerDamageListener;
+import tech.nully.primplug.Listeners.upgradeGUIListener;
 import tech.nully.primplug.RPGcommands.reforges.reforgeCommand;
 import tech.nully.primplug.RegularCommands.giveCommand;
 import tech.nully.primplug.Talismans.Talisman;
 import tech.nully.primplug.Talismans.talismanListeners;
 import tech.nully.primplug.crafting.customRecipes.armorRecipes;
+import tech.nully.primplug.manaManager.passiveManaAdder;
 import tech.nully.primplug.phones.phone;
 import tech.nully.primplug.phones.phoneListener;
 import tech.nully.primplug.phones.phoneitems;
@@ -23,14 +24,15 @@ import tech.nully.primplug.planes.WASDPlaneKey;
 import tech.nully.primplug.recipeBook.recipeCommand;
 import tech.nully.primplug.rightClickPlayerMechanic.rightClickPlayer;
 import tech.nully.primplug.upgradeItems.upgradeCommand;
-import tech.nully.primplug.upgradeItems.guis.upgradeGUIListener;
 
 public class Main extends JavaPlugin {
     public Iterator<Recipe> it = getServer().recipeIterator();
     public Plugin main = this;
+    passiveManaAdder p = new passiveManaAdder();
 
     @Override
     public void onEnable() {
+        p.addMana();
 
 
         PetheriteSet.init();

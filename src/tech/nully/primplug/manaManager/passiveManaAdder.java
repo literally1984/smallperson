@@ -1,8 +1,5 @@
 package tech.nully.primplug.manaManager;
 
-import java.util.Timer;
-import java.util.TimerTask;
-
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 

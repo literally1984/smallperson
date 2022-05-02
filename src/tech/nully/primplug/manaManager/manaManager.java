@@ -40,7 +40,7 @@ public class manaManager {
             }
             // gets the amount of mana needed to be added (addedMana)
             String manaLine = helmLore.get(index);
-            String[] manaLineArr = manaLine.split(" ");
+            String[] manaLineArr = manaLine.split(" §7");
             int addedMana = Integer.parseInt(manaLineArr[1]);
 
             // checks if the player already has a spot in the hashmap
@@ -61,7 +61,7 @@ public class manaManager {
             }
             // gets the amount of mana needed to be added (addedMana)
             String manaLine = ChesLore.get(index);
-            String[] manaLineArr = manaLine.split(" ");
+            String[] manaLineArr = manaLine.split(" §7");
             int addedMana = Integer.parseInt(manaLineArr[1]);
 
             // checks if the player already has a spot in the hashmap
@@ -86,7 +86,7 @@ public class manaManager {
             }
             // gets the amount of mana needed to be added (addedMana)
             String manaLine = LegLore.get(index);
-            String[] manaLineArr = manaLine.split(" ");
+            String[] manaLineArr = manaLine.split(" §7");
             int addedMana = Integer.parseInt(manaLineArr[1]);
 
             // checks if the player already has a spot in the hashmap
@@ -111,7 +111,7 @@ public class manaManager {
             }
             // gets the amount of mana needed to be added (addedMana)
             String manaLine = BootsLore.get(index);
-            String[] manaLineArr = manaLine.split(" ");
+            String[] manaLineArr = manaLine.split(" §7");
             int addedMana = Integer.parseInt(manaLineArr[1]);
 
             // checks if the player already has a spot in the hashmap

@@ -5,7 +5,7 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityDamageEvent;
 
-import tech.nully.primplug.defenseManager.defenseListener;
+import tech.nully.primplug.defenseManager.defenseManager;
 
 public class playerDamageListener implements Listener{
     @EventHandler
@@ -13,7 +13,7 @@ public class playerDamageListener implements Listener{
         if (e.getEntity() instanceof Player) {
             Player p = (Player) e.getEntity();
 
-            defenseListener d = new defenseListener();
+            defenseManager d = new defenseManager();
             int playerDefense = d.getdefense(p);
 
 

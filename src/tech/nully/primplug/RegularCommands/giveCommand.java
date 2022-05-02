@@ -8,6 +8,7 @@ import org.bukkit.entity.Player;
 
 import tech.nully.primplug.Armor.armorItems.Drakon;
 import tech.nully.primplug.Armor.armorItems.PetheriteSet;
+import tech.nully.primplug.Armor.armorItems.cactusArmor;
 import tech.nully.primplug.Talismans.Talisman;
 import tech.nully.primplug.phones.phone;
 import tech.nully.primplug.planes.WASDPlaneKey;
@@ -138,6 +139,42 @@ public class giveCommand implements CommandExecutor {
                     ChatColor.YELLOW + 
                     "!");
                 case "phone": p.getInventory().addItem(phone.epikPhone);
+                sender.sendMessage(
+                    ChatColor.YELLOW + 
+                    "You gave yourself a " + 
+                    ChatColor.LIGHT_PURPLE + 
+                    " Phone " + 
+                    ChatColor.YELLOW + 
+                    "!");
+                break;
+                case "cachelm": p.getInventory().addItem(cactusArmor.helm);
+                sender.sendMessage(
+                    ChatColor.YELLOW + 
+                    "You gave yourself a " + 
+                    ChatColor.LIGHT_PURPLE + 
+                    " Cactus Helmet " + 
+                    ChatColor.YELLOW + 
+                    "!");
+                break;
+                case "cacches": p.getInventory().addItem(cactusArmor.ches);
+                sender.sendMessage(
+                    ChatColor.YELLOW + 
+                    "You gave yourself a " + 
+                    ChatColor.LIGHT_PURPLE + 
+                    " Cactus Chesplate " + 
+                    ChatColor.YELLOW + 
+                    "!");
+                break;
+                case "cacleg": p.getInventory().addItem(cactusArmor.leg);
+                sender.sendMessage(
+                    ChatColor.YELLOW + 
+                    "You gave yourself a pair of" + 
+                    ChatColor.LIGHT_PURPLE + 
+                    " Cactus Leggings " + 
+                    ChatColor.YELLOW + 
+                    "!");
+                break;
+                case "cacboots": p.getInventory().addItem(cactusArmor.boots);
                 sender.sendMessage(
                     ChatColor.YELLOW + 
                     "You gave yourself a " + 

@@ -5,7 +5,7 @@ import java.util.List;
 
 import org.bukkit.entity.Player;
 
-public class defenseListener {
+public class defenseManager {
     HashMap<String, Integer> Playerdefense = new HashMap<String, Integer>();
 
     public void setMaxdefense(Player p) {

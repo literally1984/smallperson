@@ -9,41 +9,162 @@ import tech.nully.primplug.Armor.armorItems.cactusArmor;
 import tech.nully.primplug.crafting.overridenRecipes.overridenRecipeItems;
 
 public class armorRecipes {
-    public static ShapedRecipe cacches;
-    
+
     public static void init() {
         cactusChesRecipe();
         PetheriteChesRecipe();
         diaChesRecipe();
         ironChesRecipe();
+
+
+        cactusHelmRecipe();
+        PetheriteHelmRecipe();
+        diaHelmRecipe();
+        ironHelmRecipe();
+
+
+        cactusLegRecipe();
+        PetheriteLegRecipe();
+        diaLegRecipe();
+        ironLegRecipe();
+
+
+        cactusBootsRecipe();
+        PetheriteBootsRecipe();
+        diaBootsRecipe();
+        ironBootsRecipe();
     }
 
-    private static void cactusChesRecipe() {
-        cacches = new ShapedRecipe(cactusArmor.ches);
+    private static void cactusHelmRecipe() {
+        ShapedRecipe cacHelm = new ShapedRecipe(cactusArmor.helm);
 
-        cacches.setIngredient('^', cactusArmor.Shard.getData());
-        cacches.shape("^ ^", "^^^", "^^^");
-        Bukkit.getServer().addRecipe(cacches);
+        cacHelm.setIngredient('^', cactusArmor.Shard.getData());
+        cacHelm.shape("^^^", "^ ^", "   ");
+        Bukkit.getServer().addRecipe(cacHelm);
+    }
+
+    private static void PetheriteHelmRecipe() {
+        ShapedRecipe PHelm = new ShapedRecipe(PetheriteSet.helm);
+
+        PHelm.setIngredient('^', PetheriteSet.obby.getData());
+        PHelm.shape("^^^", "^ ^", "   ");
+    }
+
+    private static void diaHelmRecipe() {
+        ShapedRecipe diaHelm = new ShapedRecipe(overridenRecipeItems.diaHelm);
+
+        diaHelm.setIngredient('^', Material.DIAMOND);
+        diaHelm.shape("^^^", "^ ^", "   ");
+        Bukkit.getServer().addRecipe(diaHelm);
+    }
+
+    private static void ironHelmRecipe() {
+        ShapedRecipe ironHelm = new ShapedRecipe(overridenRecipeItems.ironBoots);
+
+        ironHelm.setIngredient('^', Material.IRON_INGOT);
+        ironHelm.shape("^^^", "^ ^", "   ");
+        Bukkit.getServer().addRecipe(ironHelm);
+    }
+
+
+
+    private static void cactusChesRecipe() {
+        ShapedRecipe cacChes = new ShapedRecipe(cactusArmor.ches);
+
+        cacChes.setIngredient('^', cactusArmor.Shard.getData());
+        cacChes.shape("^ ^", "^^^", "^^^");
+        Bukkit.getServer().addRecipe(cacChes);
     }
 
     private static void PetheriteChesRecipe() {
-        cacches = new ShapedRecipe(PetheriteSet.ches);
+        ShapedRecipe PChes = new ShapedRecipe(PetheriteSet.ches);
 
-        cacches.setIngredient('^', cactusArmor.Shard.getData());
-        cacches.shape("^ ^", "^^^", "^^^");
+        PChes.setIngredient('^', PetheriteSet.obby.getData());
+        PChes.shape("^ ^", "^^^", "^^^");
+        Bukkit.getServer().addRecipe(PChes);
     }
 
     private static void diaChesRecipe() {
-        cacches = new ShapedRecipe(overridenRecipeItems.diaChes);
+        ShapedRecipe diaChes = new ShapedRecipe(overridenRecipeItems.diaChes);
 
-        cacches.setIngredient('^', Material.DIAMOND);
-        cacches.shape("^ ^", "^^^", "^^^");
+        diaChes.setIngredient('^', Material.DIAMOND);
+        diaChes.shape("^ ^", "^^^", "^^^");
+        Bukkit.getServer().addRecipe(diaChes);
     }
 
     private static void ironChesRecipe() {
-        cacches = new ShapedRecipe(cactusArmor.ches);
+        ShapedRecipe ironChes = new ShapedRecipe(overridenRecipeItems.ironChes);
 
-        cacches.setIngredient('^', cactusArmor.Shard.getData());
-        cacches.shape("^ ^", "^^^", "^^^");
+        ironChes.setIngredient('^', Material.IRON_INGOT);
+        ironChes.shape("^ ^", "^^^", "^^^");
+        Bukkit.getServer().addRecipe(ironChes);
+    }
+
+
+
+    private static void cactusLegRecipe() {
+        ShapedRecipe cacLeg = new ShapedRecipe(cactusArmor.leg);
+
+        cacLeg.setIngredient('^', cactusArmor.Shard.getData());
+        cacLeg.shape("^^^", "^ ^", "^ ^");
+        Bukkit.getServer().addRecipe(cacLeg);
+    }
+
+    private static void PetheriteLegRecipe() {
+        ShapedRecipe PLeg = new ShapedRecipe(PetheriteSet.leg);
+
+        PLeg.setIngredient('^', PetheriteSet.obby.getData());
+        PLeg.shape("^^^", "^ ^", "^ ^");
+        Bukkit.getServer().addRecipe(PLeg);
+    }
+
+    private static void diaLegRecipe() {
+        ShapedRecipe diaLeg = new ShapedRecipe(overridenRecipeItems.diaLeg);
+
+        diaLeg.setIngredient('^', Material.DIAMOND);
+        diaLeg.shape("^^^", "^ ^", "^ ^");
+        Bukkit.getServer().addRecipe(diaLeg);
+    }
+
+    private static void ironLegRecipe() {
+        ShapedRecipe ironLeg = new ShapedRecipe(overridenRecipeItems.ironLeg);
+
+        ironLeg.setIngredient('^', Material.IRON_INGOT);
+        ironLeg.shape("^^^", "^ ^", "^ ^");
+        Bukkit.getServer().addRecipe(ironLeg);
+    }
+
+
+
+    private static void cactusBootsRecipe() {
+        ShapedRecipe cacBoots = new ShapedRecipe(cactusArmor.boots);
+
+        cacBoots.setIngredient('^', cactusArmor.Shard.getData());
+        cacBoots.shape("   ", "^ ^", "^ ^");
+        Bukkit.getServer().addRecipe(cacBoots);
+    }
+
+    private static void PetheriteBootsRecipe() {
+        ShapedRecipe PBoots = new ShapedRecipe(PetheriteSet.boots);
+
+        PBoots.setIngredient('^', PetheriteSet.obby.getData());
+        PBoots.shape("   ", "^ ^", "^ ^");
+        Bukkit.getServer().addRecipe(PBoots);
+    }
+
+    private static void diaBootsRecipe() {
+        ShapedRecipe diaBoots = new ShapedRecipe(overridenRecipeItems.diaBoots);
+
+        diaBoots.setIngredient('^', Material.DIAMOND);
+        diaBoots.shape("   ", "^ ^", "^ ^");
+        Bukkit.getServer().addRecipe(diaBoots);
+    }
+
+    private static void ironBootsRecipe() {
+        ShapedRecipe ironBoots = new ShapedRecipe(overridenRecipeItems.ironBoots);
+
+        ironBoots.setIngredient('^', Material.IRON_INGOT);
+        ironBoots.shape("   ", "^ ^", "^ ^");
+        Bukkit.getServer().addRecipe(ironBoots);
     }
 }
