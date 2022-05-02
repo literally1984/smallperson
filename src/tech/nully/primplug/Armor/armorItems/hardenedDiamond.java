@@ -16,6 +16,9 @@ public class hardenedDiamond {
 
     public void init() {
         createHDiaHelm();
+        createHDiaChes();
+        createHDiaLeg();
+        createHDiaBoots();
     }
 
     private static void createHDiaHelm() {
