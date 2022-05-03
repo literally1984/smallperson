@@ -17,10 +17,6 @@ import tech.nully.primplug.Talismans.Talisman;
 import tech.nully.primplug.Talismans.talismanListeners;
 import tech.nully.primplug.crafting.customRecipes.armorRecipes;
 import tech.nully.primplug.manaManager.passiveManaAdder;
-import tech.nully.primplug.phones.phone;
-import tech.nully.primplug.phones.phoneListener;
-import tech.nully.primplug.phones.phoneitems;
-import tech.nully.primplug.planes.WASDPlaneKey;
 import tech.nully.primplug.recipeBook.recipeCommand;
 import tech.nully.primplug.rightClickPlayerMechanic.rightClickPlayer;
 import tech.nully.primplug.upgradeItems.upgradeCommand;
@@ -38,16 +34,12 @@ public class Main extends JavaPlugin {
         PetheriteSet.init();
         Talisman.init();
         Drakon.init();
-        WASDPlaneKey.init();
         baseMethods.init();
-        phoneitems.init();
-        phone.init();
 
         // recipes
         armorRecipes.init();
 
 
-        getServer().getPluginManager().registerEvents(new phoneListener(), this);
         getServer().getPluginManager().registerEvents(new upgradeGUIListener(), this);
         getServer().getPluginManager().registerEvents(new playerDamageListener(), this);
         getServer().getPluginManager().registerEvents(new rightClickPlayer(), this);

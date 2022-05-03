@@ -10,8 +10,6 @@ import tech.nully.primplug.Armor.armorItems.Drakon;
 import tech.nully.primplug.Armor.armorItems.PetheriteSet;
 import tech.nully.primplug.Armor.armorItems.cactusArmor;
 import tech.nully.primplug.Talismans.Talisman;
-import tech.nully.primplug.phones.phone;
-import tech.nully.primplug.planes.WASDPlaneKey;
 
 public class giveCommand implements CommandExecutor {
     @Override
@@ -127,23 +125,6 @@ public class giveCommand implements CommandExecutor {
                     "You gave yourself a pair of" + 
                     ChatColor.LIGHT_PURPLE + 
                     " Drakon Boots " + 
-                    ChatColor.YELLOW + 
-                    "!");
-                break;
-                case "planekey": p.getInventory().addItem(WASDPlaneKey.PlaneKey);
-                sender.sendMessage(
-                    ChatColor.YELLOW + 
-                    "You gave yourself a " + 
-                    ChatColor.LIGHT_PURPLE + 
-                    " Plane key " + 
-                    ChatColor.YELLOW + 
-                    "!");
-                case "phone": p.getInventory().addItem(phone.epikPhone);
-                sender.sendMessage(
-                    ChatColor.YELLOW + 
-                    "You gave yourself a " + 
-                    ChatColor.LIGHT_PURPLE + 
-                    " Phone " + 
                     ChatColor.YELLOW + 
                     "!");
                 break;

@@ -6,7 +6,7 @@ import java.util.List;
 import org.bukkit.entity.Player;
 
 public class defenseManager {
-    HashMap<String, Integer> Playerdefense = new HashMap<String, Integer>();
+    HashMap<Player, Integer> Playerdefense = new HashMap<Player, Integer>();
 
     public void setMaxdefense(Player p) {
         int index = 0;
@@ -23,11 +23,11 @@ public class defenseManager {
             int addeddefense = Integer.parseInt(defenseLineArr[1]);
 
             // checks if the player already has a spot in the hashmap
-            if (!(Playerdefense.containsKey(p.getDisplayName()))) {
-                Playerdefense.put(p.getDisplayName(),0+addeddefense);
+            if (!(Playerdefense.containsKey(p))) {
+                Playerdefense.put(p,0+addeddefense);
                 
-            } else if (Playerdefense.containsKey(p.getDisplayName())) {
-                Playerdefense.put(p.getDisplayName(), Playerdefense.get(p.getDisplayName() + addeddefense));
+            } else if (Playerdefense.containsKey(p)) {
+                Playerdefense.put(p, Playerdefense.get(p) + addeddefense);
             }
         }
 
@@ -45,11 +45,11 @@ public class defenseManager {
             int addeddefense = Integer.parseInt(defenseLineArr[1]);
 
             // checks if the player already has a spot in the hashmap
-            if (!(Playerdefense.containsKey(p.getDisplayName()))) {
-                Playerdefense.put(p.getDisplayName(),0+addeddefense);
+            if (!(Playerdefense.containsKey(p))) {
+                Playerdefense.put(p,0+addeddefense);
                 
-            } else if (Playerdefense.containsKey(p.getDisplayName())) {
-                Playerdefense.put(p.getDisplayName(), Playerdefense.get(p.getDisplayName() + addeddefense));
+            } else if (Playerdefense.containsKey(p)) {
+                Playerdefense.put(p, Playerdefense.get(p) + addeddefense);
             }
 
 
@@ -70,11 +70,11 @@ public class defenseManager {
             int addeddefense = Integer.parseInt(defenseLineArr[1]);
 
             // checks if the player already has a spot in the hashmap
-            if (!(Playerdefense.containsKey(p.getDisplayName()))) {
-                Playerdefense.put(p.getDisplayName(),0+addeddefense);
+            if (!(Playerdefense.containsKey(p))) {
+                Playerdefense.put(p,0+addeddefense);
                 
-            } else if (Playerdefense.containsKey(p.getDisplayName())) {
-                Playerdefense.put(p.getDisplayName(), Playerdefense.get(p.getDisplayName() + addeddefense));
+            } else if (Playerdefense.containsKey(p)) {
+                Playerdefense.put(p, Playerdefense.get(p) + addeddefense);
             }
 
 
@@ -95,11 +95,11 @@ public class defenseManager {
             int addeddefense = Integer.parseInt(defenseLineArr[1]);
 
             // checks if the player already has a spot in the hashmap
-            if (!(Playerdefense.containsKey(p.getDisplayName()))) {
-                Playerdefense.put(p.getDisplayName(),0+addeddefense);
+            if (!(Playerdefense.containsKey(p))) {
+                Playerdefense.put(p,0+addeddefense);
                 
-            } else if (Playerdefense.containsKey(p.getDisplayName())) {
-                Playerdefense.put(p.getDisplayName(), Playerdefense.get(p.getDisplayName() + addeddefense));
+            } else if (Playerdefense.containsKey(p)) {
+                Playerdefense.put(p, Playerdefense.get(p) + addeddefense);
             }
 
 
@@ -114,7 +114,7 @@ public class defenseManager {
 
     // gets player defense from hashmap
     public int getdefense(Player p) {
-        return Playerdefense.get(p.getDisplayName());
+        return Playerdefense.get(p);
     }
 
 
@@ -122,6 +122,6 @@ public class defenseManager {
 
 
     public void takedefense(Player p, int amnt) {
-        Playerdefense.put(p.getDisplayName(), Playerdefense.get(p.getDisplayName()) - amnt);
+        Playerdefense.put(p, Playerdefense.get(p) - amnt);
     }
 }
