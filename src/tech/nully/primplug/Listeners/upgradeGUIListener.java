@@ -21,12 +21,20 @@ public class upgradeGUIListener implements Listener {
         upgradeGUI u = new upgradeGUI();
         reforgeGUI r = new reforgeGUI();
 
+
         ItemStack clickItem = e.getCurrentItem();
+
+        // Checks if the clicked invetory is the upgrade inventory
         if (e.getInventory().getName().equals(u.inv.getName())) {
+
+
+            // checks if the clicked slot is within the upgrade inventory and not the player inventory, if so, cancel the event
             if (e.getSlot() >= 0 && e.getSlot() <= 54 && e.getSlot() != 22) {
                 e.setCancelled(true);
                 ItemStack upgradeItem = e.getInventory().getItem(22);
 
+
+                // checks if the clicked item is one of the upgrade buttons
                 if (clickItem.getItemMeta().getDisplayName().equals(baseMethods.damageUpgrade.getItemMeta().getDisplayName()) ||
                     clickItem.getItemMeta().getDisplayName().equals(baseMethods.defenseUpgrade.getItemMeta().getDisplayName()) ||
                     clickItem.getItemMeta().getDisplayName().equals(baseMethods.manaUpgrade.getItemMeta().getDisplayName()) ||
@@ -53,7 +61,7 @@ public class upgradeGUIListener implements Listener {
                     baseMethods.manaUpgrade.setItemMeta(manaUpgradeMeta);
 
 
-
+                    // if the player's upgrades are at max, it will set the upgrade buttons to a special lore
                     if (up.getStatTotal(e.getCurrentItem()) >= 45) {
                         damageUpgradeLore.add(ChatColor.RED + "You cannot upgrade your item because");
                         damageUpgradeLore.add(ChatColor.RED + "your item is at it's maximum upgrades");
@@ -104,12 +112,15 @@ public class upgradeGUIListener implements Listener {
             
         }
 
-
+        // if the clicked inventory is the reforge inventory
         if (e.getInventory().getName().equals(r.inv.getName())) {
+
+
             if (e.getSlot() >= 0 && e.getSlot() <= 54 && e.getSlot() != 13) {
                 ItemStack reforgeItem = e.getInventory().getItem(13);
                 reforges re = new reforges();
                 e.setCancelled(true);
+                
                 if (clickItem.getItemMeta().getDisplayName().equals(baseMethods.reforgeAnvil.getItemMeta().getDisplayName())) {
                     re.reforgeName(reforgeItem, e.getInventory());
                     }

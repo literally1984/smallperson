@@ -32,6 +32,7 @@ public class getDamage {
 
             // Null checker
             if (i == null) {
+                armorDamages.add(0);
                 continue;
             }
 

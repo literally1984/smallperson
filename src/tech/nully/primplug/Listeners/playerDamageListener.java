@@ -6,6 +6,7 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityDamageEvent;
+import org.bukkit.event.entity.EntityDamageEvent.DamageCause;
 import org.bukkit.inventory.ItemStack;
 
 import tech.nully.primplug.baseMethods;
@@ -15,28 +16,50 @@ import tech.nully.primplug.defenseManager.defenseManager;
 public class playerDamageListener implements Listener{
     @EventHandler
     public void PlayerDamageEvent(EntityDamageEvent e) {
+        // define some stuff
         Player p = (Player) e.getEntity();
         int finalDamage = e.getDamage();
-        int pCurrentHealth;
-        int armorDamage = 0;
-        boolean hasArmor = false;
+        boolean DamagerhasArmor = false;
 
-        for (ItemStack a : p.getInventory().getArmorContents()) {
-            if (a != null) {
-                hasArmor = true;
+
+        EntityDamageEvent event = (EntityDamageEvent) e;
+
+        // checks if the event cause is from an entity damaging
+        if (event.getCause() == DamageCause.ENTITY_ATTACK) {
+
+
+            //Checks if event-entity is a player
+            if (p.getLastDamageCause().getEntity() instanceof Player) {
+
+                // defines damager as the entity that last damaged the player casted into a player
+                Player damager = (Player) p.getLastDamageCause().getEntity();
+
+                // loops through the damager's armor to check if they have any armor
+                for (ItemStack i : damager.getInventory().getArmorContents()) {
+                    if (i != null) {
+                        DamagerhasArmor = true;
+                        break;
+                    }
+                }
+
+                // define more variables
+                baseMethods b = new baseMethods();
+                ItemStack DamagerHandItem = damager.getItemInHand();
+                getDamage get = new getDamage();
+
+
+                if (b.checkIsWeapon(DamagerHandItem)) {
+                    finalDamage = get.getItemDamage(DamagerHandItem);
+                }
+                
+
+                // checks if the damager has armor, if so, uses the getPlayerArmorDamage method from the getDamage class
+                if (DamagerhasArmor) {
+                    List<Integer> armor = get.getPlayerArmorDamage(p);
+                    finalDamage = finalDamage + armor.get(0) + armor.get(1) + armor.get(2) + armor.get(3);
+                }
             }
-        }
 
-        baseMethods b = new baseMethods();
-        ItemStack PlayerHandItem = p.getItemInHand();
-        getDamage get = new getDamage();
-        if (b.checkIsWeapon(PlayerHandItem)) {
-            finalDamage = get.getItemDamage(PlayerHandItem);
-        }
-        
-        if (hasArmor) {
-            List<Integer> armor = get.getPlayerArmorDamage(p);
-            int finalDamage = finalDamage + 
         }
 
 
@@ -54,15 +77,10 @@ public class playerDamageListener implements Listener{
         int def = playerDefPerc/100;
 
 
-        pCurrentHealth = p.getHealth();
         int damage = finalDamage;
         e.setCancelled(true);
         finalDamage = damage - (damage*def);
-
-
-
-        if (e.getEntity() instanceof Player) {
-            
-        }
+        p.setHealth(p.getHealth() - finalDamage);
+        p.sendMessage("works yayy!!");
     }
 }
