@@ -54,8 +54,8 @@ public class talismanIdentifier {
         String BODName = Talisman.BlessingOfDurability.getItemMeta().getDisplayName();
         String MISOName = Talisman.MisoTheRabbit.getItemMeta().getDisplayName();
         if (item.getItemMeta().getDisplayName().equals(CODName) || 
-        item.getItemMeta().getDisplayName().equals(BODName) || 
-        item.getItemMeta().getDisplayName().equals(MISOName)) {
+            item.getItemMeta().getDisplayName().equals(BODName) || 
+            item.getItemMeta().getDisplayName().equals(MISOName)) {
             return true;
         } else {
             return false;

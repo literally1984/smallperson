@@ -79,13 +79,14 @@ public class PetheriteSet {
         PChestMeta.setDisplayName("Petherite Chestplate");
             // ChestLore
         List<String> Chestlore = new ArrayList<>();
-        Chestlore.add(ChatColor.LIGHT_PURPLE + "Totally an original idea lol");
         Chestlore.add("");
-        Chestlore.add(ChatColor.BLUE + "Attributes------");
+        Chestlore.add(ChatColor.BLUE + "------ " + ChatColor.GREEN + "0" + ChatColor.BLUE + "/45 ------");
         Chestlore.add(ChatColor.BLUE + "Damage: 1");
         Chestlore.add(ChatColor.BLUE + "Defense: 8");
         Chestlore.add(ChatColor.BLUE + "Mana: 7");
         Chestlore.add(ChatColor.BLUE + "Stamina: 13");
+        Chestlore.add("");
+        Chestlore.add(ChatColor.LIGHT_PURPLE + "Totally an original idea lol");
         Chestlore.add("");
         Chestlore.add(ChatColor.DARK_PURPLE + "" + ChatColor.BOLD + "EPIC");
         PChestMeta.setLore(Chestlore);

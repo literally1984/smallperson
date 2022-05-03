@@ -15,6 +15,7 @@ public class armorPutOnEvent implements Listener{
     public void armorPutOnByInv(InventoryClickEvent e) {
         baseMethods b = new baseMethods();
         manaManager m = new manaManager();
+        // checks if the clicked slots are armor slots
         if (e.getSlot() == 100 || e.getSlot() == 101 || e.getSlot() == 102 || e.getSlot() == 103) {
             m.setMaxMana((Player) e.getWhoClicked());
         }
