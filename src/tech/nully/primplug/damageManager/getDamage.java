@@ -24,7 +24,7 @@ public class getDamage {
     }
 
 
-    public int getPlayerArmorDamage(Player p) {
+    public List<Integer> getPlayerArmorDamage(Player p) {
         List<Integer> armorDamages = new ArrayList<Integer>();
 
         // Loops through the Player's armor contents
@@ -51,7 +51,7 @@ public class getDamage {
             armorDamages.add(Integer.parseInt(damageLineArr[1]));
         }
 
-        public int
+        return armorDamages;
     }
 
 
