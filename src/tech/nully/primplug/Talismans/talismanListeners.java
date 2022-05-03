@@ -19,7 +19,7 @@ public class talismanListeners implements Listener {
 
 
             // Check if Item in hand is talisman
-            if (t.isTalisman(itemHand) == true) {
+            if (t.isTalisman(itemHand)) {
 
 
                 // if so, remove the item and store the ID into an int
