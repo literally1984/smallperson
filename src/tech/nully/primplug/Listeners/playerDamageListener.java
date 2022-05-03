@@ -1,7 +1,9 @@
 package tech.nully.primplug.Listeners;
 
+import java.util.ArrayList;
 import java.util.List;
 
+import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -10,6 +12,7 @@ import org.bukkit.event.entity.EntityDamageEvent.DamageCause;
 import org.bukkit.inventory.ItemStack;
 
 import tech.nully.primplug.baseMethods;
+import tech.nully.primplug.Armor.armorItems.cactusArmor;
 import tech.nully.primplug.damageManager.getDamage;
 import tech.nully.primplug.defenseManager.defenseManager;
 
@@ -19,7 +22,9 @@ public class playerDamageListener implements Listener{
         // define some stuff
         Player p = (Player) e.getEntity();
         int finalDamage = e.getDamage();
+        int reflectedDamage = 0;
         boolean DamagerhasArmor = false;
+        List<ItemStack> playerArmor = new ArrayList<>();
 
 
         EntityDamageEvent event = (EntityDamageEvent) e;
@@ -38,8 +43,10 @@ public class playerDamageListener implements Listener{
                 for (ItemStack i : damager.getInventory().getArmorContents()) {
                     if (i != null) {
                         DamagerhasArmor = true;
+                        playerArmor.add(i);
                         break;
                     }
+                    playerArmor.add(new ItemStack(Material.AIR));
                 }
 
                 // define more variables
