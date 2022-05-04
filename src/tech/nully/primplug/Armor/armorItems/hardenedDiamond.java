@@ -37,9 +37,9 @@ public class hardenedDiamond {
         Helmlore.add(ChatColor.BLUE + "Mana: " + ChatColor.GRAY + "8");
         Helmlore.add(ChatColor.GOLD + "Stamina: " + ChatColor.GRAY + "13");
         Helmlore.add("");
-        Helmlore.add(ChatColor.LIGHT_PURPLE + "A helmet made out of an extremely durable");
-        Helmlore.add(ChatColor.LIGHT_PURPLE + "material which grants a lot of protection");
-        Helmlore.add("");
+        Helmlore.add(ChatColor.LIGHT_PURPLE + "Made from the hardest diamonds from the depths");
+        Helmlore.add(ChatColor.LIGHT_PURPLE + "of the earth, this armor is the toughest around!");
+        Helmlore.add("-Z");
         Helmlore.add(ChatColor.DARK_PURPLE + "" + ChatColor.BOLD + "EPIC");
         HDiaHelmMeta.setLore(Helmlore);
 
@@ -65,9 +65,9 @@ public class hardenedDiamond {
         Cheslore.add(ChatColor.BLUE + "Mana: " + ChatColor.GRAY + "13");
         Cheslore.add(ChatColor.BLUE + "Stamina: " + ChatColor.GRAY + "20");
         Cheslore.add("");
-        Cheslore.add(ChatColor.LIGHT_PURPLE + "A Chesplate made out of an extremely durable");
-        Cheslore.add(ChatColor.LIGHT_PURPLE + "material which grants a lot of protection");
-        Cheslore.add("");
+        Cheslore.add(ChatColor.LIGHT_PURPLE + "Made from the hardest diamonds from the depths");
+        Cheslore.add(ChatColor.LIGHT_PURPLE + "of the earth, this armor is the toughest around!");
+        Cheslore.add("-Z");
         Cheslore.add(ChatColor.DARK_PURPLE + "" + ChatColor.BOLD + "EPIC");
         HDiaChesMeta.setLore(Cheslore);
 
@@ -92,10 +92,9 @@ public class hardenedDiamond {
         Helmlore.add(ChatColor.BLUE + "Mana: " + ChatColor.GRAY + "8");
         Helmlore.add(ChatColor.BLUE + "Stamina: " + ChatColor.GRAY + "13");
         Helmlore.add("");
-        Helmlore.add(ChatColor.GRAY + "A helmet made out of an extremely durable");
-        Helmlore.add(ChatColor.GRAY + "material which grants a lot of protection");
-        
-        Helmlore.add("");
+        Helmlore.add(ChatColor.GRAY + "Made from the hardest diamonds from the depths");
+        Helmlore.add(ChatColor.GRAY + "of the earth, this armor is the toughest around!");
+        Helmlore.add("-Z");
         Helmlore.add(ChatColor.DARK_PURPLE + "" + ChatColor.BOLD + "EPIC");
         HDiaHelmMeta.setLore(Helmlore);
 
@@ -120,9 +119,9 @@ public class hardenedDiamond {
         Bootslore.add(ChatColor.BLUE + "Mana: " + ChatColor.GRAY + "8");
         Bootslore.add(ChatColor.GOLD + "Stamina: " + ChatColor.GRAY + "13");
         Bootslore.add("");
-        Bootslore.add(ChatColor.LIGHT_PURPLE + "A Bootset made out of an extremely durable");
-        Bootslore.add(ChatColor.LIGHT_PURPLE + "material which grants a lot of protection");
-        Bootslore.add("");
+        Bootslore.add(ChatColor.LIGHT_PURPLE + "Made from the hardest diamonds from the depths");
+        Bootslore.add(ChatColor.LIGHT_PURPLE + "of the earth, this armor is the toughest around!");
+        Bootslore.add("-Z");
         Bootslore.add(ChatColor.DARK_PURPLE + "" + ChatColor.BOLD + "EPIC");
         HDiaBootsMeta.setLore(Bootslore);
 
