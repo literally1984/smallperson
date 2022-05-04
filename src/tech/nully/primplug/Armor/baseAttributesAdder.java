@@ -10,10 +10,10 @@ import tech.nully.primplug.itemStuff.rarityObject;
 public class baseAttributesAdder {
     public void addAttributes(ItemStack item, int damage, int defense, int mana, int stamina) {
         List<String> itemLore = item.getItemMeta().getLore();
-        itemLore.add(ChatColor.GRAY + "Damage: " + ChatColor.DARK_GRAY + damage);
-        itemLore.add(ChatColor.GRAY + "Defense: " + ChatColor.DARK_GRAY + defense);
-        itemLore.add(ChatColor.GRAY + "Mana: " + ChatColor.DARK_GRAY + mana);
-        itemLore.add(ChatColor.GRAY + "Stamina: " + ChatColor.DARK_GRAY + stamina);
+        itemLore.add(ChatColor.GRAY + "Damage: " + ChatColor.RED + damage);
+        itemLore.add(ChatColor.GRAY + "Defense: " + ChatColor.GREEN+ defense);
+        itemLore.add(ChatColor.GRAY + "Mana: " + ChatColor.AQUA + mana);
+        itemLore.add(ChatColor.GRAY + "Stamina: " + ChatColor.GOLD + stamina);
         rarityObject r = new rarityObject();
         int maxUpgrades = r.getMaxUpgrades(item);
         itemLore.add(ChatColor.GRAY + "----" + ChatColor.WHITE + "0/" + maxUpgrades + ChatColor.GRAY + "----");

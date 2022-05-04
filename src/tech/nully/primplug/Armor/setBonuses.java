@@ -14,6 +14,7 @@ public class setBonuses {
 
 
     public void getPlayerSetBonus(Player p) {
+        hasSetBonus.get(p);
     }
 
 
@@ -35,9 +36,10 @@ public class setBonuses {
             
 
             hasSetBonus.put(p, "cac");
+            return;
         }
 
-
+        // check if the player's armor is a set of hardenedDiamond
         if (playerHelm.equals(hardenedDiamond.helm.getItemMeta().getDisplayName()) && 
             playerChes.equals(hardenedDiamond.ches.getItemMeta().getDisplayName()) && 
             playerLeg.equals(hardenedDiamond.leg.getItemMeta().getDisplayName()) && 
@@ -45,16 +47,26 @@ public class setBonuses {
             
 
             hasSetBonus.put(p, "hdia");
+            return;
         }
 
-
+        // check if the player's armor is a set of Drakon armor
         if (playerHelm.equals(Drakon.helm.getItemMeta().getDisplayName()) && 
             playerChes.equals(Drakon.ches.getItemMeta().getDisplayName()) && 
             playerLeg.equals(Drakon.leg.getItemMeta().getDisplayName()) && 
             playerBoots.equals(Drakon.boots.getItemMeta().getDisplayName())) {
             
 
-            hasSetBonus.put(p, "hdia");
+            hasSetBonus.put(p, "drakon");
+            return;
+            // if none of the above set bonuses apply, remove the player's key from the hashMap
+        } else {
+            if (hasSetBonus.containsKey(p)) {
+                hasSetBonus.remove(p);
+                return;
+            } else {
+                return;
+            }
         }
 
 
