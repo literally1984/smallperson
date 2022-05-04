@@ -10,10 +10,7 @@ import org.bukkit.Material;
 import org.bukkit.enchantments.Enchantment;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
-<<<<<<< HEAD
 import org.bukkit.inventory.meta.LeatherArmorMeta;
-=======
->>>>>>> b3977d46a45069a911f09c6ce18adbaa13540f9b
 
 
 public class demigodArmor {
