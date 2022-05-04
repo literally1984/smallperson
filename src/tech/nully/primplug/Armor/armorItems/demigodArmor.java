@@ -23,14 +23,14 @@ public class demigodArmor {
     public static void init() {
         createDemiShard();
         createDemiHelm();
-        createdemiChestplate();
+        createDemiChestplate();
         createDemiLeggings();
         createDemiBoots();
     }
     // !  Obsidian
     private static void createDemiShard() {
         // DEFINE THE META -------------
-        ItemStack DemiShard = new ItemStack(Material.DemiShard);
+        ItemStack DemiShard = new ItemStack(Material.MAGMA_CREAM);
         ItemMeta DemiShardMeta = DemiShard.getItemMeta();
     
     // SET THE META ----------------
@@ -41,10 +41,10 @@ public class demigodArmor {
         Helmlore.add(ChatColor.YELLOW + "It seems to glow when you touch it...");
         DemiShardMeta.setLore(Helmlore);
 
-        DemiShardMeta.addEnchant(Enchantment.Unbreaking3, 1, true);
+        DemiShardMeta.addEnchant(Enchantment.DURABILITY, 3, true);
 
         DemiShard.setItemMeta(DemiShardMeta);
-        Shard = DemiShard;
+        ItemStack Shard = DemiShard;
     }
 
     //! Demigod Helmet
