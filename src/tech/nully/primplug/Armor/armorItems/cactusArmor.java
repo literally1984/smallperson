@@ -71,11 +71,11 @@ public class cactusArmor {
         Helmlore.add("Ouch! Pointy!");
         Helmlore.add("-Z");
         Helmlore.add("");
-        Helmlore.add(ChatColor.GOLD + ChatColor.BOLD + "Set Bonus: Iron Spikes");
+        Helmlore.add(ChatColor.GOLD+ "" + ChatColor.BOLD + "Set Bonus: Iron Spikes");
         Helmlore.add("Reflects 33% of the damage you take");
         Helmlore.add("back to your opponent, but reduces movement speed by 10%");
         Helmlore.add("");
-        Helmlore.add(ChatColor.GREEN + ChatColor.BOLD + "UNCOMMON");
+        Helmlore.add(ChatColor.GREEN+ "" + ChatColor.BOLD + "UNCOMMON");
         Helmlore.add("");
         CacHelmMeta.setLore(Helmlore);
 
@@ -109,11 +109,11 @@ public class cactusArmor {
         Chestlore.add("Gonna need a Band-Aid!");
         Chestlore.add("-Z");
         Chestlore.add("");
-        Chestlore.add(ChatColor.GOLD + ChatColor.BOLD + "Set Bonus: Iron Spikes");
+        Chestlore.add(ChatColor.GOLD+ "" + ChatColor.BOLD + "Set Bonus: Iron Spikes");
         Chestlore.add("Reflects 33% of the damage you take");
         Chestlore.add("back to your opponent, but reduces movement speed by 10%");
         Chestlore.add("");
-        Chestlore.add(ChatColor.GREEN + ChatColor.BOLD + "UNCOMMON");
+        Chestlore.add(ChatColor.GREEN + "" + ChatColor.BOLD + "UNCOMMON");
         Chestlore.add("");
         CacChestMeta.setLore(Chestlore);
 
@@ -152,7 +152,7 @@ public class cactusArmor {
         Leglore.add("Reflects 33% of the damage you take");
         Leglore.add("back to your opponent, but reduces movement speed by 10%");
         Leglore.add("");
-        Leglore.add(ChatColor.GREEN + ChatColor.BOLD + "UNCOMMON");
+        Leglore.add(ChatColor.GREEN + "" + ChatColor.BOLD + "UNCOMMON");
         Leglore.add("");
         PLegMeta.setLore(Leglore);
         
@@ -185,11 +185,11 @@ public class cactusArmor {
         Bootslore.add("A pain to walk in!");
         Bootslore.add("-Z");
         Bootslore.add("");
-        Bootslore.add(ChatColor.GOLD + ChatColor.BOLD + "Full Set Bonus: Iron Spikes");
+        Bootslore.add(ChatColor.YELLOW + "" + ChatColor.BOLD + "Full Set Bonus: Iron Spikes");
         Bootslore.add("Reflects 33% of the damage you take");
         Bootslore.add("back to your opponent, but reduces movement speed by 10%");
         Bootslore.add("");
-        Bootslore.add(ChatColor.GREEN + ChatColor.BOLD + "UNCOMMON");
+        Bootslore.add(ChatColor.GREEN+ "" + ChatColor.BOLD + "UNCOMMON");
         CacBootsMeta.setLore(Bootslore);
 
         // LEATHER ARMOR META
