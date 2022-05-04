@@ -10,6 +10,8 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.inventory.meta.LeatherArmorMeta;
 
+import tech.nully.primplug.Armor.baseAttributesAdder;
+
 public class lapisArmor {
     public static ItemStack helm;
     public static ItemStack chestplate;
@@ -22,6 +24,10 @@ public class lapisArmor {
         createLapisLeg();
         createLapisBoots();
     }
+    
+
+
+    private static baseAttributesAdder a = new baseAttributesAdder();
 
     private static void createLapisHelm() {
         // DEFINE THE META -------------
@@ -34,19 +40,25 @@ public class lapisArmor {
             // HelmLore
         List<String> Helmlore = new ArrayList<>();
         Helmlore.add("");
-        Helmlore.add(ChatColor.RED + "Damage: " + ChatColor.GRAY + "0");
-        Helmlore.add(ChatColor.GREEN + "Defense: " + ChatColor.GRAY + "6");
-        Helmlore.add(ChatColor.BLUE + "Mana: " + ChatColor.GRAY + "20");
-        Helmlore.add(ChatColor.GOLD + "Stamina: " + ChatColor.GRAY + "5");
+        a.addAttributes(LapisHelm, 0, 6, 15, 5);
         Helmlore.add("");
-        Helmlore.add(ChatColor.LIGHT_PURPLE + "Armor made from Lapis Lazui granting");
-        Helmlore.add(ChatColor.LIGHT_PURPLE + "the wearer massive amounts of mana");
+        Helmlore.add(ChatColor.YELLOW + "" + ChatColor.BOLD + "PASSIVE SET BONUS: INFINITE INTELLIGENCE");
+        Helmlore.add(ChatColor.GRAY + "Once completing the set bonus of this armor,");
+        Helmlore.add(ChatColor.GRAY + "+30 extra mana is granted due to the ancient");
+        Helmlore.add(ChatColor.GRAY + "power of the lapis lazui used to craft it");
+        Helmlore.add("");
+        Helmlore.add(ChatColor.GRAY + "" + ChatColor.ITALIC + "Armor made from Lapis Lazui granting");
+        Helmlore.add(ChatColor.GRAY + "" + ChatColor.ITALIC + "the wearer massive amounts of mana");
+        Helmlore.add(ChatColor.GRAY + "" + ChatColor.ITALIC + "but minimal defense due to the brittle");
+        Helmlore.add(ChatColor.GRAY + "" + ChatColor.ITALIC + "nature of lapis lazui...");
         Helmlore.add("");
         Helmlore.add(ChatColor.GREEN + "" + ChatColor.BOLD + "UNCOMMON");
         LapisHelmMeta.setLore(Helmlore);
 
         LeatherArmorMeta l = (LeatherArmorMeta) LapisHelmMeta;
         l.setColor(Color.BLUE);
+
+        LapisHelm.setDurability((short)-20);
 
         LapisHelm.setItemMeta(LapisHelmMeta);
         helm = LapisHelm;
@@ -65,13 +77,17 @@ public class lapisArmor {
             // ChesLore
         List<String> Cheslore = new ArrayList<>();
         Cheslore.add("");
-        Cheslore.add(ChatColor.BLUE + "Damage: " + ChatColor.GRAY + "1");
-        Cheslore.add(ChatColor.BLUE + "Defense: " + ChatColor.GRAY + "18");
-        Cheslore.add(ChatColor.BLUE + "Mana: " + ChatColor.GRAY + "30");
-        Cheslore.add(ChatColor.BLUE + "Stamina: " + ChatColor.GRAY + "10");
+        a.addAttributes(LapisChes, 1, 18, 25, 10);
         Cheslore.add("");
-        Cheslore.add(ChatColor.LIGHT_PURPLE + "Armor made from Lapis Lazui granting");
-        Cheslore.add(ChatColor.LIGHT_PURPLE + "the wearer massive amounts of mana");
+        Cheslore.add(ChatColor.YELLOW + "" + ChatColor.BOLD + "PASSIVE SET BONUS: INFINITE INTELLIGENCE");
+        Cheslore.add(ChatColor.GRAY + "Once completing the set bonus of this armor,");
+        Cheslore.add(ChatColor.GRAY + "+30 extra mana is granted due to the ancient");
+        Cheslore.add(ChatColor.GRAY + "power of the lapis lazui used to craft it");
+        Cheslore.add("");
+        Cheslore.add(ChatColor.GRAY + "" + ChatColor.ITALIC + "Armor made from Lapis Lazui granting");
+        Cheslore.add(ChatColor.GRAY + "" + ChatColor.ITALIC + "the wearer massive amounts of mana");
+        Cheslore.add(ChatColor.GRAY + "" + ChatColor.ITALIC + "but minimal defense due to the brittle");
+        Cheslore.add(ChatColor.GRAY + "" + ChatColor.ITALIC + "nature of lapis lazui...");
         Cheslore.add("");
         Cheslore.add(ChatColor.GREEN + "" + ChatColor.BOLD + "UNCOMMON");
         LapisChesMeta.setLore(Cheslore);
@@ -87,29 +103,35 @@ public class lapisArmor {
 
     private static void createLapisLeg() {
         // DEFINE THE META -------------
-        ItemStack LapisHelm = new ItemStack(Material.LEATHER_HELMET);
-        ItemMeta LapisHelmMeta = LapisHelm.getItemMeta();
+        ItemStack LapisLeg = new ItemStack(Material.LEATHER_HELMET);
+        ItemMeta LapisLegMeta = LapisLeg.getItemMeta();
 
 
         // SET THE META ----------------
-        LapisHelmMeta.setDisplayName("Lapis Leggings");
+        LapisLegMeta.setDisplayName("Lapis Leggings");
             // HelmLore
-        List<String> Helmlore = new ArrayList<>();
-        Helmlore.add("");
-        Helmlore.add(ChatColor.BLUE + "Damage: " + ChatColor.GRAY + "3");
-        Helmlore.add(ChatColor.BLUE + "Defense: " + ChatColor.GRAY + "18");
-        Helmlore.add(ChatColor.BLUE + "Mana: " + ChatColor.GRAY + "8");
-        Helmlore.add(ChatColor.BLUE + "Stamina: " + ChatColor.GRAY + "13");
-        Helmlore.add("");
-        Helmlore.add(ChatColor.LIGHT_PURPLE + "A helmet made out of an extremely durable");
-        Helmlore.add(ChatColor.LIGHT_PURPLE + "material which grants a lot of protection");
-        
-        Helmlore.add("");
-        Helmlore.add(ChatColor.DARK_PURPLE + "" + ChatColor.BOLD + "EPIC");
-        LapisHelmMeta.setLore(Helmlore);
+        List<String> Leglore = new ArrayList<>();
+        Leglore.add("");
+        a.addAttributes(LapisLeg, 1, 14, 20, 7);
+        Leglore.add("");
+        Leglore.add(ChatColor.YELLOW + "" + ChatColor.BOLD + "PASSIVE SET BONUS: INFINITE INTELLIGENCE");
+        Leglore.add(ChatColor.GRAY + "Once completing the set bonus of this armor,");
+        Leglore.add(ChatColor.GRAY + "+30 extra mana is granted due to the ancient");
+        Leglore.add(ChatColor.GRAY + "power of the lapis lazui used to craft it");
+        Leglore.add("");
+        Leglore.add(ChatColor.GRAY + "" + ChatColor.ITALIC + "Armor made from Lapis Lazui granting");
+        Leglore.add(ChatColor.GRAY + "" + ChatColor.ITALIC + "the wearer massive amounts of mana");
+        Leglore.add(ChatColor.GRAY + "" + ChatColor.ITALIC + "but minimal defense due to the brittle");
+        Leglore.add(ChatColor.GRAY + "" + ChatColor.ITALIC + "nature of lapis lazui...");
+        Leglore.add("");
+        Leglore.add(ChatColor.GREEN + "" + ChatColor.BOLD + "UNCOMMON");
+        LapisLegMeta.setLore(Leglore);
 
-        LapisHelm.setItemMeta(LapisHelmMeta);
-        helm = LapisHelm;
+        LeatherArmorMeta l = (LeatherArmorMeta) LapisLegMeta;
+        l.setColor(Color.BLUE);
+
+        LapisLeg.setItemMeta(LapisLegMeta);
+        helm = LapisLeg;
     }
 
 
@@ -120,20 +142,27 @@ public class lapisArmor {
 
 
         // SET THE META ----------------
-        LapisBootsMeta.setDisplayName("Hardened LEATHER Bootset");
+        LapisBootsMeta.setDisplayName("Lapis Boots");
             // BootsLore
         List<String> Bootslore = new ArrayList<>();
         Bootslore.add("");
-        Bootslore.add(ChatColor.RED + "Damage: " + ChatColor.GRAY + "3");
-        Bootslore.add(ChatColor.GREEN + "Defense: " + ChatColor.GRAY + "18");
-        Bootslore.add(ChatColor.BLUE + "Mana: " + ChatColor.GRAY + "8");
-        Bootslore.add(ChatColor.GOLD + "Stamina: " + ChatColor.GRAY + "13");
+        a.addAttributes(LapisBoots, 0, 6, 15, 5);
         Bootslore.add("");
-        Bootslore.add(ChatColor.LIGHT_PURPLE + "A Bootset made out of an extremely durable");
-        Bootslore.add(ChatColor.LIGHT_PURPLE + "material which grants a lot of protection");
+        Bootslore.add(ChatColor.YELLOW + "" + ChatColor.BOLD + "PASSIVE SET BONUS: INFINITE INTELLIGENCE");
+        Bootslore.add(ChatColor.GRAY + "Once completing the set bonus of this armor,");
+        Bootslore.add(ChatColor.GRAY + "+30 extra mana is granted due to the ancient");
+        Bootslore.add(ChatColor.GRAY + "power of the lapis lazui used to craft it");
         Bootslore.add("");
-        Bootslore.add(ChatColor.DARK_PURPLE + "" + ChatColor.BOLD + "EPIC");
+        Bootslore.add(ChatColor.GRAY + "" + ChatColor.ITALIC + "Armor made from Lapis Lazui granting");
+        Bootslore.add(ChatColor.GRAY + "" + ChatColor.ITALIC + "the wearer massive amounts of mana");
+        Bootslore.add(ChatColor.GRAY + "" + ChatColor.ITALIC + "but minimal defense due to the brittle");
+        Bootslore.add(ChatColor.GRAY + "" + ChatColor.ITALIC + "nature of lapis lazui...");
+        Bootslore.add("");
+        Bootslore.add(ChatColor.GREEN + "" + ChatColor.BOLD + "UNCOMMON");
         LapisBootsMeta.setLore(Bootslore);
+
+        LeatherArmorMeta l = (LeatherArmorMeta) LapisBootsMeta;
+        l.setColor(Color.BLUE);
 
         LapisBoots.setItemMeta(LapisBootsMeta);
         boots = LapisBoots;

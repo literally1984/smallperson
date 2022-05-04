@@ -12,6 +12,8 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.inventory.meta.LeatherArmorMeta;
 
+import tech.nully.primplug.Armor.baseAttributesAdder;
+
 public class Drakon {
 
     public static ItemStack helm;
@@ -26,6 +28,9 @@ public class Drakon {
         createDrakonBoots();
     }
 
+    private static baseAttributesAdder a = new baseAttributesAdder();
+
+
     private static void createDrakonHelm() {
         // DEFINE THE META -------------
         ItemStack DRHelm = new ItemStack(Material.LEATHER_HELMET);
@@ -33,19 +38,21 @@ public class Drakon {
 
 
         // SET THE META ----------------
-        DRHelmMeta.setDisplayName(ChatColor.DARK_PURPLE + "[EPIC]" + ChatColor.WHITE + " Drakon Helmet");
+        DRHelmMeta.setDisplayName(ChatColor.DARK_PURPLE + "Drakon Helmet");
             // HelmLore
         List<String> Helmlore = new ArrayList<>();
-        Helmlore.add(ChatColor.YELLOW + "" +ChatColor.ITALIC + "A helmet forged from the");
-        Helmlore.add(ChatColor.YELLOW + "" +ChatColor.ITALIC + "bones of the invincible dragon");
-        Helmlore.add(ChatColor.YELLOW + "" +ChatColor.ITALIC + "who guards the golden fleece..");
-
         Helmlore.add("");
-        Helmlore.add(ChatColor.BLUE + "Attributes------");
-        Helmlore.add(ChatColor.BLUE + "Damage: 3");
-        Helmlore.add(ChatColor.BLUE + "Defense: 14");
-        Helmlore.add(ChatColor.BLUE + "Mana: 7");
-        Helmlore.add(ChatColor.BLUE + "Stamina: 20");
+        a.addAttributes(DRHelm, 2, 16, 7, 15);
+        Helmlore.add("");
+        Helmlore.add(ChatColor.YELLOW + "" +ChatColor.BOLD + "PASSIVE SET BONUS: DRAGON AWAKENING");
+        Helmlore.add(ChatColor.GRAY + "Grants the wearer permanent +10 damage");
+        Helmlore.add(ChatColor.GRAY + "and +45 Max Stamina");
+        Helmlore.add("");
+        Helmlore.add(ChatColor.GRAY + "" +ChatColor.ITALIC + "A helmet forged from the bones of");
+        Helmlore.add(ChatColor.GRAY + "" +ChatColor.ITALIC + "the invincible dragon who guards the");
+        Helmlore.add(ChatColor.GRAY + "" +ChatColor.ITALIC + "golden fleece...");
+        Helmlore.add("");
+        Helmlore.add(ChatColor.DARK_PURPLE + "" + ChatColor.BOLD + "EPIC");
         DRHelmMeta.setLore(Helmlore);
 
         // LEATHER ARMOR META
@@ -65,19 +72,20 @@ public class Drakon {
 
 
         // SET THE META ----------------
-        DRchesMeta.setDisplayName(ChatColor.DARK_PURPLE + "[EPIC]" + ChatColor.WHITE + " Drakon Chesplate");
+        DRchesMeta.setDisplayName(ChatColor.DARK_PURPLE + "Drakon Chesplate");
             // chesLore
         List<String> cheslore = new ArrayList<>();
-        cheslore.add(ChatColor.YELLOW + "" +ChatColor.ITALIC + "A chesplate forged from the");
-        cheslore.add(ChatColor.YELLOW + "" +ChatColor.ITALIC + "bones of the invincible dragon");
-        cheslore.add(ChatColor.YELLOW + "" +ChatColor.ITALIC + "who guards the golden fleece..");
-
-        cheslore.add("");        
-        cheslore.add(ChatColor.BLUE + "Attributes------");
-        cheslore.add(ChatColor.BLUE + "Damage: 5");
-        cheslore.add(ChatColor.BLUE + "Defense: 35");
-        cheslore.add(ChatColor.BLUE + "Mana: 13");
-        cheslore.add(ChatColor.BLUE + "Stamina: 25");
+        a.addAttributes(DRches, 5, 35, 13, 25);
+        cheslore.add("");
+        cheslore.add(ChatColor.YELLOW + "" +ChatColor.BOLD + "PASSIVE SET BONUS: DRAGON AWAKENING");
+        cheslore.add(ChatColor.GRAY + "Grants the wearer permanent +10 damage");
+        cheslore.add(ChatColor.GRAY + "and +45 Max Stamina");
+        cheslore.add("");
+        cheslore.add(ChatColor.GRAY + "" +ChatColor.ITALIC + "A Chesplate forged from the bones of");
+        cheslore.add(ChatColor.GRAY + "" +ChatColor.ITALIC + "the invincible dragon who guards the");
+        cheslore.add(ChatColor.GRAY + "" +ChatColor.ITALIC + "golden fleece...");
+        cheslore.add("");
+        cheslore.add(ChatColor.DARK_PURPLE + "" + ChatColor.BOLD + "EPIC");
         DRchesMeta.setLore(cheslore);
 
         // LEATHER ARMOR META
@@ -96,19 +104,20 @@ public class Drakon {
 
 
         // SET THE META ----------------
-        DRlegMeta.setDisplayName(ChatColor.DARK_PURPLE + "[EPIC]" + ChatColor.WHITE + " Drakon Leggings");
+        DRlegMeta.setDisplayName(ChatColor.DARK_PURPLE + " Drakon Leggings");
             // legLore
         List<String> leglore = new ArrayList<>();
-        leglore.add(ChatColor.YELLOW + "" +ChatColor.ITALIC + "A pair of leggings forged from");
-        leglore.add(ChatColor.YELLOW + "" +ChatColor.ITALIC + "the bones of the invincible dragon");
-        leglore.add(ChatColor.YELLOW + "" +ChatColor.ITALIC + "who guards the golden fleece..");
-
+        a.addAttributes(DRleg, 5, 25, 13, 25);
         leglore.add("");
-        leglore.add(ChatColor.BLUE + "Attributes------");
-        leglore.add(ChatColor.BLUE + "Damage: 1");
-        leglore.add(ChatColor.BLUE + "Defense: 8");
-        leglore.add(ChatColor.BLUE + "Mana: 10");
-        leglore.add(ChatColor.BLUE + "Stamina: 15");
+        leglore.add(ChatColor.YELLOW + "" +ChatColor.BOLD + "PASSIVE SET BONUS: DRAGON AWAKENING");
+        leglore.add(ChatColor.GRAY + "Grants the wearer permanent +10 damage");
+        leglore.add(ChatColor.GRAY + "and +45 Max Stamina");
+        leglore.add("");
+        leglore.add(ChatColor.GRAY + "" +ChatColor.ITALIC + "A pair of Leggings forged from the bones");
+        leglore.add(ChatColor.GRAY + "" +ChatColor.ITALIC + "of the invincible dragon who guards the");
+        leglore.add(ChatColor.GRAY + "" +ChatColor.ITALIC + "golden fleece...");
+        leglore.add("");
+        leglore.add(ChatColor.DARK_PURPLE + "" + ChatColor.BOLD + "EPIC");
         DRlegMeta.setLore(leglore);
 
         // LEATHER ARMOR META
@@ -128,19 +137,20 @@ public class Drakon {
 
 
         // SET THE META ----------------
-        DRbootsMeta.setDisplayName(ChatColor.DARK_PURPLE + "[EPIC]" + ChatColor.WHITE + " Drakon Boots");
+        DRbootsMeta.setDisplayName(ChatColor.DARK_PURPLE  + " Drakon Boots");
             // bootsLore
         List<String> bootslore = new ArrayList<>();
-        bootslore.add(ChatColor.YELLOW + "" +ChatColor.ITALIC + "A pair boots forged from the");
-        bootslore.add(ChatColor.YELLOW + "" +ChatColor.ITALIC + "bones of the invincible dragon");
-        bootslore.add(ChatColor.YELLOW + "" +ChatColor.ITALIC + "who guards the golden fleece..");
-
+        a.addAttributes(DRboots, 3, 16, 7, 15);
         bootslore.add("");
-        bootslore.add(ChatColor.BLUE + "Attributes------");
-        bootslore.add(ChatColor.BLUE + "Damage: 3");
-        bootslore.add(ChatColor.BLUE + "Defense: 14");
-        bootslore.add(ChatColor.BLUE + "Mana: 7");
-        bootslore.add(ChatColor.BLUE + "Stamina: 17");
+        bootslore.add(ChatColor.YELLOW + "" +ChatColor.BOLD + "PASSIVE SET BONUS: DRAGON AWAKENING");
+        bootslore.add(ChatColor.GRAY + "Grants the wearer permanent +10 damage");
+        bootslore.add(ChatColor.GRAY + "and +45 Max Stamina");
+        bootslore.add("");
+        bootslore.add(ChatColor.GRAY + "" +ChatColor.ITALIC + "A pair of boots forged from the bones");
+        bootslore.add(ChatColor.GRAY + "" +ChatColor.ITALIC + "of the invincible dragon who guards the");
+        bootslore.add(ChatColor.GRAY + "" +ChatColor.ITALIC + "golden fleece...");
+        bootslore.add("");
+        bootslore.add(ChatColor.DARK_PURPLE + "" + ChatColor.BOLD + "EPIC");
         DRbootsMeta.setLore(bootslore);
 
         // LEATHER ARMOR META

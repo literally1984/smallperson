@@ -39,7 +39,7 @@ public class cactusArmor {
             // HelmLore
         List<String> Helmlore = new ArrayList<>();
         Helmlore.add(ChatColor.YELLOW + "Used to craft Cactus armor");
-        Helmlore.add(ChatColor.YELLOW + "Very spikey!");
+        Helmlore.add(ChatColor.YELLOW + "Very pointy!");
         CacShardMeta.setLore(Helmlore);
 
         CacShardMeta.addEnchant(Enchantment.THORNS, 1, false);
@@ -60,19 +60,23 @@ public class cactusArmor {
         CacHelmMeta.setDisplayName("Cactus Helmet")
             // HelmLore
         List<String> Helmlore = new ArrayList<>();
-        Helmlore.add("A very spikey armor piece, reflects");
-        Helmlore.add("some damage back to the opponent when");
-        Helmlore.add("they hit you if you have the set bonus");
-        Helmlore.add("");
-        Helmlore.add(ChatColor.GOLD + "Set Bonus:");
-        Helmlore.add(ChatColor.GOLD + "Reflects 33% of the damage you take");
-        Helmlore.add(ChatColor.GOLD + "back to your opponent");
-        Helmlore.add("");
-        Helmlore.add(ChatColor.BLUE + "Attributes------");
+        Helmlore.add(ChatColor.RED + "---Attributes---");
         Helmlore.add(ChatColor.BLUE + "Damage: 1");
         Helmlore.add(ChatColor.BLUE + "Defense: 8");
         Helmlore.add(ChatColor.BLUE + "Mana: 10");
         Helmlore.add(ChatColor.BLUE + "Stamina: 15");
+        Helmlore.add("");
+        Helmlore.add("Headwear made from the shards");
+        Helmlore.add("of a cactus spine.");
+        Helmlore.add("Ouch! Pointy!");
+        Helmlore.add("-Z");
+        Helmlore.add("");
+        Helmlore.add(ChatColor.GOLD+ "" + ChatColor.BOLD + "Set Bonus: Iron Spikes");
+        Helmlore.add("Reflects 33% of the damage you take");
+        Helmlore.add("back to your opponent, but reduces movement speed by 10%");
+        Helmlore.add("");
+        Helmlore.add(ChatColor.GREEN+ "" + ChatColor.BOLD + "UNCOMMON");
+        Helmlore.add("");
         CacHelmMeta.setLore(Helmlore);
 
         // LEATHER ARMOR META
@@ -95,19 +99,22 @@ public class cactusArmor {
         CacChestMeta.setDisplayName("Cactus Chestplate");
             // ChestLore
         List<String> Chestlore = new ArrayList<>();
-        Chestlore.add("A very spikey armor piece, reflects");
-        Chestlore.add("some damage back to the opponent when");
-        Chestlore.add("they hit you if you have the set bonus");
-        Chestlore.add("");
-        Chestlore.add(ChatColor.GOLD + "Set Bonus:");
-        Chestlore.add(ChatColor.GOLD + "Reflects 33% of the damage you take");
-        Chestlore.add(ChatColor.GOLD + "back to your opponent");
-        Chestlore.add("");
-        Chestlore.add(ChatColor.BLUE + "Attributes------");
+        Chestlore.add(ChatColor.RED + "Attributes------");
         Chestlore.add(ChatColor.BLUE + "Damage: 3");
         Chestlore.add(ChatColor.BLUE + "Defense: 26");
         Chestlore.add(ChatColor.BLUE + "Mana: 20");
         Chestlore.add(ChatColor.BLUE + "Stamina: 30");
+        Chestlore.add("");
+        Chestlore.add("A shirt made from the shards of a cactus spine.");
+        Chestlore.add("Gonna need a Band-Aid!");
+        Chestlore.add("-Z");
+        Chestlore.add("");
+        Chestlore.add(ChatColor.GOLD+ "" + ChatColor.BOLD + "Set Bonus: Iron Spikes");
+        Chestlore.add("Reflects 33% of the damage you take");
+        Chestlore.add("back to your opponent, but reduces movement speed by 10%");
+        Chestlore.add("");
+        Chestlore.add(ChatColor.GREEN + "" + ChatColor.BOLD + "UNCOMMON");
+        Chestlore.add("");
         CacChestMeta.setLore(Chestlore);
 
         // LEATHER ARMOR META
@@ -131,20 +138,24 @@ public class cactusArmor {
         PLegMeta.setDisplayName("Cac Leggings");
             // LegLore
         List<String> Leglore = new ArrayList<>();
-        Leglore.add("A very spikey armor piece, reflects");
-        Leglore.add("some damage back to the opponent when");
-        Leglore.add("they hit you if you have the set bonus");
-        Leglore.add("");
-        Leglore.add(ChatColor.GOLD + "Set Bonus:");
-        Leglore.add(ChatColor.GOLD + "Reflects 33% of the damage you take");
-        Leglore.add(ChatColor.GOLD + "back to your opponent");
-        Leglore.add("");
-        Leglore.add(ChatColor.BLUE + "Attributes------");
+        Leglore.add(ChatColor.RED + "Attributes------");
         Leglore.add(ChatColor.BLUE + "Damage: 2");
         Leglore.add(ChatColor.BLUE + "Defense: 21");
         Leglore.add(ChatColor.BLUE + "Mana: 15");
         Leglore.add(ChatColor.BLUE + "Stamina: 25");
+        Leglore.add("");
+        Leglore.add("Pants made from the shards of a cactus spine.");
+        Leglore.add("A little poky down under…");
+        Leglore.add("-Z");
+        Leglore.add("");
+        Leglore.add(ChatColor.GOLD + "Full Set Bonus: Iron Spikes");
+        Leglore.add("Reflects 33% of the damage you take");
+        Leglore.add("back to your opponent, but reduces movement speed by 10%");
+        Leglore.add("");
+        Leglore.add(ChatColor.GREEN + "" + ChatColor.BOLD + "UNCOMMON");
+        Leglore.add("");
         PLegMeta.setLore(Leglore);
+        
 
         // LEATHER ARMOR META
         LeatherArmorMeta leatherArmorMeta = (LeatherArmorMeta) PLegMeta;
@@ -165,19 +176,20 @@ public class cactusArmor {
         CacBootsMeta.setDisplayName("Cac Boots");
             // BootsLore
         List<String> Bootslore = new ArrayList<>();
-        Bootslore.add("A very spikey armor piece, reflects");
-        Bootslore.add("some damage back to the opponent when");
-        Bootslore.add("they hit you if you have the set bonus");
-        Bootslore.add("");
-        Bootslore.add(ChatColor.GOLD + "Set Bonus:");
-        Bootslore.add(ChatColor.GOLD + "Reflects 33% of the damage you take");
-        Bootslore.add(ChatColor.GOLD + "back to your opponent");
-        Bootslore.add("");
-        Bootslore.add(ChatColor.BLUE + "Attributes------");
+        Bootslore.add(ChatColor.RED + "Attributes------");
         Bootslore.add(ChatColor.BLUE + "Damage: 1");
         Bootslore.add(ChatColor.BLUE + "Defense: 8");
         Bootslore.add(ChatColor.BLUE + "Mana: 7");
         Bootslore.add(ChatColor.BLUE + "Stamina: 13");
+        Bootslore.add("Shoes made from the shards of a cactus spine.");
+        Bootslore.add("A pain to walk in!");
+        Bootslore.add("-Z");
+        Bootslore.add("");
+        Bootslore.add(ChatColor.YELLOW + "" + ChatColor.BOLD + "Full Set Bonus: Iron Spikes");
+        Bootslore.add("Reflects 33% of the damage you take");
+        Bootslore.add("back to your opponent, but reduces movement speed by 10%");
+        Bootslore.add("");
+        Bootslore.add(ChatColor.GREEN+ "" + ChatColor.BOLD + "UNCOMMON");
         CacBootsMeta.setLore(Bootslore);
 
         // LEATHER ARMOR META

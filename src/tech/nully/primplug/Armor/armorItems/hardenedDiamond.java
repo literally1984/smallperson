@@ -10,7 +10,7 @@ import org.bukkit.inventory.meta.ItemMeta;
 
 public class hardenedDiamond {
     public static ItemStack helm;
-    public static ItemStack chestplate;
+    public static ItemStack ches;
     public static ItemStack leg;
     public static ItemStack boots;
 
@@ -72,7 +72,7 @@ public class hardenedDiamond {
         HDiaChesMeta.setLore(Cheslore);
 
         HDiaChes.setItemMeta(HDiaChesMeta);
-        chestplate = HDiaChes;
+        ches = HDiaChes;
     }
 
 
@@ -92,8 +92,8 @@ public class hardenedDiamond {
         Helmlore.add(ChatColor.BLUE + "Mana: " + ChatColor.GRAY + "8");
         Helmlore.add(ChatColor.BLUE + "Stamina: " + ChatColor.GRAY + "13");
         Helmlore.add("");
-        Helmlore.add(ChatColor.LIGHT_PURPLE + "A helmet made out of an extremely durable");
-        Helmlore.add(ChatColor.LIGHT_PURPLE + "material which grants a lot of protection");
+        Helmlore.add(ChatColor.GRAY + "A helmet made out of an extremely durable");
+        Helmlore.add(ChatColor.GRAY + "material which grants a lot of protection");
         
         Helmlore.add("");
         Helmlore.add(ChatColor.DARK_PURPLE + "" + ChatColor.BOLD + "EPIC");
