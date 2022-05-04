@@ -59,11 +59,7 @@ public class demigodArmor {
         ItemStack DemiHelm = new ItemStack(Material.GOLD_HELMET);
         ItemMeta DemiHelmMeta = DemiHelm.hasItemMeta() ? DemiHelm.getItemMeta() : Bukkit.getItemFactory().getItemMeta(DemiHelm.getType());
         // SET THE META ----------------
-<<<<<<< Updated upstream
         DemiHelmMeta.setDisplayName("Demigod Helmet");
-=======
-        DemiHelmMeta.setDisplayName("Demigod Helmet"); 
->>>>>>> Stashed changes
             // HelmLore
         List<String> Helmlore = new ArrayList<>();
         a.addAttributes(DemiHelm, 3, 13, 10, 15);

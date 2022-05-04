@@ -24,4 +24,9 @@ public class baseAttributesAdder {
         String epikReturn = ChatColor.GRAY + "" + ChatColor.ITALIC;
         return epikReturn;
     }
+
+    public String ability() {
+        String epikReturn = ChatColor.YELLOW + "" + ChatColor.BOLD;
+        return epikReturn;
+    }
 }
