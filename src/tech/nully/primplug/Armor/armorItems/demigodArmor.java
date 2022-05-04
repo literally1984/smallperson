@@ -62,7 +62,7 @@ public class demigodArmor {
         DemiHelmMeta.setDisplayName("Demigod Helmet");
             // HelmLore
         List<String> Helmlore = new ArrayList<>();
-        a.addAttributes(DemiHelm, 3, 13, 10, 15);
+        a.addAttributes(DemiHelm, 3, 13, 10, 15);dfdsa
         Helmlore.add("");
         Helmlore.add(ChatColor.YELLOW + "" + ChatColor.BOLD + "Set Bonus I: Zeus' Wrath");
         Helmlore.add(ChatColor.GRAY + "" +ChatColor.ITALIC + "Shift and then jump to summon");
