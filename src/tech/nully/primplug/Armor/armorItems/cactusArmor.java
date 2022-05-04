@@ -57,7 +57,7 @@ public class cactusArmor {
 
 
         // SET THE META ----------------
-        CacHelmMeta.setDisplayName("Cactus Helmet")
+        CacHelmMeta.setDisplayName("Cactus Helmet");
             // HelmLore
         List<String> Helmlore = new ArrayList<>();
         Helmlore.add(ChatColor.RED + "---Attributes---");
