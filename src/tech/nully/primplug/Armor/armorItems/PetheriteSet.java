@@ -56,7 +56,14 @@ public class PetheriteSet {
         PHelmMeta.setDisplayName("Petherite Helmet");
             // HelmLore
         List<String> Helmlore = new ArrayList<>();
-        Helmlore.add("Its like a bootleg Netherite Helmet");
+        Helmlore.add(ChatColor.BLUE + "------ " + ChatColor.GREEN + "0" + ChatColor.BLUE + "/45 ------");
+        Helmlore.add(ChatColor.BLUE + "Damage: 1");
+        Helmlore.add(ChatColor.BLUE + "Defense: 8");
+        Helmlore.add(ChatColor.BLUE + "Mana: 7");
+        Helmlore.add(ChatColor.BLUE + "Stamina: 13");
+        Helmlore.add("");
+        Helmlore.add("NETHERITE! Well, almost.");
+        Helmlore.add("-Z");
         PHelmMeta.setLore(Helmlore);
 
         // LEATHER ARMOR META
@@ -86,7 +93,8 @@ public class PetheriteSet {
         Chestlore.add(ChatColor.BLUE + "Mana: 7");
         Chestlore.add(ChatColor.BLUE + "Stamina: 13");
         Chestlore.add("");
-        Chestlore.add(ChatColor.LIGHT_PURPLE + "Totally an original idea lol");
+        Chestlore.add("NETHERITE! Well, almost.");
+        Chestlore.add("-Z");
         Chestlore.add("");
         Chestlore.add(ChatColor.DARK_PURPLE + "" + ChatColor.BOLD + "EPIC");
         PChestMeta.setLore(Chestlore);
@@ -107,7 +115,8 @@ public class PetheriteSet {
         PLegMeta.setDisplayName("Petherite Leggings");
             // LegLore
         List<String> Leglore = new ArrayList<>();
-        Leglore.add(ChatColor.LIGHT_PURPLE + "Totally an original idea lol");
+        Leglore.add("NETHERITE! Well, almost.");
+        Leglore.add("-Z");
         Leglore.add("");
         Leglore.add(ChatColor.BLUE + "Attributes------");
         Leglore.add(ChatColor.BLUE + "Damage: 1");
@@ -138,10 +147,16 @@ public class PetheriteSet {
         Bootslore.add(ChatColor.BLUE + "Defense: 8");
         Bootslore.add(ChatColor.BLUE + "Mana: 7");
         Bootslore.add(ChatColor.BLUE + "Stamina: 13");
+        Bootslore.add("");
+        Bootslore.add("NETHERITE! Well, almost.");
+        Bootslore.add("-Z");
+        Bootslore.add(ChatColor.DARK_PURPLE + "" + ChatColor.BOLD + "EPIC");
         PBootsMeta.setLore(Bootslore);
 
 
         PBoots.setItemMeta(PBootsMeta);
         boots = PBoots;
+    }
+    public PetheriteSet() {
     }
 }
