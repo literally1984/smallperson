@@ -56,7 +56,7 @@ public class demigodArmor {
         ItemMeta DemiHelmMeta = DemiHelm.hasItemMeta() ? DemiHelm.getItemMeta() : Bukkit.getItemFactory().getItemMeta(DemiHelm.getType());
     }
         // SET THE META ----------------
-        DemiHelmMeta.@setDisplayName("Demigod Helmet");{
+        DemiHelmMeta.@setDisplayName("Demigod Helmet"); {
             // HelmLore
         List<String> Helmlore = new ArrayList<>();
         Helmlore.add(ChatColor.RED + "---Attributes---");
