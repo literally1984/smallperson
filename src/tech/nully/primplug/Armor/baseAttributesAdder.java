@@ -19,4 +19,9 @@ public class baseAttributesAdder {
         itemLore.add(ChatColor.GRAY + "----" + ChatColor.WHITE + "0/" + maxUpgrades + ChatColor.GRAY + "----");
         
     }
+
+    public String lore() {
+        String epikReturn = ChatColor.GRAY + "" + ChatColor.ITALIC;
+        return epikReturn;
+    }
 }

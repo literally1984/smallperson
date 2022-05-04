@@ -11,6 +11,8 @@ import org.bukkit.enchantments.Enchantment;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 
+import tech.nully.primplug.Armor.baseAttributesAdder;
+
 
 public class demigodArmor {
    
@@ -27,12 +29,13 @@ public class demigodArmor {
         createDemiBoots();
     }
     // !  Obsidian
+    private static baseAttributesAdder a = new baseAttributesAdder();
+
     private static void createDemiShard() {
         // DEFINE THE META -------------
         ItemStack DemiShard = new ItemStack(Material.MAGMA_CREAM);
         ItemMeta DemiShardMeta = DemiShard.getItemMeta();
     
-    // SET THE META ----------------
         DemiShardMeta.setDisplayName("Demigod Shard");
             // HelmLore
         List<String> Helmlore = new ArrayList<>();
@@ -49,37 +52,31 @@ public class demigodArmor {
     //! Demigod Helmet
     private static void createDemiHelm() {
         // DEFINE THE META -------------
-        ItemStack DemiHelm = new ItemStack(Material.DIAMOND_HELMET);
+        ItemStack DemiHelm = new ItemStack(Material.GOLD_HELMET);
         ItemMeta DemiHelmMeta = DemiHelm.hasItemMeta() ? DemiHelm.getItemMeta() : Bukkit.getItemFactory().getItemMeta(DemiHelm.getType());
-    }
         // SET THE META ----------------
-        DemiHelmMeta.setDisplayName("Demigod Helmet");{
+        DemiHelmMeta.setDisplayName("Demigod Helmet");
             // HelmLore
         List<String> Helmlore = new ArrayList<>();
-        Helmlore.add(ChatColor.RED + "---Attributes---");
-        Helmlore.add(ChatColor.BLUE + "Damage: 1");
-        Helmlore.add(ChatColor.BLUE + "Defense: 8");
-        Helmlore.add(ChatColor.BLUE + "Mana: 10");
-        Helmlore.add(ChatColor.BLUE + "Stamina: 15");
+        a.addAttributes(DemiHelm, 3, 13, 10, 15);
         Helmlore.add("");
-        Helmlore.add("A helmet gifted to a mortal from above.");
-        Helmlore.add("It is said that whoever wears this has the power of a god!");
-        Helmlore.add("-Z");
+        Helmlore.add(ChatColor.YELLOW + "" + ChatColor.BOLD + "Set Bonus I: Zeus' Wrath");
+        Helmlore.add(ChatColor.GRAY + "" +ChatColor.ITALIC + "Shift and then jump to summon");
+        Helmlore.add("summon the fury of the thunder god");
+        Helmlore.add("and create a powerful explosion at");
+        Helmlore.add("your location!");
+        Helmlore.add(ChatColor.GOLD + "" + ChatColor.BOLD + "Set Bonus II: Godly");
+        Helmlore.add("Passively grants the wearer +50%");
+        Helmlore.add("walk speed and Jump boost I");
+        Helmlore.add("Walk along with the gods!");
         Helmlore.add("");
-        Helmlore.add(ChatColor.GOLD + ChatColor.BOLD + "Set Bonus: Zeus' Wrath");
-        Helmlore.add("Jump and shift at the same time to summon the fury of the gods!");
+        Helmlore.add(a.lore() + "A helmet gifted to a mortal from above.");
+        Helmlore.add(a.lore() + "It is said that whoever wears this has");
+        Helmlore.add(a.lore() + "the power of a god!");
         Helmlore.add("");
-        Helmlore.add(ChatColor.GOLD + ChatColor.BOLD + "Full Set Bonus: Godly");
-        Helmlore.add("When equipped, gain 50% movement speed and 50% jump boost!");
-        Helmlore.add("Walk with the gods!");
-        Helmlore.add("");
-        Helmlore.add(ChatColor.YELLOW + ChatColor.BOLD + "LEGENDARY");
+        Helmlore.add(ChatColor.GOLD + "" + ChatColor.BOLD + "LEGENDARY");
         Helmlore.add("");
         DemiHelmMeta.setLore(Helmlore);
-
-        // DIAMOND ARMOR META
-        DiamondArmorMeta diamondArmorMeta = (DiamondArmorMeta) DemiHelmMeta;
-        diamondArmorMeta.setColor(Color.GOLD);
 
 
         DemiHelm.setItemMeta(DemiHelmMeta);
@@ -106,20 +103,16 @@ public class demigodArmor {
         Chestlore.add("It is said that whoever wears this has the powerof a god!");
         Chestlore.add("-Z");
         Chestlore.add("");
-        Chestlore.add(ChatColor.GOLD + ChatColor.BOLD + "Set Bonus: Zeus' Wrath");
+        Chestlore.add(ChatColor.GOLD + "" + ChatColor.BOLD + "Set Bonus: Zeus' Wrath");
         Chestlore.add("Shift and jump at the same time to summon the fury of the gods!");
         Chestlore.add("");
-        Chestlore.add(ChatColor.GOLD + ChatColor.BOLD + "Full Set Bonus: Godly");
+        Chestlore.add(ChatColor.GOLD + "" + ChatColor.BOLD + "Full Set Bonus: Godly");
         Chestlore.add("When equipped, gain 50% movement speed and 50% jump boost!");
         Chestlore.add("Walk with the gods!");
         Chestlore.add("");
-        Chestlore.add(ChatColor.YELLOW + ChatColor.BOLD + "LEGENDARY");
+        Chestlore.add(ChatColor.GOLD + "" + ChatColor.BOLD + "LEGENDARY");
         Chestlore.add("");
         DemiChestMeta.setLore(Chestlore);
-
-        // DIAMOND ARMOR META
-        DiamondArmorMeta diamondArmorMeta = (DiamondArmorMeta) DemiChestMeta;
-        DiamondArmorMeta.setColor(Color.GOLD);
 
 
         DemiChest.setItemMeta(DemiChestMeta);
@@ -144,14 +137,13 @@ public class demigodArmor {
         Leglore.add(ChatColor.BLUE + "Mana: 15");
         Leglore.add(ChatColor.BLUE + "Stamina: 25");
         Leglore.add("");
-        Leglore.add("Armor gifted to a mortal from above.");
-        Leglore.add("It is said that whoever wears this has the powerof a god!");
-        Leglore.add("-Z");
+        Leglore.add(a.lore() + "Armor gifted to a mortal from above.");
+        Leglore.add(a.lore() + "It is said that whoever wears this has the powerof a god!");
         Leglore.add("");
         Leglore.add(ChatColor.GOLD + "Full Set Bonus: Zeus' Wrath");
         Leglore.add("Shift and jump at the same time to summon the fury of the gods!");
         Leglore.add("");
-        Leglore.add(ChatColor.GOLD + ChatColor.BOLD + "Full Set Bonus: Godly");
+        Leglore.add(ChatColor.GOLD + "" + ChatColor.BOLD + "Full Set Bonus: Godly");
         Leglore.add("When equipped, gain 50% movement speed and 50% jump boost!");
         Leglore.add("Walk with the gods!");
         Leglore.add("");
