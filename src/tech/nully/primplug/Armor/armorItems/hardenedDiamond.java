@@ -10,7 +10,7 @@ import org.bukkit.inventory.meta.ItemMeta;
 
 public class hardenedDiamond {
     public static ItemStack helm;
-    public static ItemStack chestplate;
+    public static ItemStack ches;
     public static ItemStack leg;
     public static ItemStack boots;
 
@@ -72,7 +72,7 @@ public class hardenedDiamond {
         HDiaChesMeta.setLore(Cheslore);
 
         HDiaChes.setItemMeta(HDiaChesMeta);
-        chestplate = HDiaChes;
+        ches = HDiaChes;
     }
 
 

@@ -12,6 +12,9 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.inventory.meta.LeatherArmorMeta;
 
+import net.milkbowl.vault.chat.Chat;
+import tech.nully.primplug.Armor.baseAttributesAdder;
+
 public class Drakon {
 
     public static ItemStack helm;
@@ -27,25 +30,27 @@ public class Drakon {
     }
 
     private static void createDrakonHelm() {
+        baseAttributesAdder a = new baseAttributesAdder();
         // DEFINE THE META -------------
         ItemStack DRHelm = new ItemStack(Material.LEATHER_HELMET);
         ItemMeta DRHelmMeta = DRHelm.hasItemMeta() ? DRHelm.getItemMeta() : Bukkit.getItemFactory().getItemMeta(DRHelm.getType());
 
 
         // SET THE META ----------------
-        DRHelmMeta.setDisplayName(ChatColor.DARK_PURPLE + "[EPIC]" + ChatColor.WHITE + " Drakon Helmet");
+        DRHelmMeta.setDisplayName(ChatColor.DARK_PURPLE + "Drakon Helmet");
             // HelmLore
         List<String> Helmlore = new ArrayList<>();
-        Helmlore.add(ChatColor.YELLOW + "" +ChatColor.ITALIC + "A helmet forged from the");
-        Helmlore.add(ChatColor.YELLOW + "" +ChatColor.ITALIC + "bones of the invincible dragon");
-        Helmlore.add(ChatColor.YELLOW + "" +ChatColor.ITALIC + "who guards the golden fleece..");
-
         Helmlore.add("");
-        Helmlore.add(ChatColor.BLUE + "Attributes------");
-        Helmlore.add(ChatColor.BLUE + "Damage: 3");
-        Helmlore.add(ChatColor.BLUE + "Defense: 14");
-        Helmlore.add(ChatColor.BLUE + "Mana: 7");
-        Helmlore.add(ChatColor.BLUE + "Stamina: 20");
+        a.addAttributes(DRHelm, 2, 16, 7, 15);
+        Helmlore.add("");
+        Helmlore.add(ChatColor.YELLOW + "" +ChatColor.ITALIC + "A helmet forged from the bones of");
+        Helmlore.add(ChatColor.YELLOW + "" +ChatColor.ITALIC + "the invincible dragon who guards the");
+        Helmlore.add(ChatColor.YELLOW + "" +ChatColor.ITALIC + "golden fleece...");
+        Helmlore.add("");
+        Helmlore.add(ChatColor.YELLOW + "" +ChatColor.BOLD + "SET BONUS: DRAGON AWAKENING");
+        Helmlore.add(ChatColor.GRAY + "Grants the wearer");
+        Helmlore.add("");
+        Helmlore.add(ChatColor.DARK_PURPLE + "" + ChatColor.BOLD + "EPIC");
         DRHelmMeta.setLore(Helmlore);
 
         // LEATHER ARMOR META
