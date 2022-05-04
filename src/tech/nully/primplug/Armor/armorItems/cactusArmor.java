@@ -1,4 +1,4 @@
-package tech.nully.primplug.armor.armoritems;
+package tech.nully.primplug.Armor.armorItems;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -11,6 +11,8 @@ import org.bukkit.enchantments.Enchantment;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.inventory.meta.LeatherArmorMeta;
+
+import tech.nully.primplug.Armor.baseAttributesAdder;
 
 public class cactusArmor {
     
@@ -28,6 +30,9 @@ public class cactusArmor {
         createCacBoots();
     }
     // !  Obsidian
+
+    private static baseAttributesAdder a = new baseAttributesAdder();
+
     private static void createCacShard() {
         // DEFINE THE META -------------
         ItemStack CacShard = new ItemStack(Material.CACTUS);
@@ -60,14 +65,10 @@ public class cactusArmor {
         CacHelmMeta.setDisplayName("Cactus Helmet");
             // HelmLore
         List<String> Helmlore = new ArrayList<>();
-        Helmlore.add(ChatColor.RED + "---Attributes---");
-        Helmlore.add(ChatColor.BLUE + "Damage: 1");
-        Helmlore.add(ChatColor.BLUE + "Defense: 8");
-        Helmlore.add(ChatColor.BLUE + "Mana: 10");
-        Helmlore.add(ChatColor.BLUE + "Stamina: 15");
+        a.addAttributes(CacHelm, 2, 9, 5, 10);
         Helmlore.add("");
-        Helmlore.add("Headwear made from the shards");
-        Helmlore.add("of a cactus spine.");
+        Helmlore.add("Headwear made from Cactus shards which");
+        Helmlore.add("harsm the oppenent when they attack you");
         Helmlore.add("Ouch! Pointy!");
         Helmlore.add("-Z");
         Helmlore.add("");
@@ -109,7 +110,7 @@ public class cactusArmor {
         Chestlore.add("Gonna need a Band-Aid!");
         Chestlore.add("-Z");
         Chestlore.add("");
-        Chestlore.add(ChatColor.GOLD+ "" + ChatColor.BOLD + "Set Bonus: Iron Spikes");
+        Chestlore.add(ChatColor.GOLD+ "" + ChatColor.BOLD + "SET BONUS: Spikey spikes");
         Chestlore.add("Reflects 33% of the damage you take");
         Chestlore.add("back to your opponent, but reduces movement speed by 10%");
         Chestlore.add("");
