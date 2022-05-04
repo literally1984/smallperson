@@ -5,24 +5,21 @@ import java.util.List;
 
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
-import org.bukkit.Color;
 import org.bukkit.Material;
 import org.bukkit.enchantments.Enchantment;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
-import org.bukkit.inventory.meta.LeatherArmorMeta;
 
 import tech.nully.primplug.Armor.baseAttributesAdder;
 
 
 public class demigodArmor {
-   
-    private static final ItemMeta DemiHelmMeta = null;
-    private static final ItemStack DemiHelm = null;
+    
     public static ItemStack helm;
     public static ItemStack ches;
     public static ItemStack leg;
     public static ItemStack boots;
+    public static ItemStack shard;
 
     public static void init() {
         createDemiShard();
@@ -38,7 +35,10 @@ public class demigodArmor {
         // DEFINE THE META -------------
         ItemStack DemiShard = new ItemStack(Material.MAGMA_CREAM);
         ItemMeta DemiShardMeta = DemiShard.getItemMeta();
+<<<<<<< Updated upstream
     
+=======
+>>>>>>> Stashed changes
         DemiShardMeta.setDisplayName("Demigod Shard");
             // HelmLore
         List<String> Helmlore = new ArrayList<>();
@@ -50,6 +50,7 @@ public class demigodArmor {
 
         DemiShard.setItemMeta(DemiShardMeta);
         ItemStack Shard = DemiShard;
+        shard = Shard;
     }
 
     //! Demigod Helmet
@@ -58,7 +59,11 @@ public class demigodArmor {
         ItemStack DemiHelm = new ItemStack(Material.GOLD_HELMET);
         ItemMeta DemiHelmMeta = DemiHelm.hasItemMeta() ? DemiHelm.getItemMeta() : Bukkit.getItemFactory().getItemMeta(DemiHelm.getType());
         // SET THE META ----------------
+<<<<<<< Updated upstream
         DemiHelmMeta.setDisplayName("Demigod Helmet");
+=======
+        DemiHelmMeta.setDisplayName("Demigod Helmet"); 
+>>>>>>> Stashed changes
             // HelmLore
         List<String> Helmlore = new ArrayList<>();
         a.addAttributes(DemiHelm, 3, 13, 10, 15);
@@ -83,10 +88,6 @@ public class demigodArmor {
         Helmlore.add(ChatColor.YELLOW + "" + ChatColor.BOLD + "LEGENDARY");
         Helmlore.add("");
         DemiHelmMeta.setLore(Helmlore);
-
-        // DIAMOND ARMOR META
-        DiamondArmorMeta diamondArmorMeta = (DiamondArmorMeta) DemiHelmMeta;
-        DiamondArmorMeta.setColor(Color.YELLOW);
 
 
         DemiHelm.setItemMeta(DemiHelmMeta);
@@ -160,14 +161,6 @@ public class demigodArmor {
         Leglore.add(ChatColor.YELLOW + "" + ChatColor.BOLD + "LEGENDARY");
         Leglore.add("");
         DemiLegMeta.setLore(Leglore);
-        
-
-        // DIAMOND ARMOR META
-        DiamondArmorMeta daimondArmorMeta = (DiamondArmorMeta) DemiLegMeta;
-        LeatherArmorMeta diamondArmorMeta;
-        diamondArmorMeta.setColor(Color.YELLOW);
-
-
         DemiLeg.setItemMeta(DemiLegMeta);
         leg = DemiLeg;
     }
@@ -201,12 +194,6 @@ public class demigodArmor {
         Bootslore.add("");
         Bootslore.add(ChatColor.YELLOW + "" + ChatColor.BOLD + "LEGENDARY");
         DemiBootsMeta.setLore(Bootslore);
-
-        // DIAMOND ARMOR META
-        DiamondArmorMeta diamondArmorMeta = (DiamondArmorMeta) DemiBootsMeta;
-        diamondArmorMeta.setColor(Color.YELLOW);
-
-
         DemiBoots.setItemMeta(DemiBootsMeta);
         boots = DemiBoots;
     }
