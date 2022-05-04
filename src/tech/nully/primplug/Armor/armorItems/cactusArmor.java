@@ -12,6 +12,8 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.inventory.meta.LeatherArmorMeta;
 
+import tech.nully.primplug.Armor.baseAttributesAdder;
+
 public class cactusArmor {
     
     public static ItemStack Shard;
@@ -28,6 +30,9 @@ public class cactusArmor {
         createCacBoots();
     }
     // !  Obsidian
+    private static baseAttributesAdder a = new baseAttributesAdder();
+
+
     private static void createCacShard() {
         // DEFINE THE META -------------
         ItemStack CacShard = new ItemStack(Material.CACTUS);
@@ -42,7 +47,7 @@ public class cactusArmor {
         Helmlore.add(ChatColor.YELLOW + "Very pointy!");
         CacShardMeta.setLore(Helmlore);
 
-        CacShardMeta.addEnchant(Enchantment.THORNS, 1, false);
+        CacShardMeta.addEnchant(Enchantment.THORNS, 1, true);
 
         CacShard.setItemMeta(CacShardMeta);
         Shard = CacShard;
@@ -60,6 +65,7 @@ public class cactusArmor {
         CacHelmMeta.setDisplayName("Cactus Helmet");
             // HelmLore
         List<String> Helmlore = new ArrayList<>();
+        a.addAttributes(CacHelm, 1, 8, 10, 15);
         Helmlore.add(ChatColor.RED + "---Attributes---");
         Helmlore.add(ChatColor.BLUE + "Damage: 1");
         Helmlore.add(ChatColor.BLUE + "Defense: 8");
@@ -73,7 +79,8 @@ public class cactusArmor {
         Helmlore.add("");
         Helmlore.add(ChatColor.GOLD+ "" + ChatColor.BOLD + "Set Bonus: Iron Spikes");
         Helmlore.add("Reflects 33% of the damage you take");
-        Helmlore.add("back to your opponent, but reduces movement speed by 10%");
+        Helmlore.add("back to your opponent, but reduces");
+        Helmlore.add("movement speed by 10%");
         Helmlore.add("");
         Helmlore.add(ChatColor.GREEN+ "" + ChatColor.BOLD + "UNCOMMON");
         Helmlore.add("");
@@ -105,7 +112,8 @@ public class cactusArmor {
         Chestlore.add(ChatColor.BLUE + "Mana: 20");
         Chestlore.add(ChatColor.BLUE + "Stamina: 30");
         Chestlore.add("");
-        Chestlore.add("A shirt made from the shards of a cactus spine.");
+        Chestlore.add("A shirt made from the shards");
+        Chestlore.add("of a cactus spine.");
         Chestlore.add("Gonna need a Band-Aid!");
         Chestlore.add("-Z");
         Chestlore.add("");
