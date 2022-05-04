@@ -77,13 +77,17 @@ public class lapisArmor {
             // ChesLore
         List<String> Cheslore = new ArrayList<>();
         Cheslore.add("");
-        Cheslore.add(ChatColor.BLUE + "Damage: " + ChatColor.GRAY + "1");
-        Cheslore.add(ChatColor.BLUE + "Defense: " + ChatColor.GRAY + "18");
-        Cheslore.add(ChatColor.BLUE + "Mana: " + ChatColor.GRAY + "30");
-        Cheslore.add(ChatColor.BLUE + "Stamina: " + ChatColor.GRAY + "10");
+        a.addAttributes(LapisChes, 1, 18, 25, 10);
         Cheslore.add("");
-        Cheslore.add(ChatColor.LIGHT_PURPLE + "Armor made from Lapis Lazui granting");
-        Cheslore.add(ChatColor.LIGHT_PURPLE + "the wearer massive amounts of mana");
+        Cheslore.add(ChatColor.YELLOW + "" + ChatColor.BOLD + "PASSIVE SET BONUS: INFINITE INTELLIGENCE");
+        Cheslore.add(ChatColor.GRAY + "Once completing the set bonus of this armor,");
+        Cheslore.add(ChatColor.GRAY + "+30 extra mana is granted due to the ancient");
+        Cheslore.add(ChatColor.GRAY + "power of the lapis lazui used to craft it");
+        Cheslore.add("");
+        Cheslore.add(ChatColor.GRAY + "" + ChatColor.ITALIC + "Armor made from Lapis Lazui granting");
+        Cheslore.add(ChatColor.GRAY + "" + ChatColor.ITALIC + "the wearer massive amounts of mana");
+        Cheslore.add(ChatColor.GRAY + "" + ChatColor.ITALIC + "but minimal defense due to the brittle");
+        Cheslore.add(ChatColor.GRAY + "" + ChatColor.ITALIC + "nature of lapis lazui...");
         Cheslore.add("");
         Cheslore.add(ChatColor.GREEN + "" + ChatColor.BOLD + "UNCOMMON");
         LapisChesMeta.setLore(Cheslore);
@@ -99,29 +103,32 @@ public class lapisArmor {
 
     private static void createLapisLeg() {
         // DEFINE THE META -------------
-        ItemStack LapisHelm = new ItemStack(Material.LEATHER_HELMET);
-        ItemMeta LapisHelmMeta = LapisHelm.getItemMeta();
+        ItemStack LapisLeg = new ItemStack(Material.LEATHER_HELMET);
+        ItemMeta LapisLegMeta = LapisLeg.getItemMeta();
 
 
         // SET THE META ----------------
-        LapisHelmMeta.setDisplayName("Lapis Leggings");
+        LapisLegMeta.setDisplayName("Lapis Leggings");
             // HelmLore
-        List<String> Helmlore = new ArrayList<>();
-        Helmlore.add("");
-        Helmlore.add(ChatColor.BLUE + "Damage: " + ChatColor.GRAY + "3");
-        Helmlore.add(ChatColor.BLUE + "Defense: " + ChatColor.GRAY + "18");
-        Helmlore.add(ChatColor.BLUE + "Mana: " + ChatColor.GRAY + "8");
-        Helmlore.add(ChatColor.BLUE + "Stamina: " + ChatColor.GRAY + "13");
-        Helmlore.add("");
-        Helmlore.add(ChatColor.LIGHT_PURPLE + "A helmet made out of an extremely durable");
-        Helmlore.add(ChatColor.LIGHT_PURPLE + "material which grants a lot of protection");
-        
-        Helmlore.add("");
-        Helmlore.add(ChatColor.DARK_PURPLE + "" + ChatColor.BOLD + "EPIC");
-        LapisHelmMeta.setLore(Helmlore);
+        List<String> Leglore = new ArrayList<>();
+        Leglore.add("");
+        a.addAttributes(LapisLeg, 1, 18, 25, 10);
+        Leglore.add("");
+        Leglore.add(ChatColor.YELLOW + "" + ChatColor.BOLD + "PASSIVE SET BONUS: INFINITE INTELLIGENCE");
+        Leglore.add(ChatColor.GRAY + "Once completing the set bonus of this armor,");
+        Leglore.add(ChatColor.GRAY + "+30 extra mana is granted due to the ancient");
+        Leglore.add(ChatColor.GRAY + "power of the lapis lazui used to craft it");
+        Leglore.add("");
+        Leglore.add(ChatColor.GRAY + "" + ChatColor.ITALIC + "Armor made from Lapis Lazui granting");
+        Leglore.add(ChatColor.GRAY + "" + ChatColor.ITALIC + "the wearer massive amounts of mana");
+        Leglore.add(ChatColor.GRAY + "" + ChatColor.ITALIC + "but minimal defense due to the brittle");
+        Leglore.add(ChatColor.GRAY + "" + ChatColor.ITALIC + "nature of lapis lazui...");
+        Leglore.add("");
+        Leglore.add(ChatColor.GREEN + "" + ChatColor.BOLD + "UNCOMMON");
+        LapisLegMeta.setLore(Leglore);
 
-        LapisHelm.setItemMeta(LapisHelmMeta);
-        helm = LapisHelm;
+        LapisLeg.setItemMeta(LapisLegMeta);
+        helm = LapisLeg;
     }
 
 
