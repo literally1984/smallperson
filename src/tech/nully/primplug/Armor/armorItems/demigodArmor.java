@@ -58,6 +58,11 @@ public class demigodArmor {
         DemiHelmMeta.setDisplayName("Demigod Helmet");
             // HelmLore
         List<String> Helmlore = new ArrayList<>();
+        Helmlore.add(ChatColor.RED + "---Attributes---");
+        Helmlore.add(ChatColor.BLUE + "Damage: 8");
+        Helmlore.add(ChatColor.BLUE + "Defense: 7");
+        Helmlore.add(ChatColor.BLUE + "Mana: 19");
+        Helmlore.add(ChatColor.BLUE + "Stamina: 20");
         a.addAttributes(DemiHelm, 3, 13, 10, 15);
         Helmlore.add("");
         Helmlore.add(ChatColor.YELLOW + "" + ChatColor.BOLD + "Set Bonus I: Zeus' Wrath");
@@ -68,14 +73,8 @@ public class demigodArmor {
         Helmlore.add(ChatColor.GOLD + "" + ChatColor.BOLD + "Set Bonus II: Godly");
         Helmlore.add("Passively grants the wearer +50%");
         Helmlore.add("walk speed and Jump boost I");
-        Helmlore.add("Walk along with the gods!");
-        Helmlore.add("");
-        Helmlore.add(ChatColor.GOLD + "" + ChatColor.BOLD + "Set Bonus: Zeus' Wrath");
-        Helmlore.add("Jump and shift at the same time to summon the fury of the gods!");
-        Helmlore.add("");
-        Helmlore.add(ChatColor.GOLD + "" + ChatColor.BOLD + "Full Set Bonus: Godly");
-        Helmlore.add("When equipped, gain 50% movement speed and 50% jump boost!");
         Helmlore.add("Walk with the gods!");
+        Helmlore.add("-Z");
         Helmlore.add("");
         Helmlore.add(ChatColor.YELLOW + "" + ChatColor.BOLD + "LEGENDARY");
         Helmlore.add("");
@@ -97,6 +96,8 @@ public class demigodArmor {
             // ChestLore
         List<String> Chestlore = new ArrayList<>();
         Chestlore.add(ChatColor.RED + "Attributes------");
+        Chestlore.add(ChatColor.BLUE + "Damage: 8");
+        Chestlore.add(ChatColor.BLUE + "Defense: 26");
         Chestlore.add(ChatColor.BLUE + "Damage: 3");
         Chestlore.add(ChatColor.BLUE + "Defense: 31");
         Chestlore.add(ChatColor.BLUE + "Mana: 20");
@@ -135,7 +136,7 @@ public class demigodArmor {
             // LegLore
         List<String> Leglore = new ArrayList<>();
         Leglore.add(ChatColor.RED + "Attributes------");
-        Leglore.add(ChatColor.BLUE + "Damage: 2");
+        Leglore.add(ChatColor.BLUE + "Damage: 5");
         Leglore.add(ChatColor.BLUE + "Defense: 21");
         Leglore.add(ChatColor.BLUE + "Mana: 15");
         Leglore.add(ChatColor.BLUE + "Stamina: 25");
@@ -169,7 +170,7 @@ public class demigodArmor {
             // BootsLore
         List<String> Bootslore = new ArrayList<>();
         Bootslore.add(ChatColor.RED + "Attributes------");
-        Bootslore.add(ChatColor.BLUE + "Damage: 1");
+        Bootslore.add(ChatColor.BLUE + "Damage: 3");
         Bootslore.add(ChatColor.BLUE + "Defense: 8");
         Bootslore.add(ChatColor.BLUE + "Mana: 7");
         Bootslore.add(ChatColor.BLUE + "Stamina: 13");
