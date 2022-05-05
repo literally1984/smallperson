@@ -60,10 +60,10 @@ public class demigodArmor {
             // HelmLore
         List<String> Helmlore = new ArrayList<>();
         Helmlore.add(ChatColor.RED + "---Attributes---");
-        Helmlore.add(ChatColor.BLUE + "Damage: 1");
-        Helmlore.add(ChatColor.BLUE + "Defense: 8");
-        Helmlore.add(ChatColor.BLUE + "Mana: 10");
-        Helmlore.add(ChatColor.BLUE + "Stamina: 15");
+        Helmlore.add(ChatColor.BLUE + "Damage: 8");
+        Helmlore.add(ChatColor.BLUE + "Defense: 7");
+        Helmlore.add(ChatColor.BLUE + "Mana: 19");
+        Helmlore.add(ChatColor.BLUE + "Stamina: 20");
         Helmlore.add("");
         Helmlore.add("A helmet gifted to a mortal from above.");
         Helmlore.add("It is said that whoever wears this has the power of a god!");
@@ -100,7 +100,7 @@ public class demigodArmor {
             // ChestLore
         List<String> Chestlore = new ArrayList<>();
         Chestlore.add(ChatColor.RED + "Attributes------");
-        Chestlore.add(ChatColor.BLUE + "Damage: 3");
+        Chestlore.add(ChatColor.BLUE + "Damage: 8");
         Chestlore.add(ChatColor.BLUE + "Defense: 26");
         Chestlore.add(ChatColor.BLUE + "Mana: 20");
         Chestlore.add(ChatColor.BLUE + "Stamina: 30");
@@ -142,7 +142,7 @@ public class demigodArmor {
             // LegLore
         List<String> Leglore = new ArrayList<>();
         Leglore.add(ChatColor.RED + "Attributes------");
-        Leglore.add(ChatColor.BLUE + "Damage: 2");
+        Leglore.add(ChatColor.BLUE + "Damage: 5");
         Leglore.add(ChatColor.BLUE + "Defense: 21");
         Leglore.add(ChatColor.BLUE + "Mana: 15");
         Leglore.add(ChatColor.BLUE + "Stamina: 25");
@@ -185,7 +185,7 @@ public class demigodArmor {
             // BootsLore
         List<String> Bootslore = new ArrayList<>();
         Bootslore.add(ChatColor.RED + "Attributes------");
-        Bootslore.add(ChatColor.BLUE + "Damage: 1");
+        Bootslore.add(ChatColor.BLUE + "Damage: 3");
         Bootslore.add(ChatColor.BLUE + "Defense: 8");
         Bootslore.add(ChatColor.BLUE + "Mana: 7");
         Bootslore.add(ChatColor.BLUE + "Stamina: 13");
