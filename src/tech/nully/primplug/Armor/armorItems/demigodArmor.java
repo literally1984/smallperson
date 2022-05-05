@@ -35,10 +35,6 @@ public class demigodArmor {
         // DEFINE THE META -------------
         ItemStack DemiShard = new ItemStack(Material.MAGMA_CREAM);
         ItemMeta DemiShardMeta = DemiShard.getItemMeta();
-<<<<<<< Updated upstream
-    
-=======
->>>>>>> Stashed changes
         DemiShardMeta.setDisplayName("Demigod Shard");
             // HelmLore
         List<String> Helmlore = new ArrayList<>();
@@ -62,7 +58,7 @@ public class demigodArmor {
         DemiHelmMeta.setDisplayName("Demigod Helmet");
             // HelmLore
         List<String> Helmlore = new ArrayList<>();
-        a.addAttributes(DemiHelm, 3, 13, 10, 15);dfdsa
+        a.addAttributes(DemiHelm, 3, 13, 10, 15);
         Helmlore.add("");
         Helmlore.add(ChatColor.YELLOW + "" + ChatColor.BOLD + "Set Bonus I: Zeus' Wrath");
         Helmlore.add(ChatColor.GRAY + "" +ChatColor.ITALIC + "Shift and then jump to summon");

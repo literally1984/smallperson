@@ -29,4 +29,34 @@ public class baseAttributesAdder {
         String epikReturn = ChatColor.YELLOW + "" + ChatColor.BOLD;
         return epikReturn;
     }
+
+    public String common() {
+        String epikReturn = ChatColor.GRAY + "" + ChatColor.BOLD;
+        return epikReturn;
+    }
+
+    public String uncommon() {
+        String epikReturn = ChatColor.GREEN+ "" + ChatColor.BOLD;
+        return epikReturn;
+    }
+
+    public String rare() {
+        String epikReturn = ChatColor.BLUE + "" + ChatColor.BOLD;
+        return epikReturn;
+    }
+
+    public String epic() {
+        String epikReturn = ChatColor.DARK_PURPLE+ "" + ChatColor.BOLD;
+        return epikReturn;
+    }
+
+    public String legendary() {
+        String epikReturn = ChatColor.GOLD + "" + ChatColor.BOLD;
+        return epikReturn;
+    }
+
+    public String mythical() {
+        String epikReturn = ChatColor.DARK_RED + "" + ChatColor.BOLD;
+        return epikReturn;
+    }
 }

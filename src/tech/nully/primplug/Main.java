@@ -15,6 +15,7 @@ import tech.nully.primplug.RPGcommands.reforges.reforgeCommand;
 import tech.nully.primplug.RegularCommands.giveCommand;
 import tech.nully.primplug.Talismans.Talisman;
 import tech.nully.primplug.Talismans.talismanListeners;
+import tech.nully.primplug.Tools.bloodThirstyBlade;
 import tech.nully.primplug.crafting.customRecipes.armorRecipes;
 import tech.nully.primplug.manaManager.passiveManaAdder;
 import tech.nully.primplug.recipeBook.recipeCommand;
@@ -36,6 +37,9 @@ public class Main extends JavaPlugin {
         Drakon.init();
         baseMethods.init();
 
+        bloodThirstyBlade.init();
+        
+        
         // recipes
         armorRecipes.init();
 

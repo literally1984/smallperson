@@ -3,7 +3,6 @@ package tech.nully.primplug.Armor;
 import java.util.HashMap;
 
 import org.bukkit.entity.Player;
-import org.bukkit.inventory.ItemStack;
 
 import tech.nully.primplug.Armor.armorItems.Drakon;
 import tech.nully.primplug.Armor.armorItems.cactusArmor;
