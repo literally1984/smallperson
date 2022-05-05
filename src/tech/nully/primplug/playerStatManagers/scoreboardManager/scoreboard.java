@@ -30,6 +30,7 @@ public class scoreboard {
             Score staminaScore = obj.getScore(Bukkit.getServer().getOfflinePlayer(ChatColor.AQUA + "Stamina :"));
             staminaScore.setScore(s.getStamina(p));
             p.setScoreboard(board);
+            playerBoards.put(p.getDisplayName(), board);
         }
     }
 }
