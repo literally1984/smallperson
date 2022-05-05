@@ -105,8 +105,13 @@ public class demigodArmor {
             // ChestLore
         List<String> Chestlore = new ArrayList<>();
         Chestlore.add(ChatColor.RED + "Attributes------");
+<<<<<<< HEAD
         Chestlore.add(ChatColor.BLUE + "Damage: 8");
         Chestlore.add(ChatColor.BLUE + "Defense: 26");
+=======
+        Chestlore.add(ChatColor.BLUE + "Damage: 3");
+        Chestlore.add(ChatColor.BLUE + "Defense: 31");
+>>>>>>> d104126d270e272045fa5595a1350df7e61460ea
         Chestlore.add(ChatColor.BLUE + "Mana: 20");
         Chestlore.add(ChatColor.BLUE + "Stamina: 30");
         Chestlore.add("");
