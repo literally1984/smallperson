@@ -3,10 +3,7 @@ package tech.nully.primplug.Armor;
 import java.util.HashMap;
 
 import org.bukkit.entity.Player;
-
-import tech.nully.primplug.Armor.armorItems.Drakon;
-import tech.nully.primplug.Armor.armorItems.cactusArmor;
-import tech.nully.primplug.Armor.armorItems.hardenedDiamond;
+import org.bukkit.inventory.ItemStack;
 
 public class setBonuses {
     private HashMap<Player, String> hasSetBonus = new HashMap<Player, String>();
@@ -14,6 +11,19 @@ public class setBonuses {
 
     public void getPlayerSetBonus(Player p) {
         hasSetBonus.get(p);
+    }
+
+
+    public boolean hasSet(Player p) {
+        boolean hasSet = false;
+        for (ItemStack i : p.getInventory().getArmorContents()) {
+            if (i == null) {
+                hasSet = true;
+                break;
+            }
+        }
+
+        return hasSet;
     }
 
 
@@ -26,45 +36,35 @@ public class setBonuses {
         String playerLeg = p.getInventory().getLeggings().getItemMeta().getDisplayName();
         String playerBoots = p.getInventory().getBoots().getItemMeta().getDisplayName();
 
+        if (hasSet(p)) {
+            if (playerHelm.contains("Cactus Helmet") &&
+                playerChes.contains("Cactus Chestplate") &&
+                playerLeg.contains("Cactus Leggings") &&
+                playerBoots.contains("Cactus Boots")) {
 
-        // checks if the player's armor is a set of cactusArmor
-        if (playerHelm.equals(cactusArmor.helm.getItemMeta().getDisplayName()) && 
-            playerChes.equals(cactusArmor.ches.getItemMeta().getDisplayName()) && 
-            playerLeg.equals(cactusArmor.leg.getItemMeta().getDisplayName()) && 
-            playerBoots.equals(cactusArmor.boots.getItemMeta().getDisplayName())) {
-            
 
-            hasSetBonus.put(p, "cac");
-            return;
-        }
+                    hasSetBonus.put(p, "cac");
+                    return;
+            }
 
-        // check if the player's armor is a set of hardenedDiamond
-        if (playerHelm.equals(hardenedDiamond.helm.getItemMeta().getDisplayName()) && 
-            playerChes.equals(hardenedDiamond.ches.getItemMeta().getDisplayName()) && 
-            playerLeg.equals(hardenedDiamond.leg.getItemMeta().getDisplayName()) && 
-            playerBoots.equals(hardenedDiamond.boots.getItemMeta().getDisplayName())) {
-            
+            if (playerHelm.contains("Drakon Helmet") &&
+                playerChes.contains("Drakon Chestplate") &&
+                playerLeg.contains("Drakon Leggings") &&
+                playerBoots.contains("Drakon Boots")) {
 
-            hasSetBonus.put(p, "hdia");
-            return;
-        }
+                    
+                    hasSetBonus.put(p, "drak");
+                    return;
+            }
 
-        // check if the player's armor is a set of Drakon armor
-        if (playerHelm.equals(Drakon.helm.getItemMeta().getDisplayName()) && 
-            playerChes.equals(Drakon.ches.getItemMeta().getDisplayName()) && 
-            playerLeg.equals(Drakon.leg.getItemMeta().getDisplayName()) && 
-            playerBoots.equals(Drakon.boots.getItemMeta().getDisplayName())) {
-            
+            if (playerHelm.contains("Demigod Helmet") &&
+                playerChes.contains("Demigod Chestplate") &&
+                playerLeg.contains("Demigod Leggings") &&
+                playerBoots.contains("Demigod Boots")) {
 
-            hasSetBonus.put(p, "drakon");
-            return;
-            // if none of the above set bonuses apply, remove the player's key from the hashMap
-        } else {
-            if (hasSetBonus.containsKey(p)) {
-                hasSetBonus.remove(p);
-                return;
-            } else {
-                return;
+                    
+                    hasSetBonus.put(p, "demi");
+                    return;
             }
         }
 
