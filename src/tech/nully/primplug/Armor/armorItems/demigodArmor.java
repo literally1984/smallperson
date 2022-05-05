@@ -58,15 +58,12 @@ public class demigodArmor {
         DemiHelmMeta.setDisplayName("Demigod Helmet");
             // HelmLore
         List<String> Helmlore = new ArrayList<>();
-<<<<<<< HEAD
         Helmlore.add(ChatColor.RED + "---Attributes---");
         Helmlore.add(ChatColor.BLUE + "Damage: 8");
         Helmlore.add(ChatColor.BLUE + "Defense: 7");
         Helmlore.add(ChatColor.BLUE + "Mana: 19");
         Helmlore.add(ChatColor.BLUE + "Stamina: 20");
-=======
         a.addAttributes(DemiHelm, 3, 13, 10, 15);
->>>>>>> 79a35eb32083173394c78fa54e1f4484b45aa13a
         Helmlore.add("");
         Helmlore.add(ChatColor.YELLOW + "" + ChatColor.BOLD + "Set Bonus I: Zeus' Wrath");
         Helmlore.add(ChatColor.GRAY + "" +ChatColor.ITALIC + "Shift and then jump to summon");
@@ -76,14 +73,8 @@ public class demigodArmor {
         Helmlore.add(ChatColor.GOLD + "" + ChatColor.BOLD + "Set Bonus II: Godly");
         Helmlore.add("Passively grants the wearer +50%");
         Helmlore.add("walk speed and Jump boost I");
-        Helmlore.add("Walk along with the gods!");
-        Helmlore.add("");
-        Helmlore.add(ChatColor.GOLD + "" + ChatColor.BOLD + "Set Bonus: Zeus' Wrath");
-        Helmlore.add("Jump and shift at the same time to summon the fury of the gods!");
-        Helmlore.add("");
-        Helmlore.add(ChatColor.GOLD + "" + ChatColor.BOLD + "Full Set Bonus: Godly");
-        Helmlore.add("When equipped, gain 50% movement speed and 50% jump boost!");
         Helmlore.add("Walk with the gods!");
+        Helmlore.add("-Z");
         Helmlore.add("");
         Helmlore.add(ChatColor.YELLOW + "" + ChatColor.BOLD + "LEGENDARY");
         Helmlore.add("");
@@ -105,13 +96,10 @@ public class demigodArmor {
             // ChestLore
         List<String> Chestlore = new ArrayList<>();
         Chestlore.add(ChatColor.RED + "Attributes------");
-<<<<<<< HEAD
         Chestlore.add(ChatColor.BLUE + "Damage: 8");
         Chestlore.add(ChatColor.BLUE + "Defense: 26");
-=======
         Chestlore.add(ChatColor.BLUE + "Damage: 3");
         Chestlore.add(ChatColor.BLUE + "Defense: 31");
->>>>>>> d104126d270e272045fa5595a1350df7e61460ea
         Chestlore.add(ChatColor.BLUE + "Mana: 20");
         Chestlore.add(ChatColor.BLUE + "Stamina: 30");
         Chestlore.add("");
