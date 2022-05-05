@@ -30,8 +30,8 @@ public class cactusArmor {
         createCacBoots();
     }
     // !  Obsidian
-    private static baseAttributesAdder a = new baseAttributesAdder();
 
+    private static baseAttributesAdder a = new baseAttributesAdder();
 
     private static void createCacShard() {
         // DEFINE THE META -------------
@@ -47,7 +47,7 @@ public class cactusArmor {
         Helmlore.add(ChatColor.YELLOW + "Very pointy!");
         CacShardMeta.setLore(Helmlore);
 
-        CacShardMeta.addEnchant(Enchantment.THORNS, 1, true);
+        CacShardMeta.addEnchant(Enchantment.THORNS, 1, false);
 
         CacShard.setItemMeta(CacShardMeta);
         Shard = CacShard;
@@ -65,22 +65,16 @@ public class cactusArmor {
         CacHelmMeta.setDisplayName("Cactus Helmet");
             // HelmLore
         List<String> Helmlore = new ArrayList<>();
-        a.addAttributes(CacHelm, 1, 8, 10, 15);
-        Helmlore.add(ChatColor.RED + "---Attributes---");
-        Helmlore.add(ChatColor.BLUE + "Damage: 1");
-        Helmlore.add(ChatColor.BLUE + "Defense: 8");
-        Helmlore.add(ChatColor.BLUE + "Mana: 10");
-        Helmlore.add(ChatColor.BLUE + "Stamina: 15");
+        a.addAttributes(CacHelm, 2, 9, 5, 10);
         Helmlore.add("");
-        Helmlore.add("Headwear made from the shards");
-        Helmlore.add("of a cactus spine.");
+        Helmlore.add("Headwear made from Cactus shards which");
+        Helmlore.add("harsm the oppenent when they attack you");
         Helmlore.add("Ouch! Pointy!");
         Helmlore.add("-Z");
         Helmlore.add("");
         Helmlore.add(ChatColor.GOLD+ "" + ChatColor.BOLD + "Set Bonus: Iron Spikes");
         Helmlore.add("Reflects 33% of the damage you take");
-        Helmlore.add("back to your opponent, but reduces");
-        Helmlore.add("movement speed by 10%");
+        Helmlore.add("back to your opponent, but reduces movement speed by 10%");
         Helmlore.add("");
         Helmlore.add(ChatColor.GREEN+ "" + ChatColor.BOLD + "UNCOMMON");
         Helmlore.add("");
@@ -112,12 +106,11 @@ public class cactusArmor {
         Chestlore.add(ChatColor.BLUE + "Mana: 20");
         Chestlore.add(ChatColor.BLUE + "Stamina: 30");
         Chestlore.add("");
-        Chestlore.add("A shirt made from the shards");
-        Chestlore.add("of a cactus spine.");
+        Chestlore.add("A shirt made from the shards of a cactus spine.");
         Chestlore.add("Gonna need a Band-Aid!");
         Chestlore.add("-Z");
         Chestlore.add("");
-        Chestlore.add(ChatColor.GOLD+ "" + ChatColor.BOLD + "Set Bonus: Iron Spikes");
+        Chestlore.add(ChatColor.GOLD+ "" + ChatColor.BOLD + "SET BONUS: Spikey spikes");
         Chestlore.add("Reflects 33% of the damage you take");
         Chestlore.add("back to your opponent, but reduces movement speed by 10%");
         Chestlore.add("");

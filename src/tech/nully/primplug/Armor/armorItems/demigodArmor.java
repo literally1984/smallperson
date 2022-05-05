@@ -5,22 +5,21 @@ import java.util.List;
 
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
-import org.bukkit.Color;
 import org.bukkit.Material;
 import org.bukkit.enchantments.Enchantment;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
-import org.bukkit.inventory.meta.LeatherArmorMeta;
+
+import tech.nully.primplug.Armor.baseAttributesAdder;
 
 
 public class demigodArmor {
-   
-    private static final ItemMeta DemiHelmMeta = null;
-    private static final ItemStack DemiHelm = null;
+    
     public static ItemStack helm;
     public static ItemStack ches;
     public static ItemStack leg;
     public static ItemStack boots;
+    public static ItemStack shard;
 
     public static void init() {
         createDemiShard();
@@ -30,12 +29,12 @@ public class demigodArmor {
         createDemiBoots();
     }
     // !  Obsidian
+    private static baseAttributesAdder a = new baseAttributesAdder();
+
     private static void createDemiShard() {
         // DEFINE THE META -------------
         ItemStack DemiShard = new ItemStack(Material.MAGMA_CREAM);
         ItemMeta DemiShardMeta = DemiShard.getItemMeta();
-    
-    // SET THE META ----------------
         DemiShardMeta.setDisplayName("Demigod Shard");
             // HelmLore
         List<String> Helmlore = new ArrayList<>();
@@ -47,27 +46,37 @@ public class demigodArmor {
 
         DemiShard.setItemMeta(DemiShardMeta);
         ItemStack Shard = DemiShard;
+        shard = Shard;
     }
 
     //! Demigod Helmet
     private static void createDemiHelm() {
         // DEFINE THE META -------------
-        ItemStack DemiHelm = new ItemStack(Material.DIAMOND_HELMET);
+        ItemStack DemiHelm = new ItemStack(Material.GOLD_HELMET);
         ItemMeta DemiHelmMeta = DemiHelm.hasItemMeta() ? DemiHelm.getItemMeta() : Bukkit.getItemFactory().getItemMeta(DemiHelm.getType());
-    }
         // SET THE META ----------------
-        DemiHelmMeta.@setDisplayName("Demigod Helmet"); {
+        DemiHelmMeta.setDisplayName("Demigod Helmet");
             // HelmLore
         List<String> Helmlore = new ArrayList<>();
+<<<<<<< HEAD
         Helmlore.add(ChatColor.RED + "---Attributes---");
         Helmlore.add(ChatColor.BLUE + "Damage: 8");
         Helmlore.add(ChatColor.BLUE + "Defense: 7");
         Helmlore.add(ChatColor.BLUE + "Mana: 19");
         Helmlore.add(ChatColor.BLUE + "Stamina: 20");
+=======
+        a.addAttributes(DemiHelm, 3, 13, 10, 15);
+>>>>>>> 79a35eb32083173394c78fa54e1f4484b45aa13a
         Helmlore.add("");
-        Helmlore.add("A helmet gifted to a mortal from above.");
-        Helmlore.add("It is said that whoever wears this has the power of a god!");
-        Helmlore.add("-Z");
+        Helmlore.add(ChatColor.YELLOW + "" + ChatColor.BOLD + "Set Bonus I: Zeus' Wrath");
+        Helmlore.add(ChatColor.GRAY + "" +ChatColor.ITALIC + "Shift and then jump to summon");
+        Helmlore.add("summon the fury of the thunder god");
+        Helmlore.add("and create a powerful explosion at");
+        Helmlore.add("your location!");
+        Helmlore.add(ChatColor.GOLD + "" + ChatColor.BOLD + "Set Bonus II: Godly");
+        Helmlore.add("Passively grants the wearer +50%");
+        Helmlore.add("walk speed and Jump boost I");
+        Helmlore.add("Walk along with the gods!");
         Helmlore.add("");
         Helmlore.add(ChatColor.GOLD + "" + ChatColor.BOLD + "Set Bonus: Zeus' Wrath");
         Helmlore.add("Jump and shift at the same time to summon the fury of the gods!");
@@ -79,10 +88,6 @@ public class demigodArmor {
         Helmlore.add(ChatColor.YELLOW + "" + ChatColor.BOLD + "LEGENDARY");
         Helmlore.add("");
         DemiHelmMeta.setLore(Helmlore);
-
-        // DIAMOND ARMOR META
-        DiamondArmorMeta diamondArmorMeta = (DiamondArmorMeta) DemiHelmMeta;
-        DiamondArmorMeta.setColor(Color.YELLOW);
 
 
         DemiHelm.setItemMeta(DemiHelmMeta);
@@ -116,13 +121,9 @@ public class demigodArmor {
         Chestlore.add("When equipped, gain 50% movement speed and 50% jump boost!");
         Chestlore.add("Walk with the gods!");
         Chestlore.add("");
-        Chestlore.add(ChatColor.YELLOW + "" + ChatColor.BOLD + "LEGENDARY");
+        Chestlore.add(ChatColor.GOLD + "" + ChatColor.BOLD + "LEGENDARY");
         Chestlore.add("");
         DemiChestMeta.setLore(Chestlore);
-
-        // DIAMOND ARMOR META
-        DiamondArmorMeta diamondArmorMeta = (DiamondArmorMeta) DemiChestMeta;
-        DiamondArmorMeta.setColor(Color.YELLOW);
 
 
         DemiChest.setItemMeta(DemiChestMeta);
@@ -147,9 +148,8 @@ public class demigodArmor {
         Leglore.add(ChatColor.BLUE + "Mana: 15");
         Leglore.add(ChatColor.BLUE + "Stamina: 25");
         Leglore.add("");
-        Leglore.add("Armor gifted to a mortal from above.");
-        Leglore.add("It is said that whoever wears this has the powerof a god!");
-        Leglore.add("-Z");
+        Leglore.add(a.lore() + "Armor gifted to a mortal from above.");
+        Leglore.add(a.lore() + "It is said that whoever wears this has the powerof a god!");
         Leglore.add("");
         Leglore.add(ChatColor.GOLD + "Full Set Bonus: Zeus' Wrath");
         Leglore.add("Shift and jump at the same time to summon the fury of the gods!");
@@ -161,14 +161,6 @@ public class demigodArmor {
         Leglore.add(ChatColor.YELLOW + "" + ChatColor.BOLD + "LEGENDARY");
         Leglore.add("");
         DemiLegMeta.setLore(Leglore);
-        
-
-        // DIAMOND ARMOR META
-        DiamondArmorMeta daimondArmorMeta = (DiamondArmorMeta) DemiLegMeta;
-        LeatherArmorMeta diamondArmorMeta;
-        diamondArmorMeta.setColor(Color.YELLOW);
-
-
         DemiLeg.setItemMeta(DemiLegMeta);
         leg = DemiLeg;
     }
@@ -202,12 +194,6 @@ public class demigodArmor {
         Bootslore.add("");
         Bootslore.add(ChatColor.YELLOW + "" + ChatColor.BOLD + "LEGENDARY");
         DemiBootsMeta.setLore(Bootslore);
-
-        // DIAMOND ARMOR META
-        DiamondArmorMeta diamondArmorMeta = (DiamondArmorMeta) DemiBootsMeta;
-        diamondArmorMeta.setColor(Color.YELLOW);
-
-
         DemiBoots.setItemMeta(DemiBootsMeta);
         boots = DemiBoots;
     }

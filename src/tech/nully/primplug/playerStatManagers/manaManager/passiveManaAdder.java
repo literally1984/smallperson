@@ -1,4 +1,4 @@
-package tech.nully.primplug.manaManager;
+package tech.nully.primplug.playerStatManagers.manaManager;
 
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
