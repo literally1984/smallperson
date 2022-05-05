@@ -15,6 +15,15 @@ public class defenseManager {
         return armorDamage;
     }
 
+    public boolean checkDefMapContains(Player key) {
+        boolean bool = Playerdefense.containsKey(key);
+        return bool;
+    }
+
+    public boolean checkAtkMapContains(Player key) {
+        boolean bool = PlayerArmorDamage.containsKey(key);
+        return bool;
+    }
 
     public void setArmorDamage(Player p) {
         // Loops throught the Player's inventory
