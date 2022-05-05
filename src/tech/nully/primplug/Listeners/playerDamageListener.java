@@ -31,17 +31,8 @@ public class playerDamageListener implements Listener{
                 // defines damager as the entity that last damaged the player casted into a player
                 Player damager = (Player) p.getLastDamageCause().getEntity();
                 finalDamage = finalDamage + d.getArmorDamage(damager) + getDamage.getItemDamage(damager.getItemInHand());
-
-
             }
-
         }
-
-
-
-
-        
-
 
 
 
