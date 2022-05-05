@@ -8,7 +8,7 @@ import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
 
 import tech.nully.primplug.baseMethods;
-import tech.nully.primplug.manaManager.manaManager;
+import tech.nully.primplug.playerStatManagers.manaManager.manaManager;
 
 public class armorPutOnEvent implements Listener{
     @EventHandler

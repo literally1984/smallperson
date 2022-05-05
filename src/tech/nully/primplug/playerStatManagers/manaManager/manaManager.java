@@ -1,4 +1,4 @@
-package tech.nully.primplug.manaManager;
+package tech.nully.primplug.playerStatManagers.manaManager;
 
 import java.util.HashMap;
 import java.util.List;

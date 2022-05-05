@@ -1,4 +1,4 @@
-package tech.nully.primplug.defenseManager;
+package tech.nully.primplug.playerStatManagers.defenseManager;
 
 import java.util.HashMap;
 import java.util.List;

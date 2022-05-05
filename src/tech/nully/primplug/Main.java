@@ -17,7 +17,7 @@ import tech.nully.primplug.Talismans.Talisman;
 import tech.nully.primplug.Talismans.talismanListeners;
 import tech.nully.primplug.Tools.bloodThirstyBlade;
 import tech.nully.primplug.crafting.customRecipes.armorRecipes;
-import tech.nully.primplug.manaManager.passiveManaAdder;
+import tech.nully.primplug.playerStatManagers.manaManager.passiveManaAdder;
 import tech.nully.primplug.recipeBook.recipeCommand;
 import tech.nully.primplug.rightClickPlayerMechanic.rightClickPlayer;
 import tech.nully.primplug.upgradeItems.upgradeCommand;

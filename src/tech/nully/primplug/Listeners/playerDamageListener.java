@@ -14,7 +14,7 @@ import org.bukkit.inventory.ItemStack;
 import tech.nully.primplug.baseMethods;
 import tech.nully.primplug.Armor.armorItems.cactusArmor;
 import tech.nully.primplug.damageManager.getDamage;
-import tech.nully.primplug.defenseManager.defenseManager;
+import tech.nully.primplug.playerStatManagers.defenseManager.defenseManager;
 
 public class playerDamageListener implements Listener{
     @EventHandler
