@@ -1,7 +1,7 @@
 name: PrimPlugin
 version: 0.1.13
 main: tech.nully.primplug.Main
-authors: [BongoCat, ayonull]
+authors: [BongoCat, ayonull, BigZ]
 api-version: 1.5.2
 description: A custom coded plugin for primcraft
 website: "https://nully.tech"

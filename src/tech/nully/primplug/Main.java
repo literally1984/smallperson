@@ -9,6 +9,11 @@ import org.bukkit.plugin.java.JavaPlugin;
 
 import tech.nully.primplug.Armor.armorItems.Drakon;
 import tech.nully.primplug.Armor.armorItems.PetheriteSet;
+import tech.nully.primplug.Armor.armorItems.cactusArmor;
+import tech.nully.primplug.Armor.armorItems.demigodArmor;
+import tech.nully.primplug.Armor.armorItems.hardenedDiamond;
+import tech.nully.primplug.Armor.armorItems.lapisArmor;
+import tech.nully.primplug.Armor.armorItems.platedArmor;
 import tech.nully.primplug.Listeners.playerDamageListener;
 import tech.nully.primplug.Listeners.upgradeGUIListener;
 import tech.nully.primplug.RPGcommands.reforges.reforgeCommand;
@@ -16,6 +21,7 @@ import tech.nully.primplug.RegularCommands.giveCommand;
 import tech.nully.primplug.Talismans.Talisman;
 import tech.nully.primplug.Talismans.talismanListeners;
 import tech.nully.primplug.Tools.bloodThirstyBlade;
+import tech.nully.primplug.Tools.toolAbilities;
 import tech.nully.primplug.crafting.customRecipes.armorRecipes;
 import tech.nully.primplug.playerStatManagers.manaManager.passiveManaAdder;
 import tech.nully.primplug.recipeBook.recipeCommand;
@@ -36,6 +42,11 @@ public class Main extends JavaPlugin {
         Talisman.init();
         Drakon.init();
         baseMethods.init();
+        cactusArmor.init();
+        demigodArmor.init();
+        hardenedDiamond.init();
+        lapisArmor.init();
+        platedArmor.init();
 
         bloodThirstyBlade.init();
         
@@ -48,6 +59,7 @@ public class Main extends JavaPlugin {
         getServer().getPluginManager().registerEvents(new playerDamageListener(), this);
         getServer().getPluginManager().registerEvents(new rightClickPlayer(), this);
         getServer().getPluginManager().registerEvents(new talismanListeners(), this);
+        getServer().getPluginManager().registerEvents(new toolAbilities(), this);
 
         getCommand("recipes").setExecutor(new recipeCommand());
         getCommand("pgive").setExecutor(new giveCommand());

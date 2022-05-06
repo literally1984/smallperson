@@ -1,5 +1,6 @@
 package tech.nully.primplug.Listeners;
 
+import org.bukkit.entity.LivingEntity;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -36,16 +37,22 @@ public class playerDamageListener implements Listener{
 
 
 
-        // defense calc
-        int playerDefense = d.getdefense(p);
-        int playerDefPerc = Math.round(100*(playerDefense)/(100*(playerDefense) + 100));
-        int def = playerDefPerc/100;
+        if (event.getEntity() instanceof Player) {
+            if (d.checkDefMapContains((Player) event.getEntity())) {
+                // gets the percentage that the damage needs to be multiplied by
+                int playerDefense = d.getdefense(p);
+                int playerDefPerc = Math.round(100*(playerDefense)/(100*(playerDefense) + 100));
+                int def = playerDefPerc/100;
 
+                // does the final damage
+                int damage = finalDamage;
+                finalDamage = damage - (damage*def);
+            }
+        }
 
-        int damage = finalDamage;
         e.setCancelled(true);
-        finalDamage = damage - (damage*def);
-        p.setHealth(p.getHealth() - finalDamage);
+        LivingEntity damaged = (LivingEntity) event.getEntity();
+        damaged.setHealth(damaged.getHealth() - finalDamage);
         p.sendMessage("works yayy!!");
     }
 }
