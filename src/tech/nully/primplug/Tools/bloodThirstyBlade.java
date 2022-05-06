@@ -35,7 +35,7 @@ public class bloodThirstyBlade {
         bladeLore.add(ChatColor.GRAY + "repairs itself and increases its damage");
         bladeLore.add(ChatColor.GRAY + "by 1 for 3 seconds");
         bladeLore.add("");
-        bladeLore.add(a.ability() + "Passive ability: Infinite Bloodthirst");
+        bladeLore.add(a.ability() + "Passive ability II: Infinite Bloodthirst");
         bladeLore.add(ChatColor.GRAY + "When a player is slain with this blade,");
         bladeLore.add(ChatColor.GRAY + "the blade gains + 10 damage for 10 seconds");
         bladeLore.add(ChatColor.GRAY + "and grants the player + 10 speed for 15 seconds");
@@ -46,6 +46,7 @@ public class bloodThirstyBlade {
         bladeLore.add("");
         bladeLore.add(a.legendary() + "LEGENDARY");
         bloodMeta.setLore(bladeLore);
+        bloodBlade.setDurability((short) -1000);
         bloodBlade.setItemMeta(bloodMeta);
 
         blade = bloodBlade;
