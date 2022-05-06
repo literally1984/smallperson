@@ -7,6 +7,8 @@ import org.bukkit.entity.Player;
 import tech.nully.primplug.Armor.armorItems.Drakon;
 import tech.nully.primplug.Armor.armorItems.cactusArmor;
 import tech.nully.primplug.Armor.armorItems.hardenedDiamond;
+import tech.nully.primplug.Armor.armorItems.demigodArmor;
+
 
 public class setBonuses {
     private HashMap<Player, String> hasSetBonus = new HashMap<Player, String>();
@@ -17,7 +19,7 @@ public class setBonuses {
     }
 
 
-    public void setPlayerSetBonus(Player p) {
+    public void setPlayerSetBonus(Player p, String value) {
 
 
         // defines the player's armor items
@@ -58,8 +60,23 @@ public class setBonuses {
 
             hasSetBonus.put(p, "drakon");
             return;
+
+        
+
+
             // if none of the above set bonuses apply, remove the player's key from the hashMap
-        } else {
+        }
+        
+        if (playerHelm.equals(demigodArmor.helm.getItemMeta().getDisplayName()) &&
+            playerChes.equals(demigodArmor.ches.getItemMeta().getDisplayName()) &&
+            playerLeg.equals(demigodArmor.leg.getItemMeta().getDisplayName()) &&
+            playerBoots.equals(demigodArmor.boots.getItemMeta().getDisplayName())){
+
+            hasSetBonus.put(p, "godly");
+            return;
+        } 
+        
+        else {
             if (hasSetBonus.containsKey(p)) {
                 hasSetBonus.remove(p);
                 return;
