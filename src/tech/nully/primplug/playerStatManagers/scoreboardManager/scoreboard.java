@@ -40,6 +40,16 @@ public class scoreboard {
     }
 
     public void updateScoreboard(Player p) {
-        
+        manaManager m = new manaManager();
+        staminaManager s = new staminaManager();
+        Scoreboard board = playerBoards.get(p.getDisplayName());
+        Objective obj = board.registerNewObjective("epikBoard", "dummy");
+        obj.setDisplaySlot(DisplaySlot.SIDEBAR);
+        Score manaScore = obj.getScore(Bukkit.getServer().getOfflinePlayer((ChatColor.AQUA + "" + m.getMana(p) + "/" + m.getMaxMana(p))));
+        manaScore.setScore(1);
+        Score staminaScore = obj.getScore(Bukkit.getServer().getOfflinePlayer(ChatColor.AQUA + "" + s.getStamina(p) + "/" + s.getMaxStamina(p)));
+        staminaScore.setScore(2);
+        p.setScoreboard(board);
+        playerBoards.put(p.getDisplayName(), board);
     }
 }
