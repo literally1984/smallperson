@@ -47,7 +47,7 @@ public class setBonuses {
 
             hasSetBonus.put(p, "hdia");
             return;
-        }
+        }e
 
         // check if the player's armor is a set of Drakon armor
         if (playerHelm.equals(Drakon.helm.getItemMeta().getDisplayName()) && 
