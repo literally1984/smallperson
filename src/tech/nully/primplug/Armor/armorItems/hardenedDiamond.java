@@ -14,7 +14,7 @@ public class hardenedDiamond {
     public static ItemStack leg;
     public static ItemStack boots;
 
-    public void init() {
+    public static void init() {
         createHDiaHelm();
         createHDiaChes();
         createHDiaLeg();
@@ -67,7 +67,6 @@ public class hardenedDiamond {
         Cheslore.add("");
         Cheslore.add(ChatColor.LIGHT_PURPLE + "Made from the hardest diamonds from the depths");
         Cheslore.add(ChatColor.LIGHT_PURPLE + "of the earth, this armor is the toughest around!");
-        Cheslore.add("-Z");
         Cheslore.add(ChatColor.DARK_PURPLE + "" + ChatColor.BOLD + "EPIC");
         HDiaChesMeta.setLore(Cheslore);
 

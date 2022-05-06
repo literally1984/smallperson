@@ -18,7 +18,7 @@ public class platedArmor {
     public static ItemStack leg;
     public static ItemStack boots;
 
-    public void init() {
+    public static void init() {
         createPlatedHelm();
         createPlatedChes();
         createPlatedLeg();

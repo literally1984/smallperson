@@ -33,7 +33,12 @@ public class zeusBolt {
         zeusLore.add(ChatColor.GRAY + "bolt strikes at your location and creates");
         zeusLore.add(ChatColor.GRAY + "a powerful explosion");
         zeusLore.add("");
-        zeusLore.add(b.lore() + "A thunderbolt ");
+        zeusLore.add(b.lore() + "A thunderbolt rumored to have been");
+        zeusLore.add(b.lore() + "brought upon this world by the god of");
+        zeusLore.add(b.lore() + "thunder himself and retains its old ");
+        zeusLore.add(b.lore() + "master's abilities...");
+        zeusLore.add("");
+        zeusLore.add(b.mythical() + "MYTHICAL");
 
 
     }

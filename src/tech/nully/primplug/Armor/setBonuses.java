@@ -3,12 +3,16 @@ package tech.nully.primplug.Armor;
 import java.util.HashMap;
 
 import org.bukkit.entity.Player;
+<<<<<<< HEAD
 
 import tech.nully.primplug.Armor.armorItems.Drakon;
 import tech.nully.primplug.Armor.armorItems.cactusArmor;
 import tech.nully.primplug.Armor.armorItems.hardenedDiamond;
 import tech.nully.primplug.Armor.armorItems.demigodArmor;
 
+=======
+import org.bukkit.inventory.ItemStack;
+>>>>>>> b0b0f252e895038c4fb45db9134f1413aeeb34d2
 
 public class setBonuses {
     private HashMap<Player, String> hasSetBonus = new HashMap<Player, String>();
@@ -19,7 +23,24 @@ public class setBonuses {
     }
 
 
+<<<<<<< HEAD
     public void setPlayerSetBonus(Player p, String value) {
+=======
+    public boolean hasSet(Player p) {
+        boolean hasSet = false;
+        for (ItemStack i : p.getInventory().getArmorContents()) {
+            if (i == null) {
+                hasSet = true;
+                break;
+            }
+        }
+
+        return hasSet;
+    }
+
+
+    public void setPlayerSetBonus(Player p) {
+>>>>>>> b0b0f252e895038c4fb45db9134f1413aeeb34d2
 
 
         // defines the player's armor items
@@ -28,36 +49,33 @@ public class setBonuses {
         String playerLeg = p.getInventory().getLeggings().getItemMeta().getDisplayName();
         String playerBoots = p.getInventory().getBoots().getItemMeta().getDisplayName();
 
+        if (hasSet(p)) {
+            if (playerHelm.contains("Cactus Helmet") &&
+                playerChes.contains("Cactus Chestplate") &&
+                playerLeg.contains("Cactus Leggings") &&
+                playerBoots.contains("Cactus Boots")) {
 
-        // checks if the player's armor is a set of cactusArmor
-        if (playerHelm.equals(cactusArmor.helm.getItemMeta().getDisplayName()) && 
-            playerChes.equals(cactusArmor.ches.getItemMeta().getDisplayName()) && 
-            playerLeg.equals(cactusArmor.leg.getItemMeta().getDisplayName()) && 
-            playerBoots.equals(cactusArmor.boots.getItemMeta().getDisplayName())) {
-            
 
-            hasSetBonus.put(p, "cac");
-            return;
-        }
+                    hasSetBonus.put(p, "cac");
+                    return;
+            }
 
-        // check if the player's armor is a set of hardenedDiamond
-        if (playerHelm.equals(hardenedDiamond.helm.getItemMeta().getDisplayName()) && 
-            playerChes.equals(hardenedDiamond.ches.getItemMeta().getDisplayName()) && 
-            playerLeg.equals(hardenedDiamond.leg.getItemMeta().getDisplayName()) && 
-            playerBoots.equals(hardenedDiamond.boots.getItemMeta().getDisplayName())) {
-            
+            if (playerHelm.contains("Drakon Helmet") &&
+                playerChes.contains("Drakon Chestplate") &&
+                playerLeg.contains("Drakon Leggings") &&
+                playerBoots.contains("Drakon Boots")) {
 
-            hasSetBonus.put(p, "hdia");
-            return;
-        }
+                    
+                    hasSetBonus.put(p, "drak");
+                    return;
+            }
 
-        // check if the player's armor is a set of Drakon armor
-        if (playerHelm.equals(Drakon.helm.getItemMeta().getDisplayName()) && 
-            playerChes.equals(Drakon.ches.getItemMeta().getDisplayName()) && 
-            playerLeg.equals(Drakon.leg.getItemMeta().getDisplayName()) && 
-            playerBoots.equals(Drakon.boots.getItemMeta().getDisplayName())) {
-            
+            if (playerHelm.contains("Demigod Helmet") &&
+                playerChes.contains("Demigod Chestplate") &&
+                playerLeg.contains("Demigod Leggings") &&
+                playerBoots.contains("Demigod Boots")) {
 
+<<<<<<< HEAD
             hasSetBonus.put(p, "drakon");
             return;
 
@@ -82,6 +100,11 @@ public class setBonuses {
                 return;
             } else {
                 return;
+=======
+                    
+                    hasSetBonus.put(p, "demi");
+                    return;
+>>>>>>> b0b0f252e895038c4fb45db9134f1413aeeb34d2
             }
         }
 
