@@ -32,7 +32,8 @@ public class playerDamageListener implements Listener{
 
                 // defines damager as the entity that last damaged the player casted into a player
                 Player damager = (Player) p.getLastDamageCause().getEntity();
-                finalDamage = finalDamage + d.getArmorDamage(damager) + getDamage.getItemDamage(damager.getItemInHand());
+                getDamage dmg = new getDamage();
+                finalDamage = finalDamage + d.getArmorDamage(damager) + dmg.getItemDamage(damager.getItemInHand());
             }
         }
 
@@ -41,6 +42,8 @@ public class playerDamageListener implements Listener{
         if (event.getEntity() instanceof Player) {
             setBonuses set = new setBonuses();
             Player damaged = (Player) event.getEntity();
+
+            // checks if the player has the "cac" set bnous
             if (set.getPlayerSetBonus(damaged).equals("cac")) {
                 reflectedDamage = e.getDamage()/3;
             }
