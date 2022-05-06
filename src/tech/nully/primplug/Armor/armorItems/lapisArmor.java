@@ -18,7 +18,7 @@ public class lapisArmor {
     public static ItemStack leg;
     public static ItemStack boots;
 
-    public void init() {
+    public static void init() {
         createLapisHelm();
         createLapisChes();
         createLapisLeg();
