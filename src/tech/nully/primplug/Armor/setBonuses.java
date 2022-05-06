@@ -9,8 +9,8 @@ public class setBonuses {
     private HashMap<Player, String> hasSetBonus = new HashMap<Player, String>();
 
 
-    public void getPlayerSetBonus(Player p) {
-        hasSetBonus.get(p);
+    public String getPlayerSetBonus(Player p) {
+        return hasSetBonus.get(p);
     }
 
 

@@ -7,6 +7,7 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityDamageEvent;
 import org.bukkit.event.entity.EntityDamageEvent.DamageCause;
 
+import tech.nully.primplug.Armor.setBonuses;
 import tech.nully.primplug.damageManager.getDamage;
 import tech.nully.primplug.playerStatManagers.defenseManager.defenseManager;
 
@@ -38,6 +39,11 @@ public class playerDamageListener implements Listener{
 
 
         if (event.getEntity() instanceof Player) {
+            setBonuses set = new setBonuses();
+            Player damaged = (Player) event.getEntity();
+            if (set.getPlayerSetBonus(damaged).equals("cac")) {
+                reflectedDamage = e.getDamage()/3;
+            }
             if (d.checkDefMapContains((Player) event.getEntity())) {
                 // gets the percentage that the damage needs to be multiplied by
                 int playerDefense = d.getdefense(p);
@@ -53,6 +59,24 @@ public class playerDamageListener implements Listener{
         e.setCancelled(true);
         LivingEntity damaged = (LivingEntity) event.getEntity();
         damaged.setHealth(damaged.getHealth() - finalDamage);
+        if (event.getCause() == DamageCause.ENTITY_ATTACK) {
+
+
+            //Checks if event-entity is a player
+            if (p.getLastDamageCause().getEntity() instanceof Player) {
+
+                // defines damager as the entity that last damaged the player casted into a player
+                Player damager = (Player) p.getLastDamageCause().getEntity();
+                int playerDefense = d.getdefense(damager);
+                int playerDefPerc = Math.round(100*(playerDefense)/(100*(playerDefense) + 100));
+                int def = playerDefPerc/100;
+
+                // does the final damage
+                int damage = finalDamage;
+                damager.setHealth(damager.getHealth() - (reflectedDamage - (damage*def)));
+            }
+        }
+
         p.sendMessage("works yayy!!");
     }
 }

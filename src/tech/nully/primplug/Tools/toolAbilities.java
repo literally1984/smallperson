@@ -7,7 +7,9 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.block.Action;
 import org.bukkit.event.entity.EntityDamageEvent;
 import org.bukkit.event.entity.EntityDamageEvent.DamageCause;
-import org.bukkit.event.player.PlayerInteractEvent;
+import org.bukkit.inventory.ItemStack;
+
+import tech.nully.primplug.damageManager.getDamage;
 
 public class toolAbilities implements Listener{
     @EventHandler
@@ -31,6 +33,13 @@ public class toolAbilities implements Listener{
                     // creates an explosion at the location of the damaged player that has a power of 1 and cannot damage blocks
                     world.createExplosion(p.getLocation().getX(), p.getLocation().getY(), p.getLocation().getZ(), 1, true, false);
                     world.strikeLightning(p.getLocation());
+                }
+
+                if (damager.getItemInHand().getItemMeta().getDisplayName().equalsIgnoreCase("Bloodthirsty Blade")) {
+                    ItemStack Idamage = damager.getItemInHand();
+                    Idamage.setDurability((short) -3);
+                    getDamage dmg = new getDamage();
+                    dmg.setDamage(Idamage, 3);
                 }
             }
         }
