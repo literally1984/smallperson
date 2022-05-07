@@ -14,6 +14,7 @@ import tech.nully.primplug.Armor.armorItems.demigodArmor;
 import tech.nully.primplug.Armor.armorItems.hardenedDiamond;
 import tech.nully.primplug.Armor.armorItems.lapisArmor;
 import tech.nully.primplug.Armor.armorItems.platedArmor;
+import tech.nully.primplug.Armor.armorItems.reaperArmor;
 import tech.nully.primplug.Listeners.armorPutOnEvent;
 import tech.nully.primplug.Listeners.playerDamageListener;
 import tech.nully.primplug.Listeners.upgradeGUIListener;
@@ -49,6 +50,7 @@ public class Main extends JavaPlugin {
         hardenedDiamond.init();
         lapisArmor.init();
         platedArmor.init();
+        reaperArmor.init();
 
         bloodThirstyBlade.makeBloodThirstyBlade();
         zeusBolt.createZeusBolt();
@@ -74,7 +76,7 @@ public class Main extends JavaPlugin {
         getServer().getConsoleSender().sendMessage("--------------------------------------------");
         getServer().getConsoleSender().sendMessage("--------------------------------------------");
         getServer().getConsoleSender().sendMessage(
-        ChatColor.LIGHT_PURPLE + "[PrimPlugin]" + ChatColor.GREEN + " PrimPlugin V0.1.13 is now Enabled! :D");
+        ChatColor.LIGHT_PURPLE + "[PrimPlugin]" + ChatColor.GREEN + " PrimPlugin V0.2.0 is now Enabled! :D");
         getServer().getConsoleSender().sendMessage("--------------------------------------------");
         getServer().getConsoleSender().sendMessage("--------------------------------------------");
         saveDefaultConfig();

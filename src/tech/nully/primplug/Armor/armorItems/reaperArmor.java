@@ -40,7 +40,7 @@ public class reaperArmor {
             // HelmLore
         List<String> Helmlore = new ArrayList<>();
         Helmlore.add("");
-        a.addAttributes(ReaperHelm, 5, 8, 13, 13);
+        a.addAttributes(ReaperHelm, 4, 8, 13, 13);
         Helmlore.add("");
         Helmlore.add(a.ability() + "PASSIVE SET BONUS: Translucence");
         Helmlore.add(ChatColor.GRAY + "Wearing this set of armor grants the");
@@ -56,13 +56,13 @@ public class reaperArmor {
         Helmlore.add(ChatColor.GRAY + "" + ChatColor.ITALIC + "Reaper armor passed down after a");
         Helmlore.add(ChatColor.GRAY + "" + ChatColor.ITALIC + "legendary warrior slew death himself..");
         Helmlore.add(ChatColor.GRAY + "" + ChatColor.ITALIC + "It is said that the weapon of death");
-        Helmlore.add(ChatColor.GRAY + "" + ChatColor.ITALIC + "was also passed down");
+        Helmlore.add(ChatColor.GRAY + "" + ChatColor.ITALIC + "was also passed down after the slaying");
         Helmlore.add("");
         Helmlore.add(a.legendary() + "LEGENDARY");
         ReaperHelmMeta.setLore(Helmlore);
 
         LeatherArmorMeta l = (LeatherArmorMeta) ReaperHelmMeta;
-        l.setColor(Color.GRAY);
+        l.setColor(Color.WHITE);
 
         ReaperHelm.setDurability((short)-20);
 
@@ -83,7 +83,7 @@ public class reaperArmor {
             // ChesLore
         List<String> Cheslore = new ArrayList<>();
         Cheslore.add("");
-        a.addAttributes(ReaperChes, 5, 8, 13, 13);
+        a.addAttributes(ReaperChes, 8, 24, 24, 24);
         Cheslore.add("");
         Cheslore.add(a.ability() + "PASSIVE SET BONUS: Translucence");
         Cheslore.add(ChatColor.GRAY + "Wearing this set of armor grants the");
@@ -99,7 +99,7 @@ public class reaperArmor {
         Cheslore.add(ChatColor.GRAY + "" + ChatColor.ITALIC + "Reaper armor passed down after a");
         Cheslore.add(ChatColor.GRAY + "" + ChatColor.ITALIC + "legendary warrior slew death himself..");
         Cheslore.add(ChatColor.GRAY + "" + ChatColor.ITALIC + "It is said that the weapon of death");
-        Cheslore.add(ChatColor.GRAY + "" + ChatColor.ITALIC + "was also passed down");
+        Cheslore.add(ChatColor.GRAY + "" + ChatColor.ITALIC + "was also passed down after the slaying");
         Cheslore.add("");
         Cheslore.add(a.legendary() + "LEGENDARY");
         ReaperChesMeta.setLore(Cheslore);
@@ -124,19 +124,25 @@ public class reaperArmor {
             // HelmLore
         List<String> Leglore = new ArrayList<>();
         Leglore.add("");
-        a.addAttributes(ReaperLeg, 1, 14, 20, 7);
+        a.addAttributes(ReaperLeg, 6, 19, 18, 18);
         Leglore.add("");
-        Leglore.add(ChatColor.YELLOW + "" + ChatColor.BOLD + "PASSIVE SET BONUS: INFINITE INTELLIGENCE");
-        Leglore.add(ChatColor.GRAY + "Once completing the set bonus of this armor,");
-        Leglore.add(ChatColor.GRAY + "+30 extra mana is granted due to the ancient");
-        Leglore.add(ChatColor.GRAY + "power of the Reaper lazui used to craft it");
+        Leglore.add(a.ability() + "PASSIVE SET BONUS: Translucence");
+        Leglore.add(ChatColor.GRAY + "Wearing this set of armor grants the");
+        Leglore.add(ChatColor.GRAY + "user's body some transparency causing");
+        Leglore.add(ChatColor.GRAY + "the opponent to have a 10% chance of");
+        Leglore.add(ChatColor.GRAY + "missing on atttempting to damage the user");
         Leglore.add("");
-        Leglore.add(ChatColor.GRAY + "" + ChatColor.ITALIC + "Armor made from Reaper Lazui granting");
-        Leglore.add(ChatColor.GRAY + "" + ChatColor.ITALIC + "the wearer massive amounts of mana");
-        Leglore.add(ChatColor.GRAY + "" + ChatColor.ITALIC + "but minimal defense due to the brittle");
-        Leglore.add(ChatColor.GRAY + "" + ChatColor.ITALIC + "nature of Reaper lazui...");
+        Leglore.add(a.ability() + "INTERACT SET BONUS: Descendant of the Reaper");
+        Leglore.add(ChatColor.GRAY + "Shift and right click while facing the air");
+        Leglore.add(ChatColor.GRAY + "to get the ability to fly and turns you");
+        Leglore.add(ChatColor.GRAY + "invisible");
         Leglore.add("");
-        Leglore.add(ChatColor.GREEN + "" + ChatColor.BOLD + "UNCOMMON");
+        Leglore.add(ChatColor.GRAY + "" + ChatColor.ITALIC + "Reaper armor passed down after a");
+        Leglore.add(ChatColor.GRAY + "" + ChatColor.ITALIC + "legendary warrior slew death himself..");
+        Leglore.add(ChatColor.GRAY + "" + ChatColor.ITALIC + "It is said that the weapon of death");
+        Leglore.add(ChatColor.GRAY + "" + ChatColor.ITALIC + "was also passed down after the slaying");
+        Leglore.add("");
+        Leglore.add(a.legendary() + "LEGENDARY");
         ReaperLegMeta.setLore(Leglore);
 
         LeatherArmorMeta l = (LeatherArmorMeta) ReaperLegMeta;
@@ -158,19 +164,25 @@ public class reaperArmor {
             // BootsLore
         List<String> Bootslore = new ArrayList<>();
         Bootslore.add("");
-        a.addAttributes(ReaperBoots, 0, 6, 15, 5);
+        a.addAttributes(ReaperBoots, 4, 8, 13, 13);
         Bootslore.add("");
-        Bootslore.add(ChatColor.YELLOW + "" + ChatColor.BOLD + "PASSIVE SET BONUS: INFINITE INTELLIGENCE");
-        Bootslore.add(ChatColor.GRAY + "Once completing the set bonus of this armor,");
-        Bootslore.add(ChatColor.GRAY + "+30 extra mana is granted due to the ancient");
-        Bootslore.add(ChatColor.GRAY + "power of the Reaper lazui used to craft it");
+        Bootslore.add(a.ability() + "PASSIVE SET BONUS: Translucence");
+        Bootslore.add(ChatColor.GRAY + "Wearing this set of armor grants the");
+        Bootslore.add(ChatColor.GRAY + "user's body some transparency causing");
+        Bootslore.add(ChatColor.GRAY + "the opponent to have a 10% chance of");
+        Bootslore.add(ChatColor.GRAY + "missing on atttempting to damage the user");
         Bootslore.add("");
-        Bootslore.add(ChatColor.GRAY + "" + ChatColor.ITALIC + "Armor made from Reaper Lazui granting");
-        Bootslore.add(ChatColor.GRAY + "" + ChatColor.ITALIC + "the wearer massive amounts of mana");
-        Bootslore.add(ChatColor.GRAY + "" + ChatColor.ITALIC + "but minimal defense due to the brittle");
-        Bootslore.add(ChatColor.GRAY + "" + ChatColor.ITALIC + "nature of Reaper lazui...");
+        Bootslore.add(a.ability() + "INTERACT SET BONUS: Descendant of the Reaper");
+        Bootslore.add(ChatColor.GRAY + "Shift and right click while facing the air");
+        Bootslore.add(ChatColor.GRAY + "to get the ability to fly and turns you");
+        Bootslore.add(ChatColor.GRAY + "invisible");
         Bootslore.add("");
-        Bootslore.add(ChatColor.GREEN + "" + ChatColor.BOLD + "UNCOMMON");
+        Bootslore.add(ChatColor.GRAY + "" + ChatColor.ITALIC + "Reaper armor passed down after a");
+        Bootslore.add(ChatColor.GRAY + "" + ChatColor.ITALIC + "Bootsendary warrior slew death himself..");
+        Bootslore.add(ChatColor.GRAY + "" + ChatColor.ITALIC + "It is said that the weapon of death");
+        Bootslore.add(ChatColor.GRAY + "" + ChatColor.ITALIC + "was also passed down after the slaying");
+        Bootslore.add("");
+        Bootslore.add(a.legendary() + "LEGENDARY");
         ReaperBootsMeta.setLore(Bootslore);
 
         LeatherArmorMeta l = (LeatherArmorMeta) ReaperBootsMeta;
