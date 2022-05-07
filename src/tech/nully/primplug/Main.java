@@ -14,6 +14,7 @@ import tech.nully.primplug.Armor.armorItems.demigodArmor;
 import tech.nully.primplug.Armor.armorItems.hardenedDiamond;
 import tech.nully.primplug.Armor.armorItems.lapisArmor;
 import tech.nully.primplug.Armor.armorItems.platedArmor;
+import tech.nully.primplug.Listeners.armorPutOnEvent;
 import tech.nully.primplug.Listeners.playerDamageListener;
 import tech.nully.primplug.Listeners.upgradeGUIListener;
 import tech.nully.primplug.RPGcommands.reforges.reforgeCommand;
@@ -22,6 +23,7 @@ import tech.nully.primplug.Talismans.Talisman;
 import tech.nully.primplug.Talismans.talismanListeners;
 import tech.nully.primplug.Tools.bloodThirstyBlade;
 import tech.nully.primplug.Tools.toolAbilities;
+import tech.nully.primplug.Tools.zeusBolt;
 import tech.nully.primplug.crafting.customRecipes.armorRecipes;
 import tech.nully.primplug.playerStatManagers.manaManager.passiveManaAdder;
 import tech.nully.primplug.recipeBook.recipeCommand;
@@ -48,7 +50,8 @@ public class Main extends JavaPlugin {
         lapisArmor.init();
         platedArmor.init();
 
-        bloodThirstyBlade.init();
+        bloodThirstyBlade.makeBloodThirstyBlade();
+        zeusBolt.createZeusBolt();
         
         
         // recipes
@@ -60,6 +63,7 @@ public class Main extends JavaPlugin {
         getServer().getPluginManager().registerEvents(new rightClickPlayer(), this);
         getServer().getPluginManager().registerEvents(new talismanListeners(), this);
         getServer().getPluginManager().registerEvents(new toolAbilities(), this);
+        getServer().getPluginManager().registerEvents(new armorPutOnEvent(), this);
 
         getCommand("recipes").setExecutor(new recipeCommand());
         getCommand("pgive").setExecutor(new giveCommand());
