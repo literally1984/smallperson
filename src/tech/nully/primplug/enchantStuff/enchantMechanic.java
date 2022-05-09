@@ -13,7 +13,7 @@ public class enchantMechanic {
 
     private final String[] possibleSwordEnchants = {};
     public void applyEnchants(ItemStack i) {
-        List<String> lore = i.getItemMeta().getLore()
+        List<String> lore = i.getItemMeta().getLore();
         int indexOf = lore.indexOf(lore.get(lore.size() - 1));
 
         while (!(lore.get(indexOf).equals(""))) {

@@ -7,9 +7,8 @@ import tech.nully.primplug.Main;
 
 public class passiveManaAdder {
     public void addMana() {
-        Main main = new Main();
         manaManager m = new manaManager();
-        Bukkit.getServer().getScheduler().scheduleSyncRepeatingTask(main.main, new Runnable() {
+        Bukkit.getServer().getScheduler().scheduleSyncRepeatingTask(Main.getInstance(), new Runnable() {
             public void run() {
                 for (Player p : Bukkit.getOnlinePlayers()) {
                     if (m.getMana(p) < m.getMaxMana(p)) {
