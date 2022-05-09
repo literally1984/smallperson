@@ -104,7 +104,7 @@ public class demigodArmor {
         Chestlore.add(ChatColor.BLUE + "Stamina: 30");
         Chestlore.add("");
         Chestlore.add("Armor gifted to a mortal from above.");
-        Chestlore.add("It is said that whoever wears this has the powerof a god!");
+        Chestlore.add("It is said that whoever wears this has the power of a god!");
         Chestlore.add("-Z");
         Chestlore.add("");
         Chestlore.add(ChatColor.GOLD + "" + ChatColor.BOLD + "Set Bonus: Zeus' Wrath");
@@ -142,7 +142,7 @@ public class demigodArmor {
         Leglore.add(ChatColor.BLUE + "Stamina: 25");
         Leglore.add("");
         Leglore.add(a.lore() + "Armor gifted to a mortal from above.");
-        Leglore.add(a.lore() + "It is said that whoever wears this has the powerof a god!");
+        Leglore.add(a.lore() + "It is said that whoever wears this has the power of a god!");
         Leglore.add("");
         Leglore.add(ChatColor.GOLD + "Full Set Bonus: Zeus' Wrath");
         Leglore.add("Shift and jump at the same time to summon the fury of the gods!");
@@ -175,7 +175,7 @@ public class demigodArmor {
         Bootslore.add(ChatColor.BLUE + "Mana: 7");
         Bootslore.add(ChatColor.BLUE + "Stamina: 13");
         Bootslore.add("Armor gifted to a mortal from above.");
-        Bootslore.add("It is said that whoever wears this has the powerof a god!");
+        Bootslore.add("It is said that whoever wears this has the power of a god!");
         Bootslore.add("-Z");
         Bootslore.add("");
         Bootslore.add(ChatColor.GOLD + "" + ChatColor.BOLD + "Full Set Bonus: Zeus' Wrath");
