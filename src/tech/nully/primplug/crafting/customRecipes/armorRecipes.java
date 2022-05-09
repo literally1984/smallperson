@@ -177,6 +177,6 @@ public class armorRecipes {
 
         ironBoots.setIngredient('^', Material.IRON_INGOT);
         ironBoots.shape("   ", "^ ^", "^ ^");
-        Bukkit.getServer().addRecipe(ironBoots);e
+        Bukkit.getServer().addRecipe(ironBoots);
     }
 }
