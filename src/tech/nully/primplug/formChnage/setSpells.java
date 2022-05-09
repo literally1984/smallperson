@@ -1,13 +1,33 @@
 package tech.nully.primplug.formChnage;
 
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 
+import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.entity.Player;
+
+import tech.nully.primplug.fileSystem.storePlayerFile;
 
 public class setSpells {
     private HashMap<String, List<String>> playerSpells = new HashMap<String, List<String>>();
+    storePlayerFile s = new storePlayerFile();
     
     public void addPlayerSpells(Player p) {
+        FileConfiguration playerConfig = s.getFileConfig(p.getDisplayName());
+        String playerSpell = s.readFile(playerConfig, "Spells");
+        List<String> playerSpellArray = Arrays.asList(playerSpell.split(","));
+        playerSpells.put(p.getDisplayName(), playerSpellArray);
+    }
+
+    public void addSpell(Player p, String spellName) {
+        FileConfiguration file = s.getFileConfig(p.getDisplayName());
+
+        List<String> newPlayerList = playerSpells.get(p.getDisplayName());
+        newPlayerList.add(spellName);
+        playerSpells.put(p.getDisplayName(), newPlayerList);
+
+        s.addToFile(file, "Spells", spellName);
+        
     }
 }

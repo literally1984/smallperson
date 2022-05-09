@@ -24,6 +24,15 @@ public class storePlayerFile {
     }
 
     public void addToFile(FileConfiguration fileConfig, String dataType, String data) {
-        fileConfig.set(arg0, arg1);
+        // Datatype pass-in is what type of item the data is, eg. Talisman, spells, etc
+        fileConfig.set(dataType, data);
+    }
+
+    public String readFile(FileConfiguration config, String path) {
+        return config.getString(path);
+    }
+
+    public FileConfiguration getFileConfig(String PlayerName) {
+        return playerFileConfig.get(PlayerName);
     }
 }

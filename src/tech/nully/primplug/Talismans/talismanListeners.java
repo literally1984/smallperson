@@ -1,12 +1,15 @@
 package tech.nully.primplug.Talismans;
 
 import org.bukkit.ChatColor;
+import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.Action;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.inventory.ItemStack;
+
+import tech.nully.primplug.fileSystem.storePlayerFile;
 
 public class talismanListeners implements Listener {
     @EventHandler
@@ -32,6 +35,9 @@ public class talismanListeners implements Listener {
 
                 // TODO: input this int into the player's file
                 int TalismanID = t.TalismanName.get(itemHand.getItemMeta().getDisplayName());
+                storePlayerFile s = new storePlayerFile();
+                FileConfiguration conf =  s.getFileConfig(p.getDisplayName());
+                s.addToFile(conf, "Talismans", itemHand.getItemMeta().getDisplayName());
             }  
         }
     }
