@@ -14,6 +14,8 @@ import tech.nully.primplug.Armor.armorItems.demigodArmor;
 import tech.nully.primplug.Armor.armorItems.hardenedDiamond;
 import tech.nully.primplug.Armor.armorItems.lapisArmor;
 import tech.nully.primplug.Armor.armorItems.platedArmor;
+import tech.nully.primplug.Armor.armorItems.reaperArmor;
+import tech.nully.primplug.Listeners.armorPutOnEvent;
 import tech.nully.primplug.Listeners.playerDamageListener;
 import tech.nully.primplug.Listeners.upgradeGUIListener;
 import tech.nully.primplug.RPGcommands.reforges.reforgeCommand;
@@ -22,6 +24,7 @@ import tech.nully.primplug.Talismans.Talisman;
 import tech.nully.primplug.Talismans.talismanListeners;
 import tech.nully.primplug.Tools.bloodThirstyBlade;
 import tech.nully.primplug.Tools.toolAbilities;
+import tech.nully.primplug.Tools.zeusBolt;
 import tech.nully.primplug.crafting.customRecipes.armorRecipes;
 import tech.nully.primplug.playerStatManagers.manaManager.passiveManaAdder;
 import tech.nully.primplug.recipeBook.recipeCommand;
@@ -30,11 +33,17 @@ import tech.nully.primplug.upgradeItems.upgradeCommand;
 
 public class Main extends JavaPlugin {
     public Iterator<Recipe> it = getServer().recipeIterator();
-    public Plugin main = this;
+    private static Main instance;
     passiveManaAdder p = new passiveManaAdder();
+
+    public static Main getInstance() {
+        return instance;
+    }
 
     @Override
     public void onEnable() {
+        instance = this;
+
         p.addMana();
 
 
@@ -47,8 +56,10 @@ public class Main extends JavaPlugin {
         hardenedDiamond.init();
         lapisArmor.init();
         platedArmor.init();
+        reaperArmor.init();
 
-        bloodThirstyBlade.init();
+        bloodThirstyBlade.makeBloodThirstyBlade();
+        zeusBolt.createZeusBolt();
         
         
         // recipes
@@ -60,6 +71,7 @@ public class Main extends JavaPlugin {
         getServer().getPluginManager().registerEvents(new rightClickPlayer(), this);
         getServer().getPluginManager().registerEvents(new talismanListeners(), this);
         getServer().getPluginManager().registerEvents(new toolAbilities(), this);
+        getServer().getPluginManager().registerEvents(new armorPutOnEvent(), this);
 
         getCommand("recipes").setExecutor(new recipeCommand());
         getCommand("pgive").setExecutor(new giveCommand());
@@ -70,7 +82,7 @@ public class Main extends JavaPlugin {
         getServer().getConsoleSender().sendMessage("--------------------------------------------");
         getServer().getConsoleSender().sendMessage("--------------------------------------------");
         getServer().getConsoleSender().sendMessage(
-        ChatColor.LIGHT_PURPLE + "[PrimPlugin]" + ChatColor.GREEN + " PrimPlugin V0.1.13 is now Enabled! :D");
+        ChatColor.LIGHT_PURPLE + "[PrimPlugin]" + ChatColor.GREEN + " PrimPlugin V0.2.0 is now Enabled! :D");
         getServer().getConsoleSender().sendMessage("--------------------------------------------");
         getServer().getConsoleSender().sendMessage("--------------------------------------------");
         saveDefaultConfig();

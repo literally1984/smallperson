@@ -167,4 +167,16 @@ public class armorRecipes {
         ironBoots.shape("   ", "^ ^", "^ ^");
         Bukkit.getServer().addRecipe(ironBoots);
     }
+
+
+
+    
+    
+    private static void zeusBoltRecipe() {
+        ShapedRecipe ironBoots = new ShapedRecipe(overridenRecipeItems.ironBoots);
+
+        ironBoots.setIngredient('^', Material.IRON_INGOT);
+        ironBoots.shape("   ", "^ ^", "^ ^");
+        Bukkit.getServer().addRecipe(ironBoots);
+    }
 }

@@ -15,22 +15,41 @@ import tech.nully.primplug.playerStatManagers.manaManager.manaManager;
 import tech.nully.primplug.playerStatManagers.staminaManager.staminaManager;
 
 public class scoreboard {
-    public void makeScoreBoard() {
+    //! WARNINING: the makeScoreBoard method does not have a hashMap checker so you have to make one yourself when calling it
+
+    private HashMap<String, Scoreboard> playerBoards = new HashMap<String, Scoreboard>();
+    public void makeScoreBoard(Player p) {
         ScoreboardManager manager = Bukkit.getScoreboardManager();
         manaManager m = new manaManager();
         staminaManager s = new staminaManager();
-        
-        HashMap<String, Scoreboard> playerBoards = new HashMap<String, Scoreboard>();
-        for (Player p : Bukkit.getServer().getOnlinePlayers()) {
-            Scoreboard board = manager.getNewScoreboard();
-            Objective obj = board.registerNewObjective("epikBoard", "dummy");
-            obj.setDisplaySlot(DisplaySlot.SIDEBAR);
-            Score manaScore = obj.getScore(Bukkit.getServer().getOfflinePlayer(ChatColor.AQUA + "Mana :"));
-            manaScore.setScore(m.getMana(p));
-            Score staminaScore = obj.getScore(Bukkit.getServer().getOfflinePlayer(ChatColor.AQUA + "Stamina :"));
-            staminaScore.setScore(s.getStamina(p));
-            p.setScoreboard(board);
-            playerBoards.put(p.getDisplayName(), board);
-        }
+
+        Scoreboard board = manager.getNewScoreboard();
+        Objective obj = board.registerNewObjective("epikBoard", "dummy");
+        obj.setDisplaySlot(DisplaySlot.SIDEBAR);
+        Score manaScore = obj.getScore(Bukkit.getServer().getOfflinePlayer((ChatColor.AQUA + "" + m.getMana(p) + "/" + m.getMaxMana(p))));
+        manaScore.setScore(1);
+        Score staminaScore = obj.getScore(Bukkit.getServer().getOfflinePlayer(ChatColor.AQUA + "" + s.getStamina(p) + "/" + s.getMaxStamina(p)));
+        staminaScore.setScore(2);
+        p.setScoreboard(board);
+        playerBoards.put(p.getDisplayName(), board);
+    }
+
+    public Scoreboard getScore(Player p) {
+        Scoreboard epikReturn = playerBoards.get(p.getDisplayName());
+        return epikReturn;
+    }
+
+    public void updateScoreboard(Player p) {
+        manaManager m = new manaManager();
+        staminaManager s = new staminaManager();
+        Scoreboard board = playerBoards.get(p.getDisplayName());
+        Objective obj = board.registerNewObjective("epikBoard", "dummy");
+        obj.setDisplaySlot(DisplaySlot.SIDEBAR);
+        Score manaScore = obj.getScore(Bukkit.getServer().getOfflinePlayer((ChatColor.AQUA + "" + m.getMana(p) + "/" + m.getMaxMana(p))));
+        manaScore.setScore(1);
+        Score staminaScore = obj.getScore(Bukkit.getServer().getOfflinePlayer(ChatColor.AQUA + "" + s.getStamina(p) + "/" + s.getMaxStamina(p)));
+        staminaScore.setScore(2);
+        p.setScoreboard(board);
+        playerBoards.put(p.getDisplayName(), board);
     }
 }

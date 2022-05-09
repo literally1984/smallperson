@@ -20,6 +20,8 @@ public class zeusBolt {
 
         zeusMeta.setDisplayName("Thunderbolt of Zeus");
         zeusLore.add("");
+        zeusLore.add(ChatColor.GOLD + "" + ChatColor.ITALIC + "Celestial Artifact");
+        zeusLore.add("");
         b.addAttributes(zeusBolt, 16, 3, 35, 35);
         zeusLore.add("");
         zeusLore.add(b.ability() + "Passive Ability: Zeus' Wrath");
@@ -28,7 +30,7 @@ public class zeusBolt {
         zeusLore.add(ChatColor.GRAY + "1 block wide explosion dealing high damage");
         zeusLore.add("");
         zeusLore.add(b.ability() + "Interact Ability: Divine Retribution");
-        zeusLore.add(ChatColor.GRAY + "When you Shift and right clich while");
+        zeusLore.add(ChatColor.GRAY + "When you Shift and right click while");
         zeusLore.add(ChatColor.GRAY + "looking at the sky, a powerful lighting");
         zeusLore.add(ChatColor.GRAY + "bolt strikes at your location and creates");
         zeusLore.add(ChatColor.GRAY + "a powerful explosion");
