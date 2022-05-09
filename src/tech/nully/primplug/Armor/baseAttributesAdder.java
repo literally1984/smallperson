@@ -20,6 +20,17 @@ public class baseAttributesAdder {
         
     }
 
+    public void addMagicAttributes(ItemStack item, int power, int defense, int mana) {
+        List<String> itemLore = item.getItemMeta().getLore();
+        itemLore.add(ChatColor.GRAY + "Magic Power: " + ChatColor.DARK_PURPLE + power);
+        itemLore.add(ChatColor.GRAY + "Defense: " + ChatColor.GREEN+ defense);
+        itemLore.add(ChatColor.GRAY + "Mana: " + ChatColor.AQUA + mana);
+        rarityObject r = new rarityObject();
+        int maxUpgrades = r.getMaxUpgrades(item);
+        itemLore.add(ChatColor.GRAY + "----" + ChatColor.WHITE + "0/" + maxUpgrades + ChatColor.GRAY + "----");
+        
+    }
+
     public String lore() {
         String epikReturn = ChatColor.GRAY + "" + ChatColor.ITALIC;
         return epikReturn;

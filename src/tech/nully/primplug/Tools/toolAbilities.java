@@ -47,7 +47,7 @@ public class toolAbilities implements Listener{
     }
 
     @EventHandler
-    public void onAbilityUse(PlayerInteractEvent e) {e
+    public void onAbilityUse(PlayerInteractEvent e) {
 
         if (e.getAction() == Action.RIGHT_CLICK_AIR) {
             Player p = e.getPlayer();
