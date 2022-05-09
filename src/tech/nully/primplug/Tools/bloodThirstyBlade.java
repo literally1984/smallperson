@@ -14,13 +14,7 @@ import tech.nully.primplug.Armor.baseAttributesAdder;
 public class bloodThirstyBlade {
     public static ItemStack blade;
 
-    public static void init() {
-        makeBloodThirstyBlade();
-    }
-
-    private static baseAttributesAdder a = new baseAttributesAdder();
-
-    private static void makeBloodThirstyBlade(){
+    public static void makeBloodThirstyBlade(){
         ItemStack bloodBlade = new ItemStack(Material.IRON_SWORD);
         ItemMeta bloodMeta = bloodBlade.getItemMeta();
 
@@ -28,6 +22,7 @@ public class bloodThirstyBlade {
 
         List<String> bladeLore = new ArrayList<String>();
         bladeLore.add("");
+        baseAttributesAdder a = new baseAttributesAdder();
         a.addAttributes(bloodBlade, 11, 5, 10, 20);
         bladeLore.add("");
         bladeLore.add(a.ability() + "Passive ability: Bloodthirst");

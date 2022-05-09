@@ -8,6 +8,8 @@ import org.bukkit.Material;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 
+import tech.nully.primplug.Armor.baseAttributesAdder;
+
 public class hardenedDiamond {
     public static ItemStack helm;
     public static ItemStack ches;
@@ -21,6 +23,8 @@ public class hardenedDiamond {
         createHDiaBoots();
     }
 
+    private static baseAttributesAdder base = new baseAttributesAdder();
+
     private static void createHDiaHelm() {
         // DEFINE THE META -------------
         ItemStack HDiaHelm = new ItemStack(Material.DIAMOND_HELMET);
@@ -32,13 +36,10 @@ public class hardenedDiamond {
             // HelmLore
         List<String> Helmlore = new ArrayList<>();
         Helmlore.add("");
-        Helmlore.add(ChatColor.RED + "Damage: " + ChatColor.GRAY + "3");
-        Helmlore.add(ChatColor.GREEN + "Defense: " + ChatColor.GRAY + "18");
-        Helmlore.add(ChatColor.BLUE + "Mana: " + ChatColor.GRAY + "8");
-        Helmlore.add(ChatColor.GOLD + "Stamina: " + ChatColor.GRAY + "13");
+        base.addAttributes(HDiaHelm, 3, 18, 8, 13);
         Helmlore.add("");
-        Helmlore.add(ChatColor.LIGHT_PURPLE + "Made from the hardest diamonds from the depths");
-        Helmlore.add(ChatColor.LIGHT_PURPLE + "of the earth, this armor is the toughest around!");
+        Helmlore.add(base.lore() + "Made from the hardest diamonds from the depths");
+        Helmlore.add(base.lore() + "of the earth, this armor is the toughest around!");
         Helmlore.add("-Z");
         Helmlore.add(ChatColor.DARK_PURPLE + "" + ChatColor.BOLD + "EPIC");
         HDiaHelmMeta.setLore(Helmlore);
@@ -60,10 +61,7 @@ public class hardenedDiamond {
             // ChesLore
         List<String> Cheslore = new ArrayList<>();
         Cheslore.add("");
-        Cheslore.add(ChatColor.BLUE + "Damage: " + ChatColor.GRAY + "5");
-        Cheslore.add(ChatColor.BLUE + "Defense: " + ChatColor.GRAY + "32");
-        Cheslore.add(ChatColor.BLUE + "Mana: " + ChatColor.GRAY + "13");
-        Cheslore.add(ChatColor.BLUE + "Stamina: " + ChatColor.GRAY + "20");
+        base.addAttributes(HDiaChes, 5, 32, 13, 20);
         Cheslore.add("");
         Cheslore.add(ChatColor.LIGHT_PURPLE + "Made from the hardest diamonds from the depths");
         Cheslore.add(ChatColor.LIGHT_PURPLE + "of the earth, this armor is the toughest around!");

@@ -35,7 +35,7 @@ public class scoreboard {
     }
 
     public Scoreboard getScore(Player p) {
-        Scoreboard epikReturn = playerBoards.get(p);
+        Scoreboard epikReturn = playerBoards.get(p.getDisplayName());
         return epikReturn;
     }
 
