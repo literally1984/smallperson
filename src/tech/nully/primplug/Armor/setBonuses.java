@@ -23,24 +23,7 @@ public class setBonuses {
     }
 
 
-<<<<<<< HEAD
     public void setPlayerSetBonus(Player p, String value) {
-=======
-    public boolean hasSet(Player p) {
-        boolean hasSet = false;
-        for (ItemStack i : p.getInventory().getArmorContents()) {
-            if (i == null) {
-                hasSet = true;
-                break;
-            }
-        }
-
-        return hasSet;
-    }
-
-
-    public void setPlayerSetBonus(Player p) {
->>>>>>> b0b0f252e895038c4fb45db9134f1413aeeb34d2
 
 
         // defines the player's armor items
