@@ -33,11 +33,17 @@ import tech.nully.primplug.upgradeItems.upgradeCommand;
 
 public class Main extends JavaPlugin {
     public Iterator<Recipe> it = getServer().recipeIterator();
-    public Plugin main = this;
+    private static Main instance;
     passiveManaAdder p = new passiveManaAdder();
+
+    public static Main getInstance() {
+        return instance;
+    }
 
     @Override
     public void onEnable() {
+        instance = this;
+
         p.addMana();
 
 
