@@ -14,6 +14,9 @@ public class setBonuses {
     }
 
 
+<<<<<<< HEAD
+    public void setPlayerSetBonus(Player p, String value) {
+=======
     public boolean hasSet(Player p) {
         boolean hasSet = false;
         for (ItemStack i : p.getInventory().getArmorContents()) {
@@ -28,6 +31,7 @@ public class setBonuses {
 
 
     public void setPlayerSetBonus(Player p) {
+>>>>>>> 043cff8deae727858d443df92fdf040da9fedfbc
 
 
         // defines the player's armor items
