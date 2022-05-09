@@ -8,7 +8,7 @@ public class enchantMechanic {
     private int getPossibleEncLevels(String enchant) {
         if (enchant.equals("Sharpness") || enchant.equals("Smite") || enchant.equals("Efficiency")) {
             return 5;
-        }
+        } else return 69;
     }
 
     private final String[] possibleSwordEnchants = {};

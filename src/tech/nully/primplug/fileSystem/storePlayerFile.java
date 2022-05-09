@@ -13,7 +13,7 @@ public class storePlayerFile {
     HashMap<String, FileConfiguration> playerFileConfig = new HashMap<String, FileConfiguration>();
     Main m = new Main();
     public void saveFile(String fileName) {
-        File playerYml = new File(m.main.getDataFolder()+fileName + ".yml");
+        File playerYml = new File(Main.getInstance().getDataFolder()+fileName + ".yml");
         FileConfiguration fileConfig = YamlConfiguration.loadConfiguration(playerYml);
         try {
             fileConfig.save(playerYml);
@@ -23,7 +23,7 @@ public class storePlayerFile {
         playerFileConfig.put(fileName, fileConfig);
     }
 
-    public void addToFile(FileConfiguration fileConfig) {
-        Main.getInstance().
+    public void addToFile(FileConfiguration fileConfig, String dataType, String data) {
+        fileConfig.set(arg0, arg1);
     }
 }
