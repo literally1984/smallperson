@@ -43,14 +43,26 @@ public class enchantMechanic {
 
     public void applyEnchants(ItemStack item) {
         // gets the Item's lore and gets the line which the rarity is stated
-
         List<String> lore = item.getItemMeta().getLore();
         Random rand = new Random();
-        int indexOfFirstEnchant = checkIsEnchanted(item).getValue();
+        int enchantIndex = rand.nextInt(possibleSwordEnchants.length - 1);
+
+        // makes a list of the needed enchants to be applied
+        List<String> neededEnchants = new ArrayList<String>();
+        for (int i = 0; i < rand.nextInt(4); i++) {
+            neededEnchants.add(possibleSwordEnchants[enchantIndex]);
+        }
+
+        // checks if the item is encahnted
         if (checkIsEnchanted(item).getKey()) {
+            int indexOfFirstEnchant = checkIsEnchanted(item).getValue();
+
+            // checks if item is weapon
+            if (b.checkIsWeapon(item)) {
+                for (String ench : neededEnchants) {
+                    lore.set(indexOfFirstEnchant, lore.get(indexOfFirstEnchant) + "," + ench);
+                }
             }
-            int indexOfEnchant = checkIsEnchanted(item).getValue();
-            lore.set(indexOfEnchant, lore.get(indexOfEnchant) + ",")
         } else {
             int indexOf = lore.indexOf(lore.get(lore.size() - 3));
 
@@ -60,7 +72,7 @@ public class enchantMechanic {
             }
             int enchant = rand.nextInt(possibleSwordEnchants.length - 1);
             for (int i = 0; i < rand.nextInt(4); i++) {
-                if (item.getType().toString().equalsIgnoreCase("sword")) {
+                if (b.checkIsWeapon(item)) {
                     lore.add(indexOf, possibleSwordEnchants[enchant]);
                 }
             }
