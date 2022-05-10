@@ -76,9 +76,10 @@ public class Drakon {
         DRchesMeta.setDisplayName(ChatColor.DARK_PURPLE + "Drakon Chesplate");
             // chesLore
         List<String> cheslore = new ArrayList<>();
-        a.addAttributes(DRches, 5, 35, 13, 25);
         cheslore.add("");
-        cheslore.add(ChatColor.YELLOW + "" +ChatColor.BOLD + "Full Set Bonus: DRAGON AWAKENING");
+        a.addAttributes(DRches, 5, 4, 35, 32, 13, 25);
+        cheslore.add("");
+        cheslore.add(a.ability() + "Full Set Bonus: DRAGON AWAKENING");
         cheslore.add(ChatColor.GRAY + "Grants the wearer permanent +10 damage");
         cheslore.add(ChatColor.GRAY + "and +45 Max Stamina");
         cheslore.add("");
@@ -106,18 +107,18 @@ public class Drakon {
 
 
         // SET THE META ----------------
-        DRlegMeta.setDisplayName(ChatColor.DARK_PURPLE + " Drakon Leggings");
+        DRlegMeta.setDisplayName(ChatColor.DARK_PURPLE + "Drakon Leggings");
             // legLore
         List<String> leglore = new ArrayList<>();
-        a.addAttributes(DRleg, 5, 25, 13, 25);
+        a.addAttributes(DRleg, 4, 3, 25, 22, 10, 20);
         leglore.add("");
         leglore.add(ChatColor.YELLOW + "" +ChatColor.BOLD + "PASSIVE SET BONUS: DRAGON AWAKENING");
         leglore.add(ChatColor.GRAY + "Grants the wearer permanent +10 damage");
         leglore.add(ChatColor.GRAY + "and +45 Max Stamina");
         leglore.add("");
-        leglore.add(ChatColor.GRAY + "" +ChatColor.ITALIC + "A pair of Leggings forged from the bones");
-        leglore.add(ChatColor.GRAY + "" +ChatColor.ITALIC + "of the invincible dragon who guards the");
-        leglore.add(ChatColor.GRAY + "" +ChatColor.ITALIC + "golden fleece...");
+        leglore.add(a.lore() + "A pair of Leggings forged from the bones");
+        leglore.add(a.lore() + "of the invincible dragon who guards the");
+        leglore.add(a.lore() + "golden fleece...");
         leglore.add("-Z");
         leglore.add("");
         leglore.add(ChatColor.DARK_PURPLE + "" + ChatColor.BOLD + "EPIC");
@@ -143,7 +144,7 @@ public class Drakon {
         DRbootsMeta.setDisplayName(ChatColor.DARK_PURPLE  + " Drakon Boots");
             // bootsLore
         List<String> bootslore = new ArrayList<>();
-        a.addAttributes(DRboots, 3, 16, 7, 15);
+        a.addAttributes(DRboots, 2, 1, 14, 10, 7, 15);
         bootslore.add("");
         bootslore.add(ChatColor.YELLOW + "" +ChatColor.BOLD + "PASSIVE SET BONUS: DRAGON AWAKENING");
         bootslore.add(ChatColor.GRAY + "Grants the wearer permanent +10 damage");
