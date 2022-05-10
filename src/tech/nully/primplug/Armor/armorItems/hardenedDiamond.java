@@ -30,7 +30,6 @@ public class hardenedDiamond {
         ItemStack HDiaHelm = new ItemStack(Material.DIAMOND_HELMET);
         ItemMeta HDiaHelmMeta = HDiaHelm.getItemMeta();
 
-
         // SET THE META ----------------
         HDiaHelmMeta.setDisplayName("Hardened Diamond Helmet");
             // HelmLore
@@ -47,7 +46,6 @@ public class hardenedDiamond {
         HDiaHelm.setItemMeta(HDiaHelmMeta);
         helm = HDiaHelm;
     }
-
 
 
     private static void createHDiaChes() {
