@@ -12,6 +12,7 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.inventory.meta.LeatherArmorMeta;
 
+import net.minecraft.server.v1_5_R3.Item;
 import tech.nully.primplug.Armor.baseAttributesAdder;
 
 public class cactusArmor {
@@ -65,7 +66,7 @@ public class cactusArmor {
         CacHelmMeta.setDisplayName("Cactus Helmet");
             // HelmLore
         List<String> Helmlore = new ArrayList<>();
-        a.addAttributes(CacHelm, 2, 9, 5, 10);
+        a.addAttributes(CacHelm, 3, 3, 6, 6, 4, 3);
         Helmlore.add("");
         Helmlore.add("Headwear made from Cactus shards which");
         Helmlore.add("harsm the oppenent when they attack you");
@@ -100,11 +101,7 @@ public class cactusArmor {
         CacChestMeta.setDisplayName("Cactus Chestplate");
             // ChestLore
         List<String> Chestlore = new ArrayList<>();
-        Chestlore.add(ChatColor.RED + "Attributes------");
-        Chestlore.add(ChatColor.BLUE + "Damage: 3");
-        Chestlore.add(ChatColor.BLUE + "Defense: 26");
-        Chestlore.add(ChatColor.BLUE + "Mana: 20");
-        Chestlore.add(ChatColor.BLUE + "Stamina: 30");
+        a.addAttributes(CacChest, 2, 2, 21, 21, 15, 25);
         Chestlore.add("");
         Chestlore.add("A shirt made from the shards of a cactus spine.");
         Chestlore.add("Gonna need a Band-Aid!");
@@ -139,11 +136,7 @@ public class cactusArmor {
         PLegMeta.setDisplayName("Cac Leggings");
             // LegLore
         List<String> Leglore = new ArrayList<>();
-        Leglore.add(ChatColor.RED + "Attributes------");
-        Leglore.add(ChatColor.BLUE + "Damage: 2");
-        Leglore.add(ChatColor.BLUE + "Defense: 21");
-        Leglore.add(ChatColor.BLUE + "Mana: 15");
-        Leglore.add(ChatColor.BLUE + "Stamina: 25");
+        a.addAttributes(cac, damage, magicDmg, defense, magicDef, mana, stamina);
         Leglore.add("");
         Leglore.add("Pants made from the shards of a cactus spine.");
         Leglore.add("A little poky down under…");
@@ -177,11 +170,7 @@ public class cactusArmor {
         CacBootsMeta.setDisplayName("Cac Boots");
             // BootsLore
         List<String> Bootslore = new ArrayList<>();
-        Bootslore.add(ChatColor.RED + "Attributes------");
-        Bootslore.add(ChatColor.BLUE + "Damage: 1");
-        Bootslore.add(ChatColor.BLUE + "Defense: 8");
-        Bootslore.add(ChatColor.BLUE + "Mana: 7");
-        Bootslore.add(ChatColor.BLUE + "Stamina: 13");
+        a.addAttributes(CacBoots, 1, 1, 8, 8, 7, 13);
         Bootslore.add("Shoes made from the shards of a cactus spine.");
         Bootslore.add("A pain to walk in!");
         Bootslore.add("-Z");
