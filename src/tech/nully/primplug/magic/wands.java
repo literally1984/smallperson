@@ -12,6 +12,7 @@ import tech.nully.primplug.Armor.baseAttributesAdder;
 public class wands {
     
     public static void init() {
+        createPheonixWand();
 
     }
     private static baseAttributesAdder b = new baseAttributesAdder();
@@ -24,12 +25,18 @@ public class wands {
 
         PheonixMeta.setDisplayName("Pheonix Wand");
         PheonixWandLore.add("");
-        b.addMagicAttributes(PheonixWand, 10, 10, 50);
+        b.addAttributes(PheonixWand, 3, 20, 8, 9, 40, 10);
         PheonixWandLore.add("");
         PheonixWandLore.add(b.ability() + "Passive Ability: Flames of Rejuvenation");
         PheonixWandLore.add(b.lore() + "On reaching 35% or less HP, the spirit");
         PheonixWandLore.add(b.lore() + "of the Pheonix will engulf its user with");
         PheonixWandLore.add(b.lore() + "its flames, granting them Regen II");
         PheonixWandLore.add("");
+        PheonixWandLore.add(b.ability() + "Passive II: Mage of Flames");
+        PheonixWandLore.add(b.lore() + "The Spirit of the Pheonix roams within");
+        PheonixWandLore.add(b.lore() + "the user's body and protects them from");
+        PheonixWandLore.add(b.lore() + "fire damage...");
+        PheonixWandLore.add("");
+        PheonixWandLore.add(b.epic() + "EPIC");
     }
 }

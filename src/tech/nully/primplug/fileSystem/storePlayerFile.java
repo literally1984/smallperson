@@ -20,6 +20,8 @@ public class storePlayerFile {
             } catch (IOException e) {
             e.printStackTrace();
             }
+        fileConfig.set("Talisman", null);
+        fileConfig.set("Spells", null);
         playerFileConfig.put(fileName, fileConfig);
     }
 

@@ -42,9 +42,9 @@ public class Drakon {
             // HelmLore
         List<String> Helmlore = new ArrayList<>();
         Helmlore.add("");
-        a.addAttributes(DRHelm, 2, 16, 7, 15);
+        a.addAttributes(DRHelm, 2, 2, 16, 13, 7, 15);
         Helmlore.add("");
-        Helmlore.add(ChatColor.YELLOW + "" +ChatColor.BOLD + "Full Set Bonus: DRAGON AWAKENING");
+        Helmlore.add(a.ability() + "Set Bonus: DRAGON AWAKENING");
         Helmlore.add(ChatColor.GRAY + "Grants the wearer permanent +10 damage");
         Helmlore.add(ChatColor.GRAY + "and +45 Max Stamina");
         Helmlore.add("");

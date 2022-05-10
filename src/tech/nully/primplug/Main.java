@@ -4,7 +4,6 @@ import java.util.Iterator;
 
 import org.bukkit.ChatColor;
 import org.bukkit.inventory.Recipe;
-import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import tech.nully.primplug.Armor.armorItems.Drakon;

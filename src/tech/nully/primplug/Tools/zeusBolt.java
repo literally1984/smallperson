@@ -22,7 +22,7 @@ public class zeusBolt {
         zeusLore.add("");
         zeusLore.add(ChatColor.GOLD + "" + ChatColor.ITALIC + "Celestial Artifact");
         zeusLore.add("");
-        b.addAttributes(zeusBolt, 16, 3, 35, 35);
+        b.addAttributes(zeusBolt, 14, 7, 6, 9, 20, 20);
         zeusLore.add("");
         zeusLore.add(b.ability() + "Passive Ability: Zeus' Wrath");
         zeusLore.add(ChatColor.GRAY + "When you strike an opponent with this");

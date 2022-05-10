@@ -23,7 +23,7 @@ public class bloodThirstyBlade {
         List<String> bladeLore = new ArrayList<String>();
         bladeLore.add("");
         baseAttributesAdder a = new baseAttributesAdder();
-        a.addAttributes(bloodBlade, 11, 5, 10, 20);
+        a.addAttributes(bloodBlade, 11, 3, 5, 2, 10, 15);
         bladeLore.add("");
         bladeLore.add(a.ability() + "Passive ability: Bloodthirst");
         bladeLore.add(ChatColor.GRAY + "When this blade hits another player, it");
@@ -39,7 +39,7 @@ public class bloodThirstyBlade {
         bladeLore.add(a.lore() + "a legendary warrior who slew 100 beasts");
         bladeLore.add(a.lore() + "and 100 armies...");
         bladeLore.add("");
-        bladeLore.add(a.legendary() + "LEGENDARY");
+        bladeLore.add(a.legendary() + "EPIC");
         bloodMeta.setLore(bladeLore);
         bloodBlade.setDurability((short) -1000);
         bloodBlade.setItemMeta(bloodMeta);
