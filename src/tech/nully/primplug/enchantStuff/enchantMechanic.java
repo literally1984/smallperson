@@ -43,9 +43,11 @@ public class enchantMechanic {
             indexOf = indexOf - 1;
         }
         Random rand = new Random();
+        int enchant = rand.nextInt(possibleSwordEnchants.length - 1);
         for (int i = 0; i < rand.nextInt(4); i++) {
             if (item.getType().toString().equalsIgnoreCase("sword")) {
-                lore.add(indexOf, );
+                lore.add(indexOf, possibleSwordEnchants[enchant]);
+
             }
 
         }
