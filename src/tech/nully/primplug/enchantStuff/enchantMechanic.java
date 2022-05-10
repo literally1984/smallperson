@@ -38,13 +38,19 @@ public class enchantMechanic {
         enchantLevels.put("Sharpness", 5);
     }
 
+    
+
 
     public void applyEnchants(ItemStack item) {
         // gets the Item's lore and gets the line which the rarity is stated
 
         List<String> lore = item.getItemMeta().getLore();
+        Random rand = new Random();
+        int indexOfFirstEnchant = checkIsEnchanted(item).getValue();
         if (checkIsEnchanted(item).getKey()) {
+            }
             int indexOfEnchant = checkIsEnchanted(item).getValue();
+            lore.set(indexOfEnchant, lore.get(indexOfEnchant) + ",")
         } else {
             int indexOf = lore.indexOf(lore.get(lore.size() - 3));
 
@@ -52,7 +58,6 @@ public class enchantMechanic {
             while (!(lore.get(indexOf).equals(""))) {
                 indexOf = indexOf - 1;
             }
-            Random rand = new Random();
             int enchant = rand.nextInt(possibleSwordEnchants.length - 1);
             for (int i = 0; i < rand.nextInt(4); i++) {
                 if (item.getType().toString().equalsIgnoreCase("sword")) {
