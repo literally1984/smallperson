@@ -8,11 +8,19 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 import tech.nully.primplug.baseMethods;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import static tech.nully.primplug.baseMethods.*;
 
 public class EnchantGUI {
+    public String unavaliableDisplayName = "There are no items in the Enchanting Slot";
+    public List<String> unavaliableLore() {
+        List<String> enchantLore = new ArrayList<String>();
+        enchantLore.add(ChatColor.GRAY + "Put an Item into the Enchant slot");
+        enchantLore.add(ChatColor.GRAY + "to be able to enchant it!");
+        return enchantLore;
+    }
 
     public static void createEnchantItems() {
         ItemStack level1Enchant = new ItemStack(Material.EXP_BOTTLE);
