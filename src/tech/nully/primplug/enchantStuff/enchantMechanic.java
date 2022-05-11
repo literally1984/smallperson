@@ -19,7 +19,7 @@ public class enchantMechanic {
             return 5;
         } else return 69;
     }
-    private final String[] possibleSwordEnchants = {"Sharpness", "Smite",};
+    private final String[] possibleSwordEnchants = {"Sharpness", "Smite", "Fire Aspect"};
     private static HashMap<String, Integer> enchantLevels = new HashMap<String, Integer>();
 
     public static void createEnchantHashMap() {
@@ -41,28 +41,22 @@ public class enchantMechanic {
     
 
 
-    public void applyEnchants(ItemStack item) {
+    public void applyEnchants(ItemStack item, List<String> enchants) {
         // gets the Item's lore and gets the line which the rarity is stated
         List<String> lore = item.getItemMeta().getLore();
         Random rand = new Random();
-        int enchantIndex = rand.nextInt(possibleSwordEnchants.length - 1);
 
-        // makes a list of the needed enchants to be applied
-        List<String> neededEnchants = new ArrayList<String>();
-        for (int i = 0; i < rand.nextInt(4); i++) {
-            neededEnchants.add(possibleSwordEnchants[enchantIndex]);
-        }
-
-        // checks if the item is encahnted
+        // checks if the item is enchanted
         if (checkIsEnchanted(item).getKey()) {
             int indexOfFirstEnchant = checkIsEnchanted(item).getValue();
 
             // checks if item is weapon
             if (b.checkIsWeapon(item)) {
-                for (String ench : neededEnchants) {
-                    lore.set(indexOfFirstEnchant, lore.get(indexOfFirstEnchant) + "," + ench);
+                for (String ench : enchants) {
+                    lore.set(indexOfFirstEnchant, lore.get(indexOfFirstEnchant) + ench);
                 }
             }
+
         } else {
             int indexOf = lore.indexOf(lore.get(lore.size() - 3));
 
@@ -70,23 +64,44 @@ public class enchantMechanic {
             while (!(lore.get(indexOf).equals(""))) {
                 indexOf = indexOf - 1;
             }
-            int enchant = rand.nextInt(possibleSwordEnchants.length - 1);
-            for (int i = 0; i < rand.nextInt(4); i++) {
-                if (b.checkIsWeapon(item)) {
-                    lore.add(indexOf, possibleSwordEnchants[enchant]);
+
+            if (b.checkIsWeapon(item)) {
+
+                // Interates through the enchants pass-in and adds each of the interations to the item lore
+                for (String ench : enchants) {
+                    lore.set(indexOf, lore.get(indexOf) + "," + ench);
                 }
             }
-        lore.add(indexOf, "");
+            lore.add(indexOf, "");
         }
     }
 
 
+    public List<String> getNeededEnchants(ItemStack item) {
+        // makes a list of the needed enchants to be applied
+        List<String> neededEnchants = new ArrayList<String>();
+        Random rand = new Random();
+        int enchantIndex = rand.nextInt(possibleSwordEnchants.length - 1);
+
+        // loops and adds a random enchantment 3 times
+        for (int i = 0; i < rand.nextInt(4); i++) {
+
+            // gets a random element out of the possibleSwordEnchants list
+            if (b.checkIsWeapon(item)) {
+                neededEnchants.add(possibleSwordEnchants[enchantIndex]);
+            }
+        }
+
+        return neededEnchants;
+    }
+
+
     public Pair<Boolean, Integer> checkIsEnchanted(ItemStack item) {
-        List<String> lore = new ArrayList<String>();
         if (b.checkIsWeapon(item)) {
-            for (String s : lore) {
+            for (String s : item.getItemMeta().getLore()) {
                 for (String ench : possibleSwordEnchants) {
                     if (s.contains(ench)) {
+                        List<String> lore = item.getItemMeta().getLore();
                         return new Pair<Boolean,Integer>(true, lore.indexOf(s));
                     }
                 }
