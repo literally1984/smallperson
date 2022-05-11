@@ -44,8 +44,6 @@ public class enchantMechanic {
     public void applyEnchants(ItemStack item, List<String> enchants) {
         // gets the Item's lore and gets the line which the rarity is stated
         List<String> lore = item.getItemMeta().getLore();
-        Random rand = new Random();
-
         // checks if the item is enchanted
         if (checkIsEnchanted(item).getKey()) {
             int indexOfFirstEnchant = checkIsEnchanted(item).getValue();
@@ -53,7 +51,7 @@ public class enchantMechanic {
             // checks if item is weapon
             if (b.checkIsWeapon(item)) {
                 for (String ench : enchants) {
-                    lore.set(indexOfFirstEnchant, lore.get(indexOfFirstEnchant) + ench);
+                    lore.set(indexOfFirstEnchant, lore.get(indexOfFirstEnchant) + "," + ench);
                 }
             }
 
