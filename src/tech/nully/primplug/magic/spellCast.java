@@ -40,7 +40,7 @@ public class spellCast {
 
     }
 
-
+    // ------------ Everything below here i copied from bukkit forums so i have no idea what it does lmao------------------------
     public void castFireBall(Player p) {
         double pitch = ((p.getLocation().getPitch() + 90) * Math.PI) / 180;
         double yaw = ((p.getLocation().getYaw() + 90) * Math.PI) / 180;
@@ -83,6 +83,9 @@ public class spellCast {
             }
 
         }
+
+
+
     }
 
 
