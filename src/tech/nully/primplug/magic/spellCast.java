@@ -6,7 +6,10 @@ import java.util.List;
 import org.bukkit.ChatColor;
 import org.bukkit.Location;
 import org.bukkit.Material;
-import org.bukkit.entity.*;
+import org.bukkit.entity.Arrow;
+import org.bukkit.entity.Entity;
+import org.bukkit.entity.Fireball;
+import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.util.Vector;
@@ -22,7 +25,6 @@ public class spellCast {
     private static ItemStack fireballSpell;
 
     public boolean IsSpell(ItemStack item) {
-        String dispName = item.getItemMeta().getDisplayName();
         if (fireballSpell.getItemMeta().getLore() == fireballLore) {
             return true;
         }
@@ -61,10 +63,10 @@ public class spellCast {
 
     }
 
-
+    // ! untested
     public void castArrowRain(Player p) {
-        Location loc = p.getEyeLocation().toVector().add(p.getEyeLocation().getDirection()).toLocation(p.getWorld());
-        Arrow arrow = (Arrow)p.getWorld().spawn(loc.clone().add(x, y, z), Arrow.class);
+        Location loc = p.getLocation();
+        Arrow arrow = (Arrow)p.getWorld().spawn(loc.add(0, 3, 0), Arrow.class);
         outerloop: for (double i = 0.5; i < 12; i+=0.5){ //This will rapidly increase the range so you don't get so many mobs at one, and instead checks a few blocks at a time
             for (Entity e : arrow.getNearbyEntities(i, 3, i)){ //Gets ALL nearby entities using the loop variable above it
                 if (e != arrow.getShooter()){ //Checks to make sure the entities isn't the shooter
@@ -79,6 +81,16 @@ public class spellCast {
                     }
                 }
             }
+
         }
     }
+
+
+    public void castMetorShower(Player p) {
+        Location from = p.getLocation().add(0, 6, 0);
+
+        Fireball meteor = p.getWorld().spawn(from, Fireball.class);
+
+    }
+
 }
