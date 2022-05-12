@@ -38,7 +38,7 @@ public class spellCast {
 
     }
 
-
+    // ------------ Everything below here i copied from bukkit forums so i have no idea what it does lmao------------------------
     public void castFireBall(Player p) {
         double pitch = ((p.getLocation().getPitch() + 90) * Math.PI) / 180;
         double yaw = ((p.getLocation().getYaw() + 90) * Math.PI) / 180;
@@ -64,7 +64,7 @@ public class spellCast {
 
     public void castArrowRain(Player p) {
         Location loc = p.getEyeLocation().toVector().add(p.getEyeLocation().getDirection()).toLocation(p.getWorld());
-        Arrow arrow = (Arrow)p.getWorld().spawn(loc.clone().add(x, y, z), Arrow.class);
+        Arrow arrow = p.getWorld().spawn(loc, Arrow.class);
         outerloop: for (double i = 0.5; i < 12; i+=0.5){ //This will rapidly increase the range so you don't get so many mobs at one, and instead checks a few blocks at a time
             for (Entity e : arrow.getNearbyEntities(i, 3, i)){ //Gets ALL nearby entities using the loop variable above it
                 if (e != arrow.getShooter()){ //Checks to make sure the entities isn't the shooter
@@ -80,5 +80,8 @@ public class spellCast {
                 }
             }
         }
+
+
+
     }
 }
