@@ -15,12 +15,20 @@ public class magicDamageManager {
     private static HashMap<TNTPrimed, Integer> ActiveMagicTNT = new HashMap<TNTPrimed, Integer>();
 
     public int getActiveTNT(TNTPrimed tnt) {
-        return  ActiveMagicTNT.get(tnt);
+        return ActiveMagicTNT.get(tnt);
+    }
+
+    public boolean checkTNTContains(TNTPrimed tnt) {
+        return ActiveMagicTNT.containsKey(tnt);
     }
     private static HashMap<Location, Integer> ActiveMagicLightning = new HashMap<Location, Integer>();
 
     public int getActiveLightning(Location loc) {
         return  ActiveMagicLightning.get(loc);
+    }
+
+    public boolean checkTNTContains(Location loc) {
+        return ActiveMagicLightning.containsKey(loc);
     }
 
     public void addMagicLightning(Location location, int damage) {
