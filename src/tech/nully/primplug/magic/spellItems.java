@@ -7,6 +7,7 @@ import org.bukkit.inventory.meta.ItemMeta;
 import tech.nully.primplug.Armor.baseAttributesAdder;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 public class spellItems {
@@ -18,12 +19,14 @@ public class spellItems {
 
     static baseAttributesAdder b = new baseAttributesAdder();
 
+    public static HashMap<String, ItemStack> spellConverter = new HashMap<String, ItemStack>();
+
     private static void makeSpells() {
         ItemStack FireballSpell = new ItemStack(Material.FIREBALL);
         ItemMeta FireballMeta = FireballSpell.getItemMeta();
 
         FireballMeta.setDisplayName(ChatColor.GOLD + "Fireball Spell");
-        List<String> FireballItemLore = new ArrayList<String>();
+        List<String> FireballItemLore = new ArrayList<>();
         FireballItemLore.add("");
         FireballItemLore.add(ChatColor.GRAY + "Spell Item");
         FireballItemLore.add("");
@@ -36,6 +39,7 @@ public class spellItems {
         FireballItemLore.add(b.uncommon() + "UNCOMMON");
 
         FireballMeta.setLore(FireballItemLore);
+        spellConverter.put(FireballMeta.getDisplayName(), FireballSpell);
 
     }
 

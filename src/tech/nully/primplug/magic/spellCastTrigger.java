@@ -18,8 +18,7 @@ public class spellCastTrigger implements Listener {
     static HashMap<Player, List<ItemStack>> IsInMagicForm = new HashMap<Player, List<ItemStack>>();
 
     public static boolean checkIsWand(ItemStack i) {
-        if (wands.wands.contains(i.getItemMeta().getDisplayName())) return true;
-        return false;
+        return wands.wands.contains(i.getItemMeta().getDisplayName());
     }
     
 
@@ -44,7 +43,7 @@ public class spellCastTrigger implements Listener {
                 // loops through the player's spells and sets the player's hotbar to the array
                 int playerHotbarIndex = 0;
                 for (String s : file.readFile(file.getFileConfig(p.getDisplayName()), "Spells")) {
-                    p.getInventory().setItem(playerHotbarIndex, arg1);
+                    p.getInventory().setItem(playerHotbarIndex, spellItems.spellConverter.get(s));
                 }
             }
         }
