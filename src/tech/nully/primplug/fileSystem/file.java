@@ -33,11 +33,11 @@ public class file {
         fileConfig.set(dataType, data);
     }
 
-    public List<String> readFile(FileConfiguration config, String path) {
+    public static List<String> readFile(FileConfiguration config, String path) {
         return Arrays.asList(config.getString(path).split(","));
     }
 
-    public FileConfiguration getFileConfig(String PlayerName) {
+    public static FileConfiguration getFileConfig(String PlayerName) {
         return playerFileConfig.get(PlayerName);
     }
 }
