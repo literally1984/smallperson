@@ -58,12 +58,7 @@ public class demigodArmor {
         DemiHelmMeta.setDisplayName("Demigod Helmet");
             // HelmLore
         List<String> Helmlore = new ArrayList<>();
-        Helmlore.add(ChatColor.RED + "---Attributes---");
-        Helmlore.add(ChatColor.BLUE + "Damage: 8");
-        Helmlore.add(ChatColor.BLUE + "Defense: 7");
-        Helmlore.add(ChatColor.BLUE + "Mana: 19");
-        Helmlore.add(ChatColor.BLUE + "Stamina: 20");
-        a.addAttributes(DemiHelm, 3, 13, 10, 15);
+        a.addAttributes(DemiHelm, 8, 8, 8, 8, 19, 20);
         Helmlore.add("");
         Helmlore.add(ChatColor.YELLOW + "" + ChatColor.BOLD + "Set Bonus I: Zeus' Wrath");
         Helmlore.add(ChatColor.GRAY + "" +ChatColor.ITALIC + "Shift and then jump to summon");
@@ -95,13 +90,7 @@ public class demigodArmor {
         DemiChestMeta.setDisplayName("Demigod Chestplate");
             // ChestLore
         List<String> Chestlore = new ArrayList<>();
-        Chestlore.add(ChatColor.RED + "Attributes------");
-        Chestlore.add(ChatColor.BLUE + "Damage: 8");
-        Chestlore.add(ChatColor.BLUE + "Defense: 26");
-        Chestlore.add(ChatColor.BLUE + "Damage: 3");
-        Chestlore.add(ChatColor.BLUE + "Defense: 31");
-        Chestlore.add(ChatColor.BLUE + "Mana: 20");
-        Chestlore.add(ChatColor.BLUE + "Stamina: 30");
+        a.addAttributes(DemiChest, 8, 8, 27, 27, 20, 30);
         Chestlore.add("");
         Chestlore.add("Armor gifted to a mortal from above.");
         Chestlore.add("It is said that whoever wears this has the power of a god!");
@@ -135,11 +124,7 @@ public class demigodArmor {
         DemiLegMeta.setDisplayName("Demigod Leggings");
             // LegLore
         List<String> Leglore = new ArrayList<>();
-        Leglore.add(ChatColor.RED + "Attributes------");
-        Leglore.add(ChatColor.BLUE + "Damage: 5");
-        Leglore.add(ChatColor.BLUE + "Defense: 21");
-        Leglore.add(ChatColor.BLUE + "Mana: 15");
-        Leglore.add(ChatColor.BLUE + "Stamina: 25");
+        a.addAttributes(DemiLeg, 5, 5, 21, 21, 15, 25);
         Leglore.add("");
         Leglore.add(a.lore() + "Armor gifted to a mortal from above.");
         Leglore.add(a.lore() + "It is said that whoever wears this has the power of a god!");
@@ -169,11 +154,7 @@ public class demigodArmor {
         DemiBootsMeta.setDisplayName("Demigod Boots");
             // BootsLore
         List<String> Bootslore = new ArrayList<>();
-        Bootslore.add(ChatColor.RED + "Attributes------");
-        Bootslore.add(ChatColor.BLUE + "Damage: 3");
-        Bootslore.add(ChatColor.BLUE + "Defense: 8");
-        Bootslore.add(ChatColor.BLUE + "Mana: 7");
-        Bootslore.add(ChatColor.BLUE + "Stamina: 13");
+        a.addAttributes(DemiBoots, 3, 3, 8, 8, 7, 13);
         Bootslore.add("Armor gifted to a mortal from above.");
         Bootslore.add("It is said that whoever wears this has the power of a god!");
         Bootslore.add("-Z");
