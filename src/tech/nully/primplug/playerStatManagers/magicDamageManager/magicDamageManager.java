@@ -12,8 +12,16 @@ public class magicDamageManager {
 
     // TODO: CHANGE SECOND VALUE TO PAIR AND CONTAIN PLAYER
 
-    private HashMap<TNTPrimed, Integer> ActiveMagicTNT = new HashMap<TNTPrimed, Integer>();
-    private HashMap<Location, Integer> ActiveMagicLightning = new HashMap<Location, Integer>();
+    private static HashMap<TNTPrimed, Integer> ActiveMagicTNT = new HashMap<TNTPrimed, Integer>();
+
+    public int getActiveTNT(TNTPrimed tnt) {
+        return  ActiveMagicTNT.get(tnt);
+    }
+    private static HashMap<Location, Integer> ActiveMagicLightning = new HashMap<Location, Integer>();
+
+    public int getActiveLightning(Location loc) {
+        return  ActiveMagicLightning.get(loc);
+    }
 
     public void addMagicLightning(Location location, int damage) {
         ActiveMagicLightning.put(location, damage);
