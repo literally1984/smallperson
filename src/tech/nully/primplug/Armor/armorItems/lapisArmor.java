@@ -77,7 +77,7 @@ public class lapisArmor {
             // ChesLore
         List<String> Cheslore = new ArrayList<>();
         Cheslore.add("");
-        a.addAttributes(LapisChes, 1, 7, 13, 17);
+        a.addAttributes(LapisChes, 1, 1, 7, 7, 13, 17);
         Cheslore.add("");
         Cheslore.add(ChatColor.YELLOW + "" + ChatColor.BOLD + "PASSIVE SET BONUS: INFINITE INTELLIGENCE");
         Cheslore.add(ChatColor.GRAY + "Once completing the set bonus of this armor,");
@@ -112,7 +112,7 @@ public class lapisArmor {
             // HelmLore
         List<String> Leglore = new ArrayList<>();
         Leglore.add("");
-        a.addAttributes(LapisLeg, 1, 14, 20, 7);
+        a.addAttributes(LapisLeg, 1, 1, 14, 14, 7, 12);
         Leglore.add("");
         Leglore.add(ChatColor.YELLOW + "" + ChatColor.BOLD + "PASSIVE SET BONUS: INFINITE INTELLIGENCE");
         Leglore.add(ChatColor.GRAY + "Once completing the set bonus of this armor,");
@@ -146,7 +146,7 @@ public class lapisArmor {
             // BootsLore
         List<String> Bootslore = new ArrayList<>();
         Bootslore.add("");
-        a.addAttributes(LapisBoots, 0, 6, 15, 5);
+        a.addAttributes(LapisBoots, 0, 0, 6, 6, 15, 5);
         Bootslore.add("");
         Bootslore.add(ChatColor.YELLOW + "" + ChatColor.BOLD + "PASSIVE SET BONUS: INFINITE INTELLIGENCE");
         Bootslore.add(ChatColor.GRAY + "Once completing the set bonus of this armor,");
