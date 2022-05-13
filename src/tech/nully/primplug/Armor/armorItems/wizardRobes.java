@@ -1,3 +1,4 @@
+//Bongo why dont we have a class in the entire script? bruh
 package tech.nully.primplug.Armor.armorItems;
 
 import java.util.ArrayList;
