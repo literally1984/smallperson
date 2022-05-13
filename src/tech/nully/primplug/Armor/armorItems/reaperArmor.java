@@ -40,7 +40,7 @@ public class reaperArmor {
             // HelmLore
         List<String> Helmlore = new ArrayList<>();
         Helmlore.add("");
-        a.addAttributes(ReaperHelm, 4, 8, 13, 13);
+        a.addAttributes(ReaperHelm, 4, 12, 8, 12, 13, 13);
         Helmlore.add("");
         Helmlore.add(a.ability() + "PASSIVE SET BONUS: Translucence");
         Helmlore.add(ChatColor.GRAY + "Wearing this set of armor grants the");
@@ -83,7 +83,7 @@ public class reaperArmor {
             // ChesLore
         List<String> Cheslore = new ArrayList<>();
         Cheslore.add("");
-        a.addAttributes(ReaperChes, 8, 24, 24, 24);
+        a.addAttributes(ReaperChes, 8, 12, 24, 24, 24, 24);
         Cheslore.add("");
         Cheslore.add(a.ability() + "PASSIVE SET BONUS: Translucence");
         Cheslore.add(ChatColor.GRAY + "Wearing this set of armor grants the");
@@ -124,7 +124,7 @@ public class reaperArmor {
             // HelmLore
         List<String> Leglore = new ArrayList<>();
         Leglore.add("");
-        a.addAttributes(ReaperLeg, 6, 19, 18, 18);
+        a.addAttributes(ReaperLeg, 6, 9, 19, 19, 18, 18);
         Leglore.add("");
         Leglore.add(a.ability() + "PASSIVE SET BONUS: Translucence");
         Leglore.add(ChatColor.GRAY + "Wearing this set of armor grants the");
@@ -164,7 +164,7 @@ public class reaperArmor {
             // BootsLore
         List<String> Bootslore = new ArrayList<>();
         Bootslore.add("");
-        a.addAttributes(ReaperBoots, 4, 8, 13, 13);
+        a.addAttributes(ReaperBoots, 4, 8, 8, 8, 13, 13);
         Bootslore.add("");
         Bootslore.add(a.ability() + "PASSIVE SET BONUS: Translucence");
         Bootslore.add(ChatColor.GRAY + "Wearing this set of armor grants the");
