@@ -69,7 +69,6 @@ public class cactusArmor {
         Helmlore.add("Headwear made from Cactus shards which");
         Helmlore.add("harsm the oppenent when they attack you");
         Helmlore.add("Ouch! Pointy!");
-        Helmlore.add("-Z");
         Helmlore.add("");
         Helmlore.add(ChatColor.GOLD+ "" + ChatColor.BOLD + "Set Bonus: Iron Spikes");
         Helmlore.add("Reflects 33% of the damage you take");
@@ -103,7 +102,6 @@ public class cactusArmor {
         Chestlore.add("");
         Chestlore.add("A shirt made from the shards of a cactus spine.");
         Chestlore.add("Gonna need a Band-Aid!");
-        Chestlore.add("-Z");
         Chestlore.add("");
         Chestlore.add(ChatColor.GOLD+ "" + ChatColor.BOLD + "SET BONUS: Spikey spikes");
         Chestlore.add("Reflects 33% of the damage you take");
@@ -138,7 +136,6 @@ public class cactusArmor {
         Leglore.add("");
         Leglore.add("Pants made from the shards of a cactus spine.");
         Leglore.add("A little poky down under…");
-        Leglore.add("-Z");
         Leglore.add("");
         Leglore.add(ChatColor.GOLD + "Full Set Bonus: Iron Spikes");
         Leglore.add("Reflects 33% of the damage you take");
@@ -171,7 +168,6 @@ public class cactusArmor {
         a.addAttributes(CacBoots, 1, 1, 8, 8, 7, 13);
         Bootslore.add("Shoes made from the shards of a cactus spine.");
         Bootslore.add("A pain to walk in!");
-        Bootslore.add("-Z");
         Bootslore.add("");
         Bootslore.add(ChatColor.YELLOW + "" + ChatColor.BOLD + "Full Set Bonus: Iron Spikes");
         Bootslore.add("Reflects 33% of the damage you take");

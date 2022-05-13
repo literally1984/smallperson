@@ -51,7 +51,6 @@ public class Drakon {
         Helmlore.add(ChatColor.GRAY + "" +ChatColor.ITALIC + "A helmet forged from the bones of");
         Helmlore.add(ChatColor.GRAY + "" +ChatColor.ITALIC + "the invincible dragon who guards the");
         Helmlore.add(ChatColor.GRAY + "" +ChatColor.ITALIC + "golden fleece...");
-        Helmlore.add("-Z");
         Helmlore.add("");
         Helmlore.add(ChatColor.DARK_PURPLE + "" + ChatColor.BOLD + "EPIC");
         DRHelmMeta.setLore(Helmlore);
@@ -86,7 +85,6 @@ public class Drakon {
         cheslore.add(ChatColor.GRAY + "" +ChatColor.ITALIC + "A chesplate forged from the bones of");
         cheslore.add(ChatColor.GRAY + "" +ChatColor.ITALIC + "the invincible dragon who guards the");
         cheslore.add(ChatColor.GRAY + "" +ChatColor.ITALIC + "golden fleece...");
-        cheslore.add("-Z");
         cheslore.add("");
         cheslore.add(ChatColor.DARK_PURPLE + "" + ChatColor.BOLD + "EPIC");
         DRchesMeta.setLore(cheslore);

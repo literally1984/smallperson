@@ -39,7 +39,7 @@ public class hardenedDiamond {
         Helmlore.add("");
         Helmlore.add(base.lore() + "Made from the hardest diamonds from the depths");
         Helmlore.add(base.lore() + "of the earth, this armor is the toughest around!");
-        Helmlore.add("-Z");
+        Helmlore.add("");
         Helmlore.add(ChatColor.DARK_PURPLE + "" + ChatColor.BOLD + "EPIC");
         HDiaHelmMeta.setLore(Helmlore);
 
@@ -63,6 +63,7 @@ public class hardenedDiamond {
         Cheslore.add("");
         Cheslore.add(ChatColor.LIGHT_PURPLE + "Made from the hardest diamonds from the depths");
         Cheslore.add(ChatColor.LIGHT_PURPLE + "of the earth, this armor is the toughest around!");
+        Cheslore.add("");
         Cheslore.add(ChatColor.DARK_PURPLE + "" + ChatColor.BOLD + "EPIC");
         HDiaChesMeta.setLore(Cheslore);
 
@@ -86,7 +87,7 @@ public class hardenedDiamond {
         Helmlore.add("");
         Helmlore.add(ChatColor.GRAY + "Made from the hardest diamonds from the depths");
         Helmlore.add(ChatColor.GRAY + "of the earth, this armor is the toughest around!");
-        Helmlore.add("-Z");
+        Helmlore.add("");
         Helmlore.add(ChatColor.DARK_PURPLE + "" + ChatColor.BOLD + "EPIC");
         HDiaHelmMeta.setLore(Helmlore);
 
@@ -113,7 +114,7 @@ public class hardenedDiamond {
         Bootslore.add("");
         Bootslore.add(ChatColor.LIGHT_PURPLE + "Made from the hardest diamonds from the depths");
         Bootslore.add(ChatColor.LIGHT_PURPLE + "of the earth, this armor is the toughest around!");
-        Bootslore.add("-Z");
+        Bootslore.add("");
         Bootslore.add(ChatColor.DARK_PURPLE + "" + ChatColor.BOLD + "EPIC");
         HDiaBootsMeta.setLore(Bootslore);
 

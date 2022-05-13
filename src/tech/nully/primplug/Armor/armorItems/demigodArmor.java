@@ -69,7 +69,6 @@ public class demigodArmor {
         Helmlore.add("Passively grants the wearer +50%");
         Helmlore.add("walk speed and Jump boost I");
         Helmlore.add("Walk with the gods!");
-        Helmlore.add("-Z");
         Helmlore.add("");
         Helmlore.add(ChatColor.YELLOW + "" + ChatColor.BOLD + "LEGENDARY");
         Helmlore.add("");
@@ -94,7 +93,6 @@ public class demigodArmor {
         Chestlore.add("");
         Chestlore.add("Armor gifted to a mortal from above.");
         Chestlore.add("It is said that whoever wears this has the power of a god!");
-        Chestlore.add("-Z");
         Chestlore.add("");
         Chestlore.add(ChatColor.GOLD + "" + ChatColor.BOLD + "Set Bonus: Zeus' Wrath");
         Chestlore.add("Shift and jump at the same time to summon the fury of the gods!");
@@ -157,7 +155,6 @@ public class demigodArmor {
         a.addAttributes(DemiBoots, 3, 3, 8, 8, 7, 13);
         Bootslore.add("Armor gifted to a mortal from above.");
         Bootslore.add("It is said that whoever wears this has the power of a god!");
-        Bootslore.add("-Z");
         Bootslore.add("");
         Bootslore.add(ChatColor.GOLD + "" + ChatColor.BOLD + "Full Set Bonus: Zeus' Wrath");
         Bootslore.add("Shift and jump at the same time to summon the fury of the gods!");

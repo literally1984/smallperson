@@ -94,7 +94,6 @@ public class platedArmor {
         Cheslore.add(ChatColor.GRAY + "" + ChatColor.ITALIC + "the wearer massive amounts of mana");
         Cheslore.add(ChatColor.GRAY + "" + ChatColor.ITALIC + "but minimal defense due to the thin");
         Cheslore.add(ChatColor.GRAY + "" + ChatColor.ITALIC + "nature of Lapis Plates...");
-        Cheslore.add("-Z");
         Cheslore.add("");
         Cheslore.add(ChatColor.GREEN + "" + ChatColor.BOLD + "UNCOMMON");
         PlatedChesMeta.setLore(Cheslore);
@@ -130,7 +129,6 @@ public class platedArmor {
         Leglore.add(ChatColor.GRAY + "" + ChatColor.ITALIC + "the wearer massive amounts of mana");
         Leglore.add(ChatColor.GRAY + "" + ChatColor.ITALIC + "but minimal defense due to the thin");
         Leglore.add(ChatColor.GRAY + "" + ChatColor.ITALIC + "nature of Plated Lapis...");
-        Leglore.add("-Z");
         Leglore.add("");
         Leglore.add(ChatColor.GREEN + "" + ChatColor.BOLD + "UNCOMMON");
         PlatedLegMeta.setLore(Leglore);
@@ -165,7 +163,6 @@ public class platedArmor {
         Bootslore.add(ChatColor.GRAY + "" + ChatColor.ITALIC + "the wearer massive amounts of mana");
         Bootslore.add(ChatColor.GRAY + "" + ChatColor.ITALIC + "but minimal defense due to the brittle");
         Bootslore.add(ChatColor.GRAY + "" + ChatColor.ITALIC + "nature of Plated Lapis...");
-        Bootslore.add("-Z");
         Bootslore.add("");
         Bootslore.add(ChatColor.GREEN + "" + ChatColor.BOLD + "UNCOMMON");
         PlatedBootsMeta.setLore(Bootslore);
