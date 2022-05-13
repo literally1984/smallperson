@@ -1,10 +1,9 @@
 package tech.nully.primplug.playerStatManagers.magicDamageManager;
 
-import javafx.util.Pair;
+import java.util.HashMap;
+
 import org.bukkit.Location;
 import org.bukkit.entity.TNTPrimed;
-
-import java.util.HashMap;
 
 public class magicDamageManager {
     // Basically, these methods take entities or locations and pair them up with a damage integer value and in an
