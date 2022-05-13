@@ -9,7 +9,7 @@ import org.bukkit.inventory.meta.ItemMeta;
 
 import tech.nully.primplug.Armor.baseAttributesAdder;
 
-public class zeusBolt {
+public class    zeusBolt {
     public static void createZeusBolt() {
         ItemStack zeusBolt = new ItemStack(Material.BLAZE_ROD);
         ItemMeta zeusMeta = zeusBolt.getItemMeta();

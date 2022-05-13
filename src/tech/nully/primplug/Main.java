@@ -25,6 +25,8 @@ import tech.nully.primplug.Tools.bloodThirstyBlade;
 import tech.nully.primplug.Tools.toolAbilities;
 import tech.nully.primplug.Tools.zeusBolt;
 import tech.nully.primplug.crafting.customRecipes.armorRecipes;
+import tech.nully.primplug.enchantStuff.EnchantGUI;
+import tech.nully.primplug.enchantStuff.enchantMechanic;
 import tech.nully.primplug.playerStatManagers.manaManager.passiveManaAdder;
 import tech.nully.primplug.recipeBook.recipeCommand;
 import tech.nully.primplug.rightClickPlayerMechanic.rightClickPlayer;
@@ -44,6 +46,8 @@ public class Main extends JavaPlugin {
         instance = this;
 
         p.addMana();
+        enchantMechanic.createEnchantHashMap();
+        EnchantGUI.createEnchantItems();
 
 
         PetheriteSet.init();
@@ -81,7 +85,7 @@ public class Main extends JavaPlugin {
         getServer().getConsoleSender().sendMessage("--------------------------------------------");
         getServer().getConsoleSender().sendMessage("--------------------------------------------");
         getServer().getConsoleSender().sendMessage(
-        ChatColor.LIGHT_PURPLE + "[PrimPlugin]" + ChatColor.GREEN + " PrimPlugin V0.2.0 is now Enabled! :D");
+        ChatColor.LIGHT_PURPLE + "[PrimPlugin]" + ChatColor.GREEN + " PrimPlugin V0.2.0.4 is now Enabled! :D");
         getServer().getConsoleSender().sendMessage("--------------------------------------------");
         getServer().getConsoleSender().sendMessage("--------------------------------------------");
         saveDefaultConfig();

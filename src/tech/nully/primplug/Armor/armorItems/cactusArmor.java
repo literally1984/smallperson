@@ -12,9 +12,7 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.inventory.meta.LeatherArmorMeta;
 
-import net.minecraft.server.v1_5_R3.Item;
 import tech.nully.primplug.Armor.baseAttributesAdder;
-
 public class cactusArmor {
     
     public static ItemStack Shard;
@@ -32,7 +30,7 @@ public class cactusArmor {
     }
     // !  Obsidian
 
-    private static baseAttributesAdder a = new baseAttributesAdder();
+    private final static baseAttributesAdder a = new baseAttributesAdder();
 
     private static void createCacShard() {
         // DEFINE THE META -------------
@@ -128,15 +126,19 @@ public class cactusArmor {
     // ! Cac Leggings
     private static void createCacLeggings() {
         // DEFINE THE META -------------
-        ItemStack PLeg = new ItemStack(Material.LEATHER_LEGGINGS);
-        ItemMeta PLegMeta = PLeg.hasItemMeta() ? PLeg.getItemMeta() : Bukkit.getItemFactory().getItemMeta(PLeg.getType());
+        ItemStack CacLeg = new ItemStack(Material.LEATHER_LEGGINGS);
+        ItemMeta CacLegMeta = CacLeg.hasItemMeta() ? CacLeg.getItemMeta() : Bukkit.getItemFactory().getItemMeta(CacLeg.getType());
 
 
         // SET THE META ----------------
-        PLegMeta.setDisplayName("Cac Leggings");
+        CacLegMeta.setDisplayName("Cac Leggings");
             // LegLore
         List<String> Leglore = new ArrayList<>();
+<<<<<<< HEAD
         a.addAttributes(cac, 3, 3, 17, 17, 13, 20);
+=======
+        a.addAttributes(CacLeg, 1, 1, 19, 15, 10, 15);
+>>>>>>> fdc10db46832e2bf4033f78e1d8e469bc970c875
         Leglore.add("");
         Leglore.add("Pants made from the shards of a cactus spine.");
         Leglore.add("A little poky down under…");
@@ -148,16 +150,16 @@ public class cactusArmor {
         Leglore.add("");
         Leglore.add(ChatColor.GREEN + "" + ChatColor.BOLD + "UNCOMMON");
         Leglore.add("");
-        PLegMeta.setLore(Leglore);
+        CacLegMeta.setLore(Leglore);
         
 
         // LEATHER ARMOR META
-        LeatherArmorMeta leatherArmorMeta = (LeatherArmorMeta) PLegMeta;
+        LeatherArmorMeta leatherArmorMeta = (LeatherArmorMeta) CacLegMeta;
         leatherArmorMeta.setColor(Color.BLACK);
 
 
-        PLeg.setItemMeta(PLegMeta);
-        leg = PLeg;
+        CacLeg.setItemMeta(CacLegMeta);
+        leg = CacLeg;
     }
     // ! Cac Boots
     private static void createCacBoots() {

@@ -40,17 +40,17 @@ public class lapisArmor {
             // HelmLore
         List<String> Helmlore = new ArrayList<>();
         Helmlore.add("");
-        a.addAttributes(LapisHelm, 0, 6, 15, 5);
+        a.addAttributes(LapisHelm, 0, 3, 4, 9, 7, 10);
         Helmlore.add("");
         Helmlore.add(ChatColor.YELLOW + "" + ChatColor.BOLD + "PASSIVE SET BONUS: INFINITE INTELLIGENCE");
         Helmlore.add(ChatColor.GRAY + "Once completing the set bonus of this armor,");
         Helmlore.add(ChatColor.GRAY + "+30 extra mana is granted due to the ancient");
         Helmlore.add(ChatColor.GRAY + "power of the lapis lazui used to craft it");
         Helmlore.add("");
-        Helmlore.add(ChatColor.GRAY + "" + ChatColor.ITALIC + "Armor made from Lapis Lazui granting");
-        Helmlore.add(ChatColor.GRAY + "" + ChatColor.ITALIC + "the wearer massive amounts of mana");
-        Helmlore.add(ChatColor.GRAY + "" + ChatColor.ITALIC + "but minimal defense due to the brittle");
-        Helmlore.add(ChatColor.GRAY + "" + ChatColor.ITALIC + "nature of lapis lazui...");
+        Helmlore.add(a.lore() + "Armor made from Lapis Lazui granting");
+        Helmlore.add(a.lore() + "the wearer massive amounts of mana");
+        Helmlore.add(a.lore() + "but minimal defense due to the brittle");
+        Helmlore.add(a.lore() + "nature of lapis lazui...");
         Helmlore.add("");
         Helmlore.add(ChatColor.GREEN + "" + ChatColor.BOLD + "UNCOMMON");
         LapisHelmMeta.setLore(Helmlore);
@@ -77,7 +77,7 @@ public class lapisArmor {
             // ChesLore
         List<String> Cheslore = new ArrayList<>();
         Cheslore.add("");
-        a.addAttributes(LapisChes, 1, 18, 25, 10);
+        a.addAttributes(LapisChes, 1, 7, 13, 17);
         Cheslore.add("");
         Cheslore.add(ChatColor.YELLOW + "" + ChatColor.BOLD + "PASSIVE SET BONUS: INFINITE INTELLIGENCE");
         Cheslore.add(ChatColor.GRAY + "Once completing the set bonus of this armor,");
