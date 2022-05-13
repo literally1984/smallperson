@@ -14,6 +14,11 @@ import java.util.List;
 import static tech.nully.primplug.baseMethods.*;
 
 public class EnchantGUI {
+    public static ItemStack LVL1Enchant;
+    public static ItemStack LVL2Enchant;
+    public static ItemStack LVL3Enchant;
+
+
     public String unavaliableDisplayName = "There are no items in the Enchanting Slot";
     public List<String> unavaliableLore() {
         List<String> enchantLore = new ArrayList<String>();
@@ -36,6 +41,10 @@ public class EnchantGUI {
 
         ItemStack level2Enchant = level1Enchant.clone();
         ItemStack level3Enchant = level1Enchant.clone();
+
+        level1Enchant = LVL1Enchant;
+        level2Enchant = LVL2Enchant;
+        level3Enchant = LVL3Enchant;
     }
 
     // creates a method that opens a enchant GUI to player

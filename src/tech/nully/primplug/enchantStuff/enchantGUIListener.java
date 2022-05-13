@@ -8,13 +8,7 @@ import org.bukkit.event.block.Action;
 import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.inventory.Inventory;
-import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
-
-import java.util.ArrayList;
-import java.util.List;
-
-import static tech.nully.primplug.baseMethods.level1Enchant;
 
 public class enchantGUIListener implements Listener {
     enchantMechanic ench = new enchantMechanic();

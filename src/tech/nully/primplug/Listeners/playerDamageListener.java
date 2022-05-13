@@ -28,7 +28,8 @@ public class playerDamageListener implements Listener{
 
 
             //Checks if event-entity is a player
-            if (p.getLastDamageCause().getEntity() instanceof Player damager) {
+            if (p.getLastDamageCause().getEntity() instanceof Player) {
+                Player damager = (Player) p.getLastDamageCause().getEntity();
 
                 // defines damager as the entity that last damaged the player casted into a player
                 getDamage dmg = new getDamage();
@@ -39,9 +40,10 @@ public class playerDamageListener implements Listener{
     
 
         // victim defense manager
-        if (event.getEntity() instanceof Player damaged) {
-            if (event.getCause() == DamageCause.ENTITY_EXPLOSION && event.getEntity() instanceof TNTPrimed tnt) {
-
+        if (event.getEntity() instanceof Player) {
+            Player damaged = (Player) event.getEntity();
+            if (event.getCause() == DamageCause.ENTITY_EXPLOSION && event.getEntity() instanceof TNTPrimed) {
+                TNTPrimed tnt = (TNTPrimed) event.getEntity();
                 magicDamageManager m = new magicDamageManager();
                 if (m.checkTNTContains(tnt)) {
                     finalDamage = finalDamage + m.getActiveTNT(tnt);
@@ -75,7 +77,8 @@ public class playerDamageListener implements Listener{
 
 
             //Checks if event-entity is a player
-            if (p.getLastDamageCause().getEntity() instanceof Player damager) {
+            if (p.getLastDamageCause().getEntity() instanceof Player) {
+                Player damager = (Player) p.getLastDamageCause().getEntity();
 
                 // defines damager as the entity that last damaged the player casted into a player
                 var playerDefense = d.getdefense(damager);
