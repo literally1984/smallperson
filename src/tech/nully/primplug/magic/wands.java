@@ -10,12 +10,15 @@ import org.bukkit.inventory.meta.ItemMeta;
 import tech.nully.primplug.Armor.baseAttributesAdder;
 
 public class wands {
+    public static List<String> wands = new ArrayList<String>();
     
     public static void init() {
         createPheonixWand();
 
     }
     private static baseAttributesAdder b = new baseAttributesAdder();
+
+    private static ItemStack Pwand;
     
     private static void createPheonixWand() {
         ItemStack PheonixWand = new ItemStack(Material.BLAZE_ROD);
@@ -24,6 +27,8 @@ public class wands {
         List<String> PheonixWandLore = new ArrayList<>();
 
         PheonixMeta.setDisplayName("Pheonix Wand");
+        PheonixWandLore.add("");
+        PheonixWandLore.add(b.lore() + "Wand Item");
         PheonixWandLore.add("");
         b.addAttributes(PheonixWand, 3, 20, 8, 9, 40, 10);
         PheonixWandLore.add("");
@@ -38,5 +43,8 @@ public class wands {
         PheonixWandLore.add(b.lore() + "fire damage...");
         PheonixWandLore.add("");
         PheonixWandLore.add(b.epic() + "EPIC");
+
+        Pwand = PheonixWand;
+        wands.add(PheonixMeta.getDisplayName());
     }
 }

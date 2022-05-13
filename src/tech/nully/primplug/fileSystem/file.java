@@ -2,14 +2,17 @@ package tech.nully.primplug.fileSystem;
 
 import java.io.File;
 import java.io.IOException;
+import java.lang.reflect.Array;
+import java.util.Arrays;
 import java.util.HashMap;
+import java.util.List;
 
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
 
 import tech.nully.primplug.Main;
 
-public class storePlayerFile {
+public class file {
     HashMap<String, FileConfiguration> playerFileConfig = new HashMap<String, FileConfiguration>();
     Main m = new Main();
     public void saveFile(String fileName) {
@@ -30,8 +33,8 @@ public class storePlayerFile {
         fileConfig.set(dataType, data);
     }
 
-    public String readFile(FileConfiguration config, String path) {
-        return config.getString(path);
+    public List<String> readFile(FileConfiguration config, String path) {
+        return Arrays.asList(config.getString(path).split(","));
     }
 
     public FileConfiguration getFileConfig(String PlayerName) {
