@@ -154,7 +154,6 @@ public class platedArmor {
             // BootsLore
         List<String> Bootslore = new ArrayList<>();
         Bootslore.add("");
-        a.addAttributes(PlatedBoots, 0, 6, 15, 5);
         a.addAttributes(PlatedBoots, 0, 1, 6, 6, 15, 5);
         Bootslore.add("");
         Bootslore.add(ChatColor.YELLOW + "" + ChatColor.BOLD + "PASSIVE SET BONUS: INFINITE INTELLIGENCE");

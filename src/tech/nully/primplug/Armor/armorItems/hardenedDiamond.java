@@ -105,7 +105,7 @@ public class hardenedDiamond {
         HDiaBootsMeta.setDisplayName("Hardened Diamond Bootset");
             // BootsLore
         List<String> Bootslore = new ArrayList<>();
-        Bootslore.add("");\base.addAttributes(HDiaBoots, 3, 3, 18, 18, 8, 13);
+        Bootslore.add("");base.addAttributes(HDiaBoots, 3, 3, 18, 18, 8, 13);
         Bootslore.add(ChatColor.RED + "Damage: " + ChatColor.GRAY + "3");
         Bootslore.add(ChatColor.GREEN + "Defense: " + ChatColor.GRAY + "18");
         Bootslore.add(ChatColor.BLUE + "Mana: " + ChatColor.GRAY + "8");
