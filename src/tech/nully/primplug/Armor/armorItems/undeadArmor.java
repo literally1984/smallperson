@@ -25,12 +25,6 @@ public class undeadArmor {
         createUndeadBoots();
     }
     
-    
-
-
-
-
-
     private static baseAttributesAdder a = new baseAttributesAdder();
     
     private static void createUndeadHelm() {
@@ -72,7 +66,7 @@ public class undeadArmor {
             //Helmlore
         List<String> Cheslore = new ArrayList<>();
         Cheslore.add("");
-        a.addAttributes(UndeadChes, 3, 3, 6, 14, 13, 15);
+        a.addAttributes(UndeadChes, 3, 3, 15, 17, 15, 15);
         Cheslore.add("");
         Cheslore.add("Armor made from the bones");
         Cheslore.add("of the damned. Spooky!");
@@ -94,7 +88,6 @@ public class undeadArmor {
 
     }
 
-
     private static void createUndeadLeg() {
         // DEFINE THE META -------------
         ItemStack UndeadLeg = new ItemStack(Material.LEATHER_LEGGINGS);
@@ -104,7 +97,7 @@ public class undeadArmor {
             //Helmlore
         List<String> Leglore = new ArrayList<>();
         Leglore.add("");
-        a.addAttributes(UndeadLeg, 3, 3, 6, 14, 13, 15);
+        a.addAttributes(UndeadLeg, 3, 3, 13, 15, 14, 15);
         Leglore.add("");
         Leglore.add("Armor made from the bones");
         Leglore.add("of the damned. Spooky!");
@@ -124,7 +117,6 @@ public class undeadArmor {
         UndeadLeg.setItemMeta(UndeadLegMeta);
         leg = UndeadLeg;
     }
-
 
     private static void createUndeadBoots() {
         // DEFINE THE META -------------
