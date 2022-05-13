@@ -134,11 +134,7 @@ public class cactusArmor {
         CacLegMeta.setDisplayName("Cac Leggings");
             // LegLore
         List<String> Leglore = new ArrayList<>();
-<<<<<<< HEAD
-        a.addAttributes(cac, 3, 3, 17, 17, 13, 20);
-=======
-        a.addAttributes(CacLeg, 1, 1, 19, 15, 10, 15);
->>>>>>> fdc10db46832e2bf4033f78e1d8e469bc970c875
+        a.addAttributes(CacLeg, 3, 3, 17, 17, 13, 20);
         Leglore.add("");
         Leglore.add("Pants made from the shards of a cactus spine.");
         Leglore.add("A little poky down under…");
