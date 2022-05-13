@@ -95,6 +95,7 @@ public class PetheriteSet {
         Chestlore.add(ChatColor.BLUE + "Stamina: 13");
         Chestlore.add("");
         Chestlore.add("NETHERITE! Well, almost.");
+
         Chestlore.add("");
         Chestlore.add("");
         Chestlore.add(ChatColor.DARK_PURPLE + "" + ChatColor.BOLD + "EPIC");
@@ -117,6 +118,7 @@ public class PetheriteSet {
             // LegLore
         List<String> Leglore = new ArrayList<>();
         Leglore.add("NETHERITE! Well, almost.");
+
         Leglore.add("");
         Leglore.add("");
         Leglore.add(ChatColor.BLUE + "Attributes------");
