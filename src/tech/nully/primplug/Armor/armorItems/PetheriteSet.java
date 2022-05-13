@@ -88,15 +88,7 @@ public class PetheriteSet {
             // ChestLore
         List<String> Chestlore = new ArrayList<>();
         Chestlore.add("");
-        Chestlore.add(ChatColor.BLUE + "------ " + ChatColor.GREEN + "0" + ChatColor.BLUE + "/45 ------");
-        Chestlore.add(ChatColor.BLUE + "Damage: 1");
-        Chestlore.add(ChatColor.BLUE + "Defense: 8");
-        Chestlore.add(ChatColor.BLUE + "Mana: 7");
-        Chestlore.add(ChatColor.BLUE + "Stamina: 13");
-        Chestlore.add("");
         Chestlore.add("NETHERITE! Well, almost.");
-
-        Chestlore.add("");
         Chestlore.add("");
         Chestlore.add(ChatColor.DARK_PURPLE + "" + ChatColor.BOLD + "EPIC");
         PChestMeta.setLore(Chestlore);
@@ -117,15 +109,8 @@ public class PetheriteSet {
         PLegMeta.setDisplayName("Petherite Leggings");
             // LegLore
         List<String> Leglore = new ArrayList<>();
+        Leglore.add("");
         Leglore.add("NETHERITE! Well, almost.");
-
-        Leglore.add("");
-        Leglore.add("");
-        Leglore.add(ChatColor.BLUE + "Attributes------");
-        Leglore.add(ChatColor.BLUE + "Damage: 1");
-        Leglore.add(ChatColor.BLUE + "Defense: 8");
-        Leglore.add(ChatColor.BLUE + "Mana: 7");
-        Leglore.add(ChatColor.BLUE + "Stamina: 13");
         Leglore.add("");
         Leglore.add(ChatColor.DARK_PURPLE + "" + ChatColor.BOLD + "EPIC");
 
@@ -145,11 +130,6 @@ public class PetheriteSet {
         PBootsMeta.setDisplayName("Petherite Boots");
             // BootsLore
         List<String> Bootslore = new ArrayList<>();
-        Bootslore.add(ChatColor.BLUE + "Attributes------");
-        Bootslore.add(ChatColor.BLUE + "Damage: 1");
-        Bootslore.add(ChatColor.BLUE + "Defense: 8");
-        Bootslore.add(ChatColor.BLUE + "Mana: 7");
-        Bootslore.add(ChatColor.BLUE + "Stamina: 13");
         Bootslore.add("");
         Bootslore.add("NETHERITE! Well, almost.");
         Bootslore.add("");
