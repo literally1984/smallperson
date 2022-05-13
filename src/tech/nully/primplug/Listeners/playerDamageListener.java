@@ -35,7 +35,8 @@ public class playerDamageListener implements Listener{
                 finalDamage = finalDamage + d.getArmorDamage(damager) + dmg.getItemDamage(damager.getItemInHand());
             }
         }
-
+        //bongo u need to fix this plz
+    
 
         // victim defense manager
         if (event.getEntity() instanceof Player damaged) {
