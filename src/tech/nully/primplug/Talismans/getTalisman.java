@@ -2,14 +2,14 @@ package tech.nully.primplug.Talismans;
 
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.entity.Player;
-import tech.nully.primplug.fileSystem.storePlayerFile;
+import tech.nully.primplug.fileSystem.file;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
 public class getTalisman {
-    storePlayerFile store = new storePlayerFile();
+    file store = new file();
     public List<String> getTalisans(Player p) {
         FileConfiguration conf = store.getFileConfig(p.getDisplayName()); // gets the player's file config
 

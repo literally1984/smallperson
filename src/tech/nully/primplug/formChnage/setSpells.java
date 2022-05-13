@@ -7,17 +7,15 @@ import java.util.List;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.entity.Player;
 
-import tech.nully.primplug.fileSystem.storePlayerFile;
+import tech.nully.primplug.fileSystem.file;
 
 public class setSpells {
     private HashMap<String, List<String>> playerSpells = new HashMap<String, List<String>>();
-    storePlayerFile s = new storePlayerFile();
+    file s = new file();
     
     public void addPlayerSpells(Player p) {
         FileConfiguration playerConfig = s.getFileConfig(p.getDisplayName());
-        String playerSpell = s.readFile(playerConfig, "Spells");
-        List<String> playerSpellArray = Arrays.asList(playerSpell.split(","));
-        playerSpells.put(p.getDisplayName(), playerSpellArray);
+        List<String> playerSpell = s.readFile(playerConfig, "Spells");
     }
 
     public void addSpell(Player p, String spellName) {

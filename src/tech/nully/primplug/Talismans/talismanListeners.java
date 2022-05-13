@@ -9,7 +9,7 @@ import org.bukkit.event.block.Action;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.inventory.ItemStack;
 
-import tech.nully.primplug.fileSystem.storePlayerFile;
+import tech.nully.primplug.fileSystem.file;
 
 public class talismanListeners implements Listener {
     @EventHandler
@@ -35,7 +35,7 @@ public class talismanListeners implements Listener {
 
                 //
                 int TalismanID = t.TalismanName.get(itemHand.getItemMeta().getDisplayName());
-                storePlayerFile s = new storePlayerFile();
+                file s = new file();
                 FileConfiguration conf =  s.getFileConfig(p.getDisplayName());
                 s.addToFile(conf, "Talismans", TalismanID + ",");
             }  
