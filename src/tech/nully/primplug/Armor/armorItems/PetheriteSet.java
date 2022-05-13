@@ -10,6 +10,7 @@ import org.bukkit.Material;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.inventory.meta.LeatherArmorMeta;
+import tech.nully.primplug.Armor.baseAttributesAdder;
 
 public class PetheriteSet {
     
@@ -26,6 +27,10 @@ public class PetheriteSet {
         createPetheriteLeggings();
         createPetheriteBoots();
     }
+
+    private static baseAttributesAdder b = new baseAttributesAdder();
+
+
     // ! condensed Obsidian
     private static void createCondensedObby() {
         // DEFINE THE META -------------
@@ -64,6 +69,10 @@ public class PetheriteSet {
         Helmlore.add("");
         Helmlore.add("NETHERITE! Well, almost.");
         Helmlore.add("");
+<<<<<<< Updated upstream
+=======
+        Helmlore.add(b.epic() + "EPIC");
+>>>>>>> Stashed changes
         PHelmMeta.setLore(Helmlore);
 
         // LEATHER ARMOR META
@@ -94,6 +103,10 @@ public class PetheriteSet {
         Chestlore.add(ChatColor.BLUE + "Stamina: 13");
         Chestlore.add("");
         Chestlore.add("NETHERITE! Well, almost.");
+<<<<<<< Updated upstream
+=======
+        Chestlore.add("");
+>>>>>>> Stashed changes
         Chestlore.add("");
         Chestlore.add(ChatColor.DARK_PURPLE + "" + ChatColor.BOLD + "EPIC");
         PChestMeta.setLore(Chestlore);
@@ -115,6 +128,10 @@ public class PetheriteSet {
             // LegLore
         List<String> Leglore = new ArrayList<>();
         Leglore.add("NETHERITE! Well, almost.");
+<<<<<<< Updated upstream
+=======
+        Leglore.add("");
+>>>>>>> Stashed changes
         Leglore.add("");
         Leglore.add(ChatColor.BLUE + "Attributes------");
         Leglore.add(ChatColor.BLUE + "Damage: 1");
