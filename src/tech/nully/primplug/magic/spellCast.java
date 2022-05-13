@@ -88,11 +88,27 @@ public class spellCast {
 
     }
 
-
+    // --- I think im starting to get what im doing beyond this point---
     public void castMetorShower(Player p) {
         Location from = p.getLocation().add(0, 6, 0);
 
         Fireball meteor = p.getWorld().spawn(from, Fireball.class);
+        Fireball meteor2 = p.getWorld().spawn(from, Fireball.class);
+        Fireball meteor3 = p.getWorld().spawn(from, Fireball.class);
+        Fireball meteor4 = p.getWorld().spawn(from, Fireball.class);
+        Fireball meteor5 = p.getWorld().spawn(from, Fireball.class);
+        Fireball meteor6 = p.getWorld().spawn(from, Fireball.class);
+        Location loc = p.getLocation().subtract(0, 0, 45);
+        Location loc2 = p.getLocation().subtract(0, 0, 20);
+        Vector vec = loc.toVector();
+        Vector vec2 = loc2.toVector();
+
+        meteor.setDirection(vec);
+        meteor2.setDirection(vec);
+        meteor3.setDirection(vec);
+        meteor4.setDirection(vec2);
+        meteor5.setDirection(vec2);
+        meteor6.setDirection(vec2);
 
     }
 
