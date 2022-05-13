@@ -19,7 +19,7 @@ public class spellCastTrigger implements Listener {
     @EventHandler
     public void onFormChange(PlayerInteractEvent e) {
         if (e.getPlayer().getItemInHand().getItemMeta().getDisplayName().toLowerCase().contains("Pheonix Wand")) {
-            
+
         }
     }
     
