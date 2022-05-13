@@ -61,7 +61,6 @@ public class PetheriteSet {
         PHelmMeta.setDisplayName("Petherite Helmet");
             // HelmLore
         List<String> Helmlore = new ArrayList<>();
-        Helmlore.add(ChatColor.BLUE + "------ " + ChatColor.GREEN + "0" + ChatColor.BLUE + "/45 ------");
         Helmlore.add(ChatColor.BLUE + "Damage: 1");
         Helmlore.add(ChatColor.BLUE + "Defense: 8");
         Helmlore.add(ChatColor.BLUE + "Mana: 7");
@@ -69,10 +68,7 @@ public class PetheriteSet {
         Helmlore.add("");
         Helmlore.add("NETHERITE! Well, almost.");
         Helmlore.add("");
-<<<<<<< Updated upstream
-=======
         Helmlore.add(b.epic() + "EPIC");
->>>>>>> Stashed changes
         PHelmMeta.setLore(Helmlore);
 
         // LEATHER ARMOR META
@@ -103,10 +99,7 @@ public class PetheriteSet {
         Chestlore.add(ChatColor.BLUE + "Stamina: 13");
         Chestlore.add("");
         Chestlore.add("NETHERITE! Well, almost.");
-<<<<<<< Updated upstream
-=======
         Chestlore.add("");
->>>>>>> Stashed changes
         Chestlore.add("");
         Chestlore.add(ChatColor.DARK_PURPLE + "" + ChatColor.BOLD + "EPIC");
         PChestMeta.setLore(Chestlore);
@@ -128,10 +121,7 @@ public class PetheriteSet {
             // LegLore
         List<String> Leglore = new ArrayList<>();
         Leglore.add("NETHERITE! Well, almost.");
-<<<<<<< Updated upstream
-=======
         Leglore.add("");
->>>>>>> Stashed changes
         Leglore.add("");
         Leglore.add(ChatColor.BLUE + "Attributes------");
         Leglore.add(ChatColor.BLUE + "Damage: 1");
