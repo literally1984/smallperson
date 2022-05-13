@@ -2,12 +2,15 @@ package tech.nully.primplug.Listeners;
 
 import org.bukkit.entity.LivingEntity;
 import org.bukkit.entity.Player;
+import org.bukkit.entity.Snowball;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityDamageEvent;
 import org.bukkit.event.entity.EntityDamageEvent.DamageCause;
 
+import org.bukkit.metadata.FixedMetadataValue;
 import tech.nully.primplug.Armor.setBonuses;
+import tech.nully.primplug.Main;
 import tech.nully.primplug.damageManager.getDamage;
 import tech.nully.primplug.playerStatManagers.defenseManager.defenseManager;
 
@@ -38,10 +41,10 @@ public class playerDamageListener implements Listener{
         }
 
 
-
+        // victim defense manager
         if (event.getEntity() instanceof Player) {
             setBonuses set = new setBonuses();
-            Player damaged = (Player) event.getEntity();
+            Player damaged = (Player) event.getEntity();;
 
             // checks if the player has the "cac" set bnous
             if (set.getPlayerSetBonus(damaged).equals("cac")) {

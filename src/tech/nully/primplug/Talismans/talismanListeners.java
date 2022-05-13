@@ -33,7 +33,7 @@ public class talismanListeners implements Listener {
                 ChatColor.YELLOW + 
                 "to your Talisman Bag!");
 
-                // 
+                //
                 int TalismanID = t.TalismanName.get(itemHand.getItemMeta().getDisplayName());
                 storePlayerFile s = new storePlayerFile();
                 FileConfiguration conf =  s.getFileConfig(p.getDisplayName());
