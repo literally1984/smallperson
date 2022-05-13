@@ -136,7 +136,7 @@ public class cactusArmor {
         PLegMeta.setDisplayName("Cac Leggings");
             // LegLore
         List<String> Leglore = new ArrayList<>();
-        a.addAttributes(cac, damage, magicDmg, defense, magicDef, mana, stamina);
+        a.addAttributes(cac, 3, 3, 17, 17, 13, 20);
         Leglore.add("");
         Leglore.add("Pants made from the shards of a cactus spine.");
         Leglore.add("A little poky down under…");
