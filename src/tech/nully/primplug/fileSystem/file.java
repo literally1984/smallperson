@@ -13,7 +13,7 @@ import org.bukkit.configuration.file.YamlConfiguration;
 import tech.nully.primplug.Main;
 
 public class file {
-    HashMap<String, FileConfiguration> playerFileConfig = new HashMap<String, FileConfiguration>();
+    static HashMap<String, FileConfiguration> playerFileConfig = new HashMap<String, FileConfiguration>();
     Main m = new Main();
     public void saveFile(String fileName) {
         File playerYml = new File(Main.getInstance().getDataFolder()+fileName + ".yml");
