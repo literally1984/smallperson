@@ -59,12 +59,8 @@ public class PetheriteSet {
 
         // SET THE META ----------------
         PHelmMeta.setDisplayName("Petherite Helmet");
-            // HelmLore
+            // HelmLore\
         List<String> Helmlore = new ArrayList<>();
-        Helmlore.add(ChatColor.BLUE + "Damage: 1");
-        Helmlore.add(ChatColor.BLUE + "Defense: 8");
-        Helmlore.add(ChatColor.BLUE + "Mana: 7");
-        Helmlore.add(ChatColor.BLUE + "Stamina: 13");
         Helmlore.add("");
         Helmlore.add("NETHERITE! Well, almost.");
         Helmlore.add("");
