@@ -20,7 +20,7 @@ public class file {
         FileConfiguration fileConfig = YamlConfiguration.loadConfiguration(playerYml);
         try {
             fileConfig.save(playerYml);
-            } catch (IOException e) {
+        } catch (IOException e) {
             e.printStackTrace();
             }
         fileConfig.set("Talisman", null);
@@ -33,11 +33,11 @@ public class file {
         fileConfig.set(dataType, data);
     }
 
-    public static List<String> readFile(FileConfiguration config, String path) {
+    public List<String> readFile(FileConfiguration config, String path) {
         return Arrays.asList(config.getString(path).split(","));
     }
 
-    public static FileConfiguration getFileConfig(String PlayerName) {
+    public FileConfiguration getFileConfig(String PlayerName) {
         return playerFileConfig.get(PlayerName);
     }
 }
