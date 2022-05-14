@@ -10,6 +10,7 @@ import java.util.List;
 public class baseAttributesAdder {
     public List<String> addAttributes(ItemStack item, int damage, int magicDmg, int defense, int magicDef, int mana, int stamina) {
         List<String> itemLore = new ArrayList<String>();
+        itemLore.add("");
         itemLore.add(ChatColor.GRAY + "Damage: " + ChatColor.RED + "" +damage);
         itemLore.add(ChatColor.GRAY + "Magic DMG: " + ChatColor.DARK_PURPLE + "" +magicDmg);
         itemLore.add(ChatColor.GRAY + "Defense: " + ChatColor.GREEN + "" + defense);

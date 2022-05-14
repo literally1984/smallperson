@@ -1,16 +1,15 @@
 package tech.nully.primplug.Armor.armorItems;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import org.bukkit.ChatColor;
 import org.bukkit.Color;
 import org.bukkit.Material;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.inventory.meta.LeatherArmorMeta;
-
 import tech.nully.primplug.Armor.baseAttributesAdder;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class lapisArmor {
     public static ItemStack helm;
@@ -47,10 +46,10 @@ public class lapisArmor {
         Helmlore.add(ChatColor.GRAY + "+30 extra mana is granted due to the ancient");
         Helmlore.add(ChatColor.GRAY + "power of the lapis lazui used to craft it");
         Helmlore.add("");
-        Helmlore.add(a.lore() + "Armor made from Lapis Lazui granting");
-        Helmlore.add(a.lore() + "the wearer massive amounts of mana");
-        Helmlore.add(a.lore() + "but minimal defense due to the brittle");
-        Helmlore.add(a.lore() + "nature of lapis lazui...");
+        Helmlore.add(a.lore() + "Armor made from Lapis Lazui granting the");
+        Helmlore.add(a.lore() + "wearer massive amounts of mana but lacking");
+        Helmlore.add(a.lore() + "in defense due to the brittle nature of lapis");
+        Helmlore.add(a.lore() + "lazui");
         Helmlore.add("");
         Helmlore.add(ChatColor.GREEN + "" + ChatColor.BOLD + "UNCOMMON");
         LapisHelmMeta.setLore(Helmlore);
@@ -84,10 +83,10 @@ public class lapisArmor {
         Cheslore.add(ChatColor.GRAY + "+30 extra mana is granted due to the ancient");
         Cheslore.add(ChatColor.GRAY + "power of the lapis lazui used to craft it");
         Cheslore.add("");
-        Cheslore.add(ChatColor.GRAY + "" + ChatColor.ITALIC + "Armor made from Lapis Lazui granting");
-        Cheslore.add(ChatColor.GRAY + "" + ChatColor.ITALIC + "the wearer massive amounts of mana");
-        Cheslore.add(ChatColor.GRAY + "" + ChatColor.ITALIC + "but minimal defense due to the brittle");
-        Cheslore.add(ChatColor.GRAY + "" + ChatColor.ITALIC + "nature of lapis lazui...");
+        Cheslore.add(a.lore() + "Armor made from Lapis Lazui granting the");
+        Cheslore.add(a.lore() + "wearer massive amounts of mana but lacking");
+        Cheslore.add(a.lore() + "in defense due to the brittle nature of lapis");
+        Cheslore.add(a.lore() + "lazui");
         Cheslore.add("");
         Cheslore.add(ChatColor.GREEN + "" + ChatColor.BOLD + "UNCOMMON");
         LapisChesMeta.setLore(Cheslore);
@@ -119,10 +118,10 @@ public class lapisArmor {
         Leglore.add(ChatColor.GRAY + "+30 extra mana is granted due to the ancient");
         Leglore.add(ChatColor.GRAY + "power of the lapis lazui used to craft it");
         Leglore.add("");
-        Leglore.add(ChatColor.GRAY + "" + ChatColor.ITALIC + "Armor made from Lapis Lazui granting");
-        Leglore.add(ChatColor.GRAY + "" + ChatColor.ITALIC + "the wearer massive amounts of mana");
-        Leglore.add(ChatColor.GRAY + "" + ChatColor.ITALIC + "but minimal defense due to the brittle");
-        Leglore.add(ChatColor.GRAY + "" + ChatColor.ITALIC + "nature of lapis lazui...");
+        Leglore.add(a.lore() + "Armor made from Lapis Lazui granting the");
+        Leglore.add(a.lore() + "wearer massive amounts of mana but lacking");
+        Leglore.add(a.lore() + "in defense due to the brittle nature of lapis");
+        Leglore.add(a.lore() + "lazui");
         Leglore.add("");
         Leglore.add(ChatColor.GREEN + "" + ChatColor.BOLD + "UNCOMMON");
         LapisLegMeta.setLore(Leglore);
@@ -144,19 +143,17 @@ public class lapisArmor {
         // SET THE META ----------------
         LapisBootsMeta.setDisplayName("Lapis Boots");
             // BootsLore
-        List<String> Bootslore = new ArrayList<>();
-        Bootslore.add("");
-        a.addAttributes(LapisBoots, 0, 0, 6, 6, 15, 5);
+        List<String> Bootslore = a.addAttributes(LapisBoots, 0, 0, 6, 6, 15, 5);
         Bootslore.add("");
         Bootslore.add(ChatColor.YELLOW + "" + ChatColor.BOLD + "PASSIVE SET BONUS: INFINITE INTELLIGENCE");
         Bootslore.add(ChatColor.GRAY + "Once completing the set bonus of this armor,");
         Bootslore.add(ChatColor.GRAY + "+30 extra mana is granted due to the ancient");
         Bootslore.add(ChatColor.GRAY + "power of the lapis lazui used to craft it");
         Bootslore.add("");
-        Bootslore.add(ChatColor.GRAY + "" + ChatColor.ITALIC + "Armor made from Lapis Lazui granting");
-        Bootslore.add(ChatColor.GRAY + "" + ChatColor.ITALIC + "the wearer massive amounts of mana");
-        Bootslore.add(ChatColor.GRAY + "" + ChatColor.ITALIC + "but minimal defense due to the brittle");
-        Bootslore.add(ChatColor.GRAY + "" + ChatColor.ITALIC + "nature of lapis lazui...");
+        Bootslore.add(a.lore() + "Armor made from Lapis Lazui granting the");
+        Bootslore.add(a.lore() + "wearer massive amounts of mana but lacking");
+        Bootslore.add(a.lore() + "in defense due to the brittle nature of lapis");
+        Bootslore.add(a.lore() + "lazui");
         Bootslore.add("");
         Bootslore.add(ChatColor.GREEN + "" + ChatColor.BOLD + "UNCOMMON");
         LapisBootsMeta.setLore(Bootslore);
