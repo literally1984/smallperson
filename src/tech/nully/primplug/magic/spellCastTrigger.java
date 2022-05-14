@@ -42,6 +42,7 @@ public class spellCastTrigger implements Listener {
 
 
                 // loops through the player's spells and sets the player's hotbar to the array
+                file file = new file();
                 int playerHotbarIndex = 0;
                 for (String s : file.readFile(file.getFileConfig(p.getDisplayName()), "Spells")) {
                     p.getInventory().setItem(playerHotbarIndex, spellItems.spellConverter.get(s));

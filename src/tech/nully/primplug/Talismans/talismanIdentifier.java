@@ -61,6 +61,7 @@ public class talismanIdentifier {
     }
 
     public ItemStack convertToItem(String itemName) {
-
+        talismanIdentifier id = new talismanIdentifier();
+        return id.convertToItem(itemName);
     }
 }

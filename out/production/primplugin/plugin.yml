@@ -1,0 +1,22 @@
+name: PrimPlugin
+version: 0.2.4
+main: tech.nully.primplug.Main
+authors: [BongoCat, ayonull, BigZ]
+api-version: 1.5.2
+description: A custom coded plugin for primcraft
+website: "https://nully.tech"
+commands:
+  pgive:
+    description: Gives the user a custom item
+    usage: /<command> <item>
+  recipes:
+    description: Shows a GUI of avaliable recipes
+    usage: /<command>
+  reforge:
+    aliases: re
+    description: reforge your current held item
+    usage: /<command>
+  upgrade:
+    aliases: upg
+    description: Open the upgrade GUI
+    usage: /<command>
