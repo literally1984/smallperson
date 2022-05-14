@@ -10,6 +10,8 @@ import tech.nully.primplug.crafting.overridenRecipes.overridenRecipeItems;
 
 public class armorRecipes {
 
+    // TODO: ADD THE NEW ARMOR ITEMS CRAFTING RECIPES
+
     public static void init() {
         cactusChesRecipe();
         PetheriteChesRecipe();

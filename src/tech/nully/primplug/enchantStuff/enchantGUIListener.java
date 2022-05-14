@@ -11,6 +11,7 @@ import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.meta.ItemMeta;
 
 public class enchantGUIListener implements Listener {
+    // TODO: test
     enchantMechanic ench = new enchantMechanic();
 
     @EventHandler

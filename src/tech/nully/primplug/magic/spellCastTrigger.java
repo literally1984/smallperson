@@ -16,6 +16,8 @@ import tech.nully.primplug.fileSystem.file;
 
 public class spellCastTrigger implements Listener {
 
+    // TODO: MAKE A SPELL LEARN LISTENER
+    // TODO: MAKE SPELL LEARN ADD TO PLAYER FILES
     public static boolean checkIsWand(ItemStack i) {
         return wands.wands.contains(i.getItemMeta().getDisplayName());
     }
