@@ -33,6 +33,6 @@ public class TalismanGUI {
             indexOfHotbar++;
         }
 
-        p.openInventory(inv);
+        p.openInventory(inv); e
     }
 }
