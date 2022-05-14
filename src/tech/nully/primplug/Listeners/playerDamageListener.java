@@ -81,8 +81,8 @@ public class playerDamageListener implements Listener{
                 Player damager = (Player) p.getLastDamageCause().getEntity();
 
                 // defines damager as the entity that last damaged the player casted into a player
-                var playerDefense = d.getdefense(damager);
-                int playerDefPerc = Math.round((100 * playerDefense) / ((100 * (playerDefense)) + 100));
+                int playerDefense = d.getdefense(damager);
+                int playerDefPerc = Math.round((100 * (playerDefense)) / ((100 * (playerDefense)) + 100));
                 int def = playerDefPerc/100;
 
                 // does the final damage
