@@ -32,6 +32,7 @@ public class enchantGUIListener implements Listener {
         if (e.getInventory().getName().contains("Enchanting Table") &&
         e.getSlot() <= 53 && e.getSlot() >= 0 && e.getSlot() != 13) {
             e.setCancelled(true);
+            // Checks which clickable slot was clicked
             if (e.getSlot() == 38) {
                 ench.applyEnchants(e.getCurrentItem(), ench.getNeededEnchants(e.getCurrentItem()));
             }

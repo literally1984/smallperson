@@ -90,19 +90,18 @@ public class upgradeGUIListener implements Listener {
                             }
 
                         // check if it is defense item which is clicked
-                        if (clickItem.getItemMeta().getDisplayName().equals(baseMethods.defenseUpgrade.getItemMeta().getDisplayName())) {
-                            up.defAdd(upgradeItem);
-                            return;
-                        }
+                            if (clickItem.getItemMeta().getDisplayName().equals(baseMethods.defenseUpgrade.getItemMeta().getDisplayName())) {
+                                up.defAdd(upgradeItem);
+                                return;
+                            }
+
+                            if (clickItem.getItemMeta().getDisplayName().equals(baseMethods.staminaUpgrade.getItemMeta().getDisplayName())) {
+                                up.stamAdd(upgradeItem);
+                                return;
+                            }
 
 
-                        if (clickItem.getItemMeta().getDisplayName().equals(baseMethods.staminaUpgrade.getItemMeta().getDisplayName())) {
-                            up.stamAdd(upgradeItem);
-                            return;
-                        }
-
-
-                        if (clickItem.getItemMeta().getDisplayName().equals(baseMethods.manaUpgrade.getItemMeta().getDisplayName())) {
+                            if (clickItem.getItemMeta().getDisplayName().equals(baseMethods.manaUpgrade.getItemMeta().getDisplayName())) {
                                 up.manaAdd(upgradeItem);
                                 return;
                             }

@@ -9,10 +9,15 @@ import tech.nully.primplug.enchantStuff.Glow;
 public class glowCommand implements CommandExecutor {
     @Override
     public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
+        Player p = (Player) sender;
+        if (!(sender instanceof Player)) {
+            return false;
+        }
+
         if (cmd.getName().equalsIgnoreCase("glow")) {
-            Player p = (Player) sender;
             Glow glow = new Glow(1);
-            p.getInventory().getItemInHand().addEnchantment(glow, 1);
+            p.getInventory().getItemInHand().getItemMeta().addEnchant(glow, 1, true);
+            return true;
         }
         return false;
     }

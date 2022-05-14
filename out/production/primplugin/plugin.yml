@@ -20,3 +20,6 @@ commands:
     aliases: upg
     description: Open the upgrade GUI
     usage: /<command>
+  glow:
+    description: Makes the item in your hand glow
+    usage: /<command>
