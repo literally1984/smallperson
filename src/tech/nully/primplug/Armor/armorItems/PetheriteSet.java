@@ -28,7 +28,7 @@ public class PetheriteSet {
         createPetheriteBoots();
     }
 
-    private static baseAttributesAdder b = new baseAttributesAdder();
+    private final static baseAttributesAdder a = new baseAttributesAdder();
 
 
     // ! condensed Obsidian
@@ -60,11 +60,13 @@ public class PetheriteSet {
         // SET THE META ----------------
         PHelmMeta.setDisplayName("Petherite Helmet");
             // HelmLore\
+        
         List<String> Helmlore = new ArrayList<>();
+        a.addAttributes(PHelm, 3, 3, 7, 7, 8, 10);
         Helmlore.add("");
         Helmlore.add("NETHERITE! Well, almost.");
         Helmlore.add("");
-        Helmlore.add(b.epic() + "EPIC");
+        Helmlore.add(ChatColor.BLUE + "EPIC");
         PHelmMeta.setLore(Helmlore);
 
         // LEATHER ARMOR META
@@ -87,6 +89,7 @@ public class PetheriteSet {
         PChestMeta.setDisplayName("Petherite Chestplate");
             // ChestLore
         List<String> Chestlore = new ArrayList<>();
+        a.addAttributes(PChest, 3, 3, 13, 13, 8, 10);
         Chestlore.add("");
         Chestlore.add("NETHERITE! Well, almost.");
         Chestlore.add("");
@@ -109,6 +112,7 @@ public class PetheriteSet {
         PLegMeta.setDisplayName("Petherite Leggings");
             // LegLore
         List<String> Leglore = new ArrayList<>();
+        a.addAttributes(PLeg, 3, 3, 11, 11, 8, 10);
         Leglore.add("");
         Leglore.add("NETHERITE! Well, almost.");
         Leglore.add("");
@@ -130,6 +134,7 @@ public class PetheriteSet {
         PBootsMeta.setDisplayName("Petherite Boots");
             // BootsLore
         List<String> Bootslore = new ArrayList<>();
+        a.addAttributes(PBoots, 3, 3, 8, 8, 8, 10);
         Bootslore.add("");
         Bootslore.add("NETHERITE! Well, almost.");
         Bootslore.add("");
