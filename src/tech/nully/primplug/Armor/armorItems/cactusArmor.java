@@ -66,8 +66,8 @@ public class cactusArmor {
         List<String> Helmlore = new ArrayList<>();
         a.addAttributes(CacHelm, 3, 3, 6, 6, 4, 3);
         Helmlore.add("");
-        Helmlore.add("Headwear made from Cactus shards which");
-        Helmlore.add("harsm the oppenent when they attack you");
+        Helmlore.add("Headwear made from cactus shards which");
+        Helmlore.add("harms the oppenent when they attack you");
         Helmlore.add("Ouch! Pointy!");
         Helmlore.add("");
         Helmlore.add(ChatColor.GOLD+ "" + ChatColor.BOLD + "Set Bonus: Iron Spikes");
@@ -103,7 +103,7 @@ public class cactusArmor {
         Chestlore.add("A shirt made from the shards of a cactus spine.");
         Chestlore.add("Gonna need a Band-Aid!");
         Chestlore.add("");
-        Chestlore.add(ChatColor.GOLD+ "" + ChatColor.BOLD + "SET BONUS: Spikey spikes");
+        Chestlore.add(ChatColor.GOLD+ "" + ChatColor.BOLD + "SET BONUS: Iron spikes");
         Chestlore.add("Reflects 33% of the damage you take");
         Chestlore.add("back to your opponent, but reduces movement speed by 10%");
         Chestlore.add("");
