@@ -15,7 +15,6 @@ import org.bukkit.inventory.ItemStack;
 import tech.nully.primplug.fileSystem.file;
 
 public class spellCastTrigger implements Listener {
-    static HashMap<Player, List<ItemStack>> IsInMagicForm = new HashMap<Player, List<ItemStack>>();
 
     public static boolean checkIsWand(ItemStack i) {
         return wands.wands.contains(i.getItemMeta().getDisplayName());
@@ -24,9 +23,10 @@ public class spellCastTrigger implements Listener {
 
     @EventHandler
     public void onSpellCast(PlayerInteractEvent e) {
-
+        Player caster = e.getPlayer();
+        spellCast cast = new spellCast();
     }
-
+    static HashMap<Player, List<ItemStack>> IsInMagicForm = new HashMap<Player, List<ItemStack>>();
     @EventHandler
     public void onFormChange(PlayerInteractEvent e) {
         if (e.getAction() == Action.RIGHT_CLICK_AIR || e.getAction() == Action.RIGHT_CLICK_BLOCK) {
@@ -38,8 +38,9 @@ public class spellCastTrigger implements Listener {
                 for (int i = 0; i<9; i++) {
                     playerHotbarItems.add(p.getInventory().getItem(i));
                 }
+                IsInMagicForm.put(p, playerHotbarItems); // puts the List's Items into the hashMap
 
-                IsInMagicForm.put(p, playerHotbarItems);
+
                 // loops through the player's spells and sets the player's hotbar to the array
                 int playerHotbarIndex = 0;
                 for (String s : file.readFile(file.getFileConfig(p.getDisplayName()), "Spells")) {

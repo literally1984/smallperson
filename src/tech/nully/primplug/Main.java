@@ -16,6 +16,7 @@ import tech.nully.primplug.Armor.armorItems.platedArmor;
 import tech.nully.primplug.Armor.armorItems.reaperArmor;
 import tech.nully.primplug.Listeners.armorPutOnEvent;
 import tech.nully.primplug.Listeners.playerDamageListener;
+import tech.nully.primplug.Listeners.playerJoinListener;
 import tech.nully.primplug.Listeners.upgradeGUIListener;
 import tech.nully.primplug.RPGcommands.reforges.reforgeCommand;
 import tech.nully.primplug.RegularCommands.giveCommand;
@@ -75,6 +76,7 @@ public class Main extends JavaPlugin {
         getServer().getPluginManager().registerEvents(new talismanListeners(), this);
         getServer().getPluginManager().registerEvents(new toolAbilities(), this);
         getServer().getPluginManager().registerEvents(new armorPutOnEvent(), this);
+        getServer().getPluginManager().registerEvents(new playerJoinListener(), this);
 
         getCommand("recipes").setExecutor(new recipeCommand());
         getCommand("pgive").setExecutor(new giveCommand());
