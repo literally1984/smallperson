@@ -87,6 +87,9 @@ public class playerDamageListener implements Listener{
 
                 // does the final damage
                 damager.setHealth(damager.getHealth() - (reflectedDamage - (finalDamage *def)));
+                if (damaged instanceof Player) {
+                    ((Player) damaged).sendMessage("You have been hit by" + damager.getDisplayName());
+                }
             }
         }
 
