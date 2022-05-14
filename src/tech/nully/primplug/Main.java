@@ -1,19 +1,9 @@
 package tech.nully.primplug;
 
-import java.util.Iterator;
-
 import org.bukkit.ChatColor;
 import org.bukkit.inventory.Recipe;
 import org.bukkit.plugin.java.JavaPlugin;
-
-import tech.nully.primplug.Armor.armorItems.Drakon;
-import tech.nully.primplug.Armor.armorItems.PetheriteSet;
-import tech.nully.primplug.Armor.armorItems.cactusArmor;
-import tech.nully.primplug.Armor.armorItems.demigodArmor;
-import tech.nully.primplug.Armor.armorItems.hardenedDiamond;
-import tech.nully.primplug.Armor.armorItems.lapisArmor;
-import tech.nully.primplug.Armor.armorItems.platedArmor;
-import tech.nully.primplug.Armor.armorItems.reaperArmor;
+import tech.nully.primplug.Armor.armorItems.*;
 import tech.nully.primplug.Listeners.armorPutOnEvent;
 import tech.nully.primplug.Listeners.playerDamageListener;
 import tech.nully.primplug.Listeners.playerJoinListener;
@@ -28,10 +18,13 @@ import tech.nully.primplug.Tools.zeusBolt;
 import tech.nully.primplug.crafting.customRecipes.armorRecipes;
 import tech.nully.primplug.enchantStuff.EnchantGUI;
 import tech.nully.primplug.enchantStuff.enchantMechanic;
+import tech.nully.primplug.enchantStuff.registerGlow;
 import tech.nully.primplug.playerStatManagers.manaManager.passiveManaAdder;
 import tech.nully.primplug.recipeBook.recipeCommand;
 import tech.nully.primplug.rightClickPlayerMechanic.rightClickPlayer;
 import tech.nully.primplug.upgradeItems.upgradeCommand;
+
+import java.util.Iterator;
 
 public class Main extends JavaPlugin {
     public Iterator<Recipe> it = getServer().recipeIterator();
@@ -45,6 +38,8 @@ public class Main extends JavaPlugin {
     @Override
     public void onEnable() {
         instance = this;
+
+        registerGlow.registerGlow();
 
         p.addMana();
         enchantMechanic.createEnchantHashMap();
