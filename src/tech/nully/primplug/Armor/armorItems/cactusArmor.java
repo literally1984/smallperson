@@ -1,8 +1,5 @@
 package tech.nully.primplug.Armor.armorItems;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Color;
@@ -11,8 +8,10 @@ import org.bukkit.enchantments.Enchantment;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.inventory.meta.LeatherArmorMeta;
-
 import tech.nully.primplug.Armor.baseAttributesAdder;
+
+import java.util.ArrayList;
+import java.util.List;
 public class cactusArmor {
     
     public static ItemStack Shard;
@@ -63,8 +62,7 @@ public class cactusArmor {
         // SET THE META ----------------
         CacHelmMeta.setDisplayName("Cactus Helmet");
             // HelmLore
-        List<String> Helmlore = new ArrayList<>();
-        a.addAttributes(CacHelm, 3, 3, 6, 6, 4, 3);
+        List<String> Helmlore = a.addAttributes(CacHelm, 3, 3, 6, 6, 4, 3);
         Helmlore.add("");
         Helmlore.add("Headwear made from cactus shards which");
         Helmlore.add("harms the oppenent when they attack you");
@@ -97,8 +95,7 @@ public class cactusArmor {
         // SET THE META ----------------
         CacChestMeta.setDisplayName("Cactus Chestplate");
             // ChestLore
-        List<String> Chestlore = new ArrayList<>();
-        a.addAttributes(CacChest, 2, 2, 21, 21, 15, 25);
+        List<String> Chestlore = a.addAttributes(CacChest, 2, 2, 21, 21, 15, 25);
         Chestlore.add("");
         Chestlore.add("A shirt made from the shards of a cactus spine.");
         Chestlore.add("Gonna need a Band-Aid!");
@@ -131,8 +128,7 @@ public class cactusArmor {
         // SET THE META ----------------
         CacLegMeta.setDisplayName("Cac Leggings");
             // LegLore
-        List<String> Leglore = new ArrayList<>();
-        a.addAttributes(CacLeg, 3, 3, 17, 17, 13, 20);
+        List<String> Leglore = a.addAttributes(CacLeg, 3, 3, 17, 17, 13, 20);
         Leglore.add("");
         Leglore.add("Pants made from the shards of a cactus spine.");
         Leglore.add("A little poky down under…");
@@ -164,8 +160,7 @@ public class cactusArmor {
         // SET THE META ----------------
         CacBootsMeta.setDisplayName("Cac Boots");
             // BootsLore
-        List<String> Bootslore = new ArrayList<>();
-        a.addAttributes(CacBoots, 1, 1, 8, 8, 7, 13);
+        List<String> Bootslore = a.addAttributes(CacBoots, 1, 1, 8, 8, 7, 13);
         Bootslore.add("Shoes made from the shards of a cactus spine.");
         Bootslore.add("A pain to walk in!");
         Bootslore.add("");

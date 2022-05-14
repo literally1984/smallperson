@@ -1,8 +1,5 @@
 package tech.nully.primplug.Armor.armorItems;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Color;
@@ -11,6 +8,9 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.inventory.meta.LeatherArmorMeta;
 import tech.nully.primplug.Armor.baseAttributesAdder;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class PetheriteSet {
     
@@ -61,8 +61,7 @@ public class PetheriteSet {
         PHelmMeta.setDisplayName("Petherite Helmet");
             // HelmLore\
         
-        List<String> Helmlore = new ArrayList<>();
-        a.addAttributes(PHelm, 3, 3, 7, 7, 8, 10);
+        List<String> Helmlore = a.addAttributes(PHelm, 3, 3, 7, 7, 8, 10);
         Helmlore.add("");
         Helmlore.add("NETHERITE! Well, almost.");
         Helmlore.add("");
@@ -88,8 +87,7 @@ public class PetheriteSet {
         // SET THE META ----------------
         PChestMeta.setDisplayName("Petherite Chestplate");
             // ChestLore
-        List<String> Chestlore = new ArrayList<>();
-        a.addAttributes(PChest, 3, 3, 13, 13, 8, 10);
+        List<String> Chestlore = a.addAttributes(PChest, 3, 3, 13, 13, 8, 10);
         Chestlore.add("");
         Chestlore.add("NETHERITE! Well, almost.");
         Chestlore.add("");
@@ -111,8 +109,7 @@ public class PetheriteSet {
         // SET THE META ----------------
         PLegMeta.setDisplayName("Petherite Leggings");
             // LegLore
-        List<String> Leglore = new ArrayList<>();
-        a.addAttributes(PLeg, 3, 3, 11, 11, 8, 10);
+        List<String> Leglore = a.addAttributes(PLeg, 3, 3, 11, 11, 8, 10);
         Leglore.add("");
         Leglore.add("NETHERITE! Well, almost.");
         Leglore.add("");
@@ -133,8 +130,7 @@ public class PetheriteSet {
         // SET THE META ----------------
         PBootsMeta.setDisplayName("Petherite Boots");
             // BootsLore
-        List<String> Bootslore = new ArrayList<>();
-        a.addAttributes(PBoots, 3, 3, 8, 8, 8, 10);
+        List<String> Bootslore = a.addAttributes(PBoots, 3, 3, 8, 8, 8, 10);
         Bootslore.add("");
         Bootslore.add("NETHERITE! Well, almost.");
         Bootslore.add("");
@@ -144,7 +140,5 @@ public class PetheriteSet {
 
         PBoots.setItemMeta(PBootsMeta);
         boots = PBoots;
-    }
-    public PetheriteSet() {
     }
 }
