@@ -40,9 +40,8 @@ public class Drakon {
         // SET THE META ----------------
         DRHelmMeta.setDisplayName(ChatColor.DARK_PURPLE + "Drakon Helmet");
             // HelmLore
-        List<String> Helmlore = new ArrayList<>();
+        List<String> Helmlore = a.addAttributes(DRHelm, 2, 2, 16, 13, 7, 15);
         Helmlore.add("");
-        a.addAttributes(DRHelm, 2, 2, 16, 13, 7, 15);
         Helmlore.add("");
         Helmlore.add(a.ability() + "Set Bonus: DRAGON AWAKENING");
         Helmlore.add(ChatColor.GRAY + "Grants the wearer permanent +10 damage");
@@ -74,9 +73,7 @@ public class Drakon {
         // SET THE META ----------------
         DRchesMeta.setDisplayName(ChatColor.DARK_PURPLE + "Drakon Chesplate");
             // chesLore
-        List<String> cheslore = new ArrayList<>();
-        cheslore.add("");
-        a.addAttributes(DRches, 5, 4, 35, 32, 13, 25);
+        List<String> cheslore = a.addAttributes(DRches, 5, 4, 35, 32, 13, 25);
         cheslore.add("");
         cheslore.add(a.ability() + "Full Set Bonus: DRAGON AWAKENING");
         cheslore.add(ChatColor.GRAY + "Grants the wearer permanent +10 damage");
@@ -107,8 +104,7 @@ public class Drakon {
         // SET THE META ----------------
         DRlegMeta.setDisplayName(ChatColor.DARK_PURPLE + "Drakon Leggings");
             // legLore
-        List<String> leglore = new ArrayList<>();
-        a.addAttributes(DRleg, 4, 3, 25, 22, 10, 20);
+        List<String> leglore = a.addAttributes(DRleg, 4, 3, 25, 22, 10, 20);
         leglore.add("");
         leglore.add(ChatColor.YELLOW + "" +ChatColor.BOLD + "PASSIVE SET BONUS: DRAGON AWAKENING");
         leglore.add(ChatColor.GRAY + "Grants the wearer permanent +10 damage");
@@ -141,8 +137,7 @@ public class Drakon {
         // SET THE META ----------------
         DRbootsMeta.setDisplayName(ChatColor.DARK_PURPLE  + " Drakon Boots");
             // bootsLore
-        List<String> bootslore = new ArrayList<>();
-        a.addAttributes(DRboots, 2, 1, 14, 10, 7, 15);
+        List<String> bootslore = a.addAttributes(DRboots, 2, 1, 14, 10, 7, 15);
         bootslore.add("");
         bootslore.add(ChatColor.YELLOW + "" +ChatColor.BOLD + "PASSIVE SET BONUS: DRAGON AWAKENING");
         bootslore.add(ChatColor.GRAY + "Grants the wearer permanent +10 damage");

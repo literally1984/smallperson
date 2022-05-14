@@ -57,8 +57,7 @@ public class demigodArmor {
         // SET THE META ----------------
         DemiHelmMeta.setDisplayName("Demigod Helmet");
             // HelmLore
-        List<String> Helmlore = new ArrayList<>();
-        a.addAttributes(DemiHelm, 8, 8, 8, 8, 19, 20);
+        List<String> Helmlore = a.addAttributes(DemiHelm, 8, 8, 8, 8, 19, 20);
         Helmlore.add("");
         Helmlore.add(ChatColor.YELLOW + "" + ChatColor.BOLD + "Set Bonus I: Zeus' Wrath");
         Helmlore.add(ChatColor.GRAY + "" +ChatColor.ITALIC + "Shift and then jump to summon");
@@ -88,8 +87,7 @@ public class demigodArmor {
         // SET THE META ----------------
         DemiChestMeta.setDisplayName("Demigod Chestplate");
             // ChestLore
-        List<String> Chestlore = new ArrayList<>();
-        a.addAttributes(DemiChest, 8, 8, 27, 27, 20, 30);
+        List<String> Chestlore = a.addAttributes(DemiChest, 8, 8, 27, 27, 20, 30);
         Chestlore.add("");
         Chestlore.add("Armor gifted to a mortal from above.");
         Chestlore.add("It is said that whoever wears this has the power of a god!");
@@ -121,8 +119,7 @@ public class demigodArmor {
         // SET THE META ----------------
         DemiLegMeta.setDisplayName("Demigod Leggings");
             // LegLore
-        List<String> Leglore = new ArrayList<>();
-        a.addAttributes(DemiLeg, 5, 5, 21, 21, 15, 25);
+        List<String> Leglore = a.addAttributes(DemiLeg, 5, 5, 21, 21, 15, 25);
         Leglore.add("");
         Leglore.add(a.lore() + "Armor gifted to a mortal from above.");
         Leglore.add(a.lore() + "It is said that whoever wears this has the power of a god!");
@@ -151,8 +148,7 @@ public class demigodArmor {
         // SET THE META ----------------
         DemiBootsMeta.setDisplayName("Demigod Boots");
             // BootsLore
-        List<String> Bootslore = new ArrayList<>();
-        a.addAttributes(DemiBoots, 3, 3, 8, 8, 7, 13);
+        List<String> Bootslore = a.addAttributes(DemiBoots, 3, 3, 8, 8, 7, 13);
         Bootslore.add("Armor gifted to a mortal from above.");
         Bootslore.add("It is said that whoever wears this has the power of a god!");
         Bootslore.add("");

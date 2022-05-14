@@ -1,14 +1,13 @@
 package tech.nully.primplug.Armor.armorItems;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
-
 import tech.nully.primplug.Armor.baseAttributesAdder;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class hardenedDiamond {
     public static ItemStack helm;
@@ -33,9 +32,7 @@ public class hardenedDiamond {
         // SET THE META ----------------
         HDiaHelmMeta.setDisplayName("Hardened Diamond Helmet");
             // HelmLore
-        List<String> Helmlore = new ArrayList<>();
-        Helmlore.add("");
-        base.addAttributes(HDiaHelm, 3, 18, 13, 13, 7, 12);
+        List<String> Helmlore = base.addAttributes(HDiaHelm, 3, 18, 13, 13, 7, 12);
         Helmlore.add("");
         Helmlore.add(base.lore() + "Made from the hardest diamonds from the depths");
         Helmlore.add(base.lore() + "of the earth, this armor is the toughest around!");
@@ -81,9 +78,7 @@ public class hardenedDiamond {
         // SET THE META ----------------
         HDiaHelmMeta.setDisplayName("Hardened Diamond Helmet");
             // HelmLore
-        List<String> Helmlore = new ArrayList<>();
-        Helmlore.add("");
-        base.addAttributes(HDiaHelm, 3, 3, 18, 12, 8, 13);
+        List<String> Helmlore = base.addAttributes(HDiaHelm, 3, 3, 18, 12, 8, 13);
         Helmlore.add("");
         Helmlore.add(ChatColor.GRAY + "Made from the hardest diamonds from the depths");
         Helmlore.add(ChatColor.GRAY + "of the earth, this armor is the toughest around!");
@@ -105,8 +100,8 @@ public class hardenedDiamond {
         // SET THE META ----------------
         HDiaBootsMeta.setDisplayName("Hardened Diamond Bootset");
             // BootsLore
-        List<String> Bootslore = new ArrayList<>();
-        Bootslore.add("");base.addAttributes(HDiaBoots, 3, 3, 18, 18, 8, 13);
+        List<String> Bootslore = base.addAttributes(HDiaBoots, 3, 3, 18, 18, 8, 13);
+        Bootslore.add("");
         Bootslore.add(ChatColor.RED + "Damage: " + ChatColor.GRAY + "3");
         Bootslore.add(ChatColor.GREEN + "Defense: " + ChatColor.GRAY + "18");
         Bootslore.add(ChatColor.BLUE + "Mana: " + ChatColor.GRAY + "8");
