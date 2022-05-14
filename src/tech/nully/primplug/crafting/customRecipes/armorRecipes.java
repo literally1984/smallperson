@@ -17,24 +17,154 @@ public class armorRecipes {
         PetheriteChesRecipe();
         diaChesRecipe();
         ironChesRecipe();
+        demichesrecipe();
+        drakonchesrecipe();
+        hdiachesrecipe();
+        lapischesrecipe();
+        platedchesrecipe();
+        reaperchesrecipe();
+        undeadchesrecipe();
+        wizchesrecipe();
 
 
         cactusHelmRecipe();
         PetheriteHelmRecipe();
         diaHelmRecipe();
         ironHelmRecipe();
+        demihelmrecipe();
+        drakonhelmrecipe();
+        hdiahelmrecipe();
+        lapishelmrecipe();
+        platedhelmrecipe();
+        reaperhelmrecipe();
+        undeadhelmrecipe();
+        wizhatrecipe();
 
 
         cactusLegRecipe();
         PetheriteLegRecipe();
         diaLegRecipe();
         ironLegRecipe();
+        demiLegrecipe();
+        drakonlegrecipe();
+        hdialegrecipe();
+        lapislegrecipe();
+        platedlegrecipe();
+        reaperlegrecipe();
+        undeadlegrecipe();
+        wizlegrecipe();
 
 
         cactusBootsRecipe();
         PetheriteBootsRecipe();
         diaBootsRecipe();
         ironBootsRecipe();
+        demibootsrecipe();
+        drakonbootsrecipe();
+        hdiabootsrecipe();
+        lapisbootsrecipe();
+        platedbootsrecipe();
+        reaperbootsrecipe();
+        undeadbootsrecipe();
+        wizbootsrecipe();
+    }
+
+// TODO: add recipe for new armors
+
+   private static void wizbootsrecipe() {
+    }
+
+private static void undeadbootsrecipe() {
+    }
+
+private static void reaperbootsrecipe() {
+    }
+
+private static void platedbootsrecipe() {
+    }
+
+private static void lapisbootsrecipe() {
+    }
+
+private static void hdiabootsrecipe() {
+    }
+
+private static void drakonbootsrecipe() {
+    }
+
+private static void demibootsrecipe() {
+    }
+
+private static void wizlegrecipe() {
+    }
+
+private static void undeadlegrecipe() {
+    }
+
+private static void reaperlegrecipe() {
+    }
+
+private static void platedlegrecipe() {
+    }
+
+private static void lapislegrecipe() {
+    }
+
+private static void hdialegrecipe() {
+    }
+
+private static void drakonlegrecipe() {
+    }
+
+private static void demiLegrecipe() {
+    }
+
+private static void wizhatrecipe() {
+    }
+
+private static void undeadhelmrecipe() {
+    }
+
+private static void reaperhelmrecipe() {
+    }
+
+private static void platedhelmrecipe() {
+    }
+
+ private static void lapishelmrecipe() {
+    }
+
+    private static void hdiahelmrecipe() {
+    }
+
+    private static void drakonhelmrecipe() {
+    }
+
+    private static void demihelmrecipe() {
+    }
+
+    private static void wizchesrecipe() {
+    }
+
+    private static void undeadchesrecipe() {
+    }
+
+    private static void reaperchesrecipe() {
+    }
+
+    private static void platedchesrecipe() {
+    }
+
+    private static void lapischesrecipe() {
+    }
+
+    private static void hdiachesrecipe() {
+    }
+
+    private static void drakonchesrecipe() {
+    }
+
+    private static void demichesrecipe() {
     }
 
     private static void cactusHelmRecipe() {
