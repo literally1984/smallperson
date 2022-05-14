@@ -1,7 +1,6 @@
 package tech.nully.primplug;
 
 import org.bukkit.ChatColor;
-import org.bukkit.inventory.Recipe;
 import org.bukkit.plugin.java.JavaPlugin;
 import tech.nully.primplug.Armor.armorItems.*;
 import tech.nully.primplug.Listeners.armorPutOnEvent;
@@ -10,6 +9,7 @@ import tech.nully.primplug.Listeners.playerJoinListener;
 import tech.nully.primplug.Listeners.upgradeGUIListener;
 import tech.nully.primplug.RPGcommands.reforges.reforgeCommand;
 import tech.nully.primplug.RegularCommands.giveCommand;
+import tech.nully.primplug.RegularCommands.glowCommand;
 import tech.nully.primplug.Talismans.Talisman;
 import tech.nully.primplug.Talismans.talismanListeners;
 import tech.nully.primplug.Tools.bloodThirstyBlade;
@@ -24,10 +24,7 @@ import tech.nully.primplug.recipeBook.recipeCommand;
 import tech.nully.primplug.rightClickPlayerMechanic.rightClickPlayer;
 import tech.nully.primplug.upgradeItems.upgradeCommand;
 
-import java.util.Iterator;
-
 public class Main extends JavaPlugin {
-    public Iterator<Recipe> it = getServer().recipeIterator();
     private static Main instance;
     passiveManaAdder p = new passiveManaAdder();
 
@@ -43,7 +40,7 @@ public class Main extends JavaPlugin {
 
         p.addMana();
         enchantMechanic.createEnchantHashMap();
-        EnchantGUI.createEnchantItems();
+        EnchantGUI.init();
 
 
         PetheriteSet.init();
@@ -74,6 +71,7 @@ public class Main extends JavaPlugin {
         getServer().getPluginManager().registerEvents(new playerJoinListener(), this);
 
         getCommand("recipes").setExecutor(new recipeCommand());
+        getCommand("glow").setExecutor(new glowCommand());
         getCommand("pgive").setExecutor(new giveCommand());
         getCommand("reforge").setExecutor(new reforgeCommand());
         getCommand("upgrade").setExecutor(new upgradeCommand());

@@ -18,6 +18,10 @@ public class EnchantGUI {
     public static ItemStack LVL2Enchant;
     public static ItemStack LVL3Enchant;
 
+    public static void init() {
+        createEnchantItems();
+    }
+
 
     public String unavaliableDisplayName = "There are no items in the Enchanting Slot";
     public List<String> unavaliableLore() {
@@ -27,7 +31,7 @@ public class EnchantGUI {
         return enchantLore;
     }
 
-    public static void createEnchantItems() {
+    private static void createEnchantItems() {
         ItemStack level1Enchant = new ItemStack(Material.EXP_BOTTLE);
         ItemMeta NoEnchants = level1Enchant.getItemMeta();
 
@@ -37,10 +41,20 @@ public class EnchantGUI {
         enchantLore.add(ChatColor.GRAY + "to be able to enchant it!");
         NoEnchants.setLore(enchantLore);
 
+        ItemStack level2Enchant = new ItemStack(Material.EXP_BOTTLE);
+        ItemMeta NoEnchants2 = level1Enchant.getItemMeta();
 
+        NoEnchants.setDisplayName("There are no items in the Enchanting Slot");
+        List<String> enchantLore2 = enchantLore;
+        NoEnchants.setLore(enchantLore);
 
-        ItemStack level2Enchant = level1Enchant.clone();
-        ItemStack level3Enchant = level1Enchant.clone();
+        ItemStack level3Enchant = new ItemStack(Material.EXP_BOTTLE);
+        ItemMeta NoEnchants3 = level1Enchant.getItemMeta();
+
+        NoEnchants.setDisplayName("There are no items in the Enchanting Slot");
+        List<String> enchantLore3 = enchantLore;
+        NoEnchants.setLore(enchantLore);
+
 
         level1Enchant = LVL1Enchant;
         level2Enchant = LVL2Enchant;
