@@ -57,8 +57,11 @@ public class talismanIdentifier {
             item.getItemMeta().getDisplayName().equals(BODName) || 
             item.getItemMeta().getDisplayName().equals(MISOName)) {
             return true;
-        } else {
-            return false;
-        }
+        } else return false;
+    }
+
+    public ItemStack convertToItem(String itemName) {
+        talismanIdentifier id = new talismanIdentifier();
+        return id.convertToItem(itemName);
     }
 }

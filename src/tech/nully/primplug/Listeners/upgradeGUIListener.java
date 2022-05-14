@@ -1,26 +1,26 @@
 package tech.nully.primplug.Listeners;
 
-import java.util.List;
-
 import org.bukkit.ChatColor;
+import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
-
-import tech.nully.primplug.baseMethods;
 import tech.nully.primplug.RPGcommands.reforges.reforgeGUI;
 import tech.nully.primplug.RPGcommands.reforges.reforges;
-import tech.nully.primplug.upgradeItems.upgradeUpdate;
+import tech.nully.primplug.baseMethods;
 import tech.nully.primplug.upgradeItems.guis.upgradeGUI;
+import tech.nully.primplug.upgradeItems.upgradeUpdate;
+
+import java.util.List;
 
 public class upgradeGUIListener implements Listener {
     @EventHandler
     public void onInventoryClick(InventoryClickEvent e) {
         upgradeGUI u = new upgradeGUI();
         reforgeGUI r = new reforgeGUI();
-
+        Player p = (Player) e.getWhoClicked();
 
         ItemStack clickItem = e.getCurrentItem();
 

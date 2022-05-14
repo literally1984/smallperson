@@ -1,6 +1,7 @@
 package tech.nully.primplug.Talismans;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 import org.bukkit.ChatColor;
@@ -16,6 +17,7 @@ public class Talisman {
     public static ItemStack BlessingOfDurability;
     public static ItemStack MisoTheRabbit;
 
+    public static HashMap<String, ItemStack> list = new HashMap<>();
     public static void init() {
         createBOD();
         createBLOD();
@@ -51,6 +53,7 @@ public class Talisman {
 
         BOD.setItemMeta(BODMeta);
         BladeOfDespair = BOD;
+        list.put(BODMeta.getDisplayName(),BOD);
     }
 
 
@@ -86,6 +89,7 @@ public class Talisman {
 
         BLOD.setItemMeta(BLODMeta);
         BlessingOfDurability = BLOD;
+        list.put(BLODMeta.getDisplayName(), BLOD);
     }
     private static void createMiso() {
         // DEFINE THE META -------------
@@ -119,5 +123,6 @@ public class Talisman {
 
         Miso.setItemMeta(MisoMeta);
         MisoTheRabbit = Miso;
+        list.put(MisoMeta.getDisplayName(), Miso);
     }
 }
