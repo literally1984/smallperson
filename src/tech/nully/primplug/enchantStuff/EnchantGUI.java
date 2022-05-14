@@ -36,24 +36,20 @@ public class EnchantGUI {
         ItemMeta NoEnchants = level1Enchant.getItemMeta();
 
         NoEnchants.setDisplayName("There are no items in the Enchanting Slot");
-        List<String> enchantLore = NoEnchants.getLore();
+        List<String> enchantLore = new ArrayList<String>();
         enchantLore.add(ChatColor.GRAY + "Put an Item into the Enchant slot");
         enchantLore.add(ChatColor.GRAY + "to be able to enchant it!");
         NoEnchants.setLore(enchantLore);
 
         ItemStack level2Enchant = new ItemStack(Material.EXP_BOTTLE);
-        ItemMeta NoEnchants2 = level1Enchant.getItemMeta();
+        ItemMeta NoEnchants2 = NoEnchants.clone();
 
-        NoEnchants.setDisplayName("There are no items in the Enchanting Slot");
-        List<String> enchantLore2 = enchantLore;
-        NoEnchants.setLore(enchantLore);
+        level2Enchant.setItemMeta(NoEnchants2);
 
         ItemStack level3Enchant = new ItemStack(Material.EXP_BOTTLE);
-        ItemMeta NoEnchants3 = level1Enchant.getItemMeta();
+        ItemMeta NoEnchants3 = NoEnchants.clone();
 
-        NoEnchants.setDisplayName("There are no items in the Enchanting Slot");
-        List<String> enchantLore3 = enchantLore;
-        NoEnchants.setLore(enchantLore);
+        level3Enchant.setItemMeta(NoEnchants3);
 
 
         level1Enchant = LVL1Enchant;
