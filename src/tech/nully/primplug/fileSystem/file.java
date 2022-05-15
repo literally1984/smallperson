@@ -1,20 +1,17 @@
 package tech.nully.primplug.fileSystem;
 
+import org.bukkit.configuration.file.FileConfiguration;
+import org.bukkit.configuration.file.YamlConfiguration;
+import tech.nully.primplug.Main;
+
 import java.io.File;
 import java.io.IOException;
-import java.lang.reflect.Array;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 
-import org.bukkit.configuration.file.FileConfiguration;
-import org.bukkit.configuration.file.YamlConfiguration;
-
-import tech.nully.primplug.Main;
-
 public class file {
     static HashMap<String, FileConfiguration> playerFileConfig = new HashMap<String, FileConfiguration>();
-    // TODO: TEST THE FILE SYSTEM
     Main m = new Main();
     public void saveFile(String fileName) {
         File playerYml = new File(Main.getInstance().getDataFolder()+fileName + ".yml");

@@ -1,14 +1,12 @@
 package tech.nully.primplug.Tools;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
-
 import tech.nully.primplug.Armor.baseAttributesAdder;
+
+import java.util.List;
 
 
 public class bloodThirstyBlade {
@@ -19,11 +17,8 @@ public class bloodThirstyBlade {
         ItemMeta bloodMeta = bloodBlade.getItemMeta();
 
         bloodMeta.setDisplayName(ChatColor.RED + "Bloodythirsy Blade");
-
-        List<String> bladeLore = new ArrayList<String>();
-        bladeLore.add("");
         baseAttributesAdder a = new baseAttributesAdder();
-        a.addAttributes(bloodBlade, 11, 3, 5, 2, 10, 15);
+        List<String> bladeLore = a.addAttributes(bloodBlade, 11, 3, 5, 2, 10, 15);
         bladeLore.add("");
         bladeLore.add(a.ability() + "Passive ability: Bloodthirst");
         bladeLore.add(ChatColor.GRAY + "When this blade hits another player, it");
@@ -41,6 +36,7 @@ public class bloodThirstyBlade {
         bladeLore.add("");
         bladeLore.add(a.legendary() + "EPIC");
         bloodMeta.setLore(bladeLore);
+        // TODO: test if this durability thing works
         bloodBlade.setDurability((short) -1000);
         bloodBlade.setItemMeta(bloodMeta);
 

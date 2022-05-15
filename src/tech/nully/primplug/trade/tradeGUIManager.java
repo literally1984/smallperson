@@ -67,9 +67,10 @@ public class tradeGUIManager {
             public void run() {
                 if (Objects.equals(inv.getItem(48), new ItemStack(Material.AIR)) && Objects.equals(inv.getItem(50), new ItemStack(Material.AIR))) {
                     return;
+                    //Todo: finish this
                 }
 
-                
+
             }
 
         }, 200L, 200L);

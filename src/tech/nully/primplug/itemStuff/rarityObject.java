@@ -6,8 +6,12 @@ import org.bukkit.inventory.ItemStack;
 public class rarityObject {
 
     public int getMaxUpgrades(ItemStack targetItem) {
-        int maxUpgrades;
-        String ItemRarity = targetItem.getItemMeta().getLore().get(targetItem.getItemMeta().getLore().size() - 1);
+        int maxUpgrades = 0;
+
+        String ItemRarity = "null";
+        if (targetItem.getItemMeta().getLore() != null) {
+            ItemRarity = targetItem.getItemMeta().getLore().get(targetItem.getItemMeta().getLore().size() - 1);
+        }
         if (ItemRarity.toLowerCase().contains("common")) {
             maxUpgrades = 15;
         }
