@@ -10,7 +10,8 @@ import org.bukkit.entity.Player;
 import java.util.HashMap;
 
 public class tradeCommand implements CommandExecutor {
-    public static HashMap<Player, Player> activeRequests = new HashMap<Player, Player>();
+    public HashMap<Player, Player> activeRequests = new HashMap<Player, Player>();
+    public HashMap<Player, Player> activeRequestsReversed = new HashMap<Player, Player>();
     @Override
     public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
         if(!(sender instanceof Player)) {
@@ -30,6 +31,7 @@ public class tradeCommand implements CommandExecutor {
             requestee.sendMessage(ChatColor.LIGHT_PURPLE + "--------------------------------------------------------");
 
             activeRequests.put(requestee, requester);
+            activeRequests.put(requester, requestee);
             return true;
         }
 
