@@ -1,5 +1,6 @@
 package tech.nully.primplug.trade;
 
+import javafx.util.Pair;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.DyeColor;
@@ -9,9 +10,12 @@ import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 import tech.nully.primplug.baseMethods;
 
+import java.util.HashMap;
+
 public class tradeGUIManager {
     baseMethods b = new baseMethods();
-    public void openTradeGUI(Player p) {
+    public HashMap<Pair<Player, Inventory>, Pair<Player, Inventory>> activeTradeWindows = new HashMap<Pair<Player, Inventory>, Pair<Player, Inventory>>();
+    public void openTradeGUI(Player p, Player p2) {
 
         ItemStack counter = new ItemStack(Material.FIREBALL, 5);
         ItemStack accept = new ItemStack(Material.WOOL, 1, DyeColor.GREEN.getDyeData());
@@ -35,6 +39,28 @@ public class tradeGUIManager {
 
         inv.setItem(45, decline);
         inv.setItem(46, accept);
+
+        Inventory inv2 = Bukkit.createInventory(null, 54, ChatColor.BLACK + "YOU               " + "OTHER");
+        inv2.setItem(4, b.base);
+        inv2.setItem(13, b.base);
+        inv2.setItem(22, b.base);
+        inv2.setItem(31, b.base);
+        inv2.setItem(40, b.base);
+        inv2.setItem(49, b.base);
+
+        inv2.setItem(48, counter);
+        inv2.setItem(50, counter);
+
+        inv2.setItem(45, decline);
+        inv2.setItem(46, accept);
+
+        p.openInventory(inv);
+        p.openInventory(inv2);
+
+        Pair<Player, Inventory> pair1 = new Pair<Player, Inventory>(p, inv);
+        Pair<Player, Inventory> pair2 = new Pair<Player, Inventory>(p2, inv2);
+
+        activeTradeWindows.put(pair1, pair2);
 
 
     }
