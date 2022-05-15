@@ -55,13 +55,6 @@ public class tradeGUIManager {
         inv2.setItem(46, accept);
 
         p.openInventory(inv);
-        p.openInventory(inv2);
-
-        Pair<Player, Inventory> pair1 = new Pair<Player, Inventory>(p, inv);
-        Pair<Player, Inventory> pair2 = new Pair<Player, Inventory>(p2, inv2);
-
-        activeTradeWindows.put(pair1, pair2);
-
-
+        p2.openInventory(inv2);
     }
 }

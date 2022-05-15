@@ -1,19 +1,16 @@
 package tech.nully.primplug.trade;
 
-import javafx.util.Pair;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
-import org.bukkit.inventory.Inventory;
 
 import java.util.HashMap;
 
 public class tradeCommand implements CommandExecutor {
     public static HashMap<Player, Player> activeRequests = new HashMap<Player, Player>();
-    public static HashMap<Pair<Player, Inventory>, Pair<Player, Inventory>> activeTradeWindows = new HashMap<Pair<Player, Inventory>, Pair<Player, Inventory>>();
     @Override
     public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
         if(!(sender instanceof Player)) {

@@ -4,6 +4,7 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.inventory.InventoryClickEvent;
+import org.bukkit.inventory.ItemStack;
 
 import java.util.Arrays;
 import java.util.List;
@@ -12,11 +13,11 @@ public class tradeListener implements Listener {
 
     @EventHandler
     public void onTradeClick(InventoryClickEvent e) {
-        Player requestee = (Player) e.getWhoClicked();
+        Player currentPlayer = (Player) e.getWhoClicked();
         tradeCommand trade = new tradeCommand();
-        Player requester;
-        if (trade.activeRequests.containsKey(requestee)) {
-            requester = trade.activeRequests.get(requestee);
+        Player otherPlayer;
+        if (trade.activeRequests.containsKey(currentPlayer)) {
+            otherPlayer = trade.activeRequests.get(currentPlayer);
         }
 
         // Checks if the clicked-item is one of the items that you cant take/click
@@ -27,7 +28,7 @@ public class tradeListener implements Listener {
             // Handlers for the accept and deny buttons
         } else {
             int clickedSlot = e.getSlot();
-
+            if (currentPlayer.getOpenInventory() == )
         }
     }
 }
