@@ -8,7 +8,6 @@ import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.inventory.meta.LeatherArmorMeta;
 import tech.nully.primplug.Armor.baseAttributesAdder;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class lapisArmor {
@@ -37,9 +36,7 @@ public class lapisArmor {
         // SET THE META ----------------
         LapisHelmMeta.setDisplayName("Lapis Helmet");
             // HelmLore
-        List<String> Helmlore = new ArrayList<>();
-        Helmlore.add("");
-        a.addAttributes(LapisHelm, 0, 3, 4, 9, 7, 10);
+        List<String> Helmlore = a.addAttributes(LapisHelm, 0, 3, 4, 9, 7, 10);
         Helmlore.add("");
         Helmlore.add(ChatColor.YELLOW + "" + ChatColor.BOLD + "PASSIVE SET BONUS: INFINITE INTELLIGENCE");
         Helmlore.add(ChatColor.GRAY + "Once completing the set bonus of this armor,");
@@ -74,9 +71,7 @@ public class lapisArmor {
         // SET THE META ----------------
         LapisChesMeta.setDisplayName("Lapis Chestplate");
             // ChesLore
-        List<String> Cheslore = new ArrayList<>();
-        Cheslore.add("");
-        a.addAttributes(LapisChes, 1, 1, 7, 7, 13, 17);
+        List<String> Cheslore = a.addAttributes(LapisChes, 1, 1, 7, 7, 13, 17);
         Cheslore.add("");
         Cheslore.add(ChatColor.YELLOW + "" + ChatColor.BOLD + "PASSIVE SET BONUS: INFINITE INTELLIGENCE");
         Cheslore.add(ChatColor.GRAY + "Once completing the set bonus of this armor,");
@@ -109,9 +104,7 @@ public class lapisArmor {
         // SET THE META ----------------
         LapisLegMeta.setDisplayName("Lapis Leggings");
             // HelmLore
-        List<String> Leglore = new ArrayList<>();
-        Leglore.add("");
-        a.addAttributes(LapisLeg, 1, 1, 14, 14, 7, 12);
+        List<String> Leglore = a.addAttributes(LapisLeg, 1, 1, 14, 14, 7, 12);
         Leglore.add("");
         Leglore.add(ChatColor.YELLOW + "" + ChatColor.BOLD + "PASSIVE SET BONUS: INFINITE INTELLIGENCE");
         Leglore.add(ChatColor.GRAY + "Once completing the set bonus of this armor,");

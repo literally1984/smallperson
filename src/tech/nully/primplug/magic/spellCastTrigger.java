@@ -1,18 +1,17 @@
 package tech.nully.primplug.magic;
 
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.Action;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.inventory.ItemStack;
-
 import tech.nully.primplug.fileSystem.file;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
 
 public class spellCastTrigger implements Listener {
 
@@ -20,6 +19,14 @@ public class spellCastTrigger implements Listener {
     // TODO: MAKE SPELL LEARN ADD TO PLAYER FILES
     public static boolean checkIsWand(ItemStack i) {
         return wands.wands.contains(i.getItemMeta().getDisplayName());
+    }
+
+    @EventHandler
+    public void onSpellLearn(PlayerInteractEvent e) {
+        Player learner = e.getPlayer();
+        if (spellItems.isSpell(learner.getItemInHand()) && (e.getAction() == Action.RIGHT_CLICK_AIR || e.getAction() == Action.RIGHT_CLICK_BLOCK)) {
+            learner.sendMessage();
+        }
     }
     
 

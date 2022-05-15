@@ -21,6 +21,10 @@ public class spellItems {
 
     public static HashMap<String, ItemStack> spellConverter = new HashMap<String, ItemStack>();
 
+    public static boolean isSpell(ItemStack item) {
+        return spellConverter.containsKey(item.getItemMeta().getDisplayName());
+    }
+
     private static void makeSpells() {
         ItemStack FireballSpell = new ItemStack(Material.FIREBALL);
         ItemMeta FireballMeta = FireballSpell.getItemMeta();
