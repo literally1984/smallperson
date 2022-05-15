@@ -1,8 +1,5 @@
 package tech.nully.primplug.magic;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import org.bukkit.ChatColor;
 import org.bukkit.Location;
 import org.bukkit.Material;
@@ -13,6 +10,9 @@ import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.util.Vector;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class spellCast {
 
@@ -25,8 +25,9 @@ public class spellCast {
     private static ItemStack fireballSpell;
 
     public boolean IsSpell(ItemStack item) {
-        if (fireballSpell.getItemMeta().getLore() == fireballLore) {
+        if (item.getItemMeta().getLore() == fireballLore) {
             return true;
+            // TODO: Finish this
         }
         return false;
     }

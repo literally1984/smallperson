@@ -24,8 +24,10 @@ public class spellCastTrigger implements Listener {
     @EventHandler
     public void onSpellLearn(PlayerInteractEvent e) {
         Player learner = e.getPlayer();
+
+        // Checks if the item in the player's hand is a spell and if the interact action is right_click_air or right_click_blocl
         if (spellItems.isSpell(learner.getItemInHand()) && (e.getAction() == Action.RIGHT_CLICK_AIR || e.getAction() == Action.RIGHT_CLICK_BLOCK)) {
-            learner.sendMessage();
+            learner.sendMessage("");
         }
     }
     
@@ -35,10 +37,14 @@ public class spellCastTrigger implements Listener {
         Player caster = e.getPlayer();
         spellCast cast = new spellCast();
     }
+
     static HashMap<Player, List<ItemStack>> IsInMagicForm = new HashMap<Player, List<ItemStack>>();
     @EventHandler
     public void onFormChange(PlayerInteractEvent e) {
+        // Checks if the action is right_click_air or right_click_block
         if (e.getAction() == Action.RIGHT_CLICK_AIR || e.getAction() == Action.RIGHT_CLICK_BLOCK) {
+
+            // checks if the player's item in hand is Pheonix wand
             if (e.getPlayer().getItemInHand().getItemMeta().getDisplayName().toLowerCase().contains("Pheonix Wand")) {
                 Player p = e.getPlayer();
                 
@@ -49,10 +55,10 @@ public class spellCastTrigger implements Listener {
                 }
                 IsInMagicForm.put(p, playerHotbarItems); // puts the List's Items into the hashMap
 
-
-                // loops through the player's spells and sets the player's hotbar to the array
                 file file = new file();
                 int playerHotbarIndex = 0;
+
+                // Loops through the player's file under the category of Spells and sets the slot in playerHotbarIndex
                 for (String s : file.readFile(file.getFileConfig(p.getDisplayName()), "Spells")) {
                     p.getInventory().setItem(playerHotbarIndex, spellItems.spellConverter.get(s));
                 }

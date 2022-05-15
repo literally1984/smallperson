@@ -8,11 +8,9 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.block.Action;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.inventory.ItemStack;
-
 import tech.nully.primplug.fileSystem.file;
 
 public class talismanListeners implements Listener {
-    // TODO: TEST THIS
     @EventHandler
     public void OnRightClickTalisman(PlayerInteractEvent i) {
         if (i.getAction() == Action.RIGHT_CLICK_AIR || i.getAction() == Action.RIGHT_CLICK_BLOCK) {
