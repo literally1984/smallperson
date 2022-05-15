@@ -3,16 +3,14 @@ package tech.nully.primplug.crafting.overridenRecipes;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.inventory.Recipe;
-import tech.nully.primplug.Main;
 
 import java.util.Iterator;
 
 public class overridenRecipes {
 
-    private Iterator<Recipe> it = Bukkit.getServer().recipeIterator();
-    public void overrideRecipes() {
+    private static Iterator<Recipe> it = Bukkit.getServer().recipeIterator();
+    public static void overrideRecipes() {
         Recipe recipe;
-        Main m = new Main();
         while(it.hasNext()) {
             recipe = it.next();
             if (recipe != null && recipe.getResult().getType() == Material.DIAMOND_HELMET) {

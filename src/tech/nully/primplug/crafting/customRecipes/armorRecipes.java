@@ -3,14 +3,13 @@ package tech.nully.primplug.crafting.customRecipes;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.inventory.ShapedRecipe;
-
 import tech.nully.primplug.Armor.armorItems.PetheriteSet;
 import tech.nully.primplug.Armor.armorItems.cactusArmor;
 import tech.nully.primplug.crafting.overridenRecipes.overridenRecipeItems;
 
 public class armorRecipes {
 
-    // TODO: ADD THE NEW ARMOR ITEMS CRAFTING RECIPES
+    // TODO: ADD THE NEW ARMOR ITEMS CRAFTING RECIPES -BigZ
 
     public static void init() {
         cactusChesRecipe();
@@ -69,7 +68,7 @@ public class armorRecipes {
         wizbootsrecipe();
     }
 
-// TODO: add recipe for new armors
+// TODO: add recipe for new armors -BigZ
 
    private static void wizbootsrecipe() {
     }

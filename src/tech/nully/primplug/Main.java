@@ -16,6 +16,7 @@ import tech.nully.primplug.Tools.bloodThirstyBlade;
 import tech.nully.primplug.Tools.toolAbilities;
 import tech.nully.primplug.Tools.zeusBolt;
 import tech.nully.primplug.crafting.customRecipes.armorRecipes;
+import tech.nully.primplug.crafting.overridenRecipes.overridenRecipes;
 import tech.nully.primplug.enchantStuff.EnchantGUI;
 import tech.nully.primplug.enchantStuff.enchantMechanic;
 import tech.nully.primplug.enchantStuff.registerGlow;
@@ -35,6 +36,8 @@ public class Main extends JavaPlugin {
     @Override
     public void onEnable() {
         instance = this;
+
+        overridenRecipes.overrideRecipes();
 
         registerGlow.registerGlow();
 
@@ -80,7 +83,7 @@ public class Main extends JavaPlugin {
         getServer().getConsoleSender().sendMessage("--------------------------------------------");
         getServer().getConsoleSender().sendMessage("--------------------------------------------");
         getServer().getConsoleSender().sendMessage(
-        ChatColor.LIGHT_PURPLE + "[PrimPlugin]" + ChatColor.GREEN + " PrimPlugin V0.2.0.4 is now Enabled! :D");
+        ChatColor.LIGHT_PURPLE + "[PrimPlugin]" + ChatColor.GREEN + " PrimPlugin V0.2.6 is now Enabled! :D");
         getServer().getConsoleSender().sendMessage("--------------------------------------------");
         getServer().getConsoleSender().sendMessage("--------------------------------------------");
         saveDefaultConfig();

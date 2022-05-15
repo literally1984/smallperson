@@ -34,8 +34,8 @@ public class tradeGUIManager {
         inv.setItem(40, b.base);
         inv.setItem(49, b.base);
 
-        inv.setItem(48, counter);
-        inv.setItem(50, counter);
+        inv.setItem(48, decline);
+        inv.setItem(50, decline);
 
         inv.setItem(45, decline);
         inv.setItem(46, accept);

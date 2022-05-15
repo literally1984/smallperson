@@ -40,7 +40,8 @@ public class tradeCommand implements CommandExecutor {
             Player requestAccepter = (Player) sender;
             if (activeRequests.containsKey(requestAccepter)) {
                 Player p1 = activeRequests.get(requestAccepter);
-                // TODO OPEN TRADE GUI TO requestAccepter and p1
+                tradeGUIManager trade = new tradeGUIManager();
+                trade.openTradeGUI(requestAccepter, activeRequestsReversed.get(requestAccepter));
             }
             return true;
         }
