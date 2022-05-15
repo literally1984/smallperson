@@ -3,6 +3,7 @@ package tech.nully.primplug.crafting.customRecipes;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.inventory.ShapedRecipe;
+import org.bukkit.material.MaterialData;
 import tech.nully.primplug.Armor.armorItems.PetheriteSet;
 import tech.nully.primplug.Armor.armorItems.cactusArmor;
 import tech.nully.primplug.crafting.overridenRecipes.overridenRecipeItems;
@@ -202,7 +203,7 @@ private static void platedhelmrecipe() {
     private static void cactusChesRecipe() {
         ShapedRecipe cacChes = new ShapedRecipe(cactusArmor.ches);
 
-        cacChes.setIngredient('^', cactusArmor.Shard.getData());
+        cacChes.setIngredient('^', new MaterialData(Material.CACTUS, (byte) 1));
         cacChes.shape("^ ^", "^^^", "^^^");
         Bukkit.getServer().addRecipe(cacChes);
     }
@@ -210,7 +211,7 @@ private static void platedhelmrecipe() {
     private static void PetheriteChesRecipe() {
         ShapedRecipe PChes = new ShapedRecipe(PetheriteSet.ches);
 
-        PChes.setIngredient('^', PetheriteSet.obby.getData());
+        PChes.setIngredient('^', new MaterialData(Material.OBSIDIAN, (byte) 1));
         PChes.shape("^ ^", "^^^", "^^^");
         Bukkit.getServer().addRecipe(PChes);
     }

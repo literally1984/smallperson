@@ -34,7 +34,7 @@ public class PetheriteSet {
     // ! condensed Obsidian
     private static void createCondensedObby() {
         // DEFINE THE META -------------
-        ItemStack CObby = new ItemStack(Material.OBSIDIAN);
+        ItemStack CObby = new ItemStack(Material.OBSIDIAN,1, (short) 1);
         ItemMeta CObbyMeta = CObby.getItemMeta();
 
 

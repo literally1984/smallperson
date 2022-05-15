@@ -33,7 +33,7 @@ public class cactusArmor {
 
     private static void createCacShard() {
         // DEFINE THE META -------------
-        ItemStack CacShard = new ItemStack(Material.CACTUS);
+        ItemStack CacShard = new ItemStack(Material.CACTUS, 1, (short) 1);
         ItemMeta CacShardMeta = CacShard.getItemMeta();
 
 
