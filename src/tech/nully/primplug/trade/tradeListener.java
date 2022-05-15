@@ -44,8 +44,12 @@ public class tradeListener implements Listener {
                 e.setCancelled(true);
                 // TODO MAKE HANDLERS FOR FUNCTION BUTTONS
                 if (e.getSlot() == 46) {
-                    p1Inv.setItem(48, new ItemStack(Material.WOOL, 1, DyeColor.GREEN.getDyeData()));
-                    p2Inv.setItem(50, new ItemStack(Material.WOOL, 1, DyeColor.GREEN.getDyeData()));
+                    ItemStack midAccept = new ItemStack(Material.WOOL, 1, DyeColor.GREEN.getDyeData());
+                    p1Inv.setItem(48, midAccept);
+                    p2Inv.setItem(50, midAccept);
+                    if (p1Inv.getItem(48) == midAccept && p2Inv.getItem(50) == midAccept) {
+
+                    }
                 }
 
                 // If the clicked slot is NOT the noClick slots, update the clicked slot to player2's clicked slot + 5

@@ -1,6 +1,5 @@
 package tech.nully.primplug.trade;
 
-import javafx.util.Pair;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.DyeColor;
@@ -8,16 +7,16 @@ import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
+import tech.nully.primplug.Main;
 import tech.nully.primplug.baseMethods;
 
-import java.util.HashMap;
+import java.util.Objects;
 
 public class tradeGUIManager {
     baseMethods b = new baseMethods();
-    public HashMap<Pair<Player, Inventory>, Pair<Player, Inventory>> activeTradeWindows = new HashMap<Pair<Player, Inventory>, Pair<Player, Inventory>>();
+    ItemStack counter = new ItemStack(Material.FIREBALL, 5);
     public void openTradeGUI(Player p, Player p2) {
 
-        ItemStack counter = new ItemStack(Material.FIREBALL, 5);
         ItemStack accept = new ItemStack(Material.WOOL, 1, DyeColor.GREEN.getDyeData());
         ItemStack decline = new ItemStack(Material.WOOL, 1, DyeColor.RED.getDyeData());
         // 0 1  2  3  4  5  6  7  8
@@ -56,5 +55,23 @@ public class tradeGUIManager {
 
         p.openInventory(inv);
         p2.openInventory(inv2);
+    }
+
+    public void startCountDown (Inventory inv, Inventory inv2) {
+        inv.setItem(48, counter);
+        inv.setItem(50, counter);
+        inv2.setItem(48, counter);
+        inv2.setItem(50, counter);
+        Bukkit.getServer().getScheduler().scheduleSyncRepeatingTask(Main.getInstance(), new Runnable() {
+
+            public void run() {
+                if (Objects.equals(inv.getItem(48), new ItemStack(Material.AIR)) && Objects.equals(inv.getItem(50), new ItemStack(Material.AIR))) {
+                    return;
+                }
+
+                
+            }
+
+        }, 200L, 200L);
     }
 }
