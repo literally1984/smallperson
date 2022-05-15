@@ -1,13 +1,12 @@
 package tech.nully.primplug.magic;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import org.bukkit.Material;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
-
 import tech.nully.primplug.Armor.baseAttributesAdder;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class wands {
     public static List<String> wands = new ArrayList<String>();
@@ -47,4 +46,6 @@ public class wands {
         Pwand = PheonixWand;
         wands.add(PheonixMeta.getDisplayName());
     }
+
+    // TODO: make more wands
 }

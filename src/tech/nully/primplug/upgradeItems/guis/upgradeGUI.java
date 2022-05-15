@@ -6,11 +6,10 @@ import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
-
 import tech.nully.primplug.baseMethods;
 
 public class upgradeGUI {
-    public Inventory inv;
+    private Inventory inv;
     public void openUpgradeGUI(Player p) {
         inv = Bukkit.createInventory(null, 54, ChatColor.BLACK + "Item Upgrades");
         baseMethods b = new baseMethods();
