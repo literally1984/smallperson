@@ -9,6 +9,8 @@ import tech.nully.primplug.Armor.baseAttributesAdder;
 import java.util.List;
 
 public class    zeusBolt {
+    public static ItemStack zeusThunderBolt;
+
     public static void createZeusBolt() {
         ItemStack zeusBolt = new ItemStack(Material.BLAZE_ROD);
         ItemMeta zeusMeta = zeusBolt.getItemMeta();
@@ -35,6 +37,6 @@ public class    zeusBolt {
         zeusLore.add("");
         zeusLore.add(b.mythical() + "MYTHICAL");
 
-
+        zeusThunderBolt = zeusBolt;
     }
 }

@@ -6,6 +6,7 @@ import org.bukkit.inventory.ShapedRecipe;
 import org.bukkit.material.MaterialData;
 import tech.nully.primplug.Armor.armorItems.PetheriteSet;
 import tech.nully.primplug.Armor.armorItems.cactusArmor;
+import tech.nully.primplug.Tools.zeusBolt;
 import tech.nully.primplug.crafting.overridenRecipes.overridenRecipeItems;
 
 public class armorRecipes {
@@ -170,32 +171,34 @@ private static void platedhelmrecipe() {
     private static void cactusHelmRecipe() {
         ShapedRecipe cacHelm = new ShapedRecipe(cactusArmor.helm);
 
-        cacHelm.setIngredient('^', cactusArmor.Shard.getData());
         cacHelm.shape("^^^", "^ ^", "   ");
+        cacHelm.setIngredient('^', new MaterialData(Material.CACTUS, (byte) 1));
         Bukkit.getServer().addRecipe(cacHelm);
     }
 
     private static void PetheriteHelmRecipe() {
         ShapedRecipe PHelm = new ShapedRecipe(PetheriteSet.helm);
 
-        PHelm.setIngredient('^', PetheriteSet.obby.getData());
         PHelm.shape("^^^", "^ ^", "   ");
+        PHelm.setIngredient('^', new MaterialData(Material.OBSIDIAN, (byte) 1));
+        Bukkit.getServer().addRecipe(PHelm);
     }
 
     private static void diaHelmRecipe() {
         ShapedRecipe diaHelm = new ShapedRecipe(overridenRecipeItems.diaHelm);
 
-        diaHelm.setIngredient('^', Material.DIAMOND);
         diaHelm.shape("^^^", "^ ^", "   ");
+        diaHelm.setIngredient('^', Material.DIAMOND);
         Bukkit.getServer().addRecipe(diaHelm);
     }
 
     private static void ironHelmRecipe() {
         ShapedRecipe ironHelm = new ShapedRecipe(overridenRecipeItems.ironBoots);
 
-        ironHelm.setIngredient('^', Material.IRON_INGOT);
         ironHelm.shape("^^^", "^ ^", "   ");
+        ironHelm.setIngredient('^', Material.IRON_INGOT);
         Bukkit.getServer().addRecipe(ironHelm);
+        // TODO: fix the rest of these recipes
     }
 
 
@@ -203,32 +206,32 @@ private static void platedhelmrecipe() {
     private static void cactusChesRecipe() {
         ShapedRecipe cacChes = new ShapedRecipe(cactusArmor.ches);
 
-        cacChes.setIngredient('^', new MaterialData(Material.CACTUS, (byte) 1));
         cacChes.shape("^ ^", "^^^", "^^^");
+        cacChes.setIngredient('^', new MaterialData(Material.CACTUS, (byte) 1));
         Bukkit.getServer().addRecipe(cacChes);
     }
 
     private static void PetheriteChesRecipe() {
         ShapedRecipe PChes = new ShapedRecipe(PetheriteSet.ches);
 
-        PChes.setIngredient('^', new MaterialData(Material.OBSIDIAN, (byte) 1));
         PChes.shape("^ ^", "^^^", "^^^");
+        PChes.setIngredient('^', new MaterialData(Material.OBSIDIAN, (byte) 1));
         Bukkit.getServer().addRecipe(PChes);
     }
 
     private static void diaChesRecipe() {
         ShapedRecipe diaChes = new ShapedRecipe(overridenRecipeItems.diaChes);
 
-        diaChes.setIngredient('^', Material.DIAMOND);
         diaChes.shape("^ ^", "^^^", "^^^");
+        diaChes.setIngredient('^', Material.DIAMOND);
         Bukkit.getServer().addRecipe(diaChes);
     }
 
     private static void ironChesRecipe() {
         ShapedRecipe ironChes = new ShapedRecipe(overridenRecipeItems.ironChes);
 
-        ironChes.setIngredient('^', Material.IRON_INGOT);
         ironChes.shape("^ ^", "^^^", "^^^");
+        ironChes.setIngredient('^', Material.IRON_INGOT);
         Bukkit.getServer().addRecipe(ironChes);
     }
 
@@ -237,32 +240,32 @@ private static void platedhelmrecipe() {
     private static void cactusLegRecipe() {
         ShapedRecipe cacLeg = new ShapedRecipe(cactusArmor.leg);
 
-        cacLeg.setIngredient('^', cactusArmor.Shard.getData());
         cacLeg.shape("^^^", "^ ^", "^ ^");
+        cacLeg.setIngredient('^', new MaterialData(Material.CACTUS, (byte) 1));
         Bukkit.getServer().addRecipe(cacLeg);
     }
 
     private static void PetheriteLegRecipe() {
         ShapedRecipe PLeg = new ShapedRecipe(PetheriteSet.leg);
 
-        PLeg.setIngredient('^', PetheriteSet.obby.getData());
         PLeg.shape("^^^", "^ ^", "^ ^");
+        PLeg.setIngredient('^', new MaterialData(Material.OBSIDIAN, (byte) 1));
         Bukkit.getServer().addRecipe(PLeg);
     }
 
     private static void diaLegRecipe() {
         ShapedRecipe diaLeg = new ShapedRecipe(overridenRecipeItems.diaLeg);
 
-        diaLeg.setIngredient('^', Material.DIAMOND);
         diaLeg.shape("^^^", "^ ^", "^ ^");
+        diaLeg.setIngredient('^', Material.DIAMOND);
         Bukkit.getServer().addRecipe(diaLeg);
     }
 
     private static void ironLegRecipe() {
         ShapedRecipe ironLeg = new ShapedRecipe(overridenRecipeItems.ironLeg);
 
-        ironLeg.setIngredient('^', Material.IRON_INGOT);
         ironLeg.shape("^^^", "^ ^", "^ ^");
+        ironLeg.setIngredient('^', Material.IRON_INGOT);
         Bukkit.getServer().addRecipe(ironLeg);
     }
 
@@ -271,32 +274,32 @@ private static void platedhelmrecipe() {
     private static void cactusBootsRecipe() {
         ShapedRecipe cacBoots = new ShapedRecipe(cactusArmor.boots);
 
-        cacBoots.setIngredient('^', cactusArmor.Shard.getData());
         cacBoots.shape("   ", "^ ^", "^ ^");
+        cacBoots.setIngredient('^', new MaterialData(Material.CACTUS, (byte) 1));
         Bukkit.getServer().addRecipe(cacBoots);
     }
 
     private static void PetheriteBootsRecipe() {
         ShapedRecipe PBoots = new ShapedRecipe(PetheriteSet.boots);
 
-        PBoots.setIngredient('^', PetheriteSet.obby.getData());
         PBoots.shape("   ", "^ ^", "^ ^");
+        PBoots.setIngredient('^', new MaterialData(Material.OBSIDIAN, (byte) 1));
         Bukkit.getServer().addRecipe(PBoots);
     }
 
     private static void diaBootsRecipe() {
         ShapedRecipe diaBoots = new ShapedRecipe(overridenRecipeItems.diaBoots);
 
-        diaBoots.setIngredient('^', Material.DIAMOND);
         diaBoots.shape("   ", "^ ^", "^ ^");
+        diaBoots.setIngredient('^', Material.DIAMOND);
         Bukkit.getServer().addRecipe(diaBoots);
     }
 
     private static void ironBootsRecipe() {
         ShapedRecipe ironBoots = new ShapedRecipe(overridenRecipeItems.ironBoots);
 
-        ironBoots.setIngredient('^', Material.IRON_INGOT);
         ironBoots.shape("   ", "^ ^", "^ ^");
+        ironBoots.setIngredient('^', Material.IRON_INGOT);
         Bukkit.getServer().addRecipe(ironBoots);
     }
 
@@ -305,10 +308,10 @@ private static void platedhelmrecipe() {
     
     
     private static void zeusBoltRecipe() {
-        ShapedRecipe ironBoots = new ShapedRecipe(overridenRecipeItems.ironBoots);
+        ShapedRecipe ironBoots = new ShapedRecipe(zeusBolt.zeusThunderBolt);
 
-        ironBoots.setIngredient('^', Material.IRON_INGOT);
         ironBoots.shape("   ", "^ ^", "^ ^");
+        ironBoots.setIngredient('^', Material.FIREBALL);
         Bukkit.getServer().addRecipe(ironBoots);
     }
 }
