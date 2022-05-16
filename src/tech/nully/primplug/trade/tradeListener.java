@@ -72,7 +72,7 @@ public class tradeListener implements Listener {
                     }
                 }
 
-                
+
 
                 // If the clicked slot is NOT the noClick slots, update the clicked slot to player2's clicked slot + 5
             } else {
