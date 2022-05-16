@@ -4,8 +4,11 @@ import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.inventory.ShapedRecipe;
 import org.bukkit.material.MaterialData;
+
+import tech.nully.primplug.Armor.armorItems.Drakon;
 import tech.nully.primplug.Armor.armorItems.PetheriteSet;
 import tech.nully.primplug.Armor.armorItems.cactusArmor;
+import tech.nully.primplug.Armor.armorItems.demigodArmor;
 import tech.nully.primplug.Tools.zeusBolt;
 import tech.nully.primplug.crafting.overridenRecipes.overridenRecipeItems;
 
@@ -163,9 +166,19 @@ private static void platedhelmrecipe() {
     }
 
     private static void drakonchesrecipe() {
+        ShapedRecipe drakonches = new ShapedRecipe(Drakon.ches);
+
+        drakonches.shape("^ ^", "^^^","^^^");
+        drakonches.setIngredient('^', new MaterialData(Material.BONE, (byte) 1));
+        Bukkit.getServer().addRecipe(drakonches);
     }
 
     private static void demichesrecipe() {
+        ShapedRecipe demiches = new ShapedRecipe(demigodArmor.ches);
+
+        demiches.shape("^ ^", "^^^","^^^");
+        demiches.setIngredient('^', new MaterialData(Material.DIAMOND_ORE, (byte) 1)); 
+        Bukkit.getServer().addRecipe(demiches);
     }
 
     private static void cactusHelmRecipe() {
