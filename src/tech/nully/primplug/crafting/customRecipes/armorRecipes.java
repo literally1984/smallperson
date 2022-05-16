@@ -113,22 +113,52 @@ private static void demibootsrecipe() {
 private static void wizlegrecipe() {
     }
 
-private static void undeadlegrecipe() {
+    private static void undeadlegrecipe() {
+        ShapedRecipe undeadleg = new ShapedRecipe(undeadArmor.leg);
+
+        undeadleg.shape("^^^", "^ ^", "^ ^");
+        undeadleg.setIngredient('^', new MaterialData(Material.ROTTEN_FLESH, (byte ) 1));
+        Bukkit.getServer().addRecipe(undeadleg);
     }
 
-private static void reaperlegrecipe() {
+    private static void reaperlegrecipe() {
+        ShapedRecipe reaperleg = new ShapedRecipe(reaperArmor.leg);
+
+        reaperleg.shape("^^^", "^ ^", "^ ^");
+        reaperleg.setIngredient('^', new MaterialData(Material.IRON_SWORD, (byte ) 1));
+        Bukkit.getServer().addRecipe(reaperleg);
     }
 
-private static void platedlegrecipe() {
+    private static void platedlegrecipe() {
+        ShapedRecipe platedleg = new ShapedRecipe(platedArmor.leg);
+
+        platedleg.shape("^^^", "^ ^", "^ ^");
+        platedleg.setIngredient('^', new MaterialData(Material.LAPIS_ORE, (byte ) 1));
+        Bukkit.getServer().addRecipe(platedleg);
     }
 
-private static void lapislegrecipe() {
+    private static void lapislegrecipe() {
+        ShapedRecipe lapisleg = new ShapedRecipe(lapisArmor.leg);
+
+        lapisleg.shape("^^^", "^ ^", "^ ^");
+        lapisleg.setIngredient('^', new MaterialData(Material.LAPIS_BLOCK, (byte ) 1));
+        Bukkit.getServer().addRecipe(lapisleg);
     }
 
-private static void hdialegrecipe() {
+    private static void hdialegrecipe() {
+        ShapedRecipe hdialeg = new ShapedRecipe(hardenedDiamond.leg);
+
+        hdialeg.shape("^^^", "^ ^", "^ ^");
+        hdialeg.setIngredient('^', new MaterialData(Material.DIAMOND_BLOCK, (byte ) 1));
+        Bukkit.getServer().addRecipe(hdialeg);
     }
 
-private static void drakonlegrecipe() {
+    private static void drakonlegrecipe() {
+        ShapedRecipe drakonleg = new ShapedRecipe(Drakon.leg);
+
+        drakonleg.shape("^^^", "^ ^", "^ ^");
+        drakonleg.setIngredient('^', new MaterialData(Material.BONE, (byte ) 1));
+        Bukkit.getServer().addRecipe(drakonleg);
     }
 
     private static void demiLegrecipe() {
