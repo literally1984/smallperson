@@ -146,10 +146,20 @@ private static void reaperhelmrecipe() {
 private static void platedhelmrecipe() {
     }
 
- private static void lapishelmrecipe() {
+    private static void lapishelmrecipe() {
+        ShapedRecipe lapishelm = new ShapedRecipe(lapisArmor.helm);
+
+        lapishelm.shape("^^^", "^ ^", "   ");
+        lapishelm.setIngredient('^', new MaterialData(Material.LAPIS_BLOCK, (byte) 1));
+        Bukkit.getServer().addRecipe(lapishelm);
     }
 
     private static void hdiahelmrecipe() {
+        ShapedRecipe hdiahelm = new ShapedRecipe(hardenedDiamond.helm);
+
+        hdiahelm.shape("^^^", "^ ^", "   ");
+        hdiahelm.setIngredient('^', new MaterialData(Material.DIAMOND_BLOCK, (byte) 1));
+        Bukkit.getServer().addRecipe(hdiahelm);
     }
 
     private static void drakonhelmrecipe() {
@@ -157,6 +167,7 @@ private static void platedhelmrecipe() {
 
         drakonhelm.shape("^^^", "^ ^", "   ");
         drakonhelm.setIngredient('^', new MaterialData(Material.BONE, (byte) 1));
+        Bukkit.getServer().addRecipe(drakonhelm);
     }
 
     private static void demihelmrecipe() {
@@ -164,6 +175,7 @@ private static void platedhelmrecipe() {
 
         demihelm.shape("^^^", "^ ^", "   ");
         demihelm.setIngredient('^', new MaterialData(Material.GOLD_ORE, (byte) 1));
+        Bukkit.getServer().addRecipe(demihelm);
     }
 
     private static void wizchesrecipe() {
@@ -171,6 +183,7 @@ private static void platedhelmrecipe() {
 
         wizches.shape("^ ^", "^^^","^^^");
         wizches.setIngredient('^', new MaterialData(Material.SULPHUR, (byte) 1));
+        Bukkit.getServer().addRecipe(wizches);
     }
 
     private static void undeadchesrecipe() {
@@ -178,7 +191,7 @@ private static void platedhelmrecipe() {
 
         undeadches.shape("^ ^", "^^^","^^^");
         undeadches.setIngredient('^', new MaterialData(Material.ROTTEN_FLESH, (byte) 1));
-
+        Bukkit.getServer().addRecipe(undeadches);
     }
 
     private static void reaperchesrecipe() {
@@ -186,6 +199,7 @@ private static void platedhelmrecipe() {
 
         reaperches.shape("^ ^", "^^^","^^^");
         reaperches.setIngredient('^', new MaterialData(Material.IRON_SWORD, (byte) 1));
+        Bukkit.getServer().addRecipe(reaperches);
     }
 
     private static void platedchesrecipe() {
@@ -193,6 +207,7 @@ private static void platedhelmrecipe() {
 
         platedches.shape("^ ^", "^^^","^^^");
         platedches.setIngredient('^', new MaterialData(Material.LAPIS_ORE, (byte) 1));
+        Bukkit.getServer().addRecipe(platedches);
     }
 
     private static void lapischesrecipe() {
@@ -257,10 +272,7 @@ private static void platedhelmrecipe() {
         ironHelm.shape("^^^", "^ ^", "   ");
         ironHelm.setIngredient('^', Material.IRON_INGOT);
         Bukkit.getServer().addRecipe(ironHelm);
-        // TODO: fix the rest of these recipes
     }
-
-
 
     private static void cactusChesRecipe() {
         ShapedRecipe cacChes = new ShapedRecipe(cactusArmor.ches);
