@@ -1,13 +1,13 @@
 package tech.nully.primplug.crafting.overridenRecipes;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class overridenRecipeItems {
     
@@ -64,7 +64,7 @@ public class overridenRecipeItems {
     private static void createDiaChestplate() {
         // DEFINE THE META -------------
         ItemStack DiaChest = new ItemStack(Material.DIAMOND_CHESTPLATE);
-        ItemMeta DiaChestMeta = DiaChest.hasItemMeta() ? DiaChest.getItemMeta() : Bukkit.getItemFactory().getItemMeta(DiaChest.getType());
+        ItemMeta DiaChestMeta = DiaChest.getItemMeta();
 
 
         // SET THE META ----------------
@@ -141,4 +141,7 @@ public class overridenRecipeItems {
         DiaBoots.setItemMeta(DiaBootsMeta);
         diaBoots = DiaBoots;
     }
+
+    // TODO: put the rest of the overriden recipes here
+
 }
