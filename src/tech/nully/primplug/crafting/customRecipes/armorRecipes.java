@@ -84,6 +84,7 @@ public class armorRecipes {
         wizbootsrecipe();
     }
 
+// Bongo why tf is the server not working
 // TODO: add recipe for new armors -BigZ
 
    private static void wizbootsrecipe() {
