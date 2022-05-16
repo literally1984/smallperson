@@ -10,6 +10,8 @@ import tech.nully.primplug.Armor.armorItems.PetheriteSet;
 import tech.nully.primplug.Armor.armorItems.cactusArmor;
 import tech.nully.primplug.Armor.armorItems.demigodArmor;
 import tech.nully.primplug.Armor.armorItems.hardenedDiamond;
+import tech.nully.primplug.Armor.armorItems.lapisArmor;
+import tech.nully.primplug.Armor.armorItems.platedArmor;
 import tech.nully.primplug.Tools.zeusBolt;
 import tech.nully.primplug.crafting.overridenRecipes.overridenRecipeItems;
 
@@ -158,9 +160,18 @@ private static void platedhelmrecipe() {
     }
 
     private static void platedchesrecipe() {
+        ShapedRecipe platedches = new ShapedRecipe(platedArmor.chestplate);
+
+        platedches.shape("^ ^", "^^^","^^^");
+        platedches.setIngredient('^', new MaterialData(Material.LAPIS_ORE, (byte) 1));
     }
 
     private static void lapischesrecipe() {
+        ShapedRecipe lapisches = new ShapedRecipe(lapisArmor.chestplate);
+
+        lapisches.shape("^ ^", "^^^","^^^");
+        lapisches.setIngredient('^', new MaterialData(Material.LAPIS_BLOCK, (byte) 1));
+        Bukkit.getServer().addRecipe(lapisches);
     }
 
     private static void hdiachesrecipe() {
