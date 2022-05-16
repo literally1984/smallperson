@@ -1,14 +1,13 @@
 package tech.nully.primplug.crafting.overridenRecipes;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
-import tech.nully.primplug.Armor.baseAttributesAdder;
-
-import java.util.ArrayList;
-import java.util.List;
 
 public class overridenRecipeItems {
     
@@ -35,7 +34,7 @@ public class overridenRecipeItems {
         createDiaBoots();
     }
 
-    static baseAttributesAdder b = new baseAttributesAdder();
+
     private static void createDiaHelm() {
         // DEFINE THE META -------------
         ItemStack DiaHelm = new ItemStack(Material.DIAMOND_HELMET);
@@ -45,7 +44,8 @@ public class overridenRecipeItems {
         // SET THE META ----------------
         DiaHelmMeta.setDisplayName("Diamond Helmet");
             // HelmLore
-        List<String> Helmlore = b.addAttributes(DiaHelm, 1, 0, 13, 10, 5, 5);
+        List<String> Helmlore = new ArrayList<>();
+        Helmlore.add("");
         Helmlore.add(ChatColor.RED + "Damage: " + ChatColor.GRAY + "1");
         Helmlore.add(ChatColor.GREEN + "Defense: " + ChatColor.GRAY + "13");
         Helmlore.add(ChatColor.BLUE + "Mana: " + ChatColor.GRAY + "15");
@@ -64,13 +64,13 @@ public class overridenRecipeItems {
     private static void createDiaChestplate() {
         // DEFINE THE META -------------
         ItemStack DiaChest = new ItemStack(Material.DIAMOND_CHESTPLATE);
-        ItemMeta DiaChestMeta = DiaChest.getItemMeta();
+        ItemMeta DiaChestMeta = DiaChest.hasItemMeta() ? DiaChest.getItemMeta() : Bukkit.getItemFactory().getItemMeta(DiaChest.getType());
 
 
         // SET THE META ----------------
         DiaChestMeta.setDisplayName("Diamond Chestplate");
             // ChestLore
-        List<String> Chestlore = b.addAttributes(DiaChest, 1, 0, 26, 23, 15, 15);
+        List<String> Chestlore = new ArrayList<>();
         Chestlore.add("");
         Chestlore.add(ChatColor.RED+ "Damage: " + ChatColor.GRAY + "1");
         Chestlore.add(ChatColor.GREEN + "Defense: " + ChatColor.GRAY + "26");
@@ -141,7 +141,4 @@ public class overridenRecipeItems {
         DiaBoots.setItemMeta(DiaBootsMeta);
         diaBoots = DiaBoots;
     }
-
-    // TODO: put the rest of the overriden recipes here
-
 }
