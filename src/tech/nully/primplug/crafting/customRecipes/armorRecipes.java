@@ -131,19 +131,44 @@ private static void hdialegrecipe() {
 private static void drakonlegrecipe() {
     }
 
-private static void demiLegrecipe() {
+    private static void demiLegrecipe() {
+        ShapedRecipe demileg = new ShapedRecipe(demigodArmor.leg);
+
+        demileg.shape("^^^", "^ ^", "^ ^");
+        demileg.setIngredient('^', new MaterialData(Material.GOLD_ORE, (byte) 1));
+        Bukkit.getServer().addRecipe(demileg);
     }
 
-private static void wizhatrecipe() {
+    private static void wizhatrecipe() {
+        ShapedRecipe wizhat = new ShapedRecipe(wizardRobes.helm);
+
+        wizhat.shape("^^^", "^ ^", "   ");
+        wizhat.setIngredient('^', new MaterialData(Material.SULPHUR, (byte) 1));
+        Bukkit.getServer().addRecipe(wizhat);
     }
 
-private static void undeadhelmrecipe() {
+    private static void undeadhelmrecipe() {
+        ShapedRecipe undeadhelm = new ShapedRecipe(undeadArmor.helm);
+
+        undeadhelm.shape("^^^", "^ ^", "   ");
+        undeadhelm.setIngredient('^', new MaterialData(Material.ROTTEN_FLESH, (byte) 1));
+        Bukkit.getServer().addRecipe(undeadhelm);
     }
 
-private static void reaperhelmrecipe() {
+    private static void reaperhelmrecipe() {
+        ShapedRecipe reaperhelm = new ShapedRecipe(reaperArmor.helm);
+
+        reaperhelm.shape("^^^", "^ ^", "   ");
+        reaperhelm.setIngredient('^', new MaterialData(Material.IRON_SWORD, (byte) 1));
+        Bukkit.getServer().addRecipe(reaperhelm);
     }
 
-private static void platedhelmrecipe() {
+    private static void platedhelmrecipe() {
+        ShapedRecipe platedhelm = new ShapedRecipe(platedArmor.helm);
+
+        platedhelm.shape("^^^", "^ ^", "   ");
+        platedhelm.setIngredient('^', new MaterialData(Material.LAPIS_ORE, (byte) 1));
+        Bukkit.getServer().addRecipe(platedhelm);
     }
 
     private static void lapishelmrecipe() {
