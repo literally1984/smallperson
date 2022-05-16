@@ -68,6 +68,7 @@ public class spellCast {
     public void castArrowRain(Player p) {
         Location loc = p.getLocation();
         Arrow arrow = (Arrow)p.getWorld().spawn(loc.add(0, 3, 0), Arrow.class);
+        arrow.setVelocity(p.getLocation().getDirection());
         outerloop: for (double i = 0.5; i < 12; i+=0.5){ //This will rapidly increase the range so you don't get so many mobs at one, and instead checks a few blocks at a time
             for (Entity e : arrow.getNearbyEntities(i, 3, i)){ //Gets ALL nearby entities using the loop variable above it
                 if (e != arrow.getShooter()){ //Checks to make sure the entities isn't the shooter
