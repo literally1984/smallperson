@@ -18,8 +18,10 @@ import tech.nully.primplug.Armor.armorItems.lapisArmor;
 import tech.nully.primplug.Armor.armorItems.platedArmor;
 import tech.nully.primplug.Armor.armorItems.reaperArmor;
 import tech.nully.primplug.Armor.armorItems.undeadArmor;
+import tech.nully.primplug.Armor.armorItems.wizardRobes;
 import tech.nully.primplug.Tools.zeusBolt;
 import tech.nully.primplug.crafting.overridenRecipes.overridenRecipeItems;
+import tech.nully.primplug.playerStatManagers.magicDamageManager.magicDamageManager;
 
 public class armorRecipes {
 
@@ -151,12 +153,24 @@ private static void platedhelmrecipe() {
     }
 
     private static void drakonhelmrecipe() {
+        ShapedRecipe drakonhelm = new ShapedRecipe(Drakon.helm);
+
+        drakonhelm.shape("^^^", "^ ^", "   ");
+        drakonhelm.setIngredient('^', new MaterialData(Material.BONE, (byte) 1));
     }
 
     private static void demihelmrecipe() {
+        ShapedRecipe demihelm = new ShapedRecipe(demigodArmor.helm);
+
+        demihelm.shape("^^^", "^ ^", "   ");
+        demihelm.setIngredient('^', new MaterialData(Material.GOLD_ORE, (byte) 1));
     }
 
     private static void wizchesrecipe() {
+        ShapedRecipe wizches = new ShapedRecipe(wizardRobes.chestplate);
+
+        wizches.shape("^ ^", "^^^","^^^");
+        wizches.setIngredient('^', new MaterialData(Material.SULPHUR, (byte) 1));
     }
 
     private static void undeadchesrecipe() {
@@ -209,7 +223,7 @@ private static void platedhelmrecipe() {
         ShapedRecipe demiches = new ShapedRecipe(demigodArmor.ches);
 
         demiches.shape("^ ^", "^^^","^^^");
-        demiches.setIngredient('^', new MaterialData(Material.DIAMOND_ORE, (byte) 1)); 
+        demiches.setIngredient('^', new MaterialData(Material.GOLD_ORE, (byte) 1)); 
         Bukkit.getServer().addRecipe(demiches);
     }
 
