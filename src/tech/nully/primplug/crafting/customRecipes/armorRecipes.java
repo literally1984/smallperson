@@ -1,10 +1,14 @@
 package tech.nully.primplug.crafting.customRecipes;
 
+import com.avaje.ebean.enhance.ant.MainTransform;
+
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.inventory.ShapedRecipe;
 import org.bukkit.material.MaterialData;
 
+import javafx.scene.shape.Shape;
+import javafx.scene.shape.Sphere;
 import tech.nully.primplug.Armor.armorItems.Drakon;
 import tech.nully.primplug.Armor.armorItems.PetheriteSet;
 import tech.nully.primplug.Armor.armorItems.cactusArmor;
@@ -12,6 +16,8 @@ import tech.nully.primplug.Armor.armorItems.demigodArmor;
 import tech.nully.primplug.Armor.armorItems.hardenedDiamond;
 import tech.nully.primplug.Armor.armorItems.lapisArmor;
 import tech.nully.primplug.Armor.armorItems.platedArmor;
+import tech.nully.primplug.Armor.armorItems.reaperArmor;
+import tech.nully.primplug.Armor.armorItems.undeadArmor;
 import tech.nully.primplug.Tools.zeusBolt;
 import tech.nully.primplug.crafting.overridenRecipes.overridenRecipeItems;
 
@@ -154,9 +160,18 @@ private static void platedhelmrecipe() {
     }
 
     private static void undeadchesrecipe() {
+        ShapedRecipe undeadches = new ShapedRecipe(undeadArmor.chestplate);
+
+        undeadches.shape("^ ^", "^^^","^^^");
+        undeadches.setIngredient('^', new MaterialData(Material.ROTTEN_FLESH, (byte) 1));
+
     }
 
     private static void reaperchesrecipe() {
+        ShapedRecipe reaperches = new ShapedRecipe(reaperArmor.chestplate);
+
+        reaperches.shape("^ ^", "^^^","^^^");
+        reaperches.setIngredient('^', new MaterialData(Material.IRON_SWORD, (byte) 1));
     }
 
     private static void platedchesrecipe() {
