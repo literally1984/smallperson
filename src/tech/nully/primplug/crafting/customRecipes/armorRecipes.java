@@ -101,16 +101,36 @@ private static void platedbootsrecipe() {
 private static void lapisbootsrecipe() {
     }
 
-private static void hdiabootsrecipe() {
+    private static void hdiabootsrecipe() {
+        ShapedRecipe hdiaboots = new ShapedRecipe(hardenedDiamond.leg);
+
+        hdiaboots.shape("   ", "^ ^", "^ ^");
+        hdiaboots.setIngredient('^', new MaterialData(Material.DIAMOND_BLOCK, (byte) 1));
+        Bukkit.getServer().addRecipe(hdiaboots);
     }
 
-private static void drakonbootsrecipe() {
+    private static void drakonbootsrecipe() {
+        ShapedRecipe drakonboots = new ShapedRecipe(Drakon.leg);
+
+        drakonboots.shape("   ", "^ ^", "^ ^");
+        drakonboots.setIngredient('^', new MaterialData(Material.BONE, (byte) 1));
+        Bukkit.getServer().addRecipe(drakonboots);
     }
 
-private static void demibootsrecipe() {
+    private static void demibootsrecipe() {
+        ShapedRecipe demiboots = new ShapedRecipe(demigodArmor.leg);
+
+        demiboots.shape("   ", "^ ^", "^ ^");
+        demiboots.setIngredient('^', new MaterialData(Material.GOLD_ORE, (byte) 1));
+        Bukkit.getServer().addRecipe(demiboots);
     }
 
-private static void wizlegrecipe() {
+    private static void wizlegrecipe() {
+        ShapedRecipe wizleg = new ShapedRecipe(wizardRobes.leg);
+
+        wizleg.shape("^^^", "^ ^", "^ ^");
+        wizleg.setIngredient('^', new MaterialData(Material.SULPHUR, (byte ) 1));
+        Bukkit.getServer().addRecipe(wizleg);
     }
 
     private static void undeadlegrecipe() {
