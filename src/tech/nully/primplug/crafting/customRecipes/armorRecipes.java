@@ -9,6 +9,7 @@ import tech.nully.primplug.Armor.armorItems.Drakon;
 import tech.nully.primplug.Armor.armorItems.PetheriteSet;
 import tech.nully.primplug.Armor.armorItems.cactusArmor;
 import tech.nully.primplug.Armor.armorItems.demigodArmor;
+import tech.nully.primplug.Armor.armorItems.hardenedDiamond;
 import tech.nully.primplug.Tools.zeusBolt;
 import tech.nully.primplug.crafting.overridenRecipes.overridenRecipeItems;
 
@@ -163,6 +164,11 @@ private static void platedhelmrecipe() {
     }
 
     private static void hdiachesrecipe() {
+        ShapedRecipe hdiaches = new ShapedRecipe(hardenedDiamond.ches);
+
+        hdiaches.shape("^ ^", "^^^","^^^");
+        hdiaches.setIngredient('^', new MaterialData(Material.DIAMOND_BLOCK, (byte) 1));
+        Bukkit.getServer().addRecipe(hdiaches);
     }
 
     private static void drakonchesrecipe() {
