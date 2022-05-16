@@ -87,18 +87,43 @@ public class armorRecipes {
 // TODO: add recipe for new armors -BigZ
 
    private static void wizbootsrecipe() {
+    ShapedRecipe wizboots = new ShapedRecipe(wizardRobes.leg);
+
+    wizboots.shape("   ", "^ ^", "^ ^");
+    wizboots.setIngredient('^', new MaterialData(Material.SULPHUR, (byte) 1));
+    Bukkit.getServer().addRecipe(wizboots);
     }
 
-private static void undeadbootsrecipe() {
+    private static void undeadbootsrecipe() {
+        ShapedRecipe undeadboots = new ShapedRecipe(undeadArmor.leg);
+
+        undeadboots.shape("   ", "^ ^", "^ ^");
+        undeadboots.setIngredient('^', new MaterialData(Material.ROTTEN_FLESH, (byte) 1));
+        Bukkit.getServer().addRecipe(undeadboots);
     }
 
-private static void reaperbootsrecipe() {
+    private static void reaperbootsrecipe() {
+        ShapedRecipe reaperboots = new ShapedRecipe(reaperArmor.leg);
+
+        reaperboots.shape("   ", "^ ^", "^ ^");
+        reaperboots.setIngredient('^', new MaterialData(Material.IRON_SWORD, (byte) 1));
+        Bukkit.getServer().addRecipe(reaperboots);
     }
 
-private static void platedbootsrecipe() {
+    private static void platedbootsrecipe() {
+        ShapedRecipe platedboots = new ShapedRecipe(platedArmor.leg);
+
+        platedboots.shape("   ", "^ ^", "^ ^");
+        platedboots.setIngredient('^', new MaterialData(Material.LAPIS_ORE, (byte) 1));
+        Bukkit.getServer().addRecipe(platedboots);
     }
 
-private static void lapisbootsrecipe() {
+    private static void lapisbootsrecipe() {
+        ShapedRecipe lapisboots = new ShapedRecipe(lapisArmor.leg);
+
+        lapisboots.shape("   ", "^ ^", "^ ^");
+        lapisboots.setIngredient('^', new MaterialData(Material.LAPIS_BLOCK, (byte) 1));
+        Bukkit.getServer().addRecipe(lapisboots);
     }
 
     private static void hdiabootsrecipe() {
