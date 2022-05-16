@@ -1,14 +1,10 @@
 package tech.nully.primplug.crafting.customRecipes;
 
-import com.avaje.ebean.enhance.ant.MainTransform;
-
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.inventory.ShapedRecipe;
 import org.bukkit.material.MaterialData;
 
-import javafx.scene.shape.Shape;
-import javafx.scene.shape.Sphere;
 import tech.nully.primplug.Armor.armorItems.Drakon;
 import tech.nully.primplug.Armor.armorItems.PetheriteSet;
 import tech.nully.primplug.Armor.armorItems.cactusArmor;
@@ -21,7 +17,6 @@ import tech.nully.primplug.Armor.armorItems.undeadArmor;
 import tech.nully.primplug.Armor.armorItems.wizardRobes;
 import tech.nully.primplug.Tools.zeusBolt;
 import tech.nully.primplug.crafting.overridenRecipes.overridenRecipeItems;
-import tech.nully.primplug.playerStatManagers.magicDamageManager.magicDamageManager;
 
 public class armorRecipes {
 
