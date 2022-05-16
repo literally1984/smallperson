@@ -45,7 +45,7 @@ public class overridenRecipeItems {
         // SET THE META ----------------
         DiaHelmMeta.setDisplayName("Diamond Helmet");
             // HelmLore
-        List<String> Helmlore = b.addAttributes(DiaHelm, 1, 0, 13, 10, 15, 15);
+        List<String> Helmlore = b.addAttributes(DiaHelm, 1, 0, 13, 10, 5, 5);
         Helmlore.add(ChatColor.RED + "Damage: " + ChatColor.GRAY + "1");
         Helmlore.add(ChatColor.GREEN + "Defense: " + ChatColor.GRAY + "13");
         Helmlore.add(ChatColor.BLUE + "Mana: " + ChatColor.GRAY + "15");
@@ -70,7 +70,7 @@ public class overridenRecipeItems {
         // SET THE META ----------------
         DiaChestMeta.setDisplayName("Diamond Chestplate");
             // ChestLore
-        List<String> Chestlore = new ArrayList<>();
+        List<String> Chestlore = b.addAttributes(DiaChest, 1, 0, 26, 23, 15, 15)
         Chestlore.add("");
         Chestlore.add(ChatColor.RED+ "Damage: " + ChatColor.GRAY + "1");
         Chestlore.add(ChatColor.GREEN + "Defense: " + ChatColor.GRAY + "26");

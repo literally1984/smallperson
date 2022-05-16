@@ -72,19 +72,19 @@ public class armorRecipes {
 
 // TODO: add recipe for new armors -BigZ
 
-   private static void wizbootsrecipe() {
+    private static void wizbootsrecipe() {
     }
 
-private static void undeadbootsrecipe() {
+    private static void undeadbootsrecipe() {
     }
 
-private static void reaperbootsrecipe() {
+    private static void reaperbootsrecipe() {
     }
 
-private static void platedbootsrecipe() {
+    private static void platedbootsrecipe() {
     }
 
-private static void lapisbootsrecipe() {
+    private static void lapisbootsrecipe() {
     }
 
 private static void hdiabootsrecipe() {
@@ -223,7 +223,7 @@ private static void platedhelmrecipe() {
         ShapedRecipe diaChes = new ShapedRecipe(overridenRecipeItems.diaChes);
 
         diaChes.shape("^ ^", "^^^", "^^^");
-        diaChes.setIngredient('^', Material.DIAMOND);
+    diaChes.setIngredient('^', Material.DIAMOND);
         Bukkit.getServer().addRecipe(diaChes);
     }
 
