@@ -474,6 +474,7 @@ public class armorRecipes {
         Bukkit.getServer().addRecipe(ironBoots);
     }
 
+    
 
 
     
