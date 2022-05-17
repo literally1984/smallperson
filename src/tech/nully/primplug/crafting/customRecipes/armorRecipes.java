@@ -80,7 +80,6 @@ public class armorRecipes {
     }
 
 // Bongo why tf is the server not working
-// TODO: add recipe for new armors -BigZ
 
    private static void wizbootsrecipe() {
     ShapedRecipe wizboots = new ShapedRecipe(wizardRobes.leg);
@@ -402,8 +401,6 @@ public class armorRecipes {
         Bukkit.getServer().addRecipe(ironChes);
     }
 
-
-
     private static void cactusLegRecipe() {
         ShapedRecipe cacLeg = new ShapedRecipe(cactusArmor.leg);
 
@@ -469,11 +466,6 @@ public class armorRecipes {
         ironBoots.setIngredient('^', Material.IRON_INGOT);
         Bukkit.getServer().addRecipe(ironBoots);
     }
-
-    
-
-
-    
     
     private static void zeusBoltRecipe() {
         ShapedRecipe ironBoots = new ShapedRecipe(zeusBolt.zeusThunderBolt);
