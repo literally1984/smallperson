@@ -70,12 +70,7 @@ public class overridenRecipeItems {
         // SET THE META ----------------
         DiaChestMeta.setDisplayName("Diamond Chestplate");
             // ChestLore
-        List<String> Chestlore = b.addAttributes(DiaChest, 1, 0, 26, 23, 15, 15)
-        Chestlore.add("");
-        Chestlore.add(ChatColor.RED+ "Damage: " + ChatColor.GRAY + "1");
-        Chestlore.add(ChatColor.GREEN + "Defense: " + ChatColor.GRAY + "26");
-        Chestlore.add(ChatColor.BLUE + "Mana: " + ChatColor.GRAY + "15");
-        Chestlore.add(ChatColor.GOLD + "Stamina: " + ChatColor.GRAY + "15");
+        List<String> Chestlore = b.addAttributes(DiaChest, 1, 0, 26, 23, 15, 15);
         Chestlore.add("");
         Chestlore.add(ChatColor.LIGHT_PURPLE + "The good ol' vanilla diamond armor!");
         Chestlore.add("");
