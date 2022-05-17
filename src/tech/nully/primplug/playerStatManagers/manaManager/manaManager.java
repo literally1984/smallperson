@@ -1,9 +1,9 @@
 package tech.nully.primplug.playerStatManagers.manaManager;
 
+import org.bukkit.entity.Player;
+
 import java.util.HashMap;
 import java.util.List;
-
-import org.bukkit.entity.Player;
 
 public class manaManager {
     private HashMap<Player, Integer> PlayerMaxMana = new HashMap<Player, Integer>();
@@ -122,7 +122,7 @@ public class manaManager {
 
             // checks if the player already has a spot in the hashmap
             if (!(PlayerMaxMana.containsKey(p))) {
-                setManaHash(p,0+addedMana);
+                setManaHash(p, addedMana);
                 
             } else if (PlayerMaxMana.containsKey(p)) {
                 setManaHash(p, PlayerMaxMana.get(p) + addedMana);
@@ -140,6 +140,7 @@ public class manaManager {
 
     // returns the players mana
     public int getMana(Player p) {
+
         return PlayerMana.get(p);
+        }
     }
-}
