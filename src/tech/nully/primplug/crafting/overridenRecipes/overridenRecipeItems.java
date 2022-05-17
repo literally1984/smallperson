@@ -9,6 +9,8 @@ import org.bukkit.Material;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 
+import tech.nully.primplug.Armor.baseAttributesAdder;
+
 public class overridenRecipeItems {
     
     public static ItemStack diaChes;
@@ -33,6 +35,8 @@ public class overridenRecipeItems {
         createDiaLeggings();
         createDiaBoots();
     }
+
+    static baseAttributesAdder b = new baseAttributesAdder();
 
 
     private static void createDiaHelm() {
