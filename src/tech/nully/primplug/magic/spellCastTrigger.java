@@ -25,7 +25,7 @@ public class spellCastTrigger implements Listener {
     public void onSpellLearn(PlayerInteractEvent e) {
         Player learner = e.getPlayer();
 
-        // Checks if the item in the player's hand is a spell and if the interact action is right_click_air or right_click_blocl
+        // Checks if the item in the player's hand is a spell and if the interact action is right_click_air or right_click_block
         if (spellItems.isSpell(learner.getItemInHand()) && (e.getAction() == Action.RIGHT_CLICK_AIR || e.getAction() == Action.RIGHT_CLICK_BLOCK)) {
             learner.sendMessage("");
         }
