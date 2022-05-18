@@ -17,7 +17,6 @@ public class playerDamageListener implements Listener {
     @EventHandler
     public void PlayerDamageEvent(EntityDamageEvent e) {
         if (e.getEntity().getType().isAlive()) {
-            // TODO: INTEGRATE FACTIONS
             EntityDamageEvent event = (EntityDamageEvent) e;
 
             // defines damage and entities
