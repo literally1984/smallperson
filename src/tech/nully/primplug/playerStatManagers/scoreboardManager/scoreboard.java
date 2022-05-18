@@ -4,6 +4,7 @@ import java.util.HashMap;
 
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
+import org.bukkit.OfflinePlayer;
 import org.bukkit.entity.Player;
 import org.bukkit.scoreboard.DisplaySlot;
 import org.bukkit.scoreboard.Objective;
@@ -26,7 +27,7 @@ public class scoreboard {
         Scoreboard board = manager.getNewScoreboard();
         Objective obj = board.registerNewObjective("epikBoard", "dummy");
         obj.setDisplaySlot(DisplaySlot.SIDEBAR);
-        Score manaScore = obj.getScore(Bukkit.getServer().getOfflinePlayer((ChatColor.AQUA + "" + m.getMana(p) + "/" + m.getMaxMana(p))));
+        Score manaScore = obj.getScore(ChatColor.AQUA + "" + m.getMana(p) + "/" + m.getMaxMana(p));
         manaScore.setScore(1);
         Score staminaScore = obj.getScore(Bukkit.getServer().getOfflinePlayer(ChatColor.AQUA + "" + s.getStamina(p) + "/" + s.getMaxStamina(p)));
         staminaScore.setScore(2);
