@@ -6,6 +6,7 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.Action;
+import org.bukkit.event.entity.EntityDamageEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.inventory.ItemStack;
 import tech.nully.primplug.fileSystem.file;
@@ -16,7 +17,7 @@ import tech.nully.primplug.magic.wands;
 import java.util.ArrayList;
 import java.util.List;
 
-public class spellCastTrigger implements Listener {
+public class magicTriggers implements Listener {
 
     // TODO: MAKE A SPELL LEARN LISTENER
     // TODO: MAKE SPELL LEARN ADD TO PLAYER FILES
@@ -32,6 +33,15 @@ public class spellCastTrigger implements Listener {
         if (spellItems.isSpell(learner.getItemInHand()) && (e.getAction() == Action.RIGHT_CLICK_AIR || e.getAction() == Action.RIGHT_CLICK_BLOCK)) {
             spellLearnEvent learnEvent = new spellLearnEvent(learner, learner.getItemInHand().getItemMeta().getDisplayName());
             Bukkit.getPluginManager().callEvent(learnEvent);
+        }
+    }
+
+    @EventHandler
+    public void entityDamageBySpellEvent(EntityDamageEvent e) {
+        if (e.getCause().equals(EntityDamageEvent.DamageCause.ENTITY_EXPLOSION) ||
+        e.getCause().equals(EntityDamageEvent.DamageCause.LIGHTNING) ||
+        e.getCause().equals(EntityDamageEvent.DamageCause.PROJECTILE)) {
+            
         }
     }
 
