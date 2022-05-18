@@ -13,23 +13,25 @@ import java.util.List;
 public class spellItems {
 
     public static void init() {
-        makeSpells();
+        // TODO: register this in main
+        makeFireballSpell();
         makeSpellScrolls();
     }
 
     static baseAttributesAdder b = new baseAttributesAdder();
 
     public static HashMap<String, ItemStack> spellConverter = new HashMap<String, ItemStack>();
+    public static HashMap<ItemStack, String> RspellConverter = new HashMap<ItemStack, String>();
 
     public static boolean isSpell(ItemStack item) {
         return spellConverter.containsKey(item.getItemMeta().getDisplayName());
     }
 
-    private static void makeSpells() {
+    private static void makeFireballSpell() {
         ItemStack FireballSpell = new ItemStack(Material.FIREBALL);
         ItemMeta FireballMeta = FireballSpell.getItemMeta();
 
-        FireballMeta.setDisplayName(ChatColor.GOLD + "Fireball Spell");
+        FireballMeta.setDisplayName("Fireball Spell");
         List<String> FireballItemLore = new ArrayList<>();
         FireballItemLore.add("");
         FireballItemLore.add(ChatColor.GRAY + "Spell Item");
@@ -44,7 +46,29 @@ public class spellItems {
 
         FireballMeta.setLore(FireballItemLore);
         spellConverter.put(FireballMeta.getDisplayName(), FireballSpell);
+        RspellConverter.put(FireballSpell, FireballMeta.getDisplayName());
+    }
 
+    private static void makeMeteorSpell() {
+        ItemStack MeteorShower = new ItemStack(Material.FIREBALL);
+        ItemMeta MeteorShowerMeta = MeteorShower.getItemMeta();
+
+        MeteorShowerMeta.setDisplayName("Meteor Shower");
+        List<String> MeteorShowerLore = new ArrayList<>();
+        MeteorShowerLore.add("");
+        MeteorShowerLore.add(ChatColor.DARK_PURPLE + "Spell Item");
+        MeteorShowerLore.add("");
+        MeteorShowerLore.add(ChatColor.GRAY + "Scales 100% on Magic Damage");
+        MeteorShowerLore.add(ChatColor.RED + "Base Damage per hit:" + ChatColor.GRAY + "8");
+        MeteorShowerLore.add("");
+        MeteorShowerLore.add(ChatColor.YELLOW + "" + ChatColor.ITALIC + "Summons a horde of meteors behind you deal high");
+        MeteorShowerLore.add(ChatColor.YELLOW + "" + ChatColor.ITALIC + "damage to your opponents");
+        MeteorShowerLore.add("");
+        MeteorShowerLore.add(b.legendary() + "Legendary");
+
+        MeteorShowerMeta.setLore(MeteorShowerLore);
+        spellConverter.put(MeteorShowerMeta.getDisplayName(), MeteorShower);
+        RspellConverter.put(MeteorShower, MeteorShowerMeta.getDisplayName());
     }
 
     private static void makeSpellScrolls() {

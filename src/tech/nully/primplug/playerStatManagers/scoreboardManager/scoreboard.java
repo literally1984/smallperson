@@ -1,19 +1,14 @@
 package tech.nully.primplug.playerStatManagers.scoreboardManager;
 
-import java.util.HashMap;
-
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.OfflinePlayer;
 import org.bukkit.entity.Player;
-import org.bukkit.scoreboard.DisplaySlot;
-import org.bukkit.scoreboard.Objective;
-import org.bukkit.scoreboard.Score;
-import org.bukkit.scoreboard.Scoreboard;
-import org.bukkit.scoreboard.ScoreboardManager;
-
+import org.bukkit.scoreboard.*;
 import tech.nully.primplug.playerStatManagers.manaManager.manaManager;
 import tech.nully.primplug.playerStatManagers.staminaManager.staminaManager;
+
+import java.util.HashMap;
 
 public class scoreboard {
     //! WARNINING: the makeScoreBoard method does not have a hashMap checker so you have to make one yourself when calling it
@@ -27,7 +22,8 @@ public class scoreboard {
         Scoreboard board = manager.getNewScoreboard();
         Objective obj = board.registerNewObjective("epikBoard", "dummy");
         obj.setDisplaySlot(DisplaySlot.SIDEBAR);
-        Score manaScore = obj.getScore(ChatColor.AQUA + "" + m.getMana(p) + "/" + m.getMaxMana(p));
+        obj.setDisplayName("PLAYER STATS");
+        Score manaScore = obj.getScore(Bukkit.getServer().getOfflinePlayer((ChatColor.AQUA + "" + m.getMana(p) +  "/" + m.getMaxMana(p))));
         manaScore.setScore(1);
         Score staminaScore = obj.getScore(Bukkit.getServer().getOfflinePlayer(ChatColor.AQUA + "" + s.getStamina(p) + "/" + s.getMaxStamina(p)));
         staminaScore.setScore(2);
