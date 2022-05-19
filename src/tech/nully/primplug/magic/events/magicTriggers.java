@@ -41,7 +41,8 @@ public class magicTriggers implements Listener {
         if (e.getCause().equals(EntityDamageEvent.DamageCause.ENTITY_EXPLOSION) ||
         e.getCause().equals(EntityDamageEvent.DamageCause.LIGHTNING) ||
         e.getCause().equals(EntityDamageEvent.DamageCause.PROJECTILE)) {
-            
+
+
         }
     }
 

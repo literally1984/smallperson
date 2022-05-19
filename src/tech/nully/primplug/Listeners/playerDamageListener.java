@@ -93,8 +93,7 @@ public class playerDamageListener implements Listener {
 
             }
 
-            e.setCancelled(true);
-            entityVictim.setHealth(entityVictim.getHealth() - finalDamage);
+
             if (entityVictim instanceof Player) {
                 Player p = (Player) entityVictim;
                 p.sendMessage("works yayy");

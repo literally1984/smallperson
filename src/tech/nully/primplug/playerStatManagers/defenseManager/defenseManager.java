@@ -1,12 +1,13 @@
 package tech.nully.primplug.playerStatManagers.defenseManager;
 
-import java.util.HashMap;
-import java.util.List;
-
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 
+import java.util.HashMap;
+import java.util.List;
+
 public class defenseManager {
+    // TODO: rework litterally everything REEE need to use NMS anbd NBT tags, refer to https://bukkit.org/threads/how-do-i-add-attributes-to-a-itemstack.404299/
     HashMap<Player, Integer> Playerdefense = new HashMap<Player, Integer>();
     HashMap<Player, Integer> PlayerArmorDamage = new HashMap<Player, Integer>();
 
