@@ -1,23 +1,16 @@
-package tech.nully.primplug.magic;
+package tech.nully.primplug.magic.API;
 
-import org.bukkit.Location;
 import org.bukkit.entity.Player;
 
 public class spell {
-    Location loc;
     String type;
     int damage;
     Player caster;
 
-    public spell(Location loc, String type, int damage, Player caster) {
-        this.loc = loc;
+    public spell(String type, int damage, Player caster) {
         this.type = type;
         this.damage = damage;
         this.caster = caster;
-    }
-
-    public Location getLocation() {
-        return this.loc;
     }
 
     public String getType() {

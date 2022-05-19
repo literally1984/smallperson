@@ -1,4 +1,4 @@
-package tech.nully.primplug.magic.events;
+package tech.nully.primplug.magic.API;
 
 
 import org.bukkit.Bukkit;
