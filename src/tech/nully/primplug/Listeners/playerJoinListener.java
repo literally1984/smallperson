@@ -1,25 +1,22 @@
 package tech.nully.primplug.Listeners;
 
+import java.io.File;
+
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerJoinEvent;
 
-import tech.nully.primplug.playerStatManagers.defenseManager.defenseManager;
-import tech.nully.primplug.playerStatManagers.manaManager.manaManager;
-import tech.nully.primplug.playerStatManagers.scoreboardManager.scoreboard;
-import tech.nully.primplug.playerStatManagers.staminaManager.staminaManager;
+import tech.nully.primplug.Main;
+import tech.nully.primplug.fileSystem.file;
 
 public class playerJoinListener implements Listener{
+    file file = new file();
+
     @EventHandler
     public void onPlayerJoin(PlayerJoinEvent e) {
-        manaManager m = new manaManager();
-        staminaManager s = new staminaManager();
-        defenseManager d = new defenseManager();
-        scoreboard score = new scoreboard();
-
-        score.makeScoreBoard(e.getPlayer());
-        m.setMaxMana(e.getPlayer());
-        s.setMaxStamina(e.getPlayer());
-        d.setMaxdefense(e.getPlayer());
+        String fileName = e.getPlayer().getDisplayName();
+        if (!(new File(Main.getInstance().getDataFolder() + "/" +"PrimPlugin" + "/" + fileName + ".yml").exists())) {
+            
+        }
     }
 }

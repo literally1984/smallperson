@@ -14,7 +14,7 @@ public class file {
     static HashMap<String, FileConfiguration> playerFileConfig = new HashMap<String, FileConfiguration>();
     Main m = new Main();
     public void saveFile(String fileName) {
-        File playerYml = new File(Main.getInstance().getDataFolder()+fileName + ".yml");
+        File playerYml = new File(Main.getInstance().getDataFolder() + "/" +"PrimPlugin" + "/" +fileName + ".yml");
         FileConfiguration fileConfig = YamlConfiguration.loadConfiguration(playerYml);
         try {
             fileConfig.save(playerYml);
