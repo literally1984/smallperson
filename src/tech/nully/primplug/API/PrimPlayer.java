@@ -1,6 +1,9 @@
 package tech.nully.primplug.API;
 
 import org.bukkit.entity.Player;
+import tech.nully.primplug.fileSystem.file;
+
+import java.util.List;
 
 public class PrimPlayer {
 
@@ -15,6 +18,11 @@ public class PrimPlayer {
 
     private boolean isInForm;
     private String form;
+
+    private List<String> Talisman;
+    private List<String> Spells;
+
+    private file file = new file();
     
     public PrimPlayer(Player p) {
         this.p = p;
@@ -26,6 +34,17 @@ public class PrimPlayer {
         this.MaxStamina = 10;
         this.isInForm = false;
         this.form = "null";
+
+        this.Spells = file.readFile(file.getFileConfig(p.getDisplayName()), "Spells");
+        this.Talisman = file.readFile(file.getFileConfig(p.getDisplayName()), "Talisman");
+    }
+
+    public List<String> getTalismans() {
+        return this.Talisman;
+    }
+
+    public List<String> getSpells() {
+        return this.Spells;
     }
 
     public Player getPlayer() {

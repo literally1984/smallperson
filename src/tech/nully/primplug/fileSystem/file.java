@@ -26,7 +26,7 @@ public class file {
         playerFileConfig.put(fileName, fileConfig);
     }
 
-    public void addToFile(FileConfiguration fileConfig, String dataType, String data) {
+    public void addToSpell(FileConfiguration fileConfig, String dataType, String data) {
         // Datatype pass-in is what type of item the data is, eg. Talisman, spells, etc
         fileConfig.set(dataType, data);
     }
