@@ -17,7 +17,6 @@ import java.util.List;
 public class spellCast {
 
     private static List<String> fireballLore = new ArrayList<String>();
-    private static List<String> explosionLore = new ArrayList<String>();
     private static List<String> thousandCutsLore = new ArrayList<String>();
     private static List<String> ArrowRainLore = new ArrayList<String>();
     private static List<String> meteorShowerLore = new ArrayList<String>();
@@ -92,7 +91,8 @@ public class spellCast {
 
     // --- I think im starting to get what im doing beyond this point---
     public void castMetorShower(Player p) {
-        Location from = p.getLocation().add(0, 6, 0);
+        if (p.getItemInHand().getItemMeta().getLore().equals(meteorShowerLore)) {
+            Location from = p.getLocation().add(0, 6, 0);
 
         Fireball meteor = p.getWorld().spawn(from, Fireball.class);
         Fireball meteor2 = p.getWorld().spawn(from, Fireball.class);
@@ -111,7 +111,7 @@ public class spellCast {
         meteor4.setDirection(vec2);
         meteor5.setDirection(vec2);
         meteor6.setDirection(vec2);
-
+        }
     }
 
 }
