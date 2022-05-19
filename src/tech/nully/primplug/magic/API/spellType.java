@@ -27,5 +27,5 @@ public class spellType {
             return this.damageEntity;
         } else return this.loc;
     }
-    
+
 }

@@ -10,6 +10,8 @@ import org.bukkit.event.entity.EntityDamageEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.inventory.ItemStack;
 import tech.nully.primplug.fileSystem.file;
+import tech.nully.primplug.magic.API.events.formSwitchEvent;
+import tech.nully.primplug.magic.API.events.spellLearnEvent;
 import tech.nully.primplug.magic.spellCast;
 import tech.nully.primplug.magic.spellItems;
 import tech.nully.primplug.magic.wands;
