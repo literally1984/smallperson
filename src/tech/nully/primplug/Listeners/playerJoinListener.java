@@ -3,6 +3,7 @@ package tech.nully.primplug.Listeners;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerJoinEvent;
+import tech.nully.primplug.API.PrimPlayer;
 import tech.nully.primplug.Main;
 import tech.nully.primplug.fileSystem.file;
 
@@ -17,5 +18,7 @@ public class playerJoinListener implements Listener{
         if (!(new File(Main.getInstance().getDataFolder() + "/" +"PrimPlugin" + "/" + fileName + ".yml").exists())) {
             file.saveFile(e.getPlayer().getDisplayName());
         }
+
+        PrimPlayer pPlayer = new PrimPlayer(e.getPlayer());
     }
 }

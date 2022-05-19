@@ -3,9 +3,12 @@ package tech.nully.primplug.API;
 import org.bukkit.entity.Player;
 import tech.nully.primplug.fileSystem.file;
 
+import java.util.HashMap;
 import java.util.List;
 
 public class PrimPlayer {
+
+    private static HashMap<Player, PrimPlayer> players = new HashMap<Player, PrimPlayer>();
 
     private Player p;
 
@@ -37,6 +40,12 @@ public class PrimPlayer {
 
         this.Spells = file.readFile(file.getFileConfig(p.getDisplayName()), "Spells");
         this.Talisman = file.readFile(file.getFileConfig(p.getDisplayName()), "Talisman");
+
+        players.put(p, this);
+    }
+
+    public static PrimPlayer getPrimPlayer(Player p) {
+        return players.get(p);
     }
 
     public List<String> getTalismans() {
