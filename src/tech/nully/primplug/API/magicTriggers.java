@@ -1,4 +1,4 @@
-package tech.nully.primplug.magic.API;
+package tech.nully.primplug.API;
 
 
 import org.bukkit.Bukkit;
@@ -9,9 +9,10 @@ import org.bukkit.event.block.Action;
 import org.bukkit.event.entity.EntityDamageEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.inventory.ItemStack;
+
+import tech.nully.primplug.API.events.formSwitchEvent;
+import tech.nully.primplug.API.events.spellLearnEvent;
 import tech.nully.primplug.fileSystem.file;
-import tech.nully.primplug.magic.API.events.formSwitchEvent;
-import tech.nully.primplug.magic.API.events.spellLearnEvent;
 import tech.nully.primplug.magic.spellCast;
 import tech.nully.primplug.magic.spellItems;
 import tech.nully.primplug.magic.wands;

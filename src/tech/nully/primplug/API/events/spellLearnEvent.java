@@ -1,31 +1,19 @@
-package tech.nully.primplug.magic.API.events;
+package tech.nully.primplug.API.events;
 
 import org.bukkit.entity.Player;
 import org.bukkit.event.Cancellable;
 import org.bukkit.event.Event;
 import org.bukkit.event.HandlerList;
 
-public class spellCastEvent extends Event implements Cancellable {
+public class spellLearnEvent extends Event implements Cancellable {
     private Player player;
     private String spell;
-
-    private String type;
-    private int rawDamage;
     private boolean isCancelled;
 
-    public spellCastEvent(Player player, String spell, String type, int rawDamage) {
+    public spellLearnEvent(Player player, String spell) {
         this.player = player;
         this.spell = spell;
-        this.type = type;
         this.isCancelled = false;
-    }
-
-    public int getRawDamage() {
-        return this.rawDamage;
-    }
-
-    public String getType() {
-        return this.type;
     }
 
     public Player getPlayer() {

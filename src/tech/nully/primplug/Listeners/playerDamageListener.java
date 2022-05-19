@@ -1,5 +1,6 @@
 package tech.nully.primplug.Listeners;
 
+import com.massivecraft.factions.entity.MPlayer;
 import com.massivecraft.factions.entity.UPlayer;
 import org.bukkit.entity.LivingEntity;
 import org.bukkit.entity.Player;

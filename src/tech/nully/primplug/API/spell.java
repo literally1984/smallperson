@@ -1,4 +1,4 @@
-package tech.nully.primplug.magic.API;
+package tech.nully.primplug.API;
 
 import org.bukkit.entity.Player;
 
