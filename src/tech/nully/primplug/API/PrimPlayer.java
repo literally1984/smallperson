@@ -26,13 +26,13 @@ public class PrimPlayer {
     private List<String> Spells;
 
     private file file = new file();
-    
+
     public PrimPlayer(Player p) {
         this.p = p;
 
         this.Mana = 10;
         this.MaxMana = 10;
-        
+
         this.Stamina = 10;
         this.MaxStamina = 10;
         this.isInForm = false;
@@ -42,6 +42,10 @@ public class PrimPlayer {
         this.Talisman = file.readFile(file.getFileConfig(p.getDisplayName()), "Talisman");
 
         players.put(p, this);
+    }
+
+    public test pogz() {
+        return new test(this.p);
     }
 
     public static PrimPlayer getPrimPlayer(Player p) {
@@ -93,6 +97,4 @@ public class PrimPlayer {
     public String getForm() {
         return this.form;
     }
-
-
 }
