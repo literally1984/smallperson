@@ -1,9 +1,6 @@
 package tech.nully.primplug.Armor.armorItems;
 
 
-import java.util.ArrayList;
-import java.util.List;
-
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Color;
@@ -11,8 +8,9 @@ import org.bukkit.Material;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.inventory.meta.LeatherArmorMeta;
+import tech.nully.primplug.Armor.baseAdder;
 
-import tech.nully.primplug.Armor.baseAttributesAdder;
+import java.util.List;
 
 public class Drakon {
 
@@ -28,7 +26,7 @@ public class Drakon {
         createDrakonBoots();
     }
 
-    private static baseAttributesAdder a = new baseAttributesAdder();
+    private static baseAdder a = new baseAdder();
 
 
     private static void createDrakonHelm() {

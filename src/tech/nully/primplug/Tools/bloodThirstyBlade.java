@@ -4,7 +4,7 @@ import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
-import tech.nully.primplug.Armor.baseAttributesAdder;
+import tech.nully.primplug.Armor.baseAdder;
 
 import java.util.List;
 
@@ -17,7 +17,7 @@ public class bloodThirstyBlade {
         ItemMeta bloodMeta = bloodBlade.getItemMeta();
 
         bloodMeta.setDisplayName(ChatColor.RED + "Bloodythirsy Blade");
-        baseAttributesAdder a = new baseAttributesAdder();
+        baseAdder a = new baseAdder();
         List<String> bladeLore = a.addAttributes(bloodBlade, 11, 3, 5, 2, 10, 15);
         bladeLore.add("");
         bladeLore.add(a.ability() + "Passive ability: Bloodthirst");

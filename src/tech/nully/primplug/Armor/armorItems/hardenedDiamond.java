@@ -4,7 +4,7 @@ import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
-import tech.nully.primplug.Armor.baseAttributesAdder;
+import tech.nully.primplug.Armor.baseAdder;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -22,7 +22,7 @@ public class hardenedDiamond {
         createHDiaBoots();
     }
 
-    private static baseAttributesAdder base = new baseAttributesAdder();
+    private static baseAdder base = new baseAdder();
 
     private static void createHDiaHelm() {
         // DEFINE THE META -------------

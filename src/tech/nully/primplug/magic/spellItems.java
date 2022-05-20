@@ -4,7 +4,7 @@ import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
-import tech.nully.primplug.Armor.baseAttributesAdder;
+import tech.nully.primplug.Armor.baseAdder;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -18,7 +18,7 @@ public class spellItems {
         makeSpellScrolls();
     }
 
-    static baseAttributesAdder b = new baseAttributesAdder();
+    static baseAdder b = new baseAdder();
 
     public static HashMap<String, ItemStack> spellConverter = new HashMap<String, ItemStack>();
     public static HashMap<ItemStack, String> RspellConverter = new HashMap<ItemStack, String>();

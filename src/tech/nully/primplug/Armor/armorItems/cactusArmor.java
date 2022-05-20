@@ -8,7 +8,7 @@ import org.bukkit.enchantments.Enchantment;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.inventory.meta.LeatherArmorMeta;
-import tech.nully.primplug.Armor.baseAttributesAdder;
+import tech.nully.primplug.Armor.baseAdder;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -29,7 +29,7 @@ public class cactusArmor {
     }
     // !  Obsidian
 
-    private final static baseAttributesAdder a = new baseAttributesAdder();
+    private final static baseAdder a = new baseAdder();
 
     private static void createCacShard() {
         // DEFINE THE META -------------

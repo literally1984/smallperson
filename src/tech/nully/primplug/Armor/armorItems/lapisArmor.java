@@ -6,7 +6,7 @@ import org.bukkit.Material;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.inventory.meta.LeatherArmorMeta;
-import tech.nully.primplug.Armor.baseAttributesAdder;
+import tech.nully.primplug.Armor.baseAdder;
 
 import java.util.List;
 
@@ -25,7 +25,7 @@ public class lapisArmor {
     
 
 
-    private static baseAttributesAdder a = new baseAttributesAdder();
+    private static baseAdder a = new baseAdder();
 
     private static void createLapisHelm() {
         // DEFINE THE META -------------

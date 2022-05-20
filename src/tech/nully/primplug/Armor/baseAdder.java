@@ -7,7 +7,7 @@ import tech.nully.primplug.itemStuff.rarityObject;
 import java.util.ArrayList;
 import java.util.List;
 
-public class baseAttributesAdder {
+public class baseAdder {
     public List<String> addAttributes(ItemStack item, int damage, int magicDmg, int defense, int magicDef, int mana, int stamina) {
         List<String> itemLore = new ArrayList<String>();
         itemLore.add("");
@@ -17,9 +17,8 @@ public class baseAttributesAdder {
         itemLore.add(ChatColor.GRAY + "Magic DEF: " + ChatColor.LIGHT_PURPLE + "" + magicDef);
         itemLore.add(ChatColor.GRAY + "Mana: " + ChatColor.AQUA + "" + mana);
         itemLore.add(ChatColor.GRAY + "Stamina: " + ChatColor.GOLD + "" + stamina);
-        rarityObject r = new rarityObject();
-        int maxUpgrades = r.getMaxUpgrades(item);
-        itemLore.add(ChatColor.GRAY + "----" + ChatColor.WHITE + "0/" + maxUpgrades + ChatColor.GRAY + "----");
+        rarityObject r = new rarityObject(item);
+        itemLore.add(ChatColor.GRAY + "----" + ChatColor.WHITE + "0/" + r.getMaxUpgrades() + ChatColor.GRAY + "----");
         item.getItemMeta().setLore(itemLore);
         return itemLore;
     }
@@ -34,32 +33,32 @@ public class baseAttributesAdder {
         return epikReturn;
     }
 
-    public String common() {
+    public static String common() {
         String epikReturn = ChatColor.GRAY + "" + ChatColor.BOLD;
         return epikReturn;
     }
 
-    public String uncommon() {
+    public static String uncommon() {
         String epikReturn = ChatColor.GREEN+ "" + ChatColor.BOLD;
         return epikReturn;
     }
 
-    public String rare() {
+    public static String rare() {
         String epikReturn = ChatColor.BLUE + "" + ChatColor.BOLD;
         return epikReturn;
     }
 
-    public String epic() {
+    public static String epic() {
         String epikReturn = ChatColor.DARK_PURPLE+ "" + ChatColor.BOLD;
         return epikReturn;
     }
 
-    public String legendary() {
+    public static String legendary() {
         String epikReturn = ChatColor.GOLD + "" + ChatColor.BOLD;
         return epikReturn;
     }
 
-    public String mythical() {
+    public static String mythical() {
         String epikReturn = ChatColor.DARK_RED + "" + ChatColor.BOLD;
         return epikReturn;
     }

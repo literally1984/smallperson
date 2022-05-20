@@ -6,7 +6,7 @@ import org.bukkit.Material;
 import org.bukkit.craftbukkit.v1_5_R3.inventory.CraftItemStack;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
-import tech.nully.primplug.Armor.baseAttributesAdder;
+import tech.nully.primplug.Armor.baseAdder;
 
 import java.util.List;
 
@@ -16,7 +16,7 @@ public class    zeusBolt {
     public static void createZeusBolt() {
         ItemStack zeusBolt = new ItemStack(Material.BLAZE_ROD);
         ItemMeta zeusMeta = zeusBolt.getItemMeta();
-        baseAttributesAdder b = new baseAttributesAdder();
+        baseAdder b = new baseAdder();
         List<String> zeusLore = b.addAttributes(zeusBolt, 14, 7, 6, 9, 20, 20);
 
         zeusMeta.setDisplayName("Thunderbolt of Zeus");
@@ -37,7 +37,7 @@ public class    zeusBolt {
         zeusLore.add(b.lore() + "from the heavens by a legendary warrior who defeated");
         zeusLore.add(b.lore() + "the thunder god");
         zeusLore.add("");
-        zeusLore.add(b.mythical() + "MYTHICAL");
+        zeusLore.add(baseAdder.mythical() + "MYTHICAL");
 
         net.minecraft.server.v1_5_R3.ItemStack nmsStack = CraftItemStack.asNMSCopy(zeusBolt);
         NBTTagCompound compound = nmsStack.getTag();
@@ -49,7 +49,7 @@ public class    zeusBolt {
         NBTTagList modifiers = new NBTTagList();
 
         //Attributes are set like this:
-        NBTTagInt nbint = new NBTTagInt(6)
+        NBTTagInt nbint = new NBTTagInt(6);
 
 
         NBTTagCompound damage = new NBTTagCompound();

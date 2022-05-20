@@ -1,16 +1,15 @@
 package tech.nully.primplug.Armor.armorItems;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.enchantments.Enchantment;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
+import tech.nully.primplug.Armor.baseAdder;
 
-import tech.nully.primplug.Armor.baseAttributesAdder;
+import java.util.ArrayList;
+import java.util.List;
 
 
 public class demigodArmor {
@@ -29,7 +28,7 @@ public class demigodArmor {
         createDemiBoots();
     }
     // !  Obsidian
-    private static baseAttributesAdder a = new baseAttributesAdder();
+    private static baseAdder a = new baseAdder();
 
     private static void createDemiShard() {
         // DEFINE THE META -------------

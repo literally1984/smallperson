@@ -1,17 +1,16 @@
 //Bongo why dont we have a class in the entire script? bruh
 package tech.nully.primplug.Armor.armorItems;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import org.bukkit.ChatColor;
 import org.bukkit.Color;
 import org.bukkit.Material;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.inventory.meta.LeatherArmorMeta;
+import tech.nully.primplug.Armor.baseAdder;
 
-import tech.nully.primplug.Armor.baseAttributesAdder;
+import java.util.ArrayList;
+import java.util.List;
 
 public class wizardRobes {
     public static ItemStack helm;
@@ -122,7 +121,7 @@ public class wizardRobes {
     leg = WizLeg;
     }
 
-    private static baseAttributesAdder a = new baseAttributesAdder();
+    private static baseAdder a = new baseAdder();
 
     private static void createWizBoots() {
     // DEFINE THE META -------------

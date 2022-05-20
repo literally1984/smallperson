@@ -3,7 +3,7 @@ package tech.nully.primplug.magic;
 import org.bukkit.Material;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
-import tech.nully.primplug.Armor.baseAttributesAdder;
+import tech.nully.primplug.Armor.baseAdder;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -15,7 +15,7 @@ public class wands {
         createPheonixWand();
 
     }
-    private static baseAttributesAdder b = new baseAttributesAdder();
+    private static baseAdder b = new baseAdder();
 
     private static ItemStack Pwand;
     

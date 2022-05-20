@@ -1,10 +1,10 @@
-package tech.nully.primplug.API;
+package tech.nully.primplug.API.PrimItems;
 
 import org.bukkit.inventory.ItemStack;
 
 import java.util.List;
 
-public class PrimItem extends ItemStack {
+public class PrimItem{
     private ItemStack i;
     private int EXP;
     private List<String> enchants;
@@ -12,6 +12,7 @@ public class PrimItem extends ItemStack {
     private String type;
 
     public PrimItem(ItemStack i) {
-
+        this.i = i;
+        this.EXP
     }
 }

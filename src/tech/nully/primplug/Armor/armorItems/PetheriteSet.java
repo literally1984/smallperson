@@ -7,7 +7,7 @@ import org.bukkit.Material;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.inventory.meta.LeatherArmorMeta;
-import tech.nully.primplug.Armor.baseAttributesAdder;
+import tech.nully.primplug.Armor.baseAdder;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -28,7 +28,7 @@ public class PetheriteSet {
         createPetheriteBoots();
     }
 
-    private final static baseAttributesAdder a = new baseAttributesAdder();
+    private final static baseAdder a = new baseAdder();
 
 
     // ! condensed Obsidian
