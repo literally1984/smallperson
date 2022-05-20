@@ -4,16 +4,17 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.Cancellable;
 import org.bukkit.event.Event;
 import org.bukkit.event.HandlerList;
+import tech.nully.primplug.API.spellType;
 
 public class spellCastEvent extends Event implements Cancellable {
     private Player player;
     private String spell;
 
-    private String type;
+    private spellType type;
     private int rawDamage;
     private boolean isCancelled;
 
-    public spellCastEvent(Player player, String spell, String type, int rawDamage) {
+    public spellCastEvent(Player player, String spell, spellType type, int rawDamage) {
         this.player = player;
         this.spell = spell;
         this.type = type;
@@ -24,7 +25,7 @@ public class spellCastEvent extends Event implements Cancellable {
         return this.rawDamage;
     }
 
-    public String getType() {
+    public spellType getType() {
         return this.type;
     }
 

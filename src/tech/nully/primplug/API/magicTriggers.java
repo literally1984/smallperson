@@ -9,7 +9,6 @@ import org.bukkit.event.block.Action;
 import org.bukkit.event.entity.EntityDamageEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.inventory.ItemStack;
-
 import tech.nully.primplug.API.events.formSwitchEvent;
 import tech.nully.primplug.API.events.spellLearnEvent;
 import tech.nully.primplug.fileSystem.file;
@@ -27,6 +26,7 @@ public class magicTriggers implements Listener {
     public static boolean checkIsWand(ItemStack i) {
         return wands.wands.contains(i.getItemMeta().getDisplayName());
     }
+    // TODO: make the rest of the triggers
 
     @EventHandler
     public void onSpellLearn(PlayerInteractEvent e) {

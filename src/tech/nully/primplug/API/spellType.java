@@ -22,10 +22,15 @@ public class spellType {
         }
     }
 
-    public Object getIdentifier() {
-        if (this.type == (byte) 1) {
-            return this.damageEntity;
-        } else return this.loc;
+    public byte getType() {
+        return this.type;
     }
 
+    public Location getLocation() {
+        return this.loc;
+    }
+
+    public Entity getEntity() {
+        return this.damageEntity;
+    }
 }

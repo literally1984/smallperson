@@ -3,17 +3,17 @@ package tech.nully.primplug.API;
 import org.bukkit.entity.Player;
 
 public class spell {
-    String type;
+    spellType type;
     int damage;
     Player caster;
 
-    public spell(String type, int damage, Player caster) {
+    public spell(spellType type, int damage, Player caster) {
         this.type = type;
         this.damage = damage;
         this.caster = caster;
     }
 
-    public String getType() {
+    public spellType getType() {
         return this.type;
     }
 
