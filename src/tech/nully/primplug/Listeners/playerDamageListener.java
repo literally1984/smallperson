@@ -72,8 +72,9 @@ public class playerDamageListener implements Listener {
                 }
 
             }
-
-
+            e.setCancelled(true);
+            entityVictim.setHealth(finalDamage);
+            entityVictim.setVelocity(entityDamager.getLocation().getDirection());
             if (entityVictim instanceof Player) {
                 Player p = (Player) entityVictim;
                 p.sendMessage("works yayy");

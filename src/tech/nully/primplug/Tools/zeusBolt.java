@@ -1,9 +1,7 @@
 package tech.nully.primplug.Tools;
 
-import net.minecraft.server.v1_5_R3.*;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
-import org.bukkit.craftbukkit.v1_5_R3.inventory.CraftItemStack;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 import tech.nully.primplug.Armor.baseAdder;
@@ -38,35 +36,6 @@ public class    zeusBolt {
         zeusLore.add(b.lore() + "the thunder god");
         zeusLore.add("");
         zeusLore.add(baseAdder.mythical() + "MYTHICAL");
-
-        net.minecraft.server.v1_5_R3.ItemStack nmsStack = CraftItemStack.asNMSCopy(zeusBolt);
-        NBTTagCompound compound = nmsStack.getTag();
-        if (compound == null) {
-            compound = new NBTTagCompound();
-            nmsStack.setTag(compound);
-            compound = nmsStack.getTag();
-        }
-        NBTTagList modifiers = new NBTTagList();
-
-        //Attributes are set like this:
-        NBTTagInt nbint = new NBTTagInt(6);
-
-
-        NBTTagCompound damage = new NBTTagCompound();
-        damage.set("AttributeName", new NBTTagString("generic.attackDamage"));
-        damage.set("Name", new NBTTagString("generic.attackDamage"));
-        damage.set("Amount", new NBTTagInt(6));
-        damage.set("Operation", new NBTTagInt(0));
-        damage.set("UUIDLeast", new NBTTagInt(894654));
-        damage.set("UUIDMost", new NBTTagInt(2872));
-        modifiers.add(damage);
-
-        //Tags like Unbreakable can be set like this:
-        compound.set("Unbreakable", new NBTTagByte((byte) 1));
-
-        compound.set("AttributeModifiers", modifiers);
-        nmsStack.setTag(compound);
-        zeusBolt = CraftItemStack.asBukkitCopy(nmsStack);
 
         zeusThunderBolt = zeusBolt;
     }
