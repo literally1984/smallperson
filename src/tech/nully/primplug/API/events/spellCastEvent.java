@@ -4,7 +4,7 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.Cancellable;
 import org.bukkit.event.Event;
 import org.bukkit.event.HandlerList;
-import tech.nully.primplug.API.spellType;
+import tech.nully.primplug.API.Spells.spellType;
 
 public class spellCastEvent extends Event implements Cancellable {
     private Player player;

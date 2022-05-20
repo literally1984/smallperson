@@ -1,4 +1,4 @@
-package tech.nully.primplug.API;
+package tech.nully.primplug.API.PrimItems;
 
 import org.bukkit.entity.Player;
 import tech.nully.primplug.fileSystem.file;
@@ -44,9 +44,6 @@ public class PrimPlayer {
         players.put(p, this);
     }
 
-    public test pogz() {
-        return new test(this.p);
-    }
 
     public static PrimPlayer getPrimPlayer(Player p) {
         return players.get(p);

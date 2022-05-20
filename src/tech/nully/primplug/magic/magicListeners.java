@@ -4,8 +4,8 @@ import org.bukkit.Location;
 import org.bukkit.entity.Entity;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
+import tech.nully.primplug.API.Spells.spell;
 import tech.nully.primplug.API.events.spellCastEvent;
-import tech.nully.primplug.API.spell;
 
 import java.util.HashMap;
 

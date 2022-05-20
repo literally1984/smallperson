@@ -3,7 +3,7 @@ package tech.nully.primplug.Listeners;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerJoinEvent;
-import tech.nully.primplug.API.PrimPlayer;
+import tech.nully.primplug.API.PrimItems.PrimPlayer;
 import tech.nully.primplug.Main;
 import tech.nully.primplug.fileSystem.file;
 

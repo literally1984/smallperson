@@ -2,7 +2,7 @@ package tech.nully.primplug.Armor;
 
 import org.bukkit.ChatColor;
 import org.bukkit.inventory.ItemStack;
-import tech.nully.primplug.itemStuff.rarityObject;
+import tech.nully.primplug.API.Items.rarityObject;
 
 import java.util.ArrayList;
 import java.util.List;

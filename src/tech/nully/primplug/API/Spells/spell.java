@@ -1,4 +1,4 @@
-package tech.nully.primplug.API;
+package tech.nully.primplug.API.Spells;
 
 import org.bukkit.entity.Player;
 
