@@ -3,9 +3,11 @@ package tech.nully.primplug.API.PrimItems;
 import org.bukkit.inventory.ItemStack;
 import tech.nully.primplug.API.Items.Rarity.Rarity;
 
+import java.util.HashMap;
 import java.util.List;
 
 public class PrimItem{
+    static HashMap<ItemStack, PrimItem> primItems = new HashMap<ItemStack, PrimItem>();
     private ItemStack i;
     private int EXP;
     private int level;
@@ -18,8 +20,13 @@ public class PrimItem{
         String[] EXPLine = i.getItemMeta().getLore().get(i.getItemMeta().getLore().size() -3).split("/");
         this.EXP = Integer.parseInt(EXPLine[1]);
         this.level = Integer.parseInt(EXPLine[0]);
-        // TODO: add enchants
+        //TODO: add enchants
         this.rarity = new Rarity(i.getItemMeta().getLore().get(i.getItemMeta().getLore().size()-1).substring(3, i.getItemMeta().getLore().get(i.getItemMeta().getLore().size()-1).length()-1));
+        if (i.getType().toString().toLowerCase().contains("sword")) {
+            this.type = "sword";
+        }
+        primItems.put(i, this);
+
     }
 
     public ItemStack getItem() {
@@ -41,6 +48,4 @@ public class PrimItem{
     public Rarity getRarity() {
         return this.rarity;
     }
-
-    // TODO: Add types
 }
