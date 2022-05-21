@@ -15,6 +15,9 @@ import tech.nully.primplug.playerStatManagers.defenseManager.defenseManager;
 public class playerDamageListener implements Listener {
     @EventHandler
     public void PlayerDamageEvent(EntityDamageEvent e) {
+        if (e.getEntity() instanceof) {
+
+        }
         if (e.getEntity().getType().isAlive()) {
             EntityDamageEvent event = (EntityDamageEvent) e;
 

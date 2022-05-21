@@ -1,7 +1,9 @@
 package tech.nully.primplug.API.PrimItems;
 
 import org.bukkit.inventory.ItemStack;
+import tech.nully.primplug.API.Items.Rarity.Common;
 import tech.nully.primplug.API.Items.Rarity.Rarity;
+import tech.nully.primplug.API.Items.Rarity.rarityObject;
 
 import java.util.List;
 
@@ -35,6 +37,7 @@ public class PrimItem{
 
     public List<String> getEnchants() {
         return this.enchants;
+        Common c = (Common) rarityObject.getE();
     }
 
     public
