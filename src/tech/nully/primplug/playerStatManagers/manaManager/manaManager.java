@@ -1,41 +1,16 @@
 package tech.nully.primplug.playerStatManagers.manaManager;
 
 import org.bukkit.entity.Player;
+import tech.nully.primplug.API.PrimItems.PrimPlayer;
 
-import java.util.HashMap;
 import java.util.List;
 
 public class manaManager {
-    private HashMap<Player, Integer> PlayerMaxMana = new HashMap<Player, Integer>();
-    private HashMap<Player, Integer> PlayerMana = new HashMap<Player, Integer>();
-
-
-    // a private method to change both the PlayerMaxMana and PlayerMana hashmaps
-    private void setManaHash(Player pName, int addedMana) {
-        PlayerMaxMana.put(pName,addedMana);
-        PlayerMana.put(pName,addedMana);
-    }
-
-
-    // returns the mana of Player
-    public int getMaxMana(Player s) {
-        int z = PlayerMaxMana.get(s);
-        return z;
-    }
-
-    // adds int to player's mana
-    public void addMana(Player playerName, int amnt) {
-        PlayerMana.put(playerName, PlayerMana.get(playerName) + amnt);
-    }
-
-
-    // takes away int from player's mana
-    public void subtractMana(Player playerName, int amnt) {
-        PlayerMana.put(playerName, PlayerMana.get(playerName) - amnt);
-    }
 
     // a supermethod to set the player's max mana by looping through their inventory. only a player needs to be passed in
     public void setMaxMana(Player p) {
+        PrimPlayer primPlayer = PrimPlayer.getPrimPlayer(p);
+
         int index = 0;
         if (p.getInventory().getHelmet() != null) {
             List<String> helmLore = p.getInventory().getHelmet().getItemMeta().getLore();
@@ -50,11 +25,7 @@ public class manaManager {
             int addedMana = Integer.parseInt(manaLineArr[1]);
 
             // checks if the player already has a spot in the hashmap
-            if (!(PlayerMaxMana.containsKey(p))) {
-                setManaHash(p,0+addedMana);
-            } else if (PlayerMaxMana.containsKey(p)) {
-                setManaHash(p, PlayerMaxMana.get(p) + addedMana);
-            }
+            primPlayer.setMaxMana(primPlayer.getMaxMana() + addedMana);
         }
 
 
@@ -71,15 +42,7 @@ public class manaManager {
             int addedMana = Integer.parseInt(manaLineArr[1]);
 
             // checks if the player already has a spot in the hashmap
-            if (!(PlayerMaxMana.containsKey(p))) {
-                setManaHash(p,0+addedMana);
-                
-            } else if (PlayerMaxMana.containsKey(p)) {
-                setManaHash(p, PlayerMaxMana.get(p) + addedMana);
-            }
-
-
-
+            primPlayer.setMaxMana(primPlayer.getMaxMana() + addedMana);
         }
 
 
@@ -96,15 +59,7 @@ public class manaManager {
             int addedMana = Integer.parseInt(manaLineArr[1]);
 
             // checks if the player already has a spot in the hashmap
-            if (!(PlayerMaxMana.containsKey(p))) {
-                setManaHash(p,0+addedMana);
-                
-            } else if (PlayerMaxMana.containsKey(p)) {
-                setManaHash(p, PlayerMaxMana.get(p) + addedMana);
-            }
-
-
-
+            primPlayer.setMaxMana(primPlayer.getMaxMana() + addedMana);
         }
 
 
@@ -121,26 +76,7 @@ public class manaManager {
             int addedMana = Integer.parseInt(manaLineArr[1]);
 
             // checks if the player already has a spot in the hashmap
-            if (!(PlayerMaxMana.containsKey(p))) {
-                setManaHash(p, addedMana);
-                
-            } else if (PlayerMaxMana.containsKey(p)) {
-                setManaHash(p, PlayerMaxMana.get(p) + addedMana);
-            }
-
-
-
+            primPlayer.setMaxMana(primPlayer.getMaxMana() + addedMana);
         }
     }
-
-
-
-
-
-
-    // returns the players mana
-    public int getMana(Player p) {
-
-        return PlayerMana.get(p);
-        }
-    }
+}

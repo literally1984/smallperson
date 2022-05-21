@@ -73,6 +73,9 @@ public class PrimPlayer {
     public void setMana(int amount) {
         this.Mana = amount;
     }
+    public void setMaxMana(int amount) {
+        this.Mana = amount;
+    }
 
     // Stamina Getters and Setters
     public int getStamina() {
@@ -84,6 +87,9 @@ public class PrimPlayer {
     }
 
     public void setMaxStamina(int amount) {
+        this.MaxStamina = amount;
+    }
+    public void setStamina(int amount) {
         this.MaxStamina = amount;
     }
 

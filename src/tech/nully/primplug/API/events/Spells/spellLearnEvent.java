@@ -1,34 +1,29 @@
-package tech.nully.primplug.API.events;
+package tech.nully.primplug.API.events.Spells;
 
-import org.bukkit.entity.Entity;
+import org.bukkit.entity.Player;
 import org.bukkit.event.Cancellable;
 import org.bukkit.event.Event;
 import org.bukkit.event.HandlerList;
 
-public class entityDamageBySpellEvent extends Event implements Cancellable {
-    private Entity damaged;
+public class spellLearnEvent extends Event implements Cancellable {
+    private Player player;
     private String spell;
-    private int damage;
     private boolean isCancelled;
 
-    public entityDamageBySpellEvent(Entity damaged, String spell, int damage) {
-        this.damaged = damaged;
+    public spellLearnEvent(Player player, String spell) {
+        this.player = player;
         this.spell = spell;
-        this.damage = damage;
         this.isCancelled = false;
     }
 
-    public Entity getPlayer() {
-        return this.damaged;
+    public Player getPlayer() {
+        return this.player;
     }
 
     public String getSpell() {
         return this.spell;
     }
 
-    public int getDamage() {
-        return this.damage;
-    }
     @Override
     public boolean isCancelled() {
         return this.isCancelled;

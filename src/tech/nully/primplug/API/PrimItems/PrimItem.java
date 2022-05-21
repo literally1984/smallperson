@@ -1,9 +1,7 @@
 package tech.nully.primplug.API.PrimItems;
 
 import org.bukkit.inventory.ItemStack;
-import tech.nully.primplug.API.Items.Rarity.Common;
 import tech.nully.primplug.API.Items.Rarity.Rarity;
-import tech.nully.primplug.API.Items.Rarity.rarityObject;
 
 import java.util.List;
 
@@ -12,7 +10,7 @@ public class PrimItem{
     private int EXP;
     private int level;
     private List<String> enchants;
-    private String Rarity;
+    private Rarity rarity;
     private String type;
 
     public PrimItem(ItemStack i) {
@@ -20,7 +18,8 @@ public class PrimItem{
         String[] EXPLine = i.getItemMeta().getLore().get(i.getItemMeta().getLore().size() -3).split("/");
         this.EXP = Integer.parseInt(EXPLine[1]);
         this.level = Integer.parseInt(EXPLine[0]);
-        this.Rarity = i.getItemMeta().getLore().get(i.getItemMeta().getLore().size()-1).substring(3, i.getItemMeta().getLore().get(i.getItemMeta().getLore().size()-1).length()-1);
+        // TODO: add enchants
+        this.rarity = new Rarity(i.getItemMeta().getLore().get(i.getItemMeta().getLore().size()-1).substring(3, i.getItemMeta().getLore().get(i.getItemMeta().getLore().size()-1).length()-1));
     }
 
     public ItemStack getItem() {
@@ -37,8 +36,11 @@ public class PrimItem{
 
     public List<String> getEnchants() {
         return this.enchants;
-        Common c = (Common) rarityObject.getE();
     }
 
-    public
+    public Rarity getRarity() {
+        return this.rarity;
+    }
+
+    // TODO: Add types
 }

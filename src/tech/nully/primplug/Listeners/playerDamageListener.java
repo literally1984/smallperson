@@ -7,7 +7,7 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityDamageEvent;
 import org.bukkit.event.entity.EntityDamageEvent.DamageCause;
-import tech.nully.primplug.API.events.entityDamageBySpellEvent;
+import tech.nully.primplug.API.events.Spells.entityDamageBySpellEvent;
 import tech.nully.primplug.Armor.setBonuses;
 import tech.nully.primplug.damageManager.getDamage;
 import tech.nully.primplug.playerStatManagers.defenseManager.defenseManager;
@@ -15,9 +15,6 @@ import tech.nully.primplug.playerStatManagers.defenseManager.defenseManager;
 public class playerDamageListener implements Listener {
     @EventHandler
     public void PlayerDamageEvent(EntityDamageEvent e) {
-        if (e.getEntity() instanceof) {
-
-        }
         if (e.getEntity().getType().isAlive()) {
             EntityDamageEvent event = (EntityDamageEvent) e;
 

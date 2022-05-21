@@ -1,4 +1,4 @@
-package tech.nully.primplug.API.events;
+package tech.nully.primplug.API.events.Spells;
 
 import org.bukkit.entity.Player;
 import org.bukkit.event.Cancellable;
