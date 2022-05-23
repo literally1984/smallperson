@@ -1,5 +1,7 @@
 package tech.nully.primplug;
 
+import com.comphenix.protocol.ProtocolLibrary;
+import com.comphenix.protocol.ProtocolManager;
 import org.bukkit.ChatColor;
 import org.bukkit.plugin.java.JavaPlugin;
 import tech.nully.primplug.Armor.armorItems.*;
@@ -25,7 +27,7 @@ import tech.nully.primplug.upgradeItems.upgradeCommand;
 
 public class Main extends JavaPlugin {
 
-    private ProtocolManager protocolManager;
+    private static ProtocolManager protocolManager;
     private static Main instance;
     passiveManaAdder p = new passiveManaAdder();
 
@@ -33,8 +35,14 @@ public class Main extends JavaPlugin {
         return instance;
     }
 
+    public static ProtocolManager getProtocolManager() {
+        return protocolManager;
+    }
+
     @Override
     public void onEnable() {
+        protocolManager = ProtocolLibrary.getProtocolManager();
+
         instance = this;
 
         PetheriteSet.init();
@@ -85,37 +93,6 @@ public class Main extends JavaPlugin {
         getServer().getConsoleSender().sendMessage("--------------------------------------------");
         saveDefaultConfig();
 
-
-        protocolManager = ProtocolLibrary.getProtocolManager();
-        protocolManager.addPacketListener(
-                new PacketAdapter(Main.instance, ListenerPriority.NORMAL, PacketType.Play.Client.STEER_VEHICLE) {
-
-                    @Override
-                    public void onPacketReceiving(PacketEvent event) {
-                        final Player player = event.getPlayer();
-                        if (event.getPacketType() == PacketType.Play.Client.STEER_VEHICLE
-                                && player.getVehicle() != null) {
-                            final PacketContainer packet = event.getPacket();
-
-
-                            final float right = event.getPacket().getFloat().readSafely(0); // positive means right, negative is left
-                            final float forward = event.getPacket().getFloat().readSafely(1); // positive means forward, negative is backwards
-                            try {
-                                if (event.getPacket().getBooleans().readSafely(1)) {
-                                    //the player used shift and is trying to get out of the vehicle
-                                }
-                                if (event.getPacket().getBooleans().readSafely(0)) {
-                                    //player has pressed space
-                                }
-                            } catch (Error | Exception e45) {
-                            }
-
-                        }
-                    }
-
-                });
-
-    }
     }
 
     @Override
