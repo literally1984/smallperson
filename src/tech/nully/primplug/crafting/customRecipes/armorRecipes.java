@@ -79,8 +79,6 @@ public class armorRecipes {
         wizbootsrecipe();
     }
 
-// Bongo why tf is the server not working
-
    private static void wizbootsrecipe() {
     ShapedRecipe wizboots = new ShapedRecipe(wizardRobes.leg);
 
