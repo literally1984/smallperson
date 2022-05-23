@@ -22,6 +22,7 @@ public class Talisman {
         createBOD();
         createBLOD();
         createMiso();
+        
     }
 
     private static void createBOD() {

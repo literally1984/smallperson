@@ -466,6 +466,7 @@ public class armorRecipes {
         ironBoots.setIngredient('^', Material.IRON_INGOT);
         Bukkit.getServer().addRecipe(ironBoots);
     }
+<<<<<<< HEAD
     
     private static void zeusBoltRecipe() {
         ShapedRecipe ironBoots = new ShapedRecipe(zeusBolt.zeusThunderBolt);
@@ -474,4 +475,6 @@ public class armorRecipes {
         ironBoots.setIngredient('^', Material.FIREBALL);
         Bukkit.getServer().addRecipe(ironBoots);
     }
+=======
+>>>>>>> e1259ef00d5671cac552d01d0bb2330f795f9c6a
 }
