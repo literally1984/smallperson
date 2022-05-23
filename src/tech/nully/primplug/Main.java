@@ -53,7 +53,7 @@ public class Main extends JavaPlugin {
         bloodThirstyBlade.makeBloodThirstyBlade();
         zeusBolt.createZeusBolt();
 
-        registerGlow.registerGlow();
+        registerGlow.registerGlo();
 
         overridenRecipes.overrideRecipes();
 
