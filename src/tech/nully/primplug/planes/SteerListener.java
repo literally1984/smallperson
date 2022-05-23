@@ -20,7 +20,7 @@ public class SteerListener implements Listener {
         Vector v = m.getVelocity();
 
         if (e.getKey().equals("w")) {
-            v = v.add()
+            v = v.add(new Vector(0, 20, 0));
         }
 
     }
