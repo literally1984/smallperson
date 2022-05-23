@@ -15,7 +15,6 @@ import tech.nully.primplug.Armor.armorItems.platedArmor;
 import tech.nully.primplug.Armor.armorItems.reaperArmor;
 import tech.nully.primplug.Armor.armorItems.undeadArmor;
 import tech.nully.primplug.Armor.armorItems.wizardRobes;
-import tech.nully.primplug.Tools.zeusBolt;
 import tech.nully.primplug.crafting.overridenRecipes.overridenRecipeItems;
 
 public class armorRecipes {
