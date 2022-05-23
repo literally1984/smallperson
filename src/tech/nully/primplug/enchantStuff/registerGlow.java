@@ -6,7 +6,7 @@ import java.lang.reflect.Field;
 
 
 public class registerGlow {
-    public static void registerGlow() {
+    public static void registerGlo() {
         try {
             Field f = Enchantment.class.getDeclaredField("acceptingNew");
             f.setAccessible(true);
