@@ -3,7 +3,6 @@ package tech.nully.primplug.Listeners;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.Action;
-import org.bukkit.event.inventory.ClickType;
 import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
 
@@ -13,8 +12,11 @@ public class PlayerPutOnHelmet implements Listener{
     
     @EventHandler
     public void OnPlayerPutOnHelmet(InventoryClickEvent e) {
-        if (e.getClick().equals(ClickType.LEFT)) {
-            
+        if (PrimItem.isPrimItem(e.getCurrentItem()) == false) return;
+        PrimItem primItem = PrimItem.getPrimItem(e.getCurrentItem());
+        if (primItem.getPrimType().equals("helmet")) {
+            e.getWhoClicked().getInventory().setHelmet(e.getCurrentItem());
+            e.getWhoClicked().setItemOnCursor(null);
         }
     }
 
@@ -24,7 +26,7 @@ public class PlayerPutOnHelmet implements Listener{
             if (PrimItem.isPrimItem(e.getPlayer().getItemInHand()) == false) return;
             PrimItem prim = PrimItem.getPrimItem(e.getPlayer().getItemInHand());
             if (prim.getPrimType().equals("helmet")) {
-                e.getPlayer().getInventory().setItem(103, e.getPlayer().getItemInHand());
+                e.getPlayer().getInventory().setHelmet(e.getPlayer().getItemInHand());
             }
         }
     }
