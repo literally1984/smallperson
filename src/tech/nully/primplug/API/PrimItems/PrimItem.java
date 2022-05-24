@@ -1,7 +1,11 @@
 package tech.nully.primplug.API.PrimItems;
 
 import org.bukkit.inventory.ItemStack;
+
+import tech.nully.primplug.baseMethods;
 import tech.nully.primplug.API.Items.Rarity.Rarity;
+import tech.nully.primplug.Armor.baseAdder;
+import tech.nully.primplug.enchantStuff.enchantMechanic;
 
 import java.util.HashMap;
 import java.util.List;
@@ -20,13 +24,17 @@ public class PrimItem{
     private List<String> enchants;
     private Rarity rarity;
     private String type;
+    private baseAdder b = new baseAdder();
+    
+    private String getItemType(ItemStack item) {
+        if (item.getItemMeta().getLore().get(4).equals(b.ability() + "Passive Ability: Zeus' Wrath")) return "weapon";
+    }
 
     public PrimItem(ItemStack i) {
         this.i = i;
         String[] EXPLine = i.getItemMeta().getLore().get(i.getItemMeta().getLore().size() -3).split("/");
         this.EXP = Integer.parseInt(EXPLine[1]);
         this.level = Integer.parseInt(EXPLine[0]);
-        //TODO: add enchants
         this.rarity = new Rarity(i.getItemMeta().getLore().get(i.getItemMeta().getLore().size()-1).substring(3, i.getItemMeta().getLore().get(i.getItemMeta().getLore().size()-1).length()-1));
         for (String s : i.getItemMeta().getLore()) {
             if (s.contains("Damage:")) {
@@ -38,9 +46,15 @@ public class PrimItem{
                 this.magicDefense = Integer.parseInt(lore.get(index + 3).split(" ")[1]);
                 this.mana = Integer.parseInt(lore.get(index + 4).split(" ")[1]);
                 this.stamina = Integer.parseInt(lore.get(index + 5).split(" ")[1]);
-                break;
             }
+            // Loops through the full list of enchantments
+            for (String ench : enchantMechanic.getEnchants())
+
+                if (s.contains(ench)) {
+                    this.enchants.add(ench);
+                }
         }
+
         primItems.put(i, this);
     }
 
