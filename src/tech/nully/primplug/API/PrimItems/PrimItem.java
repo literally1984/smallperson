@@ -21,6 +21,7 @@ public class PrimItem{
         this.EXP = Integer.parseInt(EXPLine[1]);
         this.level = Integer.parseInt(EXPLine[0]);
         //TODO: add enchants
+        
         this.rarity = new Rarity(i.getItemMeta().getLore().get(i.getItemMeta().getLore().size()-1).substring(3, i.getItemMeta().getLore().get(i.getItemMeta().getLore().size()-1).length()-1));
         if (i.getType().toString().toLowerCase().contains("sword")) {
             this.type = "sword";

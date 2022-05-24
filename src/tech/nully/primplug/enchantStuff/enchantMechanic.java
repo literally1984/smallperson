@@ -19,7 +19,7 @@ public class enchantMechanic {
             return 5;
         } else return 69;
     }
-    private final String[] possibleSwordEnchants = {"Sharpness", "Smite", "Fire Aspect"};
+    private final String[] possibleSwordEnchants = {"Sharpness", "Smite", "Fire Aspect", "Kockback", "Bane of Arthropods", "Mending", };
     private static HashMap<String, Integer> enchantLevels = new HashMap<String, Integer>();
 
     public static void createEnchantHashMap() {
@@ -94,9 +94,13 @@ public class enchantMechanic {
     }
 
     // the Integer in the pair returns the index of the enchant in the item's lore
+    //TODO: complete this
     public Pair<Boolean, Integer> checkIsEnchanted(ItemStack item) {
         if (b.checkIsWeapon(item)) {
-            for (String s : item.getItemMeta().getLore()) {
+            // Reverse loops through the item's lore
+            for (int i = item.getItemMeta().getLore().size() - 1; i < 1; i--) {
+
+                String s = item.getItemMeta().getLore().get(i);
                 for (String ench : possibleSwordEnchants) {
                     if (s.contains(ench)) {
                         List<String> lore = item.getItemMeta().getLore();
@@ -107,6 +111,4 @@ public class enchantMechanic {
         }
         return new Pair<Boolean,Integer>(false, null);
     }
-
-
 }
