@@ -2,7 +2,7 @@ package tech.nully.primplug.Armor;
 
 import org.bukkit.ChatColor;
 import org.bukkit.inventory.ItemStack;
-import tech.nully.primplug.API.Items.rarityObject;
+import tech.nully.primplug.API.PrimItems.PrimItem;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -17,8 +17,8 @@ public class baseAdder {
         itemLore.add(ChatColor.GRAY + "Magic DEF: " + ChatColor.LIGHT_PURPLE + "" + magicDef);
         itemLore.add(ChatColor.GRAY + "Mana: " + ChatColor.AQUA + "" + mana);
         itemLore.add(ChatColor.GRAY + "Stamina: " + ChatColor.GOLD + "" + stamina);
-        rarityObject r = new rarityObject(item);
-        itemLore.add(ChatColor.GRAY + "----" + ChatColor.WHITE + "0/" + r.getMaxUpgrades() + ChatColor.GRAY + "----");
+        PrimItem prim = new PrimItem(item);
+        itemLore.add(ChatColor.GRAY + "----" + ChatColor.WHITE + "0/" + prim.getRarity().getMaxUpgrades() + ChatColor.GRAY + "----");
         item.getItemMeta().setLore(itemLore);
         return itemLore;
     }

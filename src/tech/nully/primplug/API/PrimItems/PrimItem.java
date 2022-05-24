@@ -9,6 +9,12 @@ import java.util.List;
 public class PrimItem{
     static HashMap<ItemStack, PrimItem> primItems = new HashMap<ItemStack, PrimItem>();
     private ItemStack i;
+    private int damage;
+    private int magicDamage;
+    private int defense;
+    private int magicDefense;
+    private int mana;
+    private int stamina;
     private int EXP;
     private int level;
     private List<String> enchants;
@@ -22,11 +28,8 @@ public class PrimItem{
         this.level = Integer.parseInt(EXPLine[0]);
         //TODO: add enchants
         this.rarity = new Rarity(i.getItemMeta().getLore().get(i.getItemMeta().getLore().size()-1).substring(3, i.getItemMeta().getLore().get(i.getItemMeta().getLore().size()-1).length()-1));
-        if (i.getType().toString().toLowerCase().contains("sword")) {
-            this.type = "sword";
-        }
-        primItems.put(i, this);
 
+        primItems.put(i, this);
     }
 
     public ItemStack getItem() {
