@@ -1,14 +1,13 @@
 package tech.nully.primplug.API.PrimItems;
 
+import java.util.HashMap;
+import java.util.List;
+
 import org.bukkit.inventory.ItemStack;
 
-import tech.nully.primplug.baseMethods;
 import tech.nully.primplug.API.Items.Rarity.Rarity;
 import tech.nully.primplug.Armor.baseAdder;
 import tech.nully.primplug.enchantStuff.enchantMechanic;
-
-import java.util.HashMap;
-import java.util.List;
 
 public class PrimItem{
     static HashMap<ItemStack, PrimItem> primItems = new HashMap<ItemStack, PrimItem>();
@@ -27,8 +26,17 @@ public class PrimItem{
     private baseAdder b = new baseAdder();
     
     private String getItemType(ItemStack item) {
-        if (item.getItemMeta().getLore().get(4).equals(b.ability() + "Passive Ability: Zeus' Wrath")) return "weapon";
+        // TODO Finish this
+        int stats = 7;
+        if (item.getItemMeta().getLore().get(stats + 4).equals(b.ability() + "Passive Ability: Zeus' Wrath")) return "weapon";
+        if (item.getItemMeta().getLore().get(stats + 2).equals(b.ability() + "Passive ability: Bloodthirst")) return "weapon";
+        if (item.getType().toString().toLowerCase().contains("helmet") ||
+        item.getType().toString().toLowerCase().contains("chestplate") ||
+        item.getType().toString().toLowerCase().contains("leggings") ||
+        item.getType().toString().toLowerCase().contains("boots")) return "armor";
+        else return null;
     }
+
 
     public PrimItem(ItemStack i) {
         this.i = i;
@@ -59,7 +67,9 @@ public class PrimItem{
     }
 
     public static PrimItem getPrimItem(ItemStack i) {
-        return primItems.get(i);
+        if (primItems.containsKey(i)) {
+            return primItems.get(i);
+        } else return new PrimItem(i);
     }
 
     public int getDamage() {
@@ -104,5 +114,9 @@ public class PrimItem{
 
     public Rarity getRarity() {
         return this.rarity;
+    }
+
+    public String getPrimType() {
+        return this.type;
     }
 }
