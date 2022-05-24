@@ -18,6 +18,7 @@ public class PrimPlayer {
 
     private int Stamina;
     private int MaxStamina;
+    private int bounty;
 
     private boolean isInForm;
     private String form;

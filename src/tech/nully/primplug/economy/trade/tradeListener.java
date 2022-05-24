@@ -1,4 +1,4 @@
-package tech.nully.primplug.trade;
+package tech.nully.primplug.economy.trade;
 
 import org.bukkit.ChatColor;
 import org.bukkit.DyeColor;
