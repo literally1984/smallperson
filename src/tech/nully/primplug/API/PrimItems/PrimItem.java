@@ -23,9 +23,9 @@ public class PrimItem{
     private List<String> enchants;
     private Rarity rarity;
     private String type;
-    private baseAdder b = new baseAdder();
+    private static baseAdder b = new baseAdder();
     
-    private String getItemType(ItemStack item) {
+    private static String getItemType(ItemStack item) {
         // TODO Finish this
         int stats = 7;
         if (item.getItemMeta().getLore().get(stats + 4).equals(b.ability() + "Passive Ability: Zeus' Wrath")) return "weapon";
@@ -37,8 +37,14 @@ public class PrimItem{
         else return null;
     }
 
+    public static boolean isPrimItem(ItemStack item) {
+        if (getItemType(item) == null) {
+            return true;
+        } else return false;
+    }
 
-    public PrimItem(ItemStack i) {
+
+    private PrimItem(ItemStack i) {
         this.i = i;
         String[] EXPLine = i.getItemMeta().getLore().get(i.getItemMeta().getLore().size() -3).split("/");
         this.EXP = Integer.parseInt(EXPLine[1]);

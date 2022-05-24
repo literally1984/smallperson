@@ -21,9 +21,10 @@ public class PlayerPutOnHelmet implements Listener{
     @EventHandler
     public void OnPlayerInteractHelmet(PlayerInteractEvent e) {
         if (e.getAction().equals(Action.RIGHT_CLICK_AIR) || e.getAction().equals(Action.RIGHT_CLICK_BLOCK)) {
+            if (PrimItem.isPrimItem(e.getPlayer().getItemInHand()) == false) return;
             PrimItem prim = PrimItem.getPrimItem(e.getPlayer().getItemInHand());
             if (prim.getPrimType().equals("helmet")) {
-                
+                e.getPlayer().getInventory().setItem(103, e.getPlayer().getItemInHand());
             }
         }
     }
