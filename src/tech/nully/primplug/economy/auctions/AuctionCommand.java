@@ -17,7 +17,9 @@ public class AuctionCommand implements CommandExecutor{
         }
 
         if (cmd.getName().equalsIgnoreCase("auc")) {
-            if ()
+            if (!(sender instanceof Player)){
+            sender.sendMessage("Opening Auction");
+            }
         }
         return false;
     }
