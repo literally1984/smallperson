@@ -20,6 +20,7 @@ import tech.nully.primplug.Tools.zeusBolt;
 import tech.nully.primplug.enchantStuff.EnchantGUI;
 import tech.nully.primplug.enchantStuff.enchantMechanic;
 import tech.nully.primplug.enchantStuff.registerGlow;
+import tech.nully.primplug.magic.spellItems;
 import tech.nully.primplug.playerStatManagers.manaManager.passiveManaAdder;
 import tech.nully.primplug.recipeBook.recipeCommand;
 import tech.nully.primplug.rightClickPlayerMechanic.rightClickPlayer;
@@ -45,6 +46,7 @@ public class Main extends JavaPlugin {
 
         instance = this;
 
+        spellItems.init();
         PetheriteSet.init();
         Talisman.init();
         Drakon.init();

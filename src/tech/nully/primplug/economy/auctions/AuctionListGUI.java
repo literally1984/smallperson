@@ -13,7 +13,8 @@ public class AuctionListGUI {
         int IndexOfInv = 0;
         for (Long l : AuctionCommand.auctions.keySet()) {
             AucInv.setItem(AvaliableSlots[IndexOfInv], AuctionCommand.auctions.get(l).getItem());
+            IndexOfInv++;
         }
-        
+
     }
 }

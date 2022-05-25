@@ -13,27 +13,7 @@ public class AuctionTimeExtendEvent extends Event implements Cancellable {
     private Player BidSniper;
 
     public AuctionTimeExtendEvent(Player BidderBefore, Player BidSniper, List<ItemStack> hotbar, List<String> spells) {
-        this.player = player;
-        this.form = isInBattleForm;
-        this.hotbar = hotbar;
-        this.spells = spells;
-        this.isCancelled = false;
-    }
-
-    public Player getPlayer() {
-        return this.player;
-    }
-
-    public List<ItemStack> getBeforeHotbar() {
-        return this.hotbar;
-    }
-
-    public boolean getForm() {
-        return this.form;
-    }
-
-    public List<String> getSpells() {
-        return this.spells;
+        // TODO: Add the setters and getters Flag: Labor
     }
 
     @Override

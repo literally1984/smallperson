@@ -66,8 +66,6 @@ public class playerDamageListener implements Listener {
 
                         finalDamage = finalDamage + d.getArmorDamage(playerDamager) + dmg.getItemDamage(playerDamager.getItemInHand());
                     }
-                    // TODO: finish revamping the rest of thsi stuff
-
                     // Does the final damage
                 }
 
