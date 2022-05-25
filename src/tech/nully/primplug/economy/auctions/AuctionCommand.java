@@ -24,10 +24,6 @@ public class AuctionCommand implements CommandExecutor{
 
         // Command handler
         if (cmd.getName().equalsIgnoreCase("auc")) {
-<<<<<<< HEAD
-            if (!(sender instanceof Player)){
-            sender.sendMessage("Opening Auction");
-=======
             if (args[0].equalsIgnoreCase("start") && args.length == 6) {
 
                 // Checks if all of the number args are int
@@ -51,7 +47,6 @@ public class AuctionCommand implements CommandExecutor{
 
             if (args[0].equalsIgnoreCase("list") || args.length == 1) {
                 
->>>>>>> ba7a2628b105027194fa4dda1d13e73454d31061
             }
         }
         return false;
