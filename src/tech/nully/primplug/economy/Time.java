@@ -33,7 +33,7 @@ public class Time {
 
     public void takeHours(int hours) {
         if (this.hours <= 0) {
-            this.days = this.days - 1;
+            takeDays(1);
             this.hours = 23;
             this.minutes = 59;
             this.seconds = 59;
@@ -46,9 +46,9 @@ public class Time {
         return this.minutes;
     }
 
-    public void setminutes(int minutes) {
+    public void takeMinutes(int minutes) {
         if (this.minutes <= 0) {
-            this.hours = this.hours - 1;
+            takeHours(1);
             this.minutes = 59;
             this.seconds = 59;
             return;
@@ -66,7 +66,7 @@ public class Time {
 
     public void takeSeconds(int seconds) {
         if (this.seconds <= 0) {
-            this.minutes = this.minutes - 1;
+            takeMinutes(1);
             this.seconds = 59;
             return;
         }
