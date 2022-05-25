@@ -10,11 +10,23 @@ public class Auction {
     private ItemStack AucItem;
     private Time TimeLeft;
 
+    private Player highestBidder;
+    private int highestBid;
+
     public Auction(Player Auctioner, int startingbid, ItemStack AucItem, Time timeLeft) {
         this.Auctioner = Auctioner;
         this.startingbid = startingbid;
         this.AucItem = AucItem;
         this.TimeLeft = timeLeft;
+        this.highestBidder = null;
+        this.highestBid = 0;
+    }
+
+    public void setBid(Player bidder, int amount) {
+        if (amount > this.highestBid) {
+            this.highestBidder = bidder;
+            this.highestBid = amount;
+        }
     }
 
     public Player getPlayer() {
