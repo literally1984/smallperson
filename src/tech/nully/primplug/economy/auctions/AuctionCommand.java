@@ -6,12 +6,11 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import tech.nully.primplug.economy.Time;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashMap;
 
 public class AuctionCommand implements CommandExecutor{
 
-    private List<Auction> aucList = new ArrayList<>();
+    public static HashMap<Long, Auction> auctions = new HashMap<Long, Auction>();
 
     @Override
     public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
@@ -40,9 +39,14 @@ public class AuctionCommand implements CommandExecutor{
                 }
 
                 // Creates the auction
-                Player p = (Player) sender;
-                Time time = new Time(Integer.parseInt(args[1]), Integer.parseInt(args[2]), Integer.parseInt(args[3]), Integer.parseInt(args[4]));
-                Auction auc = new Auction(p, Integer.parseInt(args[5]), p.getItemInHand(), time);
+                if (allIsNumb) {
+                    Player p = (Player) sender;
+                    Time time = new Time(Integer.parseInt(args[1]), Integer.parseInt(args[2]), Integer.parseInt(args[3]), Integer.parseInt(args[4]));
+                    long timeInSecs = time.getSeconds() + (time.getMinutes()*60) + (time.getHours()*60*60) + (time.getDays()*24*60*60);
+                    Auction auc = new Auction(p, Integer.parseInt(args[5]), p.getItemInHand(), time);
+                    auctions.put(timeInSecs, auc);
+                    Auction.sortAuctions();
+                }
             }
 
             if (args[0].equalsIgnoreCase("list") || args.length == 1) {
@@ -51,5 +55,4 @@ public class AuctionCommand implements CommandExecutor{
         }
         return false;
     }
-
 }

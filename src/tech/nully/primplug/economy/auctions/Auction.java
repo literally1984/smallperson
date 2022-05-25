@@ -1,7 +1,13 @@
 package tech.nully.primplug.economy.auctions;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.List;
+
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
+
 import tech.nully.primplug.economy.Time;
 
 public class Auction {
@@ -43,5 +49,26 @@ public class Auction {
 
     public Time getTimeLeft() {
         return this.TimeLeft;
+    }
+
+    public Player getHighestBidder() {
+        return this.highestBidder;
+    }
+    
+    public static void sortAuctions() {
+        List<Long> times = new ArrayList<>();
+        for (long l : AuctionCommand.auctions.keySet()) {
+            times.add(l);
+        }
+        Long[] timesArr = null;
+        timesArr = times.toArray(timesArr);
+        Arrays.sort(timesArr);
+        HashMap<Long, Auction> newAuctions = new HashMap<Long, Auction>();
+        for (Long timez : timesArr) {
+            newAuctions.put(timez, AuctionCommand.auctions.get(timez));
+        }
+        AuctionCommand.auctions = newAuctions;
+        newAuctions = null;
+        System.gc();
     }
 }
