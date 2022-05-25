@@ -45,7 +45,7 @@ public class AuctionCommand implements CommandExecutor{
                 Auction auc = new Auction(p, Integer.parseInt(args[5]), p.getItemInHand(), time);
             }
 
-            if (args[0].equalsIgnoreCase("list")) {
+            if (args[0].equalsIgnoreCase("list") || args.length == 1) {
                 
             }
         }
