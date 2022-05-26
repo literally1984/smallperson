@@ -12,9 +12,12 @@ public class AuctionListGUI {
         Inventory AucInv = Bukkit.createInventory(null, 54, ChatColor.BLACK + "Auction House");
         int IndexOfInv = 0;
         for (Long l : AuctionCommand.auctions.keySet()) {
+            if (IndexOfInv > 27) break;
             AucInv.setItem(AvaliableSlots[IndexOfInv], AuctionCommand.auctions.get(l).getItem());
             IndexOfInv++;
         }
+
+        p.openInventory(AucInv);
 
     }
 }

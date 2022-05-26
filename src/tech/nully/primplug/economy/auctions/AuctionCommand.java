@@ -42,7 +42,7 @@ public class AuctionCommand implements CommandExecutor{
                 if (allIsNumb) {
                     Player p = (Player) sender;
                     Time time = new Time(Integer.parseInt(args[1]), Integer.parseInt(args[2]), Integer.parseInt(args[3]), Integer.parseInt(args[4]));
-                    long timeInSecs = time.getSeconds() + (time.getMinutes()*60) + (time.getHours()*60*60) + (time.getDays()*24*60*60);
+                    long timeInSecs = time.getSeconds() + (time.getMinutes()* 60L) + ((long) time.getHours() *60*60) + ((long) time.getDays() *24*60*60);
                     Auction auc = new Auction(p, Integer.parseInt(args[5]), p.getItemInHand(), time);
                     auctions.put(timeInSecs, auc);
                     Auction.sortAuctions();
