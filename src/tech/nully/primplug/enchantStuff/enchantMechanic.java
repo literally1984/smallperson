@@ -13,13 +13,9 @@ import tech.nully.primplug.baseMethods;
 public class enchantMechanic {
     // makes a method that prints out rick roll lyrics
     baseMethods b = new baseMethods();
-
-    private int getPossibleEncLevels(String enchant) {
-        if (enchant.equals("Sharpness") || enchant.equals("Smite") || enchant.equals("Efficiency")) {
-            return 5;
-        } else return 69;
-    }
-    private final String[] possibleSwordEnchants = {"Sharpness", "Smite", "Fire Aspect", "Kockback", "Bane of Arthropods", "Mending", };
+    // TODO: complete the lists of enchants
+    private static final String[] SwordEnchants = {"Sharpness", "Fire Aspect,", "Unbreaking", };
+    private static List<String> possibleEnchants = new ArrayList<>();
     private static HashMap<String, Integer> enchantLevels = new HashMap<String, Integer>();
 
     public static void createEnchantHashMap() {
@@ -37,10 +33,9 @@ public class enchantMechanic {
         enchantLevels.put("Feather Falling", 4);
         enchantLevels.put("Sharpness", 5);
     }
-
-    
-
-
+    public static List<String> getEnchants() {
+        return possibleEnchants;
+    }
     public void applyEnchants(ItemStack item, List<String> enchants) {
         // gets the Item's lore and gets the line which the rarity is stated
         List<String> lore = item.getItemMeta().getLore();
@@ -79,14 +74,14 @@ public class enchantMechanic {
         // makes a list of the needed enchants to be applied
         List<String> neededEnchants = new ArrayList<String>();
         Random rand = new Random();
-        int enchantIndex = rand.nextInt(possibleSwordEnchants.length - 1);
+        int enchantIndex = rand.nextInt(SwordEnchants.length - 1);
 
         // loops and adds a random enchantment 3 times
         for (int i = 0; i < rand.nextInt(4); i++) {
 
             // gets a random element out of the possibleSwordEnchants list
             if (b.checkIsWeapon(item)) {
-                neededEnchants.add(possibleSwordEnchants[enchantIndex]);
+                neededEnchants.add(SwordEnchants[enchantIndex]);
             }
         }
 
@@ -97,11 +92,8 @@ public class enchantMechanic {
     //TODO: complete this
     public Pair<Boolean, Integer> checkIsEnchanted(ItemStack item) {
         if (b.checkIsWeapon(item)) {
-            // Reverse loops through the item's lore
-            for (int i = item.getItemMeta().getLore().size() - 1; i < 1; i--) {
-
-                String s = item.getItemMeta().getLore().get(i);
-                for (String ench : possibleSwordEnchants) {
+            for (String s : item.getItemMeta().getLore()) {
+                for (String ench : SwordEnchants) {
                     if (s.contains(ench)) {
                         List<String> lore = item.getItemMeta().getLore();
                         return new Pair<Boolean,Integer>(true, lore.indexOf(s));

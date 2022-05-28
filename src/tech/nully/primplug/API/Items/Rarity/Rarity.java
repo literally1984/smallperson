@@ -43,15 +43,15 @@ public class Rarity {
         }
     }
 
-    public int GetMaxUpgrades() {
+    public int getMaxUpgrades() {
         return this.maxUpgrades;
     }
 
-    public int GetAddedDamage() {
+    public int getAddedDamage() {
         return this.addedDamage;
     }
 
-    public String getRarity() {
+    public String getRarityName() {
         return this.Name;
     }
 

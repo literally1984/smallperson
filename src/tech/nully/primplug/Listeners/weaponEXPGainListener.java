@@ -8,7 +8,7 @@ import tech.nully.primplug.API.PrimItems.PrimPlayer;
 
 public class weaponEXPGainListener implements Listener {
     @EventHandler
-    public void onEntityHit(EntityDamageEvent e) {
+    public void OnSwordEXPGain(EntityDamageEvent e) {
         if (e.getEntity() instanceof Player) {
             Player p = (Player) e.getEntity();
             PrimPlayer pl = new PrimPlayer(p);

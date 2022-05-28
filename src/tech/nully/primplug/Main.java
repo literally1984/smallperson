@@ -1,5 +1,7 @@
 package tech.nully.primplug;
 
+import com.comphenix.protocol.ProtocolLibrary;
+import com.comphenix.protocol.ProtocolManager;
 import org.bukkit.ChatColor;
 import org.bukkit.plugin.java.JavaPlugin;
 import tech.nully.primplug.Armor.armorItems.*;
@@ -18,12 +20,15 @@ import tech.nully.primplug.Tools.zeusBolt;
 import tech.nully.primplug.enchantStuff.EnchantGUI;
 import tech.nully.primplug.enchantStuff.enchantMechanic;
 import tech.nully.primplug.enchantStuff.registerGlow;
+import tech.nully.primplug.magic.spellItems;
 import tech.nully.primplug.playerStatManagers.manaManager.passiveManaAdder;
 import tech.nully.primplug.recipeBook.recipeCommand;
 import tech.nully.primplug.rightClickPlayerMechanic.rightClickPlayer;
 import tech.nully.primplug.upgradeItems.upgradeCommand;
 
 public class Main extends JavaPlugin {
+
+    private static ProtocolManager protocolManager;
     private static Main instance;
     passiveManaAdder p = new passiveManaAdder();
 
@@ -31,10 +36,17 @@ public class Main extends JavaPlugin {
         return instance;
     }
 
+    public static ProtocolManager getProtocolManager() {
+        return protocolManager;
+    }
+
     @Override
     public void onEnable() {
+        protocolManager = ProtocolLibrary.getProtocolManager();
+
         instance = this;
 
+        spellItems.init();
         PetheriteSet.init();
         Talisman.init();
         Drakon.init();
@@ -82,6 +94,7 @@ public class Main extends JavaPlugin {
         getServer().getConsoleSender().sendMessage("--------------------------------------------");
         getServer().getConsoleSender().sendMessage("--------------------------------------------");
         saveDefaultConfig();
+
     }
 
     @Override

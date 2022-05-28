@@ -26,7 +26,7 @@ public class spellCast {
     public boolean IsSpell(ItemStack item) {
         if (item.getItemMeta().getLore() == fireballLore) {
             return true;
-            // TODO: Finish this
+            // TODO: Finish this Flag: Labor
         }
         return false;
     }

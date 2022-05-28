@@ -19,6 +19,6 @@ public class playerJoinListener implements Listener{
             file.saveFile(e.getPlayer().getDisplayName());
         }
 
-        PrimPlayer pPlayer = new PrimPlayer(e.getPlayer());
+        PrimPlayer pPlayer = PrimPlayer.getPrimPlayer(e.getPlayer());
     }
 }

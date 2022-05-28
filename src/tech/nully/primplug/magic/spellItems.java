@@ -16,9 +16,9 @@ public class spellItems {
         // TODO: register this in main
         makeFireballSpell();
         makeSpellScrolls();
+        makeMeteorSpell();
     }
 
-    static baseAdder b = new baseAdder();
 
     public static HashMap<String, ItemStack> spellConverter = new HashMap<String, ItemStack>();
     public static HashMap<ItemStack, String> RspellConverter = new HashMap<ItemStack, String>();
@@ -42,7 +42,7 @@ public class spellItems {
         FireballItemLore.add("Launches a fireball in the direction that you");
         FireballItemLore.add("look at, causing a an explosion.");
         FireballItemLore.add("");
-        FireballItemLore.add(b.uncommon() + "UNCOMMON");
+        FireballItemLore.add(baseAdder.uncommon() + "UNCOMMON");
 
         FireballMeta.setLore(FireballItemLore);
         spellConverter.put(FireballMeta.getDisplayName(), FireballSpell);
@@ -64,7 +64,7 @@ public class spellItems {
         MeteorShowerLore.add(ChatColor.YELLOW + "" + ChatColor.ITALIC + "Summons a horde of meteors behind you deal high");
         MeteorShowerLore.add(ChatColor.YELLOW + "" + ChatColor.ITALIC + "damage to your opponents");
         MeteorShowerLore.add("");
-        MeteorShowerLore.add(b.legendary() + "Legendary");
+        MeteorShowerLore.add(baseAdder.legendary() + "Legendary");
 
         MeteorShowerMeta.setLore(MeteorShowerLore);
         spellConverter.put(MeteorShowerMeta.getDisplayName(), MeteorShower);
@@ -89,7 +89,7 @@ public class spellItems {
         FireballLore.add("Launches a fireball in the direction that you");
         FireballLore.add("look at, causing a an explosion.");
         FireballLore.add("");
-        FireballLore.add(b.uncommon() + "UNCOMMON");
+        FireballLore.add(baseAdder.uncommon() + "UNCOMMON");
 
         FireballScrollMeta.setLore(FireballLore);
 
