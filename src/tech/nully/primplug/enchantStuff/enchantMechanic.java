@@ -89,6 +89,7 @@ public class enchantMechanic {
     }
 
     // the Integer in the pair returns the index of the enchant in the item's lore
+    //TODO: complete this
     public Pair<Boolean, Integer> checkIsEnchanted(ItemStack item) {
         if (b.checkIsWeapon(item)) {
             for (String s : item.getItemMeta().getLore()) {
@@ -102,6 +103,4 @@ public class enchantMechanic {
         }
         return new Pair<Boolean,Integer>(false, null);
     }
-
-
 }
