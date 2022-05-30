@@ -1,13 +1,12 @@
 package tech.nully.primplug.API.PrimItems;
 
-import java.util.HashMap;
-import java.util.List;
-
 import org.bukkit.inventory.ItemStack;
-
 import tech.nully.primplug.API.Items.Rarity.Rarity;
 import tech.nully.primplug.Armor.baseAdder;
 import tech.nully.primplug.enchantStuff.enchantMechanic;
+
+import java.util.HashMap;
+import java.util.List;
 
 public class PrimItem{
     static HashMap<ItemStack, PrimItem> primItems = new HashMap<ItemStack, PrimItem>();
@@ -38,7 +37,7 @@ public class PrimItem{
     }
 
     public static boolean isPrimItem(ItemStack item) {
-        if (getItemType(item) == null) {
+        if (getItemType(item) != null) {
             return true;
         } else return false;
     }
@@ -46,11 +45,19 @@ public class PrimItem{
 
     private PrimItem(ItemStack i) {
         this.i = i;
-        String[] EXPLine = i.getItemMeta().getLore().get(i.getItemMeta().getLore().size() -3).split("/");
-        this.EXP = Integer.parseInt(EXPLine[1]);
-        this.level = Integer.parseInt(EXPLine[0]);
+
+        // The EXP line will look like: Level: x || EXP: x/x
+        String[] EXPLine = i.getItemMeta().getLore().get(i.getItemMeta().getLore().size() -3).split("  ||  ");
+        String Level = EXPLine[1].split(": ")[1];
+        String EXP = EXPLine[2].split(": ")[1];
+
+        this.EXP = Integer.parseInt(EXP);
+        this.level = Integer.parseInt(Level);
         this.rarity = new Rarity(i.getItemMeta().getLore().get(i.getItemMeta().getLore().size()-1).substring(3, i.getItemMeta().getLore().get(i.getItemMeta().getLore().size()-1).length()-1));
+
+        // Loops through the Item's lore to get Enchants and stats ------------------
         for (String s : i.getItemMeta().getLore()) {
+            // Checks if the current line is the line that defines damage and bases the rest of the stats off of that line
             if (s.contains("Damage:")) {
                 List<String> lore = i.getItemMeta().getLore();
                 int index = lore.indexOf(s);
@@ -62,12 +69,13 @@ public class PrimItem{
                 this.stamina = Integer.parseInt(lore.get(index + 5).split(" ")[1]);
             }
             // Loops through the full list of enchantments
-            for (String ench : enchantMechanic.getEnchants())
-
+            for (String ench : enchantMechanic.getEnchants()) {
                 if (s.contains(ench)) {
                     this.enchants.add(ench);
                 }
+            }
         }
+        //---------------------------------------------------------------------------
 
         primItems.put(i, this);
     }
@@ -76,6 +84,12 @@ public class PrimItem{
         if (primItems.containsKey(i)) {
             return primItems.get(i);
         } else return new PrimItem(i);
+    }
+
+    public void AddEXP(int amount) {
+        ItemStack i = this.getItem();
+        String newExpLine = i.getItemMeta().getLore().get(i.getItemMeta().getLore().size() -3).split(" ");
+        String[] EXPLine = i.getItemMeta().getLore().set(i.getItemMeta().getLore().size() -3, );
     }
 
     public int getDamage() {
