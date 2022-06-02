@@ -88,6 +88,7 @@ public class PrimItem{
 
     public void AddEXP(int amount) {
         ItemStack i = this.getItem();
+        // TODO: Finish this
         String newExpLine = i.getItemMeta().getLore().get(i.getItemMeta().getLore().size() -3).split(" ");
         String[] EXPLine = i.getItemMeta().getLore().set(i.getItemMeta().getLore().size() -3, );
     }
