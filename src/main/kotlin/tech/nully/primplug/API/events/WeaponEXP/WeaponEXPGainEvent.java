@@ -7,9 +7,9 @@ import org.bukkit.event.HandlerList;
 import org.bukkit.inventory.ItemStack;
 
 public class WeaponEXPGainEvent extends Event implements Cancellable {
-    private ItemStack item;
-    private int EXP;
-    private Player Owner;
+    private final ItemStack item;
+    private final int EXP;
+    private final Player Owner;
     private boolean isCancelled;
 
     public WeaponEXPGainEvent(ItemStack EXPItem, int EXP, Player Owner) {
