@@ -32,7 +32,7 @@ public class WeaponEXPGainEvent extends Event implements Cancellable {
     public Player getOwner() {
         return this.Owner;
     }
-    
+
     @Override
     public boolean isCancelled() {
         return this.isCancelled;
