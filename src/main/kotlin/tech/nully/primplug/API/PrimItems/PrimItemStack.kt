@@ -6,7 +6,7 @@ import tech.nully.primplug.Armor.baseAdder
 import tech.nully.primplug.enchantStuff.enchantMechanic
 import java.util.*
 
-class PrimItem private constructor(val item: ItemStack) {
+data class PrimItem (val item: ItemStack) {
     var damage = 0
     var magicDamage = 0
     var defense = 0
@@ -23,7 +23,7 @@ class PrimItem private constructor(val item: ItemStack) {
 
         // The EXP line will look like: Level: x || EXP: x/x
         val EXPLine =
-            item.itemMeta.lore[item.itemMeta.lore.size - 3].split("  ||  ".toRegex()).dropLastWhile { it.isEmpty() }
+            item.itemMeta.lore[item.itemMeta.lore.size - 3].split(" {2}{2}| {2}".toRegex()).dropLastWhile { it.isEmpty() }
                 .toTypedArray()
         val Level = EXPLine[1].split(": ".toRegex()).dropLastWhile { it.isEmpty() }.toTypedArray()[1]
         val EXP = EXPLine[2].split(": ".toRegex()).dropLastWhile { it.isEmpty() }.toTypedArray()[1]
