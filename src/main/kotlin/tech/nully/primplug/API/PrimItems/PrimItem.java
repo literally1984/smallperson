@@ -11,7 +11,7 @@ import tech.nully.primplug.enchantStuff.enchantMechanic;
 
 public class PrimItem{
     static HashMap<ItemStack, PrimItem> primItems = new HashMap<ItemStack, PrimItem>();
-    private ItemStack i;
+    private final ItemStack i;
     private int damage;
     private int magicDamage;
     private int defense;
