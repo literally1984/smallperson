@@ -8,26 +8,31 @@ import java.util.*
 
 data class PrimItem (val item: ItemStack) {
     var damage = 0
-    var magicDamage = 0
+    private var magicDamage = 0
     var defense = 0
-    var magicDefense = 0
+    private var magicDefense = 0
     var mana = 0
     var stamina = 0
-    val eXP: Int
-    val level: Int
-    private val enchants: MutableList<String>? = null
-    val rarity: Rarity
-    val primType: String? = null
+    var exp: Int = 0
+    var level: Int = 0
+    private var enchants: MutableList<String>? = null
+    var rarity: Rarity? = null;
+    var primType: String? = null
 
-    init {
+    private fun createPrimItem(primItem: PrimItem) {
 
         // The EXP line will look like: Level: x || EXP: x/x
+
+        // Gets the line of the item lore with EXP and level on it
         val EXPLine =
-            item.itemMeta.lore[item.itemMeta.lore.size - 3].split(" {2}{2}| {2}".toRegex()).dropLastWhile { it.isEmpty() }
+            item.itemMeta.lore[item.itemMeta.lore.size - 3].split("  ||  ").dropLastWhile { it.isEmpty() }
                 .toTypedArray()
+
+        // Splits the EXPLine string into two parts, the level and the EXP
         val Level = EXPLine[1].split(": ".toRegex()).dropLastWhile { it.isEmpty() }.toTypedArray()[1]
         val EXP = EXPLine[2].split(": ".toRegex()).dropLastWhile { it.isEmpty() }.toTypedArray()[1]
-        eXP = EXP.toInt()
+        exp = EXP.toInt()
+
         level = Level.toInt()
         rarity = Rarity(
             item.itemMeta.lore[item.itemMeta.lore.size - 1].substring(
@@ -65,11 +70,12 @@ data class PrimItem (val item: ItemStack) {
     fun AddEXP(amount: Int) {
         val i = item
         // TODO: Finish this
-        val newExpLine: String =
+        // Gets the line which levels and EXP are defined and splits them by space
+        val newExpLine: Array<String> =
+            // This will result in Level:, x, ||, Exp:, x
             i.itemMeta.lore[i.itemMeta.lore.size - 3].split(" ".toRegex()).dropLastWhile { it.isEmpty() }
                 .toTypedArray()
-        val EXPLine: Array<String> =
-            i.itemMeta.lore.set(i.itemMeta.lore.size - 3 /* !!! Hit visitElement for element type: class org.jetbrains.kotlin.nj2k.tree.JKErrorExpression !!! */)
+
     }
 
     fun getEnchants(): List<String>? {
