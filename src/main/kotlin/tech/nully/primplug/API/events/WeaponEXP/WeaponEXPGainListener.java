@@ -3,7 +3,6 @@ package tech.nully.primplug.API.events.WeaponEXP;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.entity.EntityDamageByEntityEvent;
-import tech.nully.primplug.API.PrimItems.PrimItem;
 
 public class WeaponEXPGainListener {
 

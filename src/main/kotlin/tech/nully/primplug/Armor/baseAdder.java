@@ -2,7 +2,6 @@ package tech.nully.primplug.Armor;
 
 import org.bukkit.ChatColor;
 import org.bukkit.inventory.ItemStack;
-import tech.nully.primplug.API.PrimItems.PrimItem;
 
 import java.util.ArrayList;
 import java.util.List;

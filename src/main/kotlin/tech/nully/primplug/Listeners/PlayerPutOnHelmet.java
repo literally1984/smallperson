@@ -6,8 +6,6 @@ import org.bukkit.event.block.Action;
 import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
 
-import tech.nully.primplug.API.PrimItems.PrimItem;
-
 public class PlayerPutOnHelmet implements Listener{
     
     @EventHandler
