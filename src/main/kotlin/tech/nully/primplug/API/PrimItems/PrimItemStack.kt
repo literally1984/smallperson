@@ -70,12 +70,25 @@ data class PrimItem (val item: ItemStack) {
     fun AddEXP(amount: Int) {
         val i = item
         // TODO: Finish this
-        // Gets the line which levels and EXP are defined and splits them by space
-        val newExpLine: Array<String> =
-            // This will result in Level:, x, ||, Exp:, x
-            i.itemMeta.lore[i.itemMeta.lore.size - 3].split(" ".toRegex()).dropLastWhile { it.isEmpty() }
-                .toTypedArray()
 
+        // Gets the line which levels and EXP are defined and splits them by space
+        val newExpLine: MutableList<String> =
+            // This will result in Level:, x, ||, Exp:, x/x
+            i.itemMeta.lore[i.itemMeta.lore.size - 3].split(" ".toRegex()).dropLastWhile { it.isEmpty() }
+                .toMutableList()
+        val ExpLine = newExpLine[4].split("".toRegex()).dropLastWhile { it.isEmpty() }.toTypedArray()
+        var LevelLine = newExpLine[1]
+
+        ExpLine[0] = (newExpLine[0].toInt() + amount).toString()
+
+        // Checks if the EXP is greater than the max EXP for the level and if so, levels up
+        if (ExpLine[0] > ExpLine[2]) {
+            ExpLine[0] = (ExpLine[2].toInt() - ExpLine[0].toInt()).toString()
+            LevelLine = (LevelLine.toInt() + 1).toString()
+        }
+
+        this.item.itemMeta.lore[i.itemMeta.lore.size - 3] =
+            "Level: $LevelLine || EXP: ${ExpLine[0]}/${ExpLine[2]}"
     }
 
     fun getEnchants(): List<String>? {
