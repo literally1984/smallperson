@@ -19,7 +19,7 @@ data class PrimItem (val item: ItemStack) {
     var rarity: Rarity? = null;
     var primType: String? = null
 
-    private fun createPrimItem(primItem: PrimItem) {
+    init {
 
         // The EXP line will look like: Level: x || EXP: x/x
 
@@ -89,10 +89,6 @@ data class PrimItem (val item: ItemStack) {
 
         this.item.itemMeta.lore[i.itemMeta.lore.size - 3] =
             "Level: $LevelLine || EXP: ${ExpLine[0]}/${ExpLine[2]}"
-    }
-
-    fun getEnchants(): List<String>? {
-        return enchants
     }
 
     companion object {
