@@ -18,6 +18,7 @@ public class formSwitchEvent extends Event implements Cancellable {
     private boolean isCancelled;
 
     public formSwitchEvent(Player player, boolean isInBattleForm, List<ItemStack> hotbar, List<String> spells) {
+
         this.player = player;
         this.form = isInBattleForm;
         this.hotbar = hotbar;
