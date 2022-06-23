@@ -2,7 +2,6 @@ package tech.nully.primplug.fileSystem;
 
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
-import tech.nully.primplug.Main;
 
 import java.io.File;
 import java.io.IOException;

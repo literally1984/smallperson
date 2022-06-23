@@ -3,8 +3,6 @@ package tech.nully.primplug.playerStatManagers.manaManager;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 
-import tech.nully.primplug.Main;
-
 public class passiveManaAdder {
     public void addMana() {
         manaManager m = new manaManager();

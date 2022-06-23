@@ -7,7 +7,6 @@ import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
-import tech.nully.primplug.Main;
 import tech.nully.primplug.baseMethods;
 
 import java.util.Objects;

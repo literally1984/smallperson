@@ -8,7 +8,6 @@ import com.comphenix.protocol.events.PacketEvent;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import tech.nully.primplug.API.events.VehicleSteerEvent;
-import tech.nully.primplug.Main;
 
 public class PacketListener {
 
