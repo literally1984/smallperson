@@ -17,7 +17,9 @@ data class PPlayer(val player: Player) {
         var defense = playerStats[0]
         var mdefense = playerStats[1]
         var mana = playerStats[2]
+        var maxMana = playerStats[2]
         var stamina = playerStats[3]
+        var maxStamina = playerStats[3]
         var mode: Mode = Mode.NONE
         val talismans = ArrayList<Talisman>()
         val abilities = ArrayList<Ability>()
@@ -37,7 +39,5 @@ data class PPlayer(val player: Player) {
         for (s: String in playerConfig.getString("items.abilities").split(",".toRegex())) {
             abilities.add(AbilityUtils.getAbility(s))
         }
-
-        // TODO: finish
     }
 }
