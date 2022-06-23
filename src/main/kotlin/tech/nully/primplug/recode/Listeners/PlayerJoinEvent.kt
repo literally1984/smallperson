@@ -2,8 +2,8 @@ package tech.nully.primplug.recode.Listeners
 
 import org.bukkit.event.EventHandler
 import org.bukkit.event.player.PlayerJoinEvent
-import tech.nully.primplug.recode.Utils.PItems.PPlayer
-import tech.nully.primplug.recode.Utils.PItems.PPlayerMap
+import tech.nully.primplug.recode.Utils.PItems.PPlayer.PPlayer
+import tech.nully.primplug.recode.Utils.PItems.PPlayer.PPlayerMap
 
 class PlayerJoinEvent {
 

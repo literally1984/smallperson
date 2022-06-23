@@ -1,4 +1,14 @@
 package tech.nully.primplug.recode.Utils.PItems.Abilities
 
-class Ability {
+enum class Ability {
+    Fireball,
+    MeteorSummon,
+    LightningStrike,
+    WrathOfZeus,
+
+    Berserk,
+    FlameWeapon,
+    LastStand,
+    StunArrow,
+    NONE,
 }

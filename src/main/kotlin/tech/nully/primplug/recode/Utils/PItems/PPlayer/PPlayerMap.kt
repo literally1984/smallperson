@@ -1,4 +1,4 @@
-package tech.nully.primplug.recode.Utils.PItems
+package tech.nully.primplug.recode.Utils.PItems.PPlayer
 
 import org.bukkit.entity.Player
 

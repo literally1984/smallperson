@@ -1,7 +1,10 @@
-package tech.nully.primplug.recode.Utils.PItems
+package tech.nully.primplug.recode.Utils.PItems.PPlayer
 
 import org.bukkit.entity.Player
 import tech.nully.primplug.recode.Utils.Database.YMLUtils
+import tech.nully.primplug.recode.Utils.PItems.Abilities.Ability
+import tech.nully.primplug.recode.Utils.PItems.Abilities.AbilityUtils
+import tech.nully.primplug.recode.Utils.PItems.Mode.Mode
 import tech.nully.primplug.recode.Utils.PItems.Talisman.Talisman
 import tech.nully.primplug.recode.Utils.PItems.Talisman.TalismanUtils
 import tech.nully.primplug.recode.Utils.StatUtils.StatManager
@@ -17,6 +20,7 @@ data class PPlayer(val player: Player) {
         var stamina = playerStats[3]
         var mode: Mode = Mode.NONE
         val talismans = ArrayList<Talisman>()
+        val abilities = ArrayList<Ability>()
 
         // Defines the player's file and FileConfig
         val playerFile = File("${YMLUtils.getUsersFolder()}/${player.displayName}.yml")
@@ -31,7 +35,7 @@ data class PPlayer(val player: Player) {
         }
         // Gets Player abilities from file
         for (s: String in playerConfig.getString("items.abilities").split(",".toRegex())) {
-            talismans.add(TalismanUtils.getTalisman(s))
+            abilities.add(AbilityUtils.getAbility(s))
         }
 
         // TODO: finish
