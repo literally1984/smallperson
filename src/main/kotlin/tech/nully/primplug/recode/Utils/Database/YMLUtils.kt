@@ -12,7 +12,6 @@ import java.io.IOException
 
 
 class YMLUtils {
-
     companion object {
         fun getUsersFolder(): String {
             return "${Main.instance?.dataFolder}/users/"

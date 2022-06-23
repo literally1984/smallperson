@@ -11,4 +11,6 @@ enum class Ability {
     LastStand,
     StunArrow,
     NONE,
+
+    //TODO: Add methods for enums
 }
