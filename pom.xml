@@ -99,9 +99,18 @@
             <id>PrimCoreRepos-repos</id>
             <url>https://github.com/Fangoboyo/primplugin/raw/repository</url>
         </repository>
+        <repository>
+            <id>EaglerMaven-Repo</id>
+            <url>https://github.com/darverdevs/EaglerMavenRepo/raw/main</url>
+        </repository>
     </repositories>
     <dependencies>
         <!-- PrimCore dependencies -->
+        <dependency>
+            <groupId>com.github.EaglerMaven</groupId>
+            <artifactId>PacketWrapper</artifactId>
+            <version>1.5.2</version>
+        </dependency>
         <dependency>
             <groupId>tech.nully.primcore</groupId>
             <artifactId>Vault</artifactId>

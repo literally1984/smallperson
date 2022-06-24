@@ -41,6 +41,9 @@ public class PrimPlayer {
 
         this.Spells = file.readFile(file.getFileConfig(p.getDisplayName()), "Spells");
         this.Talisman = file.readFile(file.getFileConfig(p.getDisplayName()), "Talisman");
+        for (int i = 0; i < 69; i++) {
+
+        }
 
         players.put(p, this);
     }

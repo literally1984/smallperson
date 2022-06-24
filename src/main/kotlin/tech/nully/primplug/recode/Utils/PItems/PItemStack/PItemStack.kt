@@ -6,6 +6,6 @@ import tech.nully.primplug.recode.Utils.StatUtils.ItemStat
 data class PItemStack(val item: ItemStack) {
     init {
         var stats = ItemStat(item)
-        
+        var
     }
 }
