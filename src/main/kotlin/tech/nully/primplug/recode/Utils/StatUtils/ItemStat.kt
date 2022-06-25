@@ -4,12 +4,12 @@ import org.bukkit.inventory.ItemStack
 
 data class ItemStat(val item:ItemStack) {
     init {
-        var damage: Int;
-        var defense: Int;
-        var magicDmg: Int;
-        var magicDef: Int;
-        var mana: Int;
-        var stamina: Int;
+        var damage: Int
+        var defense: Int
+        var magicDmg: Int
+        var magicDef: Int
+        var mana: Int
+        var stamina: Int
 
         // Loops through the Item's lore to find the first stat line
         for (s: String in item.itemMeta.lore) {
@@ -17,7 +17,7 @@ data class ItemStat(val item:ItemStack) {
                 val lore = item.itemMeta.lore
                 val indexOfS = lore.indexOf(s)
 
-                damage = s.split(": +")[1].toInt() // Damage
+                damage = s.split(": +")[1].toInt()// Damage
                 defense = lore[indexOfS + 1].split(": +")[1].toInt()// defense
                 magicDmg = lore[indexOfS + 2].split(": +")[1].toInt()// magic damage
                 magicDef = lore[indexOfS + 3].split(": +")[1].toInt()// magic defense
