@@ -12,7 +12,7 @@ class InventoryUtils {
     companion object {
         val base = ItemStack(Material.getMaterial(34))
         fun generateReforgeGUI(): Inventory {
-            val inv = Bukkit.createInventory(null, 54, ChatColor.BLACK.toString() + "Reforge")
+            val inv = Bukkit.createInventory(null, 54, "${ChatColor.BLACK}Reforge")
             for (i in 0..53) {
                 inv.setItem(i, base)
             }
