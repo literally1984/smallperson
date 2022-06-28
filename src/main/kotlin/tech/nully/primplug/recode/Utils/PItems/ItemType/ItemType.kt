@@ -10,5 +10,8 @@ enum class ItemType {
     AXE,
 
     PICKAXE,
-    HOE
+    HOE,
+
+    TALISMAN,
+    ABILITY,
 }
