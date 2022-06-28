@@ -1,9 +1,8 @@
 package tech.nully.primplug.recode.Utils.PItems.PItemStack
 
 import org.bukkit.inventory.ItemStack
-import tech.nully.primplug.API.Items.Rarity.Rarity
-import tech.nully.primplug.recode.Utils.Rarity.RarityUtils
-import tech.nully.primplug.recode.Utils.StatUtils.ItemStat
+import tech.nully.primplug.recode.Utils.PItems.Rarity.RarityUtils
+import tech.nully.primplug.recode.Utils.PItems.StatUtils.ItemStat
 
 data class PItemStack(val item: ItemStack) {
 

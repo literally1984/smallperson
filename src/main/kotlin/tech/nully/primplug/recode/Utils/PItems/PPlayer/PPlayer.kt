@@ -2,12 +2,12 @@ package tech.nully.primplug.recode.Utils.PItems.PPlayer
 
 import org.bukkit.entity.Player
 import tech.nully.primplug.recode.Utils.Database.YMLUtils
-import tech.nully.primplug.recode.Utils.PItems.Abilities.Ability
-import tech.nully.primplug.recode.Utils.PItems.Abilities.AbilityUtils
+import tech.nully.primplug.recode.Utils.PItems.Abilities.PlayerAbility.Ability
+import tech.nully.primplug.recode.Utils.PItems.Abilities.PlayerAbility.AbilityUtils
 import tech.nully.primplug.recode.Utils.PItems.Mode.Mode
 import tech.nully.primplug.recode.Utils.PItems.Talisman.Talisman
 import tech.nully.primplug.recode.Utils.PItems.Talisman.TalismanUtils
-import tech.nully.primplug.recode.Utils.StatUtils.StatManager
+import tech.nully.primplug.recode.Utils.PItems.StatUtils.StatManager
 import java.io.File
 
 data class PPlayer(val player: Player) {

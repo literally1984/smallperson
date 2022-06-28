@@ -1,4 +1,4 @@
-package tech.nully.primplug.recode.Utils.PItems.Abilities
+package tech.nully.primplug.recode.Utils.PItems.Abilities.PlayerAbility
 
 enum class Ability {
     Fireball,

@@ -107,40 +107,41 @@
     <dependencies>
         <!-- PrimCore dependencies -->
         <dependency>
-            <groupId>com.github.EaglerMaven</groupId>
-            <artifactId>PacketWrapper</artifactId>
-            <version>1.7.2</version>
-        </dependency>
-        <dependency>
             <groupId>tech.nully.primcore</groupId>
             <artifactId>Vault</artifactId>
             <version>1.2.26</version>
+            <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>tech.nully.primcore</groupId>
             <artifactId>MassiveCore</artifactId>
             <version>6.4.1</version>
+            <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>tech.nully.primcore</groupId>
             <artifactId>Factions</artifactId>
             <version>2.0.1</version>
+            <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>tech.nully.primcore</groupId>
             <artifactId>EffectLib</artifactId>
             <version>3.0</version>
+            <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>tech.nully.primcore</groupId>
             <artifactId>ProtocolLib</artifactId>
             <version>3.6.4</version>
+            <scope>provided</scope>
         </dependency>
         <!-- PrimCore dependencies -->
         <dependency>
             <groupId>org.jetbrains.kotlin</groupId>
             <artifactId>kotlin-stdlib</artifactId>
             <version>1.6.21</version>
+            <scope>compile</scope>
         </dependency>
         <dependency>
             <groupId>org.jetbrains.kotlin</groupId>
@@ -155,5 +156,4 @@
             <scope>provided</scope>
         </dependency>
     </dependencies>
-
 </project>

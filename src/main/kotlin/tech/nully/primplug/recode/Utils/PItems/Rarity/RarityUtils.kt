@@ -1,4 +1,4 @@
-package tech.nully.primplug.recode.Utils.Rarity
+package tech.nully.primplug.recode.Utils.PItems.Rarity
 
 import tech.nully.primplug.recode.Utils.StringUtils
 

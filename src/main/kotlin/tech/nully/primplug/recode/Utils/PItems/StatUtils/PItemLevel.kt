@@ -1,4 +1,4 @@
-package tech.nully.primplug.recode.Utils.StatUtils
+package tech.nully.primplug.recode.Utils.PItems.StatUtils
 
 import org.bukkit.inventory.ItemStack
 

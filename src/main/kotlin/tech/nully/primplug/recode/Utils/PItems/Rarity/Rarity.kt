@@ -1,4 +1,4 @@
-package tech.nully.primplug.recode.Utils.Rarity
+package tech.nully.primplug.recode.Utils.PItems.Rarity
 
 enum class Rarity {
     COMMON,

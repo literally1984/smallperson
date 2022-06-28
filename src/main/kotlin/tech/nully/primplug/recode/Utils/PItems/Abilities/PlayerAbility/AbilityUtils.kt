@@ -1,4 +1,6 @@
-package tech.nully.primplug.recode.Utils.PItems.Abilities
+package tech.nully.primplug.recode.Utils.PItems.Abilities.PlayerAbility
+
+import tech.nully.primplug.recode.Utils.PItems.Abilities.PlayerAbility.Ability
 
 class AbilityUtils {
     companion object {
