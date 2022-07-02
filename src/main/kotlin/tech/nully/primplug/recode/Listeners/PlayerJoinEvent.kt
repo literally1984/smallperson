@@ -1,15 +1,19 @@
 package tech.nully.primplug.recode.Listeners
 
+import org.bukkit.Bukkit
 import org.bukkit.event.EventHandler
+import org.bukkit.event.Listener
 import org.bukkit.event.player.PlayerJoinEvent
-import tech.nully.primplug.recode.Utils.PItems.PPlayer.PPlayer
-import tech.nully.primplug.recode.Utils.PItems.PPlayer.PPlayerMap
+import tech.nully.primplug.recode.Utils.PItems.PPlayer.BPlayer
+import tech.nully.primplug.recode.Utils.PItems.PPlayer.BPlayers
 
-class PlayerJoinEvent {
+class PlayerJoinEvent : Listener {
 
     @EventHandler
     fun playerJoinEvent(e: PlayerJoinEvent) {
-        val joiner = e.player
-        PPlayerMap.PPlayerMap[joiner] = PPlayer(joiner)
+        val bPlayer = BPlayer(e.player)
+        BPlayers.BPlayerMap?.set(e.player, bPlayer)
+        Bukkit.getServer().consoleSender.sendMessage("${e.player.displayName}'s data files have been instanced and mapped at")
+        Bukkit.getServer().consoleSender.sendMessage(bPlayer.playerFile.path)
     }
 }

@@ -1,13 +1,12 @@
 package tech.nully.primplug.recode.Utils.PItems.Abilities.ItemAbility
 
-enum class ItemAbility {
+enum class ItemAbility() {
     // Buffs
-    SpikySpikes,
-    HardenedPlates,
+    NONE();
 
-    DoubleEdge,
-    Vibro,
+    private var ability: ItemAbility? = null
 
-    // Debuffs
-    GappedArmor
+    init {
+        ability = this
+    }
 }

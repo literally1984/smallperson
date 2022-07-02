@@ -3,9 +3,9 @@ package tech.nully.primplug.recode.Utils.PItems.PItemStack
 import net.minecraft.server.v1_5_R3.ItemStack
 
 
-class PItemStackUtils {
+class BItemUtils {
 
-    var PItem: HashMap<ItemStack, PItemStack>? = null
+    var PItem: HashMap<ItemStack, BItemStack>? = null
     init {
         PItem = HashMap()
     }
