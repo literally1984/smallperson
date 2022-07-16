@@ -5,13 +5,21 @@ import org.bukkit.inventory.ShapedRecipe
 
 class RecipeManager {
     companion object {
+        val pageMap = HashMap<ShapedRecipe, RecipePage>()
+
         fun registerRecipes(recipes: Iterator<Recipe>) {
             while (recipes.hasNext()) {
                 val currentRecipe = recipes.next() as ShapedRecipe
                 val recipePage = RecipePage(currentRecipe)
-                RecipeBook.pages.add(recipePage)
-                RecipeBook.pageMap[currentRecipe] = recipePage
+
+                RecipeBook.pages.add(recipePage) // Adds the recipe page
+                pageMap[currentRecipe] = recipePage // Adds to the recipe map
+
+                textRecipeMap[currentRecipe.result.itemMeta.displayName.replace(" ", "-")] = currentRecipe
             }
         }
+
+        val textRecipeMap = HashMap<String, ShapedRecipe>()
+
     }
 }
