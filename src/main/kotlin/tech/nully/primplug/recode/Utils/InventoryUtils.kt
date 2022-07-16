@@ -26,5 +26,12 @@ class InventoryUtils {
             inv.setItem(40, baseMethods.reforgeAnvil)
             return inv
         }
+
+        fun isInDoubleChest(slot: Int): Boolean {
+            if (slot in 0..53) {
+                return true
+            }
+            return false
+        }
     }
 }

@@ -1,9 +1,9 @@
-package tech.nully.primplug.recode.Utils.RecipeBook
+package tech.nully.primplug.recode.RecipeBook
 
 import org.bukkit.Bukkit
 import org.bukkit.inventory.ItemStack
 import org.bukkit.inventory.ShapedRecipe
-import tech.nully.primplug.recode.Utils.RecipeBook.RecipeManager.Companion.pageMap
+import tech.nully.primplug.recode.RecipeBook.RecipeManager.Companion.pageMap
 
 class RecipeBook {
     companion object {

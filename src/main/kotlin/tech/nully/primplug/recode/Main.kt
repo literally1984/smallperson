@@ -7,7 +7,7 @@ import org.bukkit.plugin.Plugin
 import org.bukkit.plugin.java.JavaPlugin
 import tech.nully.primplug.recode.Listeners.PlayerJoinEvent
 import tech.nully.primplug.recode.Utils.PItems.PPlayer.BPlayers
-import tech.nully.primplug.recode.Utils.RecipeBook.RecipeManager
+import tech.nully.primplug.recode.RecipeBook.RecipeManager
 
 class Main : JavaPlugin() {
     override fun onEnable() {

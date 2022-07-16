@@ -1,4 +1,4 @@
-package tech.nully.primplug.recode.Utils.RecipeBook
+package tech.nully.primplug.recode.RecipeBook
 
 import org.bukkit.command.Command
 import org.bukkit.command.CommandExecutor
