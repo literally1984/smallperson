@@ -1,9 +1,11 @@
 package tech.nully.primplug.recode.Utils.RecipeBook
 
+import org.bukkit.Bukkit
 import org.bukkit.inventory.ItemStack
 import org.bukkit.inventory.ShapedRecipe
 
 data class RecipePage(val recipe: ShapedRecipe) {
+    val craftingLines = arrayOf(10, 11, 12, 19,20,21, 28,29,30)
     init {
         val shapeRows = recipe.shape //The default String array of a ShapedRecipe
         val shapeIndividual = ArrayList<Char>()
@@ -19,6 +21,16 @@ data class RecipePage(val recipe: ShapedRecipe) {
 
         for (recipeLetter in shapeIndividual) {
             itemStackShape.add(shapeItemStacks[recipeLetter])
+        }
+
+        // Creates the Inventory
+
+        val pageInventory = Bukkit.createInventory(null, 54, "Recipe for ${recipe.result.itemMeta.displayName}")
+
+        val iteration = 0
+        for (slot in craftingLines) {
+            pageInventory.setItem(slot, itemStackShape[iteration])
+            iteration + 1
         }
     }
 }

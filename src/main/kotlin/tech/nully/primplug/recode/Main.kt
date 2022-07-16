@@ -7,29 +7,33 @@ import org.bukkit.plugin.Plugin
 import org.bukkit.plugin.java.JavaPlugin
 import tech.nully.primplug.recode.Listeners.PlayerJoinEvent
 import tech.nully.primplug.recode.Utils.PItems.PPlayer.BPlayers
+import tech.nully.primplug.recode.Utils.RecipeBook.RecipeManager
 
 class Main : JavaPlugin() {
     override fun onEnable() {
+        val cSender = server.consoleSender
         protocolManager = ProtocolLibrary.getProtocolManager()
-        server.consoleSender.sendMessage("ProtocolManager has been successfully instanced")
+        cSender.sendMessage("ProtocolManager has been successfully instanced")
         instance = this
         BPlayers.init()
-        server.consoleSender.sendMessage("PPlayerMap has been constructed")
+        cSender.sendMessage("PPlayerMap has been constructed")
         server.pluginManager.registerEvents(PlayerJoinEvent(), this)
-        server.consoleSender.sendMessage("Registered Listeners")
-        server.consoleSender.sendMessage("--------------------------------------------")
-        server.consoleSender.sendMessage("--------------------------------------------")
-        server.consoleSender.sendMessage(
-            ChatColor.LIGHT_PURPLE.toString() + "[BnogoMMO]" + ChatColor.GREEN + " BnogoMMO recoded vdev-0.0.1 Has been Enabled"
+        cSender.sendMessage("Registered Listeners")
+
+        RecipeManager.registerRecipes(server.recipeIterator())
+        cSender.sendMessage("--------------------------------------------")
+        cSender.sendMessage("--------------------------------------------")
+        cSender.sendMessage(
+            ChatColor.LIGHT_PURPLE.toString() + "[BnogoRPG]" + ChatColor.GREEN + " BnogoRPG recoded vdev-0.0.1 Has been Enabled"
         )
-        server.consoleSender.sendMessage("--------------------------------------------")
-        server.consoleSender.sendMessage("--------------------------------------------")
+        cSender.sendMessage("--------------------------------------------")
+        cSender.sendMessage("--------------------------------------------")
         saveDefaultConfig()
     }
 
     override fun onDisable() {
         server.consoleSender.sendMessage(
-            ChatColor.LIGHT_PURPLE.toString() + "[BnogoCore]" + ChatColor.RED + " BnogoCore has been disabled D:"
+            ChatColor.LIGHT_PURPLE.toString() + "[BnogoRPG]" + ChatColor.RED + " BnogoRPG has been disabled D:"
         )
     }
 
