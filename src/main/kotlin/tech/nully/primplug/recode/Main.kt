@@ -32,7 +32,7 @@ class Main : JavaPlugin() {
         cSender.sendMessage("--------------------------------------------")
         cSender.sendMessage("--------------------------------------------")
         cSender.sendMessage(
-            ChatColor.LIGHT_PURPLE.toString() + "[BnogoRPG]" + ChatColor.GREEN + " BnogoRPG recoded vdev-0.0.1 Has been Enabled"
+            ChatColor.LIGHT_PURPLE.toString() + "[BnogoRPG]" + ChatColor.GREEN + " BnogoRPG Vdev-0.0.2 Has been Enabled"
         )
         cSender.sendMessage("--------------------------------------------")
         cSender.sendMessage("--------------------------------------------")
