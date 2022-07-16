@@ -33,5 +33,12 @@ class InventoryUtils {
             }
             return false
         }
+
+        fun isInRecipeSlot(slot: Int): Boolean {
+            if (slot in 10..12 || slot in 19..21 || slot in 28..30) {
+                return true
+            }
+            return false
+        }
     }
 }

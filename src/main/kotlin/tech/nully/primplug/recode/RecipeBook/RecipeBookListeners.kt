@@ -9,8 +9,14 @@ class RecipeBookListeners : Listener {
 
     @EventHandler
     fun onPlayerClickRecipe(e: InventoryClickEvent) {
-        if (InventoryUtils.isInDoubleChest(e.slot)) {
+        if (!InventoryUtils.isInRecipeSlot(e.slot) || e.currentItem == null) {
+            return
+        }
 
+        val clickItem = e.currentItem
+        if (RecipeBook.getRecipeFor(clickItem) != null) { // Checks if the ItemStack has a valid recipe page
+            e.whoClicked.openInventory(RecipeBook.getRecipeFor(clickItem)!!.pageInventory) // Opens recipe page inventory to player
+            return
         }
     }
 }
