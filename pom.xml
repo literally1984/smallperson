@@ -92,46 +92,38 @@
 
     <repositories>
         <repository>
-            <id>craftbukkit-repo</id>
-            <url>https://repo.mikeprimm.com/</url>
-        </repository>
-        <repository>
             <id>PrimCoreRepos-repos</id>
-            <url>https://github.com/Fangoboyo/primplugin/raw/repository</url>
-        </repository>
-        <repository>
-            <id>EaglerMaven-Repo</id>
             <url>https://github.com/darverdevs/EaglerMavenRepo/raw/main</url>
         </repository>
     </repositories>
     <dependencies>
         <!-- PrimCore dependencies -->
         <dependency>
-            <groupId>tech.nully.primcore</groupId>
+            <groupId>com.github.EaglerMaven</groupId>
             <artifactId>Vault</artifactId>
             <version>1.2.26</version>
             <scope>provided</scope>
         </dependency>
         <dependency>
-            <groupId>tech.nully.primcore</groupId>
+            <groupId>com.github.EaglerMaven</groupId>
             <artifactId>MassiveCore</artifactId>
             <version>6.4.1</version>
             <scope>provided</scope>
         </dependency>
         <dependency>
-            <groupId>tech.nully.primcore</groupId>
+            <groupId>com.github.EaglerMaven</groupId>
             <artifactId>Factions</artifactId>
             <version>2.0.1</version>
             <scope>provided</scope>
         </dependency>
         <dependency>
-            <groupId>tech.nully.primcore</groupId>
+            <groupId>com.github.EaglerMaven</groupId>
             <artifactId>EffectLib</artifactId>
             <version>3.0</version>
             <scope>provided</scope>
         </dependency>
         <dependency>
-            <groupId>tech.nully.primcore</groupId>
+            <groupId>com.github.EaglerMaven</groupId>
             <artifactId>ProtocolLib</artifactId>
             <version>3.6.4</version>
             <scope>provided</scope>
@@ -150,9 +142,9 @@
             <scope>test</scope>
         </dependency>
         <dependency>
-            <groupId>org.bukkit</groupId>
+            <groupId>com.github.EaglerMaven</groupId>
             <artifactId>craftbukkit</artifactId>
-            <version>1.5.2-R1.1-SNAPSHOT</version>
+            <version>1.5.2-R1.0</version>
             <scope>provided</scope>
         </dependency>
     </dependencies>
