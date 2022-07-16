@@ -6,21 +6,29 @@ import org.bukkit.ChatColor
 import org.bukkit.plugin.Plugin
 import org.bukkit.plugin.java.JavaPlugin
 import tech.nully.primplug.recode.Listeners.PlayerJoinEvent
+import tech.nully.primplug.recode.RecipeBook.RecipeBookListeners
 import tech.nully.primplug.recode.Utils.PItems.PPlayer.BPlayers
 import tech.nully.primplug.recode.RecipeBook.RecipeManager
 
 class Main : JavaPlugin() {
     override fun onEnable() {
+        instance = this
         val cSender = server.consoleSender
         protocolManager = ProtocolLibrary.getProtocolManager()
         cSender.sendMessage("ProtocolManager has been successfully instanced")
-        instance = this
+
         BPlayers.init()
         cSender.sendMessage("PPlayerMap has been constructed")
+
+        cSender.sendMessage("Registering listeners")
         server.pluginManager.registerEvents(PlayerJoinEvent(), this)
+        server.pluginManager.registerEvents(RecipeBookListeners(), this)
         cSender.sendMessage("Registered Listeners")
 
+        cSender.sendMessage("Enabling RecipeBook...")
         RecipeManager.registerRecipes(server.recipeIterator())
+        cSender.sendMessage("RecipeBook has been enabled")
+
         cSender.sendMessage("--------------------------------------------")
         cSender.sendMessage("--------------------------------------------")
         cSender.sendMessage(
