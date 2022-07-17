@@ -1,11 +1,11 @@
 package games.bnogocarft.bnogorpg.recode.Listeners
 
+import games.bnogocarft.bnogorpg.recode.Utils.PItems.PPlayer.BPlayer
+import games.bnogocarft.bnogorpg.recode.Utils.PItems.PPlayer.BPlayers
 import org.bukkit.Bukkit
 import org.bukkit.event.EventHandler
 import org.bukkit.event.Listener
 import org.bukkit.event.player.PlayerJoinEvent
-import tech.nully.primplug.recode.Utils.PItems.PPlayer.BPlayer
-import tech.nully.primplug.recode.Utils.PItems.PPlayer.BPlayers
 
 class PlayerJoinEvent : Listener {
 

@@ -1,21 +1,30 @@
 package games.bnogocarft.bnogorpg.recode.Utils.PItems.PPlayer
 
+import games.bnogocarft.bnogorpg.recode.Utils.Database.YMLUtils
+import games.bnogocarft.bnogorpg.recode.Utils.PItems.Abilities.PlayerAbility.Ability
+import games.bnogocarft.bnogorpg.recode.Utils.PItems.Abilities.PlayerAbility.AbilityUtils
+import games.bnogocarft.bnogorpg.recode.Utils.PItems.Mode.Mode
+import games.bnogocarft.bnogorpg.recode.Utils.PItems.StatUtils.StatManager
+import games.bnogocarft.bnogorpg.recode.Utils.PItems.Talisman.Talisman
+import games.bnogocarft.bnogorpg.recode.Utils.PItems.Talisman.TalismanUtils
 import org.bukkit.configuration.file.YamlConfiguration
 import org.bukkit.entity.Player
-import tech.nully.primplug.recode.Utils.Database.YMLUtils
-import tech.nully.primplug.recode.Utils.PItems.Abilities.PlayerAbility.Ability
-import tech.nully.primplug.recode.Utils.PItems.Abilities.PlayerAbility.AbilityUtils
-import tech.nully.primplug.recode.Utils.PItems.Mode.Mode
-import tech.nully.primplug.recode.Utils.PItems.Talisman.Talisman
-import tech.nully.primplug.recode.Utils.PItems.Talisman.TalismanUtils
-import tech.nully.primplug.recode.Utils.PItems.StatUtils.StatManager
 import java.io.File
+import java.text.SimpleDateFormat
+import java.util.*
+import kotlin.collections.ArrayList
+
+
 /**
  * Stores the RPG attributes of a player.
  * @constructor Fully constructs the RPG attributes of a given Online Player
  */
 data class BPlayer(val player: Player) {
     private val playerStats = StatManager.calculateStats(player)
+    /**
+     * The server time in which the player joined
+     */
+    var joinTime: String
 
     /**
      * The latest update of the player's [PlayerStat]
@@ -66,6 +75,7 @@ data class BPlayer(val player: Player) {
      * data file.
      */
     val playerConfig: YamlConfiguration = YamlConfiguration.loadConfiguration(playerFile)
+    var playTime = playerConfig.getString("other.playTime")
 
     init {
         // Makes sure the PPlayer's data file is saved when PPlayer is created
@@ -73,14 +83,15 @@ data class BPlayer(val player: Player) {
             YMLUtils.saveCustomYml(playerConfig, playerFile)
             playerConfig.set("items.talisman", "")
             playerConfig.set("items.abilities", "")
-            playerConfig.set("items.pickBreakSpeed", 1)
-            playerConfig.set("items.axeBreakSpeed", 1)
-            playerConfig.set("items.shovelBreakSpeed", 1)
+            playerConfig.set("stats.pickBreakSpeed", 1)
+            playerConfig.set("stats.axeBreakSpeed", 1)
+            playerConfig.set("stats.shovelBreakSpeed", 1)
+            playerConfig.set("other.playTime", "0 0")
         }
 
-        baseAxeBreakSpeed = playerConfig.getInt("items.axeBreakSpeed")
-        basePickBreakSpeed = playerConfig.getInt("items.pickBreakSpeed")
-        baseShovelBreakSpeed = playerConfig.getInt("items.shovelBreakSpeed")
+        baseAxeBreakSpeed = playerConfig.getInt("stats.axeBreakSpeed")
+        basePickBreakSpeed = playerConfig.getInt("stats.pickBreakSpeed")
+        baseShovelBreakSpeed = playerConfig.getInt("stats.shovelBreakSpeed")
 
         // Gets player Talismans from file
         for (s: String in playerConfig.getString("items.talisman").split(",".toRegex())) {
@@ -90,6 +101,10 @@ data class BPlayer(val player: Player) {
         for (s: String in playerConfig.getString("items.abilities").split(",".toRegex())) {
             abilities.add(AbilityUtils.getAbility(s))
         }
+
+        val now = Date()
+        val format = SimpleDateFormat("dd-MM-yyyy HH:mm:ss")
+        joinTime = format.format(now)
 
     }
 }
