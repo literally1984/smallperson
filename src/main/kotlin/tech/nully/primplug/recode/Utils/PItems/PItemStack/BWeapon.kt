@@ -30,10 +30,7 @@ data class BWeapon(val item: ItemStack) {
 
     Rarity
      */
-
-    init {
-        var stats = ItemStat(item)
-        var rarity = RarityUtils.getRarity(item.itemMeta.lore[item.itemMeta.lore.size-1])
-        val enchantments = ArrayList<PEnchantment>();
-    }
+    var stats = ItemStat(item)
+    var rarity = RarityUtils.getRarity(item.itemMeta.lore[item.itemMeta.lore.size-1])
+    val enchantments = ArrayList<PEnchantment>();
 }

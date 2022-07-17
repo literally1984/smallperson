@@ -22,6 +22,16 @@ data class BPlayer(val player: Player) {
      */
     var stats = PlayerStat(playerStats)
     /**
+     * The latest update of the player's base Axe break speed
+     * with their fist
+     */
+    var baseAxeBreakSpeed = 1
+    /**
+     * The latest update of the player's base Pickaxe break speed
+     * using their fist
+     */
+    var basePickBreakSpeed = 1
+    /**
      * The latest update of the player's [Mode]
      */
     var mode: Mode = Mode.NONE
