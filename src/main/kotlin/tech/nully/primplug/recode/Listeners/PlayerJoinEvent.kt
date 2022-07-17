@@ -15,5 +15,8 @@ class PlayerJoinEvent : Listener {
         BPlayers.BPlayerMap?.set(e.player, bPlayer)
         Bukkit.getServer().consoleSender.sendMessage("${e.player.displayName}'s data files have been instanced and mapped at")
         Bukkit.getServer().consoleSender.sendMessage(bPlayer.playerFile.path)
+        for (item in e.player.inventory) {
+            TODO()
+        }
     }
 }

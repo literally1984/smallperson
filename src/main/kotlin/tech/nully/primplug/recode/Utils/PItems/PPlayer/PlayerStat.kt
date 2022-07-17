@@ -49,7 +49,10 @@ data class PlayerStat(val stats: List<Int>) {
         maxStamina += stat.stamina
     }
 
-
+    /**
+    Subtracts the current PlayerStat with the given [PlayerStat].
+     *@param[stat] The [PlayerStat] to subtract from the current [PlayerStat]
+     */
     fun subtract(stat: PlayerStat) {
         defense -= stat.defense
         mDefense -= stat.mDefense
@@ -57,8 +60,14 @@ data class PlayerStat(val stats: List<Int>) {
         maxMana -= stat.maxMana
         currentStamina -= stat.currentStamina
         maxStamina -= stat.maxStamina
+        if (currentMana < 0) currentMana = 0
+        if (currentStamina < 0) currentStamina = 0
     }
 
+    /**
+    Subtracts the current PlayerStat with the given [List].
+     *@param[stat] The [List] to subtract from the current [PlayerStat]
+     */
     fun subtract(stat: List<Int>) {
         defense -= stat[0]
         mDefense -= stat[1]
@@ -66,5 +75,21 @@ data class PlayerStat(val stats: List<Int>) {
         maxMana -= stat[3]
         currentStamina -= stat[4]
         maxStamina -= stat[5]
+        if (currentMana < 0) currentMana = 0
+        if (currentStamina < 0) currentStamina = 0
+    }
+    /**
+     * Subtracts the current PlayerStat with the given [ItemStat].
+     * @param[stat] The [ItemStat] to subtract from the current [PlayerStat]
+     */
+    fun subtract(stat: ItemStat) {
+        defense -= stat.defense
+        mDefense -= stat.magicDef
+        currentMana -= stat.mana
+        maxMana -= stat.mana
+        currentStamina -= stat.stamina
+        maxStamina -= stat.stamina
+        if (currentMana < 0) currentMana = 0
+        if (currentStamina < 0) currentStamina = 0
     }
 }

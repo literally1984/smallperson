@@ -5,7 +5,7 @@ import tech.nully.primplug.recode.Utils.EnchantUtils.PEnchantment
 import tech.nully.primplug.recode.Utils.PItems.Rarity.RarityUtils
 import tech.nully.primplug.recode.Utils.PItems.StatUtils.ItemStat
 
-data class BItemStack(val item: ItemStack) {
+data class BWeapon(val item: ItemStack) {
     /*
     DISPLAY NAME
 

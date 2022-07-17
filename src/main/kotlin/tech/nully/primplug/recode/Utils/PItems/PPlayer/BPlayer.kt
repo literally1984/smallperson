@@ -10,7 +10,10 @@ import tech.nully.primplug.recode.Utils.PItems.Talisman.Talisman
 import tech.nully.primplug.recode.Utils.PItems.Talisman.TalismanUtils
 import tech.nully.primplug.recode.Utils.PItems.StatUtils.StatManager
 import java.io.File
-
+/**
+ * Stores the RPG attributes of a player.
+ * @constructor Fully constructs the RPG attributes of a given Online Player
+ */
 data class BPlayer(val player: Player) {
     private val playerStats = StatManager.calculateStats(player)
 

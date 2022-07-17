@@ -1,12 +1,21 @@
 package tech.nully.primplug.recode.Utils.PItems.PItemStack
 
-import net.minecraft.server.v1_5_R3.ItemStack
+import org.bukkit.inventory.ItemStack
 
 
 class BItemUtils {
 
-    var PItem: HashMap<ItemStack, BItemStack>? = null
-    init {
-        PItem = HashMap()
+    companion object {
+        var PItem: HashMap<ItemStack, BWeapon> = HashMap()
+
+        fun isBItem(item: ItemStack): Boolean {
+            if (item.itemMeta.displayName.lowercase().contains("sword") ||
+                item.itemMeta.displayName.lowercase().contains("blade") ||
+                item.itemMeta.displayName.lowercase().contains("waraxe") ||
+                item.itemMeta.displayName.lowercase().contains("warhammer")) {
+                return true
+            }
+            return false
+        }
     }
 }
