@@ -1,8 +1,7 @@
 name: PrimCore
 version: '${project.version}'
-main: tech.nully.primcore.PrimCore
-prefix: [PrimCore]
-load: STARTUP
+main: games.bnogocarft.bnogorpg.Main
+prefix: BnogoRPG
 authors: [BongoCat, BigZ]
-description: A custom coded plugin for PrimCraft written in Kotlin
-website: nully.tech
+description: An RPG plugin made for BnogoCarft coded in Kotlin
+website: https://bnogocarft.games
