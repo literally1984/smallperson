@@ -12,21 +12,36 @@ import tech.nully.primplug.recode.Utils.PItems.StatUtils.StatManager
 import java.io.File
 
 data class BPlayer(val player: Player) {
-    val playerStats = StatManager.calculateStats(player)
+    private val playerStats = StatManager.calculateStats(player)
 
-    var defense = playerStats[0]
-    var mdefense = playerStats[1]
-    var mana = playerStats[2]
-    var maxMana = playerStats[2]
-    var stamina = playerStats[3]
-    var maxStamina = playerStats[3]
+    /**
+     * The latest update of the player's [PlayerStat]
+     */
+    var stats = PlayerStat(playerStats)
+    /**
+     * The latest update of the player's [Mode]
+     */
     var mode: Mode = Mode.NONE
+    /**
+     * The latest update of the player's [Talisman]
+     */
     val talismans = ArrayList<Talisman>()
+    /**
+     * The latest update of the player's [Ability]
+     */
     val abilities = ArrayList<Ability>()
 
-    // Defines the player's file and FileConfig
-    val playerFile = File("${YMLUtils.getUsersFolder()}/${player.displayName}.yml") // returns the Player's data file location
-    val playerConfig = YamlConfiguration.loadConfiguration(playerFile)
+    /**
+     * Used to get the player of the player's
+     * YML data [File]
+     */
+    val playerFile = File("${YMLUtils.getUsersFolder()}/${player.displayName}.yml")
+    /**
+     * The player's [YamlConfiguration] used to access the player's YML
+     * data file.
+     */
+    val playerConfig: YamlConfiguration = YamlConfiguration.loadConfiguration(playerFile)
+
     init {
         // Makes sure the PPlayer's data file is saved when PPlayer is created
         if (!(playerFile.exists())) {
