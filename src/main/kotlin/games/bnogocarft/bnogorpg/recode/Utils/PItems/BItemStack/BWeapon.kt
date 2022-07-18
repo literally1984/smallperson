@@ -1,9 +1,9 @@
 package games.bnogocarft.bnogorpg.recode.Utils.PItems.BItemStack
 
+import games.bnogocarft.bnogorpg.recode.Utils.EnchantUtils.PEnchantment
+import games.bnogocarft.bnogorpg.recode.Utils.PItems.Rarity.RarityUtils
+import games.bnogocarft.bnogorpg.recode.Utils.PItems.StatUtils.ItemStat
 import org.bukkit.inventory.ItemStack
-import tech.nully.primplug.recode.Utils.EnchantUtils.PEnchantment
-import tech.nully.primplug.recode.Utils.PItems.Rarity.RarityUtils
-import tech.nully.primplug.recode.Utils.PItems.StatUtils.ItemStat
 
 data class BWeapon(val item: ItemStack) {
     /*
@@ -32,5 +32,5 @@ data class BWeapon(val item: ItemStack) {
      */
     var stats = ItemStat(item)
     var rarity = RarityUtils.getRarity(item.itemMeta.lore[item.itemMeta.lore.size-1])
-    val enchantments = ArrayList<PEnchantment>();
+    val enchantments = ArrayList<PEnchantment>()
 }

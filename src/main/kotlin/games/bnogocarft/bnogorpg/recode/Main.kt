@@ -8,6 +8,7 @@ import games.bnogocarft.bnogorpg.recode.Listeners.PlayerLeaveEvent
 import games.bnogocarft.bnogorpg.recode.RecipeBook.RecipeBookListeners
 import games.bnogocarft.bnogorpg.recode.RecipeBook.RecipeManager
 import games.bnogocarft.bnogorpg.recode.Utils.PItems.PPlayer.BPlayers
+import games.bnogocarft.bnogorpg.recode.Utils.others.PlaytimeUtils
 import org.bukkit.ChatColor
 import org.bukkit.plugin.Plugin
 import org.bukkit.plugin.java.JavaPlugin
@@ -18,10 +19,11 @@ class Main : JavaPlugin() {
         instance = this
         val cSender = server.consoleSender
         protocolManager = ProtocolLibrary.getProtocolManager()
-        cSender.sendMessage("ProtocolManager has been successfully instanced")
+        cSender.sendMessage("Main class variables have been instanced")
 
-        BPlayers.init()
-        cSender.sendMessage("PPlayerMap has been constructed")
+        cSender.sendMessage("Constructing BPlayer utils...")
+        BPlayers()
+        cSender.sendMessage("BPlayers have been constructed")
 
         cSender.sendMessage("Registering listeners")
         server.pluginManager.registerEvents(PlayerJoinEvent(), this)
@@ -33,6 +35,9 @@ class Main : JavaPlugin() {
         cSender.sendMessage("Enabling RecipeBook...")
         RecipeManager.registerRecipes(server.recipeIterator())
         cSender.sendMessage("RecipeBook has been enabled")
+
+        cSender.sendMessage("Enabling PlayTime counters...")
+        cSender.sendMessage("PlayTime counter functions have been enabled!")
 
         cSender.sendMessage("--------------------------------------------")
         cSender.sendMessage("--------------------------------------------")
@@ -48,10 +53,15 @@ class Main : JavaPlugin() {
         server.consoleSender.sendMessage(
             ChatColor.LIGHT_PURPLE.toString() + "[BnogoRPG]" + ChatColor.RED + " BnogoRPG has been disabled D:"
         )
+        for (player in server.onlinePlayers) {
+            val bPlayer = BPlayers.BPlayerMap[player]!!
+            PlaytimeUtils.addPlaytime(bPlayer)
+
+        }
     }
 
     companion object {
         var protocolManager: ProtocolManager? = null
-        var instance: Plugin? = null;
+        var instance: Plugin? = null
     }
 }

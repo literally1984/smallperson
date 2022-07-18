@@ -9,7 +9,7 @@
     <version>1.0.0</version>
     <packaging>jar</packaging>
 
-    <name>PrimCore</name>
+    <name>BnogoRPG</name>
 
     <description>An RPG minecraft plugin made for Bnogocarft coded in kotlin</description>
     <url>https://bnogocarft.games</url>

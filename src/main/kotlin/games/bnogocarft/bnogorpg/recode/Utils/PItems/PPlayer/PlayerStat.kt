@@ -1,6 +1,6 @@
 package games.bnogocarft.bnogorpg.recode.Utils.PItems.PPlayer
 
-import tech.nully.primplug.recode.Utils.PItems.StatUtils.ItemStat
+import games.bnogocarft.bnogorpg.recode.Utils.PItems.StatUtils.ItemStat
 
 data class PlayerStat(val stats: List<Int>) {
 

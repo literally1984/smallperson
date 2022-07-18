@@ -4,9 +4,9 @@ import org.bukkit.entity.Player
 
 class BPlayers() {
     companion object {
-        var BPlayerMap : HashMap<Player, BPlayer>? = null;
-        fun init() {
-            BPlayerMap = hashMapOf<Player, BPlayer>()
-        }
+        lateinit var BPlayerMap : HashMap<Player, BPlayer>
+    }
+    init {
+        BPlayerMap = hashMapOf<Player, BPlayer>()
     }
 }
