@@ -107,4 +107,8 @@ data class BPlayer(val player: Player) {
         joinTime = format.format(now)
 
     }
+
+    fun updatePlayTime() {
+        playTime = playerConfig.getString("other.playTime")
+    }
 }
