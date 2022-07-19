@@ -4,11 +4,25 @@ import org.bukkit.inventory.ItemStack
 
 
 class BItemUtils {
+    private var BWeapons: HashMap<ItemStack, BWeapon> = HashMap<ItemStack, BWeapon>()
+    private var BPickaxes: HashMap<ItemStack, BPickaxe> = HashMap<ItemStack, BPickaxe>()
+    private var BAxes: HashMap<ItemStack, BAxe> = HashMap<ItemStack, BAxe>()
 
+    fun getBWeapon(item: ItemStack): BWeapon {
+        if (BWeapons.containsKey(item)) return BWeapons[item]!!
+        return BWeapon(item)
+    }
+
+    fun getBPickaxe(item: ItemStack): BPickaxe {
+        if (BPickaxes.containsKey(item)) return BPickaxes[item]!!
+        return BPickaxe(item)
+    }
+
+    fun getBAxe(item: ItemStack): BAxe {
+        if (BAxes.containsKey(item)) return BAxes[item]!!
+        return BAxe(item)
+    }
     companion object {
-        var BWeapons: HashMap<ItemStack, BWeapon> = HashMap<ItemStack, BWeapon>()
-        var BPickaxes: HashMap<ItemStack, BPickaxe> = HashMap<ItemStack, BPickaxe>()
-        var BAxes: HashMap<ItemStack, BWeapon> = HashMap<ItemStack, BWeapon>()
         // TODO Make a BAxe class
 
         fun getBType(item: ItemStack): String? {
