@@ -29,6 +29,12 @@ class BItemFactory {
 
             // abilities lore
             for (ability in item.abilities) {
+                if (ability.setBonus) {
+                    lore.add("${ChatColor.YELLOW}Set Bonus:")
+                    for (s in ability.description) lore.add(s)
+                    lore.add("")
+                    continue
+                }
                 lore.add("${ability.type.toString().replace("_", " ")} Ability:")
                 for (s in ability.description) lore.add(s)
                 lore.add("")
