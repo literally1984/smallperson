@@ -4,6 +4,7 @@ import org.bukkit.ChatColor
 import org.bukkit.inventory.ItemStack
 
 data class ItemStat(val item: ItemStack) {
+
     var damage: Int = 0
         set(value) {
             for (s: String in item.itemMeta.lore) {
