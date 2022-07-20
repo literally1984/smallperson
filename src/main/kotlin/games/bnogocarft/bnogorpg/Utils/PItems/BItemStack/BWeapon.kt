@@ -33,4 +33,5 @@ data class BWeapon(val item: ItemStack) {
     var stats = ItemStat(item)
     var rarity = RarityUtils.getRarity(item.itemMeta.lore[item.itemMeta.lore.size-1])
     val enchantments = ArrayList<BEnchantment>()
+    val reforge = Reforge()
 }
