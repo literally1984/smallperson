@@ -1,9 +1,10 @@
-# PrimPlugin 
-A branch of the Primitt network that contains the custom-coded plugin for the server
+# BnogoRPG
+BnogoRPG is the main plugin for Bnogocarft's RPG factions gamemode. It is fully coded in kotlin and is meant to replicate the hypixel skyblock experience in eaglercraft with a hint of Factions
 ## Features
-- Recipies
 - Talismans
-- Custom Items
-- Custom ores
-- Planes
+- A spell casting system
+- Weapon spec abilities
+- Custom Items such as weapons, axes, pickaxes etc
+- Custom ores that are generated in every biome
+- WASD controlled planes
 - More to come soon!
