@@ -7,7 +7,7 @@ import games.bnogocarft.bnogorpg.Listeners.PlayerJoinEvent
 import games.bnogocarft.bnogorpg.Listeners.PlayerLeaveEvent
 import games.bnogocarft.bnogorpg.RecipeBook.RecipeBookListeners
 import games.bnogocarft.bnogorpg.RecipeBook.RecipeManager
-import games.bnogocarft.bnogorpg.Utils.PItems.PPlayer.BPlayers
+import games.bnogocarft.bnogorpg.Utils.PPlayer.BPlayers
 import games.bnogocarft.bnogorpg.Utils.others.PlaytimeUtils
 import org.bukkit.ChatColor
 import org.bukkit.plugin.Plugin

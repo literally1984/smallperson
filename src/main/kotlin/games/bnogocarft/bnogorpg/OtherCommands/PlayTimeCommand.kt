@@ -1,6 +1,6 @@
 package games.bnogocarft.bnogorpg.OtherCommands
 
-import games.bnogocarft.bnogorpg.Utils.PItems.PPlayer.BPlayers
+import games.bnogocarft.bnogorpg.Utils.PPlayer.BPlayers
 import games.bnogocarft.bnogorpg.Utils.others.PlaytimeUtils
 import org.bukkit.command.Command
 import org.bukkit.command.CommandExecutor

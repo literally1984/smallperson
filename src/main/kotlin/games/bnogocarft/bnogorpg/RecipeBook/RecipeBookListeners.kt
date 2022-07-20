@@ -1,7 +1,7 @@
 package games.bnogocarft.bnogorpg.RecipeBook
 
 import games.bnogocarft.bnogorpg.Utils.InventoryUtils
-import games.bnogocarft.bnogorpg.Utils.PItems.PPlayer.BPlayers
+import games.bnogocarft.bnogorpg.Utils.PPlayer.BPlayers
 import org.bukkit.event.EventHandler
 import org.bukkit.event.Listener
 import org.bukkit.event.inventory.InventoryClickEvent

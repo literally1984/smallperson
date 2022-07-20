@@ -1,6 +1,6 @@
 package games.bnogocarft.bnogorpg.Utils.others
 
-import games.bnogocarft.bnogorpg.Utils.PItems.PPlayer.BPlayer
+import games.bnogocarft.bnogorpg.Utils.PPlayer.BPlayer
 import java.text.SimpleDateFormat
 import java.util.*
 

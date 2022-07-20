@@ -1,7 +1,7 @@
 package games.bnogocarft.bnogorpg.Listeners
 
-import games.bnogocarft.bnogorpg.Utils.PItems.PPlayer.BPlayer
-import games.bnogocarft.bnogorpg.Utils.PItems.PPlayer.BPlayers
+import games.bnogocarft.bnogorpg.Utils.PPlayer.BPlayer
+import games.bnogocarft.bnogorpg.Utils.PPlayer.BPlayers
 import org.bukkit.Bukkit
 import org.bukkit.event.EventHandler
 import org.bukkit.event.Listener
