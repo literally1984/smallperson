@@ -29,17 +29,34 @@ class BItemUtils {
         }
         fun getBWeapon(item: ItemStack): BWeapon {
             if (BWeapons.containsKey(item)) return BWeapons[item]!!
-            return BWeapon(item)
+            val bweapon = BWeapon(item)
+            BWeapons[item] = bweapon
+            return bweapon
+        }
+        fun addBWeapon(item: ItemStack) {
+            BWeapons[item] = BWeapon(item)
         }
 
         fun getBPickaxe(item: ItemStack): BPickaxe {
             if (BPickaxes.containsKey(item)) return BPickaxes[item]!!
-            return BPickaxe(item)
+            val bpickaxe = BPickaxe(item)
+            BPickaxes[item] = bpickaxe
+            return bpickaxe
+        }
+
+        fun addBPickaxe(item: ItemStack) {
+            BPickaxes[item] = BPickaxe(item)
         }
 
         fun getBAxe(item: ItemStack): BAxe {
             if (BAxes.containsKey(item)) return BAxes[item]!!
-            return BAxe(item)
+            val baxe = BAxe(item)
+            BAxes[item] = baxe
+            return baxe
+        }
+
+        fun addBAxe(item: ItemStack) {
+            BAxes[item] = BAxe(item)
         }
     }
 }

@@ -1,5 +1,6 @@
 package games.bnogocarft.bnogorpg.Listeners
 
+import games.bnogocarft.bnogorpg.Utils.BItemStack.BItemUtils
 import games.bnogocarft.bnogorpg.Utils.PPlayer.BPlayer
 import games.bnogocarft.bnogorpg.Utils.PPlayer.BPlayers
 import org.bukkit.Bukkit
@@ -16,7 +17,17 @@ class PlayerJoinEvent : Listener {
         Bukkit.getServer().consoleSender.sendMessage("${e.player.displayName}'s data files have been instanced and mapped at")
         Bukkit.getServer().consoleSender.sendMessage(bPlayer.playerFile.path)
         for (item in e.player.inventory) {
-            TODO()
+            if (BItemUtils.getBType(item).equals("weapon")) {
+                BItemUtils.addBWeapon(item)
+            }
+
+            if (BItemUtils.getBType(item).equals("pickaxe")) {
+                BItemUtils.addBPickaxe(item)
+            }
+
+            if (BItemUtils.getBType(item).equals("axe")) {
+                BItemUtils.addBAxe(item)
+            }
         }
     }
 }

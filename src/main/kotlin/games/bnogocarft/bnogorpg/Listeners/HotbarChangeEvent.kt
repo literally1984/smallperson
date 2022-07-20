@@ -17,6 +17,12 @@ class HotbarChangeEvent : Listener {
         if (player.inventory.getItem(event.newSlot) == null && oldItem != null && BItemUtils.getBType(oldItem).equals("weapon")) {
             bplayer.stats.subtract(BItemUtils.getBWeapon(oldItem).stats)
         }
+
+        // If the new Item is not null and is a weapon, then add the new item's stats to the player
         val newItem = player.inventory.getItem(event.newSlot)
+        if (BItemUtils.getBType(newItem).equals("weapon")) {
+            val newWeapon = BItemUtils.getBWeapon(newItem)
+            bplayer.stats.add(newWeapon.stats)
+        }
     }
 }
