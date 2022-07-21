@@ -10,7 +10,7 @@ class PlayerLeaveEvent : Listener {
 
     @EventHandler
     fun onPlayerLeave(e: PlayerQuitEvent) {
-        val player = BPlayers.BPlayerMap[e.player]
+        val player = BPlayers[e.player]
         if (player != null) {
             PlaytimeUtils.addPlaytime(player)
         }

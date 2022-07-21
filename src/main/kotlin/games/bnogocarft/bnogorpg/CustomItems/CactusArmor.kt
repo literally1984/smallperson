@@ -1,6 +1,5 @@
 package games.bnogocarft.bnogorpg.CustomItems
 
-import games.bnogocarft.bnogorpg.Utils.Abilities.ItemAbility.AbilityTrigger
 import games.bnogocarft.bnogorpg.Utils.ItemFactory.BItemFactory
 import games.bnogocarft.bnogorpg.Utils.ItemFactory.ItemAbility
 import games.bnogocarft.bnogorpg.Utils.Rarity.Rarity
@@ -19,7 +18,7 @@ class CactusArmor {
     fun createCactusHelm() {
         val factoryItem = BItemFactory.createRPGItem("Cactus Helmet", Material.LEATHER_HELMET)
         val AbilityDesc = ArrayList<String>()
-        val ability = ItemAbility(AbilityTrigger.HIT, "Spiky Spines", AbilityDesc, true)
+        val ability = ItemAbility.CactusSet
         AbilityDesc.add("When the wearer is hit, 30% of the")
         AbilityDesc.add("incoming damage is reflected to the")
         AbilityDesc.add("attacker.")

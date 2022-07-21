@@ -1,8 +1,8 @@
 package games.bnogocarft.bnogorpg.Utils.PPlayer
 
-import games.bnogocarft.bnogorpg.Utils.Database.YMLUtils
 import games.bnogocarft.bnogorpg.Utils.Abilities.PlayerAbility.Ability
 import games.bnogocarft.bnogorpg.Utils.Abilities.PlayerAbility.AbilityUtils
+import games.bnogocarft.bnogorpg.Utils.Database.YMLUtils
 import games.bnogocarft.bnogorpg.Utils.Mode.Mode
 import games.bnogocarft.bnogorpg.Utils.StatUtils.StatManager
 import games.bnogocarft.bnogorpg.Utils.Talisman.Talisman
@@ -12,7 +12,6 @@ import org.bukkit.entity.Player
 import java.io.File
 import java.text.SimpleDateFormat
 import java.util.*
-import kotlin.collections.ArrayList
 
 
 /**
@@ -74,19 +73,19 @@ data class BPlayer(val player: Player) {
      * The player's [YamlConfiguration] used to access the player's YML
      * data file.
      */
-    val playerConfig: YamlConfiguration = YamlConfiguration.loadConfiguration(playerFile)
+    var playerConfig: YamlConfiguration = YamlConfiguration.loadConfiguration(playerFile)
     var playTime = playerConfig.getString("other.playTime")
 
     init {
         // Makes sure the PPlayer's data file is saved when PPlayer is created
         if (!(playerFile.exists())) {
-            YMLUtils.saveCustomYml(playerConfig, playerFile)
-            playerConfig.set("items.talisman", "")
-            playerConfig.set("items.abilities", "")
+            playerConfig.set("items.talisman", " ")
+            playerConfig.set("items.abilities", " ")
             playerConfig.set("stats.pickBreakSpeed", 1)
             playerConfig.set("stats.axeBreakSpeed", 1)
             playerConfig.set("stats.shovelBreakSpeed", 1)
             playerConfig.set("other.playTime", "0 0")
+            YMLUtils.saveCustomYml(playerConfig, playerFile)
         }
 
         baseAxeBreakSpeed = playerConfig.getInt("stats.axeBreakSpeed")
