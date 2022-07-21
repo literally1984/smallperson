@@ -7,9 +7,9 @@ data class PlayerStat(val stats: List<Int>) {
     var defense: Int = stats[0]
     var mDefense: Int = stats[1]
     var currentMana: Int = stats[2]
-    var maxMana: Int = stats[3]
-    var currentStamina: Int = stats[4]
-    var maxStamina: Int = stats[5]
+    var maxMana: Int = stats[2]
+    var currentStamina: Int = stats[3]
+    var maxStamina: Int = stats[3]
 
     /**
     Adds the current PlayerStat with the given PlayerStat.

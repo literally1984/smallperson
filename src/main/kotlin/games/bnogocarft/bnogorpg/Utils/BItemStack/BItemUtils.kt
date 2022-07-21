@@ -1,6 +1,5 @@
 package games.bnogocarft.bnogorpg.Utils.BItemStack
 
-import games.bnogocarft.bnogorpg.Reforge.reforge
 import org.bukkit.inventory.ItemStack
 
 
@@ -13,17 +12,19 @@ class BItemUtils {
         // TODO Make a BAxe class
 
         fun getBType(item: ItemStack): String? {
-            if (item.itemMeta.displayName.lowercase().contains("sword") ||
-                item.itemMeta.displayName.lowercase().contains("blade") ||
-                item.itemMeta.displayName.lowercase().contains("waraxe") ||
-                item.itemMeta.displayName.lowercase().contains("warhammer")) {
-                return "weapon"
-            }
-            if (item.itemMeta.displayName.lowercase().contains("pickaxe")) {
-                return "pickaxe"
-            }
-            if (item.itemMeta.displayName.lowercase().contains("axe")) {
-                return "axe"
+            if (item.itemMeta != null && item.itemMeta.displayName != null) {
+                if (item.itemMeta.displayName.lowercase().contains("sword") ||
+                    item.itemMeta.displayName.lowercase().contains("blade") ||
+                    item.itemMeta.displayName.lowercase().contains("waraxe") ||
+                    item.itemMeta.displayName.lowercase().contains("warhammer")) {
+                    return "weapon"
+                }
+                if (item.itemMeta.displayName.lowercase().contains("pickaxe")) {
+                    return "pickaxe"
+                }
+                if (item.itemMeta.displayName.lowercase().contains("axe")) {
+                    return "axe"
+                }
             }
             return null
         }

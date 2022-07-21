@@ -1,5 +1,6 @@
 package games.bnogocarft.bnogorpg.Utils.ItemFactory
 
+import games.bnogocarft.bnogorpg.Utils.Abilities.ItemAbility.AbilityTrigger
 import org.bukkit.Bukkit
 import org.bukkit.ChatColor
 import org.bukkit.Material
@@ -29,8 +30,14 @@ class BItemFactory {
 
             // abilities lore
             for (ability in item.abilities) {
-                lore.add("${ability.type.toString().replace("_", " ")} Ability:")
-                for (s in ability.description) lore.add(s)
+                if (ability.getType().equals(AbilityTrigger.SET_BONUS)) {
+                    lore.add("${ChatColor.YELLOW}Set Bonus:")
+                    for (s in ability.getDescription()) lore.add(s)
+                    lore.add("")
+                    continue
+                }
+                lore.add("${ability.getType().toString().replace("_", " ")} Ability:")
+                for (s in ability.getDescription()) lore.add(s)
                 lore.add("")
             }
 

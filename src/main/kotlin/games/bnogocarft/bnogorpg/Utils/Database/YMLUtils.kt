@@ -1,9 +1,9 @@
 package games.bnogocarft.bnogorpg.Utils.Database
 
+import games.bnogocarft.bnogorpg.Main
 import org.bukkit.configuration.file.FileConfiguration
 import org.bukkit.configuration.file.YamlConfiguration
 import org.bukkit.entity.Player
-import tech.nully.primplug.Main
 import java.io.File
 import java.io.IOException
 

@@ -14,7 +14,7 @@ class PlayTimeCommand : CommandExecutor{
             return true
         }
 
-        val BPlayer = BPlayers.BPlayerMap[sender]!!
+        val BPlayer = BPlayers[sender]!!
         PlaytimeUtils.addPlaytime(BPlayer)
         BPlayer.updatePlayTime()
 

@@ -17,7 +17,7 @@ class RecipeBookListeners : Listener {
         val clickItem = e.currentItem
         if (RecipeBook.getRecipeFor(clickItem) != null) { // Checks if the ItemStack has a valid recipe page
             e.whoClicked.openInventory(RecipeBook.getRecipeFor(clickItem)!!.pageInventory) // Opens recipe page inventory to player
-            val player = BPlayers.BPlayerMap[e.whoClicked]
+            val player = BPlayers[e.whoClicked]
             return
         }
     }

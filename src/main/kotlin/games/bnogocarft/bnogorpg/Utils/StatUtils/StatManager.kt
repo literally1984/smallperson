@@ -8,25 +8,31 @@ class StatManager {
     companion object {
         fun calculateStats(p: Player): List<Int> {
             val stats = ArrayList<Int>()
+            stats.add(0)
+            stats.add(0)
+            stats.add(0)
+            stats.add(0)
 
             // Loops through the players armor contents
             for (i: ItemStack in p.inventory.armorContents) {
                 // Loops through each armor's lore
-                for (s: String in i.itemMeta.lore) {
-                    // If the current armor lore line contains "Defense:"
-                    if (s.contains("${ChatColor.GREEN}Defense: ")) {
-                        val lore = i.itemMeta.lore
-                        val index = lore.indexOf(s)
-                        // Split each stat in the lore by ": +"
-                        val defense = s.split(": +".toRegex())[1].toInt()
-                        val mdefense = lore.get(index + 2).split(": +".toRegex())[1].toInt()
-                        val mana = lore.get(index + 3).split(": +".toRegex())[1].toInt()
-                        val stamina = lore.get(index + 4).split(": +".toRegex())[1].toInt()
+                if (i.hasItemMeta() && i.itemMeta.hasLore()) {
+                    for (s: String in i.itemMeta.lore) {
+                        // If the current armor lore line contains "Defense:"
+                        if (s.contains("${ChatColor.GREEN}Defense: ")) {
+                            val lore = i.itemMeta.lore
+                            val index = lore.indexOf(s)
+                            // Split each stat in the lore by ": +"
+                            val defense = s.split(": +".toRegex())[1].toInt()
+                            val mdefense = lore.get(index + 2).split(": +".toRegex())[1].toInt()
+                            val mana = lore.get(index + 3).split(": +".toRegex())[1].toInt()
+                            val stamina = lore.get(index + 4).split(": +".toRegex())[1].toInt()
 
-                        stats.add(defense)
-                        stats.add(mdefense)
-                        stats.add(mana)
-                        stats.add(stamina)
+                            stats[0] = (defense)
+                            stats[1] = (mdefense)
+                            stats[2] = (mana)
+                            stats[3] = (stamina)
+                        }
                     }
                 }
             }

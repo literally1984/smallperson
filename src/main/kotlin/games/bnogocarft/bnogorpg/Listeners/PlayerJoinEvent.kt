@@ -13,20 +13,22 @@ class PlayerJoinEvent : Listener {
     @EventHandler
     fun playerJoinEvent(e: PlayerJoinEvent) {
         val bPlayer = BPlayer(e.player)
-        BPlayers.BPlayerMap[e.player] = bPlayer
+        BPlayers.put(e.player, bPlayer)
         Bukkit.getServer().consoleSender.sendMessage("${e.player.displayName}'s data files have been instanced and mapped at")
         Bukkit.getServer().consoleSender.sendMessage(bPlayer.playerFile.path)
-        for (item in e.player.inventory) {
-            if (BItemUtils.getBType(item).equals("weapon")) {
-                BItemUtils.addBWeapon(item)
-            }
+        for (item in e.player.inventory.contents) {
+            if (item != null) {
+                if (BItemUtils.getBType(item).equals("weapon")) {
+                    BItemUtils.addBWeapon(item)
+                }
 
-            if (BItemUtils.getBType(item).equals("pickaxe")) {
-                BItemUtils.addBPickaxe(item)
-            }
+                if (BItemUtils.getBType(item).equals("pickaxe")) {
+                    BItemUtils.addBPickaxe(item)
+                }
 
-            if (BItemUtils.getBType(item).equals("axe")) {
-                BItemUtils.addBAxe(item)
+                if (BItemUtils.getBType(item).equals("axe")) {
+                    BItemUtils.addBAxe(item)
+                }
             }
         }
     }
