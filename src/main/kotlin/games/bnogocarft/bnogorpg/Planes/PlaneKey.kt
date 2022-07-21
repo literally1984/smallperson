@@ -71,10 +71,10 @@ data class PlaneEntity(val key: PlaneKey) {
         isSpawned = true
         planes[planeEntity] = key.item
     }
+    
 
     fun turnUp() {
         if (isRunning) {
-
         }
     }
 
@@ -131,11 +131,11 @@ data class PlaneEntity(val key: PlaneKey) {
             val travelSpeed = speed/20
             var loopsTilFuel = 20
             isRunning = true
+            val destination = Location(p.world, p.location.x + travelSpeed, p.location.y, p.location.z + travelSpeed)
             Bukkit.getScheduler().scheduleSyncDelayedTask(Main.instance, {
                 fun run() {
                     continueRun = Bukkit.getScheduler().runTaskTimer(Main.instance, {
                         fun run() {
-                            val destination = Location(p.world, p.location.x + travelSpeed, p.location.y, p.location.z + travelSpeed)
                             planeEntity.velocity = (destination.subtract(p.location)).toVector()
                             loopsTilFuel -= 1
                             if (loopsTilFuel == 0) {
