@@ -7,6 +7,7 @@ import games.bnogocarft.bnogorpg.Listeners.PlayerJoinEvent
 import games.bnogocarft.bnogorpg.Listeners.PlayerLeaveEvent
 import games.bnogocarft.bnogorpg.OtherCommands.PlayTimeCommand
 import games.bnogocarft.bnogorpg.Planes.PlaneKeyItem
+import games.bnogocarft.bnogorpg.Planes.PlaneListeners
 import games.bnogocarft.bnogorpg.Planes.SteerListener
 import games.bnogocarft.bnogorpg.Planes.planes
 import games.bnogocarft.bnogorpg.RecipeBook.RecipeBookListeners
@@ -34,15 +35,16 @@ class Main : JavaPlugin() {
         server.pluginManager.registerEvents(RecipeBookListeners(), this)
         server.pluginManager.registerEvents(HotbarChangeEvent(), this)
         server.pluginManager.registerEvents(PlayerLeaveEvent(), this)
-        server.pluginManager.registerEvents(SteerListener(), this)
         cSender.sendMessage("Registered Listeners")
 
         cSender.sendMessage("Enabling RecipeBook...")
-        //RecipeManager.registerRecipes(server.recipeIterator())
+        RecipeManager.registerRecipes(server.recipeIterator())
         cSender.sendMessage("RecipeBook has been enabled")
 
         cSender.sendMessage("Enabling Planes")
         PlaneKeyItem()
+        server.pluginManager.registerEvents(PlaneListeners(), this)
+        server.pluginManager.registerEvents(SteerListener(), this)
         cSender.sendMessage("Planes have been enabled")
 
         cSender.sendMessage("Enabling PlayTime counters...")
