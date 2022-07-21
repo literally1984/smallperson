@@ -14,6 +14,7 @@ import games.bnogocarft.bnogorpg.RecipeBook.RecipeBookListeners
 import games.bnogocarft.bnogorpg.RecipeBook.RecipeManager
 import games.bnogocarft.bnogorpg.Utils.PPlayer.BPlayers
 import games.bnogocarft.bnogorpg.Utils.others.PlaytimeUtils
+import games.bnogocarft.bnogorpg.WebsiteCommunication.ComUtils
 import org.bukkit.ChatColor
 import org.bukkit.plugin.Plugin
 import org.bukkit.plugin.java.JavaPlugin
@@ -24,32 +25,36 @@ class Main : JavaPlugin() {
         instance = this
         val cSender = server.consoleSender
         protocolManager = ProtocolLibrary.getProtocolManager()
-        cSender.sendMessage("Main class variables have been instanced")
+        cSender.sendMessage("[BnogoRPG] Main class variables have been instanced")
 
-        cSender.sendMessage("Constructing BPlayer utils...")
+        cSender.sendMessage("[BnogoRPG] Constructing BPlayer utils...")
         BPlayers
-        cSender.sendMessage("BPlayers have been constructed")
+        cSender.sendMessage("[BnogoRPG] BPlayers have been constructed")
 
-        cSender.sendMessage("Registering listeners")
+        cSender.sendMessage("[BnogoRPG] Registering listeners")
         server.pluginManager.registerEvents(PlayerJoinEvent(), this)
         server.pluginManager.registerEvents(RecipeBookListeners(), this)
         server.pluginManager.registerEvents(HotbarChangeEvent(), this)
         server.pluginManager.registerEvents(PlayerLeaveEvent(), this)
-        cSender.sendMessage("Registered Listeners")
+        cSender.sendMessage("[BnogoRPG] Registered Listeners")
 
-        cSender.sendMessage("Enabling RecipeBook...")
-        RecipeManager.registerRecipes(server.recipeIterator())
-        cSender.sendMessage("RecipeBook has been enabled")
+        cSender.sendMessage("[BnogoRPG] Enabling RecipeBook...")
+        //RecipeManager.registerRecipes(server.recipeIterator())
+        cSender.sendMessage("[BnogoRPG] RecipeBook has been enabled")
 
-        cSender.sendMessage("Enabling Planes")
+        cSender.sendMessage("[BnogoRPG] Enabling Planes")
         PlaneKeyItem()
         server.pluginManager.registerEvents(PlaneListeners(), this)
         server.pluginManager.registerEvents(SteerListener(), this)
-        cSender.sendMessage("Planes have been enabled")
+        cSender.sendMessage("[BnogoRPG] Planes have been enabled")
 
-        cSender.sendMessage("Enabling PlayTime counters...")
+        cSender.sendMessage("[BnogoRPG] Enabling PlayTime counters...")
         getCommand("playtime").executor = PlayTimeCommand()
-        cSender.sendMessage("PlayTime counter functions have been enabled!")
+        cSender.sendMessage("[BnogoRPG] PlayTime counter functions have been enabled!")
+
+        cSender.sendMessage("[BnogoRPG] Enabling Websocket Server")
+        //ComUtils.main()
+        cSender.sendMessage("[BnogoRPG] Websocket Server has been enabled")
 
         cSender.sendMessage("--------------------------------------------")
         cSender.sendMessage("--------------------------------------------")

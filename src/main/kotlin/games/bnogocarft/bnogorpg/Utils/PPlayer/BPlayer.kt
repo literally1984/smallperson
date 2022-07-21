@@ -75,13 +75,11 @@ data class BPlayer(val player: Player) {
      * data file.
      */
     var playerConfig: YamlConfiguration = YamlConfiguration.loadConfiguration(playerFile)
-    var playTime = playerConfig.getString("other.playTime")
+    var playTime: String
 
     val bar = BossBar(player)
 
     init {
-        bar.text = "BnogoCarftMC!"
-        bar.display()
         // Makes sure the PPlayer's data file is saved when PPlayer is created
         if (!(playerFile.exists())) {
             playerConfig.set("items.talisman", " ")
@@ -90,9 +88,10 @@ data class BPlayer(val player: Player) {
             playerConfig.set("stats.axeBreakSpeed", 1)
             playerConfig.set("stats.shovelBreakSpeed", 1)
             playerConfig.set("other.playTime", "0 0")
-            YMLUtils.saveCustomYml(playerConfig, playerFile)
         }
+        YMLUtils.saveCustomYml(playerConfig, playerFile)
 
+        playTime = playerConfig.getString("other.playTime")
         baseAxeBreakSpeed = playerConfig.getInt("stats.axeBreakSpeed")
         basePickBreakSpeed = playerConfig.getInt("stats.pickBreakSpeed")
         baseShovelBreakSpeed = playerConfig.getInt("stats.shovelBreakSpeed")

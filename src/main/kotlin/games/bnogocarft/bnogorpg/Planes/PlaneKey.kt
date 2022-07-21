@@ -71,7 +71,7 @@ data class PlaneEntity(val key: PlaneKey) {
         isSpawned = true
         planes[planeEntity] = key.item
     }
-    
+
 
     fun turnUp() {
         if (isRunning) {
