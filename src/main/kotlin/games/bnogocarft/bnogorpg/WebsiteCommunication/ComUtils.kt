@@ -10,9 +10,7 @@ class ComUtils : WebSocketServer() {
     }
     // make onOpen websocket function
     fun onOpen(server: WebSocketServer) {
-        server.onOpen = {
-            println("Connection opened")
-        }
+        server.onOpen()
     }
     startWebSocketServer(8080)
 }
