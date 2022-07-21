@@ -9,6 +9,7 @@ import games.bnogocarft.bnogorpg.Utils.Talisman.Talisman
 import games.bnogocarft.bnogorpg.Utils.Talisman.TalismanUtils
 import org.bukkit.configuration.file.YamlConfiguration
 import org.bukkit.entity.Player
+import tech.nully.BossBarAPI.BossBar
 import java.io.File
 import java.text.SimpleDateFormat
 import java.util.*
@@ -76,7 +77,11 @@ data class BPlayer(val player: Player) {
     var playerConfig: YamlConfiguration = YamlConfiguration.loadConfiguration(playerFile)
     var playTime = playerConfig.getString("other.playTime")
 
+    val bar = BossBar(player)
+
     init {
+        bar.text = "BnogoCarftMC!"
+        bar.display()
         // Makes sure the PPlayer's data file is saved when PPlayer is created
         if (!(playerFile.exists())) {
             playerConfig.set("items.talisman", " ")
