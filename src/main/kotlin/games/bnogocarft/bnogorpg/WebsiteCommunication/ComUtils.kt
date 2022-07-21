@@ -42,5 +42,5 @@ class SimpleServer(address: InetSocketAddress?) : WebSocketServer(address) {
             val server: WebSocketServer = SimpleServer(InetSocketAddress(host, port))
             server.run()
         }
-    }
+
 }
