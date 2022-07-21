@@ -72,6 +72,42 @@ data class PlaneEntity(val key: PlaneKey) {
         planes[planeEntity] = key.item
     }
 
+    fun turnUp() {
+        if (isRunning) {
+
+        }
+    }
+
+    fun speedUp() {
+        if (isRunning) {
+
+        }
+    }
+
+    fun turnDown() {
+        if (isRunning) {
+
+        }
+    }
+
+    fun speedDown() {
+        if (isRunning) {
+
+        }
+    }
+
+    fun turnLeft() {
+        if (isRunning) {
+
+        }
+    }
+
+    fun turnRight() {
+        if (isRunning) {
+
+        }
+    }
+
     fun start(p: Player) {
         if (p.vehicle.equals(planeEntity)) {
             planeEntity.derailedVelocityMod = Vector(0.5,0.5,0.5)
@@ -95,20 +131,22 @@ data class PlaneEntity(val key: PlaneKey) {
             val travelSpeed = speed/20
             var loopsTilFuel = 20
             isRunning = true
-            // TODO: make sure Bukkit scheduler isnt multi-threaded
-            continueRun = Bukkit.getScheduler().runTaskTimer(Main.instance, {
+            Bukkit.getScheduler().scheduleSyncDelayedTask(Main.instance, {
                 fun run() {
-                    val destination = Location(p.world, p.location.x + travelSpeed, p.location.y, p.location.z + travelSpeed)
-                    planeEntity.velocity = (destination.subtract(p.location)).toVector()
-                    loopsTilFuel -= 1
-                    if (loopsTilFuel == 0) {
-                        fuel =- 1
-                        loopsTilFuel = 20
-                    }
-                    if (fuel == 0) {
-                        stop()
-                    }
-                }}, 0, 1)
+                    continueRun = Bukkit.getScheduler().runTaskTimer(Main.instance, {
+                        fun run() {
+                            val destination = Location(p.world, p.location.x + travelSpeed, p.location.y, p.location.z + travelSpeed)
+                            planeEntity.velocity = (destination.subtract(p.location)).toVector()
+                            loopsTilFuel -= 1
+                            if (loopsTilFuel == 0) {
+                                fuel =- 1
+                                loopsTilFuel = 20
+                            }
+                            if (fuel == 0) {
+                                stop()
+                            }
+                        }}, 0, 1)
+                }}, 5)
         }
     }
 

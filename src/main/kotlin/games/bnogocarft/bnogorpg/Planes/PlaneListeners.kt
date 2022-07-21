@@ -7,6 +7,7 @@ import org.bukkit.event.EventPriority
 import org.bukkit.event.Listener
 import org.bukkit.event.entity.EntityDamageEvent
 import org.bukkit.event.player.PlayerInteractEntityEvent
+import org.bukkit.event.player.PlayerInteractEvent
 import org.bukkit.inventory.ItemStack
 
 class PlaneListeners : Listener {
@@ -32,7 +33,7 @@ class PlaneListeners : Listener {
     }
 
     @EventHandler (priority = EventPriority.HIGHEST)
-    fun onPlaneCollect(e: PlayerInteractEntityEvent) {
+    fun onPlaneInteract(e: PlayerInteractEntityEvent) {
         if (e.rightClicked is Minecart) {
             if (e.player.isSneaking) {
                 if (planes.containsKey(e.rightClicked)) {
@@ -47,5 +48,11 @@ class PlaneListeners : Listener {
                 }
             }
         }
+    }
+
+    @EventHandler (priority = EventPriority.HIGHEST)
+    // Hanndlers for plane spawning and starting
+    fun onPlaneSpawn(e: PlayerInteractEvent) {
+
     }
 }
