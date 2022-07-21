@@ -4,7 +4,6 @@ import org.bukkit.Bukkit
 import org.bukkit.Location
 import org.bukkit.Material
 import org.bukkit.entity.Minecart
-import org.bukkit.entity.Player
 import org.bukkit.inventory.ItemStack
 
 val planes = HashMap<Minecart, ItemStack>()
