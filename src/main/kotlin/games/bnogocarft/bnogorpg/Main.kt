@@ -43,7 +43,6 @@ class Main : JavaPlugin() {
         server.pluginManager.registerEvents(PlaneListeners(), this)
         server.pluginManager.registerEvents(SteerListener(), this)
         RemoveLooper()
-        VeloLooper()
         cSender.sendMessage("[BnogoRPG] Planes have been enabled")
 
         cSender.sendMessage("[BnogoRPG] Enabling Websocket Server")

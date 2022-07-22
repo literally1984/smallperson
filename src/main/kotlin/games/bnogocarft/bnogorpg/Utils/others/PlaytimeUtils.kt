@@ -1,5 +1,6 @@
 package games.bnogocarft.bnogorpg.Utils.others
 
+import games.bnogocarft.bnogorpg.Utils.Database.YMLUtils
 import games.bnogocarft.bnogorpg.Utils.PPlayer.BPlayer
 import java.text.SimpleDateFormat
 import java.util.*
@@ -22,10 +23,16 @@ class PlaytimeUtils {
 
             val diff = nowDate.time - joinDate.time
             val beforeTime = player.playerConfig.getString("other.playTime").split(" ")
-            val hourDiff = (diff / ((1000 * 60 * 60)) % 24) + (beforeTime[0].toInt())
-            val minuteDiff = (diff / ((1000 * 60)) % 60) + (beforeTime[1].toInt())
+            var hourDiff = (diff / ((1000 * 60 * 60)) % 24) + (beforeTime[0].toInt())
+            var minuteDiff = (diff / ((1000 * 60)) % 60) + (beforeTime[1].toInt())
+
+            while (minuteDiff >= 60) {
+                minuteDiff -= 60
+                hourDiff++
+            }
 
             player.playerConfig.set("other.playTime", "$hourDiff $minuteDiff")
+            YMLUtils.saveCustomYml(player.playerConfig, player.playerFile)
             player.joinTime = format.format(now)
         }
     }

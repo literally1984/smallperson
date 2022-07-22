@@ -50,9 +50,9 @@ class PlaneListeners : Listener {
     // Hanndlers for plane spawning and starting
     fun onPlaneRightClick(e: PlayerInteractEvent) {
         if (e.player.isInsideVehicle) {
-            if (planes.containsKey(e.player.vehicle)) {
+            if (e.action == Action.RIGHT_CLICK_BLOCK || e.action == Action.RIGHT_CLICK_AIR) {
                 print("passed containsKey check")
-                if (e.action == Action.RIGHT_CLICK_BLOCK || e.action == Action.RIGHT_CLICK_AIR) {
+                if (planes.containsKey(e.player.vehicle)) {
                     println("passed checks")
                     val plane = planes[e.player.vehicle]!!
                     print("passed spawn check")

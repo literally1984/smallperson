@@ -1,6 +1,7 @@
 package games.bnogocarft.bnogorpg.Planes
 
 import games.bnogocarft.bnogorpg.Main
+import games.bnogocarft.bnogorpg.Utils.Abilities.getYawFromVector
 import games.bnogocarft.bnogorpg.Utils.ItemFactory.BItemFactory
 import org.bukkit.Bukkit
 import org.bukkit.ChatColor
@@ -57,6 +58,7 @@ data class PlaneEntity(val key: ItemStack) {
     var isSpawned = false
     var isRunning = false
     var isDestroyed = false
+    var isSteering = false
     lateinit var continueRunScheduler: BukkitTask
 
     lateinit var plane: Minecart
@@ -92,7 +94,10 @@ data class PlaneEntity(val key: ItemStack) {
             plane.derailedVelocityMod = Vector(1,1,1)
 
             continueRunScheduler = Bukkit.getServer().scheduler.runTaskTimer(Main.instance, Runnable() {
-                plane.velocity = noYVector
+                if (!isSteering) {
+                    plane.velocity = noYVector
+                    plane.location.yaw = getYawFromVector(noYVector)
+                }
             }, 0L, 1L)
         }
     }
@@ -150,13 +155,16 @@ data class PlaneStat(val plane: ItemStack) {
         }
 
     init {
-        currentSpeed = speedLine[1].toInt()
+        print(speedLine)
+        print(healthLine)
+        print(fuelLine)
+        currentSpeed = speedLine[1].replace("§f", "").toInt()
         maxSpeed = speedLine[5].toInt()
 
-        currentHealth = healthLine[1].toInt()
+        currentHealth = healthLine[1].replace("§f", "").toInt()
         maxHealth = healthLine[5].toInt()
 
-        currentFuel = fuelLine[1].toInt()
+        currentFuel = fuelLine[1].replace("§f", "").toInt()
         maxFuel = fuelLine[5].toInt()
     }
 }

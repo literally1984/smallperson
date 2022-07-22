@@ -18,3 +18,8 @@ commands:
     aliases: [k]
     usage: /<command>
     description: gives you a plane key
+  giv:
+    name: Give
+    aliases: [g]
+    usage: /<command> <player | > <item>
+    description: gives a player an item

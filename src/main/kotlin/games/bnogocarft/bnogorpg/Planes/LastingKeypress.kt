@@ -22,6 +22,8 @@ fun RemoveLooper() {
                 }
                 if (pressW[player] == false) {
                     pressW.remove(player)
+                    val plane = planes[player.vehicle]!!
+                    plane.isSteering = false
                 }
             }
 
@@ -32,6 +34,8 @@ fun RemoveLooper() {
                 }
                 if (pressA[player] == false) {
                     pressA.remove(player)
+                    val plane = planes[player.vehicle]!!
+                    plane.isSteering = false
                 }
             }
 
@@ -42,6 +46,8 @@ fun RemoveLooper() {
                 }
                 if (pressS[player] == false) {
                     pressS.remove(player)
+                    val plane = planes[player.vehicle]!!
+                    plane.isSteering = false
                 }
             }
 
@@ -52,6 +58,8 @@ fun RemoveLooper() {
                 }
                 if (pressD[player] == false) {
                     pressD.remove(player)
+                    val plane = planes[player.vehicle]!!
+                    plane.isSteering = false
                 }
             }
 
@@ -62,43 +70,3 @@ fun RemoveLooper() {
 
 val wVector = Vector(0.0, 0.3, 0.0)
 val sVector = Vector(-0.3, -0.3, 0.0)
-
-fun VeloLooper() {
-    Bukkit.getScheduler().scheduleSyncRepeatingTask(Main.instance, Runnable() {
-        fun run() {
-            for (player in pressW.keys) {
-                if (player.isInsideVehicle) {
-                    val plane = player.vehicle as Minecart
-                    val planeEntity = planes[plane]!!
-                    if (planeEntity.isSpawned && planeEntity.isRunning) {
-                        plane.velocity = plane.velocity.add(wVector)
-                    }
-                }
-            }
-            for (player in pressA.keys) {
-                if (player.isInsideVehicle) {
-                    val plane = player.vehicle
-                    val planeEntity = planes[plane]!!
-                    if (planeEntity.isSpawned && planeEntity.isRunning) {
-                        plane.location.yaw = plane.location.yaw + 3
-                    }
-                }
-            }
-            for (player in pressS.keys) {
-                if (player.isInsideVehicle) {
-                    val plane = player.vehicle
-                    val planeEntity = planes[plane]!!
-                    if (planeEntity.isSpawned && planeEntity.isRunning) {
-                        plane.velocity = plane.velocity.add(sVector)
-                    }
-                }
-            }
-            for (player in pressD.keys) {
-                if (player.isInsideVehicle) {
-                    val plane = player.vehicle
-                    plane.location.yaw = plane.location.yaw + 3
-                }
-            }
-        }
-    }, 0, 1)
-}
