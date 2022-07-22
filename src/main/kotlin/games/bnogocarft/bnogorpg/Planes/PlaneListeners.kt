@@ -20,15 +20,11 @@ class PlaneListeners : Listener {
             if (planes.containsKey(event.entity)) {
                 event.isCancelled = true
                 val keyItem = planes[event.entity]!!
-                val key = PlaneKey(keyItem)
-                val planeEntity = key.plane
-                planeEntity.health = planeEntity.health - event.damage
-                if (planeEntity.health <= 0) {
-                    planeEntity.destroyed = true
+                val planeEntity = planes[event.entity]!!
+                planeEntity.stats.currentHealth = planeEntity.stats.currentHealth - event.damage
+                if (planeEntity.stats.currentHealth <= 0) {
+                    planeEntity.isDestroyed = true
                 }
-
-                // Update the key item's health
-                key.stats.currentHealth = planeEntity.health
             }
         }
     }
@@ -38,13 +34,12 @@ class PlaneListeners : Listener {
         if (e.rightClicked is Minecart) {
             if (e.player.isSneaking) {
                 if (planes.containsKey(e.rightClicked)) {
-                    val planeKey = planes[e.rightClicked]
-                    val plane = PlaneKey(planeKey!!).plane
+                    val plane = planes[e.rightClicked]!!
                     val coal = ItemStack(Material.COAL)
 
                     when (e.player.itemInHand) {
-                        planeKey -> plane.collect()
-                        coal -> plane.fuel += 10
+                        PlaneKeyItem.key -> plane.collect()
+                        coal -> plane.stats.currentFuel += 10
                     }
                 }
             }
@@ -57,10 +52,9 @@ class PlaneListeners : Listener {
         if (e.player.isInsideVehicle) {
             if (planes.containsKey(e.player.vehicle)) {
                 print("passed containsKey check")
-                if (e.action.equals(Action.RIGHT_CLICK_BLOCK)) {
+                if (e.action == Action.RIGHT_CLICK_BLOCK || e.action == Action.RIGHT_CLICK_AIR) {
                     println("passed checks")
-                    val planeKey = planes[e.player.vehicle]
-                    val plane = PlaneKey(planeKey!!).plane
+                    val plane = planes[e.player.vehicle]!!
                     print("passed spawn check")
                     if (!plane.isRunning) plane.start(e.player)
                 }
@@ -70,10 +64,9 @@ class PlaneListeners : Listener {
         // For testing purposes
         if (e.action.equals(Action.RIGHT_CLICK_BLOCK)) {
             if (e.player.itemInHand == PlaneKeyItem.key) {
-                val plane = PlaneKey(e.player.itemInHand)
-                val spawnedPlane= plane.plane
+                val spawnedPlane = PlaneEntity(e.player.itemInHand)
                 spawnedPlane.spawn(e.player.location)
-                planes[spawnedPlane.planeEntity] = e.player.itemInHand
+                planes[spawnedPlane.plane] = spawnedPlane
             }
         }
     }
