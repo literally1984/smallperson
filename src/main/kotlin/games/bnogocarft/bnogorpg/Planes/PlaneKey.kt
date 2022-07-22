@@ -107,7 +107,6 @@ data class PlaneEntity(val key: ItemStack) {
             isRunning = false
             continueRunScheduler.cancel()
             plane.velocity = Vector(0.0, 0.0, 0.0)
-            continueRunScheduler
         }
     }
 }

@@ -2,6 +2,7 @@ package games.bnogocarft.bnogorpg.OtherCommands
 
 import games.bnogocarft.bnogorpg.Utils.PPlayer.BPlayers
 import games.bnogocarft.bnogorpg.Utils.others.PlaytimeUtils
+import org.bukkit.ChatColor
 import org.bukkit.command.Command
 import org.bukkit.command.CommandExecutor
 import org.bukkit.command.CommandSender
@@ -20,8 +21,8 @@ class PlayTimeCommand : CommandExecutor{
 
         val playTime = BPlayer.playTime.split(" ")
 
-        sender.sendMessage("Your total Play Time is:")
-        sender.sendMessage("[${playTime[0]} Hours, ${playTime[1]} Minutes]")
+        sender.sendMessage("${ChatColor.YELLOW}Your total Play Time is:")
+        sender.sendMessage("[${ChatColor.BLUE}${playTime[0]} Hours, ${ChatColor.GREEN}${playTime[1]} Minutes]")
         // I think the above would look like [10 Hours, 45 Minutes]
         return true
     }

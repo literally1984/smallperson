@@ -57,6 +57,7 @@ class PlaneListeners : Listener {
                     val plane = planes[e.player.vehicle]!!
                     print("passed spawn check")
                     if (!plane.isRunning) plane.start(e.player)
+                    if (plane.isRunning) plane.stop()
                 }
             }
         }
