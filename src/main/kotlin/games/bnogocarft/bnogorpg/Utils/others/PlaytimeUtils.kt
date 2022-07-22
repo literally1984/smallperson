@@ -15,7 +15,7 @@ class PlaytimeUtils {
             val joinTime = player.joinTime
 
             val now = Date()
-            val format = SimpleDateFormat("dd,MM,yyyy,HH,mm,ss")
+            val format = SimpleDateFormat("dd-MM-yyyy HH:mm:ss")
 
             val joinDate = format.parse(joinTime)
             val nowDate = format.parse(format.format(now))
