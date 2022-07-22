@@ -5,6 +5,7 @@ import org.bukkit.entity.Minecart
 import org.bukkit.event.EventHandler
 import org.bukkit.event.EventPriority
 import org.bukkit.event.Listener
+import org.bukkit.event.block.Action
 import org.bukkit.event.entity.EntityDamageEvent
 import org.bukkit.event.player.PlayerInteractEntityEvent
 import org.bukkit.event.player.PlayerInteractEvent
@@ -52,7 +53,28 @@ class PlaneListeners : Listener {
 
     @EventHandler (priority = EventPriority.HIGHEST)
     // Hanndlers for plane spawning and starting
-    fun onPlaneSpawn(e: PlayerInteractEvent) {
+    fun onPlaneRightClick(e: PlayerInteractEvent) {
+        if (e.player.isInsideVehicle) {
+            if (planes.containsKey(e.player.vehicle)) {
+                print("passed containsKey check")
+                if (e.action.equals(Action.RIGHT_CLICK_BLOCK)) {
+                    println("passed checks")
+                    val planeKey = planes[e.player.vehicle]
+                    val plane = PlaneKey(planeKey!!).plane
+                    print("passed spawn check")
+                    if (!plane.isRunning) plane.start(e.player)
+                }
+            }
+        }
 
+        // For testing purposes
+        if (e.action.equals(Action.RIGHT_CLICK_BLOCK)) {
+            if (e.player.itemInHand == PlaneKeyItem.key) {
+                val plane = PlaneKey(e.player.itemInHand)
+                val spawnedPlane= plane.plane
+                spawnedPlane.spawn(e.player.location)
+                planes[spawnedPlane.planeEntity] = e.player.itemInHand
+            }
+        }
     }
 }

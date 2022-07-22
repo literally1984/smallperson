@@ -14,57 +14,94 @@ class SteerListener : Listener {
         if (e.x < 0.0 && e.z > 0.0) {
             when (steerer.eyeLocation.yaw) {
                 in 0.0..89.0 -> {
-                    Bukkit.getConsoleSender().sendMessage("W")
+                    if (!pressW.containsKey(steerer)) {
+                        Bukkit.getConsoleSender().sendMessage("Started pressing W")
+                    }
+                    pressW[steerer] = true
                 }
 
                 in 90.0..179.0 -> {
-                    Bukkit.getConsoleSender().sendMessage("A")
+                    if (!pressA.containsKey(steerer)) {
+                        Bukkit.getConsoleSender().sendMessage("Started pressing A")
+                    }
+                    pressA[steerer] = true
                 }
 
                 in 180.0..269.0 -> {
-                    Bukkit.getConsoleSender().sendMessage("S")
+                    if (!pressS.containsKey(steerer)) {
+                        Bukkit.getConsoleSender().sendMessage("Started pressing S")
+                    }
+                    pressS[steerer] = true
                 }
 
                 in 270.0..359.0 -> {
-                    Bukkit.getConsoleSender().sendMessage("D")
+                    if (!pressD.containsKey(steerer)) {
+                        Bukkit.getConsoleSender().sendMessage("Started pressing D")
+                    }
+                    pressD[steerer] = true
                 }
             }
         }
         if (e.x < 0.0 && e.z < 0.0) {
             when (steerer.eyeLocation.yaw) {
                 in 0.0..89.0 -> {
-                    Bukkit.getConsoleSender().sendMessage("D")
+                    if (!pressD.containsKey(steerer)) {
+                        Bukkit.getConsoleSender().sendMessage("Started pressing D")
+                    }
+                    pressD[steerer] = true
                 }
 
                 in 90.0..179.0 -> {
-                    Bukkit.getConsoleSender().sendMessage("W")
+                    if (!pressW.containsKey(steerer)) {
+                        Bukkit.getConsoleSender().sendMessage("Started pressing W")
+                    }
+                    pressW[steerer] = true
                 }
 
                 in 180.0..269.0 -> {
-                    Bukkit.getConsoleSender().sendMessage("A")
+                    if (!pressA.containsKey(steerer)) {
+                        Bukkit.getConsoleSender().sendMessage("Started pressing A")
+                    }
+                    pressA[steerer] = true
                 }
 
                 in 270.0..359.0 -> {
-                    Bukkit.getConsoleSender().sendMessage("S")
+                    if (!pressS.containsKey(steerer)) {
+                        Bukkit.getConsoleSender().sendMessage("Started pressing S")
+                    }
+                    pressS[steerer] = true
                 }
             }
         }
         if (e.x > 0.0 && e.z > 0.0) {
             when (steerer.eyeLocation.yaw) {
                 in 0.0..89.0 -> {
-                    Bukkit.getConsoleSender().sendMessage("A")
+                    if (!pressA.containsKey(steerer)) {
+                        Bukkit.getConsoleSender().sendMessage("Started pressing A")
+                    }
+                    pressA[steerer] = true
                 }
 
                 in 90.0..179.0 -> {
-                    Bukkit.getConsoleSender().sendMessage("S")
+                    if (!pressS.containsKey(steerer)) {
+                        Bukkit.getConsoleSender().sendMessage("Started pressing S")
+                    }
+                    pressS[steerer] = true
                 }
 
                 in 180.0..269.0 -> {
-                    Bukkit.getConsoleSender().sendMessage("D")
+                    if (!pressD.containsKey(steerer)) {
+                        Bukkit.getConsoleSender().sendMessage("Started pressing D")
+                    }
+                    pressD[steerer] = true
                 }
 
                 in 270.0..359.0 -> {
-                    Bukkit.getConsoleSender().sendMessage("W")
+                    Bukkit.getConsoleSender().sendMessage("Started pressing W")
+                    if (!pressW.containsKey(steerer)) {
+                        Bukkit.getConsoleSender().sendMessage("Started pressing W")
+                    }
+                    pressW[steerer] = true
                 }
             }
         }
@@ -72,19 +109,31 @@ class SteerListener : Listener {
         if (e.x > 0.0 && e.z < 0.0) {
             when (steerer.eyeLocation.yaw) {
                 in 0.0..89.0 -> {
-                    Bukkit.getConsoleSender().sendMessage("S")
+                    if (!pressS.containsKey(steerer)) {
+                        Bukkit.getConsoleSender().sendMessage("Started pressing S")
+                    }
+                    pressS[steerer] = true
                 }
 
                 in 90.0..179.0 -> {
-                    Bukkit.getConsoleSender().sendMessage("D")
+                    if (!pressD.containsKey(steerer)) {
+                        Bukkit.getConsoleSender().sendMessage("Started pressing D")
+                    }
+                    pressD[steerer] = true
                 }
 
                 in 180.0..269.0 -> {
-                    Bukkit.getConsoleSender().sendMessage("W")
+                    if (!pressW.containsKey(steerer)) {
+                        Bukkit.getConsoleSender().sendMessage("Started pressing W")
+                    }
+                    pressW[steerer] = true
                 }
 
                 in 270.0..359.0 -> {
-                    Bukkit.getConsoleSender().sendMessage("A")
+                    if (!pressA.containsKey(steerer)) {
+                        Bukkit.getConsoleSender().sendMessage("Started pressing A")
+                    }
+                    pressA[steerer] = true
                 }
             }
         }

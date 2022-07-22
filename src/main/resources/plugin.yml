@@ -13,3 +13,8 @@ commands:
     aliases: [pt]
     usage: /<command>
     description: Get your playtime
+  key:
+    name: Key
+    aliases: [k]
+    usage: /<command>
+    description: gives you a plane key
