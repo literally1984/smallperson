@@ -82,8 +82,8 @@ data class BPlayer(val player: Player) {
     init {
         // Makes sure the PPlayer's data file is saved when PPlayer is created
         if (!(playerFile.exists())) {
-            playerConfig.set("items.talisman", " ")
-            playerConfig.set("items.abilities", " ")
+            playerConfig.set("items.talisman", "")
+            playerConfig.set("items.abilities", "")
             playerConfig.set("stats.pickBreakSpeed", 1)
             playerConfig.set("stats.axeBreakSpeed", 1)
             playerConfig.set("stats.shovelBreakSpeed", 1)

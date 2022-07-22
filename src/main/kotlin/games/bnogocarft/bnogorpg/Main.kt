@@ -5,6 +5,7 @@ import com.comphenix.protocol.ProtocolManager
 import games.bnogocarft.bnogorpg.Listeners.HotbarChangeEvent
 import games.bnogocarft.bnogorpg.Listeners.PlayerJoinEvent
 import games.bnogocarft.bnogorpg.Listeners.PlayerLeaveEvent
+import games.bnogocarft.bnogorpg.OtherCommands.GiveCommand
 import games.bnogocarft.bnogorpg.OtherCommands.PlayTimeCommand
 import games.bnogocarft.bnogorpg.Planes.*
 import games.bnogocarft.bnogorpg.RecipeBook.RecipeBookListeners
@@ -39,20 +40,20 @@ class Main : JavaPlugin() {
 
         cSender.sendMessage("[BnogoRPG] Enabling Planes")
         PlaneKeyItem()
-        getCommand("key").executor = KeyCommand()
         server.pluginManager.registerEvents(PlaneListeners(), this)
         server.pluginManager.registerEvents(SteerListener(), this)
-        cSender.sendMessage("[BnogoRPG] Planes have been enabled")
-
-        cSender.sendMessage("[BnogoRPG] Enabling PlayTime counters...")
-        getCommand("playtime").executor = PlayTimeCommand()
         RemoveLooper()
         VeloLooper()
-        cSender.sendMessage("[BnogoRPG] PlayTime counter functions have been enabled!")
+        cSender.sendMessage("[BnogoRPG] Planes have been enabled")
 
         cSender.sendMessage("[BnogoRPG] Enabling Websocket Server")
         //ComUtils.main()
         cSender.sendMessage("[BnogoRPG] Websocket Server has been enabled")
+
+        cSender.sendMessage("[BnogoRPG] Enabling other commands...")
+        getCommand("giv").executor = GiveCommand()
+        getCommand("playtime").executor = PlayTimeCommand()
+        cSender.sendMessage("[BnogoRPG] all commands are enabled!")
 
         cSender.sendMessage("--------------------------------------------")
         cSender.sendMessage("--------------------------------------------")
