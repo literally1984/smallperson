@@ -80,6 +80,7 @@ data class PlaneEntity(val key: ItemStack) {
 
     fun start(p: Player) {
         if (isSpawned && !isRunning) {
+            print("started successfully")
             isRunning = true
             val pLoc = p.location
             val pDir = pLoc.direction
@@ -97,6 +98,7 @@ data class PlaneEntity(val key: ItemStack) {
                 if (!isSteering) {
                     plane.velocity = noYVector
                     plane.location.yaw = getYawFromVector(noYVector)
+                    print("velocity is set}")
                 }
             }, 0L, 1L)
         }

@@ -18,6 +18,7 @@ class removeScheduler() : BukkitRunnable() {
         for (player in pressW.keys) {
             if (pressW[player] == true) {
                 pressW[player] = false
+                continue;
             }
             if (pressW[player] == false) {
                 pressW.remove(player)
@@ -31,6 +32,7 @@ class removeScheduler() : BukkitRunnable() {
         for (player in pressA.keys) {
             if (pressA[player] == true) {
                 pressA[player] = false
+                continue;
             }
             if (pressA[player] == false) {
                 pressA.remove(player)
@@ -44,6 +46,7 @@ class removeScheduler() : BukkitRunnable() {
         for (player in pressS.keys) {
             if (pressS[player] == true) {
                 pressS[player] = false
+                continue;
             }
             if (pressS[player] == false) {
                 pressS.remove(player)
@@ -57,6 +60,7 @@ class removeScheduler() : BukkitRunnable() {
         for (player in pressD.keys) {
             if (pressD[player] == true) {
                 pressD[player] = false
+                continue;
             }
             if (pressD[player] == false) {
                 pressD.remove(player)

@@ -42,7 +42,7 @@ class Main : JavaPlugin() {
         PlaneKeyItem()
         server.pluginManager.registerEvents(PlaneListeners(), this)
         server.pluginManager.registerEvents(SteerListener(), this)
-        server.scheduler.scheduleSyncRepeatingTask(this, removeScheduler(), 1, 3)
+        server.scheduler.scheduleSyncRepeatingTask(this, removeScheduler(), 50, 3)
         cSender.sendMessage("[BnogoRPG] Planes have been enabled")
 
         cSender.sendMessage("[BnogoRPG] Enabling Websocket Server")
