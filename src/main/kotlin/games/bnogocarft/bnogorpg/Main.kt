@@ -11,6 +11,7 @@ import games.bnogocarft.bnogorpg.Planes.*
 import games.bnogocarft.bnogorpg.RecipeBook.RecipeBookListeners
 import games.bnogocarft.bnogorpg.Utils.PPlayer.BPlayers
 import games.bnogocarft.bnogorpg.Utils.others.PlaytimeUtils
+import games.bnogocarft.bnogorpg.WebsiteCommunication.ComUtils
 import org.bukkit.ChatColor
 import org.bukkit.plugin.Plugin
 import org.bukkit.plugin.java.JavaPlugin
@@ -46,7 +47,7 @@ class Main : JavaPlugin() {
         cSender.sendMessage("[BnogoRPG] Planes have been enabled")
 
         cSender.sendMessage("[BnogoRPG] Enabling Websocket Server")
-        //ComUtils.main()
+        ComUtils.main()
         cSender.sendMessage("[BnogoRPG] Websocket Server has been enabled")
 
         cSender.sendMessage("[BnogoRPG] Enabling other commands...")

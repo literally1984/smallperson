@@ -3,6 +3,7 @@ package games.bnogocarft.bnogorpg.WebsiteCommunication
 import org.java_websocket.WebSocket
 import org.java_websocket.handshake.ClientHandshake
 import org.java_websocket.server.WebSocketServer
+import java.net.InetAddress
 import java.net.InetSocketAddress
 import java.nio.ByteBuffer
 
@@ -37,8 +38,8 @@ class ComUtils(address: InetSocketAddress?) : WebSocketServer(address) {
     companion object {
         @JvmStatic
         fun main() {
-            val host = "0.0.0.0"
-            val port = 20114
+            val host = InetAddress.getLocalHost()
+            val port = 25575
             val server: WebSocketServer = ComUtils(InetSocketAddress(host, port))
             server.run()
         }
