@@ -10,29 +10,29 @@ import java.nio.ByteBuffer
 
 class ComUtils(address: InetSocketAddress?) : WebSocketServer(address) {
     override fun onOpen(conn: WebSocket, handshake: ClientHandshake) {
-        conn.send("Welcome to the server!") //This method sends a message to the new client
-        broadcast("new connection: " + handshake.resourceDescriptor) //This method sends a message to all clients connected
-        println("new connection to " + conn.remoteSocketAddress)
+        conn.send("[BnogoWebSocket] Welcome to the server!") //This method sends a message to the new client
+        broadcast("[BnogoWebSocket] New connection: " + handshake.resourceDescriptor) //This method sends a message to all clients connected
+        println("[BnogoWebSocket] New connection to " + conn.remoteSocketAddress)
     }
 
     override fun onClose(conn: WebSocket, code: Int, reason: String, remote: Boolean) {
-        println("closed " + conn.remoteSocketAddress + " with exit code " + code + " additional info: " + reason)
+        println("[BnogoWebSocket] Closed " + conn.remoteSocketAddress + " with exit code " + code + " additional info: " + reason)
     }
 
     override fun onMessage(conn: WebSocket, message: String) {
-        println("received message from " + conn.remoteSocketAddress + ": " + message)
+        println("[BnogoWebSocket] Received message from " + conn.remoteSocketAddress + ": " + message)
     }
 
     override fun onMessage(conn: WebSocket, message: ByteBuffer?) {
-        println("received ByteBuffer from " + conn.remoteSocketAddress)
+        println("[BnogoWebSocket] Received ByteBuffer from " + conn.remoteSocketAddress)
     }
 
     override fun onError(conn: WebSocket, ex: Exception) {
-        System.err.println("an error occurred on connection " + conn.remoteSocketAddress + ":" + ex)
+        System.err.println("[BnogoWebSocket] an error occurred on connection " + conn.remoteSocketAddress + ":" + ex)
     }
 
     override fun onStart() {
-        println("server started successfully")
+        println("[BnogoWebSocket] Websocket server started")
     }
 
     companion object {
