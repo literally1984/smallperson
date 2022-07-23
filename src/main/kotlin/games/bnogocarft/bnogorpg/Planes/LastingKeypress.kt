@@ -10,7 +10,7 @@ val pressS = HashMap<Player, Boolean>()
 val pressD = HashMap<Player, Boolean>()
 
 val wVector = Vector(0.0, 0.3, 0.0)
-val sVector = Vector(-0.3, -0.3, 0.0)
+val sVector = Vector(0.0, -0.3, 0.0)
 
 class removeScheduler() : BukkitRunnable() {
     override fun run() {
