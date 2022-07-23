@@ -49,7 +49,7 @@ class Main : JavaPlugin() {
         cSender.sendMessage("$logo Planes have been enabled")
 
         cSender.sendMessage("$logo Enabling Websocket Server")
-        ComUtils.main()
+        //ComUtils.main()
         cSender.sendMessage("$logo Websocket Server has been enabled")
 
         cSender.sendMessage("$logo Enabling other commands...")

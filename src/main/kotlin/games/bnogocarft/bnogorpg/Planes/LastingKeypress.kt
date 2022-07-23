@@ -10,7 +10,7 @@ val pressS = HashMap<Player, Boolean>()
 val pressD = HashMap<Player, Boolean>()
 
 val wVector = Vector(0.0, 0.3, 0.0)
-val sVector = Vector(0.0, -0.3, 0.0)
+val sVector = Vector(0.0        , -0.3, 0.0)
 
 class removeScheduler() : BukkitRunnable() {
     override fun run() {
@@ -21,10 +21,12 @@ class removeScheduler() : BukkitRunnable() {
                 continue;
             }
             if (pressW[player] == false) {
-                pressW.remove(player)
-                val plane = planes[player.vehicle]!!
-                plane.isSteering = false
-                print("stopped pressing W")
+                if (planes[player.vehicle] != null) {
+                    pressW.remove(player)
+                    val plane = planes[player.vehicle]!!
+                    plane.isSteering = false
+                    print("stopped pressing W")
+                }
             }
         }
 
@@ -35,10 +37,12 @@ class removeScheduler() : BukkitRunnable() {
                 continue;
             }
             if (pressA[player] == false) {
-                pressA.remove(player)
-                val plane = planes[player.vehicle]!!
-                plane.isSteering = false
-                print("stopped pressing A")
+                if (planes[player.vehicle] != null) {
+                    pressA.remove(player)
+                    val plane = planes[player.vehicle]!!
+                    plane.isSteering = false
+                    print("stopped pressing A")
+                }
             }
         }
 
@@ -49,10 +53,12 @@ class removeScheduler() : BukkitRunnable() {
                 continue;
             }
             if (pressS[player] == false) {
-                pressS.remove(player)
-                val plane = planes[player.vehicle]!!
-                plane.isSteering = false
-                print("stopped pressing S")
+                if (planes[player.vehicle] != null) {
+                    pressS.remove(player)
+                    val plane = planes[player.vehicle]!!
+                    plane.isSteering = false
+                    print("stopped pressing S")
+                }
             }
         }
 
@@ -63,10 +69,12 @@ class removeScheduler() : BukkitRunnable() {
                 continue;
             }
             if (pressD[player] == false) {
-                pressD.remove(player)
-                val plane = planes[player.vehicle]!!
-                plane.isSteering = false
-                print("stopped pressing D")
+                if (planes[player.vehicle] != null) {
+                    pressD.remove(player)
+                    val plane = planes[player.vehicle]!!
+                    plane.isSteering = false
+                    print("stopped pressing D")
+                }
             }
         }
     }

@@ -59,7 +59,6 @@ data class PlaneEntity(val key: ItemStack) {
     var isRunning = false
     var isDestroyed = false
     var isSteering = false
-    lateinit var continueRunScheduler: BukkitTask
 
     lateinit var plane: Minecart
 
@@ -93,12 +92,12 @@ data class PlaneEntity(val key: ItemStack) {
 
             plane.flyingVelocityMod = Vector(1,1,1)
             plane.derailedVelocityMod = Vector(1,1,1)
+            print("Math completed")
 
-            continueRunScheduler = Bukkit.getServer().scheduler.runTaskTimer(Main.instance, Runnable() {
+            Bukkit.getServer().scheduler.scheduleSyncRepeatingTask(Main.instance, Runnable() {
                 if (!isSteering) {
                     plane.velocity = noYVector
                     plane.location.yaw = getYawFromVector(noYVector)
-                    print("velocity is set}")
                 }
             }, 0L, 1L)
         }
@@ -107,7 +106,6 @@ data class PlaneEntity(val key: ItemStack) {
     fun stop() {
         if (isRunning) {
             isRunning = false
-            continueRunScheduler.cancel()
             plane.velocity = Vector(0.0, 0.0, 0.0)
         }
     }
