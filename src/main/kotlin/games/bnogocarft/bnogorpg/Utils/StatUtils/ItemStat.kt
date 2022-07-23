@@ -4,6 +4,14 @@ import org.bukkit.ChatColor
 import org.bukkit.inventory.ItemStack
 
 data class ItemStat(val item: ItemStack) {
+    constructor(stats: List<Int>, item: ItemStack) : this(item) {
+        damage = stats[0]
+        defense = stats[1]
+        magicDmg = stats[2]
+        magicDef = stats[3]
+        mana = stats[4]
+        stamina = stats[5]
+    }
 
     var damage: Int = 0
         set(value) {

@@ -6,6 +6,11 @@ import games.bnogocarft.bnogorpg.Utils.StatUtils.ItemStat
 import org.bukkit.inventory.ItemStack
 
 data class BWeapon(val item: ItemStack) {
+
+    constructor(stats: List<Int>, item: ItemStack) : this(item) {
+        this.stats = ItemStat(stats, item)
+    }
+
     /*
     DISPLAY NAME
 

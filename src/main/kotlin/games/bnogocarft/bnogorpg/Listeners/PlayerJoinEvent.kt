@@ -16,7 +16,7 @@ class PlayerJoinEvent : Listener {
     fun playerJoinEvent(e: PlayerJoinEvent) {
         val bPlayer = BPlayer(e.player)
         val playerBar = bPlayer.bar
-        playerBar.text = "${ChatColor.YELLOW}BnogoCarftMC!"
+        playerBar.text = "${ChatColor.RED}--> play.${ChatColor.BLUE}bnogocarft${ChatColor.GREEN}.games ${ChatColor.RED}<--"
         playerBar.display()
         BPlayers.put(e.player, bPlayer)
         Bukkit.getServer().consoleSender.sendMessage("${e.player.displayName}'s data files have been instanced and mapped at")

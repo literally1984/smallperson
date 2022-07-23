@@ -2,6 +2,8 @@ package games.bnogocarft.bnogorpg.Utils
 
 import org.bukkit.ChatColor
 
+val logo = "[BnogoRPG]"
+
 class StringUtils {
     companion object {
         val Common = "${ChatColor.BOLD}${ChatColor.GRAY}"

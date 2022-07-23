@@ -38,6 +38,10 @@ class BItemUtils {
             BWeapons[item] = BWeapon(item)
         }
 
+        fun addBWeapon(item: ItemStack, stats: List<Int>) {
+            BWeapons[item] = BWeapon(stats, item)
+        }
+
         fun getBPickaxe(item: ItemStack): BPickaxe {
             if (BPickaxes.containsKey(item)) return BPickaxes[item]!!
             val bpickaxe = BPickaxe(item)
