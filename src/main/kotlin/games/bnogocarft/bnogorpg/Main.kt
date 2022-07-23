@@ -45,7 +45,7 @@ class Main : JavaPlugin() {
         PlaneKeyItem()
         server.pluginManager.registerEvents(PlaneListeners(), this)
         server.pluginManager.registerEvents(SteerListener(), this)
-        server.scheduler.scheduleSyncRepeatingTask(this, removeScheduler(), 50, 3)
+        server.scheduler.scheduleSyncRepeatingTask(this, removeScheduler(), 0, 1)
         cSender.sendMessage("$logo Planes have been enabled")
 
         cSender.sendMessage("$logo Enabling Websocket Server")

@@ -38,8 +38,14 @@ class PlaneListeners : Listener {
                     val coal = ItemStack(Material.COAL)
 
                     when (e.player.itemInHand) {
-                        PlaneKeyItem.key -> plane.collect()
-                        coal -> plane.stats.currentFuel += 10
+                        PlaneKeyItem.key -> {
+                            plane.collect()
+                            e.player.sendMessage("You collected your plane!")
+                        }
+                        coal -> {
+                            plane.stats.currentFuel += 10
+                            e.player.sendMessage("You added 10 fuel to your plane!")
+                        }
                     }
                 }
             }
@@ -57,7 +63,10 @@ class PlaneListeners : Listener {
                     val plane = planes[e.player.vehicle]!!
                     print("passed spawn check")
                     if (!plane.isRunning) plane.start(e.player)
-                    if (plane.isRunning) plane.stop()
+                    if (plane.isRunning) {
+                        plane.stop()
+                        e.player.sendMessage("You stopped your plane!")
+                    }
                 }
             }
         }
@@ -66,7 +75,10 @@ class PlaneListeners : Listener {
         if (e.action.equals(Action.RIGHT_CLICK_BLOCK)) {
             if (e.player.itemInHand == PlaneKeyItem.key) {
                 val spawnedPlane = PlaneEntity(e.player.itemInHand)
-                spawnedPlane.spawn(e.player.location)
+                val spawned = spawnedPlane.spawn(e.player.location)
+                if (spawned) {
+                    e.player.sendMessage("You spawned in a plane!")
+                } else e.player.sendMessage("You already have a plane spawned in!")
                 planes[spawnedPlane.plane] = spawnedPlane
             }
         }

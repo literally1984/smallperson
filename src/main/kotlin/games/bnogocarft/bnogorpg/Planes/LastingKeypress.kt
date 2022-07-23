@@ -9,8 +9,8 @@ val pressA = HashMap<Player, Boolean>()
 val pressS = HashMap<Player, Boolean>()
 val pressD = HashMap<Player, Boolean>()
 
-val wVector = Vector(0.0, 0.3, 0.0)
-val sVector = Vector(0.0        , -0.3, 0.0)
+val wVector = Vector(0.0, 0.1, 0.0)
+val sVector = Vector(0.0, -0.1, 0.0)
 
 class removeScheduler() : BukkitRunnable() {
     override fun run() {
@@ -25,6 +25,7 @@ class removeScheduler() : BukkitRunnable() {
                     pressW.remove(player)
                     val plane = planes[player.vehicle]!!
                     plane.isSteering = false
+                    player.vehicle.location.pitch = 0f
                     print("stopped pressing W")
                 }
             }
@@ -41,6 +42,7 @@ class removeScheduler() : BukkitRunnable() {
                     pressA.remove(player)
                     val plane = planes[player.vehicle]!!
                     plane.isSteering = false
+                    player.vehicle.location.yaw = 0f
                     print("stopped pressing A")
                 }
             }
@@ -57,6 +59,7 @@ class removeScheduler() : BukkitRunnable() {
                     pressS.remove(player)
                     val plane = planes[player.vehicle]!!
                     plane.isSteering = false
+                    player.vehicle.location.pitch = 0f
                     print("stopped pressing S")
                 }
             }
@@ -73,6 +76,7 @@ class removeScheduler() : BukkitRunnable() {
                     pressD.remove(player)
                     val plane = planes[player.vehicle]!!
                     plane.isSteering = false
+                    player.vehicle.location.yaw = 0f
                     print("stopped pressing D")
                 }
             }

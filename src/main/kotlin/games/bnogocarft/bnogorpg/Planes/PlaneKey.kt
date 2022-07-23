@@ -64,10 +64,15 @@ data class PlaneEntity(val key: ItemStack) {
 
 
 
-    fun spawn(loc: Location) {
-        isSpawned = true
-        plane = loc.world.spawn(loc, Minecart::class.java)
-        planes[plane] = this
+    fun spawn(loc: Location): Boolean {
+        return if (isSpawned) {
+            false
+        } else {
+            isSpawned = true
+            plane = loc.world.spawn(loc, Minecart::class.java)
+            planes[plane] = this
+            true
+        }
     }
 
     fun collect() {
@@ -80,6 +85,7 @@ data class PlaneEntity(val key: ItemStack) {
     fun start(p: Player) {
         if (isSpawned && !isRunning) {
             print("started successfully")
+            p.sendMessage("You started your plane successfully!")
             isRunning = true
             val pLoc = p.location
             val pDir = pLoc.direction
