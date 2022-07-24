@@ -103,7 +103,7 @@ data class PlaneEntity(val key: ItemStack) {
             print("Math completed")
 
             Bukkit.getServer().scheduler.scheduleSyncRepeatingTask(Main.instance, Runnable() {
-                if (!isSteering) {
+                if (!isSteering && isRunning) {
                     plane.velocity = noYVector
                     plane.location.yaw = getYawFromVector(noYVector)
                 }

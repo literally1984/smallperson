@@ -28,6 +28,7 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="library" scope="PROVIDED" name="Maven: net.citizensnpcs:citizensapi:2.0.8-SNAPSHOT" level="project" />
     <orderEntry type="library" scope="PROVIDED" name="Maven: com.github.EaglerMaven:Vault:1.2.26" level="project" />
     <orderEntry type="library" scope="PROVIDED" name="Maven: com.github.EaglerMaven:BossBarAPI:0.0.1" level="project" />
     <orderEntry type="library" scope="PROVIDED" name="Maven: com.github.EaglerMaven:MassiveCore:6.4.1" level="project" />
