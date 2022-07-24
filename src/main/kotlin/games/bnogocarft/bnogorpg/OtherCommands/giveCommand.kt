@@ -1,5 +1,8 @@
 package games.bnogocarft.bnogorpg.OtherCommands
 
+import games.bnogocarft.bnogorpg.Planes.PlaneEntity
+import games.bnogocarft.bnogorpg.Planes.PlaneKeyItem
+import games.bnogocarft.bnogorpg.Planes.planeEntitites
 import org.bukkit.Bukkit
 import org.bukkit.command.Command
 import org.bukkit.command.CommandExecutor
@@ -44,8 +47,12 @@ class GiveCommand : CommandExecutor {
         if (sender is Player) {
             if (args.size == 1) {
                 if (customItemMap.containsKey(args[0].lowercase())) {
-                    sender.inventory.addItem(customItemMap[args[0].lowercase()])
+                    val item = customItemMap[args[0].lowercase()]!!
+                    sender.inventory.addItem(item)
                     sender.sendMessage("You gave yourself an ${args[0]}")
+                    if (args[0].lowercase() == "planekey") {
+                        planeEntitites[item] = PlaneEntity(item)
+                    }
                     return true
                 }
             }

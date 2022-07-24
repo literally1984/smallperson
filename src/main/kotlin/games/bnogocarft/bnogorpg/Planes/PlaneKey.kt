@@ -15,6 +15,7 @@ import org.bukkit.scheduler.BukkitTask
 import org.bukkit.util.Vector
 
 val planes = HashMap<Minecart, PlaneEntity>()
+val planeEntitites = HashMap<ItemStack, PlaneEntity>()
 
 class PlaneKeyItem {
     init {
@@ -79,6 +80,7 @@ data class PlaneEntity(val key: ItemStack) {
         if (isSpawned) {
             isSpawned = false
             plane.remove()
+            planes.remove(plane)
         }
     }
 

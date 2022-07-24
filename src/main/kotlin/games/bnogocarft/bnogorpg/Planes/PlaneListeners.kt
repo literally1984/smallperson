@@ -62,10 +62,14 @@ class PlaneListeners : Listener {
                     println("passed checks")
                     val plane = planes[e.player.vehicle]!!
                     print("passed spawn check")
-                    if (!plane.isRunning) plane.start(e.player)
+                    if (!plane.isRunning) {
+                        plane.start(e.player)
+                        return
+                    }
                     if (plane.isRunning) {
                         plane.stop()
                         e.player.sendMessage("You stopped your plane!")
+                        return
                     }
                 }
             }
@@ -74,7 +78,7 @@ class PlaneListeners : Listener {
         // For testing purposes
         if (e.action.equals(Action.RIGHT_CLICK_BLOCK)) {
             if (e.player.itemInHand == PlaneKeyItem.key) {
-                val spawnedPlane = PlaneEntity(e.player.itemInHand)
+                val spawnedPlane = planeEntitites[e.player.itemInHand]!!
                 val spawned = spawnedPlane.spawn(e.player.location)
                 if (spawned) {
                     e.player.sendMessage("You spawned in a plane!")

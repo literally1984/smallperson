@@ -13,7 +13,9 @@ class SteerListener : Listener {
         val steerer = e.player
         val vehicle = e.player.vehicle
         if (vehicle is Minecart) {
+            print("mincart check passed")
             if (planes.containsKey(vehicle)) {
+                print("plane check passed")
 
                 val plane = planes[vehicle]!!
                 if (e.x < 0.0 && e.z > 0.0) {
