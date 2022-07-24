@@ -10,6 +10,7 @@ import games.bnogocarft.bnogorpg.OtherCommands.GiveCommand
 import games.bnogocarft.bnogorpg.OtherCommands.PlayTimeCommand
 import games.bnogocarft.bnogorpg.Planes.*
 import games.bnogocarft.bnogorpg.RecipeBook.RecipeBookListeners
+import games.bnogocarft.bnogorpg.Utils.CustomEvents.ArmorWearListeners
 import games.bnogocarft.bnogorpg.Utils.PPlayer.BPlayers
 import games.bnogocarft.bnogorpg.Utils.logo
 import games.bnogocarft.bnogorpg.Utils.others.PlaytimeUtils
@@ -35,6 +36,7 @@ class Main : JavaPlugin() {
         server.pluginManager.registerEvents(RecipeBookListeners(), this)
         server.pluginManager.registerEvents(HotbarChangeEvent(), this)
         server.pluginManager.registerEvents(PlayerLeaveEvent(), this)
+        server.pluginManager.registerEvents(ArmorWearListeners(), this)
         cSender.sendMessage("$logo Registered Listeners")
 
         cSender.sendMessage("$logo Enabling RecipeBook...")

@@ -168,6 +168,74 @@ data class BPlayer(val player: Player) {
      * Simiulates the current [BPlayer] dealing damage to another [BPlayer], Handles EXP gain and more
      */
     fun dealDamage(player: BPlayer, amount: Int) {
+        val damage = amount*(player.stats.defense/player.stats.defense + 10)
+        player.player.health -= damage
+        meleeEXP += damage
+        if (meleeEXP >= getNeededEXP(player.meleeLVL)) {
+            levelUp("melee")
+        }
+    }
 
+
+    fun dealSpellDamage(player: BPlayer, amount: Int) {
+        val damage = amount*(player.stats.mDefense/player.stats.mDefense + 10)
+        player.player.health -= damage
+        spellcastEXP += damage
+        if (spellcastEXP >= getNeededEXP(player.spellcastLVL)) {
+            levelUp("spellcast")
+        }
+    }
+
+    fun levelUp(stat: String) {
+        when (stat) {
+            "melee" -> {
+                if (meleeEXP >= getNeededEXP(meleeLVL)) {
+                    meleeLVL++
+                    meleeEXP -= getNeededEXP(meleeLVL)
+                    player.sendMessage("You have leveled up to your melee level to $meleeLVL!")
+                    player.sendMessage("Your current melee EXP is $meleeEXP and you need ${getNeededEXP(meleeLVL)} to level up again!")
+                }
+            }
+            "spellcast" -> {
+                if (spellcastEXP >= getNeededEXP(spellcastLVL)) {
+                    spellcastLVL++
+                    spellcastEXP -= getNeededEXP(spellcastLVL)
+                    player.sendMessage("You have leveled up to your spellcast level to $spellcastLVL!")
+                    player.sendMessage("Your current spellcast EXP is $spellcastEXP and you need ${getNeededEXP(spellcastLVL)} to level up again!")
+                }
+            }
+            "woodcutting" -> {
+                if (woodCuttingEXP >= getNeededEXP(woodCuttingLVL)) {
+                    woodCuttingLVL++
+                    woodCuttingEXP -= getNeededEXP(woodCuttingLVL)
+                    player.sendMessage("You have leveled up to your woodcutting level to $woodCuttingLVL!")
+                    player.sendMessage("Your current woodcutting EXP is $woodCuttingEXP and you need ${getNeededEXP(woodCuttingLVL)} to level up again!")
+                }
+            }
+            "mining" -> {
+                if (miningEXP >= getNeededEXP(miningLVL)) {
+                    miningLVL++
+                    miningEXP -= getNeededEXP(miningLVL)
+                    player.sendMessage("You have leveled up to your mining level to $miningLVL!")
+                    player.sendMessage("Your current mining EXP is $miningEXP and you need ${getNeededEXP(miningLVL)} to level up again!")
+                }
+            }
+            "combat" -> {
+                if (combatEXP >= getNeededEXP(combatLVL)) {
+                    combatLVL++
+                    combatEXP -= getNeededEXP(combatLVL)
+                    player.sendMessage("You have leveled up to your combat level to $combatLVL!")
+                    player.sendMessage("Your current combat EXP is $combatEXP and you need ${getNeededEXP(combatLVL)} to level up again!")
+                }
+            }
+            "farming" -> {
+                if (farmingEXP >= getNeededEXP(farmingLVL)) {
+                    farmingLVL++
+                    farmingEXP -= getNeededEXP(farmingLVL)
+                    player.sendMessage("You have leveled up to your farming level to $farmingLVL!")
+                    player.sendMessage("Your current farming EXP is $farmingEXP and you need ${getNeededEXP(farmingLVL)} to level up again!")
+                }
+            }
+        }
     }
 }

@@ -7,7 +7,7 @@ import org.bukkit.event.EventHandler
 import org.bukkit.event.EventPriority
 import org.bukkit.event.Listener
 import org.bukkit.event.entity.EntityDamageByEntityEvent
-import org.bukkit.event.entity.EntityDamageEvent.DamageCause
+import kotlin.math.roundToInt
 
 class DamageEvent : Listener {
     @EventHandler (priority = EventPriority.HIGHEST)
@@ -29,14 +29,21 @@ class DamageEvent : Listener {
 
                         if (damager is Player) {
                             // Deals the reflected damage to the damager
-                            val bDamager = BPlayers[damager]
-                            damager.damage(TODO("make it utilze the equation"))
+                            val bDamager = BPlayers[damager]!!
+                            player.dealDamage(bDamager, reflected.roundToInt())
                         }
                     }
                     else -> {}
                 }
             }
 
+            if (damager is Player)  {
+                val bDamager = BPlayers[damager]!!
+                bDamager.dealDamage(player, damage.roundToInt())
+            } else {
+                val finalDamge = damage*(player.stats.defense/player.stats.defense + 10)
+                player.player.health -= finalDamge.roundToInt()
+            }
         }
     }
 }
