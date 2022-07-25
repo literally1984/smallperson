@@ -22,7 +22,7 @@ class PlaytimeUtils {
             val nowDate = format.parse(format.format(now))
 
             val diff = nowDate.time - joinDate.time
-            val beforeTime = player.playerConfig.getString("other.playTime").split(" ")
+            val beforeTime = player.config.getString("other.playTime").split(" ")
             var hourDiff = (diff / ((1000 * 60 * 60)) % 24) + (beforeTime[0].toInt())
             var minuteDiff = (diff / ((1000 * 60)) % 60) + (beforeTime[1].toInt())
 
@@ -31,8 +31,8 @@ class PlaytimeUtils {
                 hourDiff++
             }
 
-            player.playerConfig.set("other.playTime", "$hourDiff $minuteDiff")
-            YMLUtils.saveCustomYml(player.playerConfig, player.playerFile)
+            player.config.set("other.playTime", "$hourDiff $minuteDiff")
+            YMLUtils.saveCustomYml(player.config, player.playerFile)
             player.joinTime = format.format(now)
         }
     }

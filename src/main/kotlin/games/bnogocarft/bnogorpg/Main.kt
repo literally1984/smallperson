@@ -73,7 +73,7 @@ class Main : JavaPlugin() {
         cSender.sendMessage("--------------------------------------------")
         cSender.sendMessage("--------------------------------------------")
         cSender.sendMessage(
-            "${ChatColor.LIGHT_PURPLE} $logo ${ChatColor.GREEN} BnogoRPG Vdev-0.0.3 Has been ${ChatColor.GREEN}Enabled"
+            "${ChatColor.LIGHT_PURPLE} $logo ${ChatColor.GREEN} BnogoRPG Vdev-0.0.4 Has been ${ChatColor.GREEN}Enabled"
         )
         cSender.sendMessage("--------------------------------------------")
         cSender.sendMessage("--------------------------------------------")
