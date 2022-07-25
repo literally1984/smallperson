@@ -1,30 +1,16 @@
 package games.bnogocarft.bnogorpg.Utils
 
 import org.bukkit.Bukkit
-import org.bukkit.ChatColor
-import org.bukkit.DyeColor
 import org.bukkit.Material
+import org.bukkit.entity.Player
+import org.bukkit.event.EventHandler
+import org.bukkit.event.Listener
+import org.bukkit.event.inventory.InventoryClickEvent
 import org.bukkit.inventory.Inventory
 import org.bukkit.inventory.ItemStack
 
 class InventoryUtils {
     companion object {
-        val base = ItemStack(Material.getMaterial(34))
-        fun generateReforgeGUI(): Inventory {
-            val inv = Bukkit.createInventory(null, 54, "${ChatColor.BLACK}Reforge")
-            for (i in 0..53) {
-                inv.setItem(i, base)
-            }
-            for (i in 0..8) {
-                inv.setItem(i, ItemStack(Material.WOOL, 1, DyeColor.GREEN.dyeData.toShort()))
-            }
-            for (i in 45..53) {
-                inv.setItem(i, ItemStack(Material.WOOL, 1, DyeColor.GREEN.dyeData.toShort()))
-            }
-            inv.setItem(13, ItemStack(Material.getMaterial(0)))
-            inv.setItem(40, TODO("Make dis"))
-            return inv
-        }
 
         fun isInDoubleChest(slot: Int): Boolean {
             if (slot in 0..53) {
@@ -40,4 +26,59 @@ class InventoryUtils {
             return false
         }
     }
+}
+
+class InventoryFactory {
+    companion object {
+        fun createInventory(name: String, size: Int): FactoryInventory {
+            return FactoryInventory(name, size)
+        }
+
+        fun produceInventory(inv: FactoryInventory): Inventory {
+            Inventories.add(inv)
+            return inv.inventory
+        }
+    }
+}
+
+data class FactoryInventory(val name: String, val size: Int) {
+    var inventory: Inventory = Bukkit.createInventory(null, size, name)
+    var buttons = ArrayList<GUIButton>()
+    var backgroundItems = ArrayList<BackgroundItem>()
+}
+
+data class GUIButton(val item: ItemStack, val slot: Int, val run: (GUI) -> Unit) {}
+data class BackgroundItem(val item: ItemStack, val slot: Int) {}
+
+data class GUI(val recipient: Player, val inv: Inventory) {}
+
+class GUIListeners(inventories: List<FactoryInventory>) : Listener {
+    var invs = inventories
+    @EventHandler
+    fun onGUIClick(e: InventoryClickEvent) {
+        for (inv in invs) {
+            if (e.inventory.equals(inv.inventory)) {
+                for (button in inv.buttons) {
+                    if (e.slot == button.slot) {
+                        e.whoClicked.closeInventory()
+                        button.run(GUI(e.whoClicked as Player, e.inventory))
+                        e.isCancelled = true
+                    }
+                }
+
+                for (background in inv.backgroundItems) {
+                    if (e.slot == background.slot) {
+                        e.isCancelled = true
+                    }
+                }
+            }
+        }
+    }
+}
+val Inventories = ArrayList<FactoryInventory>()
+
+val StandardBackground = ItemStack(Material.PISTON_EXTENSION)
+
+fun initUtils() {
+    StandardBackground.itemMeta.displayName = ""
 }

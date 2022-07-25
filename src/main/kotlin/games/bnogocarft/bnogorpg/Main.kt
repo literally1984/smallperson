@@ -9,12 +9,13 @@ import games.bnogocarft.bnogorpg.Listeners.PlayerLeaveEvent
 import games.bnogocarft.bnogorpg.OtherCommands.GiveCommand
 import games.bnogocarft.bnogorpg.OtherCommands.PlayTimeCommand
 import games.bnogocarft.bnogorpg.Planes.*
-import games.bnogocarft.bnogorpg.RecipeBook.RecipeBookListeners
 import games.bnogocarft.bnogorpg.Utils.CustomEvents.ArmorWearListeners
+import games.bnogocarft.bnogorpg.Utils.GUIListeners
+import games.bnogocarft.bnogorpg.Utils.Inventories
 import games.bnogocarft.bnogorpg.Utils.PPlayer.BPlayers
+import games.bnogocarft.bnogorpg.Utils.initUtils
 import games.bnogocarft.bnogorpg.Utils.logo
 import games.bnogocarft.bnogorpg.Utils.others.PlaytimeUtils
-import games.bnogocarft.bnogorpg.WebsiteCommunication.ComUtils
 import org.bukkit.ChatColor
 import org.bukkit.plugin.Plugin
 import org.bukkit.plugin.java.JavaPlugin
@@ -27,16 +28,17 @@ class Main : JavaPlugin() {
         protocolManager = ProtocolLibrary.getProtocolManager()
         cSender.sendMessage("$logo Main class variables have been instanced")
 
-        cSender.sendMessage("$logo Constructing BPlayer utils...")
+        cSender.sendMessage("$logo Constructing utils...")
         BPlayers
-        cSender.sendMessage("$logo BPlayers have been constructed")
+        initUtils()
+        cSender.sendMessage("$logo Utlils have been constructed")
 
         cSender.sendMessage("$logo Registering listeners")
         server.pluginManager.registerEvents(PlayerJoinEvent(), this)
-        server.pluginManager.registerEvents(RecipeBookListeners(), this)
         server.pluginManager.registerEvents(HotbarChangeEvent(), this)
         server.pluginManager.registerEvents(PlayerLeaveEvent(), this)
         server.pluginManager.registerEvents(ArmorWearListeners(), this)
+        server.pluginManager.registerEvents(GUIListeners(Inventories), this)
         cSender.sendMessage("$logo Registered Listeners")
 
         cSender.sendMessage("$logo Enabling RecipeBook...")

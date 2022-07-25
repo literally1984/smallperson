@@ -1,7 +1,6 @@
-package games.bnogocarft.bnogorpg.Reforge
+package games.bnogocarft.bnogorpg.OtherCommands.Reforge
 
 import games.bnogocarft.bnogorpg.Utils.InventoryUtils
-import org.bukkit.Bukkit
 import org.bukkit.command.Command
 import org.bukkit.command.CommandExecutor
 import org.bukkit.command.CommandSender
@@ -14,8 +13,8 @@ class ReforgeCommand: CommandExecutor {
             return true
         }
 
-        val reforgeInv = InventoryUtils.generateReforgeGUI()
-        val playerSender = sender as Player
+        val reforgeInv = ReforgeUtils.reforgeGUI
+        val playerSender = sender
 
         playerSender.openInventory(reforgeInv)
         return true

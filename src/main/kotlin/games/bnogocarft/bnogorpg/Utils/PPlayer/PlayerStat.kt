@@ -10,6 +10,7 @@ data class PlayerStat(val stats: List<Int>) {
     var maxMana: Int = stats[2]
     var currentStamina: Int = stats[3]
     var maxStamina: Int = stats[3]
+    var baseDamage = stats[4]
 
     /**
     Adds the current PlayerStat with the given PlayerStat.
@@ -22,6 +23,7 @@ data class PlayerStat(val stats: List<Int>) {
         maxMana += stat.maxMana
         currentStamina += stat.currentStamina
         maxStamina += stat.maxStamina
+        baseDamage += stat.baseDamage
     }
 
     /**
@@ -35,6 +37,7 @@ data class PlayerStat(val stats: List<Int>) {
         maxMana += stat[3]
         currentStamina += stat[4]
         maxStamina += stat[5]
+        baseDamage += stat[6]
     }
     /**
     Adds the current PlayerStat with the given [ItemStat].
@@ -47,6 +50,7 @@ data class PlayerStat(val stats: List<Int>) {
         maxMana += stat.mana
         currentStamina += stat.stamina
         maxStamina += stat.stamina
+        baseDamage += stat.damage
     }
 
     /**
@@ -60,6 +64,7 @@ data class PlayerStat(val stats: List<Int>) {
         maxMana -= stat.maxMana
         currentStamina -= stat.currentStamina
         maxStamina -= stat.maxStamina
+        baseDamage -= stat.baseDamage
         if (currentMana < 0) currentMana = 0
         if (currentStamina < 0) currentStamina = 0
     }
@@ -75,6 +80,7 @@ data class PlayerStat(val stats: List<Int>) {
         maxMana -= stat[3]
         currentStamina -= stat[4]
         maxStamina -= stat[5]
+        baseDamage -= stat[6]
         if (currentMana < 0) currentMana = 0
         if (currentStamina < 0) currentStamina = 0
     }
@@ -89,6 +95,7 @@ data class PlayerStat(val stats: List<Int>) {
         maxMana -= stat.mana
         currentStamina -= stat.stamina
         maxStamina -= stat.stamina
+        baseDamage -= stat.damage
         if (currentMana < 0) currentMana = 0
         if (currentStamina < 0) currentStamina = 0
     }
