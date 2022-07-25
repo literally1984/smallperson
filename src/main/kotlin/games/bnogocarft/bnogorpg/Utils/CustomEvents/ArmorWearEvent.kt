@@ -40,7 +40,7 @@ class ArmorWearListeners : Listener {
                     }
                     val a = ArmorWearEvent(p, DropItem, "drop", Type)
                     Bukkit.getPluginManager().callEvent(a)
-                    if (a.isCancelled()) {
+                    if (a.isCancelled) {
                         e.isCancelled = true
                     }
                 }
@@ -70,7 +70,7 @@ class ArmorWearListeners : Listener {
                     }
                     val a = ArmorWearEvent(p, ClickItem, "drop", Type)
                     Bukkit.getPluginManager().callEvent(a)
-                    if (a.isCancelled()) {
+                    if (a.isCancelled) {
                         e.isCancelled = true
                     }
                 }
@@ -102,7 +102,7 @@ class ArmorWearListeners : Listener {
             }
             val a = ArmorWearEvent(p, Item, click, Type)
             Bukkit.getPluginManager().callEvent(a)
-            if (a.isCancelled()) {
+            if (a.isCancelled) {
                 e.isCancelled = true
             }
         }
@@ -110,7 +110,8 @@ class ArmorWearListeners : Listener {
 }
 
 
-class ArmorWearEvent(val player: Player, val item: ItemStack, val clickType: String, val slot: String) : Event(), Cancellable {
+class ArmorWearEvent(val player: Player, val item: ItemStack, val clickType: String, val slot: String) : Event(),
+    Cancellable {
     private var isCancelled = false
     override fun isCancelled(): Boolean {
         return isCancelled

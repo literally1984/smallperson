@@ -14,7 +14,7 @@ import org.bukkit.inventory.ItemStack
 class PlaneListeners : Listener {
 
     // Handler for when a plane gets damaged with the EntityDamageEvent
-    @EventHandler (priority = EventPriority.HIGHEST)
+    @EventHandler(priority = EventPriority.HIGHEST)
     fun onPlaneDamage(event: EntityDamageEvent) {
         if (event.entity is Minecart) {
             if (planes.containsKey(event.entity)) {
@@ -29,7 +29,7 @@ class PlaneListeners : Listener {
         }
     }
 
-    @EventHandler (priority = EventPriority.HIGHEST)
+    @EventHandler(priority = EventPriority.HIGHEST)
     fun onPlaneInteract(e: PlayerInteractEntityEvent) {
         if (e.rightClicked is Minecart) {
             if (e.player.isSneaking) {
@@ -52,7 +52,7 @@ class PlaneListeners : Listener {
         }
     }
 
-    @EventHandler (priority = EventPriority.HIGHEST)
+    @EventHandler(priority = EventPriority.HIGHEST)
     // Hanndlers for plane spawning and starting
     fun onPlaneRightClick(e: PlayerInteractEvent) {
         if (e.player.isInsideVehicle) {

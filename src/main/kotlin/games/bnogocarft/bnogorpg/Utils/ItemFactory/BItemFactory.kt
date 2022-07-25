@@ -13,6 +13,7 @@ class BItemFactory {
         fun register(name: String, Item: ItemStack) {
             customItemMap[name] = Item
         }
+
         fun createRPGItem(displayName: String, mat: Material): FactoryItem {
             return FactoryItem(displayName, mat)
         }

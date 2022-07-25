@@ -3,8 +3,8 @@ package games.bnogocarft.bnogorpg.Utils.Abilities
 import org.bukkit.util.Vector
 
 fun getYawFromVector(motion: Vector): Float {
-    val dx: Double = motion.getX()
-    val dz: Double = motion.getZ()
+    val dx: Double = motion.x
+    val dz: Double = motion.z
     var yaw = 0.0
     // Set yaw
     if (dx != 0.0) {

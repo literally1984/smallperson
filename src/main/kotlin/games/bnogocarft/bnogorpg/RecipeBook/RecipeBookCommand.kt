@@ -5,7 +5,7 @@ import org.bukkit.command.CommandExecutor
 import org.bukkit.command.CommandSender
 import org.bukkit.entity.Player
 
-class RecipeBookCommand: CommandExecutor {
+class RecipeBookCommand : CommandExecutor {
     //TODO: register in Main class
     override fun onCommand(sender: CommandSender, cmd: Command, label: String?, args: Array<out String>?): Boolean {
         // Player Checker
@@ -26,7 +26,8 @@ class RecipeBookCommand: CommandExecutor {
                 return true
             }
 
-            val shapedRecipe = RecipeManager.textRecipeMap[args[0]] // Gets ShapedRecipe from the textRecipe HashMap based on player arguments
+            val shapedRecipe =
+                RecipeManager.textRecipeMap[args[0]] // Gets ShapedRecipe from the textRecipe HashMap based on player arguments
             val recipePage = RecipeManager.pageMap[shapedRecipe] // Gets RecipePage from shapedRecipe
 
             // recipePage null checker

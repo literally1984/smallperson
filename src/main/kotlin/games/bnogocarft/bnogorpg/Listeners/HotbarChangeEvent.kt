@@ -14,7 +14,9 @@ class HotbarChangeEvent : Listener {
 
         val bplayer = BPlayers[player]!!
         // Checks if the new slot is empty && checks if the old slot was a BWeapon
-        if (player.inventory.getItem(event.newSlot) == null && oldItem != null && BItemUtils.getBType(oldItem).equals("weapon")) {
+        if (player.inventory.getItem(event.newSlot) == null && oldItem != null && BItemUtils.getBType(oldItem)
+                .equals("weapon")
+        ) {
             bplayer.stats.subtract(BItemUtils.getBWeapon(oldItem).stats)
             return
         }

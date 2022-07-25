@@ -10,7 +10,7 @@ import org.bukkit.event.entity.EntityDamageByEntityEvent
 import kotlin.math.roundToInt
 
 class DamageEvent : Listener {
-    @EventHandler (priority = EventPriority.HIGHEST)
+    @EventHandler(priority = EventPriority.HIGHEST)
     fun onPlayerDamage(e: EntityDamageByEntityEvent) {
         if (e.entity is Player) {
             val player = BPlayers[e.entity]!!
@@ -24,7 +24,7 @@ class DamageEvent : Listener {
                 when (player.currentSetBonus) {
 
                     SetBonus.Cactus -> { // Handler for cactus set bonus
-                        val reflected = damage*0.3 // Gets the reflected damage
+                        val reflected = damage * 0.3 // Gets the reflected damage
                         damage -= reflected
 
                         if (damager is Player) {
@@ -37,11 +37,11 @@ class DamageEvent : Listener {
                 }
             }
 
-            if (damager is Player)  {
+            if (damager is Player) {
                 val bDamager = BPlayers[damager]!!
                 bDamager.dealDamage(player, damage.roundToInt())
             } else {
-                val finalDamge = damage*(player.stats.defense/player.stats.defense + 10)
+                val finalDamge = damage * (player.stats.defense / player.stats.defense + 10)
                 player.player.health -= finalDamge.roundToInt()
             }
         }

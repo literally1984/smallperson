@@ -7,7 +7,6 @@ import org.bukkit.DyeColor
 import org.bukkit.Material
 import org.bukkit.inventory.Inventory
 import org.bukkit.inventory.ItemStack
-import kotlin.random.Random
 
 fun Reforge(gui: GUI) {
     val reforgeItem = gui.inv.getItem(13)
@@ -18,17 +17,17 @@ fun Reforge(gui: GUI) {
         Reforge.Demonic,
         Reforge.Godly,
         Reforge.Grim, Reforge.Grim, Reforge.Grim, Reforge.Grim, Reforge.Grim,
-        Reforge.Durable,Reforge.Durable,Reforge.Durable,Reforge.Durable,Reforge.Durable,
-        Reforge.Durable,Reforge.Durable,Reforge.Durable,Reforge.Durable,Reforge.Durable,
-        Reforge.Durable,Reforge.Durable,Reforge.Durable,Reforge.Durable,Reforge.Durable,
-        Reforge.Smart,Reforge.Smart,Reforge.Smart,Reforge.Smart,Reforge.Smart,
-        Reforge.Smart,Reforge.Smart,Reforge.Smart,Reforge.Smart,Reforge.Smart,
-        Reforge.Smart,Reforge.Smart,Reforge.Smart,Reforge.Smart,Reforge.Smart,
+        Reforge.Durable, Reforge.Durable, Reforge.Durable, Reforge.Durable, Reforge.Durable,
+        Reforge.Durable, Reforge.Durable, Reforge.Durable, Reforge.Durable, Reforge.Durable,
+        Reforge.Durable, Reforge.Durable, Reforge.Durable, Reforge.Durable, Reforge.Durable,
+        Reforge.Smart, Reforge.Smart, Reforge.Smart, Reforge.Smart, Reforge.Smart,
+        Reforge.Smart, Reforge.Smart, Reforge.Smart, Reforge.Smart, Reforge.Smart,
+        Reforge.Smart, Reforge.Smart, Reforge.Smart, Reforge.Smart, Reforge.Smart,
         Reforge.Heavy, Reforge.Heavy, Reforge.Heavy, Reforge.Heavy,
         Reforge.Heavy, Reforge.Heavy, Reforge.Heavy, Reforge.Heavy,
     )
     val reforge = weightedList.random()
-    val reforgeName = "${reforge.toString()} ${reforgeItem.itemMeta.displayName}"
+    val reforgeName = "$reforge ${reforgeItem.itemMeta.displayName}"
 
     reforgeItem.itemMeta.displayName = reforgeName
 }
@@ -39,10 +38,11 @@ class ReforgeUtils {
     }
 
     init {
-
+        generateReforgeGUI()
     }
+
     private fun generateReforgeGUI() {
-        val inv = InventoryFactory.createInventory("${ChatColor.BLACK}Reforge", 54)
+        val inv = GUIFactory.createInventory("${ChatColor.BLACK}Reforge", 54)
         for (i in 0..53) {
             inv.backgroundItems.add(BackgroundItem(StandardBackground, i))
         }
@@ -56,6 +56,6 @@ class ReforgeUtils {
         val reforgeButton = GUIButton(ItemStack(Material.ANVIL), 40, ::Reforge)
         inv.buttons.add(reforgeButton)
 
-        reforgeGUI = InventoryFactory.produceInventory(inv)
+        reforgeGUI = GUIFactory.produceInventory(inv)
     }
 }

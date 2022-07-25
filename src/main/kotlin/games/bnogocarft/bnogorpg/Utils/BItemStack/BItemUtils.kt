@@ -16,7 +16,8 @@ class BItemUtils {
                 if (item.itemMeta.displayName.lowercase().contains("sword") ||
                     item.itemMeta.displayName.lowercase().contains("blade") ||
                     item.itemMeta.displayName.lowercase().contains("waraxe") ||
-                    item.itemMeta.displayName.lowercase().contains("warhammer")) {
+                    item.itemMeta.displayName.lowercase().contains("warhammer")
+                ) {
                     return "weapon"
                 }
                 if (item.itemMeta.displayName.lowercase().contains("pickaxe")) {
@@ -28,12 +29,14 @@ class BItemUtils {
             }
             return null
         }
+
         fun getBWeapon(item: ItemStack): BWeapon {
             if (BWeapons.containsKey(item)) return BWeapons[item]!!
             val bweapon = BWeapon(item)
             BWeapons[item] = bweapon
             return bweapon
         }
+
         fun addBWeapon(item: ItemStack) {
             BWeapons[item] = BWeapon(item)
         }

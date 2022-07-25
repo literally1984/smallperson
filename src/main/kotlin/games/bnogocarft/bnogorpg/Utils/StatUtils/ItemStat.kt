@@ -73,6 +73,7 @@ data class ItemStat(val item: ItemStack) {
             }
             field = value
         }
+
     init {
         for (s: String in item.itemMeta.lore) {
             if (s.contains("Damage: +")) {

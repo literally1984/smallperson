@@ -6,7 +6,7 @@ import org.bukkit.inventory.ItemStack
 import org.bukkit.inventory.ShapedRecipe
 
 data class RecipePage(val recipe: ShapedRecipe) {
-    private val craftingLines = arrayOf(10, 11, 12, 19,20,21, 28,29,30)
+    private val craftingLines = arrayOf(10, 11, 12, 19, 20, 21, 28, 29, 30)
     val pageInventory: Inventory
     val resultItem: ItemStack = recipe.result
 

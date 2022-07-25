@@ -4,5 +4,4 @@ enum class BEnchant {
     S
 }
 
-data class BEnchantment(val enchant: BEnchant, val level: Int) {
-}
+data class BEnchantment(val enchant: BEnchant, val level: Int)

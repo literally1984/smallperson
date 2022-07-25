@@ -1,6 +1,6 @@
 package games.bnogocarft.bnogorpg.Utils.BItemStack
 
-enum class Reforge{
+enum class Reforge {
     Vampiric,
     Cursed,
     Blessed,

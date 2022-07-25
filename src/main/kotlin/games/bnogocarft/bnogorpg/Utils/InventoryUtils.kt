@@ -1,5 +1,6 @@
 package games.bnogocarft.bnogorpg.Utils
 
+import games.bnogocarft.bnogorpg.OtherCommands.Reforge.ReforgeUtils
 import org.bukkit.Bukkit
 import org.bukkit.Material
 import org.bukkit.entity.Player
@@ -28,7 +29,7 @@ class InventoryUtils {
     }
 }
 
-class InventoryFactory {
+class GUIFactory {
     companion object {
         fun createInventory(name: String, size: Int): FactoryInventory {
             return FactoryInventory(name, size)
@@ -47,13 +48,14 @@ data class FactoryInventory(val name: String, val size: Int) {
     var backgroundItems = ArrayList<BackgroundItem>()
 }
 
-data class GUIButton(val item: ItemStack, val slot: Int, val run: (GUI) -> Unit) {}
-data class BackgroundItem(val item: ItemStack, val slot: Int) {}
+data class GUIButton(val item: ItemStack, val slot: Int, val run: (GUI) -> Unit)
+data class BackgroundItem(val item: ItemStack, val slot: Int)
 
-data class GUI(val recipient: Player, val inv: Inventory) {}
+data class GUI(val recipient: Player, val inv: Inventory)
 
 class GUIListeners(inventories: List<FactoryInventory>) : Listener {
     var invs = inventories
+
     @EventHandler
     fun onGUIClick(e: InventoryClickEvent) {
         for (inv in invs) {
@@ -75,10 +77,12 @@ class GUIListeners(inventories: List<FactoryInventory>) : Listener {
         }
     }
 }
+
 val Inventories = ArrayList<FactoryInventory>()
 
 val StandardBackground = ItemStack(Material.PISTON_EXTENSION)
 
 fun initUtils() {
     StandardBackground.itemMeta.displayName = ""
+    ReforgeUtils()
 }

@@ -1,7 +1,6 @@
 package games.bnogocarft.bnogorpg.OtherCommands
 
 import games.bnogocarft.bnogorpg.Planes.PlaneEntity
-import games.bnogocarft.bnogorpg.Planes.PlaneKeyItem
 import games.bnogocarft.bnogorpg.Planes.planeEntitites
 import org.bukkit.Bukkit
 import org.bukkit.command.Command
@@ -19,8 +18,9 @@ class GiveCommand : CommandExecutor {
     override fun onCommand(sender: CommandSender, cmd: Command, label: String, args: Array<out String>): Boolean {
         if (sender is ConsoleCommandSender) {
             if (args.size != 2) {
-                Bukkit.getLogger().log(Level.ALL, "You must provide both a Player and Item argument to use this command!")
-                return true;
+                Bukkit.getLogger()
+                    .log(Level.ALL, "You must provide both a Player and Item argument to use this command!")
+                return true
             } else {
                 var argIsValidPlayer = false
                 lateinit var player: Player

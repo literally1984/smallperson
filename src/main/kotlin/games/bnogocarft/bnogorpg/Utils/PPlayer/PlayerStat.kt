@@ -14,8 +14,8 @@ data class PlayerStat(val stats: List<Int>) {
 
     /**
     Adds the current PlayerStat with the given PlayerStat.
-    *@param[stat] The PlayerStat to add to the current one
-    */
+     *@param[stat] The PlayerStat to add to the current one
+     */
     fun add(stat: PlayerStat) {
         defense += stat.defense
         mDefense += stat.mDefense
@@ -39,6 +39,7 @@ data class PlayerStat(val stats: List<Int>) {
         maxStamina += stat[5]
         baseDamage += stat[6]
     }
+
     /**
     Adds the current PlayerStat with the given [ItemStat].
      *@param[stat] The [ItemStat] to add to the current [PlayerStat]
@@ -84,6 +85,7 @@ data class PlayerStat(val stats: List<Int>) {
         if (currentMana < 0) currentMana = 0
         if (currentStamina < 0) currentStamina = 0
     }
+
     /**
      * Subtracts the current PlayerStat with the given [ItemStat].
      * @param[stat] The [ItemStat] to subtract from the current [PlayerStat]

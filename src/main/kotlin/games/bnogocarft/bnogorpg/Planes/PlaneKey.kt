@@ -10,8 +10,6 @@ import org.bukkit.Material
 import org.bukkit.entity.Minecart
 import org.bukkit.entity.Player
 import org.bukkit.inventory.ItemStack
-import org.bukkit.scheduler.BukkitRunnable
-import org.bukkit.scheduler.BukkitTask
 import org.bukkit.util.Vector
 
 val planes = HashMap<Minecart, PlaneEntity>()
@@ -21,6 +19,7 @@ class PlaneKeyItem {
     init {
         makePlaneKey()
     }
+
     companion object {
         var key: ItemStack = ItemStack(Material.TRIPWIRE)
         private fun makePlaneKey() {
@@ -64,7 +63,6 @@ data class PlaneEntity(val key: ItemStack) {
     lateinit var plane: Minecart
 
 
-
     fun spawn(loc: Location): Boolean {
         return if (isSpawned) {
             false
@@ -92,17 +90,17 @@ data class PlaneEntity(val key: ItemStack) {
             val pLoc = p.location
             val pDir = pLoc.direction
             pDir.normalize()
-            pDir.multiply(stats.currentSpeed/20)
+            pDir.multiply(stats.currentSpeed / 20)
             pLoc.add(pDir)
             val yVector = pDir.subtract(pLoc.toVector())
 
             val noYVector = Vector(yVector.x, 0.0, yVector.z)
 
-            plane.flyingVelocityMod = Vector(1,1,1)
-            plane.derailedVelocityMod = Vector(1,1,1)
+            plane.flyingVelocityMod = Vector(1, 1, 1)
+            plane.derailedVelocityMod = Vector(1, 1, 1)
             print("Math completed")
 
-            Bukkit.getServer().scheduler.scheduleSyncRepeatingTask(Main.instance, Runnable() {
+            Bukkit.getServer().scheduler.scheduleSyncRepeatingTask(Main.instance, Runnable {
                 if (!isSteering && isRunning) {
                     plane.velocity = noYVector
                     plane.location.yaw = getYawFromVector(noYVector)

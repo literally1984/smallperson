@@ -12,13 +12,13 @@ val pressD = HashMap<Player, Boolean>()
 val wVector = Vector(0.0, 0.1, 0.0)
 val sVector = Vector(0.0, -0.1, 0.0)
 
-class removeScheduler() : BukkitRunnable() {
+class removeScheduler : BukkitRunnable() {
     override fun run() {
         // W Looper
         for (player in pressW.keys) {
             if (pressW[player] == true) {
                 pressW[player] = false
-                continue;
+                continue
             }
             if (pressW[player] == false) {
                 if (planes[player.vehicle] != null) {
@@ -35,7 +35,7 @@ class removeScheduler() : BukkitRunnable() {
         for (player in pressA.keys) {
             if (pressA[player] == true) {
                 pressA[player] = false
-                continue;
+                continue
             }
             if (pressA[player] == false) {
                 if (planes[player.vehicle] != null) {
@@ -52,7 +52,7 @@ class removeScheduler() : BukkitRunnable() {
         for (player in pressS.keys) {
             if (pressS[player] == true) {
                 pressS[player] = false
-                continue;
+                continue
             }
             if (pressS[player] == false) {
                 if (planes[player.vehicle] != null) {
@@ -69,7 +69,7 @@ class removeScheduler() : BukkitRunnable() {
         for (player in pressD.keys) {
             if (pressD[player] == true) {
                 pressD[player] = false
-                continue;
+                continue
             }
             if (pressD[player] == false) {
                 if (planes[player.vehicle] != null) {

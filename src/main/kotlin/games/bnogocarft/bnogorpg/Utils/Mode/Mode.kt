@@ -1,6 +1,6 @@
 package games.bnogocarft.bnogorpg.Utils.Mode
 
-public enum class Mode  {
+enum class Mode {
     NONE,
     REAPER,
     FLAME,

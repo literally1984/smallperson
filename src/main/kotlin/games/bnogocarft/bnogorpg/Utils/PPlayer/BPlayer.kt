@@ -22,6 +22,7 @@ import java.util.*
  */
 data class BPlayer(val player: Player) {
     private val playerStats = StatManager.calculateStats(player)
+
     /**
      * The server time in which the player joined
      */
@@ -168,7 +169,7 @@ data class BPlayer(val player: Player) {
      * Simiulates the current [BPlayer] dealing damage to another [BPlayer], Handles EXP gain and more
      */
     fun dealDamage(player: BPlayer, amount: Int) {
-        val damage = amount*(player.stats.defense/player.stats.defense + 10)
+        val damage = amount * (player.stats.defense / player.stats.defense + 10)
         player.player.health -= damage
         meleeEXP += damage
         if (meleeEXP >= getNeededEXP(player.meleeLVL)) {
@@ -178,7 +179,7 @@ data class BPlayer(val player: Player) {
 
 
     fun dealSpellDamage(player: BPlayer, amount: Int) {
-        val damage = amount*(player.stats.mDefense/player.stats.mDefense + 10)
+        val damage = amount * (player.stats.mDefense / player.stats.mDefense + 10)
         player.player.health -= damage
         spellcastEXP += damage
         if (spellcastEXP >= getNeededEXP(player.spellcastLVL)) {
@@ -201,7 +202,13 @@ data class BPlayer(val player: Player) {
                     spellcastLVL++
                     spellcastEXP -= getNeededEXP(spellcastLVL)
                     player.sendMessage("You have leveled up to your spellcast level to $spellcastLVL!")
-                    player.sendMessage("Your current spellcast EXP is $spellcastEXP and you need ${getNeededEXP(spellcastLVL)} to level up again!")
+                    player.sendMessage(
+                        "Your current spellcast EXP is $spellcastEXP and you need ${
+                            getNeededEXP(
+                                spellcastLVL
+                            )
+                        } to level up again!"
+                    )
                 }
             }
             "woodcutting" -> {
@@ -209,7 +216,13 @@ data class BPlayer(val player: Player) {
                     woodCuttingLVL++
                     woodCuttingEXP -= getNeededEXP(woodCuttingLVL)
                     player.sendMessage("You have leveled up to your woodcutting level to $woodCuttingLVL!")
-                    player.sendMessage("Your current woodcutting EXP is $woodCuttingEXP and you need ${getNeededEXP(woodCuttingLVL)} to level up again!")
+                    player.sendMessage(
+                        "Your current woodcutting EXP is $woodCuttingEXP and you need ${
+                            getNeededEXP(
+                                woodCuttingLVL
+                            )
+                        } to level up again!"
+                    )
                 }
             }
             "mining" -> {
