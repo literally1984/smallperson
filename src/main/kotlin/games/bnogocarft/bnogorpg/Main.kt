@@ -87,7 +87,7 @@ class Main : JavaPlugin() {
         for (player in server.onlinePlayers) {
             val bPlayer = BPlayers[player]!!
             PlaytimeUtils.addPlaytime(bPlayer)
-
+            bPlayer.saveStats()
         }
     }
 

@@ -86,7 +86,7 @@ data class BPlayer(val player: Player) {
     val bar = BossBar(player)
     val currentSetBonus = SetBonus.NONE
 
-    var meleeEXP: Long
+    var meleeEXP: Long = 0
     var meleeLVL: Long
     var spellcastEXP: Long
     var spellcastLVL: Long
@@ -159,6 +159,57 @@ data class BPlayer(val player: Player) {
         val format = SimpleDateFormat("dd-MM-yyyy HH:mm:ss")
         joinTime = format.format(now)
 
+    }
+
+    fun saveStats() {
+        config.set("i.ta", talismans)
+        config.set("i.ab", abilities)
+        config.set("s.bs.p", basePickBreakSpeed)
+        config.set("s.bs.a", baseAxeBreakSpeed)
+        config.set("s.bs.s", baseShovelBreakSpeed)
+
+        config.set("s.l.me.e", meleeEXP)
+        config.set("s.l.me.l", meleeLVL)
+
+        config.set("s.l.sp.e", spellcastEXP)
+        config.set("s.l.sp.l", spellcastLVL)
+
+        config.set("s.l.wo.e", woodCuttingEXP)
+        config.set("s.l.wo.l", woodCuttingLVL)
+
+        config.set("s.l.mi.e", miningEXP)
+        config.set("s.l.mi.l", miningLVL)
+
+        config.set("s.l.co.e", combatEXP)
+        config.set("s.l.co.l", combatLVL)
+
+        config.set("s.l.fa.e", farmingEXP)
+        config.set("s.l.fa.l", farmingLVL)
+    }
+
+    fun addToMelee(amount: Int) {
+        combatEXP += amount/2
+        meleeEXP += amount
+        if (meleeEXP >= getNeededEXP(meleeLVL)) {
+            levelUp("melee")
+        }
+
+        if (combatEXP >= getNeededEXP(combatLVL)) {
+            levelUp("combat")
+        }
+    }
+
+    fun addToSpellcast(amount: Int) {
+        combatEXP += amount/2
+        spellcastEXP += amount
+
+        if (spellcastEXP >= getNeededEXP(spellcastLVL)) {
+            levelUp("spellcast")
+        }
+
+        if (combatEXP >= getNeededEXP(combatLVL)) {
+            levelUp("combat")
+        }
     }
 
     fun updatePlayTime() {

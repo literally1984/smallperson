@@ -13,6 +13,7 @@ class PlayerLeaveEvent : Listener {
         val player = BPlayers[e.player]
         if (player != null) {
             PlaytimeUtils.addPlaytime(player)
+            player.saveStats()
         }
     }
 }
