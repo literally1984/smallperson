@@ -1,8 +1,8 @@
 package games.bnogocarft.bnogorpg.CustomItems
 
+import games.bnogocarft.bnogorpg.Utils.BItemStack.Rarity.Rarity
 import games.bnogocarft.bnogorpg.Utils.ItemFactory.BItemFactory
 import games.bnogocarft.bnogorpg.Utils.ItemFactory.ItemAbility
-import games.bnogocarft.bnogorpg.Utils.BItemStack.Rarity.Rarity
 import org.bukkit.Color
 import org.bukkit.Material
 import org.bukkit.inventory.ItemStack
@@ -36,7 +36,7 @@ class CactusArmor {
 
         val ability = ItemAbility.CactusSet
         factoryItem.abilities.add(ability)
-        factoryItem.stats = arrayListOf(3, 8, 5, 9, 15, 21)
+        factoryItem.stats = arrayListOf(2, 8, 5, 9, 15, 21)
         factoryItem.rarity = Rarity.UNCOMMON
         factoryItem.armorColor = Color.GREEN
 

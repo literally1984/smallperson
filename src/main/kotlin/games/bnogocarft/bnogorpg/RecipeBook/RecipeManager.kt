@@ -17,7 +17,8 @@ class RecipeManager {
                     pageMap[currentRecipe] = recipePage // Adds to the recipe map
 
 
-                    textRecipeMap[currentRecipe.result.itemMeta.displayName.replace(" ", "-").lowercase()] = currentRecipe
+                    textRecipeMap[currentRecipe.result.itemMeta.displayName.replace(" ", "-").lowercase()] =
+                        currentRecipe
                 }
             }
         }

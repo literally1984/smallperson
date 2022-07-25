@@ -1,7 +1,7 @@
 package games.bnogocarft.bnogorpg.Utils.BItemStack
 
-import games.bnogocarft.bnogorpg.Utils.EnchantUtils.BEnchantment
 import games.bnogocarft.bnogorpg.Utils.BItemStack.Rarity.RarityUtils
+import games.bnogocarft.bnogorpg.Utils.EnchantUtils.BEnchantment
 import games.bnogocarft.bnogorpg.Utils.StatUtils.ItemStat
 import org.bukkit.inventory.ItemStack
 

@@ -6,6 +6,7 @@ authors: [BongoCat, BigZ]
 description: An RPG plugin made for BnogoCarft coded in Kotlin
 depend:
   - BossBarAPI
+  - ProtocolLib
 website: https://bnogocarft.games
 commands:
   playtime:
@@ -23,3 +24,8 @@ commands:
     aliases: [g]
     usage: /<command> <player | > <item>
     description: gives a player an item
+  reforge:
+    name: Reforge
+    aliases: [ref]
+    usage: /<command>
+    description: opens up a reforge inventory to the player
