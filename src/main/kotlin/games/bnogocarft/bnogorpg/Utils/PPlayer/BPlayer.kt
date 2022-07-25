@@ -79,7 +79,7 @@ data class BPlayer(val player: Player) {
      * The player's [YamlConfiguration] used to access the player's YML
      * data file.
      */
-    var playerConfig: YamlConfiguration = YamlConfiguration.loadConfiguration(playerFile)
+    var config: YamlConfiguration = YamlConfiguration.loadConfiguration(playerFile)
     var playTime: String
 
     val bar = BossBar(player)
@@ -101,56 +101,56 @@ data class BPlayer(val player: Player) {
     init {
         // Makes sure the PPlayer's data file is saved when PPlayer is created
         if (!(playerFile.exists())) {
-            playerConfig.set("i.ta", "")
-            playerConfig.set("i.ab", "")
-            playerConfig.set("s.bs.p", 1)
-            playerConfig.set("s.bs.a", 1)
-            playerConfig.set("s.bs.s", 1)
+            config.set("i.ta", "")
+            config.set("i.ab", "")
+            config.set("s.bs.p", 1)
+            config.set("s.bs.a", 1)
+            config.set("s.bs.s", 1)
 
-            playerConfig.set("o.pl", "0 0")
-            playerConfig.set("s.l.me.e", 0L)
-            playerConfig.set("s.l.me.l", 0L)
+            config.set("o.pl", "0 0")
+            config.set("s.l.me.e", 0L)
+            config.set("s.l.me.l", 0L)
 
-            playerConfig.set("s.l.sp.e", 0L)
-            playerConfig.set("s.l.sp.l", 0L)
+            config.set("s.l.sp.e", 0L)
+            config.set("s.l.sp.l", 0L)
 
-            playerConfig.set("s.l.wo.e", 0L)
-            playerConfig.set("s.l.wo.l", 0L)
+            config.set("s.l.wo.e", 0L)
+            config.set("s.l.wo.l", 0L)
 
-            playerConfig.set("s.l.mi.e", 0L)
-            playerConfig.set("s.l.mi.l", 0L)
+            config.set("s.l.mi.e", 0L)
+            config.set("s.l.mi.l", 0L)
 
-            playerConfig.set("s.l.co.e", 0L)
-            playerConfig.set("s.l.co.l", 0L)
+            config.set("s.l.co.e", 0L)
+            config.set("s.l.co.l", 0L)
 
-            playerConfig.set("s.l.fa.e", 0L)
-            playerConfig.set("s.l.fa.l", 0L)
+            config.set("s.l.fa.e", 0L)
+            config.set("s.l.fa.l", 0L)
         }
-        YMLUtils.saveCustomYml(playerConfig, playerFile)
+        YMLUtils.saveCustomYml(config, playerFile)
 
-        playTime = playerConfig.getString("o.pl")
-        baseAxeBreakSpeed = playerConfig.getInt("s.bs.a")
-        basePickBreakSpeed = playerConfig.getInt("s.bs.p")
-        baseShovelBreakSpeed = playerConfig.getInt("s.bs.s")
-        meleeEXP = playerConfig.getLong("s.l.me.e")
-        meleeLVL = playerConfig.getLong("s.l.me.l")
-        spellcastEXP = playerConfig.getLong("s.l.sp.e")
-        spellcastLVL = playerConfig.getLong("s.l.sp.l")
-        woodCuttingEXP = playerConfig.getLong("s.l.wo.e")
-        woodCuttingLVL = playerConfig.getLong("s.l.wo.l")
-        miningEXP = playerConfig.getLong("s.l.mi.e")
-        miningLVL = playerConfig.getLong("s.l.mi.l")
-        combatEXP = playerConfig.getLong("s.l.co.e")
-        combatLVL = playerConfig.getLong("s.l.co.l")
-        farmingEXP = playerConfig.getLong("s.l.fa.ed")
-        farmingLVL = playerConfig.getLong("s.l.fa.l")
+        playTime = config.getString("o.pl")
+        baseAxeBreakSpeed = config.getInt("s.bs.a")
+        basePickBreakSpeed = config.getInt("s.bs.p")
+        baseShovelBreakSpeed = config.getInt("s.bs.s")
+        meleeEXP = config.getLong("s.l.me.e")
+        meleeLVL = config.getLong("s.l.me.l")
+        spellcastEXP = config.getLong("s.l.sp.e")
+        spellcastLVL = config.getLong("s.l.sp.l")
+        woodCuttingEXP = config.getLong("s.l.wo.e")
+        woodCuttingLVL = config.getLong("s.l.wo.l")
+        miningEXP = config.getLong("s.l.mi.e")
+        miningLVL = config.getLong("s.l.mi.l")
+        combatEXP = config.getLong("s.l.co.e")
+        combatLVL = config.getLong("s.l.co.l")
+        farmingEXP = config.getLong("s.l.fa.ed")
+        farmingLVL = config.getLong("s.l.fa.l")
 
         // Gets player Talismans from file
-        for (s: String in playerConfig.getString("i.ta").split(",".toRegex())) {
+        for (s: String in config.getString("i.ta").split(",".toRegex())) {
             talismans.add(TalismanUtils.getTalisman(s))
         }
         // Gets Player abilities from file
-        for (s: String in playerConfig.getString("i.ab").split(",".toRegex())) {
+        for (s: String in config.getString("i.ab").split(",".toRegex())) {
             abilities.add(AbilityUtils.getAbility(s))
         }
 
@@ -161,7 +161,7 @@ data class BPlayer(val player: Player) {
     }
 
     fun updatePlayTime() {
-        playTime = playerConfig.getString("o.pl")
+        playTime = config.getString("o.pl")
     }
 
     /**

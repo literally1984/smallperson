@@ -22,7 +22,7 @@ class CactusArmor {
 
         val ability = ItemAbility.CactusSet
         factoryItem.abilities.add(ability)
-        factoryItem.stats = arrayListOf(3, 5, 1, 3, 15, 20)
+        factoryItem.stats = arrayListOf(0, 3, 1, 3, 5, 7)
         factoryItem.rarity = Rarity.UNCOMMON
         factoryItem.armorColor = Color.GREEN
 
@@ -35,7 +35,7 @@ class CactusArmor {
 
         val ability = ItemAbility.CactusSet
         factoryItem.abilities.add(ability)
-        factoryItem.stats = arrayListOf(3, 5, 1, 3, 15, 20)
+        factoryItem.stats = arrayListOf(3, 8, 5, 9, 15, 21)
         factoryItem.rarity = Rarity.UNCOMMON
         factoryItem.armorColor = Color.GREEN
 

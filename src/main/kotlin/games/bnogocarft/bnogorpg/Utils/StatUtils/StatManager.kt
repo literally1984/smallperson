@@ -10,8 +10,9 @@ class StatManager {
             val stats = ArrayList<Int>()
             stats.add(0)
             stats.add(0)
-            stats.add(0)
-            stats.add(0)
+            stats.add(20)
+            stats.add(20)
+            stats.add(1)
 
             // Loops through the players armor contents
             for (i: ItemStack in p.inventory.armorContents) {
@@ -27,11 +28,13 @@ class StatManager {
                             val mdefense = lore.get(index + 2).split(": +".toRegex())[1].toInt()
                             val mana = lore.get(index + 3).split(": +".toRegex())[1].toInt()
                             val stamina = lore.get(index + 4).split(": +".toRegex())[1].toInt()
+                            val damage = lore.get(index - 1).split(": +".toRegex())[1].toInt()
 
-                            stats[0] = (defense)
-                            stats[1] = (mdefense)
-                            stats[2] = (mana)
-                            stats[3] = (stamina)
+                            stats[0] += defense
+                            stats[1] += mdefense
+                            stats[2] += mana
+                            stats[3] += stamina
+                            stats[4] += damage
                         }
                     }
                 }
