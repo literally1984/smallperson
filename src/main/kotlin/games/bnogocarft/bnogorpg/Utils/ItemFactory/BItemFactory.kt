@@ -48,7 +48,7 @@ class BItemFactory {
             }
 
             lore.add(item.rarity.name)
-
+            // TODO: make dye color
 
 
             meta.lore = lore

@@ -9,5 +9,5 @@ enum class Rarity(s: String) {
     EPIC("${ChatColor.LIGHT_PURPLE}Epic"),
     LEGENDARY("${ChatColor.GOLD}Legendary"),
     MYTHICAL("${ChatColor.DARK_PURPLE}Mythical"),
-    DIVINE("${ChatColor.RED}Divine")
+    DIVINE("${ChatColor.WHITE}D${ChatColor.GREEN}i${ChatColor.LIGHT_PURPLE}v${ChatColor.YELLOW}i${ChatColor.BLUE}n${ChatColor.RED}e")
 }
