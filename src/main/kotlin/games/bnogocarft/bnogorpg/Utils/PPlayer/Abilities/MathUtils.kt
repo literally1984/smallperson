@@ -1,4 +1,4 @@
-package games.bnogocarft.bnogorpg.Utils.Abilities
+package games.bnogocarft.bnogorpg.Utils.PPlayer.Abilities
 
 import org.bukkit.util.Vector
 

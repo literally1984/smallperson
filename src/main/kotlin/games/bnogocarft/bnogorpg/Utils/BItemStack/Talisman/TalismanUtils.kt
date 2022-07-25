@@ -1,4 +1,4 @@
-package games.bnogocarft.bnogorpg.Utils.Talisman
+package games.bnogocarft.bnogorpg.Utils.BItemStack.Talisman
 
 class TalismanUtils {
     companion object {

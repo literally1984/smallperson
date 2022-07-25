@@ -1,6 +1,6 @@
 package games.bnogocarft.bnogorpg.Utils.ItemFactory
 
-import games.bnogocarft.bnogorpg.Utils.Rarity.Rarity
+import games.bnogocarft.bnogorpg.Utils.BItemStack.Rarity.Rarity
 import org.bukkit.Color
 import org.bukkit.Material
 

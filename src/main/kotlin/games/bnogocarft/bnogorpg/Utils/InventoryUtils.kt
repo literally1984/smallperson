@@ -59,10 +59,11 @@ class GUIListeners(inventories: List<FactoryInventory>) : Listener {
     @EventHandler
     fun onGUIClick(e: InventoryClickEvent) {
         for (inv in invs) {
-            if (e.inventory.equals(inv.inventory)) {
-                for (button in inv.buttons) {
+            if (e.inventory.name.equals(inv.inventory.name)) {// Checks for matching GUI name
+
+                for (button in inv.buttons) {// Checks for matching button slots
                     if (e.slot == button.slot) {
-                        e.whoClicked.closeInventory()
+                        // Runs the button's function
                         button.run(GUI(e.whoClicked as Player, e.inventory))
                         e.isCancelled = true
                     }

@@ -1,4 +1,4 @@
-package games.bnogocarft.bnogorpg.Utils.Abilities.ItemAbility
+package games.bnogocarft.bnogorpg.Utils.PPlayer.Abilities.ItemAbility
 
 enum class AbilityTrigger {
     RIGHT_AIR,

@@ -1,11 +1,11 @@
 package games.bnogocarft.bnogorpg.Utils.BItemStack
 
 import games.bnogocarft.bnogorpg.Utils.EnchantUtils.BEnchantment
-import games.bnogocarft.bnogorpg.Utils.Rarity.RarityUtils
+import games.bnogocarft.bnogorpg.Utils.BItemStack.Rarity.RarityUtils
 import games.bnogocarft.bnogorpg.Utils.StatUtils.ItemStat
 import org.bukkit.inventory.ItemStack
 
-data class BWeapon(val item: ItemStack) {
+data class BWeapon(var item: ItemStack) {
 
     constructor(stats: List<Int>, item: ItemStack) : this(item) {
         this.stats = ItemStat(stats, item)

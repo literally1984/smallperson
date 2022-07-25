@@ -2,7 +2,7 @@ package games.bnogocarft.bnogorpg.CustomItems
 
 import games.bnogocarft.bnogorpg.Utils.ItemFactory.BItemFactory
 import games.bnogocarft.bnogorpg.Utils.ItemFactory.ItemAbility
-import games.bnogocarft.bnogorpg.Utils.Rarity.Rarity
+import games.bnogocarft.bnogorpg.Utils.BItemStack.Rarity.Rarity
 import org.bukkit.Color
 import org.bukkit.Material
 import org.bukkit.inventory.ItemStack

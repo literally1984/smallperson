@@ -1,6 +1,6 @@
 package games.bnogocarft.bnogorpg.Utils.ItemFactory
 
-import games.bnogocarft.bnogorpg.Utils.Abilities.ItemAbility.AbilityTrigger
+import games.bnogocarft.bnogorpg.Utils.PPlayer.Abilities.ItemAbility.AbilityTrigger
 
 enum class ItemAbility {
     CactusSet,

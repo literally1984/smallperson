@@ -1,4 +1,4 @@
-package games.bnogocarft.bnogorpg.Utils.Rarity
+package games.bnogocarft.bnogorpg.Utils.BItemStack.Rarity
 
 import games.bnogocarft.bnogorpg.Utils.StringUtils
 

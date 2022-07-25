@@ -41,7 +41,6 @@ class Main : JavaPlugin() {
         server.pluginManager.registerEvents(HotbarChangeEvent(), this)
         server.pluginManager.registerEvents(PlayerLeaveEvent(), this)
         server.pluginManager.registerEvents(ArmorWearListeners(), this)
-        server.pluginManager.registerEvents(GUIListeners(Inventories), this)
         cSender.sendMessage("$logo Registered Listeners")
 
         cSender.sendMessage("$logo Enabling RecipeBook...")
@@ -66,11 +65,15 @@ class Main : JavaPlugin() {
 
         cSender.sendMessage("$logo Registering custom ItemStacks...")
         CactusArmor()
+        cSender.sendMessage("$logo Registered custm Items")
+        cSender.sendMessage("$logo Enabling GUI stuff...")
+        server.pluginManager.registerEvents(GUIListeners(Inventories), this)
+        cSender.sendMessage("$logo GUI Utils enabled")
 
         cSender.sendMessage("--------------------------------------------")
         cSender.sendMessage("--------------------------------------------")
         cSender.sendMessage(
-            ChatColor.LIGHT_PURPLE.toString() + "$logo" + ChatColor.GREEN + " BnogoRPG Vdev-0.0.3 Has been Enabled"
+            "${ChatColor.LIGHT_PURPLE} $logo ${ChatColor.GREEN} BnogoRPG Vdev-0.0.3 Has been ${ChatColor.GREEN}Enabled"
         )
         cSender.sendMessage("--------------------------------------------")
         cSender.sendMessage("--------------------------------------------")
