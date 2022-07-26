@@ -99,7 +99,7 @@ class GUIListeners(inventories: List<GUI>) : Listener {
                     }
                 }
                 for (background in inv.background) {
-                    if (e.currentItem != null) {
+                    if (e.currentItem != null && e.currentItem.itemMeta != null) {
                         if (e.slot == background.slot && e.currentItem.itemMeta.displayName == background.item.itemMeta.displayName) {
                             print("Background slot")
                             e.isCancelled = true

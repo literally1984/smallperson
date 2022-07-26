@@ -6,6 +6,7 @@ import org.bukkit.Bukkit
 import org.bukkit.ChatColor
 import org.bukkit.DyeColor
 import org.bukkit.Material
+import org.bukkit.enchantments.Enchantment
 import org.bukkit.inventory.Inventory
 import org.bukkit.inventory.ItemStack
 
@@ -33,12 +34,8 @@ fun Reforge(gui: OpenGUI) {
         val newMeta = reforgeItem.itemMeta.clone()
 
 
-        newMeta.displayName = "Reforged ${reforgeItem.itemMeta.displayName}"
+        newMeta.displayName = "$reforge ${reforgeItem.itemMeta.displayName}"
         reforgeItem.itemMeta = newMeta
-        gui.inv.setItem(13, reforgeItem)
-        gui.inv.setItem(1, StandardBackground)
-        gui.player.closeInventory()
-        gui.player.openInventory(gui.inv)
         gui.player.sendMessage("You reforged your Item")
     }
 }
@@ -56,7 +53,8 @@ class ReforgeUtils {
         val inv = GUIFactory.createInventory("${ChatColor.BLACK}Reforge", 54)
         val buttons = ArrayList<GUIButton>()
         val backgrounds = ArrayList<BackgroundItem>()
-        val WoolBackground = ItemStack(Material.WOOL, 1, DyeColor.GREEN.dyeData.toShort())
+        val WoolBackground = ItemStack(Material.FIRE)
+        WoolBackground.addEnchantment(Enchantment.FIRE_ASPECT, 1)
         WoolBackground.itemMeta.displayName = ""
 
         for (i in 0..53) {
