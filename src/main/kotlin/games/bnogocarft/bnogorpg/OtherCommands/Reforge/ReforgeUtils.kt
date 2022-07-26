@@ -30,10 +30,15 @@ fun Reforge(gui: OpenGUI) {
             Reforge.Heavy, Reforge.Heavy, Reforge.Heavy, Reforge.Heavy,
         )
         val reforge = weightedList.random()
-        val reforgeName = "Reforged ${reforgeItem.itemMeta.displayName}"
+        val newMeta = reforgeItem.itemMeta.clone()
 
-        gui.inv.getItem(13).itemMeta.displayName = reforgeName
-        gui.player.updateInventory()
+
+        newMeta.displayName = "Reforged ${reforgeItem.itemMeta.displayName}"
+        reforgeItem.itemMeta = newMeta
+        gui.inv.setItem(13, reforgeItem)
+        gui.inv.setItem(1, StandardBackground)
+        gui.player.closeInventory()
+        gui.player.openInventory(gui.inv)
         gui.player.sendMessage("You reforged your Item")
     }
 }

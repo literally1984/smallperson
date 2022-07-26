@@ -2,6 +2,7 @@ package games.bnogocarft.bnogorpg.Planes
 
 import org.bukkit.Material
 import org.bukkit.entity.Minecart
+import org.bukkit.entity.Player
 import org.bukkit.event.EventHandler
 import org.bukkit.event.EventPriority
 import org.bukkit.event.Listener
@@ -47,6 +48,18 @@ class PlaneListeners : Listener {
                             e.player.sendMessage("You added 10 fuel to your plane!")
                         }
                     }
+                }
+            }
+        }
+    }
+
+    @EventHandler(priority = EventPriority.HIGHEST)
+    fun onPlaneFallDamage(e: EntityDamageEvent) {
+        if (e.entity is Player) {
+            if (e.cause == EntityDamageEvent.DamageCause.FALL) {
+                val player = e.entity as Player
+                if (player.isInsideVehicle) {
+                    e.isCancelled = true
                 }
             }
         }
