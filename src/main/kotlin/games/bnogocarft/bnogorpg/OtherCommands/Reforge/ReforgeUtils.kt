@@ -9,6 +9,7 @@ import org.bukkit.Material
 import org.bukkit.inventory.Inventory
 import org.bukkit.inventory.ItemStack
 
+@SuppressWarnings("deprecated")
 fun Reforge(gui: OpenGUI) {
     val reforgeItem = gui.inv.getItem(13)
     if (reforgeItem != null) {
@@ -29,9 +30,10 @@ fun Reforge(gui: OpenGUI) {
             Reforge.Heavy, Reforge.Heavy, Reforge.Heavy, Reforge.Heavy,
         )
         val reforge = weightedList.random()
-        val reforgeName = "$reforge ${reforgeItem.itemMeta.displayName}"
+        val reforgeName = "Reforged ${reforgeItem.itemMeta.displayName}"
 
-        reforgeItem.itemMeta.displayName = reforgeName
+        gui.inv.getItem(13).itemMeta.displayName = reforgeName
+        gui.player.updateInventory()
         gui.player.sendMessage("You reforged your Item")
     }
 }
