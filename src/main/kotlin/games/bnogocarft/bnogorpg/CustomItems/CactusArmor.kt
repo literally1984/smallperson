@@ -41,6 +41,6 @@ class CactusArmor {
         factoryItem.armorColor = Color.GREEN
 
         chestplate = BItemFactory.produceItem(factoryItem)
-        BItemFactory.register("cactuschesplate", helm)
+        BItemFactory.register("cactuschestplate", chestplate)
     }
 }

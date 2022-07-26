@@ -5,8 +5,10 @@ import org.bukkit.Bukkit
 import org.bukkit.Material
 import org.bukkit.entity.Player
 import org.bukkit.event.EventHandler
+import org.bukkit.event.EventPriority
 import org.bukkit.event.Listener
 import org.bukkit.event.inventory.InventoryClickEvent
+import org.bukkit.inventory.DoubleChestInventory
 import org.bukkit.inventory.Inventory
 import org.bukkit.inventory.ItemStack
 
@@ -80,27 +82,29 @@ data class OpenGUI(val gui: GUI, val player: Player) : GUI(gui.inv, gui.buttons,
 class GUIListeners(inventories: List<GUI>) : Listener {
     var invs = inventories
 
-    @EventHandler
+    @EventHandler (priority = EventPriority.HIGHEST)
     fun onGUIClick(e: InventoryClickEvent) {
         for (inv in invs) {
-            if (e.inventory.name.equals(inv.inv.name)) {// Checks for matching GUI name
-
-                if (isInDoubleChest(e.slot)) {
-                    for (button in inv.buttons) {// Checks for matching button slots
-                        if (e.slot == button.slot) {
+            if (e.inventory.title.equals(inv.inv.name)) {// Checks for matching GUI name
+                print(e.slot)
+                for (button in inv.buttons) {// Checks for matching button slots
+                    if (e.currentItem != null && e.currentItem.itemMeta != null && e.currentItem.itemMeta.lore != null) {
+                        print("itemmeta check passed")
+                        if (e.slot == button.slot && e.currentItem.itemMeta.lore == button.item.itemMeta.lore) {
+                            print("Button slot")
                             // Runs the button's function
                             button.run(OpenGUI(inv, e.whoClicked as Player))
                             e.isCancelled = true
                         }
                     }
-
-                    for (background in inv.background) {
-                        if (e.slot == background.slot) {
+                }
+                for (background in inv.background) {
+                    if (e.currentItem != null) {
+                        if (e.slot == background.slot && e.currentItem.itemMeta.displayName == background.item.itemMeta.displayName) {
+                            print("Background slot")
                             e.isCancelled = true
                         }
                     }
-                } else {
-                    return
                 }
             }
         }

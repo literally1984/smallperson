@@ -31,7 +31,7 @@ class PlaytimeUtils {
                 hourDiff++
             }
 
-            player.config.set("other.playTime", "$hourDiff $minuteDiff")
+            player.config.set("o.pl", "$hourDiff $minuteDiff")
             YMLUtils.saveCustomYml(player.config, player.playerFile)
             player.joinTime = format.format(now)
         }
