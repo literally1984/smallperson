@@ -36,40 +36,68 @@ class GUIFactory {
         }
 
         fun produceInventory(inv: FactoryInventory): Inventory {
-            Inventories.add(inv)
-            return inv.inventory
+            val inve = inv.inventory
+            val clickables = HashMap<Int, Pair<BackgroundItem, String>>()
+            for (layer in inv.layers) {
+                for (item in layer.background) {
+                    inve.setItem(item.slot, item.item)
+                    clickables[item.slot] = Pair(item, "background")
+                }
+                for (button in layer.buttons) {
+                    inve.setItem(button.slot, button.item)
+                    clickables[button.slot] = Pair(button, "button")
+                }
+            }
+            val buttons = ArrayList<GUIButton>()
+            val backgroundItems = ArrayList<BackgroundItem>()
+            for (slot in clickables.keys) {
+                if (clickables[slot]!!.second.equals("button")) {
+                    buttons.add(clickables[slot]!!.first as GUIButton)
+                    continue
+                }
+                if (clickables[slot]!!.second.equals("background")) {
+                    backgroundItems.add(clickables[slot]!!.first)
+                    continue
+                }
+            }
+
+            Inventories.add(GUI(inve, buttons, backgroundItems))
+            return inve
         }
     }
 }
 
 data class FactoryInventory(val name: String, val size: Int) {
     var inventory: Inventory = Bukkit.createInventory(null, size, name)
-    var buttons = ArrayList<GUIButton>()
-    var backgroundItems = ArrayList<BackgroundItem>()
+    var layers = ArrayList<GUILayer>()
 }
 
-data class GUIButton(val item: ItemStack, val slot: Int, val run: (GUI) -> Unit)
-data class BackgroundItem(val item: ItemStack, val slot: Int)
+data class GUILayer(val buttons: List<GUIButton>, val background: List<BackgroundItem>)
 
-data class GUI(val recipient: Player, val inv: Inventory)
+data class GUIButton(override var item: ItemStack, override var slot: Int, val run: (OpenGUI) -> Unit) : BackgroundItem(item, slot)
 
-class GUIListeners(inventories: List<FactoryInventory>) : Listener {
+open class BackgroundItem(open var item: ItemStack, open var slot: Int)
+
+open class GUI(open val inv: Inventory, open val buttons: List<GUIButton>, open val background: List<BackgroundItem>)
+data class OpenGUI(val gui: GUI, val player: Player) : GUI(gui.inv, gui.buttons, gui.background)
+
+class GUIListeners(inventories: List<GUI>) : Listener {
     var invs = inventories
 
     @EventHandler
     fun onGUIClick(e: InventoryClickEvent) {
         for (inv in invs) {
-            if (e.inventory.name.equals(inv.inventory.name)) {// Checks for matching GUI name
+            if (e.inventory.name.equals(inv.inv.name)) {// Checks for matching GUI name
 
                 for (button in inv.buttons) {// Checks for matching button slots
                     if (e.slot == button.slot) {
                         // Runs the button's function
-                        button.run(GUI(e.whoClicked as Player, e.inventory))
+                        button.run(OpenGUI(inv, e.whoClicked as Player))
                         e.isCancelled = true
                     }
                 }
 
-                for (background in inv.backgroundItems) {
+                for (background in inv.background) {
                     if (e.slot == background.slot) {
                         e.isCancelled = true
                     }
@@ -79,7 +107,7 @@ class GUIListeners(inventories: List<FactoryInventory>) : Listener {
     }
 }
 
-val Inventories = ArrayList<FactoryInventory>()
+val Inventories = ArrayList<GUI>()
 
 val StandardBackground = ItemStack(Material.PISTON_EXTENSION)
 

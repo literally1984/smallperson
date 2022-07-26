@@ -25,13 +25,12 @@ class BItemFactory {
             val lore = ArrayList<String>()
 
             // Stats lore
-            lore.add("")
-            lore.add("${ChatColor.RED}Damage: ${ChatColor.WHITE}${item.stats[0]}")
-            lore.add("${ChatColor.GREEN}Defense: ${ChatColor.WHITE}${item.stats[1]}")
-            lore.add("${ChatColor.LIGHT_PURPLE}Magic Dmg: ${ChatColor.WHITE}${item.stats[2]}")
-            lore.add("${ChatColor.DARK_PURPLE}Magic Def: ${ChatColor.WHITE}${item.stats[3]}")
-            lore.add("${ChatColor.AQUA}Mana: ${ChatColor.WHITE}${item.stats[4]}")
-            lore.add("${ChatColor.GOLD}Stamina: ${ChatColor.WHITE}${item.stats[5]}")
+            lore.add("${ChatColor.RED}Damage: ${ChatColor.GRAY}+${item.stats[0]}")
+            lore.add("${ChatColor.GREEN}Defense: ${ChatColor.GRAY}+${item.stats[1]}")
+            lore.add("${ChatColor.LIGHT_PURPLE}Magic Dmg: ${ChatColor.GRAY}+${item.stats[2]}")
+            lore.add("${ChatColor.DARK_PURPLE}Magic Def: ${ChatColor.GRAY}+${item.stats[3]}")
+            lore.add("${ChatColor.AQUA}Mana: ${ChatColor.GRAY}+${item.stats[4]}")
+            lore.add("${ChatColor.GOLD}Stamina: ${ChatColor.GRAY}+${item.stats[5]}")
             lore.add("")
 
             // abilities lore
@@ -47,7 +46,7 @@ class BItemFactory {
                 lore.add("")
             }
 
-            lore.add(item.rarity.name)
+            lore.add(item.rarity.getDisplay())
             // TODO: make dye color
 
 

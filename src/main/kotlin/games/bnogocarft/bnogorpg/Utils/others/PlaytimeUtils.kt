@@ -22,7 +22,7 @@ class PlaytimeUtils {
             val nowDate = format.parse(format.format(now))
 
             val diff = nowDate.time - joinDate.time
-            val beforeTime = player.config.getString("other.playTime").split(" ")
+            val beforeTime = player.config.getString("o.pl").split(" ")
             var hourDiff = (diff / ((1000 * 60 * 60)) % 24) + (beforeTime[0].toInt())
             var minuteDiff = (diff / ((1000 * 60)) % 60) + (beforeTime[1].toInt())
 

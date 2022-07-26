@@ -8,6 +8,7 @@ import games.bnogocarft.bnogorpg.Listeners.PlayerJoinEvent
 import games.bnogocarft.bnogorpg.Listeners.PlayerLeaveEvent
 import games.bnogocarft.bnogorpg.OtherCommands.GiveCommand
 import games.bnogocarft.bnogorpg.OtherCommands.PlayTimeCommand
+import games.bnogocarft.bnogorpg.OtherCommands.Reforge.ReforgeCommand
 import games.bnogocarft.bnogorpg.Planes.PlaneKeyItem
 import games.bnogocarft.bnogorpg.Planes.PlaneListeners
 import games.bnogocarft.bnogorpg.Planes.SteerListener
@@ -61,6 +62,7 @@ class Main : JavaPlugin() {
         cSender.sendMessage("$logo Enabling other commands...")
         getCommand("giv").executor = GiveCommand()
         getCommand("playtime").executor = PlayTimeCommand()
+        getCommand("reforge").executor = ReforgeCommand()
         cSender.sendMessage("$logo all commands are enabled!")
 
         cSender.sendMessage("$logo Registering custom ItemStacks...")

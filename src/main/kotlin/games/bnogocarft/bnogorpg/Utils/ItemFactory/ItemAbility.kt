@@ -7,18 +7,18 @@ enum class ItemAbility {
     LapisSet;
 
     val CactusDesc = arrayListOf<String>(
-        "Upon being hit by an enemy, 30% of the incoming",
-        "damage will be reflected back to the",
-        "attacker"
+        "Upon being hit by an enemy, 30%",
+        "of the incoming damage will be",
+        "reflected back to the attacker"
     )
 
     fun getDescription(): List<String> {
         return when (this) {
             CactusSet -> CactusDesc
             LapisSet -> listOf(
-                "Upon being hit by an enemy, 30% of the incoming",
-                "damage will be reflected back to the",
-                "attacker"
+                "Upon being hit by an enemy, 30%",
+                "of the incoming damage will be",
+                "reflected back to the attacker"
             ) //TODO
         }
     }
