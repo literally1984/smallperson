@@ -10,27 +10,29 @@ import org.bukkit.inventory.ItemStack
 
 fun Reforge(gui: OpenGUI) {
     val reforgeItem = gui.inv.getItem(13)
-    val weightedList = arrayOf(
-        Reforge.Blessed, Reforge.Blessed, Reforge.Blessed,
-        Reforge.Cursed, Reforge.Cursed, Reforge.Cursed,
-        Reforge.Heavenly,
-        Reforge.Demonic,
-        Reforge.Godly,
-        Reforge.Grim, Reforge.Grim, Reforge.Grim, Reforge.Grim, Reforge.Grim,
-        Reforge.Durable, Reforge.Durable, Reforge.Durable, Reforge.Durable, Reforge.Durable,
-        Reforge.Durable, Reforge.Durable, Reforge.Durable, Reforge.Durable, Reforge.Durable,
-        Reforge.Durable, Reforge.Durable, Reforge.Durable, Reforge.Durable, Reforge.Durable,
-        Reforge.Smart, Reforge.Smart, Reforge.Smart, Reforge.Smart, Reforge.Smart,
-        Reforge.Smart, Reforge.Smart, Reforge.Smart, Reforge.Smart, Reforge.Smart,
-        Reforge.Smart, Reforge.Smart, Reforge.Smart, Reforge.Smart, Reforge.Smart,
-        Reforge.Heavy, Reforge.Heavy, Reforge.Heavy, Reforge.Heavy,
-        Reforge.Heavy, Reforge.Heavy, Reforge.Heavy, Reforge.Heavy,
-    )
-    val reforge = weightedList.random()
-    val reforgeName = "$reforge ${reforgeItem.itemMeta.displayName}"
+    if (reforgeItem != null) {
+        val weightedList = arrayOf(
+            Reforge.Blessed, Reforge.Blessed, Reforge.Blessed,
+            Reforge.Cursed, Reforge.Cursed, Reforge.Cursed,
+            Reforge.Heavenly,
+            Reforge.Demonic,
+            Reforge.Godly,
+            Reforge.Grim, Reforge.Grim, Reforge.Grim, Reforge.Grim, Reforge.Grim,
+            Reforge.Durable, Reforge.Durable, Reforge.Durable, Reforge.Durable, Reforge.Durable,
+            Reforge.Durable, Reforge.Durable, Reforge.Durable, Reforge.Durable, Reforge.Durable,
+            Reforge.Durable, Reforge.Durable, Reforge.Durable, Reforge.Durable, Reforge.Durable,
+            Reforge.Smart, Reforge.Smart, Reforge.Smart, Reforge.Smart, Reforge.Smart,
+            Reforge.Smart, Reforge.Smart, Reforge.Smart, Reforge.Smart, Reforge.Smart,
+            Reforge.Smart, Reforge.Smart, Reforge.Smart, Reforge.Smart, Reforge.Smart,
+            Reforge.Heavy, Reforge.Heavy, Reforge.Heavy, Reforge.Heavy,
+            Reforge.Heavy, Reforge.Heavy, Reforge.Heavy, Reforge.Heavy,
+        )
+        val reforge = weightedList.random()
+        val reforgeName = "$reforge ${reforgeItem.itemMeta.displayName}"
 
-    reforgeItem.itemMeta.displayName = reforgeName
-    gui.player.sendMessage("You reforged your Item")
+        reforgeItem.itemMeta.displayName = reforgeName
+        gui.player.sendMessage("You reforged your Item")
+    }
 }
 
 class ReforgeUtils {

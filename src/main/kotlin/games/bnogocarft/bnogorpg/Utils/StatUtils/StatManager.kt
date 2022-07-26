@@ -24,11 +24,11 @@ class StatManager {
                             val lore = i.itemMeta.lore
                             val index = lore.indexOf(s)
                             // Split each stat in the lore by ": +"
-                            val defense = s.split(": +".toRegex())[1].toInt()
-                            val mdefense = lore.get(index + 2).split(": +".toRegex())[1].toInt()
-                            val mana = lore.get(index + 3).split(": +".toRegex())[1].toInt()
-                            val stamina = lore.get(index + 4).split(": +".toRegex())[1].toInt()
-                            val damage = lore.get(index - 1).split(": +".toRegex())[1].toInt()
+                            val defense = s.split(": ${ChatColor.GRAY}+".toRegex())[1].toInt()
+                            val mdefense = lore.get(index + 2).split(": ${ChatColor.GRAY}+".toRegex())[1].toInt()
+                            val mana = lore.get(index + 3).split(": ${ChatColor.GRAY}+".toRegex())[1].toInt()
+                            val stamina = lore.get(index + 4).split(": ${ChatColor.GRAY}+".toRegex())[1].toInt()
+                            val damage = lore.get(index - 1).split(": ${ChatColor.GRAY}+".toRegex())[1].toInt()
 
                             stats[0] += defense
                             stats[1] += mdefense

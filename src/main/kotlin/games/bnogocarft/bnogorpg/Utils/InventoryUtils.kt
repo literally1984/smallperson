@@ -10,24 +10,20 @@ import org.bukkit.event.inventory.InventoryClickEvent
 import org.bukkit.inventory.Inventory
 import org.bukkit.inventory.ItemStack
 
-class InventoryUtils {
-    companion object {
-
-        fun isInDoubleChest(slot: Int): Boolean {
-            if (slot in 0..53) {
-                return true
-            }
-            return false
-        }
-
-        fun isInRecipeSlot(slot: Int): Boolean {
-            if (slot in 10..12 || slot in 19..21 || slot in 28..30) {
-                return true
-            }
-            return false
-        }
+fun isInDoubleChest(slot: Int): Boolean {
+    if (slot in 0..53) {
+        return true
     }
+    return false
 }
+
+fun isInRecipeSlot(slot: Int): Boolean {
+    if (slot in 10..12 || slot in 19..21 || slot in 28..30) {
+        return true
+    }
+    return false
+}
+
 
 class GUIFactory {
     companion object {
@@ -89,18 +85,22 @@ class GUIListeners(inventories: List<GUI>) : Listener {
         for (inv in invs) {
             if (e.inventory.name.equals(inv.inv.name)) {// Checks for matching GUI name
 
-                for (button in inv.buttons) {// Checks for matching button slots
-                    if (e.slot == button.slot) {
-                        // Runs the button's function
-                        button.run(OpenGUI(inv, e.whoClicked as Player))
-                        e.isCancelled = true
+                if (isInDoubleChest(e.slot)) {
+                    for (button in inv.buttons) {// Checks for matching button slots
+                        if (e.slot == button.slot) {
+                            // Runs the button's function
+                            button.run(OpenGUI(inv, e.whoClicked as Player))
+                            e.isCancelled = true
+                        }
                     }
-                }
 
-                for (background in inv.background) {
-                    if (e.slot == background.slot) {
-                        e.isCancelled = true
+                    for (background in inv.background) {
+                        if (e.slot == background.slot) {
+                            e.isCancelled = true
+                        }
                     }
+                } else {
+                    return
                 }
             }
         }

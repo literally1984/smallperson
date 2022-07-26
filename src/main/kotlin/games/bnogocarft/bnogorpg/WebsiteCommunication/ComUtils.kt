@@ -39,7 +39,7 @@ class ComUtils(address: InetSocketAddress?) : WebSocketServer(address) {
         @JvmStatic
         fun main() {
             val host = InetAddress.getLocalHost()
-            val port = 25575
+            val port = 25566
             val server: WebSocketServer = ComUtils(InetSocketAddress(host, port))
             server.run()
         }
