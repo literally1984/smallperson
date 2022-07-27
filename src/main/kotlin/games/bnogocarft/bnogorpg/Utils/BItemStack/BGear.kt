@@ -2,12 +2,10 @@ package games.bnogocarft.bnogorpg.Utils.BItemStack
 
 import games.bnogocarft.bnogorpg.Utils.BItemStack.Rarity.RarityUtils
 import games.bnogocarft.bnogorpg.Utils.EnchantUtils.BEnchantment
-import games.bnogocarft.bnogorpg.Utils.ItemFactory.ItemAbility
-import games.bnogocarft.bnogorpg.Utils.PPlayer.Abilities.PlayerAbility.Ability
 import games.bnogocarft.bnogorpg.Utils.StatUtils.ItemStat
 import org.bukkit.inventory.ItemStack
 
-data class BWeapon(var item: ItemStack) : BGear(item){
+open class BGear(item: ItemStack) {
 
     constructor(stats: List<Int>, item: ItemStack) : this(item) {
         this.stats = ItemStat(stats, item)
@@ -37,9 +35,8 @@ data class BWeapon(var item: ItemStack) : BGear(item){
 
     Rarity
      */
-    override var stats = ItemStat(item)
-    override var rarity = RarityUtils.getRarity(item.itemMeta.lore[item.itemMeta.lore.size - 1])
-    override val enchantments = ArrayList<BEnchantment>()
-    override var reforge = Reforge.NONE //TODO
-    var abilities = ArrayList<Ability>()
+    open var stats = ItemStat(item)
+    open var rarity = RarityUtils.getRarity(item.itemMeta.lore[item.itemMeta.lore.size - 1])
+    open val enchantments = ArrayList<BEnchantment>()
+    open var reforge = Reforge.NONE //TODO
 }

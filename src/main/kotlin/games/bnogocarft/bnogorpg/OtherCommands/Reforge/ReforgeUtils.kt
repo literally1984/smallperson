@@ -1,20 +1,23 @@
 package games.bnogocarft.bnogorpg.OtherCommands.Reforge
 
 import games.bnogocarft.bnogorpg.Utils.*
+import games.bnogocarft.bnogorpg.Utils.BItemStack.BGear
+import games.bnogocarft.bnogorpg.Utils.BItemStack.BItemUtils
+import games.bnogocarft.bnogorpg.Utils.BItemStack.BWeapon
 import games.bnogocarft.bnogorpg.Utils.BItemStack.Reforge
 import org.bukkit.Bukkit
 import org.bukkit.ChatColor
-import org.bukkit.DyeColor
 import org.bukkit.Material
 import org.bukkit.enchantments.Enchantment
 import org.bukkit.inventory.Inventory
 import org.bukkit.inventory.ItemStack
+import java.util.*
+import kotlin.collections.ArrayList
 
-@SuppressWarnings("deprecated")
 fun Reforge(gui: OpenGUI) {
     val reforgeItem = gui.inv.getItem(13)
-    if (reforgeItem != null) {
-        val weightedList = arrayOf(
+    if (reforgeItem != null && (BItemUtils.getBType(reforgeItem) == "weapon" || BItemUtils.getBType(reforgeItem) == "armor")) {
+        val weightedList = mutableListOf( //  52 currently
             Reforge.Blessed, Reforge.Blessed, Reforge.Blessed,
             Reforge.Cursed, Reforge.Cursed, Reforge.Cursed,
             Reforge.Heavenly,
@@ -28,15 +31,29 @@ fun Reforge(gui: OpenGUI) {
             Reforge.Smart, Reforge.Smart, Reforge.Smart, Reforge.Smart, Reforge.Smart,
             Reforge.Smart, Reforge.Smart, Reforge.Smart, Reforge.Smart, Reforge.Smart,
             Reforge.Heavy, Reforge.Heavy, Reforge.Heavy, Reforge.Heavy,
-            Reforge.Heavy, Reforge.Heavy, Reforge.Heavy, Reforge.Heavy,
+            Reforge.Heavy, Reforge.Heavy, Reforge.Heavy, Reforge.Heavy
         )
         val reforge = weightedList.random()
         val newMeta = reforgeItem.itemMeta.clone()
+        var bItem: Pair<BGear, String>
+        if (BItemUtils.getBType(reforgeItem) == "weapon") {
+            bItem = Pair(BItemUtils.getBWeapon(reforgeItem) as BGear, "weapon")
+        } else {
+            bItem = Pair(BItemUtils.getBWeapon(reforgeItem) as BGear, "armor")
+        }
 
-
-        newMeta.displayName = "$reforge ${reforgeItem.itemMeta.displayName}"
-        reforgeItem.itemMeta = newMeta
-        gui.player.sendMessage("You reforged your Item")
+        if (bItem.first.reforge == Reforge.NONE) {
+            newMeta.displayName = "$reforge ${reforgeItem.itemMeta.displayName}"
+            reforgeItem.itemMeta = newMeta
+        } else {
+            val displayArray = newMeta.displayName.split(" ").toMutableList()
+            displayArray[0] = "$reforge"
+            newMeta.displayName = displayArray.joinToString(" ")
+            reforgeItem.itemMeta = newMeta
+        }
+        val chance = (weightedList.size)/(Collections.frequency(weightedList, reforge))
+        gui.player.sendMessage("You reforged your Item and got the $reforge reforge!")
+        gui.player.sendMessage("that reforge is a 1 in $chance chance")
     }
 }
 
@@ -54,7 +71,7 @@ class ReforgeUtils {
         val buttons = ArrayList<GUIButton>()
         val backgrounds = ArrayList<BackgroundItem>()
         val WoolBackground = ItemStack(Material.FIRE)
-        WoolBackground.addEnchantment(Enchantment.FIRE_ASPECT, 1)
+        WoolBackground.addUnsafeEnchantment(Enchantment.FIRE_ASPECT, 5)
         WoolBackground.itemMeta.displayName = ""
 
         for (i in 0..53) {

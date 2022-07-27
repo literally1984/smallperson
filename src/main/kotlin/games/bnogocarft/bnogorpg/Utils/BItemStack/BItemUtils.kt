@@ -6,9 +6,10 @@ import org.bukkit.inventory.ItemStack
 class BItemUtils {
 
     companion object {
-        private var BWeapons: HashMap<ItemStack, BWeapon> = HashMap<ItemStack, BWeapon>()
-        private var BPickaxes: HashMap<ItemStack, BPickaxe> = HashMap<ItemStack, BPickaxe>()
-        private var BAxes: HashMap<ItemStack, BAxe> = HashMap<ItemStack, BAxe>()
+        private var BWeapons: HashMap<ItemStack, BWeapon> = HashMap()
+        private var BPickaxes: HashMap<ItemStack, BPickaxe> = HashMap()
+        private var BAxes: HashMap<ItemStack, BAxe> = HashMap()
+        private var BArmor: HashMap<ItemStack, BArmor> = HashMap()
         // TODO Make a BAxe class
 
         fun getBType(item: ItemStack): String? {
@@ -19,6 +20,13 @@ class BItemUtils {
                     item.itemMeta.displayName.lowercase().contains("warhammer")
                 ) {
                     return "weapon"
+                }
+                if (item.itemMeta.displayName.lowercase().contains("helmet") ||
+                    item.itemMeta.displayName.lowercase().contains("chestplate") ||
+                    item.itemMeta.displayName.lowercase().contains("leggings") ||
+                    item.itemMeta.displayName.lowercase().contains("boots")
+                ) {
+                    return "armor"
                 }
                 if (item.itemMeta.displayName.lowercase().contains("pickaxe")) {
                     return "pickaxe"
@@ -65,6 +73,17 @@ class BItemUtils {
 
         fun addBAxe(item: ItemStack) {
             BAxes[item] = BAxe(item)
+        }
+
+        fun getBArmor(item: ItemStack): BArmor {
+            if (BArmor.containsKey(item)) return BArmor[item]!!
+            val barmor = BArmor(item)
+            BArmor[item] = barmor
+            return barmor
+        }
+
+        fun addBArmor(item: ItemStack) {
+            BArmor[item] = BArmor(item)
         }
     }
 }

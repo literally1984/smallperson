@@ -9,11 +9,12 @@ val pressA = HashMap<Player, Boolean>()
 val pressS = HashMap<Player, Boolean>()
 val pressD = HashMap<Player, Boolean>()
 
-val wVector = Vector(0.0, 0.1, 0.0)
-val sVector = Vector(0.0, -0.1, 0.0)
+val wVector = Vector(0.0, 0.05, 0.0)
+val sVector = Vector(0.0, -0.05, 0.0)
 
 class removeScheduler : BukkitRunnable() {
     override fun run() {
+
         // W Looper
         for (player in pressW.keys) {
             if (pressW[player] == true) {
