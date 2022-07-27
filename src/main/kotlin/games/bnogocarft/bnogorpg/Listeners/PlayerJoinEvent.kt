@@ -36,6 +36,10 @@ class PlayerJoinEvent : Listener {
                 if (BItemUtils.getBType(item).equals("axe")) {
                     BItemUtils.addBAxe(item)
                 }
+
+                if (BItemUtils.getBType(item).equals("armor")) {
+                    BItemUtils.addBArmor(item)
+                }
             }
         }
     }

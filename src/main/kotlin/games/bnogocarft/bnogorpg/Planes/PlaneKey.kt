@@ -33,9 +33,10 @@ class PlaneKeyItem {
             // Speed: x (x% of max x speed)
             // Health: x (x% of max x health)
             // Fuel: x (x% of max x fuel)
-            val k = ItemStack(Material.TRIPWIRE)
-            val meta = Bukkit.getItemFactory().getItemMeta(Material.TRIPWIRE)
+            val k = ItemStack(Material.IRON_INGOT)
+            val meta = Bukkit.getItemFactory().getItemMeta(Material.IRON_INGOT)
             val lore = ArrayList<String>()
+            k.itemMeta.displayName = "Plane Key"
             lore.add("${ChatColor.YELLOW}Used to spawn and collect planes")
             lore.add("${ChatColor.YELLOW}Right click this on the ground to spawn")
             lore.add("${ChatColor.YELLOW}your plane and Right click your spawned")

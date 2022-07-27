@@ -2,6 +2,7 @@ package games.bnogocarft.bnogorpg.OtherCommands
 
 import games.bnogocarft.bnogorpg.Planes.PlaneEntity
 import games.bnogocarft.bnogorpg.Planes.planeEntitites
+import games.bnogocarft.bnogorpg.Utils.BItemStack.BItemUtils
 import org.bukkit.Bukkit
 import org.bukkit.command.Command
 import org.bukkit.command.CommandExecutor
@@ -49,6 +50,12 @@ class GiveCommand : CommandExecutor {
                 if (customItemMap.containsKey(args[0].lowercase())) {
                     val item = customItemMap[args[0].lowercase()]!!
                     sender.inventory.addItem(item)
+                    when (BItemUtils.getBType(item)) {
+                        "weapon" -> BItemUtils.addBWeapon(item)
+                        "armor" -> BItemUtils.addBArmor(item)
+                        "axe" -> BItemUtils.addBAxe(item)
+                        "pickaxe" -> BItemUtils.addBPickaxe(item)
+                    }
                     sender.sendMessage("You gave yourself an ${args[0]}")
                     if (args[0].lowercase() == "planekey") {
                         planeEntitites[item] = PlaneEntity(item)
