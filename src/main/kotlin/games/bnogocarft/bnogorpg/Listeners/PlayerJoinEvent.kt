@@ -1,5 +1,8 @@
 package games.bnogocarft.bnogorpg.Listeners
 
+import games.bnogocarft.bnogorpg.Planes.PlaneEntity
+import games.bnogocarft.bnogorpg.Planes.planeEntitites
+import games.bnogocarft.bnogorpg.Planes.planes
 import games.bnogocarft.bnogorpg.Utils.BItemStack.BItemUtils
 import games.bnogocarft.bnogorpg.Utils.PPlayer.BPlayer
 import games.bnogocarft.bnogorpg.Utils.PPlayer.BPlayers
@@ -39,6 +42,10 @@ class PlayerJoinEvent : Listener {
 
                 if (BItemUtils.getBType(item).equals("armor")) {
                     BItemUtils.addBArmor(item)
+                }
+
+                if (item.itemMeta.displayName == "Plane Key") {
+                    planeEntitites[item] = PlaneEntity(item)
                 }
             }
         }

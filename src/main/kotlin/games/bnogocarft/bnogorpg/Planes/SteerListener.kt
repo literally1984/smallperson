@@ -1,10 +1,20 @@
 package games.bnogocarft.bnogorpg.Planes
 
+import com.comphenix.protocol.PacketType
+import com.comphenix.protocol.ProtocolLibrary
+import com.comphenix.protocol.events.ListenerPriority
+import com.comphenix.protocol.events.PacketAdapter
+import com.comphenix.protocol.events.PacketEvent
+import games.bnogocarft.bnogorpg.Main
 import net.lax1dude.util.event.PlayerVehicleInputEvent
 import org.bukkit.Bukkit
 import org.bukkit.entity.Minecart
 import org.bukkit.event.EventHandler
 import org.bukkit.event.Listener
+import org.bukkit.util.Vector
+import java.lang.Math.cos
+import java.lang.Math.sin
+
 
 class SteerListener : Listener {
 
@@ -17,7 +27,8 @@ class SteerListener : Listener {
 
                 val plane = planes[vehicle]!!
                 if (e.x < 0.0 && e.z > 0.0) {
-                    when (steerer.eyeLocation.yaw) {
+                    println(steerer.location.yaw)
+                    when (steerer.location.yaw) {
                         in 0.0..89.0 -> {
                             if (!pressW.containsKey(steerer)) {
                                 Bukkit.getConsoleSender().sendMessage("Started pressing W")
@@ -42,7 +53,12 @@ class SteerListener : Listener {
                             } else {
                                 pressA[steerer] = true
                             }
-                            vehicle.location.yaw -= 1
+                            val I = Vector(0,0,1)
+                            val vector = Vector((cos((vehicle.location.yaw + 1).toDouble()) * I.x - sin((vehicle.location.yaw + 1).toDouble()) * I.z),
+                                0.0,
+                                sin((vehicle.location.yaw + 1).toDouble()) * I.x + cos((vehicle.location.yaw + 1).toDouble()) * I.z)
+                            vehicle.location.yaw += 1
+                            vehicle.velocity = vector
                         }
 
                         in 180.0..269.0 -> {
@@ -70,8 +86,12 @@ class SteerListener : Listener {
                             } else {
                                 pressD[steerer] = true
                             }
-
-                            vehicle.location.yaw += 1
+                            val I = Vector(0,0,1)
+                            val vector = Vector((cos((steerer.location.yaw - 1).toDouble()) * I.x - sin((steerer.location.yaw - 1).toDouble()) * I.z),
+                                0.0,
+                                sin((steerer.location.yaw - 1).toDouble()) * I.x + cos((steerer.location.yaw - 1).toDouble()) * I.z)
+                            vehicle.location.yaw -= 1
+                            vehicle.velocity = vector
                         }
                     }
                 }

@@ -5,9 +5,11 @@ import games.bnogocarft.bnogorpg.Utils.BItemStack.BGear
 import games.bnogocarft.bnogorpg.Utils.BItemStack.BItemUtils
 import games.bnogocarft.bnogorpg.Utils.BItemStack.BWeapon
 import games.bnogocarft.bnogorpg.Utils.BItemStack.Reforge
+import net.minecraft.server.v1_5_R3.Packet62NamedSoundEffect
 import org.bukkit.Bukkit
 import org.bukkit.ChatColor
 import org.bukkit.Material
+import org.bukkit.craftbukkit.v1_5_R3.entity.CraftPlayer
 import org.bukkit.enchantments.Enchantment
 import org.bukkit.inventory.Inventory
 import org.bukkit.inventory.ItemStack
@@ -35,23 +37,28 @@ fun Reforge(gui: OpenGUI) {
         )
         val reforge = weightedList.random()
         val newMeta = reforgeItem.itemMeta.clone()
-        var bItem: Pair<BGear, String>
-        if (BItemUtils.getBType(reforgeItem) == "weapon") {
-            bItem = Pair(BItemUtils.getBWeapon(reforgeItem) as BGear, "weapon")
+        val bItem: Pair<BGear, String> = if (BItemUtils.getBType(reforgeItem) == "weapon") {
+            Pair(BItemUtils.getBWeapon(reforgeItem) as BGear, "weapon")
         } else {
-            bItem = Pair(BItemUtils.getBWeapon(reforgeItem) as BGear, "armor")
+            Pair(BItemUtils.getBArmor(reforgeItem) as BGear, "armor")
         }
 
         if (bItem.first.reforge == Reforge.NONE) {
             newMeta.displayName = "$reforge ${reforgeItem.itemMeta.displayName}"
             reforgeItem.itemMeta = newMeta
+            gui.player.sendMessage("no ref")
         } else {
+            bItem.first.reforge = reforge
             val displayArray = newMeta.displayName.split(" ").toMutableList()
             displayArray[0] = "$reforge"
             newMeta.displayName = displayArray.joinToString(" ")
             reforgeItem.itemMeta = newMeta
+            gui.player.sendMessage("ref")
         }
         val chance = (weightedList.size)/(Collections.frequency(weightedList, reforge))
+
+        val anvilSound = Packet62NamedSoundEffect("anvil.use", gui.player.location.x, gui.player.location.y, gui.player.location.z, 1f, 63f)
+        (gui.player as CraftPlayer).handle.playerConnection.sendPacket(anvilSound)
         gui.player.sendMessage("You reforged your Item and got the $reforge reforge!")
         gui.player.sendMessage("that reforge is a 1 in $chance chance")
     }
