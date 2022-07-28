@@ -36,6 +36,13 @@ open class BGear(item: ItemStack) : BItem(item){
     Rarity
      */
     var stats = ItemStat(item)
-    val enchantments = ArrayList<BEnchantment>()
     var reforge = Reforge.NONE //TODO
+
+    init {
+        try {
+            reforge = Reforge.valueOf(item.itemMeta.displayName.split(" ")[0])
+        } catch (e: IllegalArgumentException) {
+            reforge = Reforge.NONE
+        }
+    }
 }

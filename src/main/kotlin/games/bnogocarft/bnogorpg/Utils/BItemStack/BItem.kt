@@ -6,7 +6,7 @@ import games.bnogocarft.bnogorpg.Utils.EnchantUtils.EnchantUtils
 import org.bukkit.ChatColor
 import org.bukkit.inventory.ItemStack
 
-open class BItem(item: ItemStack) {
+open class BItem (item: ItemStack) {
     val Enchants = ArrayList<BEnchantment>()
     var exp: Long = 0
     var level: Long = 0
@@ -36,7 +36,7 @@ open class BItem(item: ItemStack) {
         }
 
         if (this !is BGear) {
-            bMaterial = BMaterial.valueOf(item.itemMeta.displayName.replace(" ", "_"))
+            bMaterial = BMaterial.valueOf(item.itemMeta.displayName.replace(" ", "_").uppercase())
         } else {
             val bgear = this
             val name = item.itemMeta.displayName.split(" ").toMutableList()
@@ -44,7 +44,7 @@ open class BItem(item: ItemStack) {
                 name.removeAt(0)
             }
             item.itemMeta.displayName = name.joinToString(" ")
-            bMaterial = BMaterial.valueOf(item.itemMeta.displayName.replace(" ", "_"))
+            bMaterial = BMaterial.valueOf(item.itemMeta.displayName.replace(" ", "_").uppercase())
         }
     }
 }

@@ -87,7 +87,7 @@ class Main : JavaPlugin() {
 
     override fun onDisable() {
         server.consoleSender.sendMessage(
-            "${ChatColor.LIGHT_PURPLE} $logo ChatColor.RED BnogoRPG has been disabled D:"
+            "${ChatColor.LIGHT_PURPLE} $logo ${ChatColor.RED} BnogoRPG has been disabled D:"
         )
         for (player in server.onlinePlayers) {
             val bPlayer = BPlayers[player]!!

@@ -29,3 +29,8 @@ commands:
     aliases: [ref]
     usage: /<command>
     description: opens up a reforge inventory to the player
+  anim:
+    name: Animation
+    aliases: [a]
+    usage: /<command>
+    description: A test command for the Animation function
