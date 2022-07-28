@@ -13,13 +13,13 @@ enum class Rarity() {
 
     fun getDisplay(): String{
         return when (this) {
-            COMMON -> "${ChatColor.GRAY}Common"
-            UNCOMMON -> "${ChatColor.GREEN}Uncommon"
-            RARE -> "${ChatColor.BLUE}Rare"
-            EPIC -> "${ChatColor.LIGHT_PURPLE}Epic"
-            LEGENDARY -> "${ChatColor.GOLD}Legendary"
-            MYTHICAL -> "${ChatColor.DARK_PURPLE}Mythical"
-            DIVINE -> "${ChatColor.WHITE}D${ChatColor.GREEN}i${ChatColor.LIGHT_PURPLE}v${ChatColor.YELLOW}i${ChatColor.BLUE}n${ChatColor.RED}e"
+            COMMON -> "${ChatColor.GRAY}COMMON"
+            UNCOMMON -> "${ChatColor.GREEN}UNCOMMON"
+            RARE -> "${ChatColor.BLUE}RARE"
+            EPIC -> "${ChatColor.LIGHT_PURPLE}EPIC"
+            LEGENDARY -> "${ChatColor.GOLD}LEGENDARY"
+            MYTHICAL -> "${ChatColor.DARK_PURPLE}MYTHICAL"
+            DIVINE -> "${ChatColor.WHITE}D${ChatColor.GREEN}I${ChatColor.LIGHT_PURPLE}V${ChatColor.YELLOW}I${ChatColor.BLUE}N${ChatColor.RED}E"
         }
     }
 }
