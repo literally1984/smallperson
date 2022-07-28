@@ -8,5 +8,5 @@ data class FactoryItem(val name: String, val mat: Material) {
     val abilities = ArrayList<ItemAbility>()
     var stats = ArrayList<Int>()
     var rarity = Rarity.COMMON
-    var armorColor = Color.FUCHSIA
+    var armorColor: Color? = null
 }

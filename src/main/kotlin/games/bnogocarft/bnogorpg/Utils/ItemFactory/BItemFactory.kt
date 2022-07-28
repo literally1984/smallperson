@@ -7,6 +7,7 @@ import org.bukkit.Bukkit
 import org.bukkit.ChatColor
 import org.bukkit.Material
 import org.bukkit.inventory.ItemStack
+import org.bukkit.inventory.meta.LeatherArmorMeta
 
 class BItemFactory {
     companion object {
@@ -36,8 +37,8 @@ class BItemFactory {
             // abilities lore
             for (ability in item.abilities) {
                 if (ability.getType().equals(AbilityTrigger.SET_BONUS)) {
-                    lore.add("${ChatColor.YELLOW}Set Bonus:")
-                    for (s in ability.getDescription()) lore.add(s)
+                    lore.add("${ChatColor.YELLOW}Set Bonus: ${ability.name}")
+                    for (s in ability.getDescription()) lore.add("${ChatColor.YELLOW}$s")
                     lore.add("")
                     continue
                 }
@@ -47,7 +48,10 @@ class BItemFactory {
             }
 
             lore.add(item.rarity.getDisplay())
-            // TODO: make dye color
+            if (item.armorColor != null) {
+                val armorMeta = meta as LeatherArmorMeta
+                armorMeta.color = item.armorColor
+            }
 
 
             meta.lore = lore
