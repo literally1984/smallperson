@@ -3,7 +3,7 @@ package games.bnogocarft.bnogorpg.Listeners
 import games.bnogocarft.bnogorpg.Planes.PlaneEntity
 import games.bnogocarft.bnogorpg.Planes.planeEntitites
 import games.bnogocarft.bnogorpg.Planes.planes
-import games.bnogocarft.bnogorpg.Utils.BItemStack.BItemUtils
+import games.bnogocarft.bnogorpg.Utils.BItemStack.*
 import games.bnogocarft.bnogorpg.Utils.PPlayer.BPlayer
 import games.bnogocarft.bnogorpg.Utils.PPlayer.BPlayers
 import org.bukkit.Bukkit
@@ -29,19 +29,19 @@ class PlayerJoinEvent : Listener {
         for (item in e.player.inventory.contents) {
             if (item != null) {
                 if (BItemUtils.getBType(item).equals("weapon")) {
-                    BItemUtils.addBWeapon(item)
+                    BItemUtils.addBWeapon(item, BWeapon(item))
                 }
 
                 if (BItemUtils.getBType(item).equals("pickaxe")) {
-                    BItemUtils.addBPickaxe(item)
+                    BItemUtils.addBPickaxe(item, BPickaxe(item))
                 }
 
                 if (BItemUtils.getBType(item).equals("axe")) {
-                    BItemUtils.addBAxe(item)
+                    BItemUtils.addBAxe(item, BAxe(item))
                 }
 
                 if (BItemUtils.getBType(item).equals("armor")) {
-                    BItemUtils.addBArmor(item)
+                    BItemUtils.addBArmor(item, BArmor(item))
                 }
 
                 if (item.itemMeta.displayName == "Plane Key") {

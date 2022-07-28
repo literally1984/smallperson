@@ -9,6 +9,7 @@ import org.bukkit.Effect
 import org.bukkit.Location
 import org.bukkit.craftbukkit.v1_5_R3.entity.CraftPlayer
 import org.bukkit.scheduler.BukkitTask
+import org.bukkit.util.Vector
 import java.io.*
 import java.nio.ByteBuffer
 
@@ -16,7 +17,7 @@ import java.nio.ByteBuffer
 open class Animation(loc: Location, particle: String) {
     var isStopped = false
 }
-data class HelixAnimation(val radius: Double, val height: Double, val loc: Location, val particle: String, val speed: Double) : Animation(loc, particle) {}
+data class HelixAnimation(val radius: Double, val height: Double, val loc: Location, val particle: String, val speed: Long, val direction: Vector ) : Animation(loc, particle) {}
 
 fun playAnimation(animation: Animation) {
     if (animation is HelixAnimation) {
@@ -28,9 +29,10 @@ fun playAnimation(animation: Animation) {
                 task.cancel()
             }
             var y = 0.0
-            while (y <= 50) {
-                val x = helix.radius * Math.cos(y)
-                val z = helix.radius * Math.sin(y)
+            var angle = 0.0
+            while (y <= 36) {
+                val x = helix.radius * Math.cos(angle)
+                val z = helix.radius * Math.sin(angle)
                 val packet = Packet63WorldParticles()
                 val bas = ByteArrayOutputStream()
                 val ds = DataOutputStream(bas)
@@ -51,8 +53,12 @@ fun playAnimation(animation: Animation) {
 
                 val dataStream = DataInputStream(ByteArrayInputStream(bytes))
                 packet.a(dataStream)
-                y += 0.05
+                for (p in Bukkit.getOnlinePlayers()) {
+                    (p as CraftPlayer).handle.playerConnection.sendPacket(packet)
+                }
+                y += 0.1
+                angle += 1
             }
-        }, 0, 3)
+        }, 0, helix.speed)
     }
 }
