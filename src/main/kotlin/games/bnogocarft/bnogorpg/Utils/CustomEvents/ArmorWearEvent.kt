@@ -12,7 +12,7 @@ import java.util.*
 
 
 class ArmorWearListeners : Listener {
-    @EventHandler (priority = EventPriority.LOW)
+    @EventHandler(priority = EventPriority.LOW)
     fun OnArmorWearByInventoryClick(e: InventoryClickEvent) {
         val p = e.whoClicked as Player
         val ArmorSlots = intArrayOf(5, 6, 7, 8)
@@ -78,7 +78,7 @@ class ArmorWearListeners : Listener {
         }
     }
 
-    @EventHandler (priority = EventPriority.LOW)
+    @EventHandler(priority = EventPriority.LOW)
     fun OnArmorWearByRightClick(e: PlayerInteractEvent) {
         if (e.action == Action.RIGHT_CLICK_AIR || e.action == Action.RIGHT_CLICK_BLOCK) {
             val p = e.player

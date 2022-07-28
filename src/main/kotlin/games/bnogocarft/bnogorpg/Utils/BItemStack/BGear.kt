@@ -1,11 +1,9 @@
 package games.bnogocarft.bnogorpg.Utils.BItemStack
 
-import games.bnogocarft.bnogorpg.Utils.BItemStack.Rarity.RarityUtils
-import games.bnogocarft.bnogorpg.Utils.EnchantUtils.BEnchantment
 import games.bnogocarft.bnogorpg.Utils.StatUtils.ItemStat
 import org.bukkit.inventory.ItemStack
 
-open class BGear(item: ItemStack) : BItem(item){
+open class BGear(item: ItemStack) : BItem(item) {
 
     constructor(stats: List<Int>, item: ItemStack) : this(item) {
         this.stats = ItemStat(stats, item)
@@ -39,10 +37,10 @@ open class BGear(item: ItemStack) : BItem(item){
     var reforge = Reforge.NONE //TODO
 
     init {
-        try {
-            reforge = Reforge.valueOf(item.itemMeta.displayName.split(" ")[0])
+        reforge = try {
+            Reforge.valueOf(item.itemMeta.displayName.split(" ")[0])
         } catch (e: IllegalArgumentException) {
-            reforge = Reforge.NONE
+            Reforge.NONE
         }
     }
 }

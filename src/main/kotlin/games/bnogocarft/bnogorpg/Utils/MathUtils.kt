@@ -23,6 +23,7 @@ fun getYawFromVector(motion: Vector): Float {
     }
     return (-yaw * 180 / Math.PI - 90).toFloat()
 }
+
 fun float2ByteArray(value: Float): ByteArray? {
     return ByteBuffer.allocate(4).putFloat(value).array()
 }

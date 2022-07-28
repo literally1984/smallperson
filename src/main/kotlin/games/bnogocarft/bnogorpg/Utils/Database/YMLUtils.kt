@@ -11,7 +11,7 @@ import java.io.IOException
 class YMLUtils {
     companion object {
         fun getUsersFolder(): String { // Returns the default folder where PPlayer data is stored
-            return "${Main.instance?.dataFolder}/users/"
+            return "${Main.instance.dataFolder}/users/"
         }
 
         @Deprecated(

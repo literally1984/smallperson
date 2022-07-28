@@ -2,7 +2,7 @@ package games.bnogocarft.bnogorpg.Utils.BItemStack.Rarity
 
 import org.bukkit.ChatColor
 
-enum class Rarity() {
+enum class Rarity {
     COMMON,
     UNCOMMON,
     RARE,
@@ -11,7 +11,7 @@ enum class Rarity() {
     MYTHICAL,
     DIVINE;
 
-    fun getDisplay(): String{
+    fun getDisplay(): String {
         return when (this) {
             COMMON -> "${ChatColor.GRAY}COMMON"
             UNCOMMON -> "${ChatColor.GREEN}UNCOMMON"

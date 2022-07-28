@@ -39,10 +39,12 @@ class SteerListener : Listener {
                                 plane.isSteering = true
                             }
                             pressA[steerer] = true
-                            val I = Vector(0,0,1)
-                            val vector = Vector((cos((vehicle.location.yaw + 1).toDouble()) * I.x - sin((vehicle.location.yaw + 1).toDouble()) * I.z),
+                            val I = Vector(0, 0, 1)
+                            val vector = Vector(
+                                (cos((vehicle.location.yaw + 1).toDouble()) * I.x - sin((vehicle.location.yaw + 1).toDouble()) * I.z),
                                 0.0,
-                                sin((vehicle.location.yaw + 1).toDouble()) * I.x + cos((vehicle.location.yaw + 1).toDouble()) * I.z)
+                                sin((vehicle.location.yaw + 1).toDouble()) * I.x + cos((vehicle.location.yaw + 1).toDouble()) * I.z
+                            )
                             vehicle.location.yaw += 1
                             vehicle.velocity = vector
                         }
@@ -64,10 +66,12 @@ class SteerListener : Listener {
                                 plane.isSteering = true
                             }
                             pressD[steerer] = true
-                            val I = Vector(0,0,1)
-                            val vector = Vector((cos((steerer.location.yaw - 1).toDouble()) * I.x - sin((steerer.location.yaw - 1).toDouble()) * I.z),
+                            val I = Vector(0, 0, 1)
+                            val vector = Vector(
+                                (cos((steerer.location.yaw - 1).toDouble()) * I.x - sin((steerer.location.yaw - 1).toDouble()) * I.z),
                                 0.0,
-                                sin((steerer.location.yaw - 1).toDouble()) * I.x + cos((steerer.location.yaw - 1).toDouble()) * I.z)
+                                sin((steerer.location.yaw - 1).toDouble()) * I.x + cos((steerer.location.yaw - 1).toDouble()) * I.z
+                            )
                             vehicle.location.yaw -= 1
                             vehicle.velocity = vector
                         }

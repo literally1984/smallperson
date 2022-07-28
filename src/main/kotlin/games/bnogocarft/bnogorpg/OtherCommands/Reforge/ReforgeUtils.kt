@@ -11,7 +11,6 @@ import org.bukkit.enchantments.Enchantment
 import org.bukkit.inventory.Inventory
 import org.bukkit.inventory.ItemStack
 import java.util.*
-import kotlin.collections.ArrayList
 
 fun Reforge(gui: OpenGUI) {
     val reforgeItem = gui.inv.getItem(13)
@@ -34,11 +33,7 @@ fun Reforge(gui: OpenGUI) {
         )
         val reforge = weightedList.random()
         val newMeta = reforgeItem.itemMeta.clone()
-        val bItem: BGear = if (BItemUtils.getBType(reforgeItem) == "weapon") {
-            BItemUtils.getBWeapon(reforgeItem)
-        } else {
-            BItemUtils.getBArmor(reforgeItem)
-        }
+        val bItem = BGear(reforgeItem)
 
         if (bItem.reforge == Reforge.NONE) {
             newMeta.displayName = "$reforge ${reforgeItem.itemMeta.displayName}"
@@ -53,17 +48,24 @@ fun Reforge(gui: OpenGUI) {
             gui.player.sendMessage("ref")
         }
 
-        if (bItem is BWeapon) {
-            BItemUtils.addBWeapon(reforgeItem, bItem)
+        if (BItemUtils.getBType(reforgeItem) == "weapon") {
+            BItemUtils.addBWeapon(reforgeItem, BWeapon(reforgeItem))
         } else {
-            BItemUtils.addBArmor(reforgeItem, bItem as BArmor)
+            BItemUtils.addBArmor(reforgeItem, BArmor(reforgeItem))
         }
 
-        val chance = (weightedList.size)/(Collections.frequency(weightedList, reforge))
+        val chance = (weightedList.size) / (Collections.frequency(weightedList, reforge))
 
-        val anvilSound = Packet62NamedSoundEffect("anvil.use", gui.player.location.x, gui.player.location.y, gui.player.location.z, 1f, 63f)
+        val anvilSound = Packet62NamedSoundEffect(
+            "anvil.use",
+            gui.player.location.x,
+            gui.player.location.y,
+            gui.player.location.z,
+            1f,
+            63f
+        )
         (gui.player as CraftPlayer).handle.playerConnection.sendPacket(anvilSound)
-        gui.player.sendMessage("You reforged your Item and got the $reforge reforge!")
+        gui.player.sendMessage("You reforged your item and got the $reforge reforge!")
         gui.player.sendMessage("that reforge is a 1 in $chance chance")
     }
 }

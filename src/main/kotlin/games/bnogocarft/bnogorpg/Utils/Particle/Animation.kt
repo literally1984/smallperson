@@ -1,29 +1,36 @@
 package games.bnogocarft.bnogorpg.Utils.Particle
 
-import com.sun.xml.internal.messaging.saaj.util.ByteInputStream
 import games.bnogocarft.bnogorpg.Main
-import games.bnogocarft.bnogorpg.Utils.PPlayer.Abilities.float2ByteArray
 import net.minecraft.server.v1_5_R3.Packet63WorldParticles
 import org.bukkit.Bukkit
-import org.bukkit.Effect
 import org.bukkit.Location
 import org.bukkit.craftbukkit.v1_5_R3.entity.CraftPlayer
 import org.bukkit.scheduler.BukkitTask
 import org.bukkit.util.Vector
-import java.io.*
-import java.nio.ByteBuffer
+import java.io.ByteArrayInputStream
+import java.io.ByteArrayOutputStream
+import java.io.DataInputStream
+import java.io.DataOutputStream
 
 
 open class Animation(loc: Location, particle: String) {
     var isStopped = false
 }
-data class HelixAnimation(val radius: Double, val height: Double, val loc: Location, val particle: String, val speed: Long, val direction: Vector ) : Animation(loc, particle) {}
+
+data class HelixAnimation(
+    val radius: Double,
+    val height: Double,
+    val loc: Location,
+    val particle: String,
+    val speed: Long,
+    val direction: Vector
+) : Animation(loc, particle)
 
 fun playAnimation(animation: Animation) {
     if (animation is HelixAnimation) {
         lateinit var task: BukkitTask
         val helix = animation
-        task = Bukkit.getScheduler().runTaskTimer(Main.instance, Runnable() {
+        task = Bukkit.getScheduler().runTaskTimer(Main.instance, Runnable {
             print("particle spawned")
             if (animation.isStopped) {
                 task.cancel()
@@ -49,7 +56,7 @@ fun playAnimation(animation: Animation) {
                 ds.writeFloat(0f)
                 ds.writeFloat(0f)
                 ds.writeInt(1)
-                val bytes = bas.toByteArray();
+                val bytes = bas.toByteArray()
 
                 val dataStream = DataInputStream(ByteArrayInputStream(bytes))
                 packet.a(dataStream)

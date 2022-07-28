@@ -8,7 +8,6 @@ import org.bukkit.event.EventHandler
 import org.bukkit.event.EventPriority
 import org.bukkit.event.Listener
 import org.bukkit.event.inventory.InventoryClickEvent
-import org.bukkit.inventory.DoubleChestInventory
 import org.bukkit.inventory.Inventory
 import org.bukkit.inventory.ItemStack
 
@@ -72,7 +71,8 @@ data class FactoryInventory(val name: String, val size: Int) {
 
 data class GUILayer(val buttons: List<GUIButton>, val background: List<BackgroundItem>)
 
-data class GUIButton(override var item: ItemStack, override var slot: Int, val run: (OpenGUI) -> Unit) : BackgroundItem(item, slot)
+data class GUIButton(override var item: ItemStack, override var slot: Int, val run: (OpenGUI) -> Unit) :
+    BackgroundItem(item, slot)
 
 open class BackgroundItem(open var item: ItemStack, open var slot: Int)
 
@@ -82,7 +82,7 @@ data class OpenGUI(val gui: GUI, val player: Player) : GUI(gui.inv, gui.buttons,
 class GUIListeners(inventories: List<GUI>) : Listener {
     var invs = inventories
 
-    @EventHandler (priority = EventPriority.HIGHEST)
+    @EventHandler(priority = EventPriority.HIGHEST)
     fun onGUIClick(e: InventoryClickEvent) {
         for (inv in invs) {
             if (e.inventory.title.equals(inv.inv.name)) {// Checks for matching GUI name

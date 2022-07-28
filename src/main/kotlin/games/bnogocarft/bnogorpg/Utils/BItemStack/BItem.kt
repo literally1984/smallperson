@@ -6,7 +6,7 @@ import games.bnogocarft.bnogorpg.Utils.EnchantUtils.EnchantUtils
 import org.bukkit.ChatColor
 import org.bukkit.inventory.ItemStack
 
-open class BItem (item: ItemStack) {
+open class BItem(item: ItemStack) {
     val Enchants = ArrayList<BEnchantment>()
     var exp: Long = 0
     var level: Long = 0
@@ -15,7 +15,7 @@ open class BItem (item: ItemStack) {
 
     private val lore = item.itemMeta.lore
 
-    init{
+    init {
         for (clore in lore) {
             if (lore.contains("${ChatColor.BLUE}Enchantments:")) { // Gets the line that marks the start of enchantments
                 var index = item.itemMeta.lore.indexOf(clore) + 1 // Gets the index of the line after the marker above
@@ -35,16 +35,16 @@ open class BItem (item: ItemStack) {
             }
         }
 
-        if (this !is BGear) {
-            bMaterial = BMaterial.valueOf(item.itemMeta.displayName.replace(" ", "_").uppercase())
+        bMaterial = if (this !is BGear) {
+            BMaterial.valueOf(item.itemMeta.displayName.replace(" ", "_").uppercase())
         } else {
-            val bgear = this
-            val name = item.itemMeta.displayName.split(" ").toMutableList()
-            if (bgear.reforge != Reforge.NONE) {
-                name.removeAt(0)
+            val bgear = BGear(item)
+            val name = item.itemMeta.displayName
+            try {
+                BMaterial.valueOf(name.replace(" ", "_").uppercase())
+            } catch (e: IllegalArgumentException) {
+                BMaterial.valueOf(name.split(" ").toMutableList().removeAt(0).replace(" ", "_").uppercase())
             }
-            item.itemMeta.displayName = name.joinToString(" ")
-            bMaterial = BMaterial.valueOf(item.itemMeta.displayName.replace(" ", "_").uppercase())
         }
     }
 }
