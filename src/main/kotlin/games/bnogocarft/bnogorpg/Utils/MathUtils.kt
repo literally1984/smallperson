@@ -2,6 +2,8 @@ package games.bnogocarft.bnogorpg.Utils.PPlayer.Abilities
 
 import org.bukkit.util.Vector
 import java.nio.ByteBuffer
+import kotlin.math.cos
+import kotlin.math.sin
 
 fun getYawFromVector(motion: Vector): Float {
     val dx: Double = motion.x
@@ -23,4 +25,8 @@ fun getYawFromVector(motion: Vector): Float {
 }
 fun float2ByteArray(value: Float): ByteArray? {
     return ByteBuffer.allocate(4).putFloat(value).array()
+}
+
+fun yaw2vector(yaw: Float): Vector {
+    return Vector(sin(yaw).toDouble(), 0.0, cos(yaw).toDouble())
 }

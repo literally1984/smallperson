@@ -82,8 +82,13 @@ class BItemUtils {
             return barmor
         }
 
+
         fun addBArmor(item: ItemStack, bArmor: BArmor) {
             BArmor[item] = bArmor
+        }
+
+        fun addBArmor(item: ItemStack, stats: List<Int>) {
+            BArmor[item] = BArmor(stats, item)
         }
     }
 }

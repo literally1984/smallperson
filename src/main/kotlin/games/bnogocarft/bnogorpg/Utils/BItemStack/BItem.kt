@@ -36,7 +36,7 @@ open class BItem(item: ItemStack) {
         }
 
         if (this !is BGear) {
-            bMaterial = BMaterial.valueOf(item.itemMeta.displayName)
+            bMaterial = BMaterial.valueOf(item.itemMeta.displayName.replace(" ", "_"))
         } else {
             val bgear = this
             val name = item.itemMeta.displayName.split(" ").toMutableList()
@@ -44,7 +44,7 @@ open class BItem(item: ItemStack) {
                 name.removeAt(0)
             }
             item.itemMeta.displayName = name.joinToString(" ")
-            bMaterial = BMaterial.valueOf(item.itemMeta.displayName)
+            bMaterial = BMaterial.valueOf(item.itemMeta.displayName.replace(" ", "_"))
         }
     }
 }

@@ -24,6 +24,7 @@ class BItemFactory {
             val meta = Bukkit.getItemFactory().getItemMeta(item.mat)
             meta.displayName = item.name
             val lore = ArrayList<String>()
+            var type = ""
 
             // Stats lore
             lore.add("${ChatColor.RED}Damage: ${ChatColor.GRAY}+${item.stats[0]}")
@@ -38,11 +39,13 @@ class BItemFactory {
             for (ability in item.abilities) {
                 if (ability.getType().equals(AbilityTrigger.SET_BONUS)) {
                     lore.add("${ChatColor.YELLOW}Set Bonus: ${ability.name}")
+                    type = "armor"
                     for (s in ability.getDescription()) lore.add("${ChatColor.YELLOW}$s")
                     lore.add("")
                     continue
                 }
                 lore.add("${ability.getType().toString().replace("_", " ")} Ability:")
+                type = "weapon"
                 for (s in ability.getDescription()) lore.add(s)
                 lore.add("")
             }
@@ -57,7 +60,8 @@ class BItemFactory {
             meta.lore = lore
             itemStack.itemMeta = meta
 
-            BItemUtils.addBWeapon(itemStack, item.stats)
+            if (type.equals("weapon")) BItemUtils.addBWeapon(itemStack, item.stats)
+            else BItemUtils.addBArmor(itemStack, item.stats)
 
             return itemStack
         }

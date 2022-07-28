@@ -1,11 +1,7 @@
 package games.bnogocarft.bnogorpg
 
-import com.comphenix.protocol.PacketType
 import com.comphenix.protocol.ProtocolLibrary
 import com.comphenix.protocol.ProtocolManager
-import com.comphenix.protocol.events.ListenerPriority
-import com.comphenix.protocol.events.PacketAdapter
-import com.comphenix.protocol.events.PacketEvent
 import games.bnogocarft.bnogorpg.CustomItems.CactusArmor
 import games.bnogocarft.bnogorpg.Listeners.HotbarChangeEvent
 import games.bnogocarft.bnogorpg.Listeners.PlayerJoinEvent
@@ -24,7 +20,7 @@ import games.bnogocarft.bnogorpg.Utils.PPlayer.BPlayers
 import games.bnogocarft.bnogorpg.Utils.initUtils
 import games.bnogocarft.bnogorpg.Utils.logo
 import games.bnogocarft.bnogorpg.Utils.others.PlaytimeUtils
-import games.bnogocarft.bnogorpg.WebsiteCommunication.ComUtils
+import games.bnogocarft.bnogorpg.animation.animationTestCommand
 import org.bukkit.ChatColor
 import org.bukkit.plugin.Plugin
 import org.bukkit.plugin.java.JavaPlugin
@@ -69,6 +65,7 @@ class Main : JavaPlugin() {
         getCommand("giv").executor = GiveCommand()
         getCommand("playtime").executor = PlayTimeCommand()
         getCommand("reforge").executor = ReforgeCommand()
+        getCommand("anim").executor = animationTestCommand()
         cSender.sendMessage("$logo all commands are enabled!")
 
         cSender.sendMessage("$logo Registering custom ItemStacks...")
@@ -90,7 +87,7 @@ class Main : JavaPlugin() {
 
     override fun onDisable() {
         server.consoleSender.sendMessage(
-            ChatColor.LIGHT_PURPLE.toString() + "$logo" + ChatColor.RED + " BnogoRPG has been disabled D:"
+            "${ChatColor.LIGHT_PURPLE} $logo ChatColor.RED BnogoRPG has been disabled D:"
         )
         for (player in server.onlinePlayers) {
             val bPlayer = BPlayers[player]!!
