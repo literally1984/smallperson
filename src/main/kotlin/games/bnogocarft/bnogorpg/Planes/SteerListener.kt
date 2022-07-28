@@ -1,11 +1,5 @@
 package games.bnogocarft.bnogorpg.Planes
 
-import com.comphenix.protocol.PacketType
-import com.comphenix.protocol.ProtocolLibrary
-import com.comphenix.protocol.events.ListenerPriority
-import com.comphenix.protocol.events.PacketAdapter
-import com.comphenix.protocol.events.PacketEvent
-import games.bnogocarft.bnogorpg.Main
 import net.lax1dude.util.event.PlayerVehicleInputEvent
 import org.bukkit.Bukkit
 import org.bukkit.entity.Minecart
@@ -34,11 +28,7 @@ class SteerListener : Listener {
                                 Bukkit.getConsoleSender().sendMessage("Started pressing W")
                                 plane.isSteering = true
                             }
-                            if (pressW.containsKey(steerer)) {
-                                pressW.replace(steerer, true)
-                            } else {
-                                pressW[steerer] = true
-                            }
+                            pressW[steerer] = true
                             vehicle.velocity = vehicle.velocity.add(wVector)
                             vehicle.location.pitch = 20f
                         }
@@ -48,11 +38,7 @@ class SteerListener : Listener {
                                 Bukkit.getConsoleSender().sendMessage("Started pressing A")
                                 plane.isSteering = true
                             }
-                            if (pressA.containsKey(steerer)) {
-                                pressA.replace(steerer, true)
-                            } else {
-                                pressA[steerer] = true
-                            }
+                            pressA[steerer] = true
                             val I = Vector(0,0,1)
                             val vector = Vector((cos((vehicle.location.yaw + 1).toDouble()) * I.x - sin((vehicle.location.yaw + 1).toDouble()) * I.z),
                                 0.0,
@@ -66,11 +52,7 @@ class SteerListener : Listener {
                                 Bukkit.getConsoleSender().sendMessage("Started pressing S")
                                 plane.isSteering = true
                             }
-                            if (pressS.containsKey(steerer)) {
-                                pressS.replace(steerer, true)
-                            } else {
-                                pressS[steerer] = true
-                            }
+                            pressS[steerer] = true
                             pressS[steerer] = true
                             vehicle.velocity = vehicle.velocity.add(sVector)
                             vehicle.location.pitch = -20f
@@ -81,11 +63,7 @@ class SteerListener : Listener {
                                 Bukkit.getConsoleSender().sendMessage("Started pressing D")
                                 plane.isSteering = true
                             }
-                            if (pressD.containsKey(steerer)) {
-                                pressD.replace(steerer, true)
-                            } else {
-                                pressD[steerer] = true
-                            }
+                            pressD[steerer] = true
                             val I = Vector(0,0,1)
                             val vector = Vector((cos((steerer.location.yaw - 1).toDouble()) * I.x - sin((steerer.location.yaw - 1).toDouble()) * I.z),
                                 0.0,
@@ -102,11 +80,7 @@ class SteerListener : Listener {
                                 Bukkit.getConsoleSender().sendMessage("Started pressing D")
                                 plane.isSteering = true
                             }
-                            if (pressD.containsKey(steerer)) {
-                                pressD.replace(steerer, true)
-                            } else {
-                                pressD[steerer] = true
-                            }
+                            pressD[steerer] = true
 
                             vehicle.location.yaw += 1
                         }
@@ -116,11 +90,7 @@ class SteerListener : Listener {
                                 Bukkit.getConsoleSender().sendMessage("Started pressing W")
                                 plane.isSteering = true
                             }
-                            if (pressW.containsKey(steerer)) {
-                                pressW.replace(steerer, true)
-                            } else {
-                                pressW[steerer] = true
-                            }
+                            pressW[steerer] = true
                             vehicle.velocity = vehicle.velocity.add(wVector)
                             vehicle.location.pitch = 20f
                         }
@@ -139,11 +109,7 @@ class SteerListener : Listener {
                                 Bukkit.getConsoleSender().sendMessage("Started pressing S")
                                 plane.isSteering = true
                             }
-                            if (pressS.containsKey(steerer)) {
-                                pressS.replace(steerer, true)
-                            } else {
-                                pressS[steerer] = true
-                            }
+                            pressS[steerer] = true
                             vehicle.velocity = vehicle.velocity.add(sVector)
                             vehicle.location.pitch = -20f
                         }
@@ -156,11 +122,7 @@ class SteerListener : Listener {
                                 Bukkit.getConsoleSender().sendMessage("Started pressing A")
                                 plane.isSteering = true
                             }
-                            if (pressA.containsKey(steerer)) {
-                                pressA.replace(steerer, true)
-                            } else {
-                                pressA[steerer] = true
-                            }
+                            pressA[steerer] = true
 
                             vehicle.location.yaw -= 1
                         }
@@ -170,11 +132,7 @@ class SteerListener : Listener {
                                 Bukkit.getConsoleSender().sendMessage("Started pressing S")
                                 plane.isSteering = true
                             }
-                            if (pressS.containsKey(steerer)) {
-                                pressS.replace(steerer, true)
-                            } else {
-                                pressS[steerer] = true
-                            }
+                            pressS[steerer] = true
                             vehicle.velocity = vehicle.velocity.add(sVector)
                             vehicle.location.pitch = -20f
                         }
@@ -184,11 +142,7 @@ class SteerListener : Listener {
                                 Bukkit.getConsoleSender().sendMessage("Started pressing D")
                                 plane.isSteering = true
                             }
-                            if (pressD.containsKey(steerer)) {
-                                pressD.replace(steerer, true)
-                            } else {
-                                pressD[steerer] = true
-                            }
+                            pressD[steerer] = true
                             vehicle.location.yaw += 1
                         }
 
@@ -197,11 +151,7 @@ class SteerListener : Listener {
                                 Bukkit.getConsoleSender().sendMessage("Started pressing W")
                                 plane.isSteering = true
                             }
-                            if (pressW.containsKey(steerer)) {
-                                pressW.replace(steerer, true)
-                            } else {
-                                pressW[steerer] = true
-                            }
+                            pressW[steerer] = true
                             vehicle.velocity = vehicle.velocity.add(wVector)
                             vehicle.location.pitch = 20f
                         }
@@ -215,11 +165,7 @@ class SteerListener : Listener {
                                 Bukkit.getConsoleSender().sendMessage("Started pressing S")
                                 plane.isSteering = true
                             }
-                            if (pressS.containsKey(steerer)) {
-                                pressS.replace(steerer, true)
-                            } else {
-                                pressS[steerer] = true
-                            }
+                            pressS[steerer] = true
                             vehicle.velocity = vehicle.velocity.add(sVector)
                             vehicle.location.pitch = -20f
                         }
@@ -229,11 +175,7 @@ class SteerListener : Listener {
                                 Bukkit.getConsoleSender().sendMessage("Started pressing D")
                                 plane.isSteering = true
                             }
-                            if (pressD.containsKey(steerer)) {
-                                pressD.replace(steerer, true)
-                            } else {
-                                pressD[steerer] = true
-                            }
+                            pressD[steerer] = true
                             vehicle.location.yaw += 1
                         }
 
@@ -242,11 +184,7 @@ class SteerListener : Listener {
                                 Bukkit.getConsoleSender().sendMessage("Started pressing W")
                                 plane.isSteering = true
                             }
-                            if (pressD.containsKey(steerer)) {
-                                pressD.replace(steerer, true)
-                            } else {
-                                pressD[steerer] = true
-                            }
+                            pressD[steerer] = true
                             vehicle.velocity = vehicle.velocity.add(wVector)
                             vehicle.location.pitch = 20f
                         }
@@ -256,11 +194,7 @@ class SteerListener : Listener {
                                 Bukkit.getConsoleSender().sendMessage("Started pressing A")
                                 plane.isSteering = true
                             }
-                            if (pressD.containsKey(steerer)) {
-                                pressD.replace(steerer, true)
-                            } else {
-                                pressD[steerer] = true
-                            }
+                            pressD[steerer] = true
                             vehicle.location.yaw -= 1
                         }
                     }
