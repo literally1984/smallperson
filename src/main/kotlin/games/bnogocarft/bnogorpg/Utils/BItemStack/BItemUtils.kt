@@ -45,8 +45,8 @@ class BItemUtils {
             return bweapon
         }
 
-        fun addBWeapon(item: ItemStack) {
-            BWeapons[item] = BWeapon(item)
+        fun addBWeapon(item: ItemStack, bWeapon: BWeapon) {
+            BWeapons[item] = bWeapon
         }
 
         fun addBWeapon(item: ItemStack, stats: List<Int>) {
@@ -60,8 +60,8 @@ class BItemUtils {
             return bpickaxe
         }
 
-        fun addBPickaxe(item: ItemStack) {
-            BPickaxes[item] = BPickaxe(item)
+        fun addBPickaxe(item: ItemStack, bPickaxe: BPickaxe) {
+            BPickaxes[item] = bPickaxe
         }
 
         fun getBAxe(item: ItemStack): BAxe {
@@ -71,8 +71,8 @@ class BItemUtils {
             return baxe
         }
 
-        fun addBAxe(item: ItemStack) {
-            BAxes[item] = BAxe(item)
+        fun addBAxe(item: ItemStack, bAxe: BAxe) {
+            BAxes[item] = bAxe
         }
 
         fun getBArmor(item: ItemStack): BArmor {
@@ -82,8 +82,8 @@ class BItemUtils {
             return barmor
         }
 
-        fun addBArmor(item: ItemStack) {
-            BArmor[item] = BArmor(item)
+        fun addBArmor(item: ItemStack, bArmor: BArmor) {
+            BArmor[item] = bArmor
         }
     }
 }

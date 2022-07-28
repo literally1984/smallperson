@@ -36,9 +36,5 @@ data class BArmor(val item: ItemStack) : BGear(item){
 
     Rarity
      */
-    override var stats = ItemStat(item)
-    override var rarity = RarityUtils.getRarity(item.itemMeta.lore[item.itemMeta.lore.size - 1])
-    override val enchantments = ArrayList<BEnchantment>()
-    override var reforge = Reforge.NONE //TODO
     var setBonuses = ArrayList<SetBonus>()
 }

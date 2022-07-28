@@ -15,7 +15,6 @@ data class BWeapon(var item: ItemStack) : BGear(item){
 
     /*
     DISPLAY NAME
-
     Damage: x
     Defense: x
     Magic Damage: x
@@ -31,15 +30,15 @@ data class BWeapon(var item: ItemStack) : BGear(item){
     blah
     blah
 
+    Enchantments:
     Enchant, Enchant, Enchant,
     Enchant, Enchant, Enchant,
     Enchant, Enchant, Enchant,
 
+    Level: x
+    Exp: x/x
+
     Rarity
      */
-    override var stats = ItemStat(item)
-    override var rarity = RarityUtils.getRarity(item.itemMeta.lore[item.itemMeta.lore.size - 1])
-    override val enchantments = ArrayList<BEnchantment>()
-    override var reforge = Reforge.NONE //TODO
     var abilities = ArrayList<Ability>()
 }

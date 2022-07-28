@@ -1,10 +1,7 @@
 package games.bnogocarft.bnogorpg.OtherCommands.Reforge
 
 import games.bnogocarft.bnogorpg.Utils.*
-import games.bnogocarft.bnogorpg.Utils.BItemStack.BGear
-import games.bnogocarft.bnogorpg.Utils.BItemStack.BItemUtils
-import games.bnogocarft.bnogorpg.Utils.BItemStack.BWeapon
-import games.bnogocarft.bnogorpg.Utils.BItemStack.Reforge
+import games.bnogocarft.bnogorpg.Utils.BItemStack.*
 import net.minecraft.server.v1_5_R3.Packet62NamedSoundEffect
 import org.bukkit.Bukkit
 import org.bukkit.ChatColor
@@ -37,24 +34,31 @@ fun Reforge(gui: OpenGUI) {
         )
         val reforge = weightedList.random()
         val newMeta = reforgeItem.itemMeta.clone()
-        val bItem: Pair<BGear, String> = if (BItemUtils.getBType(reforgeItem) == "weapon") {
-            Pair(BItemUtils.getBWeapon(reforgeItem) as BGear, "weapon")
+        val bItem: BGear = if (BItemUtils.getBType(reforgeItem) == "weapon") {
+            BItemUtils.getBWeapon(reforgeItem)
         } else {
-            Pair(BItemUtils.getBArmor(reforgeItem) as BGear, "armor")
+            BItemUtils.getBArmor(reforgeItem)
         }
 
-        if (bItem.first.reforge == Reforge.NONE) {
+        if (bItem.reforge == Reforge.NONE) {
             newMeta.displayName = "$reforge ${reforgeItem.itemMeta.displayName}"
             reforgeItem.itemMeta = newMeta
             gui.player.sendMessage("no ref")
         } else {
-            bItem.first.reforge = reforge
+            bItem.reforge = reforge
             val displayArray = newMeta.displayName.split(" ").toMutableList()
             displayArray[0] = "$reforge"
             newMeta.displayName = displayArray.joinToString(" ")
             reforgeItem.itemMeta = newMeta
             gui.player.sendMessage("ref")
         }
+
+        if (bItem is BWeapon) {
+            BItemUtils.addBWeapon(reforgeItem, bItem)
+        } else {
+            BItemUtils.addBArmor(reforgeItem, bItem as BArmor)
+        }
+
         val chance = (weightedList.size)/(Collections.frequency(weightedList, reforge))
 
         val anvilSound = Packet62NamedSoundEffect("anvil.use", gui.player.location.x, gui.player.location.y, gui.player.location.z, 1f, 63f)

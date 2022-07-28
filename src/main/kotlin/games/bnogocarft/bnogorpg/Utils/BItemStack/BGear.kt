@@ -5,7 +5,7 @@ import games.bnogocarft.bnogorpg.Utils.EnchantUtils.BEnchantment
 import games.bnogocarft.bnogorpg.Utils.StatUtils.ItemStat
 import org.bukkit.inventory.ItemStack
 
-open class BGear(item: ItemStack) {
+open class BGear(item: ItemStack) : BItem(item){
 
     constructor(stats: List<Int>, item: ItemStack) : this(item) {
         this.stats = ItemStat(stats, item)
@@ -35,8 +35,7 @@ open class BGear(item: ItemStack) {
 
     Rarity
      */
-    open var stats = ItemStat(item)
-    open var rarity = RarityUtils.getRarity(item.itemMeta.lore[item.itemMeta.lore.size - 1])
-    open val enchantments = ArrayList<BEnchantment>()
-    open var reforge = Reforge.NONE //TODO
+    var stats = ItemStat(item)
+    val enchantments = ArrayList<BEnchantment>()
+    var reforge = Reforge.NONE //TODO
 }

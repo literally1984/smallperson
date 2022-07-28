@@ -1,7 +1,11 @@
 package games.bnogocarft.bnogorpg
 
+import com.comphenix.protocol.PacketType
 import com.comphenix.protocol.ProtocolLibrary
 import com.comphenix.protocol.ProtocolManager
+import com.comphenix.protocol.events.ListenerPriority
+import com.comphenix.protocol.events.PacketAdapter
+import com.comphenix.protocol.events.PacketEvent
 import games.bnogocarft.bnogorpg.CustomItems.CactusArmor
 import games.bnogocarft.bnogorpg.Listeners.HotbarChangeEvent
 import games.bnogocarft.bnogorpg.Listeners.PlayerJoinEvent
@@ -52,8 +56,9 @@ class Main : JavaPlugin() {
         cSender.sendMessage("$logo Enabling Planes")
         PlaneKeyItem()
         server.pluginManager.registerEvents(PlaneListeners(), this)
+        //server.pluginManager.registerEvents(SteerListener(), this)
+        server.scheduler.scheduleSyncRepeatingTask(this, removeScheduler(), 0, 2)
         server.pluginManager.registerEvents(SteerListener(), this)
-        server.scheduler.scheduleSyncRepeatingTask(this, removeScheduler(), 0, 1)
         cSender.sendMessage("$logo Planes have been enabled")
 
         cSender.sendMessage("$logo Enabling Websocket Server")
@@ -95,7 +100,7 @@ class Main : JavaPlugin() {
     }
 
     companion object {
-        var protocolManager: ProtocolManager? = null
-        var instance: Plugin? = null
+        lateinit var protocolManager: ProtocolManager
+        lateinit var instance: Plugin
     }
 }
