@@ -1,6 +1,7 @@
 package games.bnogocarft.bnogorpg.Utils.PPlayer.Abilities
 
 import org.bukkit.util.Vector
+import java.nio.ByteBuffer
 
 fun getYawFromVector(motion: Vector): Float {
     val dx: Double = motion.x
@@ -19,4 +20,7 @@ fun getYawFromVector(motion: Vector): Float {
         yaw = Math.PI
     }
     return (-yaw * 180 / Math.PI - 90).toFloat()
+}
+fun float2ByteArray(value: Float): ByteArray? {
+    return ByteBuffer.allocate(4).putFloat(value).array()
 }
