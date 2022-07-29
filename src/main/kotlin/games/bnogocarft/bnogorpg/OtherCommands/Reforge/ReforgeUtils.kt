@@ -8,11 +8,12 @@ import org.bukkit.ChatColor
 import org.bukkit.Material
 import org.bukkit.craftbukkit.v1_5_R3.entity.CraftPlayer
 import org.bukkit.enchantments.Enchantment
+import org.bukkit.event.inventory.InventoryClickEvent
 import org.bukkit.inventory.Inventory
 import org.bukkit.inventory.ItemStack
 import java.util.*
 
-fun Reforge(gui: OpenGUI) {
+fun Reforge(gui: OpenGUI, event: InventoryClickEvent) {
     val reforgeItem = gui.inv.getItem(13)
     if (reforgeItem != null && (BItemUtils.getBType(reforgeItem) == "weapon" || BItemUtils.getBType(reforgeItem) == "armor")) {
         val weightedList = mutableListOf( //  156 currently

@@ -39,8 +39,10 @@ class GiveCommand : CommandExecutor {
                 }
 
                 if (customItemMap.containsKey(args[1].lowercase())) {
+                    val item = customItemMap[args[1].lowercase()]!!.clone()
                     player.inventory.addItem(customItemMap[args[1].lowercase()])
-                    Bukkit.getLogger().log(Level.ALL, "You just gave ${player.displayName} a ${args[0]}!")
+                    Bukkit.getLogger().log(Level.ALL, "You just gave ${player.displayName} a ${item.itemMeta.displayName}!")
+                    return true
                 }
             }
         }
@@ -48,7 +50,7 @@ class GiveCommand : CommandExecutor {
         if (sender is Player) {
             if (args.size == 1) {
                 if (customItemMap.containsKey(args[0].lowercase())) {
-                    val item = customItemMap[args[0].lowercase()]!!
+                    val item = customItemMap[args[0].lowercase()]!!.clone()
                     sender.inventory.addItem(item)
                     when (BItemUtils.getBType(item)) {
                         "weapon" -> BItemUtils.addBWeapon(item, BWeapon(item))
@@ -81,16 +83,15 @@ class GiveCommand : CommandExecutor {
                 }
 
                 if (customItemMap.containsKey(args[1].lowercase())) {
-                    player.inventory.addItem(customItemMap[args[1].lowercase()])
-                    sender.sendMessage("You just gave ${player.displayName} a ${args[0]}!")
+                    val item = customItemMap[args[1].lowercase()]!!.clone()
+                    player.inventory.addItem(item)
+                    sender.sendMessage("You just gave ${player.displayName} a ${item.itemMeta.displayName}!")
+                    return true
                 }
             }
-
             sender.sendMessage("You must provide both a Player and Item argument to use this command!")
             return true
-
         }
-
         return false
     }
 }

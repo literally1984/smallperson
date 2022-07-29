@@ -24,7 +24,7 @@ class RecipeBook {
          * @return The [RecipePage] you requested from the given [ItemStack]
          */
         fun getRecipeFor(item: ItemStack): RecipePage? { // Returns a recipe page for the given item, returns null if no recipe is found
-            val recipe: ShapedRecipe
+            val recipe: Recpe
             try {
                 recipe = Bukkit.getRecipesFor(item) as ShapedRecipe
             } catch (e: NullPointerException) {
