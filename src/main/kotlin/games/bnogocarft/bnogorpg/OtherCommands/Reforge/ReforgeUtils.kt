@@ -15,7 +15,7 @@ import java.util.*
 fun Reforge(gui: OpenGUI) {
     val reforgeItem = gui.inv.getItem(13)
     if (reforgeItem != null && (BItemUtils.getBType(reforgeItem) == "weapon" || BItemUtils.getBType(reforgeItem) == "armor")) {
-        val weightedList = mutableListOf( //  52 currently
+        val weightedList = mutableListOf( //  156 currently
             Reforge.Blessed, Reforge.Blessed, Reforge.Blessed,
             Reforge.Cursed, Reforge.Cursed, Reforge.Cursed,
             Reforge.Heavenly,
@@ -33,8 +33,25 @@ fun Reforge(gui: OpenGUI) {
             Reforge.Wise, Reforge.Wise, Reforge.Wise, Reforge.Wise, Reforge.Wise,
             Reforge.Heavy, Reforge.Heavy, Reforge.Heavy, Reforge.Heavy,
             Reforge.Heavy, Reforge.Heavy, Reforge.Heavy, Reforge.Heavy,
-            Reforge.Light, Reforge.Light, Reforge.Light, Reforge.Light, Reforge.Light,
-            Reforge.Light, Reforge.Light, Reforge.Light, Reforge.Light, Reforge.Light,
+            Reforge.Light, Reforge.Light, Reforge.Light, Reforge.Light,
+            Reforge.Light, Reforge.Light, Reforge.Light, Reforge.Light,
+            Reforge.Strong, Reforge.Strong, Reforge.Strong, Reforge.Strong, Reforge.Strong,
+            Reforge.Strong, Reforge.Strong, Reforge.Strong, Reforge.Strong, Reforge.Strong,
+            Reforge.Strong, Reforge.Strong, Reforge.Strong, Reforge.Strong, Reforge.Strong,
+            Reforge.Weak, Reforge.Weak, Reforge.Weak, Reforge.Weak, Reforge.Weak,
+            Reforge.Weak, Reforge.Weak, Reforge.Weak, Reforge.Weak, Reforge.Weak,
+            Reforge.Dumb, Reforge.Dumb, Reforge.Dumb, Reforge.Dumb, Reforge.Dumb,
+            Reforge.Dumb, Reforge.Dumb, Reforge.Dumb, Reforge.Dumb, Reforge.Dumb,
+            Reforge.Naive, Reforge.Naive, Reforge.Naive, Reforge.Naive, Reforge.Naive,
+            Reforge.Naive, Reforge.Naive,
+            Reforge.Hopeless, Reforge.Hopeless, Reforge.Hopeless, Reforge.Hopeless, Reforge.Hopeless,
+            Reforge.Hopeless, Reforge.Hopeless, Reforge.Hopeless, Reforge.Hopeless, Reforge.Hopeless,
+            Reforge.Brittle, Reforge.Brittle, Reforge.Brittle, Reforge.Brittle, Reforge.Brittle,
+            Reforge.Brittle, Reforge.Brittle, Reforge.Brittle, Reforge.Brittle, Reforge.Brittle,
+            Reforge.Brittle, Reforge.Brittle, Reforge.Brittle, Reforge.Brittle, Reforge.Brittle,
+            Reforge.Dull, Reforge.Dull, Reforge.Dull, Reforge.Dull, Reforge.Dull,
+            Reforge.Dull, Reforge.Dull, Reforge.Dull, Reforge.Dull, Reforge.Dull,
+            Reforge.Dull, Reforge.Dull, Reforge.Dull, Reforge.Dull, Reforge.Dull
         )
         val reforge = weightedList.random()
         val newMeta = reforgeItem.itemMeta.clone()
@@ -43,14 +60,12 @@ fun Reforge(gui: OpenGUI) {
         if (bItem.reforge == Reforge.NONE) {
             newMeta.displayName = "$reforge ${reforgeItem.itemMeta.displayName}"
             reforgeItem.itemMeta = newMeta
-            gui.player.sendMessage("no ref")
         } else {
             bItem.reforge = reforge
             val displayArray = newMeta.displayName.split(" ").toMutableList()
             displayArray[0] = "$reforge"
             newMeta.displayName = displayArray.joinToString(" ")
             reforgeItem.itemMeta = newMeta
-            gui.player.sendMessage("ref")
         }
 
         if (BItemUtils.getBType(reforgeItem) == "weapon") {

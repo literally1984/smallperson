@@ -11,11 +11,14 @@ class CactusArmor {
     companion object {
         lateinit var helm: ItemStack
         lateinit var chestplate: ItemStack
+        lateinit var leggings: ItemStack
+        lateinit var boots: ItemStack
     }
 
     init {
         createCactusHelm()
         createCactusChestplate()
+        createCactusLeggings()
     }
 
     private fun createCactusHelm() {
@@ -42,5 +45,31 @@ class CactusArmor {
 
         chestplate = BItemFactory.produceItem(factoryItem)
         BItemFactory.register("cactuschestplate", chestplate)
+    }
+
+    private fun createCactusLeggings() {
+        val factoryItem = BItemFactory.createRPGItem("Cactus Leggings", Material.LEATHER_LEGGINGS)
+
+        val ability = ItemAbility.CactusSet
+        factoryItem.abilities.add(ability)
+        factoryItem.stats = arrayListOf(1, 6, 4, 7, 12, 18)
+        factoryItem.rarity = Rarity.UNCOMMON
+        factoryItem.armorColor = Color.GREEN
+
+        leggings = BItemFactory.produceItem(factoryItem)
+        BItemFactory.register("cactusleggings", leggings)
+    }
+
+    private fun createCactusBoots() {
+        val factoryItem = BItemFactory.createRPGItem("Cactus Boots", Material.LEATHER_BOOTS)
+
+        val ability = ItemAbility.CactusSet
+        factoryItem.abilities.add(ability)
+        factoryItem.stats = arrayListOf(0, 3, 0, 2, 5, 7)
+        factoryItem.rarity = Rarity.UNCOMMON
+        factoryItem.armorColor = Color.GREEN
+
+        leggings = BItemFactory.produceItem(factoryItem)
+        BItemFactory.register("cactusleggings", leggings)
     }
 }

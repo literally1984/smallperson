@@ -11,11 +11,18 @@ enum class Reforge {
     Wise,
     Durable,
     Godly,
-    Weak,
     Normal,
     NONE,
     Grim,
     Light,
     Heavy,
     Smart,
+    Faithful,
+
+    Dumb,
+    Naive,
+    Hopeless,
+    Weak,
+    Brittle,
+    Dull;
 }
