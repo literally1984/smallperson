@@ -31,14 +31,13 @@ open class BItem(item: ItemStack) {
 
             if (lore.contains("Level:")) {
                 level = clore.split(" ")[1].toLong()
-                exp = lore.get(lore.indexOf(clore) + 1).split(" ")[1].split("/")[0].toLong()
+                exp = lore[lore.indexOf(clore) + 1].split(" ")[1].split("/")[0].toLong()
             }
         }
 
         bMaterial = if (this !is BGear) {
             BMaterial.valueOf(item.itemMeta.displayName.replace(" ", "_").uppercase())
         } else {
-            val bgear = this
             val name = item.itemMeta.displayName
             try {
                 BMaterial.valueOf(name.replace(" ", "_").uppercase())

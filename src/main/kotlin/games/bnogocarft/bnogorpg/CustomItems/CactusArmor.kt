@@ -19,6 +19,7 @@ class CactusArmor {
         createCactusHelm()
         createCactusChestplate()
         createCactusLeggings()
+        createCactusBoots()
     }
 
     private fun createCactusHelm() {
@@ -69,7 +70,7 @@ class CactusArmor {
         factoryItem.rarity = Rarity.UNCOMMON
         factoryItem.armorColor = Color.GREEN
 
-        leggings = BItemFactory.produceItem(factoryItem)
-        BItemFactory.register("cactusleggings", leggings)
+        boots = BItemFactory.produceItem(factoryItem)
+        BItemFactory.register("cactusboots", boots)
     }
 }

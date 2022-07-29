@@ -13,17 +13,17 @@ import java.util.*
 
 class ArmorWearListeners : Listener {
     @EventHandler(priority = EventPriority.LOW)
-    fun OnArmorWearByInventoryClick(e: InventoryClickEvent) {
+    fun onArmorWearByInventoryClick(e: InventoryClickEvent) {
         val p = e.whoClicked as Player
         val ArmorSlots = intArrayOf(5, 6, 7, 8)
         if (e.click == ClickType.DROP) {
             val DropItem = e.currentItem
-            val DropItemType = DropItem.type.toString().lowercase(Locale.getDefault())
+            val DropItemType = DropItem.type.toString().lowercase()
 
             // Checks to see if the Clicked slot is an armor slot
             for (slot in ArmorSlots) {
                 if (e.slot == slot) {
-                    var Type: String? = null
+                    lateinit var Type: String
                     if (DropItemType.contains("helmet")) {
                         Type = "helmet"
                     }
@@ -47,32 +47,11 @@ class ArmorWearListeners : Listener {
             }
         }
         if (e.click == ClickType.SHIFT_LEFT) {
-            val ClickItem = e.inventory.getItem(e.slot)
-            val ClickItemType = ClickItem.type.toString().lowercase(Locale.getDefault())
-
-            // Checks to see if the Clicked slot is an armor slot
-            for (slot in ArmorSlots) {
-                if (e.slot == slot) {
-                    var Type: String? = null
-                    if (ClickItemType.contains("helmet")) {
-                        Type = "helmet"
-                    }
-                    if (ClickItemType.contains("chestplate")) {
-                        Type = "chestplate"
-                    }
-                    if (ClickItemType.contains("leggings")) {
-                        Type = "leggings"
-                    }
-                    Type = if (ClickItemType.contains("boots")) {
-                        "boots"
-                    } else {
-                        return
-                    }
-                    val a = ArmorWearEvent(p, ClickItem, "drop", Type)
-                    Bukkit.getPluginManager().callEvent(a)
-                    if (a.isCancelled) {
-                        e.isCancelled = true
-                    }
+            if (!(ArmorSlots.contains(e.slot))) {
+                val clickedSlotItem = e.inventory.getItem(e.slot).itemMeta.displayName.lowercase()
+                lateinit var Type: String
+                if (clickedSlotItem.contains("helmet")) {
+                    Type = "helmet"
                 }
             }
         }

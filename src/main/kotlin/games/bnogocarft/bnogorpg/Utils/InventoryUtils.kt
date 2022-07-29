@@ -71,7 +71,7 @@ data class FactoryInventory(val name: String, val size: Int) {
 
 data class GUILayer(val buttons: List<GUIButton>, val background: List<BackgroundItem>)
 
-data class GUIButton(override var item: ItemStack, override var slot: Int, val run: (OpenGUI) -> Unit) :
+data class GUIButton(override var item: ItemStack, override var slot: Int, val run: (OpenGUI, InventoryClickEvent) -> Unit) :
     BackgroundItem(item, slot)
 
 open class BackgroundItem(open var item: ItemStack, open var slot: Int)
@@ -93,7 +93,7 @@ class GUIListeners(inventories: List<GUI>) : Listener {
                         if (e.slot == button.slot && e.currentItem.itemMeta.lore == button.item.itemMeta.lore) {
                             print("Button slot")
                             // Runs the button's function
-                            button.run(OpenGUI(inv, e.whoClicked as Player))
+                            button.run(OpenGUI(inv, e.whoClicked as Player), e)
                             e.isCancelled = true
                         }
                     }

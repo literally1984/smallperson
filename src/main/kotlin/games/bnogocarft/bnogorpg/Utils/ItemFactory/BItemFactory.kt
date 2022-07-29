@@ -50,6 +50,9 @@ class BItemFactory {
                 lore.add("")
             }
 
+            lore.add("${ChatColor.YELLOW}Level: ${ChatColor.GRAY}0")
+            lore.add("${ChatColor.GREEN}EXP: ${ChatColor.GRAY}0/10")
+
             lore.add(item.rarity.getDisplay())
             if (item.armorColor != null) {
                 val armorMeta = meta as LeatherArmorMeta
@@ -60,7 +63,7 @@ class BItemFactory {
             meta.lore = lore
             itemStack.itemMeta = meta
 
-            if (type.equals("weapon")) BItemUtils.addBWeapon(itemStack, item.stats)
+            if (type == "weapon") BItemUtils.addBWeapon(itemStack, item.stats)
             else BItemUtils.addBArmor(itemStack, item.stats)
 
             return itemStack
