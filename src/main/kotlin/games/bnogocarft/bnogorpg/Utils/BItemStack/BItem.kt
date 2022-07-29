@@ -38,12 +38,15 @@ open class BItem(item: ItemStack) {
         bMaterial = if (this !is BGear) {
             BMaterial.valueOf(item.itemMeta.displayName.replace(" ", "_").uppercase())
         } else {
-            val bgear = BGear(item)
+            val bgear = this
             val name = item.itemMeta.displayName
             try {
                 BMaterial.valueOf(name.replace(" ", "_").uppercase())
             } catch (e: IllegalArgumentException) {
-                BMaterial.valueOf(name.split(" ").toMutableList().removeAt(0).replace(" ", "_").uppercase())
+                val newNmae = name.split(" ").toMutableList()
+                newNmae.removeAt(0)
+                val newName = newNmae.joinToString("_").uppercase()
+                BMaterial.valueOf(newName)
             }
         }
     }

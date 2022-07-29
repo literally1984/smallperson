@@ -21,15 +21,20 @@ fun Reforge(gui: OpenGUI) {
             Reforge.Heavenly,
             Reforge.Demonic,
             Reforge.Godly,
-            Reforge.Grim, Reforge.Grim, Reforge.Grim, Reforge.Grim, Reforge.Grim,
+            Reforge.Grim, Reforge.Grim, Reforge.Grim, Reforge.Grim,
+            Reforge.Vampiric, Reforge.Vampiric, Reforge.Vampiric, Reforge.Vampiric, Reforge.Vampiric,
             Reforge.Durable, Reforge.Durable, Reforge.Durable, Reforge.Durable, Reforge.Durable,
             Reforge.Durable, Reforge.Durable, Reforge.Durable, Reforge.Durable, Reforge.Durable,
             Reforge.Durable, Reforge.Durable, Reforge.Durable, Reforge.Durable, Reforge.Durable,
             Reforge.Smart, Reforge.Smart, Reforge.Smart, Reforge.Smart, Reforge.Smart,
             Reforge.Smart, Reforge.Smart, Reforge.Smart, Reforge.Smart, Reforge.Smart,
             Reforge.Smart, Reforge.Smart, Reforge.Smart, Reforge.Smart, Reforge.Smart,
+            Reforge.Wise, Reforge.Wise, Reforge.Wise, Reforge.Wise, Reforge.Wise,
+            Reforge.Wise, Reforge.Wise, Reforge.Wise, Reforge.Wise, Reforge.Wise,
             Reforge.Heavy, Reforge.Heavy, Reforge.Heavy, Reforge.Heavy,
-            Reforge.Heavy, Reforge.Heavy, Reforge.Heavy, Reforge.Heavy
+            Reforge.Heavy, Reforge.Heavy, Reforge.Heavy, Reforge.Heavy,
+            Reforge.Light, Reforge.Light, Reforge.Light, Reforge.Light, Reforge.Light,
+            Reforge.Light, Reforge.Light, Reforge.Light, Reforge.Light, Reforge.Light,
         )
         val reforge = weightedList.random()
         val newMeta = reforgeItem.itemMeta.clone()
@@ -65,8 +70,8 @@ fun Reforge(gui: OpenGUI) {
             63f
         )
         (gui.player as CraftPlayer).handle.playerConnection.sendPacket(anvilSound)
-        gui.player.sendMessage("You reforged your item and got the $reforge reforge!")
-        gui.player.sendMessage("that reforge is a 1 in $chance chance")
+        gui.player.sendMessage("${ChatColor.GOLD}You reforged your item and got the ${ChatColor.RED}$reforge ${ChatColor.GOLD}reforge!")
+        gui.player.sendMessage("${ChatColor.GOLD}That reforge has a 1 in ${ChatColor.RED}${ChatColor.BOLD}$chance ${ChatColor.GOLD}chance of ${ChatColor.BLUE}manifesting!")
     }
 }
 

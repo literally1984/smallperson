@@ -36,7 +36,7 @@ class PlaneKeyItem {
             val k = ItemStack(Material.IRON_INGOT)
             val meta = Bukkit.getItemFactory().getItemMeta(Material.IRON_INGOT)
             val lore = ArrayList<String>()
-            k.itemMeta.displayName = "Plane Key"
+            meta.displayName = "Plane Key"
             lore.add("${ChatColor.YELLOW}Used to spawn and collect planes")
             lore.add("${ChatColor.YELLOW}Right click this on the ground to spawn")
             lore.add("${ChatColor.YELLOW}your plane and Right click your spawned")

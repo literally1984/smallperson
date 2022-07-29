@@ -27,20 +27,20 @@ class BItemFactory {
             var type = ""
 
             // Stats lore
-            lore.add("${ChatColor.RED}Damage: ${ChatColor.GRAY}+${item.stats[0]}")
-            lore.add("${ChatColor.GREEN}Defense: ${ChatColor.GRAY}+${item.stats[1]}")
-            lore.add("${ChatColor.LIGHT_PURPLE}Magic Dmg: ${ChatColor.GRAY}+${item.stats[2]}")
-            lore.add("${ChatColor.DARK_PURPLE}Magic Def: ${ChatColor.GRAY}+${item.stats[3]}")
-            lore.add("${ChatColor.AQUA}Mana: ${ChatColor.GRAY}+${item.stats[4]}")
-            lore.add("${ChatColor.GOLD}Stamina: ${ChatColor.GRAY}+${item.stats[5]}")
+            lore.add("${ChatColor.RED}Damage: ${ChatColor.DARK_GRAY}+${item.stats[0]}")
+            lore.add("${ChatColor.GREEN}Defense: ${ChatColor.DARK_GRAY}+${item.stats[1]}")
+            lore.add("${ChatColor.LIGHT_PURPLE}Magic Dmg: ${ChatColor.DARK_GRAY}+${item.stats[2]}")
+            lore.add("${ChatColor.DARK_PURPLE}Magic Def: ${ChatColor.DARK_GRAY}+${item.stats[3]}")
+            lore.add("${ChatColor.AQUA}Mana: ${ChatColor.DARK_GRAY}+${item.stats[4]}")
+            lore.add("${ChatColor.GOLD}Stamina: ${ChatColor.DARK_GRAY}+${item.stats[5]}")
             lore.add("")
 
             // abilities lore
             for (ability in item.abilities) {
                 if (ability.getType().equals(AbilityTrigger.SET_BONUS)) {
-                    lore.add("${ChatColor.YELLOW}Set Bonus: ${ability.name}")
+                    lore.add("${ChatColor.YELLOW}${ChatColor.BOLD}SET BONUS: ${ChatColor.RESET}${ChatColor.RED}${ability.getDisplayName()}")
                     type = "armor"
-                    for (s in ability.getDescription()) lore.add("${ChatColor.YELLOW}$s")
+                    for (s in ability.getDescription()) lore.add("${ChatColor.GRAY}$s")
                     lore.add("")
                     continue
                 }
