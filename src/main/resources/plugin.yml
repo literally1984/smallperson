@@ -34,3 +34,8 @@ commands:
     aliases: [a]
     usage: /<command>
     description: A test command for the Animation function
+  recipes:
+    name: Recipes
+    aliases: [rec]
+    usage: /<command> <recipe>
+    description: Opens up the RecipeBook to the provided Recipe

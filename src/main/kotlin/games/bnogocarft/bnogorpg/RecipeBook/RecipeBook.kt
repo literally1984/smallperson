@@ -3,6 +3,7 @@ package games.bnogocarft.bnogorpg.RecipeBook
 import games.bnogocarft.bnogorpg.RecipeBook.RecipeManager.Companion.pageMap
 import org.bukkit.Bukkit
 import org.bukkit.inventory.ItemStack
+import org.bukkit.inventory.Recipe
 import org.bukkit.inventory.ShapedRecipe
 
 class RecipeBook {
@@ -23,14 +24,15 @@ class RecipeBook {
          * @param item The RecipePage of the [ItemStack] you want to view
          * @return The [RecipePage] you requested from the given [ItemStack]
          */
-        fun getRecipeFor(item: ItemStack): RecipePage? { // Returns a recipe page for the given item, returns null if no recipe is found
-            val recipe: Recpe
-            try {
-                recipe = Bukkit.getRecipesFor(item) as ShapedRecipe
-            } catch (e: NullPointerException) {
-                return null
+        fun getRecipePagesFor(item: ItemStack): List<RecipePage> { // Returns a recipe page for the given item, returns null if no recipe is found
+            val recipes = Bukkit.getRecipesFor(item)
+            val returnList = ArrayList<RecipePage>()
+            for (recipe in recipes) {
+                if (RecipePage(recipe).pageInventory != null) {
+                    returnList.add(RecipePage(recipe))
+                }
             }
-            return pageMap[recipe]
+            return returnList
         }
     }
 }

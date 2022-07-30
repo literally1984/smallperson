@@ -13,6 +13,8 @@ import games.bnogocarft.bnogorpg.Planes.PlaneKeyItem
 import games.bnogocarft.bnogorpg.Planes.PlaneListeners
 import games.bnogocarft.bnogorpg.Planes.SteerListener
 import games.bnogocarft.bnogorpg.Planes.removeScheduler
+import games.bnogocarft.bnogorpg.RecipeBook.RecipeBookCommand
+import games.bnogocarft.bnogorpg.RecipeBook.RecipeManager
 import games.bnogocarft.bnogorpg.Utils.CustomEvents.ArmorWearListeners
 import games.bnogocarft.bnogorpg.Utils.GUIListeners
 import games.bnogocarft.bnogorpg.Utils.Inventories
@@ -46,13 +48,14 @@ class Main : JavaPlugin() {
         cSender.sendMessage("$logo Registered Listeners")
 
         cSender.sendMessage("$logo Enabling RecipeBook...")
-        //RecipeManager.registerRecipes(server.recipeIterator())
+        RecipeManager.registerRecipes(server.recipeIterator())
+        getCommand("recipe").executor = RecipeBookCommand()
         cSender.sendMessage("$logo RecipeBook has been enabled")
 
         cSender.sendMessage("$logo Enabling Planes")
         PlaneKeyItem()
         server.pluginManager.registerEvents(PlaneListeners(), this)
-        //server.pluginManager.registerEvents(SteerListener(), this)
+
         server.scheduler.scheduleSyncRepeatingTask(this, removeScheduler(), 0, 2)
         server.pluginManager.registerEvents(SteerListener(), this)
         cSender.sendMessage("$logo Planes have been enabled")

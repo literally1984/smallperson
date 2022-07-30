@@ -31,7 +31,7 @@ class RecipeBookCommand : CommandExecutor {
             val recipePage = RecipeManager.pageMap[shapedRecipe] // Gets RecipePage from shapedRecipe
 
             // recipePage null checker
-            if (recipePage == null) {
+            if (recipePage!!.pageInventory == null) {
                 sender.sendMessage("Internal error translating ShapedRecipe to RecipePage")
                 return true
             }
