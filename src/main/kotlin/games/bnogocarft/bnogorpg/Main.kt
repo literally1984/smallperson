@@ -3,6 +3,7 @@ package games.bnogocarft.bnogorpg
 import com.comphenix.protocol.ProtocolLibrary
 import com.comphenix.protocol.ProtocolManager
 import games.bnogocarft.bnogorpg.CustomItems.CactusArmor
+import games.bnogocarft.bnogorpg.Listeners.DamageEvent
 import games.bnogocarft.bnogorpg.Listeners.HotbarChangeEvent
 import games.bnogocarft.bnogorpg.Listeners.PlayerJoinEvent
 import games.bnogocarft.bnogorpg.Listeners.PlayerLeaveEvent
@@ -45,11 +46,12 @@ class Main : JavaPlugin() {
         server.pluginManager.registerEvents(HotbarChangeEvent(), this)
         server.pluginManager.registerEvents(PlayerLeaveEvent(), this)
         server.pluginManager.registerEvents(ArmorWearListeners(), this)
+        server.pluginManager.registerEvents(DamageEvent(), this)
         cSender.sendMessage("$logo Registered Listeners")
 
         cSender.sendMessage("$logo Enabling RecipeBook...")
         RecipeManager.registerRecipes(server.recipeIterator())
-        getCommand("recipe").executor = RecipeBookCommand()
+        getCommand("recipes").executor = RecipeBookCommand()
         cSender.sendMessage("$logo RecipeBook has been enabled")
 
         cSender.sendMessage("$logo Enabling Planes")
