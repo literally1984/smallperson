@@ -113,7 +113,7 @@ class GUIListeners(inventories: List<GUI>) : Listener {
 
 val Inventories = ArrayList<GUI>()
 
-val StandardBackground = ItemStack(Material.PISTON_EXTENSION)
+val StandardBackground = ItemStack(Material.THIN_GLASS)
 
 fun initUtils() {
     StandardBackground.itemMeta.displayName = ""
