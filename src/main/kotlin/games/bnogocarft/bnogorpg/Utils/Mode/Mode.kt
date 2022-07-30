@@ -1,4 +1,4 @@
-package games.bnogocarft.bnogorpg.Utils.PPlayer.Mode
+package games.bnogocarft.bnogorpg.Utils.Mode
 
 enum class Mode {
     NONE,

@@ -3,10 +3,10 @@ package games.bnogocarft.bnogorpg.Utils.PPlayer
 import games.bnogocarft.bnogorpg.Utils.BItemStack.Talisman.Talisman
 import games.bnogocarft.bnogorpg.Utils.BItemStack.Talisman.TalismanUtils
 import games.bnogocarft.bnogorpg.Utils.Database.YMLUtils
-import games.bnogocarft.bnogorpg.Utils.PPlayer.Abilities.PlayerAbility.Ability
-import games.bnogocarft.bnogorpg.Utils.PPlayer.Abilities.PlayerAbility.AbilityUtils
-import games.bnogocarft.bnogorpg.Utils.PPlayer.Abilities.SetBonus
-import games.bnogocarft.bnogorpg.Utils.PPlayer.Mode.Mode
+import games.bnogocarft.bnogorpg.Utils.Abilities.PlayerAbility.Ability
+import games.bnogocarft.bnogorpg.Utils.Abilities.PlayerAbility.AbilityUtils
+import games.bnogocarft.bnogorpg.Utils.Abilities.SetBonus
+import games.bnogocarft.bnogorpg.Utils.Mode.Mode
 import games.bnogocarft.bnogorpg.Utils.StatUtils.StatManager
 import org.bukkit.configuration.file.YamlConfiguration
 import org.bukkit.entity.Player

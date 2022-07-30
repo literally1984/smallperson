@@ -3,6 +3,7 @@ package games.bnogocarft.bnogorpg
 import com.comphenix.protocol.ProtocolLibrary
 import com.comphenix.protocol.ProtocolManager
 import games.bnogocarft.bnogorpg.CustomItems.CactusArmor
+import games.bnogocarft.bnogorpg.CustomItems.LapisArmor
 import games.bnogocarft.bnogorpg.Listeners.DamageEvent
 import games.bnogocarft.bnogorpg.Listeners.HotbarChangeEvent
 import games.bnogocarft.bnogorpg.Listeners.PlayerJoinEvent
@@ -49,11 +50,6 @@ class Main : JavaPlugin() {
         server.pluginManager.registerEvents(DamageEvent(), this)
         cSender.sendMessage("$logo Registered Listeners")
 
-        cSender.sendMessage("$logo Enabling RecipeBook...")
-        RecipeManager.registerRecipes(server.recipeIterator())
-        getCommand("recipes").executor = RecipeBookCommand()
-        cSender.sendMessage("$logo RecipeBook has been enabled")
-
         cSender.sendMessage("$logo Enabling Planes")
         PlaneKeyItem()
         server.pluginManager.registerEvents(PlaneListeners(), this)
@@ -75,7 +71,14 @@ class Main : JavaPlugin() {
 
         cSender.sendMessage("$logo Registering custom ItemStacks...")
         CactusArmor()
+        LapisArmor()
         cSender.sendMessage("$logo Registered custm Items")
+
+        cSender.sendMessage("$logo Enabling RecipeBook...")
+        RecipeManager.registerRecipes(server.recipeIterator())
+        getCommand("recipes").executor = RecipeBookCommand()
+        cSender.sendMessage("$logo RecipeBook has been enabled")
+
         cSender.sendMessage("$logo Enabling GUI stuff...")
         server.pluginManager.registerEvents(GUIListeners(Inventories), this)
         cSender.sendMessage("$logo GUI Utils enabled")

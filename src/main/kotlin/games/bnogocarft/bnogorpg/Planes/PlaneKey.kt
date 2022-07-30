@@ -2,7 +2,7 @@ package games.bnogocarft.bnogorpg.Planes
 
 import games.bnogocarft.bnogorpg.Main
 import games.bnogocarft.bnogorpg.Utils.ItemFactory.BItemFactory
-import games.bnogocarft.bnogorpg.Utils.PPlayer.Abilities.getYawFromVector
+import games.bnogocarft.bnogorpg.Utils.Abilities.getYawFromVector
 import org.bukkit.Bukkit
 import org.bukkit.ChatColor
 import org.bukkit.Location

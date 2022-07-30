@@ -9,8 +9,12 @@ import org.bukkit.inventory.ShapedRecipe
 fun openRecipePageFor(gui: OpenGUI, event: InventoryClickEvent) {
     val clickedItem = event.currentItem
     gui.player.closeInventory()
-    if (RecipeBook.getRecipePagesFor(clickedItem)[0].pageInventory != null) {
-
+    for (page in RecipeBook.getRecipePagesFor(clickedItem)) {
+        if (page.recipe is ShapedRecipe) {
+            if (page.pageInventory != null) {
+                gui.player.openInventory(page.pageInventory)
+            }
+        }
     }
 }
 class RecipeManager {
@@ -26,7 +30,7 @@ class RecipeManager {
                 pageMap[currentRecipe] = recipePage // Adds to the recipe map
 
 
-                textRecipeMap[currentRecipe.result.itemMeta.displayName.replace(" ", "-").lowercase()] =
+                textRecipeMap[currentRecipe.result.type.toString().lowercase()] =
                     currentRecipe
             }
         }

@@ -1,4 +1,4 @@
-package games.bnogocarft.bnogorpg.Utils.PPlayer.Abilities.PlayerAbility
+package games.bnogocarft.bnogorpg.Utils.Abilities.PlayerAbility
 
 class AbilityUtils {
     companion object {

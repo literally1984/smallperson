@@ -2,7 +2,7 @@ package games.bnogocarft.bnogorpg.Utils.ItemFactory
 
 import games.bnogocarft.bnogorpg.OtherCommands.customItemMap
 import games.bnogocarft.bnogorpg.Utils.BItemStack.BItemUtils
-import games.bnogocarft.bnogorpg.Utils.PPlayer.Abilities.ItemAbility.AbilityTrigger
+import games.bnogocarft.bnogorpg.Utils.Abilities.ItemAbility.AbilityTrigger
 import org.bukkit.Bukkit
 import org.bukkit.ChatColor
 import org.bukkit.Material

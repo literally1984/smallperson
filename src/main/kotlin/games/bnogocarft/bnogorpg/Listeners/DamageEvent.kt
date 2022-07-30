@@ -1,6 +1,6 @@
 package games.bnogocarft.bnogorpg.Listeners
 
-import games.bnogocarft.bnogorpg.Utils.PPlayer.Abilities.SetBonus
+import games.bnogocarft.bnogorpg.Utils.Abilities.SetBonus
 import games.bnogocarft.bnogorpg.Utils.PPlayer.BPlayers
 import org.bukkit.entity.Player
 import org.bukkit.event.EventHandler
