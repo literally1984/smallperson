@@ -53,7 +53,7 @@ class BItemFactory {
             lore.add("${ChatColor.YELLOW}Level: ${ChatColor.GRAY}0")
             lore.add("${ChatColor.GREEN}EXP: ${ChatColor.GRAY}0/10")
 
-            lore.add(item.rarity.getDisplay())
+            lore.add("${ChatColor.BOLD}${item.rarity.getDisplay()}")
             if (item.armorColor != null) {
                 val armorMeta = meta as LeatherArmorMeta
                 armorMeta.color = item.armorColor
