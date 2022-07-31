@@ -7,7 +7,7 @@ import org.bukkit.Color
 import org.bukkit.Material
 import org.bukkit.inventory.ItemStack
 
-class LapisArmor {
+class LapisArmor : ArmorSet {
     companion object {
         lateinit var helm: ItemStack
         lateinit var chestplate: ItemStack
@@ -15,14 +15,14 @@ class LapisArmor {
         lateinit var boots: ItemStack
     }
 
-    init {
-        createLapisHelm()
-        createLapisChestplate()
-        createLapisLeggings()
-        createLapisBoots()
+    override fun init() {
+        createHelmet()
+        createChestplate()
+        createLeggings()
+        createBoots()
     }
 
-    private fun createLapisHelm() {
+    override fun createHelmet() {
         val factoryItem = BItemFactory.createRPGItem("Lapis Helmet", Material.LEATHER_HELMET)
 
         val ability = ItemAbility.LapisSet
@@ -35,7 +35,7 @@ class LapisArmor {
         BItemFactory.register("lapishelmet", helm)
     }
 
-    private fun createLapisChestplate() {
+    override fun createChestplate() {
         val factoryItem = BItemFactory.createRPGItem("Lapis Chestplate", Material.LEATHER_CHESTPLATE)
 
         val ability = ItemAbility.LapisSet
@@ -48,7 +48,7 @@ class LapisArmor {
         BItemFactory.register("lapischestplate", chestplate)
     }
 
-    private fun createLapisLeggings() {
+    override fun createLeggings() {
         val factoryItem = BItemFactory.createRPGItem("Lapis Leggings", Material.LEATHER_LEGGINGS)
 
         val ability = ItemAbility.LapisSet
@@ -61,7 +61,7 @@ class LapisArmor {
         BItemFactory.register("lapisleggings", leggings)
     }
 
-    private fun createLapisBoots() {
+    override fun createBoots() {
         val factoryItem = BItemFactory.createRPGItem("Lapis Boots", Material.LEATHER_BOOTS)
 
         val ability = ItemAbility.LapisSet

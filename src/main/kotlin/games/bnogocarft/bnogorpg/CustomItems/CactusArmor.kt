@@ -7,7 +7,7 @@ import org.bukkit.Color
 import org.bukkit.Material
 import org.bukkit.inventory.ItemStack
 
-class CactusArmor {
+class CactusArmor : ArmorSet{
     companion object {
         lateinit var helm: ItemStack
         lateinit var chestplate: ItemStack
@@ -15,14 +15,14 @@ class CactusArmor {
         lateinit var boots: ItemStack
     }
 
-    init {
-        createCactusHelm()
-        createCactusChestplate()
-        createCactusLeggings()
-        createCactusBoots()
+    override fun init() {
+        createHelmet()
+        createChestplate()
+        createLeggings()
+        createBoots()
     }
 
-    private fun createCactusHelm() {
+    override fun createHelmet() {
         val factoryItem = BItemFactory.createRPGItem("Cactus Helmet", Material.LEATHER_HELMET)
 
         val ability = ItemAbility.CactusSet
@@ -35,7 +35,7 @@ class CactusArmor {
         BItemFactory.register("cactushelmet", helm)
     }
 
-    private fun createCactusChestplate() {
+    override fun createChestplate() {
         val factoryItem = BItemFactory.createRPGItem("Cactus Chestplate", Material.LEATHER_CHESTPLATE)
 
         val ability = ItemAbility.CactusSet
@@ -48,7 +48,7 @@ class CactusArmor {
         BItemFactory.register("cactuschestplate", chestplate)
     }
 
-    private fun createCactusLeggings() {
+    override fun createLeggings() {
         val factoryItem = BItemFactory.createRPGItem("Cactus Leggings", Material.LEATHER_LEGGINGS)
 
         val ability = ItemAbility.CactusSet
@@ -61,7 +61,7 @@ class CactusArmor {
         BItemFactory.register("cactusleggings", leggings)
     }
 
-    private fun createCactusBoots() {
+    override fun createBoots() {
         val factoryItem = BItemFactory.createRPGItem("Cactus Boots", Material.LEATHER_BOOTS)
 
         val ability = ItemAbility.CactusSet
