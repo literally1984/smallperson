@@ -4,7 +4,8 @@ import games.bnogocarft.bnogorpg.Utils.Abilities.ItemAbility.AbilityTrigger
 
 enum class ItemAbility {
     CactusSet,
-    LapisSet;
+    LapisSet,
+    NONE;
 
     val CactusDesc = arrayListOf(
         "Upon being hit by an enemy, 30%",
@@ -22,6 +23,9 @@ enum class ItemAbility {
         return when (this) {
             CactusSet -> CactusDesc
             LapisSet -> LapisDesc
+            else -> {
+                arrayListOf("")
+            }
         }
     }
 
@@ -29,6 +33,9 @@ enum class ItemAbility {
         return when (this) {
             CactusSet -> "Spiky Spikes"
             LapisSet -> "Enhanced Magic"
+            else -> {
+                "None"
+            }
         }
     }
 
@@ -36,6 +43,9 @@ enum class ItemAbility {
         return when (this) {
             CactusSet -> AbilityTrigger.SET_BONUS
             LapisSet -> AbilityTrigger.SET_BONUS
+            else -> {
+                AbilityTrigger.NONE
+            }
         }
     }
 }

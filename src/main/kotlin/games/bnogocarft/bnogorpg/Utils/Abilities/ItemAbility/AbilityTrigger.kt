@@ -10,5 +10,6 @@ enum class AbilityTrigger {
     SHIFT,
     ATTACK,
     SET_BONUS,
+    NONE,
     HIT;
 }

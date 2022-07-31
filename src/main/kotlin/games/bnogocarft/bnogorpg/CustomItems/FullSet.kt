@@ -5,4 +5,5 @@ interface FullSet : ArmorSet {
     fun createHoe()
     fun createPickaxe()
     fun createAxe()
+    fun createShovel()
 }
