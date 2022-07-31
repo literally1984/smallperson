@@ -1,4 +1,4 @@
-package games.bnogocarft.bnogorpg.Utils.BItemStack
+package games.bnogocarft.bnogorpg.Utils.BItemStack.BItems
 
 import games.bnogocarft.bnogorpg.Utils.BItemStack.Rarity.RarityUtils
 import games.bnogocarft.bnogorpg.Utils.EnchantUtils.BEnchantment

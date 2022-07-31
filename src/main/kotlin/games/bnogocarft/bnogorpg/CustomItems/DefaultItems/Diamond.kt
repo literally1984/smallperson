@@ -1,11 +1,9 @@
 package games.bnogocarft.bnogorpg.CustomItems.DefaultItems
 
-import games.bnogocarft.bnogorpg.CustomItems.FullSet
+import games.bnogocarft.bnogorpg.Utils.BItemStack.Interfaces.FullSet
 import games.bnogocarft.bnogorpg.Utils.BItemStack.Rarity.Rarity
 import games.bnogocarft.bnogorpg.Utils.ItemFactory.BItemFactory
-import games.bnogocarft.bnogorpg.Utils.ItemFactory.ItemAbility
 import org.bukkit.Bukkit
-import org.bukkit.Color
 import org.bukkit.Material
 import org.bukkit.inventory.ItemStack
 import org.bukkit.inventory.ShapedRecipe

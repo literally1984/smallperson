@@ -1,4 +1,4 @@
-package games.bnogocarft.bnogorpg.Utils.BItemStack
+package games.bnogocarft.bnogorpg.Utils.BItemStack.BItems
 
 import org.bukkit.inventory.ItemStack
 

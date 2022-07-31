@@ -1,4 +1,4 @@
-package games.bnogocarft.bnogorpg.Utils.BItemStack
+package games.bnogocarft.bnogorpg.Utils.BItemStack.BItems
 
 enum class BMaterial(s: String) {
     CACTUS_HELMET("Cactus Helmet"),

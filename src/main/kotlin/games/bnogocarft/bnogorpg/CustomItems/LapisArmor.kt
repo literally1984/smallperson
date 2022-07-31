@@ -1,5 +1,6 @@
 package games.bnogocarft.bnogorpg.CustomItems
 
+import games.bnogocarft.bnogorpg.Utils.BItemStack.Interfaces.ArmorSet
 import games.bnogocarft.bnogorpg.Utils.BItemStack.Rarity.Rarity
 import games.bnogocarft.bnogorpg.Utils.ItemFactory.BItemFactory
 import games.bnogocarft.bnogorpg.Utils.ItemFactory.ItemAbility

@@ -2,6 +2,10 @@ package games.bnogocarft.bnogorpg.OtherCommands.Reforge
 
 import games.bnogocarft.bnogorpg.Utils.*
 import games.bnogocarft.bnogorpg.Utils.BItemStack.*
+import games.bnogocarft.bnogorpg.Utils.BItemStack.BItems.BArmor
+import games.bnogocarft.bnogorpg.Utils.BItemStack.BItems.BGear
+import games.bnogocarft.bnogorpg.Utils.BItemStack.BItems.BItemUtils
+import games.bnogocarft.bnogorpg.Utils.BItemStack.BItems.BWeapon
 import net.minecraft.server.v1_5_R3.Packet62NamedSoundEffect
 import org.bukkit.Bukkit
 import org.bukkit.ChatColor

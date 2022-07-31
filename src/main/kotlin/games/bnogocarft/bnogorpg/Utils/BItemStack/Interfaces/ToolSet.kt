@@ -1,6 +1,6 @@
-package games.bnogocarft.bnogorpg.CustomItems
+package games.bnogocarft.bnogorpg.Utils.BItemStack.Interfaces
 
-interface FullSet : ArmorSet {
+interface ToolSet{
     fun createSword()
     fun createHoe()
     fun createPickaxe()

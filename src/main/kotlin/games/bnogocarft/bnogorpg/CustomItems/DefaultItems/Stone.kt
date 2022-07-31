@@ -1,8 +1,8 @@
 package games.bnogocarft.bnogorpg.CustomItems.DefaultItems
 
-import games.bnogocarft.bnogorpg.Utils.BItemStack.Interfaces.FullSet
+import games.bnogocarft.bnogorpg.Utils.BItemStack.Interfaces.ToolSet
 
-class Gold : FullSet {
+class Stone : ToolSet {
     override fun createSword() {
         TODO("Not yet implemented")
     }
@@ -20,22 +20,6 @@ class Gold : FullSet {
     }
 
     override fun createShovel() {
-        TODO("Not yet implemented")
-    }
-
-    override fun createHelmet() {
-        TODO("Not yet implemented")
-    }
-
-    override fun createChestplate() {
-        TODO("Not yet implemented")
-    }
-
-    override fun createLeggings() {
-        TODO("Not yet implemented")
-    }
-
-    override fun createBoots() {
         TODO("Not yet implemented")
     }
 }

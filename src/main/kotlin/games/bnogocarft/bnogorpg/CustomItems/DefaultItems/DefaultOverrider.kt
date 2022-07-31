@@ -16,6 +16,10 @@ class DefaultOverrider {
                 }
             }
             Diamond()
+            Gold()
+            Iron()
+            Leather()
+            Wood()
         }
     }
 }

@@ -2,7 +2,7 @@ package games.bnogocarft.bnogorpg.OtherCommands
 
 import games.bnogocarft.bnogorpg.Planes.PlaneEntity
 import games.bnogocarft.bnogorpg.Planes.planeEntitites
-import games.bnogocarft.bnogorpg.Utils.BItemStack.*
+import games.bnogocarft.bnogorpg.Utils.BItemStack.BItems.*
 import org.bukkit.Bukkit
 import org.bukkit.command.Command
 import org.bukkit.command.CommandExecutor
