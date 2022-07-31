@@ -3,6 +3,7 @@ package games.bnogocarft.bnogorpg
 import com.comphenix.protocol.ProtocolLibrary
 import com.comphenix.protocol.ProtocolManager
 import games.bnogocarft.bnogorpg.CustomItems.CactusArmor
+import games.bnogocarft.bnogorpg.CustomItems.DefaultItems.DefaultOverrider
 import games.bnogocarft.bnogorpg.CustomItems.LapisArmor
 import games.bnogocarft.bnogorpg.Listeners.DamageEvent
 import games.bnogocarft.bnogorpg.Listeners.HotbarChangeEvent
@@ -36,6 +37,9 @@ class Main : JavaPlugin() {
         val cSender = server.consoleSender
         protocolManager = ProtocolLibrary.getProtocolManager()
         cSender.sendMessage("$logo Main class variables have been instanced")
+        cSender.sendMessage("$logo Overriding default combat Items...")
+        DefaultOverrider.overrideRecipes()
+        cSender.sendMessage("$logo Overriding default combat Items... Done")
 
         cSender.sendMessage("$logo Constructing utils...")
         BPlayers

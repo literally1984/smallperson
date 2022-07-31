@@ -15,7 +15,7 @@ class CactusArmor : ArmorSet{
         lateinit var boots: ItemStack
     }
 
-    override fun init() {
+    init {
         createHelmet()
         createChestplate()
         createLeggings()

@@ -23,7 +23,7 @@ class Diamond : FullSet {
         lateinit var shovel: ItemStack
     }
 
-    override fun init() {
+    init {
         createSword()
         createHoe()
         createPickaxe()

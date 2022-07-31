@@ -15,6 +15,7 @@ class DefaultOverrider {
                     iterator.remove()
                 }
             }
+            Diamond()
         }
     }
 }

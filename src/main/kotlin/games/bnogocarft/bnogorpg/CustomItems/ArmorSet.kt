@@ -10,8 +10,6 @@ interface ArmorSet {
         lateinit var boots: ItemStack
     }
 
-    fun init()
-
     fun createHelmet()
     fun createChestplate()
     fun createLeggings()
