@@ -1,6 +1,7 @@
 package games.bnogocarft.bnogorpg.RecipeBook
 
 import games.bnogocarft.bnogorpg.Utils.OpenGUI
+import org.bukkit.ChatColor
 import org.bukkit.event.inventory.InventoryClickEvent
 import org.bukkit.inventory.Recipe
 import org.bukkit.inventory.ShapedRecipe
@@ -9,11 +10,15 @@ import org.bukkit.inventory.ShapedRecipe
 fun openRecipePageFor(gui: OpenGUI, event: InventoryClickEvent) {
     val clickedItem = event.currentItem
     gui.player.closeInventory()
-    for (page in RecipeBook.getRecipePagesFor(clickedItem)) {
+    val recipes = RecipeBook.getRecipePagesFor(clickedItem)
+    if (recipes.isEmpty()) {
+        gui.player.sendMessage(ChatColor.RED.toString() + "No recipes found for this item.")
+        return
+    }
+    for (page in recipes) {
         if (page.recipe is ShapedRecipe) {
-            if (page.pageInventory != null) {
-                gui.player.openInventory(page.pageInventory)
-            }
+            gui.player.openInventory(page.pageInventory)
+            println("Opened page")
         }
     }
 }

@@ -11,15 +11,6 @@ class RecipeBook {
         val pages = ArrayList<RecipePage>()
 
         /**
-         * Gets a [RecipePage] by the page it is in the book
-         * @param page The page you want to view
-         * @return The [RecipePage] you requested
-         */
-        fun getRecipePage(page: Int): RecipePage {
-            return pages[page + 1]
-        }
-
-        /**
          * Gets a [RecipePage] by an [ItemStack], can return null if there is no [RecipePage] associated with the [ItemStack]
          * @param item The RecipePage of the [ItemStack] you want to view
          * @return The [RecipePage] you requested from the given [ItemStack]
