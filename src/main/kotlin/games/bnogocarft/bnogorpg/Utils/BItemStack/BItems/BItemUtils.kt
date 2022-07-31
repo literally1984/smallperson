@@ -7,8 +7,6 @@ class BItemUtils {
 
     companion object {
         private var BWeapons: HashMap<ItemStack, BWeapon> = HashMap()
-        private var BPickaxes: HashMap<ItemStack, BPickaxe> = HashMap()
-        private var BAxes: HashMap<ItemStack, BAxe> = HashMap()
         private var BArmor: HashMap<ItemStack, BArmor> = HashMap()
         // TODO Make a BAxe class
 
@@ -28,12 +26,6 @@ class BItemUtils {
                 ) {
                     return "armor"
                 }
-                if (item.itemMeta.displayName.lowercase().contains("pickaxe")) {
-                    return "pickaxe"
-                }
-                if (item.itemMeta.displayName.lowercase().contains("axe")) {
-                    return "axe"
-                }
             }
             return null
         }
@@ -51,28 +43,6 @@ class BItemUtils {
 
         fun addBWeapon(item: ItemStack, stats: List<Int>) {
             BWeapons[item] = BWeapon(stats, item)
-        }
-
-        fun getBPickaxe(item: ItemStack): BPickaxe {
-            if (BPickaxes.containsKey(item)) return BPickaxes[item]!!
-            val bpickaxe = BPickaxe(item)
-            BPickaxes[item] = bpickaxe
-            return bpickaxe
-        }
-
-        fun addBPickaxe(item: ItemStack, bPickaxe: BPickaxe) {
-            BPickaxes[item] = bPickaxe
-        }
-
-        fun getBAxe(item: ItemStack): BAxe {
-            if (BAxes.containsKey(item)) return BAxes[item]!!
-            val baxe = BAxe(item)
-            BAxes[item] = baxe
-            return baxe
-        }
-
-        fun addBAxe(item: ItemStack, bAxe: BAxe) {
-            BAxes[item] = bAxe
         }
 
         fun getBArmor(item: ItemStack): BArmor {

@@ -31,14 +31,6 @@ class PlayerJoinEvent : Listener {
                     BItemUtils.addBWeapon(item, BWeapon(item))
                 }
 
-                if (BItemUtils.getBType(item).equals("pickaxe")) {
-                    BItemUtils.addBPickaxe(item, BPickaxe(item))
-                }
-
-                if (BItemUtils.getBType(item).equals("axe")) {
-                    BItemUtils.addBAxe(item, BAxe(item))
-                }
-
                 if (BItemUtils.getBType(item).equals("armor")) {
                     BItemUtils.addBArmor(item, BArmor(item))
                 }

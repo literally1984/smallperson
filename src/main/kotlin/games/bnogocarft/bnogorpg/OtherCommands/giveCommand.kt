@@ -55,8 +55,6 @@ class GiveCommand : CommandExecutor {
                     when (BItemUtils.getBType(item)) {
                         "weapon" -> BItemUtils.addBWeapon(item, BWeapon(item))
                         "armor" -> BItemUtils.addBArmor(item, BArmor(item))
-                        "axe" -> BItemUtils.addBAxe(item, BAxe(item))
-                        "pickaxe" -> BItemUtils.addBPickaxe(item, BPickaxe(item))
                     }
                     sender.sendMessage("You gave yourself a ${item.itemMeta.displayName}")
                     if (args[0].lowercase() == "planekey") {
