@@ -3,6 +3,7 @@ package games.bnogocarft.bnogorpg.RecipeBook
 import games.bnogocarft.bnogorpg.Utils.OpenGUI
 import org.bukkit.ChatColor
 import org.bukkit.event.inventory.InventoryClickEvent
+import org.bukkit.inventory.Inventory
 import org.bukkit.inventory.Recipe
 import org.bukkit.inventory.ShapedRecipe
 
@@ -39,7 +40,6 @@ class RecipeManager {
                     currentRecipe
             }
         }
-
         val textRecipeMap = HashMap<String, Recipe>()
 
     }

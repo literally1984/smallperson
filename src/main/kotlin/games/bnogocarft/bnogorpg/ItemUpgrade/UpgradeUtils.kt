@@ -85,12 +85,12 @@ class UpgradeUtils {
         lore.add("${ChatColor.YELLOW}item's ${ChatColor.DARK_PURPLE}Magic Defense ${ChatColor.BLUE}stat")
 
         val lMeta = meta as LeatherArmorMeta
-        lMeta.color = Color.AQUA
+        lMeta.color = Color.PURPLE
 
         meta.lore = lore
         item.itemMeta = meta
         item.addUnsafeEnchantment(Enchantment.PROTECTION_PROJECTILE, 10)
-        atkItem = item
+        mDefItem = item
     }
 
     private fun createMANAItem() {
@@ -104,7 +104,7 @@ class UpgradeUtils {
         meta.lore = lore
         item.itemMeta = meta
         item.addUnsafeEnchantment(Enchantment.DURABILITY, 10)
-        atkItem = item
+        manaItem = item
     }
 
     private fun createSTAMItem() {
@@ -125,22 +125,22 @@ class UpgradeUtils {
 
     private fun createUpgradeGUI() {
         /*
-        0  1  2  3  4  5  6  7  8
-        9  10 AT 12 DF 14 MA 16 17
-        18 19 20 21 ES 23 24 25 26
-        27 28 MD 30 MA 32 ST 34 35
-        36 37 38 39 40 41 42 43 44
+        0  1  AT  3  4  5 MA  7  8
+        9  10 11 12 DF 14 15 16 17
+        18 19 DE 21 ES 23 MD 25 26
+        27 28 29 30 MA 32 ST 34 35
+        36 37 ST 39 40 41 MA 43 44
         45 46 47 48 49 50 51 52 53
 
-        11 = attack
-        13 = defense
-        15 = magic atk
-        29 = magic def
-        31 = mana
-        33 = stamina
+        2  = attack
+        20 = defense
+        6  = magic atk
+        24 = magic def
+        42 = mana
+        38 = stamina
         22 = empty slot
         */
-        val gui = GUIFactory.createInventory("Upgrade Item", 54)
+        val fGui = GUIFactory.createInventory("Upgrade Item", 54)
         val backgroundItems = ArrayList<BackgroundItem>()
 
         // Sets the backgound
@@ -150,13 +150,17 @@ class UpgradeUtils {
         val backgroundLayer = GUILayer(ArrayList(), backgroundItems)
 
         val buttons = ArrayList<GUIButton>()
-        buttons.add(GUIButton(atkItem, 11, ::upgradeATK))
-        buttons.add(GUIButton(defItem, 13, ::upgradeDEF))
-        buttons.add()
-        buttons.add()
-        buttons.add()
-        buttons.add()
+        buttons.add(GUIButton(atkItem, 2, ::upgradeATK))
+        buttons.add(GUIButton(defItem, 20, ::upgradeDEF))
+        buttons.add(GUIButton(mAtkItem, 6, ::upgradeMAGATK))
+        buttons.add(GUIButton(mDefItem, 25, ::upgradeMAGDEF))
+        buttons.add(GUIButton(stamItem, 38, ::upgradeSTAM))
+        buttons.add(GUIButton(manaItem, 42, ::upgradeMANA))
+        val layer2 = GUILayer(buttons, ArrayList())
+        fGui.layers.add(backgroundLayer)
+        fGui.layers.add(layer2)
 
+        gui = GUIFactory.produceInventory(fGui)
     }
 
     fun upgradeATK(gui: OpenGUI) {

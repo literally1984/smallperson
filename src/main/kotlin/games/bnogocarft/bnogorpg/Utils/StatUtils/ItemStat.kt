@@ -17,8 +17,10 @@ data class ItemStat(val item: ItemStack) {
         set(value) {
             for (s: String in item.itemMeta.lore) {
                 if (s.contains("Damage: +")) {
-                    val lore = item.itemMeta.lore
+                    val copy = item.itemMeta.clone()
+                    val lore = copy.lore
                     lore[lore.indexOf(s)] = "${ChatColor.RED}Damage: +$value"
+                    item.itemMeta = copy
                 }
             }
             field = value
@@ -27,8 +29,10 @@ data class ItemStat(val item: ItemStack) {
         set(value) {
             for (s: String in item.itemMeta.lore) {
                 if (s.contains("Defense: +")) {
-                    val lore = item.itemMeta.lore
+                    val copy = item.itemMeta.clone()
+                    val lore = copy.lore
                     lore[lore.indexOf(s)] = "${ChatColor.GREEN}Defense: +$value"
+                    item.itemMeta = copy
                 }
             }
             field = value
@@ -37,8 +41,10 @@ data class ItemStat(val item: ItemStack) {
         set(value) {
             for (s: String in item.itemMeta.lore) {
                 if (s.contains("Magic Damage: +")) {
-                    val lore = item.itemMeta.lore
+                    val copy = item.itemMeta.clone()
+                    val lore = copy.lore
                     lore[lore.indexOf(s)] = "${ChatColor.LIGHT_PURPLE}Magic Damage: +$value"
+                    item.itemMeta = copy
                 }
             }
             field = value
@@ -47,8 +53,10 @@ data class ItemStat(val item: ItemStack) {
         set(value) {
             for (s: String in item.itemMeta.lore) {
                 if (s.contains("Magic Defense: +")) {
-                    val lore = item.itemMeta.lore
+                    val copy = item.itemMeta.clone()
+                    val lore = copy.lore
                     lore[lore.indexOf(s)] = "${ChatColor.DARK_PURPLE}Magic Defense: +$value"
+                    item.itemMeta = copy
                 }
             }
             field = value
@@ -57,8 +65,10 @@ data class ItemStat(val item: ItemStack) {
         set(value) {
             for (s: String in item.itemMeta.lore) {
                 if (s.contains("Mana: +")) {
-                    val lore = item.itemMeta.lore
+                    val copy = item.itemMeta.clone()
+                    val lore = copy.lore
                     lore[lore.indexOf(s)] = "${ChatColor.AQUA}Mana: +$value"
+                    item.itemMeta = copy
                 }
             }
             field = value
@@ -67,8 +77,10 @@ data class ItemStat(val item: ItemStack) {
         set(value) {
             for (s: String in item.itemMeta.lore) {
                 if (s.contains("Stamina: +")) {
-                    val lore = item.itemMeta.lore
+                    val copy = item.itemMeta.clone()
+                    val lore = copy.lore
                     lore[lore.indexOf(s)] = "${ChatColor.GOLD}Stamina: +$value"
+                    item.itemMeta = copy
                 }
             }
             field = value

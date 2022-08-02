@@ -25,6 +25,12 @@ fun isInRecipeSlot(slot: Int): Boolean {
     return false
 }
 
+fun changeInventoryTo(from: Inventory, to: Inventory) {
+    for (slot in 0 until to.size) {
+        from.setItem(slot, to.getItem(slot))
+    }
+}
+
 
 class GUIFactory {
     companion object {
