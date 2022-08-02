@@ -85,7 +85,8 @@ class BItemUtils {
                 "armor" -> {
                     addBArmor(item, BArmor(item))
                     return BGears[item]!!
-                } else -> return BGears[item]!!
+                }
+                else -> return BGears[item]!!
             }
         }
     }

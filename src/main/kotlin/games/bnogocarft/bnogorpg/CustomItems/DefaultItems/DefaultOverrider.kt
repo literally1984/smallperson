@@ -6,7 +6,6 @@ class DefaultOverrider {
     companion object {
 
 
-
         fun overrideRecipes() {
             val iterator = Bukkit.recipeIterator()
             while (iterator.hasNext()) {

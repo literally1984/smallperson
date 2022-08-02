@@ -26,6 +26,7 @@ fun openRecipePageFor(gui: OpenGUI) {
         }
     }
 }
+
 class RecipeManager {
     companion object {
         val pageMap = HashMap<Recipe, RecipePage>()
@@ -43,6 +44,7 @@ class RecipeManager {
                     currentRecipe
             }
         }
+
         val textRecipeMap = HashMap<String, Recipe>()
 
     }

@@ -32,6 +32,7 @@ class Diamond : FullSet {
         createLeggings()
         createBoots()
     }
+
     override fun createSword() {
         TODO("Not yet implemented")
     }

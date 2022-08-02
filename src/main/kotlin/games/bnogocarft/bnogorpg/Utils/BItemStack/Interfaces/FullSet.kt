@@ -1,4 +1,3 @@
 package games.bnogocarft.bnogorpg.Utils.BItemStack.Interfaces
 
-interface FullSet : ArmorSet, ToolSet {
-}
+interface FullSet : ArmorSet, ToolSet

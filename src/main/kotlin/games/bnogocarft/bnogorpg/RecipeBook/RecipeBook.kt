@@ -1,10 +1,7 @@
 package games.bnogocarft.bnogorpg.RecipeBook
 
-import games.bnogocarft.bnogorpg.RecipeBook.RecipeManager.Companion.pageMap
 import org.bukkit.Bukkit
 import org.bukkit.inventory.ItemStack
-import org.bukkit.inventory.Recipe
-import org.bukkit.inventory.ShapedRecipe
 
 class RecipeBook {
     companion object {

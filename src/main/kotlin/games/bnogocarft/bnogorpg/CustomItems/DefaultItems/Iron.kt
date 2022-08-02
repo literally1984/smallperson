@@ -20,6 +20,7 @@ class Iron : FullSet {
         lateinit var hoe: ItemStack
         lateinit var shovel: ItemStack
     }
+
     init {
         createSword()
         createHoe()
@@ -31,6 +32,7 @@ class Iron : FullSet {
         createLeggings()
         createBoots()
     }
+
     override fun createSword() {
         TODO("Not yet implemented")
     }

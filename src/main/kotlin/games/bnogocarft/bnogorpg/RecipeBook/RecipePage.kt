@@ -35,7 +35,11 @@ data class RecipePage(val recipe: Recipe) {
 
             // Creates the Inventory
 
-            val gui = GUIFactory.createInventory("Recipe for ${recipe.result.type.toString().replace("_", " ").lowercase().replaceFirstChar { it.uppercase() }}", 54)
+            val gui = GUIFactory.createInventory(
+                "Recipe for ${
+                    recipe.result.type.toString().replace("_", " ").lowercase().replaceFirstChar { it.uppercase() }
+                }", 54
+            )
             val backgroundz = ArrayList<BackgroundItem>()
             for (index in 0..53) {
                 backgroundz.add(BackgroundItem(StandardBackground, index))
@@ -76,7 +80,11 @@ data class RecipePage(val recipe: Recipe) {
         }
 
         if (recipe is ShapelessRecipe) {
-            val finalGUI = GUIFactory.createInventory("Recipe for ${recipe.result.type.toString().replace("_", " ").lowercase().replaceFirstChar { it.uppercase() }}", 54)
+            val finalGUI = GUIFactory.createInventory(
+                "Recipe for ${
+                    recipe.result.type.toString().replace("_", " ").lowercase().replaceFirstChar { it.uppercase() }
+                }", 54
+            )
 
 
             val l1backgroundz = ArrayList<BackgroundItem>()

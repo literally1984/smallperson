@@ -2,7 +2,9 @@ package games.bnogocarft.bnogorpg.OtherCommands
 
 import games.bnogocarft.bnogorpg.Planes.PlaneEntity
 import games.bnogocarft.bnogorpg.Planes.planeEntitites
-import games.bnogocarft.bnogorpg.Utils.BItemStack.BItems.*
+import games.bnogocarft.bnogorpg.Utils.BItemStack.BItems.BArmor
+import games.bnogocarft.bnogorpg.Utils.BItemStack.BItems.BItemUtils
+import games.bnogocarft.bnogorpg.Utils.BItemStack.BItems.BWeapon
 import org.bukkit.Bukkit
 import org.bukkit.command.Command
 import org.bukkit.command.CommandExecutor
@@ -41,7 +43,8 @@ class GiveCommand : CommandExecutor {
                 if (customItemMap.containsKey(args[1].lowercase())) {
                     val item = customItemMap[args[1].lowercase()]!!.clone()
                     player.inventory.addItem(customItemMap[args[1].lowercase()])
-                    Bukkit.getLogger().log(Level.ALL, "You just gave ${player.displayName} a ${item.itemMeta.displayName}!")
+                    Bukkit.getLogger()
+                        .log(Level.ALL, "You just gave ${player.displayName} a ${item.itemMeta.displayName}!")
                     return true
                 }
             }

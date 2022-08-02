@@ -83,7 +83,8 @@ data class GUIButton(override var item: ItemStack, override var slot: Int, val r
 open class BackgroundItem(open var item: ItemStack, open var slot: Int)
 
 open class GUI(open val inv: Inventory, open val buttons: List<GUIButton>, open val background: List<BackgroundItem>)
-data class OpenGUI(val gui: GUI, val player: Player, val slot: Int, val currentItem: ItemStack) : GUI(gui.inv, gui.buttons, gui.background)
+data class OpenGUI(val gui: GUI, val player: Player, val slot: Int, val currentItem: ItemStack) :
+    GUI(gui.inv, gui.buttons, gui.background)
 
 class GUIListeners(inventories: List<GUI>) : Listener {
     var invs = inventories

@@ -8,11 +8,11 @@ import org.bukkit.event.inventory.ClickType
 import org.bukkit.event.inventory.InventoryClickEvent
 import org.bukkit.event.player.PlayerInteractEvent
 import org.bukkit.inventory.ItemStack
-import java.util.*
 
 
 class ArmorWearListeners : Listener {
     val ArmorSlots = intArrayOf(5, 6, 7, 8)
+
     @EventHandler(priority = EventPriority.LOW)
     fun onArmorWearByInventoryClick(e: InventoryClickEvent) {
         val p = e.whoClicked as Player
@@ -68,7 +68,7 @@ class ArmorWearListeners : Listener {
                         return
                     }
 
-                    val clickedItemStack =  e.inventory.getItem(e.slot)
+                    val clickedItemStack = e.inventory.getItem(e.slot)
                     val armorEvent = ArmorWearEvent(p, clickedItemStack, "shift_left", Type)
                     if (armorEvent.isCancelled) {
                         e.isCancelled = true
