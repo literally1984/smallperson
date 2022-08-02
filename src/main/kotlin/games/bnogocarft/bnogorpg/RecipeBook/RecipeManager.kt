@@ -1,9 +1,8 @@
 package games.bnogocarft.bnogorpg.RecipeBook
 
 import games.bnogocarft.bnogorpg.Utils.OpenGUI
+import games.bnogocarft.bnogorpg.Utils.changeInventoryTo
 import org.bukkit.ChatColor
-import org.bukkit.event.inventory.InventoryClickEvent
-import org.bukkit.inventory.Inventory
 import org.bukkit.inventory.Recipe
 import org.bukkit.inventory.ShapedRecipe
 
@@ -18,8 +17,12 @@ fun openRecipePageFor(gui: OpenGUI) {
     }
     for (page in recipes) {
         if (page.recipe is ShapedRecipe) {
-            gui.player.openInventory(page.pageInventory)
-            println("Opened page")
+            if (page.pageInventory != null) {
+                changeInventoryTo(gui.inv, page.pageInventory!!)
+                println("Opened page")
+                return
+            }
+            gui.player.sendMessage(ChatColor.RED.toString() + "No recipes found for this item.")
         }
     }
 }
