@@ -8,6 +8,7 @@ class BItemUtils {
     companion object {
         private var BWeapons: HashMap<ItemStack, BWeapon> = HashMap()
         private var BArmor: HashMap<ItemStack, BArmor> = HashMap()
+        private var BGears: HashMap<ItemStack, BGear> = HashMap()
         // TODO Make a BAxe class
 
         fun getBType(item: ItemStack): String? {
@@ -34,32 +35,58 @@ class BItemUtils {
         fun getBWeapon(item: ItemStack): BWeapon {
             if (BWeapons.containsKey(item)) return BWeapons[item]!!
             val bweapon = BWeapon(item)
+            val BGear = bweapon as BGear
+            BGears[item] = BGear
             BWeapons[item] = bweapon
             return bweapon
         }
 
         fun addBWeapon(item: ItemStack, bWeapon: BWeapon) {
             BWeapons[item] = bWeapon
+            val BGear = bWeapon as BGear
+            BGears[item] = BGear
         }
 
         fun addBWeapon(item: ItemStack, stats: List<Int>) {
             BWeapons[item] = BWeapon(stats, item)
+            val BGear = BWeapons[item] as BGear
+            BGears[item] = BGear
         }
 
         fun getBArmor(item: ItemStack): BArmor {
             if (BArmor.containsKey(item)) return BArmor[item]!!
             val barmor = BArmor(item)
             BArmor[item] = barmor
+            val BGear = barmor as BGear
+            BGears[item] = BGear
             return barmor
         }
 
 
         fun addBArmor(item: ItemStack, bArmor: BArmor) {
             BArmor[item] = bArmor
+            val BGear = bArmor as BGear
+            BGears[item] = BGear
         }
 
         fun addBArmor(item: ItemStack, stats: List<Int>) {
             BArmor[item] = BArmor(stats, item)
+            val BGear = BArmor[item] as BGear
+            BGears[item] = BGear
+        }
+
+        fun getBGear(item: ItemStack): BGear {
+            if (BGears.containsKey(item)) return BGears[item]!!
+            when (getBType(item)) {
+                "weapon" -> {
+                    addBWeapon(item, BWeapon(item))
+                    return BGears[item]!!
+                }
+                "armor" -> {
+                    addBArmor(item, BArmor(item))
+                    return BGears[item]!!
+                } else -> return BGears[item]!!
+            }
         }
     }
 }

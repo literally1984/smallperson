@@ -17,7 +17,7 @@ import org.bukkit.inventory.Inventory
 import org.bukkit.inventory.ItemStack
 import java.util.*
 
-fun Reforge(gui: OpenGUI, event: InventoryClickEvent) {
+fun Reforge(gui: OpenGUI) {
     val reforgeItem = gui.inv.getItem(13)
     if (reforgeItem != null && (BItemUtils.getBType(reforgeItem) == "weapon" || BItemUtils.getBType(reforgeItem) == "armor")) {
         val weightedList = mutableListOf( //  156 currently

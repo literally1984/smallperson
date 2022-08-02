@@ -7,8 +7,8 @@ import org.bukkit.inventory.Recipe
 import org.bukkit.inventory.ShapedRecipe
 
 
-fun openRecipePageFor(gui: OpenGUI, event: InventoryClickEvent) {
-    val clickedItem = event.currentItem
+fun openRecipePageFor(gui: OpenGUI) {
+    val clickedItem = gui.currentItem
     gui.player.closeInventory()
     val recipes = RecipeBook.getRecipePagesFor(clickedItem)
     if (recipes.isEmpty()) {
