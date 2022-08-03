@@ -20,7 +20,6 @@ class PlaneListeners : Listener {
         if (event.entity is Minecart) {
             if (planes.containsKey(event.entity)) {
                 event.isCancelled = true
-                val keyItem = planes[event.entity]!!
                 val planeEntity = planes[event.entity]!!
                 planeEntity.stats.currentHealth = planeEntity.stats.currentHealth - event.damage
                 if (planeEntity.stats.currentHealth <= 0) {

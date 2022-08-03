@@ -37,7 +37,10 @@ data class RecipePage(val recipe: Recipe) {
 
             val gui = GUIFactory.createInventory(
                 "Recipe for ${
-                    recipe.result.type.toString().replace("_", " ").lowercase().replaceFirstChar { it.uppercase() }
+                    if (recipe.result.hasItemMeta()) recipe.result.itemMeta.displayName
+                    else {
+                        recipe.result.type.toString().replace("_", " ").lowercase().replaceFirstChar { it.uppercase() }
+                    }
                 }", 54
             )
             val backgroundz = ArrayList<BackgroundItem>()
@@ -45,7 +48,6 @@ data class RecipePage(val recipe: Recipe) {
                 backgroundz.add(BackgroundItem(StandardBackground, index))
             }
             val backgroundLayer = GUILayer(ArrayList(), backgroundz)
-            var isShaped = true
 
             val buttons = ArrayList<GUIButton>()
             val backs = ArrayList<BackgroundItem>()
@@ -96,14 +98,12 @@ data class RecipePage(val recipe: Recipe) {
             val l2buttons = ArrayList<GUIButton>()
             val l2backgrounds = ArrayList<BackgroundItem>()
 
-            var item = 0
-            for (line in craftingLines) {
+            for ((item, line) in craftingLines.withIndex()) {
                 try {
                     l2buttons.add(GUIButton(recipe.ingredientList[item], line, ::openRecipePageFor))
                 } catch (e: IndexOutOfBoundsException) {
                     l2backgrounds.add(BackgroundItem(ItemStack(Material.AIR), line))
                 }
-                item++
             }
 
             val layer2 = GUILayer(l2buttons, l2backgrounds)
