@@ -69,11 +69,33 @@ class Diamond : FullSet {
     }
 
     override fun createChestplate() {
-        TODO("Not yet implemented")
+        val factoryItem = BItemFactory.createRPGItem("Diamond Chestplate", Material.DIAMOND_CHESTPLATE)
+
+        factoryItem.stats = arrayListOf(1, 12, 1, 20, 10, 20)
+        factoryItem.rarity = Rarity.RARE
+
+        chestplate = BItemFactory.produceItem(factoryItem)
+        BItemFactory.register("diamondchestplate", chestplate)
+
+        val recipe = ShapedRecipe(chestplate)
+        recipe.shape("d d", "ddd", "ddd")
+        recipe.setIngredient('d', Material.DIAMOND)
+        Bukkit.addRecipe(recipe)
     }
 
     override fun createLeggings() {
-        TODO("Not yet implemented")
+        val factoryItem = BItemFactory.createRPGItem("Diamond Leggings", Material.DIAMOND_LEGGINGS)
+
+        factoryItem.stats = arrayListOf(1, 12, 1, 20, 10, 20)
+        factoryItem.rarity = Rarity.RARE
+
+        leggings = BItemFactory.produceItem(factoryItem)
+        BItemFactory.register("diamonnndpants", leggings)
+
+        val recipe = ShapedRecipe(leggings)
+        recipe.shape("ddd", "d d", "d d")
+        recipe.setIngredient('d', Material.DIAMOND)
+        Bukkit.addRecipe(recipe)
     }
 
     override fun createBoots() {

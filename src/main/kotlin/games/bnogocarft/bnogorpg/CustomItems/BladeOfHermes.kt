@@ -24,7 +24,7 @@ class BladeOfHermes {
         facItem.rarity = Rarity.EPIC
 
         blade = BItemFactory.produceItem(facItem)
-        BItemFactory.register("cactushelmet", blade)
+        BItemFactory.register("hermesblade", blade)
     }
 
 }
