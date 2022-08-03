@@ -1,5 +1,6 @@
 package games.bnogocarft.bnogorpg.Utils.BItemStack.BItems
 
+import games.bnogocarft.bnogorpg.CustomItems.BladeOfHermes
 import games.bnogocarft.bnogorpg.CustomItems.CactusArmor
 import games.bnogocarft.bnogorpg.CustomItems.DefaultItems.*
 import games.bnogocarft.bnogorpg.CustomItems.LapisArmor
@@ -61,7 +62,9 @@ enum class BMaterial {
     WOOD_AXE,
     WOOD_HOE,
     WOOD_PICKAXE,
-    WOOD_SHOVEL;
+    WOOD_SHOVEL,
+
+    BLADE_OF_HERMES;
 
     fun getDefaultMeta(): ItemMeta {
         /*Iron.helm.itemMeta
@@ -74,6 +77,8 @@ enum class BMaterial {
         Iron.pickaxe.itemMeta
         Iron.shovel.itemMeta*/
         return when (this) {
+            BLADE_OF_HERMES -> BladeOfHermes.blade.itemMeta
+
             CACTUS_HELMET -> CactusArmor.helm.itemMeta
             CACTUS_CHESTPLATE -> CactusArmor.chestplate.itemMeta
             CACTUS_LEGGINGS -> CactusArmor.leggings.itemMeta

@@ -49,6 +49,9 @@ class BItemFactory {
                 for (s in ability.getDescription()) lore.add(s)
                 lore.add("")
             }
+            lore.add("${ChatColor.BLUE}Enchantments:")
+            lore.add("")
+
 
             lore.add("${ChatColor.YELLOW}Level: ${ChatColor.GRAY}0")
             lore.add("${ChatColor.GREEN}EXP: ${ChatColor.GRAY}0/10")
@@ -58,7 +61,6 @@ class BItemFactory {
                 val armorMeta = meta as LeatherArmorMeta
                 armorMeta.color = item.armorColor
             }
-
 
             meta.lore = lore
             itemStack.itemMeta = meta

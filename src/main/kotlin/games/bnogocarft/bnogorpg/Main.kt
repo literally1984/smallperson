@@ -2,14 +2,12 @@ package games.bnogocarft.bnogorpg
 
 import com.comphenix.protocol.ProtocolLibrary
 import com.comphenix.protocol.ProtocolManager
+import games.bnogocarft.bnogorpg.CustomItems.BladeOfHermes
 import games.bnogocarft.bnogorpg.CustomItems.CactusArmor
 import games.bnogocarft.bnogorpg.CustomItems.DefaultItems.DefaultOverrider
 import games.bnogocarft.bnogorpg.CustomItems.LapisArmor
 import games.bnogocarft.bnogorpg.ItemUpgrade.UpgradeUtils
-import games.bnogocarft.bnogorpg.Listeners.DamageEvent
-import games.bnogocarft.bnogorpg.Listeners.HotbarChangeEvent
-import games.bnogocarft.bnogorpg.Listeners.PlayerJoinEvent
-import games.bnogocarft.bnogorpg.Listeners.PlayerLeaveEvent
+import games.bnogocarft.bnogorpg.Listeners.*
 import games.bnogocarft.bnogorpg.OtherCommands.GiveCommand
 import games.bnogocarft.bnogorpg.OtherCommands.PlayTimeCommand
 import games.bnogocarft.bnogorpg.OtherCommands.Reforge.ReforgeCommand
@@ -53,6 +51,7 @@ class Main : JavaPlugin() {
         server.pluginManager.registerEvents(PlayerLeaveEvent(), this)
         server.pluginManager.registerEvents(ArmorWearListeners(), this)
         server.pluginManager.registerEvents(DamageEvent(), this)
+        server.pluginManager.registerEvents(AbilityListeners(), this)
         cSender.sendMessage("$logo Registered Listeners")
 
         cSender.sendMessage("$logo Enabling ItemUpgrades...")
@@ -81,7 +80,8 @@ class Main : JavaPlugin() {
         cSender.sendMessage("$logo Registering custom ItemStacks...")
         CactusArmor()
         LapisArmor()
-        cSender.sendMessage("$logo Registered custm Items")
+        BladeOfHermes()
+        cSender.sendMessage("$logo Registered custom Items")
 
         cSender.sendMessage("$logo Enabling RecipeBook...")
         RecipeManager.registerRecipes(server.recipeIterator())
