@@ -1,11 +1,16 @@
 package games.bnogocarft.bnogorpg.RecipeBook
 
 import org.bukkit.Bukkit
+import org.bukkit.inventory.Inventory
 import org.bukkit.inventory.ItemStack
 
 class RecipeBook {
+    init {
+
+    }
     companion object {
         val pages = ArrayList<RecipePage>()
+        lateinit var frontPage: Inventory
 
         /**
          * Gets a [RecipePage] by an [ItemStack], can return null if there is no [RecipePage] associated with the [ItemStack]
@@ -23,4 +28,9 @@ class RecipeBook {
             return returnList
         }
     }
+
+    private fun createRecipeFrontPage() {
+
+    }
+
 }
