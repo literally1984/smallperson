@@ -15,6 +15,7 @@ import games.bnogocarft.bnogorpg.Planes.PlaneKeyItem
 import games.bnogocarft.bnogorpg.Planes.PlaneListeners
 import games.bnogocarft.bnogorpg.Planes.SteerListener
 import games.bnogocarft.bnogorpg.Planes.removeScheduler
+import games.bnogocarft.bnogorpg.PlayerBar.ComboCounter.ComboListener
 import games.bnogocarft.bnogorpg.RecipeBook.RecipeBookCommand
 import games.bnogocarft.bnogorpg.RecipeBook.RecipeManager
 import games.bnogocarft.bnogorpg.Utils.CustomEvents.ArmorWearListeners
@@ -52,6 +53,7 @@ class Main : JavaPlugin() {
         server.pluginManager.registerEvents(ArmorWearListeners(), this)
         server.pluginManager.registerEvents(DamageEvent(), this)
         server.pluginManager.registerEvents(AbilityListeners(), this)
+        server.pluginManager.registerEvents(ComboListener(), this)
         cSender.sendMessage("$logo Registered Listeners")
 
         cSender.sendMessage("$logo Enabling ItemUpgrades...")
@@ -100,6 +102,7 @@ class Main : JavaPlugin() {
         cSender.sendMessage("--------------------------------------------")
         cSender.sendMessage("--------------------------------------------")
         saveDefaultConfig()
+        System.gc()
     }
 
     override fun onDisable() {
@@ -116,5 +119,6 @@ class Main : JavaPlugin() {
     companion object {
         lateinit var protocolManager: ProtocolManager
         lateinit var instance: Plugin
+        var serverIp = "${ChatColor.RED}play.${ChatColor.BLUE}bnogocarft${ChatColor.DARK_GREEN}.games"
     }
 }

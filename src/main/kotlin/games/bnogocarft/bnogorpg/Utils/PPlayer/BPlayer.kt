@@ -1,5 +1,7 @@
 package games.bnogocarft.bnogorpg.Utils.PPlayer
 
+import games.bnogocarft.bnogorpg.PlayerBar.ComboCounter.Combo
+import games.bnogocarft.bnogorpg.PlayerBar.MainBar
 import games.bnogocarft.bnogorpg.Utils.Abilities.PlayerAbility.Ability
 import games.bnogocarft.bnogorpg.Utils.Abilities.PlayerAbility.AbilityUtils
 import games.bnogocarft.bnogorpg.Utils.Abilities.SetBonus
@@ -84,7 +86,10 @@ data class BPlayer(val player: Player) {
     var playTime: String
 
     val bar = BossBar(player)
-    val currentSetBonus = SetBonus.NONE
+    var mainBar = MainBar.SERVER_IP
+
+    var combo: Combo? = null
+    var currentSetBonus = SetBonus.NONE
 
     var meleeEXP: Long = 0
     var meleeLVL: Long

@@ -1,5 +1,6 @@
 package games.bnogocarft.bnogorpg.Listeners
 
+import games.bnogocarft.bnogorpg.Main
 import games.bnogocarft.bnogorpg.Planes.PlaneEntity
 import games.bnogocarft.bnogorpg.Planes.planeEntitites
 import games.bnogocarft.bnogorpg.Utils.BItemStack.BItems.BArmor
@@ -21,7 +22,7 @@ class PlayerJoinEvent : Listener {
         val bPlayer = BPlayer(e.player)
         val playerBar = bPlayer.bar
         playerBar.text =
-            "wss://${ChatColor.RED}play.${ChatColor.BLUE}bnogocarft${ChatColor.DARK_GREEN}.games"
+            Main.serverIp
         playerBar.health = 100
         playerBar.display()
         BPlayers.put(e.player, bPlayer)
