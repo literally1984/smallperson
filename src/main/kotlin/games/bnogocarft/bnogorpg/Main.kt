@@ -18,6 +18,7 @@ import games.bnogocarft.bnogorpg.Planes.removeScheduler
 import games.bnogocarft.bnogorpg.PlayerBar.ComboCounter.ComboListener
 import games.bnogocarft.bnogorpg.RecipeBook.RecipeBookCommand
 import games.bnogocarft.bnogorpg.RecipeBook.RecipeManager
+import games.bnogocarft.bnogorpg.Updater.Updates.Update
 import games.bnogocarft.bnogorpg.Utils.CustomEvents.ArmorWearListeners
 import games.bnogocarft.bnogorpg.Utils.GUIListeners
 import games.bnogocarft.bnogorpg.Utils.Inventories
@@ -120,5 +121,6 @@ class Main : JavaPlugin() {
         lateinit var protocolManager: ProtocolManager
         lateinit var instance: Plugin
         var serverIp = "${ChatColor.RED}play.${ChatColor.BLUE}bnogocarft${ChatColor.DARK_GREEN}.games"
+        val patch = Update.zerozerotwo
     }
 }

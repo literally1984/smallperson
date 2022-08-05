@@ -34,7 +34,19 @@ class Diamond : FullSet {
     }
 
     override fun createSword() {
-        TODO("Not yet implemented")
+        val factoryItem = BItemFactory.createRPGItem("Diamond Sword", Material.DIAMOND_SWORD)
+
+        factoryItem.stats = arrayListOf(1, 12, 1, 10, 10, 20)
+        factoryItem.rarity = Rarity.RARE
+
+        helm = BItemFactory.produceItem(factoryItem)
+        BItemFactory.register("diamondhelmet", helm)
+
+        val recipe = ShapedRecipe(helm)
+        recipe.shape(" d ", " d ", " s ")
+        recipe.setIngredient('d', Material.DIAMOND)
+        recipe.setIngredient('s', Material.STICK)
+        Bukkit.addRecipe(recipe)
     }
 
     override fun createHoe() {

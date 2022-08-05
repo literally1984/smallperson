@@ -15,3 +15,10 @@ class StringUtils {
         val Divine = "${ChatColor.BOLD}${ChatColor.AQUA}"
     }
 }
+fun encode(s: String): String {
+    return s.replace("", "§")
+}
+
+fun decode (s: String): String {
+    return s.replace("§", "")
+}
