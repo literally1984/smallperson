@@ -8,6 +8,7 @@ class RecipeBook {
     init {
 
     }
+
     companion object {
         val pages = ArrayList<RecipePage>()
         lateinit var frontPage: Inventory

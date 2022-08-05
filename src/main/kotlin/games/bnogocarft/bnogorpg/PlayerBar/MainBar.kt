@@ -15,6 +15,7 @@ enum class MainBar {
             FUEL_COUNTER -> "${ChatColor.GREEN}PLANE FUEL:"
         }
     }
+
     fun getHealth(): Int {
         return when (this) {
             SERVER_IP -> 100

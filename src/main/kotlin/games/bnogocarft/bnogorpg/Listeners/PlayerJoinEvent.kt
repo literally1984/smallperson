@@ -9,7 +9,6 @@ import games.bnogocarft.bnogorpg.Utils.BItemStack.BItems.BWeapon
 import games.bnogocarft.bnogorpg.Utils.PPlayer.BPlayer
 import games.bnogocarft.bnogorpg.Utils.PPlayer.BPlayers
 import org.bukkit.Bukkit
-import org.bukkit.ChatColor
 import org.bukkit.event.EventHandler
 import org.bukkit.event.EventPriority
 import org.bukkit.event.Listener

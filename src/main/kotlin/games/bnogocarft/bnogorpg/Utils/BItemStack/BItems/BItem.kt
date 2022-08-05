@@ -1,17 +1,22 @@
 package games.bnogocarft.bnogorpg.Utils.BItemStack.BItems
 
+import games.bnogocarft.bnogorpg.Updater.Updates.Update
 import games.bnogocarft.bnogorpg.Utils.BItemStack.Rarity.RarityUtils
 import games.bnogocarft.bnogorpg.Utils.EnchantUtils.BEnchantment
 import games.bnogocarft.bnogorpg.Utils.EnchantUtils.EnchantUtils
+import games.bnogocarft.bnogorpg.Utils.decode
 import org.bukkit.ChatColor
 import org.bukkit.inventory.ItemStack
 
 open class BItem(item: ItemStack) {
     val Enchants = ArrayList<BEnchantment>()
-    var exp: Long = 0
-    var level: Long = 0
     var bMaterial: BMaterial
-    var rarity = RarityUtils.getRarity(item.itemMeta.lore[item.itemMeta.lore.size - 1])
+    var lastUpdate: Update =
+        when (decode(item.itemMeta.lore[item.itemMeta.lore.size - 1].split(" ")[1])) {
+            "002" -> Update.zerozerotwo
+            else -> Update.zerozerotwo
+        }
+    var rarity = RarityUtils.getRarity(item.itemMeta.lore[item.itemMeta.lore.size - 1].split(" ")[0])
 
     private val lore = item.itemMeta.lore
 
@@ -27,11 +32,6 @@ open class BItem(item: ItemStack) {
                     }
                 }
                 continue
-            }
-
-            if (lore.contains("Level:")) {
-                level = clore.split(" ")[1].toLong()
-                exp = lore[lore.indexOf(clore) + 1].split(" ")[1].split("/")[0].toLong()
             }
         }
 

@@ -254,6 +254,7 @@ data class BPlayer(val player: Player) {
                     player.sendMessage("Your current melee EXP is $meleeEXP and you need ${getNeededEXP(meleeLVL)} to level up again!")
                 }
             }
+
             "spellcast" -> {
                 if (spellcastEXP >= getNeededEXP(spellcastLVL)) {
                     spellcastLVL++
@@ -268,6 +269,7 @@ data class BPlayer(val player: Player) {
                     )
                 }
             }
+
             "woodcutting" -> {
                 if (woodCuttingEXP >= getNeededEXP(woodCuttingLVL)) {
                     woodCuttingLVL++
@@ -282,6 +284,7 @@ data class BPlayer(val player: Player) {
                     )
                 }
             }
+
             "mining" -> {
                 if (miningEXP >= getNeededEXP(miningLVL)) {
                     miningLVL++
@@ -290,6 +293,7 @@ data class BPlayer(val player: Player) {
                     player.sendMessage("Your current mining EXP is $miningEXP and you need ${getNeededEXP(miningLVL)} to level up again!")
                 }
             }
+
             "combat" -> {
                 if (combatEXP >= getNeededEXP(combatLVL)) {
                     combatLVL++
@@ -298,6 +302,7 @@ data class BPlayer(val player: Player) {
                     player.sendMessage("Your current combat EXP is $combatEXP and you need ${getNeededEXP(combatLVL)} to level up again!")
                 }
             }
+
             "farming" -> {
                 if (farmingEXP >= getNeededEXP(farmingLVL)) {
                     farmingLVL++

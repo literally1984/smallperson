@@ -35,13 +35,22 @@ open class BGear(item: ItemStack) : BItem(item) {
     Rarity
      */
     var stats = ItemStat(item)
-    var reforge = Reforge.NONE //TODO
+    var reforge = Reforge.NONE
+    var exp: Long = 0
+    var level: Long = 0
 
     init {
         reforge = try {
             Reforge.valueOf(item.itemMeta.displayName.split(" ")[0])
         } catch (e: IllegalArgumentException) {
             Reforge.NONE
+        }
+        val clore = item.itemMeta.lore
+        for (lore in item.itemMeta.lore) {
+            if (lore.contains("Level:")) {
+                level = lore.split(" ")[1].toLong()
+                exp = clore[clore.indexOf(lore) + 1].split(" ")[1].split("/")[0].toLong()
+            }
         }
     }
 }

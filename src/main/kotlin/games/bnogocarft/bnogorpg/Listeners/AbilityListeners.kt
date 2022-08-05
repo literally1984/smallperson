@@ -7,9 +7,9 @@ import org.bukkit.event.EventPriority
 import org.bukkit.event.Listener
 import org.bukkit.event.player.PlayerInteractEvent
 
-class AbilityListeners : Listener{
+class AbilityListeners : Listener {
 
-    @EventHandler (priority = EventPriority.HIGHEST)
+    @EventHandler(priority = EventPriority.HIGHEST)
     fun onRightClick(e: PlayerInteractEvent) {
         if (e.player.itemInHand != null) {
             val itemInHand = e.player.itemInHand
@@ -23,7 +23,10 @@ class AbilityListeners : Listener{
                         val teleportdir = dir.multiply(4)
                         p.teleport(p.location.add(teleportdir))
                     }
-                    else -> {return}
+
+                    else -> {
+                        return
+                    }
                 }
             }
         }

@@ -42,6 +42,7 @@ class PlaneListeners : Listener {
                             plane.collect()
                             e.player.sendMessage("You collected your plane!")
                         }
+
                         coal -> {
                             plane.stats.currentFuel += 10
                             e.player.sendMessage("You added 10 fuel to your plane!")

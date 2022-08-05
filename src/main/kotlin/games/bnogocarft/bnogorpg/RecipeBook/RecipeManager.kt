@@ -54,7 +54,8 @@ class RecipeManager {
                 if (currentRecipe.result.type.toString().lowercase().contains("helmet") ||
                     currentRecipe.result.type.toString().lowercase().contains("chestplate") ||
                     currentRecipe.result.type.toString().lowercase().contains("leggings") ||
-                    currentRecipe.result.type.toString().lowercase().contains("boots")) {
+                    currentRecipe.result.type.toString().lowercase().contains("boots")
+                ) {
                     armorItems.add(currentRecipe.result)
                 } else if (currentRecipe.result.hasItemMeta()) {
                     if (BItemUtils.getBType(currentRecipe.result) != null) {
