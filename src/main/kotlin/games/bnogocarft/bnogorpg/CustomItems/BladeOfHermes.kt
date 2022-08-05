@@ -16,7 +16,7 @@ class BladeOfHermes {
     }
 
     private fun createBlade() {
-        val facItem = BItemFactory.createRPGItem("Blade of Hermes", Material.DIAMOND_SWORD)
+        val facItem = BItemFactory.createBGearItem("Blade of Hermes", Material.DIAMOND_SWORD)
 
         val ability = ItemAbility.QuickDash
         facItem.abilities.add(ability)

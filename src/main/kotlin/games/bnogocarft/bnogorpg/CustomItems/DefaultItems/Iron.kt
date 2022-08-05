@@ -54,7 +54,7 @@ class Iron : FullSet {
     }
 
     override fun createHelmet() {
-        val factoryItem = BItemFactory.createRPGItem("Iron Helmet", Material.IRON_HELMET)
+        val factoryItem = BItemFactory.createBGearItem("Iron Helmet", Material.IRON_HELMET)
 
         factoryItem.stats = arrayListOf(0, 18, 0, 15, 7, 15)
         factoryItem.rarity = Rarity.UNCOMMON

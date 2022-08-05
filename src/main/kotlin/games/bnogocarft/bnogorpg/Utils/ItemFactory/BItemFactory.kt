@@ -15,11 +15,11 @@ class BItemFactory {
             customItemMap[name] = Item
         }
 
-        fun createRPGItem(displayName: String, mat: Material): FactoryItem {
+        fun createBGearItem(displayName: String, mat: Material): FactoryItem {
             return FactoryItem(displayName, mat)
         }
 
-        fun produceItem(item: FactoryItem): ItemStack { // Dont even try to understand this shit lmao
+        fun produceItem(item: FactoryItem): ItemStack { // Don't even try to understand this shit lmao
             val itemStack = ItemStack(item.mat)
             val meta = Bukkit.getItemFactory().getItemMeta(item.mat)
             meta.displayName = item.name

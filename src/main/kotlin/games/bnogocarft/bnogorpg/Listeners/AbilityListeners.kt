@@ -5,6 +5,7 @@ import games.bnogocarft.bnogorpg.Utils.BItemStack.BItems.BMaterial
 import org.bukkit.event.EventHandler
 import org.bukkit.event.EventPriority
 import org.bukkit.event.Listener
+import org.bukkit.event.player.PlayerFishEvent
 import org.bukkit.event.player.PlayerInteractEvent
 
 class AbilityListeners : Listener {
@@ -28,6 +29,20 @@ class AbilityListeners : Listener {
                         return
                     }
                 }
+            }
+        }
+    }
+
+    @EventHandler (priority = EventPriority.HIGHEST)
+    fun onGrapple(event: PlayerFishEvent) {
+        val item = event.player.itemInHand
+        if (item.itemMeta == null) return
+
+        if (BMaterial.valueOf(item.itemMeta.displayName) == BMaterial.GRAPPLING_HOOK) {
+            if (event.state == PlayerFishEvent.State.FAILED_ATTEMPT) {
+                val hookLoc = event.hook.location
+                val velo = hookLoc.toVector().subtract(event.player.location.toVector())
+                event.player.velocity = velo
             }
         }
     }

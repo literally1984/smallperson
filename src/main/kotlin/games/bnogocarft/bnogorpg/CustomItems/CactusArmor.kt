@@ -24,7 +24,7 @@ class CactusArmor : ArmorSet {
     }
 
     override fun createHelmet() {
-        val factoryItem = BItemFactory.createRPGItem("Cactus Helmet", Material.LEATHER_HELMET)
+        val factoryItem = BItemFactory.createBGearItem("Cactus Helmet", Material.LEATHER_HELMET)
 
         val ability = ItemAbility.CactusSet
         factoryItem.abilities.add(ability)
@@ -37,7 +37,7 @@ class CactusArmor : ArmorSet {
     }
 
     override fun createChestplate() {
-        val factoryItem = BItemFactory.createRPGItem("Cactus Chestplate", Material.LEATHER_CHESTPLATE)
+        val factoryItem = BItemFactory.createBGearItem("Cactus Chestplate", Material.LEATHER_CHESTPLATE)
 
         val ability = ItemAbility.CactusSet
         factoryItem.abilities.add(ability)
@@ -50,7 +50,7 @@ class CactusArmor : ArmorSet {
     }
 
     override fun createLeggings() {
-        val factoryItem = BItemFactory.createRPGItem("Cactus Leggings", Material.LEATHER_LEGGINGS)
+        val factoryItem = BItemFactory.createBGearItem("Cactus Leggings", Material.LEATHER_LEGGINGS)
 
         val ability = ItemAbility.CactusSet
         factoryItem.abilities.add(ability)
@@ -63,7 +63,7 @@ class CactusArmor : ArmorSet {
     }
 
     override fun createBoots() {
-        val factoryItem = BItemFactory.createRPGItem("Cactus Boots", Material.LEATHER_BOOTS)
+        val factoryItem = BItemFactory.createBGearItem("Cactus Boots", Material.LEATHER_BOOTS)
 
         val ability = ItemAbility.CactusSet
         factoryItem.abilities.add(ability)

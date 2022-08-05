@@ -24,7 +24,7 @@ class LapisArmor : ArmorSet {
     }
 
     override fun createHelmet() {
-        val factoryItem = BItemFactory.createRPGItem("Lapis Helmet", Material.LEATHER_HELMET)
+        val factoryItem = BItemFactory.createBGearItem("Lapis Helmet", Material.LEATHER_HELMET)
 
         val ability = ItemAbility.LapisSet
         factoryItem.abilities.add(ability)
@@ -37,7 +37,7 @@ class LapisArmor : ArmorSet {
     }
 
     override fun createChestplate() {
-        val factoryItem = BItemFactory.createRPGItem("Lapis Chestplate", Material.LEATHER_CHESTPLATE)
+        val factoryItem = BItemFactory.createBGearItem("Lapis Chestplate", Material.LEATHER_CHESTPLATE)
 
         val ability = ItemAbility.LapisSet
         factoryItem.abilities.add(ability)
@@ -50,7 +50,7 @@ class LapisArmor : ArmorSet {
     }
 
     override fun createLeggings() {
-        val factoryItem = BItemFactory.createRPGItem("Lapis Leggings", Material.LEATHER_LEGGINGS)
+        val factoryItem = BItemFactory.createBGearItem("Lapis Leggings", Material.LEATHER_LEGGINGS)
 
         val ability = ItemAbility.LapisSet
         factoryItem.abilities.add(ability)
@@ -63,7 +63,7 @@ class LapisArmor : ArmorSet {
     }
 
     override fun createBoots() {
-        val factoryItem = BItemFactory.createRPGItem("Lapis Boots", Material.LEATHER_BOOTS)
+        val factoryItem = BItemFactory.createBGearItem("Lapis Boots", Material.LEATHER_BOOTS)
 
         val ability = ItemAbility.LapisSet
         factoryItem.abilities.add(ability)
