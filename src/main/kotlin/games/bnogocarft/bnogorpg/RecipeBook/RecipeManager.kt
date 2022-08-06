@@ -3,6 +3,7 @@ package games.bnogocarft.bnogorpg.RecipeBook
 import games.bnogocarft.bnogorpg.Utils.BItemStack.BItems.BItemUtils
 import games.bnogocarft.bnogorpg.Utils.OpenGUI
 import games.bnogocarft.bnogorpg.Utils.changeInventoryTo
+import org.bukkit.Bukkit
 import org.bukkit.ChatColor
 import org.bukkit.enchantments.Enchantment
 import org.bukkit.inventory.ItemStack
@@ -71,7 +72,7 @@ class RecipeManager {
                 pageMap[currentRecipe] = recipePage // Adds to the recipe map
 
 
-                textRecipeMap[currentRecipe.result.type.toString().lowercase()] =
+                textRecipeMap[Bukkit.getItemFactory().getItemMeta(currentRecipe.result.type).displayName.replace(" ", "_")] =
                     currentRecipe
             }
         }

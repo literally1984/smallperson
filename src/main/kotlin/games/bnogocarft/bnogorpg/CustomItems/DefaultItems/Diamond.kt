@@ -39,10 +39,10 @@ class Diamond : FullSet {
         factoryItem.stats = arrayListOf(1, 12, 1, 10, 10, 20)
         factoryItem.rarity = Rarity.RARE
 
-        helm = BItemFactory.produceItem(factoryItem)
-        BItemFactory.register("diamondhelmet", helm)
+        sword = BItemFactory.produceItem(factoryItem)
+        BItemFactory.register("diamondsword", sword)
 
-        val recipe = ShapedRecipe(helm)
+        val recipe = ShapedRecipe(sword)
         recipe.shape(" d ", " d ", " s ")
         recipe.setIngredient('d', Material.DIAMOND)
         recipe.setIngredient('s', Material.STICK)
@@ -50,19 +50,39 @@ class Diamond : FullSet {
     }
 
     override fun createHoe() {
-        TODO("Not yet implemented")
+        val hoe = ItemStack(Material.DIAMOND_HOE)
+        val recipe = ShapedRecipe(hoe)
+        recipe.shape("dd ", " s ", " s ")
+        recipe.setIngredient('d', Material.DIAMOND)
+        recipe.setIngredient('s', Material.STICK)
+        Bukkit.addRecipe(recipe)
     }
 
     override fun createPickaxe() {
-        TODO("Not yet implemented")
+        val pick = ItemStack(Material.DIAMOND_PICKAXE)
+        val recipe = ShapedRecipe(pick)
+        recipe.shape("ddd", " s ", " s ")
+        recipe.setIngredient('d', Material.DIAMOND)
+        recipe.setIngredient('s', Material.STICK)
+        Bukkit.addRecipe(recipe)
     }
 
     override fun createAxe() {
-        TODO("Not yet implemented")
+        val axe = ItemStack(Material.DIAMOND_AXE)
+        val recipe = ShapedRecipe(axe)
+        recipe.shape(" dd", " sd", " s ")
+        recipe.setIngredient('d', Material.DIAMOND)
+        recipe.setIngredient('s', Material.STICK)
+        Bukkit.addRecipe(recipe)
     }
 
     override fun createShovel() {
-        TODO("Not yet implemented")
+        val shovel = ItemStack(Material.DIAMOND_SPADE)
+        val recipe = ShapedRecipe(shovel)
+        recipe.shape(" d ", " s ", " s ")
+        recipe.setIngredient('d', Material.DIAMOND)
+        recipe.setIngredient('s', Material.STICK)
+        Bukkit.addRecipe(recipe)
     }
 
     override fun createHelmet() {
@@ -116,10 +136,10 @@ class Diamond : FullSet {
         factoryItem.stats = arrayListOf(0, 11, 0, 9, 8, 16)
         factoryItem.rarity = Rarity.RARE
 
-        leggings = BItemFactory.produceItem(factoryItem)
+        boots = BItemFactory.produceItem(factoryItem)
         BItemFactory.register("diamonnndboots", leggings)
 
-        val recipe = ShapedRecipe(leggings)
+        val recipe = ShapedRecipe(boots)
         recipe.shape("   ", "d d", "d d")
         recipe.setIngredient('d', Material.DIAMOND)
         Bukkit.addRecipe(recipe)

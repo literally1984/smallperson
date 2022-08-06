@@ -34,49 +34,114 @@ class Iron : FullSet {
     }
 
     override fun createSword() {
-        TODO("Not yet implemented")
+        val factoryItem = BItemFactory.createBGearItem("Iron Sword", Material.IRON_SWORD)
+
+        factoryItem.stats = arrayListOf(1, 12, 1, 10, 10, 20)
+        factoryItem.rarity = Rarity.RARE
+
+        sword = BItemFactory.produceItem(factoryItem)
+        BItemFactory.register("diamondsword", sword)
+
+        val recipe = ShapedRecipe(sword)
+        recipe.shape(" d ", " d ", " s ")
+        recipe.setIngredient('d', Material.IRON_INGOT)
+        recipe.setIngredient('s', Material.STICK)
+        Bukkit.addRecipe(recipe)
     }
 
     override fun createHoe() {
-        TODO("Not yet implemented")
+        val hoe = ItemStack(Material.IRON_HOE)
+        val recipe = ShapedRecipe(hoe)
+        recipe.shape("dd ", " s ", " s ")
+        recipe.setIngredient('d', Material.IRON_INGOT)
+        recipe.setIngredient('s', Material.STICK)
+        Bukkit.addRecipe(recipe)
     }
 
     override fun createPickaxe() {
-        TODO("Not yet implemented")
+        val pick = ItemStack(Material.IRON_PICKAXE)
+        val recipe = ShapedRecipe(pick)
+        recipe.shape("ddd", " s ", " s ")
+        recipe.setIngredient('d', Material.IRON_INGOT)
+        recipe.setIngredient('s', Material.STICK)
+        Bukkit.addRecipe(recipe)
     }
 
     override fun createAxe() {
-        TODO("Not yet implemented")
+        val axe = ItemStack(Material.IRON_AXE)
+        val recipe = ShapedRecipe(axe)
+        recipe.shape(" dd", " sd", " s ")
+        recipe.setIngredient('d', Material.IRON_INGOT)
+        recipe.setIngredient('s', Material.STICK)
+        Bukkit.addRecipe(recipe)
     }
 
     override fun createShovel() {
-        TODO("Not yet implemented")
+        val shovel = ItemStack(Material.IRON_SPADE)
+        val recipe = ShapedRecipe(shovel)
+        recipe.shape(" d ", " s ", " s ")
+        recipe.setIngredient('d', Material.IRON_INGOT)
+        recipe.setIngredient('s', Material.STICK)
+        Bukkit.addRecipe(recipe)
     }
 
     override fun createHelmet() {
         val factoryItem = BItemFactory.createBGearItem("Iron Helmet", Material.IRON_HELMET)
 
-        factoryItem.stats = arrayListOf(0, 18, 0, 15, 7, 15)
-        factoryItem.rarity = Rarity.UNCOMMON
+        factoryItem.stats = arrayListOf(1, 12, 1, 10, 10, 20)
+        factoryItem.rarity = Rarity.RARE
 
         helm = BItemFactory.produceItem(factoryItem)
-        BItemFactory.register("ironhelmet", helm)
+        BItemFactory.register("diamondhelmet", helm)
 
         val recipe = ShapedRecipe(helm)
-        recipe.shape("iii", "i i", "   ")
-        recipe.setIngredient('i', Material.IRON_INGOT)
+        recipe.shape("ddd", "d d", "   ")
+        recipe.setIngredient('d', Material.IRON_INGOT)
         Bukkit.addRecipe(recipe)
     }
 
     override fun createChestplate() {
-        TODO("Not yet implemented")
+        val factoryItem = BItemFactory.createBGearItem("Iron Chestplate", Material.IRON_CHESTPLATE)
+
+        factoryItem.stats = arrayListOf(3, 24, 2, 22, 30, 40)
+        factoryItem.rarity = Rarity.RARE
+
+        chestplate = BItemFactory.produceItem(factoryItem)
+        BItemFactory.register("diamondchestplate", chestplate)
+
+        val recipe = ShapedRecipe(chestplate)
+        recipe.shape("d d", "ddd", "ddd")
+        recipe.setIngredient('d', Material.IRON_INGOT)
+        Bukkit.addRecipe(recipe)
     }
 
     override fun createLeggings() {
-        TODO("Not yet implemented")
+        val factoryItem = BItemFactory.createBGearItem("Iron Leggings", Material.IRON_LEGGINGS)
+
+        factoryItem.stats = arrayListOf(2, 19, 1, 17, 20, 30)
+        factoryItem.rarity = Rarity.RARE
+
+        leggings = BItemFactory.produceItem(factoryItem)
+        BItemFactory.register("diamonnndpants", leggings)
+
+        val recipe = ShapedRecipe(leggings)
+        recipe.shape("ddd", "d d", "d d")
+        recipe.setIngredient('d', Material.IRON_INGOT)
+        Bukkit.addRecipe(recipe)
     }
 
     override fun createBoots() {
-        TODO("Not yet implemented")
+        val factoryItem = BItemFactory.createBGearItem("Iron Boots", Material.IRON_BOOTS)
+
+        factoryItem.stats = arrayListOf(0, 11, 0, 9, 8, 16)
+        factoryItem.rarity = Rarity.RARE
+
+        boots = BItemFactory.produceItem(factoryItem)
+        BItemFactory.register("diamondboots", leggings)
+
+        val recipe = ShapedRecipe(boots)
+        recipe.shape("   ", "d d", "d d")
+        recipe.setIngredient('d', Material.IRON_INGOT)
+        Bukkit.addRecipe(recipe)
     }
 }

@@ -5,6 +5,7 @@ import com.comphenix.protocol.ProtocolManager
 import games.bnogocarft.bnogorpg.CustomItems.BladeOfHermes
 import games.bnogocarft.bnogorpg.CustomItems.CactusArmor
 import games.bnogocarft.bnogorpg.CustomItems.DefaultItems.DefaultOverrider
+import games.bnogocarft.bnogorpg.CustomItems.GrapplerItem
 import games.bnogocarft.bnogorpg.CustomItems.LapisArmor
 import games.bnogocarft.bnogorpg.ItemUpgrade.UpgradeUtils
 import games.bnogocarft.bnogorpg.Listeners.*
@@ -84,6 +85,7 @@ class Main : JavaPlugin() {
         CactusArmor()
         LapisArmor()
         BladeOfHermes()
+        GrapplerItem()
         cSender.sendMessage("$logo Registered custom Items")
 
         cSender.sendMessage("$logo Enabling RecipeBook...")
