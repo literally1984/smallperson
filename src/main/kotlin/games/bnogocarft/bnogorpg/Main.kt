@@ -56,6 +56,7 @@ class Main : JavaPlugin() {
         server.pluginManager.registerEvents(DamageEvent(), this)
         server.pluginManager.registerEvents(AbilityListeners(), this)
         server.pluginManager.registerEvents(ComboListener(), this)
+        server.pluginManager.registerEvents(ChatListeners(), this)
         cSender.sendMessage("$logo Registered Listeners")
 
         cSender.sendMessage("$logo Enabling ItemUpgrades...")
