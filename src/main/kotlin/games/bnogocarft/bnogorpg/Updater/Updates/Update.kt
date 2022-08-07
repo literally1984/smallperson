@@ -1,7 +1,6 @@
 package games.bnogocarft.bnogorpg.Updater.Updates
 
-import games.bnogocarft.bnogorpg.Updater.Change
-import games.bnogocarft.bnogorpg.Utils.BItemStack.BItems.BMaterial
+import games.bnogocarft.bnogorpg.Updater.Change.Change
 
 enum class Update {
     zerozerotwo;
@@ -15,9 +14,7 @@ enum class Update {
     fun getChanges(): List<Change> {
         when (this) {
             zerozerotwo -> {
-                val changes = ArrayList<Change>()
-                changes.add(Change(BMaterial.CACTUS_HELMET, "dmg +2||def -1", this))
-                return changes
+                return ArrayList()
             }
         }
     }

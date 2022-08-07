@@ -53,4 +53,60 @@ open class BGear(item: ItemStack) : BItem(item) {
             }
         }
     }
+    fun applyChange(unsplitChanges: String) {
+        val changes = unsplitChanges.split("||")
+        for (change in changes) {
+            val adjustment = change.split(" ")
+
+            when (adjustment[0]) {
+                "dmg" -> {
+                    if (adjustment[1] == "+") {
+                        stats.damage += adjustment[2].toInt()
+                    } else {
+                        stats.damage -= adjustment[2].toInt()
+                    }
+                }
+
+                "def" -> {
+                    if (adjustment[1] == "+") {
+                        stats.defense += adjustment[2].toInt()
+                    } else {
+                        stats.defense -= adjustment[2].toInt()
+                    }
+                }
+
+                "mdmg" -> {
+                    if (adjustment[1] == "+") {
+                        stats.magicDmg += adjustment[2].toInt()
+                    } else {
+                        stats.magicDmg -= adjustment[2].toInt()
+                    }
+                }
+
+                "mdef" -> {
+                    if (adjustment[1] == "+") {
+                        stats.magicDef += adjustment[2].toInt()
+                    } else {
+                        stats.magicDef -= adjustment[2].toInt()
+                    }
+                }
+
+                "mana" -> {
+                    if (adjustment[1] == "+") {
+                        stats.mana += adjustment[2].toInt()
+                    } else {
+                        stats.mana -= adjustment[2].toInt()
+                    }
+                }
+
+                "stam" -> {
+                    if (adjustment[1] == "+") {
+                        stats.stamina += adjustment[2].toInt()
+                    } else {
+                        stats.stamina -= adjustment[2].toInt()
+                    }
+                }
+            }
+        }
+    }
 }
