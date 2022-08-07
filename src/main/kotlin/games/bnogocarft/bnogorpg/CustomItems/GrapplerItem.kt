@@ -9,9 +9,11 @@ class GrapplerItem {
     companion object {
         lateinit var grapple: ItemStack
     }
+
     init {
         createGrapple()
     }
+
     fun createGrapple() {
         val item = ItemStack(Material.FISHING_ROD)
         val meta = Bukkit.getItemFactory().getItemMeta(Material.FISHING_ROD)

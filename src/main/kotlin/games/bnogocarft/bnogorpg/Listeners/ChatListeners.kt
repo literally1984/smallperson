@@ -12,16 +12,20 @@ class ChatListeners : Listener {
     fun onChat(event: AsyncPlayerChatEvent) {
         val player = event.player
         if (player.hasPermission("bnogorpg.chat.admin")) {
-            event.format = "${ChatColor.DARK_GRAY}[${ChatColor.DARK_RED}Admin${ChatColor.DARK_GRAY}] ${ChatColor.WHITE}${player.name}► ${event.message}"
+            event.format =
+                "${ChatColor.DARK_GRAY}[${ChatColor.DARK_RED}Admin${ChatColor.DARK_GRAY}] ${ChatColor.WHITE}${player.name}► ${event.message}"
             return
         }
         if (player.hasPermission("bnogorpg.chat.mod")) {
-            event.format = "${ChatColor.DARK_GRAY}[${ChatColor.GOLD}Mod${ChatColor.DARK_GRAY}] ${ChatColor.WHITE}${player.name}► ${event.message}"
+            event.format =
+                "${ChatColor.DARK_GRAY}[${ChatColor.GOLD}Mod${ChatColor.DARK_GRAY}] ${ChatColor.WHITE}${player.name}► ${event.message}"
         }
         if (player.hasPermission("bnogorpg.chat.helper")) {
-            event.format = "${ChatColor.GRAY}[${ChatColor.BLUE}Helper${ChatColor.GRAY}] ${ChatColor.WHITE}${UPlayer.get(player).faction.name} ${ChatColor.GRAY}${player.name}► ${event.message}"
+            event.format =
+                "${ChatColor.GRAY}[${ChatColor.BLUE}Helper${ChatColor.GRAY}] ${ChatColor.WHITE}${UPlayer.get(player).faction.name} ${ChatColor.GRAY}${player.name}► ${event.message}"
         } else {
-            event.format = "${ChatColor.WHITE}${UPlayer.get(player).faction.name} ${ChatColor.GRAY}${player.name}► ${event.message}"
+            event.format =
+                "${ChatColor.WHITE}${UPlayer.get(player).faction.name} ${ChatColor.GRAY}${player.name}► ${event.message}"
         }
 
     }

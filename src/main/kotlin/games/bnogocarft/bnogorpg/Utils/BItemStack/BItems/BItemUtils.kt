@@ -9,7 +9,6 @@ class BItemUtils {
         private var BWeapons: HashMap<ItemStack, BWeapon> = HashMap()
         private var BArmor: HashMap<ItemStack, BArmor> = HashMap()
         private var BGears: HashMap<ItemStack, BGear> = HashMap()
-        // TODO Make a BAxe class
 
         fun getBType(item: ItemStack): String? {
             if (item.itemMeta != null && item.itemMeta.displayName != null) {

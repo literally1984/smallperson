@@ -6,7 +6,6 @@ import org.bukkit.command.CommandSender
 import org.bukkit.entity.Player
 
 class RecipeBookCommand : CommandExecutor {
-    //TODO: register in Main class
     override fun onCommand(sender: CommandSender, cmd: Command, label: String?, args: Array<out String>?): Boolean {
         // Player Checker
         if (sender !is Player) {

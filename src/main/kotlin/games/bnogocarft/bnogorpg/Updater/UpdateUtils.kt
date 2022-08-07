@@ -7,6 +7,7 @@ import games.bnogocarft.bnogorpg.Utils.BItemStack.BItems.BItemUtils
 import org.bukkit.inventory.ItemStack
 
 val updates = arrayListOf(Update.zerozerotwo)
+
 class UpdateUtils {
     companion object {
         fun update(item: ItemStack) {

@@ -33,7 +33,7 @@ class AbilityListeners : Listener {
         }
     }
 
-    @EventHandler (priority = EventPriority.HIGHEST)
+    @EventHandler(priority = EventPriority.HIGHEST)
     fun onGrapple(event: PlayerFishEvent) {
         val item = event.player.itemInHand
         if (item.itemMeta == null) return

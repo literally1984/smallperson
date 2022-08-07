@@ -36,7 +36,6 @@ fun switchToPage(gui: OpenGUI) {
         gui.inv.getItem(gui.slot).addUnsafeEnchantment(Enchantment.DURABILITY, 10)
     }
     for ((index0, index) in (8..44).withIndex()) {
-        TODO("implement page switching")
         gui.inv.setItem(index, RecipeManager.armorItems[index0])
     }
 }
@@ -72,7 +71,10 @@ class RecipeManager {
                 pageMap[currentRecipe] = recipePage // Adds to the recipe map
 
 
-                textRecipeMap[Bukkit.getItemFactory().getItemMeta(currentRecipe.result.type).displayName.replace(" ", "_")] =
+                textRecipeMap[Bukkit.getItemFactory().getItemMeta(currentRecipe.result.type).displayName.replace(
+                    " ",
+                    "_"
+                )] =
                     currentRecipe
             }
         }

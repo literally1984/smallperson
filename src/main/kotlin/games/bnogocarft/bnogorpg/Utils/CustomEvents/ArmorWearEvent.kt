@@ -1,5 +1,6 @@
 package games.bnogocarft.bnogorpg.Utils.CustomEvents
 
+import games.bnogocarft.bnogorpg.Utils.BItemStack.BItems.BItemUtils
 import org.bukkit.Bukkit
 import org.bukkit.entity.Player
 import org.bukkit.event.*
@@ -23,22 +24,15 @@ class ArmorWearListeners : Listener {
             // Checks to see if the Clicked slot is an armor slot
             for (slot in ArmorSlots) {
                 if (e.slot == slot) {
-                    lateinit var type: String
-                    if (DropItemType.contains("helmet")) {
-                        type = "helmet"
-                    }
-                    if (DropItemType.contains("chestplate")) {
-                        type = "chestplate"
-                    }
-                    if (DropItemType.contains("leggings")) {
-                        type = "leggings"
-                    }
-                    type = if (DropItemType.contains("boots")) {
-                        "boots"
-                    } else {
-                        return
-                    }
-                    // TODO: search up how to use contains with a when statement
+
+                    val type: String =
+                        if (DropItemType.contains("boots")) "boots"
+                        else if (DropItemType.contains("leggings")) "leggings"
+                        else if (DropItemType.contains("leggings")) "leggings"
+                        else if (DropItemType.contains("chestplate")) "chestplate"
+                        else if (DropItemType.contains("helmet")) "helmet"
+                        else return
+
                     val a = ArmorWearEvent(p, DropItem, "drop", type)
                     Bukkit.getPluginManager().callEvent(a)
                     if (a.isCancelled) {
@@ -52,21 +46,13 @@ class ArmorWearListeners : Listener {
             if (!(ArmorSlots.contains(e.slot))) {
                 if (e.whoClicked.inventory.armorContents.contains(null)) {
                     val clickedSlotItem = e.inventory.getItem(e.slot).itemMeta.displayName.lowercase()
-                    lateinit var Type: String
-                    if (clickedSlotItem.contains("helmet")) {
-                        Type = "helmet"
-                    }
-                    if (clickedSlotItem.contains("chestplate")) {
-                        Type = "chestplate"
-                    }
-                    if (clickedSlotItem.contains("leggings")) {
-                        Type = "leggings"
-                    }
-                    Type = if (clickedSlotItem.contains("boots")) {
-                        "boots"
-                    } else {
-                        return
-                    }
+
+                    val Type =
+                        if (clickedSlotItem.contains("helmet")) "helmet"
+                        else if (clickedSlotItem.contains("chestplate")) "chestplate"
+                        else if (clickedSlotItem.contains("leggings")) "leggings"
+                        else if (clickedSlotItem.contains("boots")) "boots"
+                        else return
 
                     val clickedItemStack = e.inventory.getItem(e.slot)
                     val armorEvent = ArmorWearEvent(p, clickedItemStack, "shift_left", Type)
@@ -87,10 +73,21 @@ class ArmorWearListeners : Listener {
                 if (item == null) {
                     nullSlots.add(ArmorSlots[indexOfArmor])
                 }
-                //TODO: Add a function that returns the armor slot of an armor piece
+                TODO("figure o0ut what i was tryna do here")
             }
         }
     }
+}
+
+fun getArmorSlot(itemStack: ItemStack): Int {
+    if (BItemUtils.getBType(itemStack) == "armor") {
+        val itemName = itemStack.itemMeta.displayName
+        if (itemName.contains("helmet")) return 1
+        if (itemName.contains("chestplate")) return 2
+        if (itemName.contains("leggings")) return 3
+        if (itemName.contains("boots")) return 4
+    }
+    return -1
 }
 
 
