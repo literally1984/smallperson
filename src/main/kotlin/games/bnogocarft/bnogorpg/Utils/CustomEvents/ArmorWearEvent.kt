@@ -12,28 +12,28 @@ import org.bukkit.inventory.ItemStack
 
 
 class ArmorWearListeners : Listener {
-    val ArmorSlots = intArrayOf(5, 6, 7, 8)
+    val armorSlots = intArrayOf(5, 6, 7, 8)
 
     @EventHandler(priority = EventPriority.LOW)
     fun onArmorWearByInventoryClick(e: InventoryClickEvent) {
         val p = e.whoClicked as Player
         if (e.click == ClickType.DROP) {
-            val DropItem = e.currentItem
-            val DropItemType = DropItem.type.toString().lowercase()
+            val dropItem = e.currentItem
+            val dropItemType = dropItem.type.toString().lowercase()
 
             // Checks to see if the Clicked slot is an armor slot
-            for (slot in ArmorSlots) {
+            for (slot in armorSlots) {
                 if (e.slot == slot) {
 
                     val type: String =
-                        if (DropItemType.contains("boots")) "boots"
-                        else if (DropItemType.contains("leggings")) "leggings"
-                        else if (DropItemType.contains("leggings")) "leggings"
-                        else if (DropItemType.contains("chestplate")) "chestplate"
-                        else if (DropItemType.contains("helmet")) "helmet"
+                        if (dropItemType.contains("boots")) "boots"
+                        else if (dropItemType.contains("leggings")) "leggings"
+                        else if (dropItemType.contains("leggings")) "leggings"
+                        else if (dropItemType.contains("chestplate")) "chestplate"
+                        else if (dropItemType.contains("helmet")) "helmet"
                         else return
 
-                    val a = ArmorWearEvent(p, DropItem, "drop", type)
+                    val a = ArmorWearEvent(p, dropItem, "drop", type)
                     Bukkit.getPluginManager().callEvent(a)
                     if (a.isCancelled) {
                         e.isCancelled = true
@@ -43,7 +43,7 @@ class ArmorWearListeners : Listener {
         }
         // Handler for when the player shifts clicks in their inventory while not having armor on
         if (e.click == ClickType.SHIFT_LEFT) {
-            if (!(ArmorSlots.contains(e.slot))) {
+            if (!(armorSlots.contains(e.slot))) {
                 if (e.whoClicked.inventory.armorContents.contains(null)) {
                     val clickedSlotItem = e.inventory.getItem(e.slot).itemMeta.displayName.lowercase()
 
@@ -65,15 +65,33 @@ class ArmorWearListeners : Listener {
     }
 
     @EventHandler(priority = EventPriority.LOW)
-    fun OnArmorWearByRightClick(e: PlayerInteractEvent) {
-        if (e.action == Action.RIGHT_CLICK_AIR || e.action == Action.RIGHT_CLICK_BLOCK) {
-            val nullSlots = ArrayList<Int>()
+    fun onArmorWearByRightClick(e: PlayerInteractEvent) {
+        if (e.player.itemInHand != null && BItemUtils.getBType(e.player.itemInHand).equals("armor")) {
+            val item = e.player.itemInHand
+            if (e.action == Action.RIGHT_CLICK_AIR || e.action == Action.RIGHT_CLICK_BLOCK) {
+                // Gets the slots in the players armor inventory that are empty
+                val nullSlots = ArrayList<Int>()
 
-            for ((indexOfArmor, item) in e.player.inventory.armorContents.withIndex()) {
-                if (item == null) {
-                    nullSlots.add(ArmorSlots[indexOfArmor])
+                for ((indexOfArmor, Citem) in e.player.inventory.armorContents.withIndex()) {
+                    if (Citem == null) {
+                        nullSlots.add(armorSlots[indexOfArmor])
+                    }
                 }
-                TODO("figure o0ut what i was tryna do here")
+                val Type =
+                    if (item.itemMeta.displayName.contains("helmet")) "helmet"
+                    else if (item.itemMeta.displayName.contains("chestplate")) "chestplate"
+                    else if (item.itemMeta.displayName.contains("leggings")) "leggings"
+                    else if (item.itemMeta.displayName.contains("boots")) "boots"
+                    else return
+
+                for (slot in nullSlots) {
+                    if (getArmorSlot(item) == slot) {
+                        val armorEvent = ArmorWearEvent(e.player, item, "right", Type)
+                        if (armorEvent.isCancelled) {
+                            e.isCancelled = true
+                        }
+                    }
+                }
             }
         }
     }
@@ -82,10 +100,10 @@ class ArmorWearListeners : Listener {
 fun getArmorSlot(itemStack: ItemStack): Int {
     if (BItemUtils.getBType(itemStack) == "armor") {
         val itemName = itemStack.itemMeta.displayName
-        if (itemName.contains("helmet")) return 1
-        if (itemName.contains("chestplate")) return 2
-        if (itemName.contains("leggings")) return 3
-        if (itemName.contains("boots")) return 4
+        if (itemName.contains("helmet")) return 5
+        if (itemName.contains("chestplate")) return 6
+        if (itemName.contains("leggings")) return 7
+        if (itemName.contains("boots")) return 8
     }
     return -1
 }
