@@ -40,7 +40,7 @@ class Gold : FullSet {
         factoryItem.rarity = Rarity.RARE
 
         sword = BItemFactory.produceItem(factoryItem)
-        BItemFactory.register("diamondsword", sword)
+        BItemFactory.register("goldsword", sword)
 
         val recipe = ShapedRecipe(sword)
         recipe.shape(" d ", " d ", " s ")
@@ -92,7 +92,7 @@ class Gold : FullSet {
         factoryItem.rarity = Rarity.RARE
 
         helm = BItemFactory.produceItem(factoryItem)
-        BItemFactory.register("diamondhelmet", helm)
+        BItemFactory.register("goldhelmet", helm)
 
         val recipe = ShapedRecipe(helm)
         recipe.shape("ddd", "d d", "   ")
@@ -107,7 +107,7 @@ class Gold : FullSet {
         factoryItem.rarity = Rarity.RARE
 
         chestplate = BItemFactory.produceItem(factoryItem)
-        BItemFactory.register("diamondchestplate", chestplate)
+        BItemFactory.register("goldchestplate", chestplate)
 
         val recipe = ShapedRecipe(chestplate)
         recipe.shape("d d", "ddd", "ddd")
@@ -122,7 +122,7 @@ class Gold : FullSet {
         factoryItem.rarity = Rarity.RARE
 
         leggings = BItemFactory.produceItem(factoryItem)
-        BItemFactory.register("diamonnndpants", leggings)
+        BItemFactory.register("goldpants", leggings)
 
         val recipe = ShapedRecipe(leggings)
         recipe.shape("ddd", "d d", "d d")
@@ -137,7 +137,7 @@ class Gold : FullSet {
         factoryItem.rarity = Rarity.RARE
 
         boots = BItemFactory.produceItem(factoryItem)
-        BItemFactory.register("diamondboots", leggings)
+        BItemFactory.register("goldboots", leggings)
 
         val recipe = ShapedRecipe(boots)
         recipe.shape("   ", "d d", "d d")

@@ -37,5 +37,4 @@ data class BWeapon(var item: ItemStack) : BGear(item) {
 
     Rarity
      */
-    var abilities = ArrayList<Ability>()
 }
