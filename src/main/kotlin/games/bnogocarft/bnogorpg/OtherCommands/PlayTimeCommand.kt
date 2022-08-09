@@ -15,14 +15,15 @@ class PlayTimeCommand : CommandExecutor {
             return true
         }
 
-        val BPlayer = BPlayers[sender]!!
-        PlaytimeUtils.addPlaytime(BPlayer)
-        BPlayer.updatePlayTime()
+        val bPlayer = BPlayers[sender]!!
+        PlaytimeUtils.addPlaytime(bPlayer)
+        bPlayer.updatePlayTime()
 
-        val playTime = BPlayer.playTime.split(" ")
+        val playTime = bPlayer.playTime.split(" ")
 
-        sender.sendMessage("${ChatColor.YELLOW}Your total Play Time is:")
-        sender.sendMessage("[${ChatColor.BLUE}${playTime[0]} Hours, ${ChatColor.GREEN}${playTime[1]} Minutes]")
+        sender.sendMessage("${ChatColor.YELLOW}Your total Play time on RPG Factions is:")
+        sender.sendMessage("[${ChatColor.BLUE}${ChatColor.BOLD}${playTime[0]} ${ChatColor.RESET}${ChatColor.BLUE}Hours${ChatColor.WHITE}, " +
+                "${ChatColor.GREEN}${ChatColor.BOLD}${playTime[1]} ${ChatColor.RESET}${ChatColor.GREEN}Minutes${ChatColor.WHITE}]")
         // I think the above would look like [10 Hours, 45 Minutes]
         return true
     }

@@ -1,21 +1,18 @@
 package games.bnogocarft.bnogorpg.Utils.BItemStack.BItems
 
-import games.bnogocarft.bnogorpg.Updater.Updates.Update
 import games.bnogocarft.bnogorpg.Utils.BItemStack.Rarity.RarityUtils
 import games.bnogocarft.bnogorpg.Utils.EnchantUtils.BEnchantment
-import games.bnogocarft.bnogorpg.Utils.EnchantUtils.EnchantUtils
-import games.bnogocarft.bnogorpg.Utils.decode
 import org.bukkit.ChatColor
 import org.bukkit.inventory.ItemStack
 
 open class BItem(item: ItemStack) {
     val Enchants = ArrayList<BEnchantment>()
     var bMaterial: BMaterial
-    var lastUpdate: Update =
+    /*var lastUpdate: Update =
         when (decode(item.itemMeta.lore[item.itemMeta.lore.size - 1].split(" ")[1])) {
             "002" -> Update.zerozerotwo
             else -> Update.zerozerotwo
-        }
+        }*/
     var rarity = RarityUtils.getRarity(item.itemMeta.lore[item.itemMeta.lore.size - 1].split(" ")[0])
 
     private val lore = item.itemMeta.lore
@@ -24,11 +21,11 @@ open class BItem(item: ItemStack) {
         for (clore in lore) {
             if (lore.contains("${ChatColor.BLUE}Enchantments:")) { // Gets the line that marks the start of enchantments
                 var index = item.itemMeta.lore.indexOf(clore) + 1 // Gets the index of the line after the marker above
-                while (lore[index].toString() != "") { // Loops through the enchants until it finds "" which is the seperator
+                while (!(lore[index].equals(""))) { // Loops through the enchants until it finds "" which is the seperator
                     index++
                     val enchantsInLine = clore.split(", ")
                     for (enchant in enchantsInLine) {
-                        Enchants.add(EnchantUtils.parseEnchant(enchant))
+                        //Enchants.add(EnchantUtils.parseEnchant(enchant))
                     }
                 }
                 continue

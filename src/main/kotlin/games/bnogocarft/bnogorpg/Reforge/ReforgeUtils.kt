@@ -1,4 +1,4 @@
-package games.bnogocarft.bnogorpg.OtherCommands.Reforge
+package games.bnogocarft.bnogorpg.Reforge
 
 import games.bnogocarft.bnogorpg.Utils.*
 import games.bnogocarft.bnogorpg.Utils.BItemStack.BItems.BArmor

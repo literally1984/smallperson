@@ -1,16 +1,12 @@
 package games.bnogocarft.bnogorpg.Updater
 
-import games.bnogocarft.bnogorpg.Main
-import games.bnogocarft.bnogorpg.Updater.Change.AbilityChange
 import games.bnogocarft.bnogorpg.Updater.Updates.Update
-import games.bnogocarft.bnogorpg.Utils.BItemStack.BItems.BItemUtils
-import org.bukkit.inventory.ItemStack
 
 val updates = arrayListOf(Update.zerozerotwo)
 
 class UpdateUtils {
     companion object {
-        fun update(item: ItemStack) {
+        /*fun update(item: ItemStack) {
             // Checks if the BType is "armor" or "weapon"
             if (BItemUtils.getBType(item) == "armor" || BItemUtils.getBType(item) == "weapon") {
                 val bitem = BItemUtils.getBGear(item)
@@ -29,6 +25,6 @@ class UpdateUtils {
                     }
                 }
             }
-        }
+        }*/
     }
 }

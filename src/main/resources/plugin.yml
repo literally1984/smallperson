@@ -34,3 +34,8 @@ commands:
     aliases: [rec]
     usage: /<command> <recipe>
     description: Opens up the RecipeBook to the provided Recipe
+  upgrade:
+    name: Upgrade
+    aliases: [upg, up]
+    usage: /<command>
+    description: Opens up the Upgrade GUI

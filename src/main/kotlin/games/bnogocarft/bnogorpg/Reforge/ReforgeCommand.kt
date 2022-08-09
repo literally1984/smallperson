@@ -1,4 +1,4 @@
-package games.bnogocarft.bnogorpg.OtherCommands.Reforge
+package games.bnogocarft.bnogorpg.Reforge
 
 import org.bukkit.command.Command
 import org.bukkit.command.CommandExecutor

@@ -28,7 +28,7 @@ class Leather : ArmorSet {
         val factoryItem = BItemFactory.createBGearItem("Leather Helmet", Material.LEATHER_HELMET)
 
         factoryItem.stats = arrayListOf(1, 12, 1, 10, 10, 20)
-        factoryItem.rarity = Rarity.RARE
+        factoryItem.rarity = Rarity.COMMON
 
         helm = BItemFactory.produceItem(factoryItem)
         BItemFactory.register("leatherhelmet", helm)
@@ -43,7 +43,7 @@ class Leather : ArmorSet {
         val factoryItem = BItemFactory.createBGearItem("Leather Chestplate", Material.LEATHER_CHESTPLATE)
 
         factoryItem.stats = arrayListOf(3, 24, 2, 22, 30, 40)
-        factoryItem.rarity = Rarity.RARE
+        factoryItem.rarity = Rarity.COMMON
 
         chestplate = BItemFactory.produceItem(factoryItem)
         BItemFactory.register("leatherchestplate", chestplate)
@@ -58,7 +58,7 @@ class Leather : ArmorSet {
         val factoryItem = BItemFactory.createBGearItem("Leather Leggings", Material.LEATHER_LEGGINGS)
 
         factoryItem.stats = arrayListOf(2, 19, 1, 17, 20, 30)
-        factoryItem.rarity = Rarity.RARE
+        factoryItem.rarity = Rarity.COMMON
 
         leggings = BItemFactory.produceItem(factoryItem)
         BItemFactory.register("leatherpants", leggings)
@@ -73,7 +73,7 @@ class Leather : ArmorSet {
         val factoryItem = BItemFactory.createBGearItem("Leather Boots", Material.LEATHER_BOOTS)
 
         factoryItem.stats = arrayListOf(0, 11, 0, 9, 8, 16)
-        factoryItem.rarity = Rarity.RARE
+        factoryItem.rarity = Rarity.COMMON
 
         boots = BItemFactory.produceItem(factoryItem)
         BItemFactory.register("leatherboots", leggings)

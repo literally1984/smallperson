@@ -1,7 +1,11 @@
 package games.bnogocarft.bnogorpg.Listeners
 
+import games.bnogocarft.bnogorpg.Main
+import games.bnogocarft.bnogorpg.PlayerBar.ComboCounter.Combo
+import games.bnogocarft.bnogorpg.PlayerBar.ComboCounter.ComboTimer
 import games.bnogocarft.bnogorpg.Utils.Abilities.SetBonus
 import games.bnogocarft.bnogorpg.Utils.PPlayer.BPlayers
+import org.bukkit.Bukkit
 import org.bukkit.entity.Player
 import org.bukkit.event.EventHandler
 import org.bukkit.event.EventPriority
@@ -40,11 +44,24 @@ class DamageEvent : Listener {
 
             if (damager is Player) {
                 val bDamager = BPlayers[damager]!!
-                bDamager.dealDamage(player, damage.roundToInt())
+                e.damage = damage.roundToInt()
+                bDamager.dealDamage(player, e.damage)
+
+                if (bDamager.combo == null) { // If the player is not currently comboing
+                    bDamager.bar.text = "Combo Damage: ${e.damage}"
+                    val task = Bukkit.getScheduler().runTaskTimer(Main.instance, ComboTimer(bDamager), 20, 20)
+                    bDamager.combo = Combo(task, 5, e.damage)
+                } else { // If the player is comboing
+                    bDamager.bar.text = "Combo Damage: ${e.damage + bDamager.combo!!.damage}"
+                    bDamager.bar.health = 100
+                    bDamager.combo!!.damage += bDamager.combo!!.damage
+                    bDamager.combo!!.timeLeft = 5
+                }
             } else {
                 val finalDamge = damage * (player.stats.defense / player.stats.defense + 10)
                 player.player.health -= finalDamge.roundToInt()
             }
+            e.damage = 0
         }
     }
 }

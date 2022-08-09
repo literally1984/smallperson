@@ -7,18 +7,19 @@ import games.bnogocarft.bnogorpg.CustomItems.CactusArmor
 import games.bnogocarft.bnogorpg.CustomItems.DefaultItems.DefaultOverrider
 import games.bnogocarft.bnogorpg.CustomItems.GrapplerItem
 import games.bnogocarft.bnogorpg.CustomItems.LapisArmor
+import games.bnogocarft.bnogorpg.ItemUpgrade.UpgradeCMD
 import games.bnogocarft.bnogorpg.ItemUpgrade.UpgradeUtils
 import games.bnogocarft.bnogorpg.Listeners.*
 import games.bnogocarft.bnogorpg.OtherCommands.GiveCommand
 import games.bnogocarft.bnogorpg.OtherCommands.PlayTimeCommand
-import games.bnogocarft.bnogorpg.OtherCommands.Reforge.ReforgeCommand
+import games.bnogocarft.bnogorpg.Reforge.ReforgeCommand
 import games.bnogocarft.bnogorpg.Planes.PlaneKeyItem
 import games.bnogocarft.bnogorpg.Planes.PlaneListeners
 import games.bnogocarft.bnogorpg.Planes.SteerListener
 import games.bnogocarft.bnogorpg.Planes.removeScheduler
-import games.bnogocarft.bnogorpg.PlayerBar.ComboCounter.ComboListener
 import games.bnogocarft.bnogorpg.RecipeBook.RecipeBookCommand
 import games.bnogocarft.bnogorpg.RecipeBook.RecipeManager
+import games.bnogocarft.bnogorpg.Reforge.ReforgeBlockListener
 import games.bnogocarft.bnogorpg.Updater.Updates.Update
 import games.bnogocarft.bnogorpg.Utils.CustomEvents.ArmorWearListeners
 import games.bnogocarft.bnogorpg.Utils.GUIListeners
@@ -57,8 +58,8 @@ class Main : JavaPlugin() {
         server.pluginManager.registerEvents(ArmorWearListeners(), this)
         server.pluginManager.registerEvents(DamageEvent(), this)
         server.pluginManager.registerEvents(AbilityListeners(), this)
-        server.pluginManager.registerEvents(ComboListener(), this)
         server.pluginManager.registerEvents(ChatListeners(), this)
+        server.pluginManager.registerEvents(ReforgeBlockListener(), this)
         cSender.sendMessage("$logo Registered Listeners")
 
         cSender.sendMessage("$logo Enabling ItemUpgrades...")
@@ -69,7 +70,7 @@ class Main : JavaPlugin() {
         PlaneKeyItem()
         server.pluginManager.registerEvents(PlaneListeners(), this)
 
-        server.scheduler.scheduleSyncRepeatingTask(this, removeScheduler(), 0, 2)
+        server.scheduler.scheduleSyncRepeatingTask(this, removeScheduler(), 0, 3)
         server.pluginManager.registerEvents(SteerListener(), this)
         cSender.sendMessage("$logo Planes have been enabled")
 
@@ -82,6 +83,7 @@ class Main : JavaPlugin() {
         getCommand("playtime").executor = PlayTimeCommand()
         getCommand("reforge").executor = ReforgeCommand()
         getCommand("anim").executor = animationTestCommand()
+        getCommand("upgrade").executor = UpgradeCMD()
         cSender.sendMessage("$logo all commands are enabled!")
 
         cSender.sendMessage("$logo Registering custom ItemStacks...")

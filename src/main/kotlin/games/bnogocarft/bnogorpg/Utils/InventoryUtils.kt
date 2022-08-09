@@ -1,6 +1,6 @@
 package games.bnogocarft.bnogorpg.Utils
 
-import games.bnogocarft.bnogorpg.OtherCommands.Reforge.ReforgeUtils
+import games.bnogocarft.bnogorpg.Reforge.ReforgeUtils
 import org.bukkit.Bukkit
 import org.bukkit.Material
 import org.bukkit.entity.Player
