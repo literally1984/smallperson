@@ -34,6 +34,21 @@ enum class ItemAbility {
         "chance to be smited"
     )
 
+    companion object {
+        fun init() {
+            nameMap[CactusSet] = "Spikey Spikes"
+            nameMap[LapisSet] = "Enhanced Magic"
+            nameMap[QuickDash] = "Quick Dash"
+            nameMap[DivineRetribution] = "Divine Retribution"
+
+            revNameMap["Spikey Spikes"] = CactusSet
+            revNameMap["Enhanced Magic"] = LapisSet
+            revNameMap["Quick Dash"] = QuickDash
+            revNameMap["Divine Retribution"] = DivineRetribution
+        }
+        val nameMap = HashMap<ItemAbility, String>()
+        val revNameMap = HashMap<String, ItemAbility>()
+    }
 
     fun getDescription(): List<String> {
         return when (this) {

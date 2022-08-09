@@ -5,6 +5,7 @@ import games.bnogocarft.bnogorpg.Updater.Change.StatChange
 import games.bnogocarft.bnogorpg.Utils.BItemStack.Reforge
 import games.bnogocarft.bnogorpg.Utils.ItemFactory.ItemAbility
 import games.bnogocarft.bnogorpg.Utils.StatUtils.ItemStat
+import org.bukkit.ChatColor
 import org.bukkit.inventory.ItemStack
 
 open class BGear(item: ItemStack) : BItem(item) {
@@ -55,7 +56,9 @@ open class BGear(item: ItemStack) : BItem(item) {
                 level = lore.split(" ")[1].toLong()
                 exp = clore[clore.indexOf(lore) + 1].split(" ")[1].split("/")[0].toLong()
             }
-            TODO("Item Abilities")
+            if (lore.contains("${ChatColor.YELLOW}${ChatColor.BOLD}SET BONUS: ")) {
+                abilities.add(ItemAbility.revNameMap[clore[clore.indexOf(lore)].split(": ")[1]]!!)
+            }
         }
     }
 
