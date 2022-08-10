@@ -74,7 +74,7 @@ class RecipeManager {
                 textRecipeMap[Bukkit.getItemFactory().getItemMeta(currentRecipe.result.type).displayName.replace(
                     " ",
                     "_"
-                )] =
+                ).lowercase()] =
                     currentRecipe
             }
         }

@@ -25,7 +25,6 @@ data class RecipePage(val recipe: Recipe) {
             }
 
             for (recipeLetter in shapeIndividual) {
-                print("${recipe.result.type}: $recipeLetter ${shapeItemStacks[recipeLetter]?.type}")
                 if (recipeLetter == ' ') {
                     itemStackShape.add(ItemStack(Material.AIR))
                 } else {
