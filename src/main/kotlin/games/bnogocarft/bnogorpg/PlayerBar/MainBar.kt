@@ -18,7 +18,7 @@ enum class MainBar {
 
     fun getHealth(): Int {
         return when (this) {
-            SERVER_IP -> 100
+            SERVER_IP -> 200
             MODE_COUNTER -> TODO()
             FUEL_COUNTER -> TODO()
         }

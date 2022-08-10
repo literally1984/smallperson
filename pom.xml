@@ -11,7 +11,7 @@
 
     <name>BnogoRPG</name>
 
-    <description>An RPG minecraft plugin made for Bnogocarft coded in kotlin</description>
+    <description>An RPG minecraft plugin made for Bnogocarft rpg coded in kotlin</description>
     <url>https://bnogocarft.games</url>
     <properties>
         <java.version>1.8</java.version>

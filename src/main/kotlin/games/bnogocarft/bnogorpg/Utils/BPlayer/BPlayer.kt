@@ -11,6 +11,7 @@ import games.bnogocarft.bnogorpg.Utils.Database.YMLUtils
 import games.bnogocarft.bnogorpg.Utils.Mode.Mode
 import games.bnogocarft.bnogorpg.Utils.StatUtils.StatManager
 import org.bukkit.configuration.file.YamlConfiguration
+import org.bukkit.entity.Entity
 import org.bukkit.entity.Player
 import tech.nully.BossBarAPI.BossBar
 import java.io.File
@@ -228,8 +229,8 @@ data class BPlayer(val player: Player) {
     /**
      * Simiulates the current [BPlayer] dealing damage to another [BPlayer], Handles EXP gain and more
      */
-    fun dealDamage(player: BPlayer, amount: Int) {
-        val damage = amount * (player.stats.defense / player.stats.defense + 10)
+    fun dealDamage(other: Entity, amount: Int) {
+        val damage = if (other is Player){ amount * (player.stats.defense / player.stats.defense + 10) }
         player.player.health -= damage
         meleeEXP += damage
         if (meleeEXP >= getNeededEXP(player.meleeLVL)) {

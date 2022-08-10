@@ -31,6 +31,7 @@ import games.bnogocarft.bnogorpg.Utils.logo
 import games.bnogocarft.bnogorpg.Utils.others.PlaytimeUtils
 import games.bnogocarft.bnogorpg.animation.animationTestCommand
 import org.bukkit.ChatColor
+import org.bukkit.entity.Player
 import org.bukkit.plugin.Plugin
 import org.bukkit.plugin.java.JavaPlugin
 
@@ -127,7 +128,8 @@ class Main : JavaPlugin() {
     companion object {
         lateinit var protocolManager: ProtocolManager
         lateinit var instance: Plugin
-        var serverIp = "${ChatColor.RED}play.${ChatColor.BLUE}bnogocarft${ChatColor.DARK_GREEN}.games"
+        var serverIp = "${ChatColor.BLUE}B${ChatColor.RED}n${ChatColor.YELLOW}o${ChatColor.AQUA}g${ChatColor.GOLD}o${ChatColor.LIGHT_PURPLE}Carft ${ChatColor.YELLOW}RPG Factions"
         val patch = Update.zerozerotwo
+        val onChatCooldown = ArrayList<Player>()
     }
 }
