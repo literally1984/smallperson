@@ -6,8 +6,8 @@ import games.bnogocarft.bnogorpg.Planes.planeEntitites
 import games.bnogocarft.bnogorpg.Utils.BItemStack.BItems.BArmor
 import games.bnogocarft.bnogorpg.Utils.BItemStack.BItems.BItemUtils
 import games.bnogocarft.bnogorpg.Utils.BItemStack.BItems.BWeapon
-import games.bnogocarft.bnogorpg.Utils.PPlayer.BPlayer
-import games.bnogocarft.bnogorpg.Utils.PPlayer.BPlayers
+import games.bnogocarft.bnogorpg.Utils.BPlayer.BPlayer
+import games.bnogocarft.bnogorpg.Utils.BPlayer.BPlayers
 import org.bukkit.Bukkit
 import org.bukkit.event.EventHandler
 import org.bukkit.event.EventPriority

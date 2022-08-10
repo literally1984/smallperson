@@ -19,18 +19,18 @@ class ArmorWearListeners : Listener {
         val p = e.whoClicked as Player
         if (e.click == ClickType.DROP) {
             val dropItem = e.currentItem
-            val dropItemType = dropItem.type.toString().lowercase()
+            val dropItemtype = dropItem.type.toString().lowercase()
 
             // Checks to see if the Clicked slot is an armor slot
             for (slot in armorSlots) {
                 if (e.slot == slot) {
 
                     val type: String =
-                        if (dropItemType.contains("boots")) "boots"
-                        else if (dropItemType.contains("leggings")) "leggings"
-                        else if (dropItemType.contains("leggings")) "leggings"
-                        else if (dropItemType.contains("chestplate")) "chestplate"
-                        else if (dropItemType.contains("helmet")) "helmet"
+                        if (dropItemtype.contains("boots")) "boots"
+                        else if (dropItemtype.contains("leggings")) "leggings"
+                        else if (dropItemtype.contains("leggings")) "leggings"
+                        else if (dropItemtype.contains("chestplate")) "chestplate"
+                        else if (dropItemtype.contains("helmet")) "helmet"
                         else return
 
                     val a = ArmorWearEvent(p, dropItem, "drop", type)
@@ -47,7 +47,7 @@ class ArmorWearListeners : Listener {
                 if (e.whoClicked.inventory.armorContents.contains(null)) {
                     val clickedSlotItem = e.inventory.getItem(e.slot).itemMeta.displayName.lowercase()
 
-                    val Type =
+                    val type =
                         if (clickedSlotItem.contains("helmet")) "helmet"
                         else if (clickedSlotItem.contains("chestplate")) "chestplate"
                         else if (clickedSlotItem.contains("leggings")) "leggings"
@@ -55,7 +55,7 @@ class ArmorWearListeners : Listener {
                         else return
 
                     val clickedItemStack = e.inventory.getItem(e.slot)
-                    val armorEvent = ArmorWearEvent(p, clickedItemStack, "shift_left", Type)
+                    val armorEvent = ArmorWearEvent(p, clickedItemStack, "shift_left", type)
                     if (armorEvent.isCancelled) {
                         e.isCancelled = true
                     }
@@ -72,12 +72,12 @@ class ArmorWearListeners : Listener {
                 // Gets the slots in the players armor inventory that are empty
                 val nullSlots = ArrayList<Int>()
 
-                for ((indexOfArmor, Citem) in e.player.inventory.armorContents.withIndex()) {
-                    if (Citem == null) {
+                for ((indexOfArmor, cItem) in e.player.inventory.armorContents.withIndex()) {
+                    if (cItem == null) {
                         nullSlots.add(armorSlots[indexOfArmor])
                     }
                 }
-                val Type =
+                val type =
                     if (item.itemMeta.displayName.contains("helmet")) "helmet"
                     else if (item.itemMeta.displayName.contains("chestplate")) "chestplate"
                     else if (item.itemMeta.displayName.contains("leggings")) "leggings"
@@ -86,7 +86,7 @@ class ArmorWearListeners : Listener {
 
                 for (slot in nullSlots) {
                     if (getArmorSlot(item) == slot) {
-                        val armorEvent = ArmorWearEvent(e.player, item, "right", Type)
+                        val armorEvent = ArmorWearEvent(e.player, item, "right", type)
                         if (armorEvent.isCancelled) {
                             e.isCancelled = true
                         }
@@ -109,7 +109,7 @@ fun getArmorSlot(itemStack: ItemStack): Int {
 }
 
 
-class ArmorWearEvent(val player: Player, val item: ItemStack, val clickType: String, val slot: String) : Event(),
+class ArmorWearEvent(val player: Player, val item: ItemStack, val clicktype: String, val slot: String) : Event(),
     Cancellable {
     private var isCancelled = false
     override fun isCancelled(): Boolean {

@@ -1,6 +1,6 @@
 package games.bnogocarft.bnogorpg.PlayerBar.ComboCounter
 
-import games.bnogocarft.bnogorpg.Utils.PPlayer.BPlayer
+import games.bnogocarft.bnogorpg.Utils.BPlayer.BPlayer
 import org.bukkit.scheduler.BukkitRunnable
 
 class ComboTimer(p: BPlayer) : BukkitRunnable() {

@@ -1,4 +1,4 @@
-package games.bnogocarft.bnogorpg.Utils.PPlayer
+package games.bnogocarft.bnogorpg.Utils.BPlayer
 
 import games.bnogocarft.bnogorpg.PlayerBar.ComboCounter.Combo
 import games.bnogocarft.bnogorpg.PlayerBar.MainBar
@@ -16,6 +16,7 @@ import tech.nully.BossBarAPI.BossBar
 import java.io.File
 import java.text.SimpleDateFormat
 import java.util.*
+import kotlin.collections.HashMap
 
 
 /**
@@ -39,6 +40,8 @@ data class BPlayer(val player: Player) {
             return field
         }
 
+    val metadata = HashMap<String, Any>()
+
     /**
      * The latest update of the player's base Axe break speed
      * with their fist
@@ -58,17 +61,17 @@ data class BPlayer(val player: Player) {
     var baseShovelBreakSpeed: Int
 
     /**
-     * The latest update of the player's [Mode]
+     * The player's current [Mode]
      */
     var mode: Mode = Mode.NONE
 
     /**
-     * The latest update of the player's [Talisman]
+     * The player's current talismans
      */
     val talismans = ArrayList<Talisman>()
 
     /**
-     * The latest update of the player's [Ability]
+     * The player's [Ability]s
      */
     val abilities = ArrayList<Ability>()
 

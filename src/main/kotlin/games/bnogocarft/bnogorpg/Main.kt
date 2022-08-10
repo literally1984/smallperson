@@ -25,7 +25,7 @@ import games.bnogocarft.bnogorpg.Utils.CustomEvents.ArmorWearListeners
 import games.bnogocarft.bnogorpg.Utils.GUIListeners
 import games.bnogocarft.bnogorpg.Utils.Inventories
 import games.bnogocarft.bnogorpg.Utils.ItemFactory.ItemAbility
-import games.bnogocarft.bnogorpg.Utils.PPlayer.BPlayers
+import games.bnogocarft.bnogorpg.Utils.BPlayer.BPlayers
 import games.bnogocarft.bnogorpg.Utils.initUtils
 import games.bnogocarft.bnogorpg.Utils.logo
 import games.bnogocarft.bnogorpg.Utils.others.PlaytimeUtils

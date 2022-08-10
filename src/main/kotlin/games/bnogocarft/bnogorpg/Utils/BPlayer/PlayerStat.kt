@@ -1,4 +1,4 @@
-package games.bnogocarft.bnogorpg.Utils.PPlayer
+package games.bnogocarft.bnogorpg.Utils.BPlayer
 
 import games.bnogocarft.bnogorpg.Utils.StatUtils.ItemStat
 

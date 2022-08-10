@@ -1,6 +1,6 @@
 package games.bnogocarft.bnogorpg.OtherCommands
 
-import games.bnogocarft.bnogorpg.Utils.PPlayer.BPlayers
+import games.bnogocarft.bnogorpg.Utils.BPlayer.BPlayers
 import games.bnogocarft.bnogorpg.Utils.others.PlaytimeUtils
 import org.bukkit.ChatColor
 import org.bukkit.command.Command

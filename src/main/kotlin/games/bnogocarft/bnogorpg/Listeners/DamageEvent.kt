@@ -4,7 +4,7 @@ import games.bnogocarft.bnogorpg.Main
 import games.bnogocarft.bnogorpg.PlayerBar.ComboCounter.Combo
 import games.bnogocarft.bnogorpg.PlayerBar.ComboCounter.ComboTimer
 import games.bnogocarft.bnogorpg.Utils.Abilities.SetBonus
-import games.bnogocarft.bnogorpg.Utils.PPlayer.BPlayers
+import games.bnogocarft.bnogorpg.Utils.BPlayer.BPlayers
 import org.bukkit.Bukkit
 import org.bukkit.entity.Player
 import org.bukkit.event.EventHandler
