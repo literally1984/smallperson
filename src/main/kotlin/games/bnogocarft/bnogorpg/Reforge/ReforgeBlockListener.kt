@@ -9,10 +9,8 @@ import org.bukkit.event.player.PlayerInteractEvent
 class ReforgeBlockListener : Listener {
     @EventHandler
     fun onReforgeOpen(e: PlayerInteractEvent) {
-        if (e.clickedBlock != null &&
-            e.clickedBlock.type != null &&
-            e.clickedBlock.type == Material.DIAMOND_BLOCK &&
-            e.action == Action.RIGHT_CLICK_BLOCK) {
+        if (e.action == Action.RIGHT_CLICK_BLOCK &&
+            e.clickedBlock.type == Material.DIAMOND_BLOCK) {
 
             e.player.openInventory(ReforgeUtils.reforgeGUI)
         }

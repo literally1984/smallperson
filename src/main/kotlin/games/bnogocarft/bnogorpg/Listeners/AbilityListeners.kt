@@ -38,11 +38,11 @@ class AbilityListeners : Listener {
         val item = event.player.itemInHand
         if (item.itemMeta == null) return
 
-        if (BMaterial.valueOf(item.itemMeta.displayName.replace(" ", "_")) == BMaterial.GRAPPLING_HOOK) {
+        if (BMaterial.valueOf(item.itemMeta.displayName.replace(" ", "_").uppercase()) == BMaterial.GRAPPLING_HOOK) {
             if (event.state == PlayerFishEvent.State.FAILED_ATTEMPT) {
                 val hookLoc = event.hook.location
                 val velo = hookLoc.toVector().subtract(event.player.location.toVector())
-                event.player.velocity = velo
+                event.player.velocity = velo.multiply(0.4)
             }
         }
     }
