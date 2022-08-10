@@ -24,13 +24,13 @@ class UpgradeUtils {
     }
 
     init {
-        createUpgradeGUI()
         createATKItem()
         createDEFItem()
         createMAGATKItem()
         createMAGDEFItem()
         createMANAItem()
         createSTAMItem()
+        createUpgradeGUI()
     }
 
     private fun createATKItem() {

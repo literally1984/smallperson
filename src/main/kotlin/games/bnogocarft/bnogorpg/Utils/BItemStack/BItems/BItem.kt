@@ -19,7 +19,7 @@ open class BItem(item: ItemStack) {
 
     init {
         for (clore in lore) {
-            if (lore.contains("${ChatColor.BLUE}Enchantments:")) { // Gets the line that marks the start of enchantments
+            if (clore.contains("${ChatColor.BLUE}Enchantments:")) { // Gets the line that marks the start of enchantments
                 var index = item.itemMeta.lore.indexOf(clore) + 1 // Gets the index of the line after the marker above
                 while (!(lore[index].equals(""))) { // Loops through the enchants until it finds "" which is the seperator
                     index++

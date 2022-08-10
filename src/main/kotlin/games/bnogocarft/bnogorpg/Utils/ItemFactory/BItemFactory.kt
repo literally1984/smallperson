@@ -38,7 +38,7 @@ class BItemFactory {
             // abilities lore
             for (ability in item.abilities) {
                 if (ability.getType().equals(AbilityTrigger.SET_BONUS)) {
-                    lore.add("${ChatColor.YELLOW}${ChatColor.BOLD}SET BONUS: ${ChatColor.RESET}${ChatColor.RED}${ability.getDisplayName()}")
+                    lore.add("${ChatColor.YELLOW}${ChatColor.BOLD}SET BONUS: ${ChatColor.RESET}${ChatColor.RED}${ItemAbility.nameMap[ability]}")
                     type = "armor"
                     for (s in ability.getDescription()) lore.add("${ChatColor.GRAY}$s")
                     lore.add("")
@@ -65,7 +65,7 @@ class BItemFactory {
             meta.lore = lore
             itemStack.itemMeta = meta
 
-            if (type == "weapon") BItemUtils.addBWeapon(itemStack, item.stats)
+            if (BItemUtils.getBType(itemStack) == "weapon") BItemUtils.addBWeapon(itemStack, item.stats)
             else BItemUtils.addBArmor(itemStack, item.stats)
 
             return itemStack

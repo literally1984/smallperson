@@ -6,7 +6,8 @@ BnogoRPG is the main plugin for Bnogocarft's RPG factions gamemode. It is fully 
 - Talismans
 - A spell casting system
 - Weapon spec abilities
-- Custom Items such as weapons, axes, pickaxes etc
-- Custom ores that are generated in every biome
+- A recipe Book for custom and normal items
+- Reforges
+- Item upgrades
 - WASD controlled planes
-- More to come soon!
+- More to come soon such as NPC, bosses, creator bosses, and even more weapons!

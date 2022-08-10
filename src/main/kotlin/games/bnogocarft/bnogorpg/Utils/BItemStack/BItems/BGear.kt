@@ -53,11 +53,12 @@ open class BGear(item: ItemStack) : BItem(item) {
         val clore = item.itemMeta.lore
         for (lore in item.itemMeta.lore) {
             if (lore.contains("Level:")) {
-                level = lore.split(" ")[1].toLong()
-                exp = clore[clore.indexOf(lore) + 1].split(" ")[1].split("/")[0].toLong()
+                level = lore.split(": ${ChatColor.GRAY}")[1].toLong()
+                exp = clore[clore.indexOf(lore) + 1].split(": ${ChatColor.GRAY}")[1].split("/")[0].toLong()
             }
             if (lore.contains("${ChatColor.YELLOW}${ChatColor.BOLD}SET BONUS: ")) {
-                abilities.add(ItemAbility.revNameMap[clore[clore.indexOf(lore)].split(": ")[1]]!!)
+                println(clore[clore.indexOf(lore)].split(": ${ChatColor.RESET}${ChatColor.RED}")[1])
+                abilities.add(ItemAbility.revNameMap[clore[clore.indexOf(lore)].split(": ${ChatColor.RESET}${ChatColor.RED}")[1]]!!)
             }
         }
     }

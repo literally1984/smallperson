@@ -11,6 +11,8 @@ import java.io.ByteArrayInputStream
 import java.io.ByteArrayOutputStream
 import java.io.DataInputStream
 import java.io.DataOutputStream
+import kotlin.math.cos
+import kotlin.math.sin
 
 
 open class Animation(loc: Location, particle: String) {
@@ -29,8 +31,7 @@ data class HelixAnimation(
 fun playAnimation(animation: Animation) {
     if (animation is HelixAnimation) {
         lateinit var task: BukkitTask
-        val helix = animation
-        task = Bukkit.getScheduler().runTaskTimer(Main.instance, Runnable {
+        task = Bukkit.getScheduler().runTaskTimer(Main.instance, {
             print("particle spawned")
             if (animation.isStopped) {
                 task.cancel()
@@ -38,20 +39,20 @@ fun playAnimation(animation: Animation) {
             var y = 0.0
             var angle = 0.0
             while (y <= 36) {
-                val x = helix.radius * Math.cos(angle)
-                val z = helix.radius * Math.sin(angle)
+                val x = animation.radius * cos(angle)
+                val z = animation.radius * sin(angle)
                 val packet = Packet63WorldParticles()
                 val bas = ByteArrayOutputStream()
                 val ds = DataOutputStream(bas)
-                ds.writeShort(helix.particle.length)
+                ds.writeShort(animation.particle.length)
                 ds.writeChar('f'.code)
                 ds.writeChar('l'.code)
                 ds.writeChar('a'.code)
                 ds.writeChar('m'.code)
                 ds.writeChar('e'.code)
-                ds.writeFloat((x + helix.loc.x).toFloat())
-                ds.writeFloat((y + helix.loc.y).toFloat())
-                ds.writeFloat((z + helix.loc.z).toFloat())
+                ds.writeFloat((x + animation.loc.x).toFloat())
+                ds.writeFloat((y + animation.loc.y).toFloat())
+                ds.writeFloat((z + animation.loc.z).toFloat())
                 ds.writeFloat(0f)
                 ds.writeFloat(0f)
                 ds.writeFloat(0f)
@@ -66,6 +67,6 @@ fun playAnimation(animation: Animation) {
                 y += 0.1
                 angle += 1
             }
-        }, 0, helix.speed)
+        }, 0, animation.speed)
     }
 }
