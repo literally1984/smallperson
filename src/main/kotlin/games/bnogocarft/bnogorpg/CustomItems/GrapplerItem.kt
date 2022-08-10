@@ -1,5 +1,6 @@
 package games.bnogocarft.bnogorpg.CustomItems
 
+import games.bnogocarft.bnogorpg.Utils.ItemFactory.BItemFactory
 import org.bukkit.Bukkit
 import org.bukkit.ChatColor
 import org.bukkit.Material
@@ -28,5 +29,6 @@ class GrapplerItem {
         item.itemMeta = meta
 
         grapple = item
+        BItemFactory.register("grapple", grapple)
     }
 }

@@ -11,6 +11,7 @@ class ComboTimer(p: BPlayer) : BukkitRunnable() {
             bar.text = player.mainBar.getText()
             bar.health = player.mainBar.getHealth()
             player.combo!!.task.cancel()
+            player.combo = null
             return
         }
         bar.health -= 25
