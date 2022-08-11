@@ -27,13 +27,13 @@ class Wood : ToolSet {
     }
 
     override fun createSword() {
-        val factoryItem = BItemFactory.createBGearItem("stone Sword", Material.WOOD_SWORD)
+        val factoryItem = BItemFactory.createBGearItem("Wood Sword", Material.WOOD_SWORD)
 
         factoryItem.stats = arrayListOf(1, 12, 1, 10, 10, 20)
         factoryItem.rarity = Rarity.RARE
 
         sword = BItemFactory.produceItem(factoryItem)
-        BItemFactory.register("stonesword", sword)
+        BItemFactory.register("woodsword", sword)
 
         val recipe = ShapedRecipe(sword)
         recipe.shape(" d ", " d ", " s ")

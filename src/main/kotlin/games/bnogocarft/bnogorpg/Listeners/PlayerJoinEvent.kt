@@ -8,6 +8,7 @@ import games.bnogocarft.bnogorpg.Utils.BItemStack.BItems.BItemUtils
 import games.bnogocarft.bnogorpg.Utils.BItemStack.BItems.BWeapon
 import games.bnogocarft.bnogorpg.Utils.BPlayer.BPlayer
 import games.bnogocarft.bnogorpg.Utils.BPlayer.BPlayers
+import games.bnogocarft.bnogorpg.Utils.BPlayer.StatRegenTimer
 import org.bukkit.Bukkit
 import org.bukkit.event.EventHandler
 import org.bukkit.event.EventPriority
@@ -24,7 +25,7 @@ class PlayerJoinEvent : Listener {
             Main.serverIp
         playerBar.health = 100
         playerBar.display()
-        BPlayers.put(e.player, bPlayer)
+        BPlayers[e.player] = bPlayer
         Bukkit.getServer().consoleSender.sendMessage("${e.player.displayName}'s data files have been instanced and mapped at")
         Bukkit.getServer().consoleSender.sendMessage(bPlayer.playerFile.path)
         for (item in e.player.inventory.contents) {
@@ -42,5 +43,6 @@ class PlayerJoinEvent : Listener {
                 }
             }
         }
+        Bukkit.getScheduler().runTaskTimer(Main.instance, StatRegenTimer(bPlayer), 0, 50)
     }
 }

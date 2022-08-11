@@ -14,7 +14,7 @@ class ComboTimer(p: BPlayer) : BukkitRunnable() {
             player.combo = null
             return
         }
-        bar.health -= 25
+        bar.health -= 2
         player.combo!!.timeLeft -= 1
     }
 }

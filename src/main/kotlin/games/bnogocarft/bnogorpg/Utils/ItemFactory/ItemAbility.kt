@@ -23,7 +23,7 @@ enum class ItemAbility {
     )
     val QuickDashDesc = arrayListOf(
         "The user of this sword will",
-        "instantly teleport 5 blocks",
+        "instantly teleport 6 blocks",
         "towards the direction they",
         "are facing"
     )
@@ -58,18 +58,6 @@ enum class ItemAbility {
             DivineRetribution -> DivineDesc
             else -> {
                 arrayListOf("")
-            }
-        }
-    }
-
-    fun getDisplayName(): String {
-        return when (this) {
-            CactusSet -> "Spiky Spikes"
-            LapisSet -> "Enhanced Magic"
-            QuickDash -> "Quick Dash"
-            DivineRetribution -> "Divine Retribution"
-            else -> {
-                "None"
             }
         }
     }
