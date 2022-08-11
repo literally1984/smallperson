@@ -43,12 +43,13 @@ class AbilityListeners : Listener {
         val player = BPlayers[event.player]!!
         val item = event.player.itemInHand
         if (item.itemMeta == null) return
-        if (player.metadata["grappleCd"] != null) {
-            event.player.sendMessage("Your grapple hook is on cooldown! Wait ${player.metadata["grappleCd"]} seconds before using")
-            event.player.sendMessage("it again!")
-        }
 
         if (BMaterial.valueOf(item.itemMeta.displayName.replace(" ", "_").uppercase()) == BMaterial.GRAPPLING_HOOK) {
+            if (player.metadata["grappleCd"] != null) {
+                event.player.sendMessage("Your grapple hook is on cooldown! Wait ${player.metadata["grappleCd"]} seconds before using")
+                event.player.sendMessage("it again!")
+                return
+            }
             if (event.state == PlayerFishEvent.State.FAILED_ATTEMPT) {
                 val hookLoc = event.hook.location
                 val velo = hookLoc.toVector().subtract(event.player.location.toVector())

@@ -19,6 +19,7 @@ import java.io.File
 import java.text.SimpleDateFormat
 import java.util.*
 import kotlin.collections.HashMap
+import kotlin.math.roundToInt
 
 
 /**
@@ -242,10 +243,7 @@ data class BPlayer(val player: Player) {
             amount
         }
         other.health -= damage
-        meleeEXP += damage
-        if (meleeEXP >= getNeededEXP(meleeLVL)) {
-            levelUp("melee")
-        }
+        addToMelee((damage * 0.7).roundToInt())
     }
 
 

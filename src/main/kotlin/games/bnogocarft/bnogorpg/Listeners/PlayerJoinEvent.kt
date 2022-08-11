@@ -43,6 +43,6 @@ class PlayerJoinEvent : Listener {
                 }
             }
         }
-        Bukkit.getScheduler().runTaskTimer(Main.instance, StatRegenTimer(bPlayer), 0, 50)
+        Bukkit.getScheduler().scheduleSyncRepeatingTask(Main.instance, StatRegenTimer(bPlayer), 0, 20)
     }
 }

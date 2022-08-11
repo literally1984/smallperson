@@ -16,6 +16,7 @@ class DamageEvent : Listener {
     @EventHandler(priority = EventPriority.HIGHEST)
     fun onPlayerDamage(e: EntityDamageByEntityEvent) {
         if (e.entity is LivingEntity) {
+
             // handlers for if the damager is player and recipient is a mob
             if (e.damager is Player) {
                 val bDamager = BPlayers[e.damager]!!
