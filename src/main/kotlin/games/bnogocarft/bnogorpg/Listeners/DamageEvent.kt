@@ -16,24 +16,26 @@ class DamageEvent : Listener {
     @EventHandler(priority = EventPriority.HIGHEST)
     fun onPlayerDamage(e: EntityDamageByEntityEvent) {
         if (e.entity is LivingEntity) {
+             if ((e.entity as LivingEntity).noDamageTicks <= 1) {
 
-            // handlers for if the damager is player and recipient is a mob
-            if (e.damager is Player) {
-                val bDamager = BPlayers[e.damager]!!
-                if (bDamager.combo == null) { // If the player is not currently comboing
-                    bDamager.bar.text = "Combo Damage: ${e.damage}"
-                    val task = Bukkit.getScheduler().runTaskTimer(Main.instance, ComboTimer(bDamager), 0, 1)
-                    bDamager.combo = Combo(task, 5, e.damage)
-                } else { // If the player is comboing
-                    bDamager.bar.text = "Combo Damage: ${e.damage + bDamager.combo!!.damage}"
-                    bDamager.bar.health = 200
-                    bDamager.combo!!.damage += e.damage
-                    bDamager.combo!!.timeLeft = 5
+                // handlers for if the damager is player and recipient is a mob
+                if (e.damager is Player) {
+                    val bDamager = BPlayers[e.damager]!!
+                    if (bDamager.combo == null) { // If the player is not currently comboing
+                        bDamager.bar.text = "Combo Damage: ${e.damage}"
+                        val task = Bukkit.getScheduler().runTaskTimer(Main.instance, ComboTimer(bDamager), 0, 1)
+                        bDamager.combo = Combo(task, 5, e.damage)
+                    } else { // If the player is comboing
+                        bDamager.bar.text = "Combo Damage: ${e.damage + bDamager.combo!!.damage}"
+                        bDamager.bar.health = 200
+                        bDamager.combo!!.damage += e.damage
+                        bDamager.combo!!.timeLeft = 5
+                    }
                 }
-            }
 
-            if (e.entity is Player) {
-                val player = BPlayers[e.entity]!!
+                if (e.entity is Player) {
+                    val player = BPlayers[e.entity]!!
+                }
             }
         }
     }

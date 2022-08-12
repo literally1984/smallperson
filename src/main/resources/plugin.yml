@@ -39,3 +39,14 @@ commands:
     aliases: [upg, up]
     usage: /<command>
     description: Opens up the Upgrade GUI
+permissions:
+  bnogorpg.*:
+    description: Gives access to all BnogoRPG commands
+    children:
+      bnogorpg.chat.admin: true
+  bnogorpg.chat.admin:
+    description: gives you admin rank in chat
+  bnogorpg.chat.mod:
+    description: gives you mod rank in chat
+  bnogorpg.chat.helper:
+    description: Gives you helper rank in chat
