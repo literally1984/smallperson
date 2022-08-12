@@ -73,4 +73,15 @@ enum class ItemAbility {
             }
         }
     }
+    fun getTypeString(): String {
+        return when (this) {
+            CactusSet -> "Set Bonus"
+            LapisSet -> "Set Bonus"
+            QuickDash -> "Right Click"
+            DivineRetribution -> "On-Hit"
+            else -> {
+                "NONE"
+            }
+        }
+    }
 }
