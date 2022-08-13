@@ -45,7 +45,7 @@ class BItemFactory {
                     continue
                 }
                 lore.add("${ChatColor.YELLOW}${ChatColor.BOLD}${ability.getTypeString()} ${ChatColor.RESET}${ChatColor.RED}Ability:")
-                for (s in ability.getDescription()) lore.add(s)
+                for (s in ability.getDescription()) lore.add("${ChatColor.GRAY}$s")
                 lore.add("")
             }
             lore.add("${ChatColor.BLUE}Enchantments:")

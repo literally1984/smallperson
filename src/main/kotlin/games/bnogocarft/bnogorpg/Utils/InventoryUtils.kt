@@ -122,19 +122,16 @@ class GUIListeners(inventories: List<GUI>) : Listener {
                 print(e.slot)
                 for (button in inv.buttons) {// Checks for matching button slots
                     if (e.currentItem != null && e.currentItem.itemMeta != null && e.currentItem.itemMeta.lore != null) {
-                        print("itemmeta check passed")
                         if (e.slot == button.slot && e.currentItem.itemMeta.lore == button.item.itemMeta.lore) {
-                            print("Button slot")
                             // Runs the button's function
-                            button.run(OpenGUI(inv, e.whoClicked as Player, e.slot, e.currentItem))
                             e.isCancelled = true
+                            button.run(OpenGUI(inv, e.whoClicked as Player, e.slot, e.currentItem))
                         }
                     }
                 }
                 for (background in inv.background) {
                     if (e.currentItem != null && e.currentItem.itemMeta != null) {
                         if (e.slot == background.slot && e.currentItem.itemMeta.displayName == background.item.itemMeta.displayName) {
-                            print("Background slot")
                             e.isCancelled = true
                         }
                     }

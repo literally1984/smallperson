@@ -55,7 +55,7 @@ class AbilityListeners : Listener {
             if (event.state == PlayerFishEvent.State.FAILED_ATTEMPT) {
                 val hookLoc = event.hook.location
                 val velo = hookLoc.toVector().subtract(event.player.location.toVector())
-                event.player.velocity = velo.multiply(0.3)
+                event.player.velocity = velo.multiply(0.5)
 
                 player.metadata["grappleCd"] = 3.0
                 lateinit var task: BukkitTask

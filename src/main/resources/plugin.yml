@@ -1,11 +1,11 @@
 name: BnogoRPG
-version: Dev-0.0.2
+version: 0.0.4
 main: games.bnogocarft.bnogorpg.Main
 prefix: BnogoRPG
-authors: [BongoCat, BigZ]
-description: An RPG plugin made for BnogoCarft coded in Kotlin
+authors: [BongoCat]
+description: A custom coded plugin made for BnogoCarft
 depend:
-  - BossBarAPI
+  - BarAPI
   - ProtocolLib
 website: https://bnogocarft.games
 commands:

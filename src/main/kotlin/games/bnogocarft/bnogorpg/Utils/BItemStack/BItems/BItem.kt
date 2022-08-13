@@ -7,6 +7,7 @@ import org.bukkit.inventory.ItemStack
 
 open class BItem(item: ItemStack) {
     val Enchants = ArrayList<BEnchantment>()
+
     var bMaterial: BMaterial
     /*var lastUpdate: Update =
         when (decode(item.itemMeta.lore[item.itemMeta.lore.size - 1].split(" ")[1])) {
@@ -16,16 +17,19 @@ open class BItem(item: ItemStack) {
     var rarity = RarityUtils.getRarity(item.itemMeta.lore[item.itemMeta.lore.size - 1].split(" ")[0])
 
     private val lore = item.itemMeta.lore
+    private var enchantLine: Int = 0
 
     init {
         for (clore in lore) {
             if (clore.contains("${ChatColor.BLUE}Enchantments:")) { // Gets the line that marks the start of enchantments
+                enchantLine = lore.indexOf(clore)
                 var index = item.itemMeta.lore.indexOf(clore) + 1 // Gets the index of the line after the marker above
                 while (!(lore[index].equals(""))) { // Loops through the enchants until it finds "" which is the seperator
                     index++
                     val enchantsInLine = clore.split(", ")
                     for (enchant in enchantsInLine) {
                         //Enchants.add(EnchantUtils.parseEnchant(enchant))
+                        TODO("Add enchant parsing")
                     }
                 }
                 continue
@@ -45,5 +49,12 @@ open class BItem(item: ItemStack) {
                 BMaterial.valueOf(newName)
             }
         }
+    }
+    fun addEnchantment(enchantment: BEnchantment) {
+        Enchants.add(enchantment)
+    }
+
+    fun removeEnchantment(enchantment: BEnchantment) {
+        Enchants.remove(enchantment)
     }
 }

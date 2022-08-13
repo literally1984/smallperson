@@ -1,9 +1,9 @@
 package games.bnogocarft.bnogorpg.Utils.EnchantUtils
 
+import games.bnogocarft.bnogorpg.Utils.*
 import games.bnogocarft.bnogorpg.Utils.BItemStack.BItems.BGear
-import games.bnogocarft.bnogorpg.Utils.BackgroundItem
-import games.bnogocarft.bnogorpg.Utils.GUIButton
-import games.bnogocarft.bnogorpg.Utils.GUIFactory
+import org.bukkit.Bukkit
+import org.bukkit.ChatColor
 import org.bukkit.Material
 import org.bukkit.inventory.ItemStack
 
@@ -22,12 +22,24 @@ class EnchantUtils {
             val fInv = GUIFactory.createInventory("Enchantment Table", 54)
             val backgroundz = ArrayList<BackgroundItem>()
             for (i in 0..53) {
-                backgroundz.add(BackgroundItem(ItemStack(Material.THIN_GLASS), i))
+                backgroundz.add(BackgroundItem(StandardBackground, i))
             }
 
+            val bottomRow = ItemStack(Material.ENCHANTED_BOOK)
+            val meta = Bukkit.getItemFactory().getItemMeta(Material.ENCHANTED_BOOK)
+            meta.displayName = ""
+            bottomRow.itemMeta = meta
             for (i in 45..53) {
-                backgroundz.add(BackgroundItem(ItemStack(Material.ENCHANTED_BOOK), i))
+                backgroundz.add(BackgroundItem(bottomRow, i))
             }
+
+            val buttons = ArrayList<GUIButton>()
+            buttons.add(GUIButton(ItemStack(Material.BOOK), 29, ::noEnchant))
+            buttons.add(GUIButton(ItemStack(Material.BOOK), 31, ::noEnchant))
+            buttons.add(GUIButton(ItemStack(Material.BOOK), 33, ::noEnchant))
+        }
+        fun noEnchant(gui: OpenGUI) {
+            gui.player.sendMessage("${ChatColor.YELLOW}You cannot enchant this item!")
         }
     }
 }

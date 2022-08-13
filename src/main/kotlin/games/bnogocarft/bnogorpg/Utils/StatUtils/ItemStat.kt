@@ -15,75 +15,82 @@ data class ItemStat(val item: ItemStack) {
 
     var damage: Int = 0
         set(value) {
+            field = value
             for (s: String in item.itemMeta.lore) {
-                if (s.contains("Damage: +")) {
+                if (s.contains("${ChatColor.RED}Damage: ${ChatColor.DARK_GRAY}+")) {
+                    val index = item.itemMeta.lore.indexOf(s)
+                    print("line found")
                     val copy = item.itemMeta.clone()
-                    val lore = copy.lore
-                    lore[lore.indexOf(s)] = "${ChatColor.RED}Damage: +$value"
+                    val copylore = ArrayList<String>()
+                    copylore.addAll(copy.lore)
+                    copylore[index] = "${ChatColor.RED}Damage: ${ChatColor.DARK_GRAY}+$field"
+                    print("${ChatColor.RED}Damage: ${ChatColor.DARK_GRAY}+$field")
+                    print(copylore[index])
+                    copy.lore = copylore
                     item.itemMeta = copy
+                    print(item.itemMeta.lore[index])
                 }
             }
-            field = value
         }
     var defense: Int = 0
         set(value) {
+            field = value
             for (s: String in item.itemMeta.lore) {
-                if (s.contains("Defense: +")) {
+                if (s.contains("${ChatColor.GREEN}Defense: ${ChatColor.DARK_GRAY}+")) {
                     val copy = item.itemMeta.clone()
                     val lore = copy.lore
-                    lore[lore.indexOf(s)] = "${ChatColor.GREEN}Defense: +$value"
+                    lore[lore.indexOf(s)] = "${ChatColor.GREEN}Defense: ${ChatColor.DARK_GRAY}+$value"
                     item.itemMeta = copy
                 }
             }
-            field = value
         }
     var magicDmg: Int = 0
         set(value) {
+            field = value
             for (s: String in item.itemMeta.lore) {
-                if (s.contains("Magic Damage: +")) {
+                if (s.contains("${ChatColor.LIGHT_PURPLE}Magic Dmg: ${ChatColor.DARK_GRAY}+")) {
                     val copy = item.itemMeta.clone()
                     val lore = copy.lore
-                    lore[lore.indexOf(s)] = "${ChatColor.LIGHT_PURPLE}Magic Damage: +$value"
+                    lore[lore.indexOf(s)] = "${ChatColor.LIGHT_PURPLE}Magic Dmg: ${ChatColor.DARK_GRAY}+$value"
                     item.itemMeta = copy
                 }
             }
-            field = value
         }
     var magicDef: Int = 0
         set(value) {
+            field = value
             for (s: String in item.itemMeta.lore) {
-                if (s.contains("Magic Defense: +")) {
+                if (s.contains("${ChatColor.DARK_PURPLE}Magic Def: ${ChatColor.DARK_GRAY}+")) {
                     val copy = item.itemMeta.clone()
                     val lore = copy.lore
-                    lore[lore.indexOf(s)] = "${ChatColor.DARK_PURPLE}Magic Defense: +$value"
+                    lore[lore.indexOf(s)] = "${ChatColor.DARK_PURPLE}Magic Def: ${ChatColor.DARK_GRAY}+$value"
                     item.itemMeta = copy
                 }
             }
-            field = value
         }
     var mana: Int = 0
         set(value) {
+            field = value
             for (s: String in item.itemMeta.lore) {
-                if (s.contains("Mana: +")) {
+                if (s.contains("${ChatColor.AQUA}Mana: ${ChatColor.DARK_GRAY}+")) {
                     val copy = item.itemMeta.clone()
                     val lore = copy.lore
-                    lore[lore.indexOf(s)] = "${ChatColor.AQUA}Mana: +$value"
+                    lore[lore.indexOf(s)] = "${ChatColor.AQUA}Mana: ${ChatColor.DARK_GRAY}+$value"
                     item.itemMeta = copy
                 }
             }
-            field = value
         }
     var stamina: Int = 0
         set(value) {
+            field = value
             for (s: String in item.itemMeta.lore) {
-                if (s.contains("Stamina: +")) {
+                if (s.contains("${ChatColor.GOLD}Stamina: ${ChatColor.DARK_GRAY}+")) {
                     val copy = item.itemMeta.clone()
                     val lore = copy.lore
-                    lore[lore.indexOf(s)] = "${ChatColor.GOLD}Stamina: +$value"
+                    lore[lore.indexOf(s)] = "${ChatColor.GOLD}Stamina: ${ChatColor.DARK_GRAY}+$value"
                     item.itemMeta = copy
                 }
             }
-            field = value
         }
 
     init {
@@ -93,12 +100,11 @@ data class ItemStat(val item: ItemStack) {
                 val indexOfS = lore.indexOf(s)
 
                 damage = s.split(": +")[1].toInt()// Damage
-                defense = lore[indexOfS + 1].split(": +")[1].toInt()// defense
-                magicDmg = lore[indexOfS + 2].split(": +")[1].toInt()// magic damage
-                magicDef = lore[indexOfS + 3].split(": +")[1].toInt()// magic defense
-                mana = lore[indexOfS + 4].split(": +")[1].toInt()// mana
-                stamina = lore[indexOfS + 5].split(": +")[1].toInt()// stamina
-
+                defense = lore[indexOfS + 1].split(": ${ChatColor.GRAY}+")[1].toInt()// defense
+                magicDmg = lore[indexOfS + 2].split(": ${ChatColor.GRAY}+")[1].toInt()// magic damage
+                magicDef = lore[indexOfS + 3].split(": ${ChatColor.GRAY}+")[1].toInt()// magic defense
+                mana = lore[indexOfS + 4].split(": ${ChatColor.GRAY}+")[1].toInt()// mana
+                stamina = lore[indexOfS + 5].split(": ${ChatColor.GRAY}+")[1].toInt()// stamina
             }
         }
     }
