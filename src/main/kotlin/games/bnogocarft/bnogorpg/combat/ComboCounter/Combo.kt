@@ -1,4 +1,4 @@
-package games.bnogocarft.bnogorpg.PlayerBar.ComboCounter
+package games.bnogocarft.bnogorpg.combat.ComboCounter
 
 import org.bukkit.scheduler.BukkitTask
 

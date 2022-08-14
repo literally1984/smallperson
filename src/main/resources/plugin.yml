@@ -5,7 +5,7 @@ prefix: BnogoRPG
 authors: [BongoCat]
 description: A custom coded plugin made for BnogoCarft
 depend:
-  - BarAPI
+  - BossBarAPI
   - ProtocolLib
 website: https://bnogocarft.games
 commands:
