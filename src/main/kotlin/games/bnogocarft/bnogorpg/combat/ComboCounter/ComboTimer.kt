@@ -1,5 +1,6 @@
 package games.bnogocarft.bnogorpg.combat.ComboCounter
 
+import games.bnogocarft.bnogorpg.PlayerBar.Bar
 import games.bnogocarft.bnogorpg.Utils.BPlayer.BPlayer
 import org.bukkit.scheduler.BukkitRunnable
 
@@ -8,8 +9,17 @@ class ComboTimer(p: BPlayer) : BukkitRunnable() {
     override fun run() {
         val bar = player.bar
         if (bar.health <= 0) {
-            bar.text = player.mainBar.getText(player)
-            bar.health = player.mainBar.getHealth(player)
+            var mBar: Bar? = null
+            for (bar1 in player.bars) {
+                if (bar1.priority < 3) {
+                    if (mBar != null && mBar.priority > bar1.priority) {
+                        continue
+                    }
+                    mBar = bar1
+                }
+            }
+            player.bar.text = mBar!!.name
+            player.bar.health = mBar.health
             player.combo!!.task.cancel()
             player.combo = null
             return
