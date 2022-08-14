@@ -23,7 +23,7 @@ class PlayerJoinEvent : Listener {
         val playerBar = bPlayer.bar
         playerBar.text =
             Main.serverIp
-        playerBar.health = 100
+        playerBar.health = 300
         playerBar.display()
         BPlayers[e.player] = bPlayer
         Bukkit.getServer().consoleSender.sendMessage("${e.player.displayName}'s data files have been instanced and mapped at")
