@@ -92,6 +92,7 @@ data class BPlayer(val player: Player) {
 
     val bar = BossBar(player)
     var bars = arrayListOf<Bar>(MainBar())
+    var currentBar: Bar = MainBar()
 
     var combo: Combo? = null
     var currentSetBonus = SetBonus.NONE
