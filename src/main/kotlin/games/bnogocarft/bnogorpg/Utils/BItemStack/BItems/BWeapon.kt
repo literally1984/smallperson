@@ -1,6 +1,5 @@
 package games.bnogocarft.bnogorpg.Utils.BItemStack.BItems
 
-import games.bnogocarft.bnogorpg.Utils.Abilities.PlayerAbility.Ability
 import games.bnogocarft.bnogorpg.Utils.StatUtils.ItemStat
 import org.bukkit.inventory.ItemStack
 

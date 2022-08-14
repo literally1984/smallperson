@@ -1,6 +1,6 @@
 package games.bnogocarft.bnogorpg.Utils.BPlayer
 
-import games.bnogocarft.bnogorpg.combat.ComboCounter.Combo
+import games.bnogocarft.bnogorpg.PlayerBar.Bar
 import games.bnogocarft.bnogorpg.PlayerBar.MainBar
 import games.bnogocarft.bnogorpg.Utils.Abilities.PlayerAbility.Ability
 import games.bnogocarft.bnogorpg.Utils.Abilities.PlayerAbility.AbilityUtils
@@ -10,15 +10,14 @@ import games.bnogocarft.bnogorpg.Utils.BItemStack.Talisman.TalismanUtils
 import games.bnogocarft.bnogorpg.Utils.Database.YMLUtils
 import games.bnogocarft.bnogorpg.Utils.Mode.Mode
 import games.bnogocarft.bnogorpg.Utils.StatUtils.StatManager
+import games.bnogocarft.bnogorpg.combat.ComboCounter.Combo
 import org.bukkit.configuration.file.YamlConfiguration
 import org.bukkit.entity.LivingEntity
 import org.bukkit.entity.Player
 import tech.nully.BossBarAPI.BossBar
 import java.io.File
-import java.lang.NullPointerException
 import java.text.SimpleDateFormat
 import java.util.*
-import kotlin.collections.HashMap
 import kotlin.math.roundToInt
 
 
@@ -26,7 +25,7 @@ import kotlin.math.roundToInt
  * Stores the RPG attributes of a player.
  * @constructor Fully constructs the RPG attributes of a given Online Player
  */
-data class BPlayer  (val player: Player) {
+data class BPlayer(val player: Player) {
     private val playerStats = StatManager.calculateStats(player)
 
     /**
@@ -92,7 +91,7 @@ data class BPlayer  (val player: Player) {
     var playTime: String
 
     val bar = BossBar(player)
-    var mainBar = MainBar.SERVER_IP
+    var bars = arrayListOf<Bar>(MainBar())
 
     var combo: Combo? = null
     var currentSetBonus = SetBonus.NONE
@@ -239,7 +238,7 @@ data class BPlayer  (val player: Player) {
      * Simiulates the current [BPlayer] dealing damage to another [BPlayer], Handles EXP gain and more
      */
     fun dealDamage(other: LivingEntity, amount: Int) {
-        val damage = if (other is Player){
+        val damage = if (other is Player) {
             val player = BPlayers[other]!!
             try {
                 amount * (player.stats.defense / player.stats.defense + 10)

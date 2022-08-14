@@ -8,7 +8,7 @@ class Ticker {
         fun startTicker() {
             Bukkit.getScheduler().scheduleSyncRepeatingTask(Main.instance, {
 
-            },0,1)
+            }, 0, 1)
         }
     }
 }

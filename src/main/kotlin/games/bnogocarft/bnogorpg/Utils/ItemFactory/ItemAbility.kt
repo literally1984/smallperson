@@ -46,6 +46,7 @@ enum class ItemAbility {
             revNameMap["Quick Dash"] = QuickDash
             revNameMap["Divine Retribution"] = DivineRetribution
         }
+
         val nameMap = HashMap<ItemAbility, String>()
         val revNameMap = HashMap<String, ItemAbility>()
     }
@@ -73,6 +74,7 @@ enum class ItemAbility {
             }
         }
     }
+
     fun getTypeString(): String {
         return when (this) {
             CactusSet -> "Set Bonus"

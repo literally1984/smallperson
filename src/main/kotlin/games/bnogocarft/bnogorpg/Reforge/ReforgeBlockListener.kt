@@ -10,7 +10,8 @@ class ReforgeBlockListener : Listener {
     @EventHandler
     fun onReforgeOpen(e: PlayerInteractEvent) {
         if (e.action == Action.RIGHT_CLICK_BLOCK &&
-            e.clickedBlock.type == Material.DIAMOND_BLOCK) {
+            e.clickedBlock.type == Material.DIAMOND_BLOCK
+        ) {
 
             e.player.openInventory(ReforgeUtils.reforgeGUI)
         }

@@ -8,13 +8,15 @@ class ComboTimer(p: BPlayer) : BukkitRunnable() {
     override fun run() {
         val bar = player.bar
         if (bar.health <= 0) {
-            bar.text = player.mainBar.getText()
-            bar.health = player.mainBar.getHealth()
+            bar.text = player.mainBar.getText(player)
+            bar.health = player.mainBar.getHealth(player)
             player.combo!!.task.cancel()
             player.combo = null
             return
         }
-        bar.health -= 2
-        player.combo!!.timeLeft -= 1
+        bar.health -= 4
+        if (bar.health % 75 == 0) {
+            player.combo!!.timeLeft - 1
+        }
     }
 }

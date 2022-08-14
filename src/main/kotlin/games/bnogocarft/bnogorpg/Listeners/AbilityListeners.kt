@@ -32,6 +32,7 @@ class AbilityListeners : Listener {
                             p.teleport(p.location.add(teleportdir))
                         }
                     }
+
                     else -> {
                         return
                     }

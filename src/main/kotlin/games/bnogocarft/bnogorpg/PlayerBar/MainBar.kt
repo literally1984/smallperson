@@ -1,26 +1,9 @@
 package games.bnogocarft.bnogorpg.PlayerBar
 
 import games.bnogocarft.bnogorpg.Main
-import org.bukkit.ChatColor
 
-enum class MainBar {
-    MODE_COUNTER,
-    SERVER_IP,
-    FUEL_COUNTER;
-
-    fun getText(): String {
-        return when (this) {
-            SERVER_IP -> Main.serverIp
-            MODE_COUNTER -> "${ChatColor.DARK_PURPLE}MODE:"
-            FUEL_COUNTER -> "${ChatColor.GREEN}PLANE FUEL:"
-        }
-    }
-
-    fun getHealth(): Int {
-        return when (this) {
-            SERVER_IP -> 200
-            MODE_COUNTER -> TODO()
-            FUEL_COUNTER -> TODO()
-        }
-    }
+class MainBar() : Bar {
+    override var name: String = Main.serverIp
+    override val priority: Int = 1
+    override var health: Int = 300
 }

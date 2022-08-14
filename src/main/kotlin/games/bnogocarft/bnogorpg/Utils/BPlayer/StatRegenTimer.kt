@@ -7,7 +7,7 @@ class StatRegenTimer(player: BPlayer) : BukkitRunnable() {
 
     override fun run() {
         if (p.stats.currentMana < p.stats.maxMana) {
-            p.stats.currentMana += p.stats.maxMana/100
+            p.stats.currentMana += p.stats.maxMana / 100
             if (p.stats.currentMana > p.stats.maxMana) p.stats.currentMana = p.stats.maxMana
         }
     }

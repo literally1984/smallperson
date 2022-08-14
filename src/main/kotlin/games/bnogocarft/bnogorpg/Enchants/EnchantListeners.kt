@@ -7,7 +7,6 @@ import org.bukkit.event.Listener
 import org.bukkit.event.block.Action
 import org.bukkit.event.inventory.InventoryClickEvent
 import org.bukkit.event.player.PlayerInteractEvent
-import org.bukkit.inventory.Inventory
 
 class EnchantListeners : Listener {
     @EventHandler
@@ -22,7 +21,8 @@ class EnchantListeners : Listener {
         if (e.inventory.name.equals("Enchantment table")) {
             if (e.currentItem != null && e.currentItem.itemMeta != null) {
                 if (e.currentItem.itemMeta.displayName.equals("Enchant") && e.currentItem.itemMeta.lore[1] ==
-                    "${ChatColor.GREEN}Click here to enchant your item!") {
+                    "${ChatColor.GREEN}Click here to enchant your item!"
+                ) {
                     e.isCancelled = true
                 }
 

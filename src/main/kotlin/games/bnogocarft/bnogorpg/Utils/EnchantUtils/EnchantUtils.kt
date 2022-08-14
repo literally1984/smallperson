@@ -12,6 +12,7 @@ class EnchantUtils {
         fun parseEnchant(stringEnchs: String): BEnchantment {
             TODO()
         }
+
         fun generateEnchantsFor(item: BGear): List<Enchants> {
             val returnList = ArrayList<Enchants>()
             TODO("Generate enchants for the item")
@@ -38,9 +39,11 @@ class EnchantUtils {
             buttons.add(GUIButton(ItemStack(Material.BOOK), 31, ::noEnchant))
             buttons.add(GUIButton(ItemStack(Material.BOOK), 33, ::noEnchant))
         }
+
         fun noEnchant(gui: OpenGUI) {
             gui.player.sendMessage("${ChatColor.YELLOW}You cannot enchant this item!")
         }
     }
 }
-data class Enchants(val enchants: List<BEnchantment>) {}
+
+data class Enchants(val enchants: List<BEnchantment>)

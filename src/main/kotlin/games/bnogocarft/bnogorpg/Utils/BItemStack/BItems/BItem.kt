@@ -9,6 +9,7 @@ open class BItem(item: ItemStack) {
     val Enchants = ArrayList<BEnchantment>()
 
     var bMaterial: BMaterial
+
     /*var lastUpdate: Update =
         when (decode(item.itemMeta.lore[item.itemMeta.lore.size - 1].split(" ")[1])) {
             "002" -> Update.zerozerotwo
@@ -50,6 +51,7 @@ open class BItem(item: ItemStack) {
             }
         }
     }
+
     fun addEnchantment(enchantment: BEnchantment) {
         Enchants.add(enchantment)
     }

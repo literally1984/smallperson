@@ -214,7 +214,7 @@ class UpgradeUtils {
             val item = inv.getItem(22)
             if (BItemUtils.getBType(item) != null) {
                 val gear = BItemUtils.getBGear(item)
-                gear.stats.mana =gear.stats.mana + 1
+                gear.stats.mana = gear.stats.mana + 1
             }
         }
     }

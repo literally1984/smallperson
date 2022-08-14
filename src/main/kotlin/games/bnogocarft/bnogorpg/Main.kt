@@ -133,7 +133,8 @@ class Main : JavaPlugin() {
     companion object {
         lateinit var protocolManager: ProtocolManager
         lateinit var instance: Plugin
-        var serverIp = "${ChatColor.BLUE}B${ChatColor.RED}n${ChatColor.YELLOW}o${ChatColor.AQUA}g${ChatColor.GOLD}o${ChatColor.LIGHT_PURPLE}Carft ${ChatColor.YELLOW}RPG Factions"
+        var serverIp =
+            "${ChatColor.BLUE}B${ChatColor.RED}n${ChatColor.YELLOW}o${ChatColor.AQUA}g${ChatColor.GOLD}o${ChatColor.LIGHT_PURPLE}Carft ${ChatColor.YELLOW}RPG Factions"
         val patch = Update.zerozerotwo
         val onChatCooldown = ArrayList<Player>()
     }
