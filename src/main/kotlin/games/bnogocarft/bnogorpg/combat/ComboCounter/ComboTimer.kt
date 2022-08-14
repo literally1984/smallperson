@@ -1,6 +1,7 @@
 package games.bnogocarft.bnogorpg.combat.ComboCounter
 
 import games.bnogocarft.bnogorpg.PlayerBar.Bar
+import games.bnogocarft.bnogorpg.PlayerBar.ComboBar
 import games.bnogocarft.bnogorpg.Utils.BPlayer.BPlayer
 import org.bukkit.scheduler.BukkitRunnable
 
@@ -24,7 +25,11 @@ class ComboTimer(p: BPlayer) : BukkitRunnable() {
             player.combo = null
             return
         }
-        bar.health -= 4
+        for (bar2 in player.bars) {
+            if (bar2 is ComboBar) {
+                bar.health -= 4
+            }
+        }
         if (bar.health % 75 == 0) {
             player.combo!!.timeLeft - 1
         }

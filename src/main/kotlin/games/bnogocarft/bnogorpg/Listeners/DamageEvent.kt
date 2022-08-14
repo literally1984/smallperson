@@ -2,6 +2,7 @@ package games.bnogocarft.bnogorpg.Listeners
 
 import games.bnogocarft.bnogorpg.Main
 import games.bnogocarft.bnogorpg.PlayerBar.CombatLogBar
+import games.bnogocarft.bnogorpg.PlayerBar.ComboBar
 import games.bnogocarft.bnogorpg.Utils.BPlayer.BPlayers
 import games.bnogocarft.bnogorpg.combat.CombatLog.CombatLog
 import games.bnogocarft.bnogorpg.combat.CombatLog.CombatLogTimer
@@ -51,7 +52,7 @@ class DamageEvent : Listener {
                     val bDamaged = BPlayers[e.entity]!!
                     lateinit var combatLogtask2: BukkitTask
                     bDamaged.metadata["combat"] = CombatLog(combatLogtask)
-                    combatLogtask =
+                    combatLogtask2 =
                         Bukkit.getScheduler().runTaskTimer(Main.instance, CombatLogTimer(bDamaged), 0, 20)
                     (e.damager as Player).sendMessage(
                         "${ChatColor.RED}You are in Combat! Please do not log out or else"
@@ -59,6 +60,18 @@ class DamageEvent : Listener {
                     (e.damager as Player).sendMessage(
                         "${ChatColor.RED}you will lose all of your items!"
                     )
+                    val cBar2 = CombatLogBar(5, 300)
+                    bDamaged.bars.add(cBar2)
+                    var display2 = true
+                    for (bar in bDamaged.bars) {
+                        if (bar.priority > 2) {
+                            display2 = false
+                        }
+                    }
+                    if (display2) {
+                        bDamaged.bar.text = cBar2.name
+                        bDamaged.bar.health = cBar2.health
+                    }
                 }
 
                 // Starts a Combo for the damager
@@ -66,9 +79,26 @@ class DamageEvent : Listener {
                     bDamager.bar.text = "Combo Damage: ${e.damage}"
                     val comboTask = Bukkit.getScheduler().runTaskTimer(Main.instance, ComboTimer(bDamager), 0, 1)
                     bDamager.combo = Combo(comboTask, 5, e.damage)
+
+                    val coBar = ComboBar(bDamager.combo!!, 300)
+                    bDamager.bars.add(coBar)
+                    var display = true
+                    for (bar in bDamager.bars) {
+                        if (bar.priority > 2) {
+                            display = false
+                        }
+                    }
+                    if (display) {
+                        bDamager.bar.text = coBar.name
+                        bDamager.bar.health = coBar.health
+                    }
                 } else { // If the player is comboing
-                    bDamager.bar.text = "Combo Damage: ${e.damage + bDamager.combo!!.damage}"
-                    bDamager.bar.health = 200
+                    for (bar in bDamager.bars) {
+                        if (bar is ComboBar) {
+                            bar.name = "Combo Damage: ${e.damage + bDamager.combo!!.damage}"
+                            bar.health = 300
+                        }
+                    }
                     bDamager.combo!!.damage += e.damage
                     bDamager.combo!!.timeLeft = 5
                 }
