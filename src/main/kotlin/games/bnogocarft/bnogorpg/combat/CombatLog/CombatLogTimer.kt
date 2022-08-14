@@ -14,7 +14,11 @@ class CombatLogTimer(player: BPlayer) : BukkitRunnable() {
             p.player.sendMessage(
                 "${ChatColor.GREEN}You are no longer in Combat!"
             )
+
         }
         p.metadata["combat"] = (p.metadata["combat"] as Int) - 1
+        if (p.mainBar == MainBar.COMBAT_LOG_TIMER && p.bar.text == p.mainBar.getText(p)) {
+            p.bar.health -= 60
+        }
     }
 }
