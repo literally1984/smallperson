@@ -10,6 +10,7 @@ import games.bnogocarft.bnogorpg.Utils.BPlayer.BPlayer
 import games.bnogocarft.bnogorpg.Utils.BPlayer.BPlayers
 import games.bnogocarft.bnogorpg.Utils.BPlayer.StatRegenTimer
 import org.bukkit.Bukkit
+import org.bukkit.ChatColor
 import org.bukkit.event.EventHandler
 import org.bukkit.event.EventPriority
 import org.bukkit.event.Listener
@@ -20,6 +21,11 @@ class PlayerJoinEvent : Listener {
     @EventHandler(priority = EventPriority.HIGHEST)
     fun playerJoinEvent(e: PlayerJoinEvent) {
         val bPlayer = BPlayer(e.player)
+        if (bPlayer.metadata["combatLogged"] == true) {
+            e.player.inventory.clear()
+            e.player.sendMessage("${ChatColor.RED}You have previously combat logged, you inventory has been cleared")
+        }
+
         val playerBar = bPlayer.bar
         playerBar.text =
             Main.serverIp

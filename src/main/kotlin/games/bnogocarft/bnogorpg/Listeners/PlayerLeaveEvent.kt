@@ -10,10 +10,14 @@ class PlayerLeaveEvent : Listener {
 
     @EventHandler
     fun onPlayerLeave(e: PlayerQuitEvent) {
-        val player = BPlayers[e.player]
-        if (player != null) {
-            PlaytimeUtils.addPlaytime(player)
-            player.saveStats()
+        val player = BPlayers[e.player]!!
+        if (player.metadata["combat"] != null) {
+            player.metadata["combatLogged"] = true
+            for (item in e.player.inventory) {
+                e.player.world.dropItemNaturally(e.player.location, item)
+            }
         }
+        PlaytimeUtils.addPlaytime(player)
+        player.saveStats()
     }
 }
