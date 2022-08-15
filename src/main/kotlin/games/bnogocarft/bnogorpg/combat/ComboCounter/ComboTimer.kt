@@ -13,6 +13,9 @@ class ComboTimer(p: BPlayer) : BukkitRunnable() {
         if (bar.health <= 0) {
             var mBar: Bar? = null
             for (bar1 in player.bars) {
+                if (bar1 is ComboBar) {
+                    player.bars.remove(bar1)
+                }
                 if (bar1.priority < 3) {
                     if (mBar != null && mBar.priority > bar1.priority) {
                         continue

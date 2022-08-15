@@ -1,6 +1,7 @@
 package games.bnogocarft.bnogorpg.combat.CombatLog
 
 import games.bnogocarft.bnogorpg.PlayerBar.Bar
+import games.bnogocarft.bnogorpg.PlayerBar.CombatLogBar
 import games.bnogocarft.bnogorpg.PlayerBar.ComboBar
 import games.bnogocarft.bnogorpg.Utils.BPlayer.BPlayer
 import org.bukkit.ChatColor
@@ -18,6 +19,9 @@ class CombatLogTimer(player: BPlayer) : BukkitRunnable() {
             )
             var mBar: Bar? = null
             for (bar1 in p.bars) {
+                if (bar1 is CombatLogBar) {
+                    p.bars.remove(bar1)
+                }
                 if (bar1.priority < 3) {
                     if (mBar != null && mBar.priority > bar1.priority) {
                         continue

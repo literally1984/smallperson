@@ -25,7 +25,6 @@ class EnchantListeners : Listener {
                 ) {
                     e.isCancelled = true
                 }
-
             }
         }
     }
