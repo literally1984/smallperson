@@ -210,7 +210,7 @@ class UpgradeUtils {
         }
     }
 
-    fun upgradeMANA(gui: OpenGUI) {
+    private fun upgradeMANA(gui: OpenGUI) {
         val inv = gui.inv
         if (inv.getItem(22) != null) {
             val item = inv.getItem(22)
@@ -221,7 +221,7 @@ class UpgradeUtils {
         }
     }
 
-    fun upgradeSTAM(gui: OpenGUI) {
+    private fun upgradeSTAM(gui: OpenGUI) {
         val inv = gui.inv
         if (inv.getItem(22) != null) {
             val item = inv.getItem(22)
