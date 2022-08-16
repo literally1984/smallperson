@@ -164,13 +164,15 @@ class UpgradeUtils {
         gui = GUIFactory.produceInventory(fGui)
     }
 
+    @SuppressWarnings("Deprecated")
     private fun upgradeATK(gui: OpenGUI) {
         val inv = gui.inv
         if (inv.getItem(22) != null) {
             val item = inv.getItem(22)
             if (BItemUtils.getBType(item) != null) {
                 val gear = BItemUtils.getBGear(item)
-                gear.stats.damage = gear.stats.damage + 1
+                gear.stats.damage = gear.stats.damage+1
+                gui.inv.setItem(22, gear.stats.item.clone())
             }
         }
     }
@@ -189,7 +191,7 @@ class UpgradeUtils {
     private fun upgradeMAGATK(gui: OpenGUI) {
         val inv = gui.inv
         if (inv.getItem(22) != null) {
-            val item = inv.getItem(22)
+                val item = inv.getItem(22)
             if (BItemUtils.getBType(item) != null) {
                 val gear = BItemUtils.getBGear(item)
                 gear.stats.magicDmg = gear.stats.magicDmg + 1

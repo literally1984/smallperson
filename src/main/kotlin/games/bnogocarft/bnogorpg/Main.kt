@@ -24,6 +24,7 @@ import games.bnogocarft.bnogorpg.Reforge.ReforgeCommand
 import games.bnogocarft.bnogorpg.Updater.Updates.Update
 import games.bnogocarft.bnogorpg.Utils.BPlayer.BPlayers
 import games.bnogocarft.bnogorpg.Utils.CustomEvents.ArmorWearListeners
+import games.bnogocarft.bnogorpg.Utils.Database.YMLUtils
 import games.bnogocarft.bnogorpg.Utils.EnchantUtils.Glow
 import games.bnogocarft.bnogorpg.Utils.GUIListeners
 import games.bnogocarft.bnogorpg.Utils.Inventories
@@ -37,6 +38,7 @@ import org.bukkit.enchantments.Enchantment
 import org.bukkit.entity.Player
 import org.bukkit.plugin.Plugin
 import org.bukkit.plugin.java.JavaPlugin
+import java.io.File
 
 
 class Main : JavaPlugin() {
@@ -45,6 +47,7 @@ class Main : JavaPlugin() {
         instance = this
         val cSender = server.consoleSender
         protocolManager = ProtocolLibrary.getProtocolManager()
+
         cSender.sendMessage("$logo Main class variables have been instanced")
         cSender.sendMessage("$logo Overriding default combat Items...")
         DefaultOverrider.overrideRecipes()
@@ -137,6 +140,7 @@ class Main : JavaPlugin() {
             "${ChatColor.BLUE}B${ChatColor.RED}n${ChatColor.YELLOW}o${ChatColor.AQUA}g${ChatColor.GOLD}o${ChatColor.LIGHT_PURPLE}Carft ${ChatColor.YELLOW}RPG Factions"
         val patch = Update.zerozerotwo
         val onChatCooldown = ArrayList<Player>()
+        val serverFile = File("${instance.dataFolder}/server.yml")
     }
 
     fun registerGlow() {

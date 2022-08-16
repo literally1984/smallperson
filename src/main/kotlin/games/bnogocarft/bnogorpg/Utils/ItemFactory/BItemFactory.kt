@@ -3,6 +3,8 @@ package games.bnogocarft.bnogorpg.Utils.ItemFactory
 import games.bnogocarft.bnogorpg.OtherCommands.customItemMap
 import games.bnogocarft.bnogorpg.Utils.Abilities.ItemAbility.AbilityTrigger
 import games.bnogocarft.bnogorpg.Utils.BItemStack.BItems.BItemUtils
+import games.bnogocarft.bnogorpg.Utils.BItemStack.BItems.BMaterial
+import games.bnogocarft.bnogorpg.Utils.EnchantUtils.Glow
 import org.bukkit.Bukkit
 import org.bukkit.ChatColor
 import org.bukkit.Material
@@ -51,7 +53,6 @@ class BItemFactory {
             lore.add("${ChatColor.BLUE}Enchantments:")
             lore.add("")
 
-
             lore.add("${ChatColor.YELLOW}Level: ${ChatColor.GRAY}0")
             lore.add("${ChatColor.GREEN}EXP: ${ChatColor.GRAY}0/10")
 
@@ -68,6 +69,11 @@ class BItemFactory {
             else BItemUtils.addBArmor(itemStack, item.stats)
 
             return itemStack
+        }
+
+        fun makeItem(mat: BMaterial) {
+            val item = ItemStack(mat.getBukkitMaterial())
+            val meta = mat.getDefaultMeta()
         }
     }
 }

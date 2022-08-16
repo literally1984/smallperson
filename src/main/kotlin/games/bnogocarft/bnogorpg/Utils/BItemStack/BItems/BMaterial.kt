@@ -5,6 +5,7 @@ import games.bnogocarft.bnogorpg.CustomItems.CactusArmor
 import games.bnogocarft.bnogorpg.CustomItems.DefaultItems.*
 import games.bnogocarft.bnogorpg.CustomItems.GrapplerItem
 import games.bnogocarft.bnogorpg.CustomItems.LapisArmor
+import org.bukkit.Material
 import org.bukkit.inventory.meta.ItemMeta
 
 enum class BMaterial {
@@ -68,6 +69,63 @@ enum class BMaterial {
     BLADE_OF_HERMES,
 
     GRAPPLING_HOOK;
+
+    fun getBukkitMaterial(): Material {
+        return when (this) {
+            IRON_HELMET -> Material.valueOf(this.toString())
+            IRON_CHESTPLATE -> Material.valueOf(this.toString())
+            IRON_LEGGINGS -> Material.valueOf(this.toString())
+            IRON_BOOTS -> Material.valueOf(this.toString())
+            IRON_SWORD -> Material.valueOf(this.toString())
+            IRON_AXE -> Material.valueOf(this.toString())
+            IRON_HOE -> Material.valueOf(this.toString())
+            IRON_PICKAXE -> Material.valueOf(this.toString())
+            IRON_SHOVEL -> Material.IRON_SPADE
+            GOLD_HELMET -> Material.valueOf(this.toString())
+            GOLD_CHESTPLATE -> Material.valueOf(this.toString())
+            GOLD_LEGGINGS -> Material.valueOf(this.toString())
+            GOLD_BOOTS -> Material.valueOf(this.toString())
+            GOLD_SWORD -> Material.valueOf(this.toString())
+            GOLD_AXE -> Material.valueOf(this.toString())
+            GOLD_HOE -> Material.valueOf(this.toString())
+            GOLD_PICKAXE -> Material.valueOf(this.toString())
+            GOLD_SHOVEL -> Material.GOLD_SPADE
+            DIAMOND_HELMET -> Material.valueOf(this.toString())
+            DIAMOND_CHESTPLATE -> Material.valueOf(this.toString())
+            DIAMOND_LEGGINGS -> Material.valueOf(this.toString())
+            DIAMOND_BOOTS -> Material.valueOf(this.toString())
+            DIAMOND_SWORD -> Material.valueOf(this.toString())
+            DIAMOND_AXE -> Material.valueOf(this.toString())
+            DIAMOND_HOE -> Material.valueOf(this.toString())
+            DIAMOND_PICKAXE -> Material.valueOf(this.toString())
+            DIAMOND_SHOVEL -> Material.DIAMOND_SPADE
+            STONE_SWORD -> Material.valueOf(this.toString())
+            STONE_AXE -> Material.valueOf(this.toString())
+            STONE_HOE -> Material.valueOf(this.toString())
+            STONE_PICKAXE -> Material.valueOf(this.toString())
+            STONE_SHOVEL -> Material.STONE_SPADE
+            LEATHER_HELMET -> Material.valueOf(this.toString())
+            LEATHER_CHESTPLATE -> Material.valueOf(this.toString())
+            LEATHER_LEGGINGS -> Material.valueOf(this.toString())
+            LEATHER_BOOTS -> Material.valueOf(this.toString())
+            WOOD_SWORD -> Material.valueOf(this.toString())
+            WOOD_AXE -> Material.valueOf(this.toString())
+            WOOD_HOE -> Material.valueOf(this.toString())
+            WOOD_PICKAXE -> Material.valueOf(this.toString())
+            WOOD_SHOVEL -> Material.WOOD_SPADE
+
+            BLADE_OF_HERMES -> Material.DIAMOND_SWORD
+            GRAPPLING_HOOK -> Material.FISHING_ROD
+            CACTUS_HELMET -> Material.LEATHER_HELMET
+            CACTUS_CHESTPLATE -> Material.LEATHER_CHESTPLATE
+            CACTUS_LEGGINGS -> Material.LEATHER_LEGGINGS
+            CACTUS_BOOTS -> Material.LEATHER_BOOTS
+            LAPIS_HELMET -> Material.LEATHER_HELMET
+            LAPIS_CHESTPLATE -> Material.LEATHER_CHESTPLATE
+            LAPIS_LEGGINGS -> Material.LEATHER_LEGGINGS
+            LAPIS_BOOTS -> Material.LEATHER_BOOTS
+        }
+    }
 
     fun getDefaultMeta(): ItemMeta {
         /*Iron.helm.itemMeta

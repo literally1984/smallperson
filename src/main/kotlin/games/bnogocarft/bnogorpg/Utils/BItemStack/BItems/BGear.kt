@@ -38,6 +38,7 @@ open class BGear(item: ItemStack) : BItem(item) {
 
     Rarity
      */
+    open val item = item
     var stats = ItemStat(item)
     var reforge = Reforge.NONE
     val abilities = ArrayList<ItemAbility>()
