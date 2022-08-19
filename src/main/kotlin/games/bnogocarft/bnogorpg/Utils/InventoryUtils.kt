@@ -119,21 +119,16 @@ class GUIListeners(inventories: List<GUI>) : Listener {
     fun onGUIClick(e: InventoryClickEvent) {
         for (inv in invs) {
             if (e.inventory.title.equals(inv.inv.name)) {// Checks for matching GUI name
-                print(e.slot)
                 for (button in inv.buttons) {// Checks for matching button slots
-                    if (e.currentItem != null && e.currentItem.itemMeta != null && e.currentItem.itemMeta.lore != null) {
-                        if (e.slot == button.slot && e.currentItem.itemMeta.lore == button.item.itemMeta.lore) {
-                            // Runs the button's function
-                            e.isCancelled = true
-                            button.run(OpenGUI(inv, e.whoClicked as Player, e.slot, e.currentItem))
-                        }
+                    if (e.rawSlot == button.slot) {
+                        // Runs the button's function
+                        e.isCancelled = true
+                        button.run(OpenGUI(inv, e.whoClicked as Player, e.slot, e.currentItem))
                     }
                 }
                 for (background in inv.background) {
-                    if (e.currentItem != null && e.currentItem.itemMeta != null) {
-                        if (e.slot == background.slot && e.currentItem.itemMeta.displayName == background.item.itemMeta.displayName) {
-                            e.isCancelled = true
-                        }
+                    if (e.rawSlot == background.slot) {
+                        e.isCancelled = true
                     }
                 }
             }

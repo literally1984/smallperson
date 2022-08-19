@@ -30,6 +30,7 @@ import games.bnogocarft.bnogorpg.Utils.EnchantUtils.Glow
 import games.bnogocarft.bnogorpg.Utils.GUIListeners
 import games.bnogocarft.bnogorpg.Utils.Inventories
 import games.bnogocarft.bnogorpg.Utils.ItemFactory.ItemAbility
+import games.bnogocarft.bnogorpg.Utils.economyUtils.Auction
 import games.bnogocarft.bnogorpg.Utils.initUtils
 import games.bnogocarft.bnogorpg.Utils.logo
 import games.bnogocarft.bnogorpg.Utils.others.PlaytimeUtils
@@ -45,6 +46,7 @@ import java.io.File
 class Main : JavaPlugin() {
     override fun onEnable() {
         instance = this
+        serverFile = File("${instance.dataFolder}/server.yml")
         val cSender = server.consoleSender
         protocolManager = ProtocolLibrary.getProtocolManager()
 
@@ -145,7 +147,8 @@ class Main : JavaPlugin() {
             "${ChatColor.BLUE}B${ChatColor.RED}n${ChatColor.YELLOW}o${ChatColor.AQUA}g${ChatColor.GOLD}o${ChatColor.LIGHT_PURPLE}Carft ${ChatColor.YELLOW}RPG Factions"
         val patch = Update.zerozerotwo
         val onChatCooldown = ArrayList<Player>()
-        val serverFile = File("${instance.dataFolder}/server.yml")
+        lateinit var serverFile: File
+        val auctions = ArrayList<Auction>()
     }
 
     fun registerGlow() {
