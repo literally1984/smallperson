@@ -7,6 +7,7 @@ import games.bnogocarft.bnogorpg.CustomItems.CactusArmor
 import games.bnogocarft.bnogorpg.CustomItems.DefaultItems.DefaultOverrider
 import games.bnogocarft.bnogorpg.CustomItems.GrapplerItem
 import games.bnogocarft.bnogorpg.CustomItems.LapisArmor
+import games.bnogocarft.bnogorpg.Enchants.EnchantCommand
 import games.bnogocarft.bnogorpg.Enchants.EnchantListeners
 import games.bnogocarft.bnogorpg.ItemUpgrade.UpgradeCMD
 import games.bnogocarft.bnogorpg.ItemUpgrade.UpgradeUtils
@@ -43,7 +44,6 @@ import java.io.File
 
 class Main : JavaPlugin() {
     override fun onEnable() {
-        registerGlow()
         instance = this
         val cSender = server.consoleSender
         protocolManager = ProtocolLibrary.getProtocolManager()
@@ -52,6 +52,8 @@ class Main : JavaPlugin() {
         cSender.sendMessage("$logo Overriding default combat Items...")
         DefaultOverrider.overrideRecipes()
         cSender.sendMessage("$logo Overriding default combat Items... Done")
+
+        registerGlow()
 
         cSender.sendMessage("$logo Constructing utils...")
         BPlayers
@@ -69,6 +71,8 @@ class Main : JavaPlugin() {
         server.pluginManager.registerEvents(ChatListeners(), this)
         server.pluginManager.registerEvents(ReforgeBlockListener(), this)
         server.pluginManager.registerEvents(EnchantListeners(), this)
+        server.pluginManager.registerEvents(TestListeners(), this)
+
         cSender.sendMessage("$logo Registered Listeners")
 
         cSender.sendMessage("$logo Enabling ItemUpgrades...")
@@ -93,6 +97,7 @@ class Main : JavaPlugin() {
         getCommand("reforge").executor = ReforgeCommand()
         getCommand("anim").executor = animationTestCommand()
         getCommand("upgrade").executor = UpgradeCMD()
+        getCommand("ench").executor = EnchantCommand()
         cSender.sendMessage("$logo all commands are enabled!")
 
         cSender.sendMessage("$logo Registering custom ItemStacks...")

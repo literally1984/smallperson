@@ -10,6 +10,7 @@ import net.minecraft.server.v1_5_R3.Packet62NamedSoundEffect
 import org.bukkit.Bukkit
 import org.bukkit.ChatColor
 import org.bukkit.Material
+import org.bukkit.Sound
 import org.bukkit.craftbukkit.v1_5_R3.entity.CraftPlayer
 import org.bukkit.enchantments.Enchantment
 import org.bukkit.inventory.Inventory
@@ -80,15 +81,7 @@ fun Reforge(gui: OpenGUI) {
 
         val chance = (weightedList.size) / (Collections.frequency(weightedList, reforge))
 
-        val anvilSound = Packet62NamedSoundEffect(
-            "anvil.use",
-            gui.player.location.x,
-            gui.player.location.y,
-            gui.player.location.z,
-            1f,
-            63f
-        )
-        (gui.player as CraftPlayer).handle.playerConnection.sendPacket(anvilSound)
+        gui.player.playSound(gui.player.location, Sound.ANVIL_USE, 10f, 1f)
         gui.player.sendMessage("${ChatColor.GOLD}You reforged your item and got the ${ChatColor.RED}$reforge ${ChatColor.GOLD}reforge!")
         gui.player.sendMessage("${ChatColor.GOLD}That reforge has a 1 in ${ChatColor.RED}${ChatColor.BOLD}$chance ${ChatColor.GOLD}chance of ${ChatColor.BLUE}manifesting!")
     }
