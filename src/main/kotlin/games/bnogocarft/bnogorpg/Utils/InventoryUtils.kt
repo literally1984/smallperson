@@ -1,8 +1,11 @@
 package games.bnogocarft.bnogorpg.Utils
 
 import games.bnogocarft.bnogorpg.Reforge.ReforgeUtils
+import net.minecraft.server.v1_5_R3.NBTTagCompound
+import net.minecraft.server.v1_5_R3.NBTTagList
 import org.bukkit.Bukkit
 import org.bukkit.Material
+import org.bukkit.craftbukkit.v1_5_R3.inventory.CraftItemStack
 import org.bukkit.entity.Player
 import org.bukkit.event.EventHandler
 import org.bukkit.event.EventPriority
@@ -10,6 +13,21 @@ import org.bukkit.event.Listener
 import org.bukkit.event.inventory.InventoryClickEvent
 import org.bukkit.inventory.Inventory
 import org.bukkit.inventory.ItemStack
+
+
+fun addGlow(item: ItemStack?): ItemStack? {
+    val nmsStack: net.minecraft.server.v1_5_R3.ItemStack = CraftItemStack.asNMSCopy(item)
+    var tag: NBTTagCompound? = null
+    if (!nmsStack.hasTag()) {
+        tag = NBTTagCompound()
+        nmsStack.setTag(tag)
+    }
+    if (tag == null) tag = nmsStack.getTag()
+    val ench = NBTTagList()
+    tag?.set("ench", ench)
+    nmsStack.setTag(tag)
+    return CraftItemStack.asCraftMirror(nmsStack)
+}
 
 fun isInDoubleChest(slot: Int): Boolean {
     if (slot in 0..53) {

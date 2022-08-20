@@ -30,23 +30,69 @@ import games.bnogocarft.bnogorpg.Utils.EnchantUtils.Glow
 import games.bnogocarft.bnogorpg.Utils.GUIListeners
 import games.bnogocarft.bnogorpg.Utils.Inventories
 import games.bnogocarft.bnogorpg.Utils.ItemFactory.ItemAbility
-import games.bnogocarft.bnogorpg.Utils.economyUtils.Auction
+import games.bnogocarft.bnogorpg.Utils.economyUtils.auction.Auction
 import games.bnogocarft.bnogorpg.Utils.initUtils
 import games.bnogocarft.bnogorpg.Utils.logo
 import games.bnogocarft.bnogorpg.Utils.others.PlaytimeUtils
 import games.bnogocarft.bnogorpg.animation.animationTestCommand
+import net.milkbowl.vault.economy.Economy
 import org.bukkit.ChatColor
+import org.bukkit.configuration.file.YamlConfiguration
 import org.bukkit.enchantments.Enchantment
 import org.bukkit.entity.Player
 import org.bukkit.plugin.Plugin
 import org.bukkit.plugin.java.JavaPlugin
 import java.io.File
+import kotlin.properties.Delegates
 
 
 class Main : JavaPlugin() {
+
+    companion object {
+        lateinit var protocolManager: ProtocolManager
+        lateinit var instance: Plugin
+
+        var serverIp =
+            "${ChatColor.BLUE}B${ChatColor.RED}n${ChatColor.YELLOW}o${ChatColor.AQUA}g${ChatColor.GOLD}o${ChatColor.LIGHT_PURPLE}Carft ${ChatColor.YELLOW}RPG Factions"
+        val patch = Update.zerozerotwo
+        val onChatCooldown = ArrayList<Player>()
+
+        lateinit var serverFile: File
+        lateinit var ymlConfig: YamlConfiguration
+
+        val auctions = ArrayList<Auction>()
+        var lastAuctionID by Delegates.notNull<Int>()
+
+        lateinit var econ: Economy
+    }
+
     override fun onEnable() {
         instance = this
         serverFile = File("${instance.dataFolder}/server.yml")
+        ymlConfig = YamlConfiguration.loadConfiguration(serverFile)
+        if (!serverFile.exists()) {
+            ymlConfig.set("items.indexes.DiamondHelmet", "000000")
+            ymlConfig.set("items.indexes.DiamondHelmet", "000000")
+            ymlConfig.set("items.indexes.DiamondHelmet", "000000")
+            ymlConfig.set("items.indexes.DiamondHelmet", "000000")
+            ymlConfig.set("items.indexes.DiamondHelmet", "000000")
+            ymlConfig.set("items.indexes.DiamondHelmet", "000000")
+            ymlConfig.set("items.indexes.DiamondHelmet", "000000")
+            ymlConfig.set("items.indexes.DiamondHelmet", "000000")
+            ymlConfig.set("items.indexes.DiamondHelmet", "000000")
+            ymlConfig.set("items.indexes.DiamondHelmet", "000000")
+            ymlConfig.set("items.indexes.DiamondHelmet", "000000")
+            ymlConfig.set("items.indexes.DiamondHelmet", "000000")
+            ymlConfig.set("items.indexes.DiamondHelmet", "000000")
+            ymlConfig.set("items.indexes.DiamondHelmet", "000000")
+            ymlConfig.set("items.indexes.DiamondHelmet", "000000")
+
+            ymlConfig.set("auction.lastAucID", "000000")
+        }
+        YMLUtils.saveCustomYml(ymlConfig, serverFile)
+
+        lastAuctionID = ymlConfig.getInt("auction.lastAucID")
+
         val cSender = server.consoleSender
         protocolManager = ProtocolLibrary.getProtocolManager()
 
@@ -118,6 +164,13 @@ class Main : JavaPlugin() {
         server.pluginManager.registerEvents(GUIListeners(Inventories), this)
         cSender.sendMessage("$logo GUI Utils enabled")
 
+        cSender.sendMessage("$logo Enabling Economy...")
+        if (!setupEconomy()) {
+            cSender.sendMessage(String.format("[%s] - Disabled due to no Vault dependency found!", description.name));
+            server.pluginManager.disablePlugin(this);
+            return;
+        }
+
         cSender.sendMessage("--------------------------------------------")
         cSender.sendMessage("--------------------------------------------")
         cSender.sendMessage(
@@ -130,6 +183,10 @@ class Main : JavaPlugin() {
     }
 
     override fun onDisable() {
+        for (auction in auctions) {
+            ymlConfig.set("auction.${auction.ID}", auction.toString())
+        }
+
         server.consoleSender.sendMessage(
             "${ChatColor.LIGHT_PURPLE} $logo ${ChatColor.RED} BnogoRPG has been disabled D:"
         )
@@ -140,15 +197,13 @@ class Main : JavaPlugin() {
         }
     }
 
-    companion object {
-        lateinit var protocolManager: ProtocolManager
-        lateinit var instance: Plugin
-        var serverIp =
-            "${ChatColor.BLUE}B${ChatColor.RED}n${ChatColor.YELLOW}o${ChatColor.AQUA}g${ChatColor.GOLD}o${ChatColor.LIGHT_PURPLE}Carft ${ChatColor.YELLOW}RPG Factions"
-        val patch = Update.zerozerotwo
-        val onChatCooldown = ArrayList<Player>()
-        lateinit var serverFile: File
-        val auctions = ArrayList<Auction>()
+    private fun setupEconomy(): Boolean {
+        val economyProvider = server.servicesManager.getRegistration(Economy::class.java)
+        if (economyProvider != null) {
+            econ = economyProvider.getProvider();
+            return true
+        }
+        return false
     }
 
     fun registerGlow() {

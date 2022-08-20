@@ -1,5 +1,6 @@
 package games.bnogocarft.bnogorpg.Utils
 
+import games.bnogocarft.bnogorpg.Utils.economyUtils.auction.Auction
 import org.bukkit.ChatColor
 
 val logo = "[BnogoRPG]"
@@ -22,4 +23,17 @@ fun encode(s: String): String {
 
 fun decode(s: String): String {
     return s.replace("§", "")
+}
+
+fun serializeAuction(auction: Auction): String {
+    var returnString = ""
+    for (line in serializeItem(auction.item)) {
+        returnString += "$line,"
+    }
+
+    return returnString
+}
+
+fun deserializeAuction(s: String): Auction {
+    return TODO()
 }

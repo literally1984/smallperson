@@ -7,13 +7,13 @@ class RarityUtils {
         fun getRarity(s: String): Rarity? {
             when (s) {
                 StringUtils.Common -> Rarity.COMMON
-                StringUtils.Common -> Rarity.UNCOMMON
-                StringUtils.Common -> Rarity.RARE
-                StringUtils.Common -> Rarity.EPIC
+                StringUtils.Uncommon -> Rarity.UNCOMMON
+                StringUtils.Rare -> Rarity.RARE
+                StringUtils.Epic -> Rarity.EPIC
 
-                StringUtils.Common -> Rarity.LEGENDARY
-                StringUtils.Common -> Rarity.MYTHICAL
-                StringUtils.Common -> Rarity.DIVINE
+                StringUtils.Legendary -> Rarity.LEGENDARY
+                StringUtils.Mythical -> Rarity.MYTHICAL
+                StringUtils.Divine -> Rarity.DIVINE
             }
             return null
         }

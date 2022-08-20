@@ -1,6 +1,6 @@
 package games.bnogocarft.bnogorpg.Enchants
 
-import games.bnogocarft.bnogorpg.Utils.EnchantUtils.Glow
+import games.bnogocarft.bnogorpg.Utils.addGlow
 import org.bukkit.command.Command
 import org.bukkit.command.CommandExecutor
 import org.bukkit.command.CommandSender
@@ -15,7 +15,7 @@ class EnchantCommand : CommandExecutor {
         if (args.size == 1) {
             if (args[0] == "glow") {
                 if (sender.itemInHand != null) {
-                    sender.itemInHand.addUnsafeEnchantment(Glow(), 0)
+                    addGlow(sender.itemInHand)
                     return true
                 }
             }
