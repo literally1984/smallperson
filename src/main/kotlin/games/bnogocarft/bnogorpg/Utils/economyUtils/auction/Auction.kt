@@ -5,8 +5,6 @@ import org.bukkit.Bukkit
 import org.bukkit.ChatColor
 import org.bukkit.entity.Player
 import org.bukkit.inventory.ItemStack
-import org.bukkit.scheduler.BukkitTask
-import java.util.DoubleSummaryStatistics
 
 data class Auction(
     val item: ItemStack,
@@ -24,7 +22,7 @@ data class Auction(
         startingBid: Double,
         creator: Player,
         timeLeft: AuctionTime,
-        currentBidder: Player,
+        currentBidder: Player?,
         highestBid: Double,
         ID: Int) : this(item, startingBid, creator, timeLeft) {
             this.ID = ID
@@ -40,7 +38,7 @@ data class Auction(
         }
 
         for (player in Bukkit.getOnlinePlayers()) {
-            player.sendMessage("${ChatColor.GREEN}Auction $ID has ended with a highest bid of $highestBid")
+            player.sendMessage("${ChatColor.GREEN}Auction $ID has ended with a highest bid of $$highestBid")
         }
         ended = true
     }

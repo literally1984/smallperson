@@ -6,12 +6,11 @@ import games.bnogocarft.bnogorpg.Utils.economyUtils.auction.Auction
 import games.bnogocarft.bnogorpg.Utils.economyUtils.auction.AuctionTime
 import games.bnogocarft.bnogorpg.Utils.economyUtils.auction.AuctionTimer
 import org.bukkit.Bukkit
+import org.bukkit.ChatColor
 import org.bukkit.command.Command
 import org.bukkit.command.CommandExecutor
 import org.bukkit.command.CommandSender
 import org.bukkit.entity.Player
-import org.bukkit.scheduler.BukkitTask
-import java.lang.NumberFormatException
 
 class AuctionCommand : CommandExecutor {
     override fun onCommand(sender: CommandSender, cmd: Command, label: String, args: Array<String>): Boolean {
@@ -22,6 +21,17 @@ class AuctionCommand : CommandExecutor {
 
         if (args.isNotEmpty()) {
             when (args[0]) {
+                "forceend" -> {
+                    if (sender.hasPermission("bnogorpg.auction.forceend")) {
+                        if (args.size != 2) {
+                            sender.sendMessage("Incorrect arguments. Correct usage: /auction forceend <auction ID>")
+                            return true
+                        }
+                    } else {
+                        sender.sendMessage("${ChatColor.RED}You do not have permission to do this!")
+                        return true
+                    }
+                }
                 "list" -> {
                     for (i in 0..9) {
                         val auc = try {
@@ -102,6 +112,7 @@ class AuctionCommand : CommandExecutor {
                                 else
                                     auc.item.type.toString()
                             })")
+                    return true
                     }
 
                 "create" -> {
@@ -130,6 +141,15 @@ class AuctionCommand : CommandExecutor {
 
                     val auc = Auction(sender.itemInHand, startingBid, sender, time)
                     var countdown = Bukkit.getScheduler().runTaskTimer(Main.instance, AuctionTimer(auc), 0, 20)
+                    sender.sendMessage("${ChatColor.GREEN}You successfully created an auction for your " +
+                            if (sender.itemInHand.hasItemMeta()) {
+                                sender.itemInHand.itemMeta.displayName
+                            } else {
+                                sender.itemInHand.type.name
+                            }
+                    )
+                    sender.sendMessage("with Auction ID ${auc.ID}")
+                    return true
                 }
 
                 else -> {

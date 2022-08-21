@@ -23,16 +23,13 @@ import games.bnogocarft.bnogorpg.RecipeBook.RecipeManager
 import games.bnogocarft.bnogorpg.Reforge.ReforgeBlockListener
 import games.bnogocarft.bnogorpg.Reforge.ReforgeCommand
 import games.bnogocarft.bnogorpg.Updater.Updates.Update
+import games.bnogocarft.bnogorpg.Utils.*
 import games.bnogocarft.bnogorpg.Utils.BPlayer.BPlayers
 import games.bnogocarft.bnogorpg.Utils.CustomEvents.ArmorWearListeners
 import games.bnogocarft.bnogorpg.Utils.Database.YMLUtils
 import games.bnogocarft.bnogorpg.Utils.EnchantUtils.Glow
-import games.bnogocarft.bnogorpg.Utils.GUIListeners
-import games.bnogocarft.bnogorpg.Utils.Inventories
 import games.bnogocarft.bnogorpg.Utils.ItemFactory.ItemAbility
 import games.bnogocarft.bnogorpg.Utils.economyUtils.auction.Auction
-import games.bnogocarft.bnogorpg.Utils.initUtils
-import games.bnogocarft.bnogorpg.Utils.logo
 import games.bnogocarft.bnogorpg.Utils.others.PlaytimeUtils
 import games.bnogocarft.bnogorpg.animation.animationTestCommand
 import games.bnogocarft.bnogorpg.economy.Auction.AuctionCommand
@@ -73,10 +70,10 @@ class Main : JavaPlugin() {
         ymlConfig = YamlConfiguration.loadConfiguration(serverFile)
         if (!serverFile.exists()) {
             ymlConfig.set("items.indexes.DiamondHelmet", "000000")
-            ymlConfig.set("items.indexes.DiamondHelmet", "000000")
-            ymlConfig.set("items.indexes.DiamondHelmet", "000000")
-            ymlConfig.set("items.indexes.DiamondHelmet", "000000")
-            ymlConfig.set("items.indexes.DiamondHelmet", "000000")
+            ymlConfig.set("items.indexes.DiamondChestplate", "000000")
+            ymlConfig.set("items.indexes.DiamondLeggings", "000000")
+            ymlConfig.set("items.indexes.DiamondBoots", "000000")
+            ymlConfig.set("items.indexes.DiamondSword", "000000")
             ymlConfig.set("items.indexes.DiamondHelmet", "000000")
             ymlConfig.set("items.indexes.DiamondHelmet", "000000")
             ymlConfig.set("items.indexes.DiamondHelmet", "000000")
@@ -88,7 +85,8 @@ class Main : JavaPlugin() {
             ymlConfig.set("items.indexes.DiamondHelmet", "000000")
             ymlConfig.set("items.indexes.DiamondHelmet", "000000")
 
-            ymlConfig.set("auction.lastAucID", "000000")
+            ymlConfig.set("auction.lastAucID", "100000")
+            ymlConfig.set("auction.pausedAucs", "")
         }
         YMLUtils.saveCustomYml(ymlConfig, serverFile)
 
@@ -150,6 +148,16 @@ class Main : JavaPlugin() {
         getCommand("auction").executor = AuctionCommand()
         cSender.sendMessage("$logo all commands are enabled!")
 
+        cSender.sendMessage("Initializing Auctions...")
+        for (auctionId in ymlConfig.getString("auction.pausedAucs").split("")) {
+            if (auctionId == "") {
+                continue
+            }
+
+            deserializeAuction(ymlConfig.getString("auction.${auctionId}"))
+        }
+        cSender.sendMessage("All paused auctions are continued!")
+
         cSender.sendMessage("$logo Registering custom ItemStacks...")
         CactusArmor()
         LapisArmor()
@@ -185,10 +193,6 @@ class Main : JavaPlugin() {
     }
 
     override fun onDisable() {
-        for (auction in auctions) {
-            ymlConfig.set("auction.${auction.ID}", auction.toString())
-        }
-
         server.consoleSender.sendMessage(
             "${ChatColor.LIGHT_PURPLE} $logo ${ChatColor.RED} BnogoRPG has been disabled D:"
         )
@@ -197,6 +201,12 @@ class Main : JavaPlugin() {
             PlaytimeUtils.addPlaytime(bPlayer)
             bPlayer.saveStats()
         }
+        for (auc in auctions) {
+            ymlConfig.set("auction.${auc.ID}", serializeAuction(auc))
+            ymlConfig.set("auction.pausedAucs", "${ymlConfig.getString("auction.pausedAucs")}${auc.ID},")
+        }
+        ymlConfig.set("auction.lastAucID", lastAuctionID)
+        YMLUtils.saveCustomYml(ymlConfig, serverFile)
     }
 
     private fun setupEconomy(): Boolean {
