@@ -43,6 +43,11 @@ commands:
     name: Enchant
     usage: /<command> <enchant>
     description: adds enchant to your item in hand
+  auction:
+    name: Auction
+    aliases: [auc]
+    usage: Correct usage is /<command> <bid/list/create> <extra args>
+    description: The base auctions command
 permissions:
   bnogorpg.*:
     description: Gives access to all BnogoRPG commands

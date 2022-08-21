@@ -35,6 +35,7 @@ import games.bnogocarft.bnogorpg.Utils.initUtils
 import games.bnogocarft.bnogorpg.Utils.logo
 import games.bnogocarft.bnogorpg.Utils.others.PlaytimeUtils
 import games.bnogocarft.bnogorpg.animation.animationTestCommand
+import games.bnogocarft.bnogorpg.economy.Auction.AuctionCommand
 import net.milkbowl.vault.economy.Economy
 import org.bukkit.ChatColor
 import org.bukkit.configuration.file.YamlConfiguration
@@ -146,6 +147,7 @@ class Main : JavaPlugin() {
         getCommand("anim").executor = animationTestCommand()
         getCommand("upgrade").executor = UpgradeCMD()
         getCommand("ench").executor = EnchantCommand()
+        getCommand("auction").executor = AuctionCommand()
         cSender.sendMessage("$logo all commands are enabled!")
 
         cSender.sendMessage("$logo Registering custom ItemStacks...")

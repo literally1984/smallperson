@@ -139,6 +139,7 @@ class GUIListeners(inventories: List<GUI>) : Listener {
             if (e.inventory.title.equals(inv.inv.name)) {// Checks for matching GUI name
                 for (button in inv.buttons) {// Checks for matching button slots
                     if (e.rawSlot == button.slot) {
+                        print(button.slot)
                         // Runs the button's function
                         e.isCancelled = true
                         button.run(OpenGUI(inv, e.whoClicked as Player, e.slot, e.currentItem))
@@ -146,6 +147,7 @@ class GUIListeners(inventories: List<GUI>) : Listener {
                 }
                 for (background in inv.background) {
                     if (e.rawSlot == background.slot) {
+                        print(background.slot)
                         e.isCancelled = true
                     }
                 }
