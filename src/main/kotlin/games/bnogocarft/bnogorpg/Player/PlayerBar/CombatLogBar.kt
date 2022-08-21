@@ -1,4 +1,4 @@
-package games.bnogocarft.bnogorpg.PlayerBar
+package games.bnogocarft.bnogorpg.Player.PlayerBar
 
 data class CombatLogBar(val timeLeft: Int, override var health: Int) : Bar {
     override var name: String = "You are in Combat: $timeLeft"

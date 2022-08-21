@@ -1,5 +1,6 @@
-package games.bnogocarft.bnogorpg.Utils.BPlayer
+package games.bnogocarft.bnogorpg.Player
 
+import games.bnogocarft.bnogorpg.Utils.BPlayer.BPlayer
 import org.bukkit.scheduler.BukkitRunnable
 
 class StatRegenTimer(player: BPlayer) : BukkitRunnable() {

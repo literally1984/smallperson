@@ -1,8 +1,8 @@
 package games.bnogocarft.bnogorpg.combat.CombatLog
 
-import games.bnogocarft.bnogorpg.PlayerBar.Bar
-import games.bnogocarft.bnogorpg.PlayerBar.CombatLogBar
-import games.bnogocarft.bnogorpg.PlayerBar.ComboBar
+import games.bnogocarft.bnogorpg.Player.PlayerBar.Bar
+import games.bnogocarft.bnogorpg.Player.PlayerBar.CombatLogBar
+import games.bnogocarft.bnogorpg.Player.PlayerBar.ComboBar
 import games.bnogocarft.bnogorpg.Utils.BPlayer.BPlayer
 import org.bukkit.ChatColor
 import org.bukkit.scheduler.BukkitRunnable

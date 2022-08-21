@@ -1,9 +1,9 @@
 package games.bnogocarft.bnogorpg.Listeners
 
 import games.bnogocarft.bnogorpg.Main
-import games.bnogocarft.bnogorpg.PlayerBar.Bar
-import games.bnogocarft.bnogorpg.PlayerBar.CombatLogBar
-import games.bnogocarft.bnogorpg.PlayerBar.ComboBar
+import games.bnogocarft.bnogorpg.Player.PlayerBar.Bar
+import games.bnogocarft.bnogorpg.Player.PlayerBar.CombatLogBar
+import games.bnogocarft.bnogorpg.Player.PlayerBar.ComboBar
 import games.bnogocarft.bnogorpg.Utils.BPlayer.BPlayers
 import games.bnogocarft.bnogorpg.combat.CombatLog.CombatLog
 import games.bnogocarft.bnogorpg.combat.CombatLog.CombatLogTimer

@@ -8,7 +8,7 @@ import games.bnogocarft.bnogorpg.Utils.BItemStack.BItems.BItemUtils
 import games.bnogocarft.bnogorpg.Utils.BItemStack.BItems.BWeapon
 import games.bnogocarft.bnogorpg.Utils.BPlayer.BPlayer
 import games.bnogocarft.bnogorpg.Utils.BPlayer.BPlayers
-import games.bnogocarft.bnogorpg.Utils.BPlayer.StatRegenTimer
+import games.bnogocarft.bnogorpg.Player.StatRegenTimer
 import org.bukkit.Bukkit
 import org.bukkit.ChatColor
 import org.bukkit.event.EventHandler

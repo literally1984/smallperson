@@ -1,7 +1,7 @@
 package games.bnogocarft.bnogorpg.Utils.BPlayer
 
-import games.bnogocarft.bnogorpg.PlayerBar.Bar
-import games.bnogocarft.bnogorpg.PlayerBar.MainBar
+import games.bnogocarft.bnogorpg.Player.PlayerBar.Bar
+import games.bnogocarft.bnogorpg.Player.PlayerBar.MainBar
 import games.bnogocarft.bnogorpg.Utils.Abilities.PlayerAbility.Ability
 import games.bnogocarft.bnogorpg.Utils.Abilities.PlayerAbility.AbilityUtils
 import games.bnogocarft.bnogorpg.Utils.Abilities.SetBonus

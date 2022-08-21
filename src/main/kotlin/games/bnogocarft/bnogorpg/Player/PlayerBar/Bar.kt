@@ -1,4 +1,4 @@
-package games.bnogocarft.bnogorpg.PlayerBar
+package games.bnogocarft.bnogorpg.Player.PlayerBar
 
 interface Bar {
     var name: String
