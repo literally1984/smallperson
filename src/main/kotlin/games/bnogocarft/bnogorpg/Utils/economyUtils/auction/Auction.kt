@@ -10,7 +10,6 @@ import java.util.DoubleSummaryStatistics
 
 data class Auction(
     val item: ItemStack,
-    val countdown: BukkitTask,
     val startingBid: Double,
     val creator: Player,
     var timeLeft: AuctionTime) {
@@ -18,23 +17,22 @@ data class Auction(
     var currentBidder: Player? = null
     var highestBid: Double = 0.0
     var ID = Main.lastAuctionID++
+    var ended = false
 
     constructor(
         item: ItemStack,
-        countdown: BukkitTask,
         startingBid: Double,
         creator: Player,
         timeLeft: AuctionTime,
         currentBidder: Player,
         highestBid: Double,
-        ID: Int) : this(item, countdown, startingBid, creator, timeLeft) {
+        ID: Int) : this(item, startingBid, creator, timeLeft) {
             this.ID = ID
             this.currentBidder = currentBidder
             this.highestBid = highestBid
         }
 
     fun endAuction() {
-        countdown.cancel()
         Main.auctions.remove(this)
         if (highestBid > 0) {
             currentBidder!!.inventory.addItem(item)
@@ -44,6 +42,7 @@ data class Auction(
         for (player in Bukkit.getOnlinePlayers()) {
             player.sendMessage("${ChatColor.GREEN}Auction $ID has ended with a highest bid of $highestBid")
         }
+        ended = true
     }
 
     init {

@@ -128,9 +128,8 @@ class AuctionCommand : CommandExecutor {
                         return true
                     }
 
-                    lateinit var countdown: BukkitTask
-                    val auc = Auction(sender.itemInHand, countdown, startingBid, sender, time)
-                    countdown = Bukkit.getScheduler().runTaskTimer(Main.instance, AuctionTimer(auc), 0, 20)
+                    val auc = Auction(sender.itemInHand, startingBid, sender, time)
+                    var countdown = Bukkit.getScheduler().runTaskTimer(Main.instance, AuctionTimer(auc), 0, 20)
                 }
 
                 else -> {

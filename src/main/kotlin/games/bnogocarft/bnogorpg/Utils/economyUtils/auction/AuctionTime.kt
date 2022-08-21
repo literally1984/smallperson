@@ -6,11 +6,11 @@ data class AuctionTime(var days: Int, var hours: Int, var minutes: Int, var seco
         get() = "${days}D${hours}H${minutes}M${seconds}S"
 
     constructor(s: String) : this(0, 0, 0, 0) {
-        val ints = s.replace(Regex("[A-Za-z]"), "").split("")
-        days = ints[1].toInt()
-        hours = ints[2].toInt()
-        minutes = ints[3].toInt()
-        seconds = ints[4].toInt()
+        val ints = s.replace(Regex("[A-Za-z]"), "s").split("s")
+        days = ints[0].toInt()
+        hours = ints[1].toInt()
+        minutes = ints[2].toInt()
+        seconds = ints[3].toInt()
 
         while (seconds > 60) {
             seconds -= 60
@@ -29,7 +29,7 @@ data class AuctionTime(var days: Int, var hours: Int, var minutes: Int, var seco
     }
 
     fun add(s: String) {
-        val ints = s.replace(Regex("[A-Za-z]"), "").split("")
+        val ints = s.replace(Regex("[A-Za-z]"), "s").split("s")
 
         days += ints[0].toInt()
         hours += ints[1].toInt()
@@ -97,7 +97,7 @@ data class AuctionTime(var days: Int, var hours: Int, var minutes: Int, var seco
     }
 
     fun subtract(s: String) {
-        val ints = s.replace(Regex("[A-Za-z]"), "").split("")
+        val ints = s.replace(Regex("[A-Za-z]"), "s").split("s")
 
         days -= ints[0].toInt()
         hours -= ints[1].toInt()
