@@ -7,10 +7,10 @@ data class AuctionTime(var days: Int, var hours: Int, var minutes: Int, var seco
 
     constructor(s: String) : this(0, 0, 0, 0) {
         val ints = s.replace(Regex("[A-Za-z]"), "").split("")
-        days = ints[0].toInt()
-        hours = ints[1].toInt()
-        minutes = ints[2].toInt()
-        seconds = ints[3].toInt()
+        days = ints[1].toInt()
+        hours = ints[2].toInt()
+        minutes = ints[3].toInt()
+        seconds = ints[4].toInt()
 
         while (seconds > 60) {
             seconds -= 60

@@ -6,6 +6,9 @@ class AuctionTimer(auction: Auction) : BukkitRunnable() {
     val auc = auction
     override fun run() {
         auc.timeLeft.seconds -= 1
-
+        if (auc.timeLeft.seconds <= 0) {
+            auc.endAuction()
+            cancel()
+        }
     }
 }

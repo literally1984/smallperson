@@ -1,6 +1,8 @@
 package games.bnogocarft.bnogorpg.Utils.economyUtils.auction
 
 import games.bnogocarft.bnogorpg.Main
+import org.bukkit.Bukkit
+import org.bukkit.ChatColor
 import org.bukkit.entity.Player
 import org.bukkit.inventory.ItemStack
 import org.bukkit.scheduler.BukkitTask
@@ -37,6 +39,10 @@ data class Auction(
         if (highestBid > 0) {
             currentBidder!!.inventory.addItem(item)
             Main.econ.depositPlayer(currentBidder!!.displayName, highestBid)
+        }
+
+        for (player in Bukkit.getOnlinePlayers()) {
+            player.sendMessage("${ChatColor.GREEN}Auction $ID has ended with a highest bid of $highestBid")
         }
     }
 

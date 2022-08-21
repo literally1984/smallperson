@@ -4,6 +4,8 @@ import games.bnogocarft.bnogorpg.Main
 import games.bnogocarft.bnogorpg.Main.Companion.auctions
 import games.bnogocarft.bnogorpg.Utils.economyUtils.auction.Auction
 import games.bnogocarft.bnogorpg.Utils.economyUtils.auction.AuctionTime
+import games.bnogocarft.bnogorpg.Utils.economyUtils.auction.AuctionTimer
+import org.bukkit.Bukkit
 import org.bukkit.command.Command
 import org.bukkit.command.CommandExecutor
 import org.bukkit.command.CommandSender
@@ -25,6 +27,7 @@ class AuctionCommand : CommandExecutor {
                         val auc = try {
                             auctions[i]
                         } catch (e: IndexOutOfBoundsException) {
+                            sender.sendMessage("No more auctions found!")
                             break
                         }
 
@@ -111,10 +114,10 @@ class AuctionCommand : CommandExecutor {
                     val time = try {
                         AuctionTime(args[1])
                     } catch (e: NumberFormatException) {
-                        sender.sendMessage("Invalid time!")
+                        sender.sendMessage("Invalid time! (NumberFormatException)")
                         return true
                     } catch (e: IndexOutOfBoundsException) {
-                        sender.sendMessage("Invalid time!")
+                        sender.sendMessage("Invalid time! (IndexOutOfBoundsException)")
                         return true
                     }
 
@@ -126,7 +129,8 @@ class AuctionCommand : CommandExecutor {
                     }
 
                     lateinit var countdown: BukkitTask
-                    Auction(sender.itemInHand, countdown, startingBid, sender, time)
+                    val auc = Auction(sender.itemInHand, countdown, startingBid, sender, time)
+                    countdown = Bukkit.getScheduler().runTaskTimer(Main.instance, AuctionTimer(auc), 0, 20)
                 }
 
                 else -> {
