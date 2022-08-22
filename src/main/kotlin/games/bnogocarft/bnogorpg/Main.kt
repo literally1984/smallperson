@@ -159,12 +159,16 @@ class Main : JavaPlugin() {
         cSender.sendMessage("$logo all commands are enabled!")
 
         cSender.sendMessage("Initializing Auctions...")
-        for (auctionId in ymlConfig.getString("auction.pausedAucs").split("")) {
-            if (auctionId == "" || ymlConfig.getString("auction.${auctionId}") == null) {
-                continue
+        try {
+            for (auctionId in ymlConfig.getString("auction.pausedAucs").split("")) {
+                if (auctionId == "" || ymlConfig.getString("auction.${auctionId}") == null) {
+                    continue
+                }
+                deserializeAuction(ymlConfig.getString("auction.${auctionId}"))
             }
-
-            deserializeAuction(ymlConfig.getString("auction.${auctionId}"))
+        } catch (e: NullPointerException) {
+            ymlConfig.set("auction.pausedAucs", "")
+            YMLUtils.saveCustomYml(ymlConfig, serverFile)
         }
         cSender.sendMessage("All paused auctions are continued!")
 

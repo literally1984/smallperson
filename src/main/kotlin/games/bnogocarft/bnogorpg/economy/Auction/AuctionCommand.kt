@@ -96,8 +96,14 @@ class AuctionCommand : CommandExecutor {
                         }
                     }
 
+
                     if (auc == null) {
                         sender.sendMessage("${ChatColor.RED}Auction not found!")
+                        return true
+                    }
+
+                    if (sender.displayName == auc.creator.displayName) {
+                        sender.sendMessage("${ChatColor.RED}You cannot bid on your own auction!")
                         return true
                     }
 

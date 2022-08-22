@@ -38,13 +38,18 @@ data class Auction(
     fun endAuction() {
         Main.auctions.remove(this)
         if (highestBid > 0) {
-            if (Bukkit.getOnlinePlayers().contains(Bukkit.getPlayer(currentBidder!!.displayName))) {
+            if (Bukkit.getOnlinePlayers().contains(Bukkit.getPlayer(currentBidder!!.name))) {
                 currentBidder!!.inventory.addItem(item)
+                currentBidder!!.sendMessage("${ChatColor.GREEN}You have won the auction for ${if (item.hasItemMeta()) item.itemMeta.displayName else item.type.name} (#$ID)")
             } else {
                 val player = BPlayers[currentBidder!!]!!
                 player.stash.add(item)
             }
             Main.econ.depositPlayer(creator.displayName, highestBid)
+            if (Bukkit.getOnlinePlayers().contains(Bukkit.getPlayer(creator.displayName))) {
+                currentBidder!!.inventory.addItem(item)
+                currentBidder!!.sendMessage("${ChatColor.GREEN}You received $highestBid from auction #$ID for your ${if (item.hasItemMeta()) item.itemMeta.displayName else item.type.name}!")
+            }
         }
 
         for (player in Bukkit.getOnlinePlayers()) {
@@ -56,13 +61,12 @@ data class Auction(
     init {
         Main.auctions.add(this)
         val splitAucID = Main.lastAuctionID.split("").toMutableList()
-        splitAucID[splitAucID.size-2] = (splitAucID[splitAucID.size-2].toInt() + 1).toString()
+        splitAucID[splitAucID.size-2].replace(splitAucID[splitAucID.size-2], (splitAucID[splitAucID.size-2].toInt() + 1).toString())
         for (char in splitAucID) {
             if (char != "") {
                 if (char.toInt() > 9) {
-                    splitAucID[splitAucID.indexOf(char)] = (splitAucID[splitAucID.indexOf(char)].toInt() - 10).toString()
-                    splitAucID[splitAucID.indexOf(char) - 1] =
-                        (splitAucID[splitAucID.indexOf(char) - 1].toInt() + 1).toString()
+                    splitAucID[splitAucID.indexOf(char)].replace(splitAucID[splitAucID.indexOf(char)], (splitAucID[splitAucID.indexOf(char)].toInt() - 10).toString())
+                    splitAucID[splitAucID.indexOf(char) - 1].replace(splitAucID[splitAucID.indexOf(char) - 1], (splitAucID[splitAucID.indexOf(char) - 1].toInt() + 1).toString())
                 }
             }
         }
