@@ -8,7 +8,7 @@ import org.bukkit.command.CommandExecutor
 import org.bukkit.command.CommandSender
 import org.bukkit.entity.Player
 
-class StashCommand : CommandExecutor{
+class StashCommand : CommandExecutor {
     override fun onCommand(sender: CommandSender, cmd: Command, label: String, args: Array<String>): Boolean {
         if (sender !is Player) {
             sender.sendMessage("You must be a player to use this command!")
@@ -18,7 +18,7 @@ class StashCommand : CommandExecutor{
         val stashInv = Bukkit.createInventory(null, 54, "${ChatColor.GOLD}Your Stash")
         val player = BPlayers[sender]!!
         for (item in player.stash) {
-            stashInv.addItem(item)
+            if (item != null) stashInv.addItem(item)
         }
 
         sender.openInventory(stashInv)

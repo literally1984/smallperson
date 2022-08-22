@@ -47,7 +47,6 @@ import kotlin.properties.Delegates
 
 
 class Main : JavaPlugin() {
-
     companion object {
         lateinit var protocolManager: ProtocolManager
         lateinit var instance: Plugin
@@ -70,7 +69,7 @@ class Main : JavaPlugin() {
         instance = this
         serverFile = File("${instance.dataFolder}/server.yml")
         ymlConfig = YamlConfiguration.loadConfiguration(serverFile)
-        if (!serverFile.exists()) {
+        if (!(serverFile.exists())) {
             ymlConfig.set("items.indexes.DiamondHelmet", "000000")
             ymlConfig.set("items.indexes.DiamondChestplate", "000000")
             ymlConfig.set("items.indexes.DiamondLeggings", "000000")
@@ -161,7 +160,7 @@ class Main : JavaPlugin() {
 
         cSender.sendMessage("Initializing Auctions...")
         for (auctionId in ymlConfig.getString("auction.pausedAucs").split("")) {
-            if (auctionId == "") {
+            if (auctionId == "" || ymlConfig.getString("auction.${auctionId}") == null) {
                 continue
             }
 
@@ -219,7 +218,7 @@ class Main : JavaPlugin() {
     private fun setupEconomy(): Boolean {
         val economyProvider = server.servicesManager.getRegistration(Economy::class.java)
         if (economyProvider != null) {
-            econ = economyProvider.getProvider()
+            econ = economyProvider.provider
             return true
         }
         return false

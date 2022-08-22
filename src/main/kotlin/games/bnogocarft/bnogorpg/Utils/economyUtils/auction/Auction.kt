@@ -6,16 +6,19 @@ import org.bukkit.Bukkit
 import org.bukkit.ChatColor
 import org.bukkit.entity.Player
 import org.bukkit.inventory.ItemStack
+import org.bukkit.scheduler.BukkitTask
 
 data class Auction(
     val item: ItemStack,
     val startingBid: Double,
     val creator: Player,
-    var timeLeft: AuctionTime) {
+    var timeLeft: AuctionTime
+) {
 
     var currentBidder: Player? = null
     var highestBid: Double = 0.0
-    var ID : String = "000000"
+    var ID: String = "000000"
+    var task: BukkitTask? = null
     var ended = false
 
     constructor(
@@ -25,11 +28,12 @@ data class Auction(
         timeLeft: AuctionTime,
         currentBidder: Player?,
         highestBid: Double,
-        ID: String) : this(item, startingBid, creator, timeLeft) {
-            this.ID = ID
-            this.currentBidder = currentBidder
-            this.highestBid = highestBid
-        }
+        ID: String
+    ) : this(item, startingBid, creator, timeLeft) {
+        this.ID = ID
+        this.currentBidder = currentBidder
+        this.highestBid = highestBid
+    }
 
     fun endAuction() {
         Main.auctions.remove(this)
@@ -52,12 +56,14 @@ data class Auction(
     init {
         Main.auctions.add(this)
         val splitAucID = Main.lastAuctionID.split("").toMutableList()
-        splitAucID.drop(1)
-        splitAucID.dropLast(1)
+        splitAucID[splitAucID.size-2] = (splitAucID[splitAucID.size-2].toInt() + 1).toString()
         for (char in splitAucID) {
-            if (char.toInt() > 9) {
-                splitAucID[splitAucID.indexOf(char)] = (splitAucID[splitAucID.indexOf(char)].toInt() - 10).toString()
-                splitAucID[splitAucID.indexOf(char) - 1] = (splitAucID[splitAucID.indexOf(char) - 1].toInt() + 1).toString()
+            if (char != "") {
+                if (char.toInt() > 9) {
+                    splitAucID[splitAucID.indexOf(char)] = (splitAucID[splitAucID.indexOf(char)].toInt() - 10).toString()
+                    splitAucID[splitAucID.indexOf(char) - 1] =
+                        (splitAucID[splitAucID.indexOf(char) - 1].toInt() + 1).toString()
+                }
             }
         }
         ID = splitAucID.joinToString("")

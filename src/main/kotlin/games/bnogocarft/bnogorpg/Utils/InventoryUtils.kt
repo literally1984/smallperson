@@ -36,13 +36,6 @@ fun isInDoubleChest(slot: Int): Boolean {
     return false
 }
 
-fun isInRecipeSlot(slot: Int): Boolean {
-    if (slot in 10..12 || slot in 19..21 || slot in 28..30) {
-        return true
-    }
-    return false
-}
-
 fun changeInventoryTo(from: Inventory, to: Inventory) {
     for (slot in 0 until to.size) {
         from.setItem(slot, to.getItem(slot))
@@ -84,26 +77,26 @@ class GUIFactory {
 
         fun produceInventory(inv: FactoryInventory): Inventory {
             val inve = inv.inventory
-            val clickables = HashMap<Int, Pair<BackgroundItem, String>>()
+            val clickables = HashMap<Int, BackgroundItem>()
             for (layer in inv.layers) {
                 for (item in layer.background) {
                     inve.setItem(item.slot, item.item)
-                    clickables[item.slot] = Pair(item, "background")
+                    clickables[item.slot] = item
                 }
                 for (button in layer.buttons) {
                     inve.setItem(button.slot, button.item)
-                    clickables[button.slot] = Pair(button, "button")
+                    clickables[button.slot] = button
                 }
             }
             val buttons = ArrayList<GUIButton>()
             val backgroundItems = ArrayList<BackgroundItem>()
             for (slot in clickables.keys) {
-                if (clickables[slot]!!.second.equals("button")) {
-                    buttons.add(clickables[slot]!!.first as GUIButton)
+                if (clickables[slot]!! is GUIButton) {
+                    buttons.add(clickables[slot] as GUIButton)
                     continue
                 }
-                if (clickables[slot]!!.second.equals("background")) {
-                    backgroundItems.add(clickables[slot]!!.first)
+                if (clickables[slot] is BackgroundItem) {
+                    backgroundItems.add(clickables[slot]!!)
                     continue
                 }
             }
@@ -140,6 +133,7 @@ class GUIListeners(inventories: List<GUI>) : Listener {
                 for (button in inv.buttons) {// Checks for matching button slots
                     if (e.rawSlot == button.slot) {
                         print(button.slot)
+                        print("button")
                         // Runs the button's function
                         e.isCancelled = true
                         button.run(OpenGUI(inv, e.whoClicked as Player, e.slot, e.currentItem))
@@ -148,6 +142,7 @@ class GUIListeners(inventories: List<GUI>) : Listener {
                 for (background in inv.background) {
                     if (e.rawSlot == background.slot) {
                         print(background.slot)
+                        print("backgroound")
                         e.isCancelled = true
                     }
                 }

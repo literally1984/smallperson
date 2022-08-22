@@ -8,7 +8,7 @@ import java.net.InetSocketAddress
 import java.nio.ByteBuffer
 
 
-class ComUtils(address: InetSocketAddress?) : WebSocketServer(address) {
+class ComUtils(address: InetSocketAddress) : WebSocketServer(address) {
     override fun onOpen(conn: WebSocket, handshake: ClientHandshake) {
         conn.send("[BnogoWebSocket] Welcome to the server!") //This method sends a message to the new client
         broadcast("[BnogoWebSocket] New connection: " + handshake.resourceDescriptor) //This method sends a message to all clients connected

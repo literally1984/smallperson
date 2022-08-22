@@ -1,7 +1,6 @@
 package games.bnogocarft.bnogorpg.Enchants
 
 import org.bukkit.ChatColor
-import org.bukkit.EntityEffect
 import org.bukkit.Material
 import org.bukkit.event.EventHandler
 import org.bukkit.event.Listener

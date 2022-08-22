@@ -1,4 +1,3 @@
 package games.bnogocarft.bnogorpg.economy.Auction
 
-class AHGui {
-}
+class AHGui

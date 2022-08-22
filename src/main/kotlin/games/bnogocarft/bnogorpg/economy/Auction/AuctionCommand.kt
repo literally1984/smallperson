@@ -33,7 +33,10 @@ class AuctionCommand : CommandExecutor {
                         for (auc in auctions) {
                             if (args[1] == auc.ID) {
                                 sender.sendMessage("${ChatColor.GOLD}You ${ChatColor.RED}${ChatColor.BOLD}Force Ended${ChatColor.GOLD} auction ${ChatColor.BLUE}${ChatColor.BOLD}#${auc.ID}")
-                                Bukkit.getLogger().log(Level.INFO, "$logo ${ChatColor.GREEN}${sender.displayName} ${ChatColor.RED}${ChatColor.BOLD}Force Ended${ChatColor.GOLD} auction #${auc.ID}")
+                                Bukkit.getLogger().log(
+                                    Level.INFO,
+                                    "$logo ${ChatColor.GREEN}${sender.displayName} ${ChatColor.RED}${ChatColor.BOLD}Force Ended${ChatColor.GOLD} auction #${auc.ID}"
+                                )
 
                             }
                         }
@@ -42,6 +45,7 @@ class AuctionCommand : CommandExecutor {
                         return true
                     }
                 }
+
                 "list" -> {
                     for (i in 0..9) {
                         val auc = try {
@@ -51,24 +55,26 @@ class AuctionCommand : CommandExecutor {
                             break
                         }
 
-                        sender.sendMessage("${auc.ID} " +
-                                "${
-                                    if (sender.itemInHand != null) {
-                                        if (sender.itemInHand.hasItemMeta()) {
-                                            sender.itemInHand.itemMeta.displayName
+                        sender.sendMessage(
+                            "${auc.ID} " +
+                                    "${
+                                        if (sender.itemInHand != null) {
+                                            if (sender.itemInHand.hasItemMeta()) {
+                                                sender.itemInHand.itemMeta.displayName
+                                            } else {
+                                                sender.itemInHand.type.name
+                                            }
                                         } else {
-                                            sender.itemInHand.type.name
+                                            sender.sendMessage("${ChatColor.RED}You are not holding an item to auction!")
+                                            return true
                                         }
-                                    } else {
-                                        sender.sendMessage("${ChatColor.RED}You are not holding an item to auction!")
-                                        return true
-                                    }
-                                } " +
-                                "Current Bid: ${auc.highestBid} Ending in: " +
-                                "${auc.timeLeft.days}D, " +
-                                "${auc.timeLeft.hours}H, " +
-                                "${auc.timeLeft.minutes}M, " +
-                                "${auc.timeLeft.seconds}S")
+                                    } " +
+                                    "Current Bid: ${auc.highestBid} Ending in: " +
+                                    "${auc.timeLeft.days}D, " +
+                                    "${auc.timeLeft.hours}H, " +
+                                    "${auc.timeLeft.minutes}M, " +
+                                    "${auc.timeLeft.seconds}S"
+                        )
                     }
                     return true
                 }
@@ -90,12 +96,12 @@ class AuctionCommand : CommandExecutor {
                         }
                     }
 
-                        if (auc == null) {
+                    if (auc == null) {
                         sender.sendMessage("${ChatColor.RED}Auction not found!")
                         return true
                     }
 
-                        val bid = try {
+                    val bid = try {
                         args[2].toDouble()
                     } catch (e: NumberFormatException) {
                         sender.sendMessage("${ChatColor.RED}Invalid bid amount")
@@ -107,7 +113,7 @@ class AuctionCommand : CommandExecutor {
                         return true
                     }
 
-                        if (bid > Main.econ.getBalance(sender.name)) {
+                    if (bid > Main.econ.getBalance(sender.name)) {
                         sender.sendMessage("${ChatColor.RED}You don't have enough money to bid $$bid!")
                         return true
                     }
@@ -115,15 +121,17 @@ class AuctionCommand : CommandExecutor {
                     auc.highestBid = bid
                     auc.currentBidder = sender
                     Main.econ.withdrawPlayer(sender.name, bid)
-                    sender.sendMessage("${ChatColor.GREEN}You bid $bid on ${auc.ID} (" +
-                            "${
-                                if (auc.item.hasItemMeta())
-                                    auc.item.itemMeta.displayName
-                                else
-                                    auc.item.type.toString()
-                            })")
+                    sender.sendMessage(
+                        "${ChatColor.GREEN}You bid $bid on ${auc.ID} (" +
+                                "${
+                                    if (auc.item.hasItemMeta())
+                                        auc.item.itemMeta.displayName
+                                    else
+                                        auc.item.type.toString()
+                                })"
+                    )
                     return true
-                    }
+                }
 
                 "create" -> {
                     // /auction create <time> <starting bid>
@@ -150,13 +158,15 @@ class AuctionCommand : CommandExecutor {
                     }
 
                     val auc = Auction(sender.itemInHand, startingBid, sender, time)
-                    var countdown = Bukkit.getScheduler().runTaskTimer(Main.instance, AuctionTimer(auc), 0, 20)
-                    sender.sendMessage("${ChatColor.GREEN}You successfully created an auction for your " +
-                            if (sender.itemInHand.hasItemMeta()) {
-                                sender.itemInHand.itemMeta.displayName
-                            } else {
-                                sender.itemInHand.type.name
-                            }
+                    val countdown = Bukkit.getScheduler().runTaskTimer(Main.instance, AuctionTimer(auc), 0, 20)
+                    auc.task = countdown
+                    sender.sendMessage(
+                        "${ChatColor.GREEN}You successfully created an auction for your " +
+                                if (sender.itemInHand.hasItemMeta()) {
+                                    sender.itemInHand.itemMeta.displayName
+                                } else {
+                                    sender.itemInHand.type.name
+                                }
                     )
                     sender.sendMessage("${ChatColor.GREEN}with Auction ID ${ChatColor.LIGHT_PURPLE}${auc.ID}")
                     return true

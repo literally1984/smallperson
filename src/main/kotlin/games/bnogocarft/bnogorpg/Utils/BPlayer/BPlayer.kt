@@ -21,7 +21,6 @@ import tech.nully.BossBarAPI.BossBar
 import java.io.File
 import java.text.SimpleDateFormat
 import java.util.*
-import kotlin.collections.ArrayList
 import kotlin.math.roundToInt
 
 
@@ -114,7 +113,7 @@ data class BPlayer(val player: Player) {
     var farmingEXP: Long
     var farmingLVL: Long
 
-    val stash = ArrayList<ItemStack>(54)
+    val stash = ArrayList<ItemStack?>(54)
 
     init {
         // Makes sure the PPlayer's data file is saved when PPlayer is created
@@ -169,8 +168,9 @@ data class BPlayer(val player: Player) {
         farmingEXP = config.getLong("s.l.fa.ed")
         farmingLVL = config.getLong("s.l.fa.l")
         for (index in 0..53) {
+            stash.add(null)
             if (config.getString("o.st.$index") != "") {
-                stash.add(deserializeItem(config.getString("o.st.$index").split(",").dropLast(1)))
+                stash[index] = deserializeItem(config.getString("o.st.$index").split(",").dropLast(1))
             }
         }
 
@@ -219,8 +219,12 @@ data class BPlayer(val player: Player) {
             config.set("o.cl", false)
         }
         for (index in 0..53) {
+            if (stash[index] == null) {
+                continue
+            }
+
             var singleStringSerialized = ""
-            for (s in serializeItem(stash[index])) {
+            for (s in serializeItem(stash[index]!!)) {
                 singleStringSerialized += "$s,"
             }
             config.set("o.st.$index", singleStringSerialized)

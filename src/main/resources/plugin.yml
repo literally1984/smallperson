@@ -7,7 +7,6 @@ description: A custom coded plugin made for BnogoCarft
 depend:
   - BossBarAPI
   - Factions
-  - MCore
   - Vault
   - ProtocolLib
 website: https://bnogocarft.games
@@ -64,7 +63,7 @@ permissions:
   bnogorpg.admin:
     description: Gives all admin permissions
     children:
-      bnogorpg.auction.forceend
+      bnogorpg.auction.forceend: true
   bnogorpg.chat.admin:
     description: gives you admin rank in chat
   bnogorpg.chat.mod:
