@@ -61,7 +61,7 @@ class Main : JavaPlugin() {
         lateinit var ymlConfig: YamlConfiguration
 
         val auctions = ArrayList<Auction>()
-        var lastAuctionID by Delegates.notNull<Int>()
+        var lastAuctionID by Delegates.notNull<String>()
 
         lateinit var econ: Economy
     }
@@ -76,23 +76,31 @@ class Main : JavaPlugin() {
             ymlConfig.set("items.indexes.DiamondLeggings", "000000")
             ymlConfig.set("items.indexes.DiamondBoots", "000000")
             ymlConfig.set("items.indexes.DiamondSword", "000000")
-            ymlConfig.set("items.indexes.DiamondHelmet", "000000")
-            ymlConfig.set("items.indexes.DiamondHelmet", "000000")
-            ymlConfig.set("items.indexes.DiamondHelmet", "000000")
-            ymlConfig.set("items.indexes.DiamondHelmet", "000000")
-            ymlConfig.set("items.indexes.DiamondHelmet", "000000")
-            ymlConfig.set("items.indexes.DiamondHelmet", "000000")
-            ymlConfig.set("items.indexes.DiamondHelmet", "000000")
-            ymlConfig.set("items.indexes.DiamondHelmet", "000000")
-            ymlConfig.set("items.indexes.DiamondHelmet", "000000")
-            ymlConfig.set("items.indexes.DiamondHelmet", "000000")
+            ymlConfig.set("items.indexes.GoldHelmet", "000000")
+            ymlConfig.set("items.indexes.GoldChestplate", "000000")
+            ymlConfig.set("items.indexes.GoldLeggings", "000000")
+            ymlConfig.set("items.indexes.GoldBoots", "000000")
+            ymlConfig.set("items.indexes.GoldSword", "000000")
+            ymlConfig.set("items.indexes.IronHelmet", "000000")
+            ymlConfig.set("items.indexes.IronChestplate", "000000")
+            ymlConfig.set("items.indexes.IronLeggings", "000000")
+            ymlConfig.set("items.indexes.IronBoots", "000000")
+            ymlConfig.set("items.indexes.IronSword", "000000")
+            ymlConfig.set("items.indexes.CactusHelmet", "000000")
+            ymlConfig.set("items.indexes.CactusChestplate", "000000")
+            ymlConfig.set("items.indexes.CactusLeggings", "000000")
+            ymlConfig.set("items.indexes.CactusBoots", "000000")
+            ymlConfig.set("items.indexes.LapisHelmet", "000000")
+            ymlConfig.set("items.indexes.LapisChestplate", "000000")
+            ymlConfig.set("items.indexes.LapisLeggings", "000000")
+            ymlConfig.set("items.indexes.LapisBoots", "000000")
 
-            ymlConfig.set("auction.lastAucID", "100000")
+            ymlConfig.set("auction.lastAucID", "000000")
             ymlConfig.set("auction.pausedAucs", "")
         }
         YMLUtils.saveCustomYml(ymlConfig, serverFile)
 
-        lastAuctionID = ymlConfig.getInt("auction.lastAucID")
+        lastAuctionID = ymlConfig.getString("auction.lastAucID")
 
         val cSender = server.consoleSender
         protocolManager = ProtocolLibrary.getProtocolManager()
@@ -184,13 +192,9 @@ class Main : JavaPlugin() {
             return
         }
 
-        cSender.sendMessage("--------------------------------------------")
-        cSender.sendMessage("--------------------------------------------")
         cSender.sendMessage(
-            "${ChatColor.LIGHT_PURPLE} $logo ${ChatColor.GREEN} BnogoRPG Vdev-0.0.4 Has been ${ChatColor.GREEN}Enabled"
+            "${ChatColor.LIGHT_PURPLE} $logo ${ChatColor.GREEN} BnogoRPG Vdev-0.0.4 has been ${ChatColor.GREEN}Enabled"
         )
-        cSender.sendMessage("--------------------------------------------")
-        cSender.sendMessage("--------------------------------------------")
         saveDefaultConfig()
         System.gc()
     }

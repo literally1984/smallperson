@@ -91,19 +91,8 @@
             <id>PrimCoreRepos-repos</id>
             <url>https://github.com/darverdevs/EaglerMavenRepo/raw/main</url>
         </repository>
-        <repository>
-            <id>everything</id>
-            <url>https://repo.citizensnpcs.co/</url>
-        </repository>
     </repositories>
     <dependencies>
-        <!-- Everything dependencies -->
-        <dependency>
-            <groupId>net.citizensnpcs</groupId>
-            <artifactId>citizensapi</artifactId>
-            <version>2.0.8-SNAPSHOT</version>
-            <scope>provided</scope>
-        </dependency>
         <!-- PrimCore dependencies -->
         <dependency>
             <groupId>com.github.EaglerMaven</groupId>
@@ -159,12 +148,6 @@
             <artifactId>BongoBukkit</artifactId>
             <version>1.5.2</version>
             <scope>provided</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.jetbrains.kotlin</groupId>
-            <artifactId>kotlin-test</artifactId>
-            <version>${kotlin.version}</version>
-            <scope>test</scope>
         </dependency>
         <!-- WebSocket dependencies -->
         <dependency>

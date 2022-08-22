@@ -6,6 +6,9 @@ authors: [BongoCat]
 description: A custom coded plugin made for BnogoCarft
 depend:
   - BossBarAPI
+  - Factions
+  - MCore
+  - Vault
   - ProtocolLib
 website: https://bnogocarft.games
 commands:

@@ -15,7 +15,7 @@ data class Auction(
 
     var currentBidder: Player? = null
     var highestBid: Double = 0.0
-    var ID = Main.lastAuctionID++
+    var ID : String = "000000"
     var ended = false
 
     constructor(
@@ -25,7 +25,7 @@ data class Auction(
         timeLeft: AuctionTime,
         currentBidder: Player?,
         highestBid: Double,
-        ID: Int) : this(item, startingBid, creator, timeLeft) {
+        ID: String) : this(item, startingBid, creator, timeLeft) {
             this.ID = ID
             this.currentBidder = currentBidder
             this.highestBid = highestBid
@@ -51,6 +51,16 @@ data class Auction(
 
     init {
         Main.auctions.add(this)
+        val splitAucID = Main.lastAuctionID.split("").toMutableList()
+        splitAucID.drop(1)
+        splitAucID.dropLast(1)
+        for (char in splitAucID) {
+            if (char.toInt() > 9) {
+                splitAucID[splitAucID.indexOf(char)] = (splitAucID[splitAucID.indexOf(char)].toInt() - 10).toString()
+                splitAucID[splitAucID.indexOf(char) - 1] = (splitAucID[splitAucID.indexOf(char) - 1].toInt() + 1).toString()
+            }
+        }
+        ID = splitAucID.joinToString("")
         Main.lastAuctionID += 1
     }
 }

@@ -43,7 +43,7 @@ fun serializeAuction(auction: Auction): String {
     returnString += "${auction.timeLeft.days},"
     returnString += "${if (auction.currentBidder == null) "null" else auction.currentBidder!!.name},"
     returnString += "${auction.highestBid}"
-    returnString += "${auction.ID}"
+    returnString += auction.ID
 
     return returnString
 }
@@ -74,7 +74,7 @@ fun deserializeAuction(s: String): Auction {
             }
         },
         aucData[7].toDouble(),
-        aucData[8].toInt()
+        aucData[8]
         )
 
     Main.auctions.add(deserializedAuc)
