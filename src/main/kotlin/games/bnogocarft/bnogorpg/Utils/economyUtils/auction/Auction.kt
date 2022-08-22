@@ -1,6 +1,7 @@
 package games.bnogocarft.bnogorpg.Utils.economyUtils.auction
 
 import games.bnogocarft.bnogorpg.Main
+import games.bnogocarft.bnogorpg.Utils.BPlayer.BPlayers
 import org.bukkit.Bukkit
 import org.bukkit.ChatColor
 import org.bukkit.entity.Player
@@ -33,8 +34,13 @@ data class Auction(
     fun endAuction() {
         Main.auctions.remove(this)
         if (highestBid > 0) {
-            currentBidder!!.inventory.addItem(item)
-            Main.econ.depositPlayer(currentBidder!!.displayName, highestBid)
+            if (Bukkit.getOnlinePlayers().contains(Bukkit.getPlayer(currentBidder!!.displayName))) {
+                currentBidder!!.inventory.addItem(item)
+            } else {
+                val player = BPlayers[currentBidder!!]!!
+                player.stash.add(item)
+            }
+            Main.econ.depositPlayer(creator.displayName, highestBid)
         }
 
         for (player in Bukkit.getOnlinePlayers()) {

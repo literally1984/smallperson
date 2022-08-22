@@ -10,14 +10,18 @@ import games.bnogocarft.bnogorpg.Utils.BItemStack.Talisman.TalismanUtils
 import games.bnogocarft.bnogorpg.Utils.Database.YMLUtils
 import games.bnogocarft.bnogorpg.Utils.Mode.Mode
 import games.bnogocarft.bnogorpg.Utils.StatUtils.StatManager
+import games.bnogocarft.bnogorpg.Utils.deserializeItem
+import games.bnogocarft.bnogorpg.Utils.serializeItem
 import games.bnogocarft.bnogorpg.combat.ComboCounter.Combo
 import org.bukkit.configuration.file.YamlConfiguration
 import org.bukkit.entity.LivingEntity
 import org.bukkit.entity.Player
+import org.bukkit.inventory.ItemStack
 import tech.nully.BossBarAPI.BossBar
 import java.io.File
 import java.text.SimpleDateFormat
 import java.util.*
+import kotlin.collections.ArrayList
 import kotlin.math.roundToInt
 
 
@@ -110,17 +114,22 @@ data class BPlayer(val player: Player) {
     var farmingEXP: Long
     var farmingLVL: Long
 
+    val stash = ArrayList<ItemStack>(54)
+
     init {
         // Makes sure the PPlayer's data file is saved when PPlayer is created
         if (!(playerFile.exists())) {
             config.set("i.ta", "")
             config.set("i.ab", "")
-            config.set("o.st", "")
             config.set("s.bs.p", 1)
             config.set("s.bs.a", 1)
             config.set("s.bs.s", 1)
 
             config.set("o.pl", "0 0")
+            for (index in 0..53) {
+                config.set("o.st.$index", "")
+            }
+
             config.set("s.l.me.e", 0L)
             config.set("s.l.me.l", 0L)
 
@@ -159,6 +168,11 @@ data class BPlayer(val player: Player) {
         combatLVL = config.getLong("s.l.co.l")
         farmingEXP = config.getLong("s.l.fa.ed")
         farmingLVL = config.getLong("s.l.fa.l")
+        for (index in 0..53) {
+            if (config.getString("o.st.$index") != "") {
+                stash.add(deserializeItem(config.getString("o.st.$index").split(",").dropLast(1)))
+            }
+        }
 
         // Gets player Talismans from file
         for (s: String in config.getString("i.ta").split(",".toRegex())) {
@@ -203,6 +217,13 @@ data class BPlayer(val player: Player) {
             config.set("o.cl", metadata["combatLogged"])
         } catch (e: NullPointerException) {
             config.set("o.cl", false)
+        }
+        for (index in 0..53) {
+            var singleStringSerialized = ""
+            for (s in serializeItem(stash[index])) {
+                singleStringSerialized += "$s,"
+            }
+            config.set("o.st.$index", singleStringSerialized)
         }
     }
 

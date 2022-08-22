@@ -9,6 +9,7 @@ import games.bnogocarft.bnogorpg.Utils.BItemStack.BItems.BWeapon
 import games.bnogocarft.bnogorpg.Utils.BPlayer.BPlayer
 import games.bnogocarft.bnogorpg.Utils.BPlayer.BPlayers
 import games.bnogocarft.bnogorpg.Player.StatRegenTimer
+import games.bnogocarft.bnogorpg.Utils.deserializeItem
 import org.bukkit.Bukkit
 import org.bukkit.ChatColor
 import org.bukkit.event.EventHandler
@@ -21,6 +22,14 @@ class PlayerJoinEvent : Listener {
     @EventHandler(priority = EventPriority.HIGHEST)
     fun playerJoinEvent(e: PlayerJoinEvent) {
         val bPlayer = BPlayer(e.player)
+        for (index in 0..53) {
+            if (bPlayer.config.getString("o.st.$index") != "") {
+                bPlayer.stash.add(deserializeItem(bPlayer.config.getString("o.st.$index").split(",").dropLast(1)))
+            }
+        }
+        e.player.sendMessage("${ChatColor.GOLD}${ChatColor.BOLD}Remember to check your stash for new items")
+        e.player.sendMessage("${ChatColor.GOLD}${ChatColor.BOLD}that could have been given to you while you were")
+        e.player.sendMessage("${ChatColor.GOLD}${ChatColor.BOLD}offline with ${ChatColor.BLUE}/stash!")
         if (bPlayer.metadata["combatLogged"] == true) {
             e.player.inventory.clear()
             e.player.sendMessage("${ChatColor.RED}You have previously combat logged, you inventory has been cleared")

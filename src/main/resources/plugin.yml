@@ -48,14 +48,25 @@ commands:
     aliases: [auc]
     usage: Correct usage is /<command> <bid/list/create> <extra args>
     description: The base auctions command
+  stash:
+    name: Stash
+    usage: /<command>
+    description: Opens up the user's stash
 permissions:
   bnogorpg.*:
     description: Gives access to all BnogoRPG commands
     children:
       bnogorpg.chat.admin: true
+      bnogorpg.admin: true
+  bnogorpg.admin:
+    description: Gives all admin permissions
+    children:
+      bnogorpg.auction.forceend
   bnogorpg.chat.admin:
     description: gives you admin rank in chat
   bnogorpg.chat.mod:
     description: gives you mod rank in chat
   bnogorpg.chat.helper:
     description: Gives you helper rank in chat
+  bnogorpg.auction.forceend:
+    description: Forces an auction to end

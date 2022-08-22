@@ -18,6 +18,8 @@ import games.bnogocarft.bnogorpg.Planes.PlaneKeyItem
 import games.bnogocarft.bnogorpg.Planes.PlaneListeners
 import games.bnogocarft.bnogorpg.Planes.SteerListener
 import games.bnogocarft.bnogorpg.Planes.removeScheduler
+import games.bnogocarft.bnogorpg.Player.Stash.StashCommand
+import games.bnogocarft.bnogorpg.Player.Stash.StashListener
 import games.bnogocarft.bnogorpg.RecipeBook.RecipeBookCommand
 import games.bnogocarft.bnogorpg.RecipeBook.RecipeManager
 import games.bnogocarft.bnogorpg.Reforge.ReforgeBlockListener
@@ -119,7 +121,7 @@ class Main : JavaPlugin() {
         server.pluginManager.registerEvents(ReforgeBlockListener(), this)
         server.pluginManager.registerEvents(EnchantListeners(), this)
         server.pluginManager.registerEvents(TestListeners(), this)
-
+        server.pluginManager.registerEvents(StashListener(), this)
         cSender.sendMessage("$logo Registered Listeners")
 
         cSender.sendMessage("$logo Enabling ItemUpgrades...")
@@ -146,6 +148,7 @@ class Main : JavaPlugin() {
         getCommand("upgrade").executor = UpgradeCMD()
         getCommand("ench").executor = EnchantCommand()
         getCommand("auction").executor = AuctionCommand()
+        getCommand("stash").executor = StashCommand()
         cSender.sendMessage("$logo all commands are enabled!")
 
         cSender.sendMessage("Initializing Auctions...")
@@ -176,9 +179,9 @@ class Main : JavaPlugin() {
 
         cSender.sendMessage("$logo Enabling Economy...")
         if (!setupEconomy()) {
-            cSender.sendMessage(String.format("[%s] - Disabled due to no Vault dependency found!", description.name));
-            server.pluginManager.disablePlugin(this);
-            return;
+            cSender.sendMessage(String.format("[%s] - Disabled due to no Vault dependency found!", description.name))
+            server.pluginManager.disablePlugin(this)
+            return
         }
 
         cSender.sendMessage("--------------------------------------------")
@@ -212,7 +215,7 @@ class Main : JavaPlugin() {
     private fun setupEconomy(): Boolean {
         val economyProvider = server.servicesManager.getRegistration(Economy::class.java)
         if (economyProvider != null) {
-            econ = economyProvider.getProvider();
+            econ = economyProvider.getProvider()
             return true
         }
         return false
