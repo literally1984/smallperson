@@ -94,7 +94,7 @@ class Main : JavaPlugin() {
             ymlConfig.set("items.indexes.LapisLeggings", "000000")
             ymlConfig.set("items.indexes.LapisBoots", "000000")
 
-            ymlConfig.set("auction.lastAucID", "000000")
+            ymlConfig.set("auction.lastAucID", "0")
             ymlConfig.set("auction.pausedAucs", "")
         }
         YMLUtils.saveCustomYml(ymlConfig, serverFile)
