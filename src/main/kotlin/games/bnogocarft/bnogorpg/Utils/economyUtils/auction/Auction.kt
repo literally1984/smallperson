@@ -67,6 +67,6 @@ data class Auction(
             stringBuild += "0"
         }
         ID = stringBuild + ID
-        Main.lastAuctionID += 1
+        Main.lastAuctionID = ID
     }
 }
