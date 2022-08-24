@@ -3,10 +3,10 @@ package games.bnogocarft.bnogorpg.combat.ComboCounter
 import games.bnogocarft.bnogorpg.Player.PlayerBar.Bar
 import games.bnogocarft.bnogorpg.Player.PlayerBar.CombatLogBar
 import games.bnogocarft.bnogorpg.Player.PlayerBar.ComboBar
-import games.bnogocarft.bnogorpg.Utils.BPlayer.BPlayer
+import games.bnogocarft.bnogorpg.Utils.BPlayer.OnlineBPlayer
 import org.bukkit.scheduler.BukkitRunnable
 
-class ComboTimer(p: BPlayer) : BukkitRunnable() {
+class ComboTimer(p: OnlineBPlayer) : BukkitRunnable() {
     val player = p
     override fun run() {
         val bar = player.bar

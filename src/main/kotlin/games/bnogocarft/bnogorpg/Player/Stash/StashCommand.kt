@@ -1,6 +1,6 @@
 package games.bnogocarft.bnogorpg.Player.Stash
 
-import games.bnogocarft.bnogorpg.Utils.BPlayer.BPlayers
+import games.bnogocarft.bnogorpg.Utils.BPlayer.OnlineBPlayers
 import org.bukkit.Bukkit
 import org.bukkit.ChatColor
 import org.bukkit.command.Command
@@ -16,7 +16,7 @@ class StashCommand : CommandExecutor {
         }
 
         val stashInv = Bukkit.createInventory(null, 54, "${ChatColor.GOLD}Your Stash")
-        val player = BPlayers[sender]!!
+        val player = OnlineBPlayers[sender]!!
         for (item in player.stash) {
             if (item != null) stashInv.addItem(item)
         }

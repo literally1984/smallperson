@@ -1,6 +1,6 @@
 package games.bnogocarft.bnogorpg.OtherCommands
 
-import games.bnogocarft.bnogorpg.Utils.BPlayer.BPlayers
+import games.bnogocarft.bnogorpg.Utils.BPlayer.OnlineBPlayers
 import games.bnogocarft.bnogorpg.Utils.others.PlaytimeUtils
 import org.bukkit.ChatColor
 import org.bukkit.command.Command
@@ -15,7 +15,7 @@ class PlayTimeCommand : CommandExecutor {
             return true
         }
 
-        val bPlayer = BPlayers[sender]!!
+        val bPlayer = OnlineBPlayers[sender]!!
         PlaytimeUtils.addPlaytime(bPlayer)
         bPlayer.updatePlayTime()
 

@@ -1,53 +1,17 @@
 package games.bnogocarft.bnogorpg.Utils.BPlayer
 
-import games.bnogocarft.bnogorpg.Player.PlayerBar.Bar
-import games.bnogocarft.bnogorpg.Player.PlayerBar.MainBar
 import games.bnogocarft.bnogorpg.Utils.Abilities.PlayerAbility.Ability
 import games.bnogocarft.bnogorpg.Utils.Abilities.PlayerAbility.AbilityUtils
-import games.bnogocarft.bnogorpg.Utils.Abilities.SetBonus
 import games.bnogocarft.bnogorpg.Utils.BItemStack.Talisman.Talisman
 import games.bnogocarft.bnogorpg.Utils.BItemStack.Talisman.TalismanUtils
 import games.bnogocarft.bnogorpg.Utils.Database.YMLUtils
-import games.bnogocarft.bnogorpg.Utils.Mode.Mode
 import games.bnogocarft.bnogorpg.Utils.StashArrayList
-import games.bnogocarft.bnogorpg.Utils.StatUtils.StatManager
 import games.bnogocarft.bnogorpg.Utils.deserializeItem
 import games.bnogocarft.bnogorpg.Utils.serializeItem
-import games.bnogocarft.bnogorpg.combat.ComboCounter.Combo
 import org.bukkit.configuration.file.YamlConfiguration
-import org.bukkit.entity.LivingEntity
-import org.bukkit.entity.Player
-import org.bukkit.inventory.ItemStack
-import tech.nully.BossBarAPI.BossBar
 import java.io.File
-import java.text.SimpleDateFormat
-import java.util.*
-import kotlin.math.roundToInt
 
-
-/**
- * Stores the RPG attributes of a player.
- * @constructor Fully constructs the RPG attributes of a given Online Player
- */
-data class BPlayer(val player: Player) {
-    private val playerStats = StatManager.calculateStats(player)
-
-    /**
-     * The server time in which the player joined
-     */
-    var joinTime: String
-
-    /**
-     * The latest update of the player's [PlayerStat]
-     */
-    var stats = PlayerStat(playerStats)
-        get() {
-            stats = PlayerStat(StatManager.calculateStats(player))
-            return field
-        }
-
-    val metadata = HashMap<String, Any>()
-
+open class BPlayer(open val player: String) {
     /**
      * The latest update of the player's base Axe break speed
      * with their fist
@@ -67,11 +31,6 @@ data class BPlayer(val player: Player) {
     var baseShovelBreakSpeed: Int
 
     /**
-     * The player's current [Mode]
-     */
-    var mode: Mode = Mode.NONE
-
-    /**
      * The player's current talismans
      */
     val talismans = ArrayList<Talisman>()
@@ -85,21 +44,14 @@ data class BPlayer(val player: Player) {
      * Used to get the player of the player's
      * YML data [File]
      */
-    val playerFile = File("${YMLUtils.getUsersFolder()}/${player.displayName}.yml")
+    val file = File("${YMLUtils.getUsersFolder()}/$player.yml")
 
     /**
      * The player's [YamlConfiguration] used to access the player's YML
      * data file.
      */
-    var config: YamlConfiguration = YamlConfiguration.loadConfiguration(playerFile)
+    var config: YamlConfiguration = YamlConfiguration.loadConfiguration(file)
     var playTime: String
-
-    val bar = BossBar(player)
-    var bars = arrayListOf<Bar>(MainBar())
-    var currentBar: Bar = MainBar()
-
-    var combo: Combo? = null
-    var currentSetBonus = SetBonus.NONE
 
     var meleeEXP: Long = 0
     var meleeLVL: Long
@@ -118,7 +70,7 @@ data class BPlayer(val player: Player) {
 
     init {
         // Makes sure the PPlayer's data file is saved when PPlayer is created
-        if (!(playerFile.exists())) {
+        if (!(file.exists())) {
             config.set("i.ta", "")
             config.set("i.ab", "")
             config.set("s.bs.p", 1)
@@ -149,10 +101,9 @@ data class BPlayer(val player: Player) {
             config.set("s.l.fa.l", 0L)
             config.set("o.cl", false)
         }
-        YMLUtils.saveCustomYml(config, playerFile)
+        YMLUtils.saveCustomYml(config, file)
 
         playTime = config.getString("o.pl")
-        metadata["combatLogged"] = config.getBoolean("o.cl")
         baseAxeBreakSpeed = config.getInt("s.bs.a")
         basePickBreakSpeed = config.getInt("s.bs.p")
         baseShovelBreakSpeed = config.getInt("s.bs.s")
@@ -182,11 +133,6 @@ data class BPlayer(val player: Player) {
         for (s: String in config.getString("i.ab").split(",".toRegex())) {
             abilities.add(AbilityUtils.getAbility(s))
         }
-
-        val now = Date()
-        val format = SimpleDateFormat("dd-MM-yyyy HH:mm:ss")
-        joinTime = format.format(now)
-
     }
 
     fun saveStats() {
@@ -217,11 +163,7 @@ data class BPlayer(val player: Player) {
 
         config.set("s.l.fa.e", farmingEXP)
         config.set("s.l.fa.l", farmingLVL)
-        try {
-            config.set("o.cl", metadata["combatLogged"])
-        } catch (e: NullPointerException) {
-            config.set("o.cl", false)
-        }
+
         for (index in 0..53) {
             config.set("o.st.$index", "")
             if (stash[index] == null) {
@@ -234,133 +176,6 @@ data class BPlayer(val player: Player) {
             }
             config.set("o.st.$index", singleStringSerialized)
         }
-        YMLUtils.saveCustomYml(config, playerFile)
-    }
-
-    fun addToMelee(amount: Int) {
-        combatEXP += amount / 2
-        meleeEXP += amount
-        if (meleeEXP >= getNeededEXP(meleeLVL)) {
-            levelUp("melee")
-        }
-
-        if (combatEXP >= getNeededEXP(combatLVL)) {
-            levelUp("combat")
-        }
-    }
-
-    fun addToSpellcast(amount: Int) {
-        combatEXP += amount / 2
-        spellcastEXP += amount
-
-        if (spellcastEXP >= getNeededEXP(spellcastLVL)) {
-            levelUp("spellcast")
-        }
-
-        if (combatEXP >= getNeededEXP(combatLVL)) {
-            levelUp("combat")
-        }
-    }
-
-    fun updatePlayTime() {
-        playTime = config.getString("o.pl")
-    }
-
-    /**
-     * Simiulates the current [BPlayer] dealing damage to another [BPlayer], Handles EXP gain and more
-     */
-    fun dealDamage(other: LivingEntity, amount: Int) {
-        val damage = if (other is Player) {
-            val player = BPlayers[other]!!
-            try {
-                amount * (player.stats.defense / player.stats.defense + 10)
-            } catch (e: ArithmeticException) {
-                amount
-            }
-        } else {
-            amount
-        }
-        other.health -= damage
-        addToMelee((damage * 0.7).roundToInt())
-    }
-
-
-    fun dealSpellDamage(player: BPlayer, amount: Int) {
-        val damage = amount * (player.stats.mDefense / player.stats.mDefense + 10)
-        player.player.health -= damage
-        spellcastEXP += damage
-        if (spellcastEXP >= getNeededEXP(player.spellcastLVL)) {
-            levelUp("spellcast")
-        }
-    }
-
-    fun levelUp(stat: String) {
-        when (stat) {
-            "melee" -> {
-                if (meleeEXP >= getNeededEXP(meleeLVL)) {
-                    meleeLVL++
-                    meleeEXP -= getNeededEXP(meleeLVL)
-                    player.sendMessage("You have leveled up to your melee level to $meleeLVL!")
-                    player.sendMessage("Your current melee EXP is $meleeEXP and you need ${getNeededEXP(meleeLVL)} to level up again!")
-                }
-            }
-
-            "spellcast" -> {
-                if (spellcastEXP >= getNeededEXP(spellcastLVL)) {
-                    spellcastLVL++
-                    spellcastEXP -= getNeededEXP(spellcastLVL)
-                    player.sendMessage("You have leveled up to your spellcast level to $spellcastLVL!")
-                    player.sendMessage(
-                        "Your current spellcast EXP is $spellcastEXP and you need ${
-                            getNeededEXP(
-                                spellcastLVL
-                            )
-                        } to level up again!"
-                    )
-                }
-            }
-
-            "woodcutting" -> {
-                if (woodCuttingEXP >= getNeededEXP(woodCuttingLVL)) {
-                    woodCuttingLVL++
-                    woodCuttingEXP -= getNeededEXP(woodCuttingLVL)
-                    player.sendMessage("You have leveled up to your woodcutting level to $woodCuttingLVL!")
-                    player.sendMessage(
-                        "Your current woodcutting EXP is $woodCuttingEXP and you need ${
-                            getNeededEXP(
-                                woodCuttingLVL
-                            )
-                        } to level up again!"
-                    )
-                }
-            }
-
-            "mining" -> {
-                if (miningEXP >= getNeededEXP(miningLVL)) {
-                    miningLVL++
-                    miningEXP -= getNeededEXP(miningLVL)
-                    player.sendMessage("You have leveled up to your mining level to $miningLVL!")
-                    player.sendMessage("Your current mining EXP is $miningEXP and you need ${getNeededEXP(miningLVL)} to level up again!")
-                }
-            }
-
-            "combat" -> {
-                if (combatEXP >= getNeededEXP(combatLVL)) {
-                    combatLVL++
-                    combatEXP -= getNeededEXP(combatLVL)
-                    player.sendMessage("You have leveled up to your combat level to $combatLVL!")
-                    player.sendMessage("Your current combat EXP is $combatEXP and you need ${getNeededEXP(combatLVL)} to level up again!")
-                }
-            }
-
-            "farming" -> {
-                if (farmingEXP >= getNeededEXP(farmingLVL)) {
-                    farmingLVL++
-                    farmingEXP -= getNeededEXP(farmingLVL)
-                    player.sendMessage("You have leveled up to your farming level to $farmingLVL!")
-                    player.sendMessage("Your current farming EXP is $farmingEXP and you need ${getNeededEXP(farmingLVL)} to level up again!")
-                }
-            }
-        }
+        YMLUtils.saveCustomYml(config, file)
     }
 }

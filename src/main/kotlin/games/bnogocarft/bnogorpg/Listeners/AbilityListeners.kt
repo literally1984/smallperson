@@ -3,7 +3,7 @@ package games.bnogocarft.bnogorpg.Listeners
 import games.bnogocarft.bnogorpg.Main
 import games.bnogocarft.bnogorpg.Utils.BItemStack.BItems.BItemUtils
 import games.bnogocarft.bnogorpg.Utils.BItemStack.BItems.BMaterial
-import games.bnogocarft.bnogorpg.Utils.BPlayer.BPlayers
+import games.bnogocarft.bnogorpg.Utils.BPlayer.OnlineBPlayers
 import org.bukkit.Bukkit
 import org.bukkit.ChatColor
 import org.bukkit.event.EventHandler
@@ -43,7 +43,7 @@ class AbilityListeners : Listener {
 
     @EventHandler(priority = EventPriority.HIGHEST)
     fun onGrapple(event: PlayerFishEvent) {
-        val player = BPlayers[event.player]!!
+        val player = OnlineBPlayers[event.player]!!
         val item = event.player.itemInHand
         if (item.itemMeta == null) return
 

@@ -1,6 +1,6 @@
 package games.bnogocarft.bnogorpg.Listeners
 
-import games.bnogocarft.bnogorpg.Utils.BPlayer.BPlayers
+import games.bnogocarft.bnogorpg.Utils.BPlayer.OnlineBPlayers
 import games.bnogocarft.bnogorpg.Utils.others.PlaytimeUtils
 import org.bukkit.event.EventHandler
 import org.bukkit.event.Listener
@@ -10,7 +10,7 @@ class PlayerLeaveEvent : Listener {
 
     @EventHandler
     fun onPlayerLeave(e: PlayerQuitEvent) {
-        val player = BPlayers[e.player]!!
+        val player = OnlineBPlayers[e.player]!!
         if (player.metadata["combat"] != null) {
             player.metadata["combatLogged"] = true
             for (item in e.player.inventory) {

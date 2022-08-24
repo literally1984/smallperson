@@ -6,7 +6,6 @@ import net.minecraft.server.v1_5_R3.NBTTagList
 import org.bukkit.Bukkit
 import org.bukkit.Material
 import org.bukkit.craftbukkit.v1_5_R3.inventory.CraftItemStack
-import org.bukkit.entity.Item
 import org.bukkit.entity.Player
 import org.bukkit.event.EventHandler
 import org.bukkit.event.EventPriority
@@ -15,7 +14,7 @@ import org.bukkit.event.inventory.InventoryClickEvent
 import org.bukkit.inventory.Inventory
 import org.bukkit.inventory.ItemStack
 
-class StashArrayList() : ArrayList<ItemStack?>(54) {
+class StashArrayList : ArrayList<ItemStack?>(54) {
     fun adde(element: ItemStack?): Boolean {
         for (i in 0..53) {
             if (super.get(i) == null) {
@@ -25,6 +24,7 @@ class StashArrayList() : ArrayList<ItemStack?>(54) {
         }
         return false
     }
+
     init {
         for (i in 0..53) {
             super.add(null)

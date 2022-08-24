@@ -4,7 +4,7 @@ import games.bnogocarft.bnogorpg.Main
 import games.bnogocarft.bnogorpg.Player.PlayerBar.Bar
 import games.bnogocarft.bnogorpg.Player.PlayerBar.CombatLogBar
 import games.bnogocarft.bnogorpg.Player.PlayerBar.ComboBar
-import games.bnogocarft.bnogorpg.Utils.BPlayer.BPlayers
+import games.bnogocarft.bnogorpg.Utils.BPlayer.OnlineBPlayers
 import games.bnogocarft.bnogorpg.combat.CombatLog.CombatLog
 import games.bnogocarft.bnogorpg.combat.CombatLog.CombatLogTimer
 import games.bnogocarft.bnogorpg.combat.ComboCounter.Combo
@@ -25,7 +25,7 @@ class DamageEvent : Listener {
         if (e.entity is LivingEntity) {
             // handlers for if the damager is player and recipient is a mob
             if (e.damager is Player) {
-                val bDamager = BPlayers[e.damager]!!
+                val bDamager = OnlineBPlayers[e.damager]!!
 
                 // Checks if the damaged entity is also a player
                 if (e.entity is Player) {
@@ -60,7 +60,7 @@ class DamageEvent : Listener {
                     }
 
                     // Starts a combat log timer for the damaged
-                    val bDamaged = BPlayers[e.entity]!!
+                    val bDamaged = OnlineBPlayers[e.entity]!!
                     val combat2: CombatLog? = bDamaged.metadata["combo"] as CombatLog?
                     if (combat2 != null) {
                         lateinit var combatLogTask2: BukkitTask
@@ -131,7 +131,7 @@ class DamageEvent : Listener {
             }
 
             if (e.entity is Player) {
-                val player = BPlayers[e.entity]!!
+                val player = OnlineBPlayers[e.entity]!!
             }
         }
     }

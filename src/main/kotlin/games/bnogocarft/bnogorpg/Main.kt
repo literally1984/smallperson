@@ -26,7 +26,7 @@ import games.bnogocarft.bnogorpg.Reforge.ReforgeBlockListener
 import games.bnogocarft.bnogorpg.Reforge.ReforgeCommand
 import games.bnogocarft.bnogorpg.Updater.Updates.Update
 import games.bnogocarft.bnogorpg.Utils.*
-import games.bnogocarft.bnogorpg.Utils.BPlayer.BPlayers
+import games.bnogocarft.bnogorpg.Utils.BPlayer.OnlineBPlayers
 import games.bnogocarft.bnogorpg.Utils.CustomEvents.ArmorWearListeners
 import games.bnogocarft.bnogorpg.Utils.Database.YMLUtils
 import games.bnogocarft.bnogorpg.Utils.EnchantUtils.Glow
@@ -112,7 +112,7 @@ class Main : JavaPlugin() {
         registerGlow()
 
         cSender.sendMessage("$logo Constructing utils...")
-        BPlayers
+        OnlineBPlayers
         initUtils()
         ItemAbility.init()
         cSender.sendMessage("$logo Utlils have been constructed")
@@ -207,7 +207,7 @@ class Main : JavaPlugin() {
             "${ChatColor.LIGHT_PURPLE} $logo ${ChatColor.RED} BnogoRPG has been disabled D:"
         )
         for (player in server.onlinePlayers) {
-            val bPlayer = BPlayers[player]!!
+            val bPlayer = OnlineBPlayers[player]!!
             PlaytimeUtils.addPlaytime(bPlayer)
             bPlayer.saveStats()
         }

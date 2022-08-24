@@ -3,18 +3,18 @@ package games.bnogocarft.bnogorpg.combat.CombatLog
 import games.bnogocarft.bnogorpg.Player.PlayerBar.Bar
 import games.bnogocarft.bnogorpg.Player.PlayerBar.CombatLogBar
 import games.bnogocarft.bnogorpg.Player.PlayerBar.ComboBar
-import games.bnogocarft.bnogorpg.Utils.BPlayer.BPlayer
+import games.bnogocarft.bnogorpg.Utils.BPlayer.OnlineBPlayer
 import org.bukkit.ChatColor
 import org.bukkit.scheduler.BukkitRunnable
 
-class CombatLogTimer(player: BPlayer) : BukkitRunnable() {
+class CombatLogTimer(player: OnlineBPlayer) : BukkitRunnable() {
     val t = (player.metadata["combat"] as CombatLog).task
     val p = player
     override fun run() {
         if (p.metadata["combat"] == 0) {
             p.metadata.remove("combat")
             t.cancel()
-            p.player.sendMessage(
+            p.p.sendMessage(
                 "${ChatColor.GREEN}You are no longer in Combat!"
             )
             var mBar: Bar? = null

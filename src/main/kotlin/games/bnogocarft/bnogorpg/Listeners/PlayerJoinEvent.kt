@@ -7,9 +7,8 @@ import games.bnogocarft.bnogorpg.Player.StatRegenTimer
 import games.bnogocarft.bnogorpg.Utils.BItemStack.BItems.BArmor
 import games.bnogocarft.bnogorpg.Utils.BItemStack.BItems.BItemUtils
 import games.bnogocarft.bnogorpg.Utils.BItemStack.BItems.BWeapon
-import games.bnogocarft.bnogorpg.Utils.BPlayer.BPlayer
-import games.bnogocarft.bnogorpg.Utils.BPlayer.BPlayers
-import games.bnogocarft.bnogorpg.Utils.deserializeItem
+import games.bnogocarft.bnogorpg.Utils.BPlayer.OnlineBPlayer
+import games.bnogocarft.bnogorpg.Utils.BPlayer.OnlineBPlayers
 import org.bukkit.Bukkit
 import org.bukkit.ChatColor
 import org.bukkit.event.EventHandler
@@ -21,23 +20,31 @@ class PlayerJoinEvent : Listener {
 
     @EventHandler(priority = EventPriority.HIGHEST)
     fun playerJoinEvent(e: PlayerJoinEvent) {
-        val bPlayer = BPlayer(e.player)
+        val onlineBPlayer = OnlineBPlayer(e.player)
+
+        if (onlineBPlayer.config.contains("o.msg")) {
+            for (msg in onlineBPlayer.config.getStringList("o.msg")) {
+                e.player.sendMessage(msg)
+            }
+
+            onlineBPlayer.config.set("o.msg", null)
+        }
         e.player.sendMessage("${ChatColor.GOLD}${ChatColor.BOLD}Remember to check your stash for new items")
         e.player.sendMessage("${ChatColor.GOLD}${ChatColor.BOLD}that could have been given to you while you were")
         e.player.sendMessage("${ChatColor.GOLD}${ChatColor.BOLD}offline with ${ChatColor.BLUE}/stash!")
-        if (bPlayer.metadata["combatLogged"] == true) {
+        if (onlineBPlayer.metadata["combatLogged"] == true) {
             e.player.inventory.clear()
             e.player.sendMessage("${ChatColor.RED}You have previously combat logged, you inventory has been cleared")
         }
 
-        val playerBar = bPlayer.bar
+        val playerBar = onlineBPlayer.bar
         playerBar.text =
             Main.serverIp
         playerBar.health = 300
         playerBar.display()
-        BPlayers[e.player] = bPlayer
+        OnlineBPlayers[e.player] = onlineBPlayer
         Bukkit.getServer().consoleSender.sendMessage("${e.player.displayName}'s data files have been instanced and mapped at")
-        Bukkit.getServer().consoleSender.sendMessage(bPlayer.playerFile.path)
+        Bukkit.getServer().consoleSender.sendMessage(onlineBPlayer.file.path)
         for (item in e.player.inventory.contents) {
             if (item != null) {
                 if (BItemUtils.getBType(item).equals("weapon")) {
@@ -53,6 +60,6 @@ class PlayerJoinEvent : Listener {
                 }
             }
         }
-        Bukkit.getScheduler().scheduleSyncRepeatingTask(Main.instance, StatRegenTimer(bPlayer), 0, 20)
+        Bukkit.getScheduler().scheduleSyncRepeatingTask(Main.instance, StatRegenTimer(onlineBPlayer), 0, 20)
     }
 }

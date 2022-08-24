@@ -1,7 +1,9 @@
 package games.bnogocarft.bnogorpg.Utils.economyUtils.auction
 
 import games.bnogocarft.bnogorpg.Main
-import games.bnogocarft.bnogorpg.Utils.BPlayer.BPlayers
+import games.bnogocarft.bnogorpg.Utils.BPlayer.OfflineBPlayer
+import games.bnogocarft.bnogorpg.Utils.MessageSender
+import games.bnogocarft.bnogorpg.Utils.serializeItem
 import org.bukkit.Bukkit
 import org.bukkit.ChatColor
 import org.bukkit.entity.Player
@@ -16,6 +18,12 @@ data class Auction(
 ) {
 
     var currentBidder: Player? = null
+        set(value) {
+            field = value
+            currentBidderName = value!!.name
+        }
+    var currentBidderName: String? = null
+    val creatorName = creator.name
     var highestBid: Double = 0.0
     var ID: String = "0"
     var task: BukkitTask? = null
@@ -38,19 +46,54 @@ data class Auction(
     fun endAuction() {
         Main.auctions.remove(this)
         if (highestBid > 0) {
-            BPlayers[currentBidder!!]!!.stash.adde(item)
-            if (Bukkit.getOnlinePlayers().contains(Bukkit.getPlayer(currentBidder!!.name))) {
-                currentBidder!!.sendMessage("${ChatColor.GREEN}You have won the auction for ${if (item.hasItemMeta()) item.itemMeta.displayName else item.type.name} (#$ID)")
-                currentBidder!!.sendMessage("${ChatColor.GREEN}Check your stash for the item with /stash!")
+            var bidderOnline = false
+            var creatorOnline = false
+            for (player in Bukkit.getOnlinePlayers()) {
+                if (player.displayName == currentBidder?.displayName) {
+                    bidderOnline = true
+                }
+
+                if (player.displayName == creator.displayName) {
+                    creatorOnline = true
+                }
             }
+
+            val sender = MessageSender(currentBidder!!.name)
+            sender.messages.add(
+                "${ChatColor.GREEN}You have won the auction for " +
+                        "${
+                            if (item.hasItemMeta())
+                                item.itemMeta.displayName
+                            else
+                                item.type.name
+                        } (#$ID)"
+            )
+            sender.messages.add("${ChatColor.GREEN}Check your stash for the item with /stash!")
+            sender.sendMessage()
+
             Main.econ.depositPlayer(creator.displayName, highestBid)
-            if (Bukkit.getOnlinePlayers().contains(Bukkit.getPlayer(creator.displayName))) {
-                currentBidder!!.sendMessage("${ChatColor.GREEN}You received $highestBid from auction #$ID for your ${if (item.hasItemMeta()) item.itemMeta.displayName else item.type.name}!")
+            val sender2 = MessageSender(creator.name)
+            sender2.messages.add(
+                "${ChatColor.GREEN}You received $highestBid from auction #$ID for your " +
+                        "${
+                            if (item.hasItemMeta())
+                                item.itemMeta.displayName
+                            else
+                                item.type.name
+                        }!"
+            )
+            sender2.sendMessage()
+
+            if (!bidderOnline) {
+                val oPlayer = OfflineBPlayer(currentBidder!!.name)
+                oPlayer.config.set("o.st", serializeItem(item))
             }
         } else {
-            if (Bukkit.getOnlinePlayers().contains(Bukkit.getPlayer(creator.displayName))) {
-                creator.sendMessage("${ChatColor.RED}Your auction for ${if (item.hasItemMeta()) item.itemMeta.displayName else item.type.name} (#$ID) got no bids!")
-            }
+            val sender = MessageSender(creator.name)
+
+            sender.messages.add("${ChatColor.RED}Your auction for ${if (item.hasItemMeta()) item.itemMeta.displayName else item.type.name} (#$ID) got no bids!")
+            sender.messages.add("${ChatColor.GREEN}You have been refunded your item in your stash!")
+            sender.sendMessage()
         }
 
         for (player in Bukkit.getOnlinePlayers()) {
@@ -63,10 +106,12 @@ data class Auction(
         Main.auctions.add(this)
         ID = (Main.lastAuctionID.toInt() + 1).toString()
         var stringBuild = ""
-        for (i in 1..6-ID.length) {
+        for (i in 1..6 - ID.length) {
             stringBuild += "0"
         }
         ID = stringBuild + ID
         Main.lastAuctionID = ID
+
+        creator.inventory.remove(item)
     }
 }

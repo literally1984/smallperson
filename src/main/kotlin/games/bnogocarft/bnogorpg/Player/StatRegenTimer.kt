@@ -1,9 +1,9 @@
 package games.bnogocarft.bnogorpg.Player
 
-import games.bnogocarft.bnogorpg.Utils.BPlayer.BPlayer
+import games.bnogocarft.bnogorpg.Utils.BPlayer.OnlineBPlayer
 import org.bukkit.scheduler.BukkitRunnable
 
-class StatRegenTimer(player: BPlayer) : BukkitRunnable() {
+class StatRegenTimer(player: OnlineBPlayer) : BukkitRunnable() {
     val p = player
 
     override fun run() {
