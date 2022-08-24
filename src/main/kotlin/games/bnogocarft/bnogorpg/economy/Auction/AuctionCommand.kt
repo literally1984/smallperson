@@ -56,20 +56,21 @@ class AuctionCommand : CommandExecutor {
                         }
 
                         sender.sendMessage(
-                            "${auc.ID} " +
-                                    "${
-                                        if (sender.itemInHand != null) {
-                                            if (sender.itemInHand.hasItemMeta()) {
-                                                sender.itemInHand.itemMeta.displayName
-                                            } else {
-                                                sender.itemInHand.type.name
-                                            }
+                            "${ChatColor.BOLD}${auc.ID}: " +
+                                    "${ChatColor.RESET}${ChatColor.GOLD}${
+                                        if (auc.item.hasItemMeta()) {
+                                            sender.itemInHand.itemMeta.displayName
                                         } else {
-                                            sender.sendMessage("${ChatColor.RED}You are not holding an item to auction!")
-                                            return true
+                                            sender.itemInHand.type.name
                                         }
-                                    } " +
-                                    "Current Bid: ${auc.highestBid} Ending in: " +
+                                    } ${ChatColor.RESET}| " +
+                                    "${
+                                        if (auc.highestBid > 0) {
+                                            "${ChatColor.BLUE}Current Bid: ${auc.highestBid}"
+                                        } else {
+                                            "${ChatColor.GREEN}Starting Bid: ${auc.startingBid}"
+                                        }
+                                    } ${ChatColor.LIGHT_PURPLE}Ending in: " +
                                     "${auc.timeLeft.days}D, " +
                                     "${auc.timeLeft.hours}H, " +
                                     "${auc.timeLeft.minutes}M, " +
@@ -114,7 +115,7 @@ class AuctionCommand : CommandExecutor {
                         return true
                     }
 
-                    if (bid < auc.highestBid) {
+                    if (bid < auc.highestBid || bid < auc.startingBid) {
                         sender.sendMessage("${ChatColor.RED}Bid must be higher than current bid!")
                         return true
                     }
@@ -146,6 +147,10 @@ class AuctionCommand : CommandExecutor {
                         return true
                     }
 
+                    if (sender.itemInHand == null) {
+                        sender.sendMessage("${ChatColor.RED}You are not holding an item to auction!")
+                        return true
+                    }
                     val time = try {
                         AuctionTime(args[1])
                     } catch (e: NumberFormatException) {
@@ -167,7 +172,7 @@ class AuctionCommand : CommandExecutor {
                     val countdown = Bukkit.getScheduler().runTaskTimer(Main.instance, AuctionTimer(auc), 0, 20)
                     auc.task = countdown
                     sender.sendMessage(
-                        "${ChatColor.GREEN}You successfully created an auction for your " +
+                        "${ChatColor.GREEN}You successfully created an auction for your ${ChatColor.BLUE}" +
                                 if (sender.itemInHand.hasItemMeta()) {
                                     sender.itemInHand.itemMeta.displayName
                                 } else {

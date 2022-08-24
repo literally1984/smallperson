@@ -9,6 +9,7 @@ import games.bnogocarft.bnogorpg.Utils.BItemStack.Talisman.Talisman
 import games.bnogocarft.bnogorpg.Utils.BItemStack.Talisman.TalismanUtils
 import games.bnogocarft.bnogorpg.Utils.Database.YMLUtils
 import games.bnogocarft.bnogorpg.Utils.Mode.Mode
+import games.bnogocarft.bnogorpg.Utils.StashArrayList
 import games.bnogocarft.bnogorpg.Utils.StatUtils.StatManager
 import games.bnogocarft.bnogorpg.Utils.deserializeItem
 import games.bnogocarft.bnogorpg.Utils.serializeItem
@@ -113,7 +114,7 @@ data class BPlayer(val player: Player) {
     var farmingEXP: Long
     var farmingLVL: Long
 
-    val stash = ArrayList<ItemStack?>(54)
+    val stash = StashArrayList()
 
     init {
         // Makes sure the PPlayer's data file is saved when PPlayer is created
@@ -168,9 +169,8 @@ data class BPlayer(val player: Player) {
         farmingEXP = config.getLong("s.l.fa.ed")
         farmingLVL = config.getLong("s.l.fa.l")
         for (index in 0..53) {
-            stash.add(null)
             if (config.getString("o.st.$index") != "") {
-                stash[index] = deserializeItem(config.getString("o.st.$index").split(",").dropLast(1))
+                stash.adde(deserializeItem(config.getString("o.st.$index").split(",").dropLast(1)))
             }
         }
 
@@ -190,8 +190,12 @@ data class BPlayer(val player: Player) {
     }
 
     fun saveStats() {
-        config.set("i.ta", talismans)
-        config.set("i.ab", abilities)
+        for (tal in talismans) {
+            config.set("i.ta", "${tal.name},")
+        }
+        for (ab in abilities) {
+            config.set("i.ab", "${ab.name},")
+        }
         config.set("s.bs.p", basePickBreakSpeed)
         config.set("s.bs.a", baseAxeBreakSpeed)
         config.set("s.bs.s", baseShovelBreakSpeed)
@@ -219,6 +223,7 @@ data class BPlayer(val player: Player) {
             config.set("o.cl", false)
         }
         for (index in 0..53) {
+            config.set("o.st.$index", "")
             if (stash[index] == null) {
                 continue
             }
@@ -229,6 +234,7 @@ data class BPlayer(val player: Player) {
             }
             config.set("o.st.$index", singleStringSerialized)
         }
+        YMLUtils.saveCustomYml(config, playerFile)
     }
 
     fun addToMelee(amount: Int) {

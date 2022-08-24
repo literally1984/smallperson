@@ -38,7 +38,7 @@ data class Auction(
     fun endAuction() {
         Main.auctions.remove(this)
         if (highestBid > 0) {
-            BPlayers[currentBidder!!]!!.stash.add(item)
+            BPlayers[currentBidder!!]!!.stash.adde(item)
             if (Bukkit.getOnlinePlayers().contains(Bukkit.getPlayer(currentBidder!!.name))) {
                 currentBidder!!.sendMessage("${ChatColor.GREEN}You have won the auction for ${if (item.hasItemMeta()) item.itemMeta.displayName else item.type.name} (#$ID)")
                 currentBidder!!.sendMessage("${ChatColor.GREEN}Check your stash for the item with /stash!")

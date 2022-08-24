@@ -22,11 +22,6 @@ class PlayerJoinEvent : Listener {
     @EventHandler(priority = EventPriority.HIGHEST)
     fun playerJoinEvent(e: PlayerJoinEvent) {
         val bPlayer = BPlayer(e.player)
-        for (index in 0..53) {
-            if (bPlayer.config.getString("o.st.$index") != "") {
-                bPlayer.stash.add(deserializeItem(bPlayer.config.getString("o.st.$index").split(",").dropLast(1)))
-            }
-        }
         e.player.sendMessage("${ChatColor.GOLD}${ChatColor.BOLD}Remember to check your stash for new items")
         e.player.sendMessage("${ChatColor.GOLD}${ChatColor.BOLD}that could have been given to you while you were")
         e.player.sendMessage("${ChatColor.GOLD}${ChatColor.BOLD}offline with ${ChatColor.BLUE}/stash!")
