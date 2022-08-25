@@ -11,6 +11,7 @@ data class BWeapon(override var item: ItemStack) : BGear(item) {
 
     /*
     DISPLAY NAME
+    ID:
     Damage: x
     Defense: x
     Magic Damage: x

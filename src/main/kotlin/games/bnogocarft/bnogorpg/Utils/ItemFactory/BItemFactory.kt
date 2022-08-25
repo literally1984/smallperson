@@ -1,5 +1,6 @@
 package games.bnogocarft.bnogorpg.Utils.ItemFactory
 
+import games.bnogocarft.bnogorpg.Main
 import games.bnogocarft.bnogorpg.OtherCommands.customItemMap
 import games.bnogocarft.bnogorpg.Utils.Abilities.ItemAbility.AbilityTrigger
 import games.bnogocarft.bnogorpg.Utils.BItemStack.BItems.BItemUtils
@@ -70,9 +71,24 @@ class BItemFactory {
             return itemStack
         }
 
-        fun makeItem(mat: BMaterial) {
+        fun makeItem(mat: BMaterial): ItemStack {
             val item = ItemStack(mat.getBukkitMaterial())
             val meta = mat.getDefaultMeta()
+
+            val lore = meta.lore
+
+            lore.add(0, "${ChatColor.AQUA}ID: ${Main.ymlConfig.getInt("items.indexes." +
+                    meta.displayName.replace(" ", "")
+            )}")
+
+            meta.lore = lore
+            item.itemMeta = meta
+
+            Main.ymlConfig.set("items.indexes." + meta.displayName.replace(" ", ""),
+                Main.ymlConfig.getInt("items.indexes." +
+                    meta.displayName.replace(" ", "")
+                ) + 1)
+            return item
         }
     }
 }

@@ -1,4 +1,4 @@
-package games.bnogocarft.bnogorpg.Utils
+package games.bnogocarft.bnogorpg.Utils.Senders
 
 import games.bnogocarft.bnogorpg.Utils.Database.YMLUtils
 import org.bukkit.Bukkit

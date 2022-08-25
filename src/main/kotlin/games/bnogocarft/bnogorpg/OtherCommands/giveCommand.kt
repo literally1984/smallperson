@@ -5,6 +5,7 @@ import games.bnogocarft.bnogorpg.Planes.planeEntitites
 import games.bnogocarft.bnogorpg.Utils.BItemStack.BItems.BArmor
 import games.bnogocarft.bnogorpg.Utils.BItemStack.BItems.BItemUtils
 import games.bnogocarft.bnogorpg.Utils.BItemStack.BItems.BWeapon
+import games.bnogocarft.bnogorpg.Utils.ItemFactory.BItemFactory
 import org.bukkit.Bukkit
 import org.bukkit.command.Command
 import org.bukkit.command.CommandExecutor
@@ -42,7 +43,7 @@ class GiveCommand : CommandExecutor {
 
                 if (customItemMap.containsKey(args[1].lowercase())) {
                     val item = customItemMap[args[1].lowercase()]!!.clone()
-                    player.inventory.addItem(customItemMap[args[1].lowercase()])
+                    player.inventory.addItem(BItemFactory.makeItem(BItemUtils.getBMaterial(item)))
                     Bukkit.getLogger()
                         .log(Level.ALL, "You just gave ${player.displayName} a ${item.itemMeta.displayName}!")
                     return true
@@ -54,7 +55,7 @@ class GiveCommand : CommandExecutor {
             if (args.size == 1) {
                 if (customItemMap.containsKey(args[0].lowercase())) {
                     val item = customItemMap[args[0].lowercase()]!!.clone()
-                    sender.inventory.addItem(item)
+                    sender.inventory.addItem(BItemFactory.makeItem(BItemUtils.getBMaterial(item)))
                     when (BItemUtils.getBType(item)) {
                         "weapon" -> BItemUtils.addBWeapon(item, BWeapon(item))
                         "armor" -> BItemUtils.addBArmor(item, BArmor(item))
@@ -85,7 +86,7 @@ class GiveCommand : CommandExecutor {
 
                 if (customItemMap.containsKey(args[1].lowercase())) {
                     val item = customItemMap[args[1].lowercase()]!!.clone()
-                    player.inventory.addItem(item)
+                    player.inventory.addItem(BItemFactory.makeItem(BItemUtils.getBMaterial(item)))
                     sender.sendMessage("You just gave ${player.displayName} a ${item.itemMeta.displayName}!")
                     return true
                 }

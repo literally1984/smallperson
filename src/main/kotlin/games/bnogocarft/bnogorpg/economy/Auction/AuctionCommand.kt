@@ -179,6 +179,7 @@ class AuctionCommand : CommandExecutor {
                                     sender.itemInHand.type.name
                                 }
                     )
+                    sender.itemInHand = null
                     sender.sendMessage("${ChatColor.GREEN}with Auction ID ${ChatColor.LIGHT_PURPLE}${auc.ID}")
                     return true
                 }

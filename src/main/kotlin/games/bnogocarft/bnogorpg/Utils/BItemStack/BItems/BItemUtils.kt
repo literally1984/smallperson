@@ -90,5 +90,9 @@ class BItemUtils {
                 else -> return BGears[item]!!
             }
         }
+
+        fun getBMaterial(item: ItemStack): BMaterial {
+            return BMaterial.valueOf(item.itemMeta.displayName.replace(" ", "_").uppercase())
+        }
     }
 }

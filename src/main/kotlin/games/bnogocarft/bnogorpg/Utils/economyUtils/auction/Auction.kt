@@ -2,8 +2,8 @@ package games.bnogocarft.bnogorpg.Utils.economyUtils.auction
 
 import games.bnogocarft.bnogorpg.Main
 import games.bnogocarft.bnogorpg.Utils.BPlayer.OfflineBPlayer
-import games.bnogocarft.bnogorpg.Utils.MessageSender
-import games.bnogocarft.bnogorpg.Utils.serializeItem
+import games.bnogocarft.bnogorpg.Utils.Senders.ItemSender
+import games.bnogocarft.bnogorpg.Utils.Senders.MessageSender
 import org.bukkit.Bukkit
 import org.bukkit.ChatColor
 import org.bukkit.entity.Player
@@ -86,14 +86,19 @@ data class Auction(
 
             if (!bidderOnline) {
                 val oPlayer = OfflineBPlayer(currentBidder!!.name)
-                oPlayer.config.set("o.st", serializeItem(item))
+                oPlayer.stash.adde(item)
+                oPlayer.saveStats()
             }
         } else {
             val sender = MessageSender(creator.name)
+            val itemSender = ItemSender(creator.name)
 
             sender.messages.add("${ChatColor.RED}Your auction for ${if (item.hasItemMeta()) item.itemMeta.displayName else item.type.name} (#$ID) got no bids!")
             sender.messages.add("${ChatColor.GREEN}You have been refunded your item in your stash!")
             sender.sendMessage()
+
+            itemSender.items.add(item)
+            itemSender.sendItems()
         }
 
         for (player in Bukkit.getOnlinePlayers()) {
@@ -111,7 +116,5 @@ data class Auction(
         }
         ID = stringBuild + ID
         Main.lastAuctionID = ID
-
-        creator.inventory.remove(item)
     }
 }
