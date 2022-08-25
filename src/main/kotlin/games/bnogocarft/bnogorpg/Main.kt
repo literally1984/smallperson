@@ -219,6 +219,10 @@ class Main : JavaPlugin() {
         YMLUtils.saveCustomYml(ymlConfig, serverFile)
     }
 
+    fun update() {
+
+    }
+
     private fun setupEconomy(): Boolean {
         val economyProvider = server.servicesManager.getRegistration(Economy::class.java)
         if (economyProvider != null) {

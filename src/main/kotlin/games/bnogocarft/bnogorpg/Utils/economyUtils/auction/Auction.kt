@@ -71,7 +71,7 @@ data class Auction(
             sender.messages.add("${ChatColor.GREEN}Check your stash for the item with /stash!")
             sender.sendMessage()
 
-            Main.econ.depositPlayer(creator.displayName, highestBid)
+            Main.econ.depositPlayer(creator.name, highestBid)
             val sender2 = MessageSender(creator.name)
             sender2.messages.add(
                 "${ChatColor.GREEN}You received $highestBid from auction #$ID for your " +
@@ -84,14 +84,13 @@ data class Auction(
             )
             sender2.sendMessage()
 
-            if (!bidderOnline) {
-                val oPlayer = OfflineBPlayer(currentBidder!!.name)
-                oPlayer.stash.adde(item)
-                oPlayer.saveStats()
-            }
+            val bidderSender = ItemSender(currentBidderName!!)
+
+            bidderSender.items.add(item)
+            bidderSender.sendItems()
         } else {
-            val sender = MessageSender(creator.name)
-            val itemSender = ItemSender(creator.name)
+            val sender = MessageSender(creatorName)
+            val itemSender = ItemSender(creatorName)
 
             sender.messages.add("${ChatColor.RED}Your auction for ${if (item.hasItemMeta()) item.itemMeta.displayName else item.type.name} (#$ID) got no bids!")
             sender.messages.add("${ChatColor.GREEN}You have been refunded your item in your stash!")

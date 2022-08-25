@@ -59,9 +59,9 @@ class AuctionCommand : CommandExecutor {
                             "${ChatColor.BOLD}${auc.ID}: " +
                                     "${ChatColor.RESET}${ChatColor.GOLD}${
                                         if (auc.item.hasItemMeta()) {
-                                            sender.itemInHand.itemMeta.displayName
+                                            auc.item.itemMeta.displayName
                                         } else {
-                                            sender.itemInHand.type.name
+                                            auc.item.type.name
                                         }
                                     } ${ChatColor.RESET}| " +
                                     "${

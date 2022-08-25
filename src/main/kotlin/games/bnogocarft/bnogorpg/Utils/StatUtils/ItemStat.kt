@@ -19,14 +19,10 @@ data class ItemStat(val item: ItemStack) {
             for (s: String in item.itemMeta.lore) {
                 if (s.contains("${ChatColor.RED}Damage: ${ChatColor.DARK_GRAY}+")) {
                     val index = item.itemMeta.lore.indexOf(s)
-                    print("line found")
                     val copy = item.itemMeta.clone()
-                    val copylore = ArrayList<String>()
-                    copylore.addAll(copy.lore)
-                    copylore[index] = "${ChatColor.RED}Damage: ${ChatColor.DARK_GRAY}+$field"
-                    print("${ChatColor.RED}Damage: ${ChatColor.DARK_GRAY}+$field")
-                    print(copylore[index])
-                    copy.lore = copylore
+                    print(copy.lore[index])
+                    copy.lore[index] = "${ChatColor.RED}Damage: ${ChatColor.DARK_GRAY}+$field"
+                    print(copy.lore[index])
                     item.itemMeta = copy
                     print(item.itemMeta.lore[index])
                 }

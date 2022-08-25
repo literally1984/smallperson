@@ -172,7 +172,8 @@ class UpgradeUtils {
             if (BItemUtils.getBType(item) != null) {
                 val gear = BItemUtils.getBGear(item)
                 gear.stats.damage = gear.stats.damage + 1
-                gui.inv.setItem(22, gear.stats.item.clone())
+                gui.inv.setItem(22, gear.stats.item)
+                gui.player.updateInventory()
             }
         }
     }
