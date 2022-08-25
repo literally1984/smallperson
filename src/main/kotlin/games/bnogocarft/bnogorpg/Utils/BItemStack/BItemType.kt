@@ -1,3 +1,9 @@
 package games.bnogocarft.bnogorpg.Utils.BItemStack
 
-class BItemType
+enum class BItemType {
+    TALISMAN,
+    SCROLL,
+    WEAPON,
+    ARMOR,
+    MISC
+}

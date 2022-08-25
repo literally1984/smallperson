@@ -1,14 +1,16 @@
 package games.bnogocarft.bnogorpg.Utils.BItemStack.BItems
 
+import games.bnogocarft.bnogorpg.Utils.BItemStack.BItemType
 import games.bnogocarft.bnogorpg.Utils.BItemStack.Rarity.RarityUtils
 import games.bnogocarft.bnogorpg.Utils.EnchantUtils.BEnchantment
+import net.milkbowl.vault.chat.Chat
 import org.bukkit.ChatColor
 import org.bukkit.inventory.ItemStack
 
 open class BItem(item: ItemStack) {
     val Enchants = ArrayList<BEnchantment>()
 
-    var bMaterial: BMaterial
+    var material: BMaterial
 
     /*var lastUpdate: Update =
         when (decode(item.itemMeta.lore[item.itemMeta.lore.size - 1].split(" ")[1])) {
@@ -16,6 +18,18 @@ open class BItem(item: ItemStack) {
             else -> Update.zerozerotwo
         }*/
     var rarity = RarityUtils.getRarity(item.itemMeta.lore[item.itemMeta.lore.size - 1].split(" ")[0])
+    var type: BItemType =
+        when (item.itemMeta.lore[item.itemMeta.lore.size - 1].split(" ")[0]) {
+            "${ChatColor.GOLD}${ChatColor.ITALIC}Talisman" -> BItemType.TALISMAN
+            "${ChatColor.GOLD}${ChatColor.ITALIC}Ability Scroll" -> BItemType.SCROLL
+            "${ChatColor.GOLD}${ChatColor.ITALIC}Weapon" -> BItemType.WEAPON
+            else -> {
+                if (item.itemMeta.displayName.contains("helmet") ||
+                    item.itemMeta.displayName.contains("chestplate") ||
+                    item.itemMeta.displayName.contains("leggings") ||
+                    item.itemMeta.displayName.contains("boots")) BItemType.ARMOR else BItemType.MISC
+            }
+        }
 
     private val lore = item.itemMeta.lore
     private var enchantLine: Int = 0
@@ -37,7 +51,7 @@ open class BItem(item: ItemStack) {
             }
         }
 
-        bMaterial = if (this !is BGear) {
+        material = if (this !is BGear) {
             BMaterial.valueOf(item.itemMeta.displayName.replace(" ", "_").uppercase())
         } else {
             val name = item.itemMeta.displayName

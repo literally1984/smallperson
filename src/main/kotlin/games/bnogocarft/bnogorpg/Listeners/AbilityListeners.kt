@@ -24,7 +24,7 @@ class AbilityListeners : Listener {
 
                 val bItem = BItemUtils.getBWeapon(itemInHand)
                 val p = e.player
-                when (bItem.bMaterial) {
+                when (bItem.material) {
                     BMaterial.BLADE_OF_HERMES -> {
                         if (e.action == Action.RIGHT_CLICK_AIR || e.action == Action.RIGHT_CLICK_BLOCK) {
                             val dir = p.location.direction.normalize()

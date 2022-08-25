@@ -17,7 +17,7 @@ class EnchantUtils {
 
         fun generateEnchantsFor(item: BGear): List<BEnchant> {
             val returnList = ArrayList<BEnchant>()
-            when (item.bMaterial) {
+            when (item.material) {
                 BMaterial.CACTUS_HELMET -> {
 
                 }
