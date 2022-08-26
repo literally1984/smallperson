@@ -5,6 +5,7 @@ import games.bnogocarft.bnogorpg.Utils.Abilities.ItemAbility.AbilityTrigger
 enum class ItemAbility {
     CactusSet,
     LapisSet,
+    DoubleJump,
 
     QuickDash,
     BloodLust,
@@ -17,9 +18,9 @@ enum class ItemAbility {
         "reflected back to the attacker"
     )
     val LapisDesc = arrayListOf(
-        "Upon obtaining this setbonus,",
-        "the user gains +30% of their",
-        "current max mana"
+        "Upon obtaining this setbonus, the",
+        "user gains +30% of their current",
+        "max mana"
     )
     val QuickDashDesc = arrayListOf(
         "The user of this sword will",
@@ -34,17 +35,26 @@ enum class ItemAbility {
         "chance to be smited"
     )
 
+    val DoubleDesc = arrayListOf(
+        "When the wearer jumps twice, they",
+        "will jump again in the air"
+    )
+
     companion object {
         fun init() {
             nameMap[CactusSet] = "Spikey Spikes"
             nameMap[LapisSet] = "Enhanced Magic"
             nameMap[QuickDash] = "Quick Dash"
             nameMap[DivineRetribution] = "Divine Retribution"
+            nameMap[BloodLust] = "Blood Lust"
+            nameMap[DoubleJump] = "Double Jump"
 
             revNameMap["Spikey Spikes"] = CactusSet
             revNameMap["Enhanced Magic"] = LapisSet
             revNameMap["Quick Dash"] = QuickDash
             revNameMap["Divine Retribution"] = DivineRetribution
+            revNameMap["BloodLust"] = BloodLust
+            revNameMap["Double Jump"] = DoubleJump
         }
 
         val nameMap = HashMap<ItemAbility, String>()
@@ -57,6 +67,7 @@ enum class ItemAbility {
             LapisSet -> LapisDesc
             QuickDash -> QuickDashDesc
             DivineRetribution -> DivineDesc
+            DoubleJump -> DoubleDesc
             else -> {
                 arrayListOf("")
             }
@@ -69,6 +80,7 @@ enum class ItemAbility {
             LapisSet -> AbilityTrigger.SET_BONUS
             QuickDash -> AbilityTrigger.RIGHT_AIR
             DivineRetribution -> AbilityTrigger.ATTACK
+            DoubleJump -> AbilityTrigger.JUMP
             else -> {
                 AbilityTrigger.NONE
             }
@@ -81,6 +93,7 @@ enum class ItemAbility {
             LapisSet -> "Set Bonus"
             QuickDash -> "Right Click"
             DivineRetribution -> "On-Hit"
+            DoubleJump -> "Jump"
             else -> {
                 "NONE"
             }

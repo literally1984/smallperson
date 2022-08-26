@@ -1,5 +1,6 @@
 package games.bnogocarft.bnogorpg.CustomItems.DefaultItems
 
+import games.bnogocarft.bnogorpg.Utils.BItemStack.BItemType
 import games.bnogocarft.bnogorpg.Utils.BItemStack.Interfaces.ToolSet
 import games.bnogocarft.bnogorpg.Utils.BItemStack.Rarity.Rarity
 import games.bnogocarft.bnogorpg.Utils.ItemFactory.BItemFactory
@@ -27,7 +28,7 @@ class Stone : ToolSet {
     }
 
     override fun createSword() {
-        val factoryItem = BItemFactory.createBGearItem("stone Sword", Material.STONE_SWORD)
+        val factoryItem = BItemFactory.createBItem("Stone Sword", Material.STONE_SWORD, BItemType.WEAPON)
 
         factoryItem.stats = arrayListOf(1, 12, 1, 10, 10, 20)
         factoryItem.rarity = Rarity.RARE

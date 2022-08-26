@@ -1,5 +1,6 @@
 package games.bnogocarft.bnogorpg.CustomItems
 
+import games.bnogocarft.bnogorpg.Utils.BItemStack.BItemType
 import games.bnogocarft.bnogorpg.Utils.BItemStack.Interfaces.ArmorSet
 import games.bnogocarft.bnogorpg.Utils.BItemStack.Rarity.Rarity
 import games.bnogocarft.bnogorpg.Utils.ItemFactory.BItemFactory
@@ -24,7 +25,7 @@ class LapisArmor : ArmorSet {
     }
 
     override fun createHelmet() {
-        val factoryItem = BItemFactory.createBGearItem("Lapis Helmet", Material.LEATHER_HELMET)
+        val factoryItem = BItemFactory.createBItem("Lapis Helmet", Material.LEATHER_HELMET, BItemType.ARMOR)
 
         val ability = ItemAbility.LapisSet
         factoryItem.abilities.add(ability)
@@ -37,7 +38,7 @@ class LapisArmor : ArmorSet {
     }
 
     override fun createChestplate() {
-        val factoryItem = BItemFactory.createBGearItem("Lapis Chestplate", Material.LEATHER_CHESTPLATE)
+        val factoryItem = BItemFactory.createBItem("Lapis Chestplate", Material.LEATHER_CHESTPLATE, BItemType.ARMOR)
 
         val ability = ItemAbility.LapisSet
         factoryItem.abilities.add(ability)
@@ -50,7 +51,7 @@ class LapisArmor : ArmorSet {
     }
 
     override fun createLeggings() {
-        val factoryItem = BItemFactory.createBGearItem("Lapis Leggings", Material.LEATHER_LEGGINGS)
+        val factoryItem = BItemFactory.createBItem("Lapis Leggings", Material.LEATHER_LEGGINGS, BItemType.ARMOR)
 
         val ability = ItemAbility.LapisSet
         factoryItem.abilities.add(ability)
@@ -63,7 +64,7 @@ class LapisArmor : ArmorSet {
     }
 
     override fun createBoots() {
-        val factoryItem = BItemFactory.createBGearItem("Lapis Boots", Material.LEATHER_BOOTS)
+        val factoryItem = BItemFactory.createBItem("Lapis Boots", Material.LEATHER_BOOTS, BItemType.ARMOR)
 
         val ability = ItemAbility.LapisSet
         factoryItem.abilities.add(ability)

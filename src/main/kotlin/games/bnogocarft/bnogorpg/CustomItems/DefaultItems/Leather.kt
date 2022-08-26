@@ -1,5 +1,6 @@
 package games.bnogocarft.bnogorpg.CustomItems.DefaultItems
 
+import games.bnogocarft.bnogorpg.Utils.BItemStack.BItemType
 import games.bnogocarft.bnogorpg.Utils.BItemStack.Interfaces.ArmorSet
 import games.bnogocarft.bnogorpg.Utils.BItemStack.Rarity.Rarity
 import games.bnogocarft.bnogorpg.Utils.ItemFactory.BItemFactory
@@ -25,7 +26,7 @@ class Leather : ArmorSet {
     }
 
     override fun createHelmet() {
-        val factoryItem = BItemFactory.createBGearItem("Leather Helmet", Material.LEATHER_HELMET)
+        val factoryItem = BItemFactory.createBItem("Leather Helmet", Material.LEATHER_HELMET, BItemType.ARMOR)
 
         factoryItem.stats = arrayListOf(1, 12, 1, 10, 10, 20)
         factoryItem.rarity = Rarity.COMMON
@@ -40,7 +41,7 @@ class Leather : ArmorSet {
     }
 
     override fun createChestplate() {
-        val factoryItem = BItemFactory.createBGearItem("Leather Chestplate", Material.LEATHER_CHESTPLATE)
+        val factoryItem = BItemFactory.createBItem("Leather Chestplate", Material.LEATHER_CHESTPLATE, BItemType.ARMOR)
 
         factoryItem.stats = arrayListOf(3, 24, 2, 22, 30, 40)
         factoryItem.rarity = Rarity.COMMON
@@ -55,7 +56,7 @@ class Leather : ArmorSet {
     }
 
     override fun createLeggings() {
-        val factoryItem = BItemFactory.createBGearItem("Leather Leggings", Material.LEATHER_LEGGINGS)
+        val factoryItem = BItemFactory.createBItem("Leather Leggings", Material.LEATHER_LEGGINGS, BItemType.ARMOR)
 
         factoryItem.stats = arrayListOf(2, 19, 1, 17, 20, 30)
         factoryItem.rarity = Rarity.COMMON
@@ -70,7 +71,7 @@ class Leather : ArmorSet {
     }
 
     override fun createBoots() {
-        val factoryItem = BItemFactory.createBGearItem("Leather Boots", Material.LEATHER_BOOTS)
+        val factoryItem = BItemFactory.createBItem("Leather Boots", Material.LEATHER_BOOTS, BItemType.ARMOR)
 
         factoryItem.stats = arrayListOf(0, 11, 0, 9, 8, 16)
         factoryItem.rarity = Rarity.COMMON

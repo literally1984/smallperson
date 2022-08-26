@@ -1,5 +1,6 @@
 package games.bnogocarft.bnogorpg.CustomItems
 
+import games.bnogocarft.bnogorpg.Utils.BItemStack.BItemType
 import games.bnogocarft.bnogorpg.Utils.BItemStack.Rarity.Rarity
 import games.bnogocarft.bnogorpg.Utils.ItemFactory.BItemFactory
 import games.bnogocarft.bnogorpg.Utils.ItemFactory.ItemAbility
@@ -16,7 +17,7 @@ class BladeOfHermes {
     }
 
     private fun createBlade() {
-        val facItem = BItemFactory.createBGearItem("Blade of Hermes", Material.DIAMOND_SWORD)
+        val facItem = BItemFactory.createBItem("Blade of Hermes", Material.DIAMOND_SWORD, BItemType.WEAPON)
 
         val ability = ItemAbility.QuickDash
         facItem.abilities.add(ability)

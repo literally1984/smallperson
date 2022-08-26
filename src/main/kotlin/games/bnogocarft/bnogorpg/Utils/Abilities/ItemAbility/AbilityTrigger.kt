@@ -9,6 +9,7 @@ enum class AbilityTrigger {
     SHIFT_LEFT_AIR,
     SHIFT,
     ATTACK,
+    JUMP,
     SET_BONUS,
     NONE,
     HIT;

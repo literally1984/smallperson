@@ -23,11 +23,9 @@ open class BItem(item: ItemStack) {
             "${ChatColor.GOLD}${ChatColor.ITALIC}Talisman" -> BItemType.TALISMAN
             "${ChatColor.GOLD}${ChatColor.ITALIC}Ability Scroll" -> BItemType.SCROLL
             "${ChatColor.GOLD}${ChatColor.ITALIC}Weapon" -> BItemType.WEAPON
+            "${ChatColor.GOLD}${ChatColor.ITALIC}Armor Item" -> BItemType.ARMOR
             else -> {
-                if (item.itemMeta.displayName.contains("helmet") ||
-                    item.itemMeta.displayName.contains("chestplate") ||
-                    item.itemMeta.displayName.contains("leggings") ||
-                    item.itemMeta.displayName.contains("boots")) BItemType.ARMOR else BItemType.MISC
+                BItemType.MISC
             }
         }
 

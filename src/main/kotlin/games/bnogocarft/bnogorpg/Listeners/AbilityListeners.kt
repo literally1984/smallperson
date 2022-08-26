@@ -6,15 +6,46 @@ import games.bnogocarft.bnogorpg.Utils.BItemStack.BItems.BMaterial
 import games.bnogocarft.bnogorpg.Utils.BPlayer.OnlineBPlayers
 import org.bukkit.Bukkit
 import org.bukkit.ChatColor
+import org.bukkit.GameMode
 import org.bukkit.event.EventHandler
 import org.bukkit.event.EventPriority
 import org.bukkit.event.Listener
 import org.bukkit.event.block.Action
 import org.bukkit.event.player.PlayerFishEvent
 import org.bukkit.event.player.PlayerInteractEvent
+import org.bukkit.event.player.PlayerMoveEvent
+import org.bukkit.event.player.PlayerToggleFlightEvent
 import org.bukkit.scheduler.BukkitTask
+import org.bukkit.util.Vector
+
 
 class AbilityListeners : Listener {
+
+    @EventHandler(priority = EventPriority.HIGHEST)
+    fun onDoubleJumpAttempt(event: PlayerMoveEvent) {
+        if (event.from.y < event.to.y) {
+            if (event.player.inventory.armorContents[3].hasItemMeta() &&
+                    event.player.inventory.armorContents[3].itemMeta.displayName == "Double Jump Boots") {
+                event.player.allowFlight = true
+                lateinit var task: BukkitTask
+                task = Bukkit.getScheduler().runTaskTimer(Main.instance, {
+                    if (event.player.isOnGround) {
+                        event.player.allowFlight = false
+                        task.cancel()
+                        return@runTaskTimer
+                    }
+                }, 0, 7)
+            }
+        }
+    }
+
+    @EventHandler(priority = EventPriority.HIGHEST)
+    fun onFlightAttempt(event: PlayerToggleFlightEvent) {
+        if (!event.isFlying && event.player.gameMode != GameMode.CREATIVE) {
+            event.player.velocity = event.player.velocity.add(Vector(0.0, 0.25, 0.0))
+            event.isCancelled = true
+        }
+    }
 
     @EventHandler(priority = EventPriority.HIGHEST)
     fun onRightClick(e: PlayerInteractEvent) {

@@ -1,5 +1,7 @@
 package games.bnogocarft.bnogorpg.CustomItems
 
+import games.bnogocarft.bnogorpg.Utils.BItemStack.BItemType
+import games.bnogocarft.bnogorpg.Utils.BItemStack.Rarity.Rarity
 import games.bnogocarft.bnogorpg.Utils.ItemFactory.BItemFactory
 import org.bukkit.Bukkit
 import org.bukkit.ChatColor
@@ -16,19 +18,17 @@ class GrapplerItem {
     }
 
     fun createGrapple() {
-        val item = ItemStack(Material.FISHING_ROD)
-        val meta = Bukkit.getItemFactory().getItemMeta(Material.FISHING_ROD)
-        meta.displayName = "Grappling Hook"
-        val lore = ArrayList<String>()
-        lore.add("")
-        lore.add("${ChatColor.YELLOW}Right clicking with this item will")
-        lore.add("${ChatColor.YELLOW}launch a grapple to your eye direction.")
-        lore.add("${ChatColor.YELLOW}right clicking again will pull you")
-        lore.add("${ChatColor.YELLOW}towards the grapple")
-        meta.lore = lore
-        item.itemMeta = meta
+        val fItem = BItemFactory.createBItem("Grappling Hook", Material.FISHING_ROD, BItemType.MISC)
+        fItem.customAbility.add("")
+        fItem.customAbility.add("${ChatColor.YELLOW}Right clicking with this item will")
+        fItem.customAbility.add("${ChatColor.YELLOW}launch a grapple to your eye direction.")
+        fItem.customAbility.add("${ChatColor.YELLOW}right clicking again will pull you")
+        fItem.customAbility.add("${ChatColor.YELLOW}towards the grapple")
 
-        grapple = item
+        fItem.rarity = Rarity.UNCOMMON
+
+
+        grapple = BItemFactory.produceItem(fItem)
         BItemFactory.register("grapple", grapple)
     }
 }

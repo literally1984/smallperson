@@ -1,5 +1,6 @@
 package games.bnogocarft.bnogorpg.CustomItems.DefaultItems
 
+import games.bnogocarft.bnogorpg.Utils.BItemStack.BItemType
 import games.bnogocarft.bnogorpg.Utils.BItemStack.Interfaces.FullSet
 import games.bnogocarft.bnogorpg.Utils.BItemStack.Rarity.Rarity
 import games.bnogocarft.bnogorpg.Utils.ItemFactory.BItemFactory
@@ -34,7 +35,7 @@ class Iron : FullSet {
     }
 
     override fun createSword() {
-        val factoryItem = BItemFactory.createBGearItem("Iron Sword", Material.IRON_SWORD)
+        val factoryItem = BItemFactory.createBItem("Iron Sword", Material.IRON_SWORD, BItemType.WEAPON)
 
         factoryItem.stats = arrayListOf(1, 12, 1, 10, 10, 20)
         factoryItem.rarity = Rarity.RARE
@@ -86,7 +87,7 @@ class Iron : FullSet {
     }
 
     override fun createHelmet() {
-        val factoryItem = BItemFactory.createBGearItem("Iron Helmet", Material.IRON_HELMET)
+        val factoryItem = BItemFactory.createBItem("Iron Helmet", Material.IRON_HELMET, BItemType.ARMOR)
 
         factoryItem.stats = arrayListOf(1, 12, 1, 10, 10, 20)
         factoryItem.rarity = Rarity.RARE
@@ -101,7 +102,7 @@ class Iron : FullSet {
     }
 
     override fun createChestplate() {
-        val factoryItem = BItemFactory.createBGearItem("Iron Chestplate", Material.IRON_CHESTPLATE)
+        val factoryItem = BItemFactory.createBItem("Iron Chestplate", Material.IRON_CHESTPLATE, BItemType.ARMOR)
 
         factoryItem.stats = arrayListOf(3, 24, 2, 22, 30, 40)
         factoryItem.rarity = Rarity.RARE
@@ -116,7 +117,7 @@ class Iron : FullSet {
     }
 
     override fun createLeggings() {
-        val factoryItem = BItemFactory.createBGearItem("Iron Leggings", Material.IRON_LEGGINGS)
+        val factoryItem = BItemFactory.createBItem("Iron Leggings", Material.IRON_LEGGINGS, BItemType.ARMOR)
 
         factoryItem.stats = arrayListOf(2, 19, 1, 17, 20, 30)
         factoryItem.rarity = Rarity.RARE
@@ -131,7 +132,7 @@ class Iron : FullSet {
     }
 
     override fun createBoots() {
-        val factoryItem = BItemFactory.createBGearItem("Iron Boots", Material.IRON_BOOTS)
+        val factoryItem = BItemFactory.createBItem("Iron Boots", Material.IRON_BOOTS, BItemType.ARMOR)
 
         factoryItem.stats = arrayListOf(0, 11, 0, 9, 8, 16)
         factoryItem.rarity = Rarity.RARE

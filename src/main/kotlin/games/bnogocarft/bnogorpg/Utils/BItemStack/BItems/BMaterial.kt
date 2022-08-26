@@ -1,10 +1,7 @@
 package games.bnogocarft.bnogorpg.Utils.BItemStack.BItems
 
-import games.bnogocarft.bnogorpg.CustomItems.BladeOfHermes
-import games.bnogocarft.bnogorpg.CustomItems.CactusArmor
+import games.bnogocarft.bnogorpg.CustomItems.*
 import games.bnogocarft.bnogorpg.CustomItems.DefaultItems.*
-import games.bnogocarft.bnogorpg.CustomItems.GrapplerItem
-import games.bnogocarft.bnogorpg.CustomItems.LapisArmor
 import org.bukkit.Material
 import org.bukkit.inventory.meta.ItemMeta
 
@@ -68,7 +65,9 @@ enum class BMaterial {
 
     BLADE_OF_HERMES,
 
-    GRAPPLING_HOOK;
+    GRAPPLING_HOOK,
+
+    DOUBLE_JUMP_BOOTS;
 
     fun getBukkitMaterial(): Material {
         return when (this) {
@@ -124,6 +123,7 @@ enum class BMaterial {
             LAPIS_CHESTPLATE -> Material.LEATHER_CHESTPLATE
             LAPIS_LEGGINGS -> Material.LEATHER_LEGGINGS
             LAPIS_BOOTS -> Material.LEATHER_BOOTS
+            DOUBLE_JUMP_BOOTS -> Material.LEATHER_BOOTS
         }
     }
 
@@ -190,6 +190,7 @@ enum class BMaterial {
             WOOD_HOE -> Wood.hoe.itemMeta
             WOOD_PICKAXE -> Wood.pickaxe.itemMeta
             WOOD_SHOVEL -> Wood.shovel.itemMeta
+            DOUBLE_JUMP_BOOTS -> DoubleJumpBoots.boots.itemMeta
         }
     }
 }
