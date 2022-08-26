@@ -4,9 +4,7 @@ import games.bnogocarft.bnogorpg.Main
 import games.bnogocarft.bnogorpg.Utils.BItemStack.BItems.BItemUtils
 import games.bnogocarft.bnogorpg.Utils.BItemStack.BItems.BMaterial
 import games.bnogocarft.bnogorpg.Utils.BPlayer.OnlineBPlayers
-import org.bukkit.Bukkit
-import org.bukkit.ChatColor
-import org.bukkit.GameMode
+import org.bukkit.*
 import org.bukkit.event.EventHandler
 import org.bukkit.event.EventPriority
 import org.bukkit.event.Listener
@@ -24,26 +22,38 @@ class AbilityListeners : Listener {
     @EventHandler(priority = EventPriority.HIGHEST)
     fun onDoubleJumpAttempt(event: PlayerMoveEvent) {
         if (event.from.y < event.to.y) {
-            if (event.player.inventory.armorContents[3].hasItemMeta() &&
-                    event.player.inventory.armorContents[3].itemMeta.displayName == "Double Jump Boots") {
-                event.player.allowFlight = true
-                lateinit var task: BukkitTask
-                task = Bukkit.getScheduler().runTaskTimer(Main.instance, {
-                    if (event.player.isOnGround) {
-                        event.player.allowFlight = false
-                        task.cancel()
-                        return@runTaskTimer
+            for (armor in event.player.inventory.armorContents) {
+                if (armor.hasItemMeta()) {
+                    if (armor.itemMeta.displayName == "Double Jump Boots") {
+                        event.player.allowFlight = true
+                        event.player.isFlying = false
                     }
-                }, 0, 7)
+                }
             }
         }
     }
 
     @EventHandler(priority = EventPriority.HIGHEST)
     fun onFlightAttempt(event: PlayerToggleFlightEvent) {
+        val boots = event.player.inventory.boots
         if (!event.isFlying && event.player.gameMode != GameMode.CREATIVE) {
-            event.player.velocity = event.player.velocity.add(Vector(0.0, 0.25, 0.0))
-            event.isCancelled = true
+            if (boots != null && boots.hasItemMeta()) {
+                if (boots.itemMeta.displayName == "Double Jump Boots") {
+                    event.isCancelled = true
+                    event.player.allowFlight = false
+                    event.player.isFlying = false
+                    event.player.velocity = event.player.velocity.add(Vector(0.0, 1.0, 0.0))
+                    print("Flight attempt cancelled")
+                }
+            }
+        }
+
+        if (boots != null && boots.hasItemMeta()) {
+            if (boots.itemMeta.displayName != "Double Jump Boots") {
+                event.player.allowFlight = false
+                event.player.isFlying = false
+                event.isCancelled = true
+            }
         }
     }
 

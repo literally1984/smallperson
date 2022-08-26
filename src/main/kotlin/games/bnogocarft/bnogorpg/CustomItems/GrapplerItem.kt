@@ -19,7 +19,6 @@ class GrapplerItem {
 
     fun createGrapple() {
         val fItem = BItemFactory.createBItem("Grappling Hook", Material.FISHING_ROD, BItemType.MISC)
-        fItem.customAbility.add("")
         fItem.customAbility.add("${ChatColor.YELLOW}Right clicking with this item will")
         fItem.customAbility.add("${ChatColor.YELLOW}launch a grapple to your eye direction.")
         fItem.customAbility.add("${ChatColor.YELLOW}right clicking again will pull you")

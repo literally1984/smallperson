@@ -2,11 +2,8 @@ package games.bnogocarft.bnogorpg
 
 import com.comphenix.protocol.ProtocolLibrary
 import com.comphenix.protocol.ProtocolManager
-import games.bnogocarft.bnogorpg.CustomItems.BladeOfHermes
-import games.bnogocarft.bnogorpg.CustomItems.CactusArmor
+import games.bnogocarft.bnogorpg.CustomItems.*
 import games.bnogocarft.bnogorpg.CustomItems.DefaultItems.DefaultOverrider
-import games.bnogocarft.bnogorpg.CustomItems.GrapplerItem
-import games.bnogocarft.bnogorpg.CustomItems.LapisArmor
 import games.bnogocarft.bnogorpg.Enchants.EnchantCommand
 import games.bnogocarft.bnogorpg.Enchants.EnchantListeners
 import games.bnogocarft.bnogorpg.ItemUpgrade.UpgradeCMD
@@ -93,6 +90,7 @@ class Main : JavaPlugin() {
             ymlConfig.set("items.indexes.LapisChestplate", 0)
             ymlConfig.set("items.indexes.LapisLeggings", 0)
             ymlConfig.set("items.indexes.LapisBoots", 0)
+            ymlConfig.set("items.indexes.DoubleJumpBoots", 0)
 
             ymlConfig.set("auction.lastAucID", "0")
             ymlConfig.set("auction.pausedAucs", "")
@@ -177,6 +175,7 @@ class Main : JavaPlugin() {
         LapisArmor()
         BladeOfHermes()
         GrapplerItem()
+        DoubleJumpBoots()
         cSender.sendMessage("$logo Registered custom Items")
 
         cSender.sendMessage("$logo Enabling RecipeBook...")

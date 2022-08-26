@@ -72,6 +72,7 @@ class EnchantUtils {
                 BMaterial.WOOD_SHOVEL -> TODO()
                 BMaterial.BLADE_OF_HERMES -> TODO()
                 BMaterial.GRAPPLING_HOOK -> TODO()
+                BMaterial.DOUBLE_JUMP_BOOTS -> TODO()
             }
             return returnList
         }

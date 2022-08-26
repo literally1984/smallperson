@@ -38,8 +38,8 @@ class BItemFactory {
                 BItemType.ARMOR -> {
                     val itemStack = ItemStack(item.mat)
                     val meta = Bukkit.getItemFactory().getItemMeta(item.mat)
-                    meta.displayName = item.name
                     val lore = ArrayList<String>()
+                    meta.displayName = item.name
                     var type = ""
 
                     // Stats lore
@@ -83,8 +83,8 @@ class BItemFactory {
                 BItemType.WEAPON -> {
                     val itemStack = ItemStack(item.mat)
                     val meta = Bukkit.getItemFactory().getItemMeta(item.mat)
-                    meta.displayName = item.name
                     val lore = ArrayList<String>()
+                    meta.displayName = item.name
                     var type = ""
 
                     // Stats lore
@@ -115,7 +115,8 @@ class BItemFactory {
                     lore.add("${ChatColor.YELLOW}Level: ${ChatColor.GRAY}0")
                     lore.add("${ChatColor.GREEN}EXP: ${ChatColor.GRAY}0/10")
 
-                    meta.lore.add("${ChatColor.GOLD}${ChatColor.ITALIC}Talisman")
+                    lore.add("")
+                    lore.add("${ChatColor.GOLD}${ChatColor.ITALIC}Weapon")
 
                     lore.add(item.rarity.getDisplay())
                     if (item.armorColor != null) {
@@ -134,17 +135,21 @@ class BItemFactory {
                 BItemType.TALISMAN -> {
                     val itemStack = ItemStack(item.mat)
                     val meta = Bukkit.getItemFactory().getItemMeta(item.mat)
+                    val lore = ArrayList<String>()
 
                     meta.displayName = item.name
 
-                    meta.lore.add("")
+                    lore.add("")
                     for (s in item.customAbility) {
-                        meta.lore.add(s)
+                        lore.add(s)
                     }
 
-                    meta.lore.add("")
-                    meta.lore.add("${ChatColor.GOLD}${ChatColor.ITALIC}Talisman")
-                    meta.lore.add(item.rarity.getDisplay())
+                    lore.add("")
+                    lore.add("${ChatColor.GOLD}${ChatColor.ITALIC}Talisman")
+                    lore.add(item.rarity.getDisplay())
+
+                    meta.lore = lore
+                    itemStack.itemMeta = meta
 
                     return itemStack
                 }
@@ -152,34 +157,42 @@ class BItemFactory {
                 BItemType.SCROLL -> {
                     val itemStack = ItemStack(item.mat)
                     val meta = Bukkit.getItemFactory().getItemMeta(item.mat)
+                    val lore = ArrayList<String>()
 
                     meta.displayName = item.name
 
-                    meta.lore.add("")
+                    lore.add("")
                     for (s in item.customAbility) {
-                        meta.lore.add(s)
+                        lore.add(s)
                     }
-                    meta.lore.add("")
-                    meta.lore.add("${ChatColor.GREEN}Level Requirement: ${ChatColor.GRAY}${item.levelReq}")
-                    meta.lore.add("")
-                    meta.lore.add("${ChatColor.GOLD}${ChatColor.ITALIC}Ability Scroll")
-                    meta.lore.add(item.rarity.getDisplay())
+                    lore.add("")
+                    lore.add("${ChatColor.GREEN}Level Requirement: ${ChatColor.GRAY}${item.levelReq}")
+                    lore.add("")
+                    lore.add("${ChatColor.GOLD}${ChatColor.ITALIC}Ability Scroll")
+                    lore.add(item.rarity.getDisplay())
+
+                    meta.lore = lore
+                    itemStack.itemMeta = meta
 
                     return itemStack
                 }
                 BItemType.MISC -> {
                     val itemStack = ItemStack(item.mat)
                     val meta = Bukkit.getItemFactory().getItemMeta(item.mat)
+                    val lore = ArrayList<String>()
 
                     meta.displayName = item.name
 
-                    meta.lore.add("")
+                    lore.add("")
                     for (s in item.customAbility) {
-                        meta.lore.add(s)
+                        lore.add(s)
                     }
-                    meta.lore.add("")
-                    meta.lore.add("${ChatColor.GOLD}${ChatColor.ITALIC}Misc Item")
-                    meta.lore.add(item.rarity.getDisplay())
+                    lore.add("")
+                    lore.add("${ChatColor.GOLD}${ChatColor.ITALIC}Misc Item")
+                    lore.add(item.rarity.getDisplay())
+
+                    meta.lore = lore
+                    itemStack.itemMeta = meta
 
                     return itemStack
                 }
