@@ -11,5 +11,17 @@ class BnogoSQL {
             val url = "jdbc:postgresql://5.230.67.108:5432/main?user=postgres&password=bnogocarft&sslmode=require"
             con = DriverManager.getConnection(url)
         }
+
+        fun write(obj: Any) {
+
+        }
+
+        fun read(path: String) {
+
+        }
+
+        fun createTable(something: Any) {
+
+        }
     }
 }
