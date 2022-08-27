@@ -25,6 +25,7 @@ import games.bnogocarft.bnogorpg.Updater.Updates.Update
 import games.bnogocarft.bnogorpg.Utils.*
 import games.bnogocarft.bnogorpg.Utils.BPlayer.OnlineBPlayers
 import games.bnogocarft.bnogorpg.Utils.CustomEvents.ArmorWearListeners
+import games.bnogocarft.bnogorpg.Utils.Database.BnogoSQL
 import games.bnogocarft.bnogorpg.Utils.Database.YMLUtils
 import games.bnogocarft.bnogorpg.Utils.EnchantUtils.Glow
 import games.bnogocarft.bnogorpg.Utils.ItemFactory.ItemAbility
@@ -63,6 +64,7 @@ class Main : JavaPlugin() {
     }
 
     override fun onEnable() {
+        BnogoSQL.enaableDB()
         instance = this
         serverFile = File("${instance.dataFolder}/server.yml")
         ymlConfig = YamlConfiguration.loadConfiguration(serverFile)
@@ -127,6 +129,7 @@ class Main : JavaPlugin() {
         server.pluginManager.registerEvents(EnchantListeners(), this)
         server.pluginManager.registerEvents(TestListeners(), this)
         server.pluginManager.registerEvents(StashListener(), this)
+        server.pluginManager.registerEvents(CraftingListeners(), this)
         cSender.sendMessage("$logo Registered Listeners")
 
         cSender.sendMessage("$logo Enabling ItemUpgrades...")

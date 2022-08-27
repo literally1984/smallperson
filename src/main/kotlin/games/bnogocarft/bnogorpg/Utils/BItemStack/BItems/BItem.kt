@@ -3,9 +3,10 @@ package games.bnogocarft.bnogorpg.Utils.BItemStack.BItems
 import games.bnogocarft.bnogorpg.Utils.BItemStack.BItemType
 import games.bnogocarft.bnogorpg.Utils.BItemStack.Rarity.RarityUtils
 import games.bnogocarft.bnogorpg.Utils.EnchantUtils.BEnchantment
-import net.milkbowl.vault.chat.Chat
+import games.bnogocarft.bnogorpg.Utils.Exceptions.InvalidConstructorInputException
 import org.bukkit.ChatColor
 import org.bukkit.inventory.ItemStack
+import java.lang.NullPointerException
 
 open class BItem(item: ItemStack) {
     val Enchants = ArrayList<BEnchantment>()
@@ -19,20 +20,26 @@ open class BItem(item: ItemStack) {
         }*/
     var rarity = RarityUtils.getRarity(item.itemMeta.lore[item.itemMeta.lore.size - 1].split(" ")[0])
     var type: BItemType =
-        when (item.itemMeta.lore[item.itemMeta.lore.size - 1].split(" ")[0]) {
-            "${ChatColor.GOLD}${ChatColor.ITALIC}Talisman" -> BItemType.TALISMAN
-            "${ChatColor.GOLD}${ChatColor.ITALIC}Ability Scroll" -> BItemType.SCROLL
-            "${ChatColor.GOLD}${ChatColor.ITALIC}Weapon" -> BItemType.WEAPON
-            "${ChatColor.GOLD}${ChatColor.ITALIC}Armor Item" -> BItemType.ARMOR
-            else -> {
-                BItemType.MISC
+        try {
+            when (item.itemMeta.lore[item.itemMeta.lore.size - 1].split(" ")[0]) {
+                "${ChatColor.GOLD}${ChatColor.ITALIC}Talisman" -> BItemType.TALISMAN
+                "${ChatColor.GOLD}${ChatColor.ITALIC}Ability Scroll" -> BItemType.SCROLL
+                "${ChatColor.GOLD}${ChatColor.ITALIC}Weapon" -> BItemType.WEAPON
+                "${ChatColor.GOLD}${ChatColor.ITALIC}Armor Item" -> BItemType.ARMOR
+                else -> {
+                    BItemType.MISC
+                }
             }
+        } catch (e: NullPointerException) {
+            throw InvalidConstructorInputException("No type identifier found in item lore")
         }
-
-    private val lore = item.itemMeta.lore
     private var enchantLine: Int = 0
 
     init {
+        if (!(item.hasItemMeta())) {
+            throw InvalidConstructorInputException("ItemStack does not have an ItemMeta")
+        }
+        val lore = item.itemMeta.lore
         for (clore in lore) {
             if (clore.contains("${ChatColor.BLUE}Enchantments:")) { // Gets the line that marks the start of enchantments
                 enchantLine = lore.indexOf(clore)

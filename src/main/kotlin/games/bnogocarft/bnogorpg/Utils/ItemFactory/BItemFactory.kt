@@ -70,7 +70,15 @@ class BItemFactory {
                     lore.add("${ChatColor.YELLOW}Level: ${ChatColor.GRAY}0")
                     lore.add("${ChatColor.GREEN}EXP: ${ChatColor.GRAY}0/10")
 
-                    lore.add("${ChatColor.BOLD}${item.rarity.getDisplay()}")
+                    lore.add(when (item.rarity) {
+                        Rarity.COMMON -> "${ChatColor.GOLD}✪"
+                        Rarity.UNCOMMON -> "${ChatColor.GOLD}✪✪"
+                        Rarity.RARE -> "${ChatColor.GOLD}✪✪✪"
+                        Rarity.EPIC -> "${ChatColor.GOLD}✪✪✪✪"
+                        Rarity.LEGENDARY -> "${ChatColor.GOLD}✪✪✪✪✪"
+                        Rarity.MYTHICAL -> "${ChatColor.GOLD}✪✪✪✪✪✪"
+                        Rarity.DIVINE -> "${ChatColor.GOLD}✪✪✪✪✪✪✪"
+                    })
 
                     meta.lore = lore
                     itemStack.itemMeta = meta
@@ -118,7 +126,15 @@ class BItemFactory {
                     lore.add("")
                     lore.add("${ChatColor.GOLD}${ChatColor.ITALIC}Weapon")
 
-                    lore.add(item.rarity.getDisplay())
+                    lore.add(when (item.rarity) {
+                        Rarity.COMMON -> "${ChatColor.GOLD}✪"
+                        Rarity.UNCOMMON -> "${ChatColor.GOLD}✪✪"
+                        Rarity.RARE -> "${ChatColor.GOLD}✪✪✪"
+                        Rarity.EPIC -> "${ChatColor.GOLD}✪✪✪✪"
+                        Rarity.LEGENDARY -> "${ChatColor.GOLD}✪✪✪✪✪"
+                        Rarity.MYTHICAL -> "${ChatColor.GOLD}✪✪✪✪✪✪"
+                        Rarity.DIVINE -> "${ChatColor.GOLD}✪✪✪✪✪✪✪"
+                    })
                     if (item.armorColor != null) {
                         val armorMeta = meta as LeatherArmorMeta
                         armorMeta.color = item.armorColor
@@ -146,7 +162,15 @@ class BItemFactory {
 
                     lore.add("")
                     lore.add("${ChatColor.GOLD}${ChatColor.ITALIC}Talisman")
-                    lore.add(item.rarity.getDisplay())
+                    lore.add(when (item.rarity) {
+                        Rarity.COMMON -> "${ChatColor.GOLD}✪"
+                        Rarity.UNCOMMON -> "${ChatColor.GOLD}✪✪"
+                        Rarity.RARE -> "${ChatColor.GOLD}✪✪✪"
+                        Rarity.EPIC -> "${ChatColor.GOLD}✪✪✪✪"
+                        Rarity.LEGENDARY -> "${ChatColor.GOLD}✪✪✪✪✪"
+                        Rarity.MYTHICAL -> "${ChatColor.GOLD}✪✪✪✪✪✪"
+                        Rarity.DIVINE -> "${ChatColor.GOLD}✪✪✪✪✪✪✪"
+                    })
 
                     meta.lore = lore
                     itemStack.itemMeta = meta
@@ -169,7 +193,15 @@ class BItemFactory {
                     lore.add("${ChatColor.GREEN}Level Requirement: ${ChatColor.GRAY}${item.levelReq}")
                     lore.add("")
                     lore.add("${ChatColor.GOLD}${ChatColor.ITALIC}Ability Scroll")
-                    lore.add(item.rarity.getDisplay())
+                    lore.add(when (item.rarity) {
+                        Rarity.COMMON -> "${ChatColor.GOLD}✪"
+                        Rarity.UNCOMMON -> "${ChatColor.GOLD}✪✪"
+                        Rarity.RARE -> "${ChatColor.GOLD}✪✪✪"
+                        Rarity.EPIC -> "${ChatColor.GOLD}✪✪✪✪"
+                        Rarity.LEGENDARY -> "${ChatColor.GOLD}✪✪✪✪✪"
+                        Rarity.MYTHICAL -> "${ChatColor.GOLD}✪✪✪✪✪✪"
+                        Rarity.DIVINE -> "${ChatColor.GOLD}✪✪✪✪✪✪✪"
+                    })
 
                     meta.lore = lore
                     itemStack.itemMeta = meta
@@ -189,7 +221,15 @@ class BItemFactory {
                     }
                     lore.add("")
                     lore.add("${ChatColor.GOLD}${ChatColor.ITALIC}Misc Item")
-                    lore.add(item.rarity.getDisplay())
+                    lore.add(when (item.rarity) {
+                        Rarity.COMMON -> "${ChatColor.GOLD}✪"
+                        Rarity.UNCOMMON -> "${ChatColor.GOLD}✪✪"
+                        Rarity.RARE -> "${ChatColor.GOLD}✪✪✪"
+                        Rarity.EPIC -> "${ChatColor.GOLD}✪✪✪✪"
+                        Rarity.LEGENDARY -> "${ChatColor.GOLD}✪✪✪✪✪"
+                        Rarity.MYTHICAL -> "${ChatColor.GOLD}✪✪✪✪✪✪"
+                        Rarity.DIVINE -> "${ChatColor.GOLD}✪✪✪✪✪✪✪"
+                    })
 
                     meta.lore = lore
                     itemStack.itemMeta = meta

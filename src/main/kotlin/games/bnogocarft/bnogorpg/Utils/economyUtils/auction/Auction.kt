@@ -28,6 +28,7 @@ data class Auction(
     var ID: String = "0"
     var task: BukkitTask? = null
     var ended = false
+    val itemType = getAuctionType(item)
 
     constructor(
         item: ItemStack,

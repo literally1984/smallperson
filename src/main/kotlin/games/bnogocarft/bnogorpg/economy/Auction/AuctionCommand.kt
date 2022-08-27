@@ -8,6 +8,7 @@ import games.bnogocarft.bnogorpg.Utils.economyUtils.auction.AuctionTimer
 import games.bnogocarft.bnogorpg.Utils.logo
 import org.bukkit.Bukkit
 import org.bukkit.ChatColor
+import org.bukkit.Material
 import org.bukkit.command.Command
 import org.bukkit.command.CommandExecutor
 import org.bukkit.command.CommandSender
@@ -80,6 +81,10 @@ class AuctionCommand : CommandExecutor {
                     return true
                 }
 
+                "house" -> {
+                    sender.openInventory(AHGui.gui)
+                }
+
                 "bid" -> {
                     if (args.size != 3) {
                         sender.sendMessage("${ChatColor.RED}Insufficient Arguments!")
@@ -147,7 +152,7 @@ class AuctionCommand : CommandExecutor {
                         return true
                     }
 
-                    if (sender.itemInHand == null) {
+                    if (sender.itemInHand == null && sender.itemInHand.type == Material.AIR) {
                         sender.sendMessage("${ChatColor.RED}You are not holding an item to auction!")
                         return true
                     }
