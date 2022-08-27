@@ -32,6 +32,7 @@ import games.bnogocarft.bnogorpg.Utils.ItemFactory.ItemAbility
 import games.bnogocarft.bnogorpg.Utils.economyUtils.auction.Auction
 import games.bnogocarft.bnogorpg.Utils.others.PlaytimeUtils
 import games.bnogocarft.bnogorpg.animation.animationTestCommand
+import games.bnogocarft.bnogorpg.economy.Auction.AHGui
 import games.bnogocarft.bnogorpg.economy.Auction.AuctionCommand
 import net.milkbowl.vault.economy.Economy
 import org.bukkit.ChatColor
@@ -171,6 +172,7 @@ class Main : JavaPlugin() {
             ymlConfig.set("auction.pausedAucs", "")
             YMLUtils.saveCustomYml(ymlConfig, serverFile)
         }
+        AHGui()
         cSender.sendMessage("All paused auctions are continued!")
 
         cSender.sendMessage("$logo Registering custom ItemStacks...")

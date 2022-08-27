@@ -2,6 +2,7 @@ package games.bnogocarft.bnogorpg.economy.Auction
 
 import games.bnogocarft.bnogorpg.Main
 import games.bnogocarft.bnogorpg.Main.Companion.auctions
+import games.bnogocarft.bnogorpg.Utils.cloneInv
 import games.bnogocarft.bnogorpg.Utils.economyUtils.auction.Auction
 import games.bnogocarft.bnogorpg.Utils.economyUtils.auction.AuctionTime
 import games.bnogocarft.bnogorpg.Utils.economyUtils.auction.AuctionTimer
@@ -13,6 +14,7 @@ import org.bukkit.command.Command
 import org.bukkit.command.CommandExecutor
 import org.bukkit.command.CommandSender
 import org.bukkit.entity.Player
+import org.bukkit.inventory.Inventory
 import java.util.logging.Level
 
 class AuctionCommand : CommandExecutor {
@@ -82,7 +84,7 @@ class AuctionCommand : CommandExecutor {
                 }
 
                 "house" -> {
-                    sender.openInventory(AHGui.gui)
+                    sender.openInventory(cloneInv(AHGui.browseGui))
                 }
 
                 "bid" -> {

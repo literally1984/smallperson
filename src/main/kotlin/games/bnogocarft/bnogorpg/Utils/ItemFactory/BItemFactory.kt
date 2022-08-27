@@ -69,6 +69,8 @@ class BItemFactory {
 
                     lore.add("${ChatColor.YELLOW}Level: ${ChatColor.GRAY}0")
                     lore.add("${ChatColor.GREEN}EXP: ${ChatColor.GRAY}0/10")
+                    lore.add("")
+                    lore.add("${ChatColor.GOLD}${ChatColor.ITALIC}Armor Item")
 
                     lore.add(when (item.rarity) {
                         Rarity.COMMON -> "${ChatColor.GOLD}✪"

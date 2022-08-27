@@ -21,7 +21,7 @@ open class BItem(item: ItemStack) {
     var rarity = RarityUtils.getRarity(item.itemMeta.lore[item.itemMeta.lore.size - 1].split(" ")[0])
     var type: BItemType =
         try {
-            when (item.itemMeta.lore[item.itemMeta.lore.size - 1].split(" ")[0]) {
+            when (item.itemMeta.lore[item.itemMeta.lore.size - 2]) {
                 "${ChatColor.GOLD}${ChatColor.ITALIC}Talisman" -> BItemType.TALISMAN
                 "${ChatColor.GOLD}${ChatColor.ITALIC}Ability Scroll" -> BItemType.SCROLL
                 "${ChatColor.GOLD}${ChatColor.ITALIC}Weapon" -> BItemType.WEAPON

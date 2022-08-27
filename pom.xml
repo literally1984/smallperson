@@ -93,6 +93,12 @@
         </repository>
     </repositories>
     <dependencies>
+        <dependency>
+            <groupId>org.postgresql</groupId>
+            <artifactId>postgresql</artifactId>
+            <version>42.4.2</version>
+            <scope>compile</scope>
+        </dependency>
         <!-- PrimCore dependencies -->
         <dependency>
             <groupId>com.github.EaglerMaven</groupId>

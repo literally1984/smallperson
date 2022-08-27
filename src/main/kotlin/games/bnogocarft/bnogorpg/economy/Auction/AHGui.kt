@@ -12,7 +12,8 @@ import org.bukkit.inventory.ItemStack
 
 class AHGui {
     companion object {
-        lateinit var gui: Inventory
+        lateinit var browseGui: Inventory
+        lateinit var mainGui: Inventory
 
         lateinit var weapon: ItemStack
         lateinit var armor: ItemStack
@@ -39,20 +40,41 @@ class AHGui {
 
         val layer1bk = ArrayList<BackgroundItem>()
         for (index in 0..53) {
-            layer1bk.add(BackgroundItem(StandardBackground, 0))
+            if (auctionSlots.contains(index)) {
+                layer1bk.add(BackgroundItem(ItemStack(Material.AIR), index))
+                continue
+            }
+            layer1bk.add(BackgroundItem(StandardBackground, index))
         }
 
         val layer2bt = ArrayList<GUIButton>()
         layer2bt.add(GUIButton(weapon, 0, ::switchToWeaponPage))
-        layer2bt.add(GUIButton(armor, 0, ::switchToArmorPage))
-        layer2bt.add(GUIButton(magicItems, 0, ::switchToMagicPage))
-        layer2bt.add(GUIButton(food, 0, ::switchToFoodPage))
-        layer2bt.add(GUIButton(blocks, 0, ::switchToBlockPage))
-        layer2bt.add(GUIButton(misc, 0, ::switchToMiscPage))
+        layer2bt.add(GUIButton(armor, 9, ::switchToArmorPage))
+        layer2bt.add(GUIButton(magicItems, 18, ::switchToMagicPage))
+        layer2bt.add(GUIButton(food, 27, ::switchToFoodPage))
+        layer2bt.add(GUIButton(blocks, 36, ::switchToBlockPage))
+        layer2bt.add(GUIButton(misc, 45, ::switchToMiscPage))
         fGui.layers.add(GUILayer(ArrayList(), layer1bk))
         fGui.layers.add(GUILayer(layer2bt, ArrayList()))
 
-        gui = GUIFactory.produceInventory(fGui)
+        browseGui = GUIFactory.produceInventory(fGui)
+
+        // Creates the Main GUI
+        val mGui = GUIFactory.createInventory("Auction Manager", 44)
+        val layer1 = ArrayList<BackgroundItem>()
+
+        for (index in 0..43) {
+            layer1.add(BackgroundItem(StandardBackground, index))
+        }
+
+        val layer2 = ArrayList<GUIButton>()
+
+    }
+
+    private fun createAuctionBrowse() {
+        val item = ItemStack(Material.GOLD_BLOCK)
+        val itemMeta = Bukkit.getItemFactory().getItemMeta(Material.GOLD_BLOCK)
+
     }
 
     private fun switchToWeaponPage(gui: OpenGUI) {
@@ -63,7 +85,11 @@ class AHGui {
             }
         }
         for ((index, aucSlot) in auctionSlots.withIndex()) {
-            gui.inv.setItem(aucSlot, weaponAucs[index].item)
+            try {
+                gui.inv.setItem(aucSlot, weaponAucs[index].item)
+            } catch (ignore: IndexOutOfBoundsException) {
+                gui.inv.setItem(aucSlot, null)
+            }
         }
     }
 
@@ -75,7 +101,11 @@ class AHGui {
             }
         }
         for ((index, aucSlot) in auctionSlots.withIndex()) {
-            gui.inv.setItem(aucSlot, weaponAucs[index].item)
+            try {
+                gui.inv.setItem(aucSlot, weaponAucs[index].item)
+            } catch (ignore: IndexOutOfBoundsException) {
+                gui.inv.setItem(aucSlot, null)
+            }
         }
     }
 
@@ -87,7 +117,11 @@ class AHGui {
             }
         }
         for ((index, aucSlot) in auctionSlots.withIndex()) {
-            gui.inv.setItem(aucSlot, weaponAucs[index].item)
+            try {
+                gui.inv.setItem(aucSlot, weaponAucs[index].item)
+            } catch (ignore: IndexOutOfBoundsException) {
+                gui.inv.setItem(aucSlot, null)
+            }
         }
     }
 
@@ -99,7 +133,11 @@ class AHGui {
             }
         }
         for ((index, aucSlot) in auctionSlots.withIndex()) {
-            gui.inv.setItem(aucSlot, weaponAucs[index].item)
+            try {
+                gui.inv.setItem(aucSlot, weaponAucs[index].item)
+            } catch (ignore: IndexOutOfBoundsException) {
+                gui.inv.setItem(aucSlot, null)
+            }
         }
     }
 
@@ -111,7 +149,11 @@ class AHGui {
             }
         }
         for ((index, aucSlot) in auctionSlots.withIndex()) {
-            gui.inv.setItem(aucSlot, weaponAucs[index].item)
+            try {
+                gui.inv.setItem(aucSlot, weaponAucs[index].item)
+            } catch (ignore: IndexOutOfBoundsException) {
+                gui.inv.setItem(aucSlot, null)
+            }
         }
     }
 
@@ -123,7 +165,11 @@ class AHGui {
             }
         }
         for ((index, aucSlot) in auctionSlots.withIndex()) {
-            gui.inv.setItem(aucSlot, weaponAucs[index].item)
+            try {
+                gui.inv.setItem(aucSlot, weaponAucs[index].item)
+            } catch (ignore: IndexOutOfBoundsException) {
+                gui.inv.setItem(aucSlot, null)
+            }
         }
     }
 

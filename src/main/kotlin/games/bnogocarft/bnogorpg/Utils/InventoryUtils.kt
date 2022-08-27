@@ -32,6 +32,13 @@ class StashArrayList : ArrayList<ItemStack?>(54) {
     }
 }
 
+fun cloneInv(inv: Inventory): Inventory {
+    val clone = Bukkit.createInventory(null, inv.size, inv.title)
+    for (i in 0 until inv.size) {
+        clone.setItem(i, inv.getItem(i))
+    }
+    return clone
+}
 
 fun addGlow(item: ItemStack?): ItemStack? {
     val nmsStack: net.minecraft.server.v1_5_R3.ItemStack = CraftItemStack.asNMSCopy(item)
