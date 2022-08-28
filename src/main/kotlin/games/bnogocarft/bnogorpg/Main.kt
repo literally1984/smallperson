@@ -34,6 +34,7 @@ import games.bnogocarft.bnogorpg.Utils.others.PlaytimeUtils
 import games.bnogocarft.bnogorpg.animation.animationTestCommand
 import games.bnogocarft.bnogorpg.economy.Auction.AHGui
 import games.bnogocarft.bnogorpg.economy.Auction.AuctionCommand
+import games.bnogocarft.bnogorpg.economy.Auction.AuctionListeners
 import net.milkbowl.vault.economy.Economy
 import org.bukkit.ChatColor
 import org.bukkit.configuration.file.YamlConfiguration
@@ -131,6 +132,7 @@ class Main : JavaPlugin() {
         server.pluginManager.registerEvents(TestListeners(), this)
         server.pluginManager.registerEvents(StashListener(), this)
         server.pluginManager.registerEvents(CraftingListeners(), this)
+        server.pluginManager.registerEvents(AuctionListeners(), this)
         cSender.sendMessage("$logo Registered Listeners")
 
         cSender.sendMessage("$logo Enabling ItemUpgrades...")
@@ -224,7 +226,23 @@ class Main : JavaPlugin() {
     }
 
     fun update() {
-
+        for (auc in auctions) {
+            val list = arrayListOf(
+                auc.ID,
+                serializeItem(auc.item),
+                auc.startingBid,
+                auc.creator,
+                auc.timeLeft.days,
+                auc.timeLeft.hours,
+                auc.timeLeft.minutes,
+                auc.timeLeft.seconds,
+                auc.currentBidder,
+                auc.highestBid)
+            BnogoSQL.con.prepareStatement(
+                "INSERT INTO auctions (id, item, starting, creator, timeLeftDays, timeLeftHours, timeLeftMins, timeLeftSecs, cB, hB) " +
+                        "VALUES ('urmom', 'sister', true, true)"
+            )
+        }
     }
 
     private fun setupEconomy(): Boolean {

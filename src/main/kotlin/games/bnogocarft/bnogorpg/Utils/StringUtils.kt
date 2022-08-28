@@ -36,12 +36,12 @@ fun serializeAuction(auction: Auction): String {
     }
     returnString += "itemDataSeperator,"
     returnString += "${auction.startingBid},"
-    returnString += "${auction.creator.name},"
+    returnString += "${auction.creator},"
     returnString += "${auction.timeLeft.seconds},"
     returnString += "${auction.timeLeft.minutes},"
     returnString += "${auction.timeLeft.hours},"
     returnString += "${auction.timeLeft.days},"
-    returnString += "${if (auction.currentBidder == null) "null" else auction.currentBidder!!.name},"
+    returnString += "${if (auction.currentBidder == null) "null" else auction.currentBidder!!},"
     returnString += "${auction.highestBid}"
     returnString += auction.ID
 
@@ -59,18 +59,18 @@ fun deserializeAuction(s: String): Auction {
         item,
         aucData[0].toDouble(),
         try {
-            Bukkit.getPlayer(aucData[1])
+            Bukkit.getPlayer(aucData[1]).name
         } catch (e: NullPointerException) {
-            Bukkit.getOfflinePlayer(aucData[1]).player
+            Bukkit.getOfflinePlayer(aucData[1]).player.name
         },
         AuctionTime(aucData[5].toInt(), aucData[4].toInt(), aucData[3].toInt(), aucData[2].toInt()),
         if (aucData[6] == "null") {
             null
         } else {
             try {
-                Bukkit.getPlayer(aucData[6])
+                Bukkit.getPlayer(aucData[6]).name
             } catch (e: NullPointerException) {
-                Bukkit.getOfflinePlayer(aucData[6]).player
+                Bukkit.getOfflinePlayer(aucData[6]).player.name
             }
         },
         aucData[7].toDouble(),

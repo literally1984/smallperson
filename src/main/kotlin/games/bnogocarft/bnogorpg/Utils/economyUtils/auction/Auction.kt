@@ -13,17 +13,11 @@ import org.bukkit.scheduler.BukkitTask
 data class Auction(
     val item: ItemStack,
     val startingBid: Double,
-    val creator: Player,
+    val creator: String,
     var timeLeft: AuctionTime
 ) {
 
-    var currentBidder: Player? = null
-        set(value) {
-            field = value
-            currentBidderName = value!!.name
-        }
-    var currentBidderName: String? = null
-    val creatorName = creator.name
+    var currentBidder: String? = null
     var highestBid: Double = 0.0
     var ID: String = "0"
     var task: BukkitTask? = null
@@ -33,9 +27,9 @@ data class Auction(
     constructor(
         item: ItemStack,
         startingBid: Double,
-        creator: Player,
+        creator: String,
         timeLeft: AuctionTime,
-        currentBidder: Player?,
+        currentBidder: String?,
         highestBid: Double,
         ID: String
     ) : this(item, startingBid, creator, timeLeft) {
@@ -50,16 +44,16 @@ data class Auction(
             var bidderOnline = false
             var creatorOnline = false
             for (player in Bukkit.getOnlinePlayers()) {
-                if (player.displayName == currentBidder?.displayName) {
+                if (player.displayName == currentBidder) {
                     bidderOnline = true
                 }
 
-                if (player.displayName == creator.displayName) {
+                if (player.displayName == creator) {
                     creatorOnline = true
                 }
             }
 
-            val sender = MessageSender(currentBidder!!.name)
+            val sender = MessageSender(currentBidder!!)
             sender.messages.add(
                 "${ChatColor.GREEN}You have won the auction for " +
                         "${
@@ -72,8 +66,8 @@ data class Auction(
             sender.messages.add("${ChatColor.GREEN}Check your stash for the item with /stash!")
             sender.sendMessage()
 
-            Main.econ.depositPlayer(creator.name, highestBid)
-            val sender2 = MessageSender(creator.name)
+            Main.econ.depositPlayer(creator, highestBid)
+            val sender2 = MessageSender(creator)
             sender2.messages.add(
                 "${ChatColor.GREEN}You received $highestBid from auction #$ID for your " +
                         "${
@@ -85,13 +79,13 @@ data class Auction(
             )
             sender2.sendMessage()
 
-            val bidderSender = ItemSender(currentBidderName!!)
+            val bidderSender = ItemSender(currentBidder!!)
 
             bidderSender.items.add(item)
             bidderSender.sendItems()
         } else {
-            val sender = MessageSender(creatorName)
-            val itemSender = ItemSender(creatorName)
+            val sender = MessageSender(creator)
+            val itemSender = ItemSender(creator)
 
             sender.messages.add("${ChatColor.RED}Your auction for ${if (item.hasItemMeta()) item.itemMeta.displayName else item.type.name} (#$ID) got no bids!")
             sender.messages.add("${ChatColor.GREEN}You have been refunded your item in your stash!")

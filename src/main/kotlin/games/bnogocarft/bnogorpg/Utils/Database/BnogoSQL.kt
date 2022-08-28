@@ -2,6 +2,7 @@ package games.bnogocarft.bnogorpg.Utils.Database
 
 import java.sql.Connection
 import java.sql.DriverManager
+import java.sql.ResultSet
 
 class BnogoSQL {
     companion object {
@@ -12,12 +13,9 @@ class BnogoSQL {
             con = DriverManager.getConnection(url)
         }
 
-        fun write(obj: Any) {
-
-        }
-
-        fun read(path: String) {
-
+        fun getResult(path: String): ResultSet {
+            val query = con.prepareStatement("SELECT * FROM users")
+            return query.executeQuery()
         }
 
         fun createTable(something: Any) {

@@ -69,10 +69,15 @@ fun changeInventoryTo(from: Inventory, to: Inventory) {
 
 fun serializeItem(item: ItemStack): List<String> {
     val serialized = ArrayList<String>()
-    serialized.add(item.type.toString())
-    serialized.add(item.itemMeta.displayName)
-    for (lore in item.itemMeta.lore) {
-        serialized.add(lore)
+    if (item.hasItemMeta()) {
+        serialized.add(item.type.toString())
+        serialized.add(item.itemMeta.displayName)
+        for (lore in item.itemMeta.lore) {
+            serialized.add(lore)
+        }
+    } else {
+        serialized.add("no meta")
+        serialized.add(item.type.toString())
     }
 
     return serialized
@@ -80,16 +85,18 @@ fun serializeItem(item: ItemStack): List<String> {
 
 fun deserializeItem(serialized: List<String>): ItemStack {
     val deserialized = ItemStack(Material.valueOf(serialized[0]))
-    val meta = Bukkit.getItemFactory().getItemMeta(Material.valueOf(serialized[0]))
-    meta.displayName = serialized[1]
-    val lore = ArrayList<String>()
+    if (serialized[0] != "no meta") {
+        val meta = Bukkit.getItemFactory().getItemMeta(Material.valueOf(serialized[0]))
+        meta.displayName = serialized[1]
+        val lore = ArrayList<String>()
 
-    for (index in 2 until serialized.size) {
-        lore.add(serialized[index])
+        for (index in 2 until serialized.size) {
+            lore.add(serialized[index])
+        }
+
+        meta.lore = lore
+        deserialized.itemMeta = meta
     }
-
-    meta.lore = lore
-    deserialized.itemMeta = meta
     return deserialized
 }
 

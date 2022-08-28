@@ -4,16 +4,21 @@ import games.bnogocarft.bnogorpg.Main
 import games.bnogocarft.bnogorpg.Utils.*
 import games.bnogocarft.bnogorpg.Utils.economyUtils.auction.Auction
 import games.bnogocarft.bnogorpg.Utils.economyUtils.auction.AuctionType
+import games.bnogocarft.bnogorpg.Utils.economyUtils.auction.createAuctionItemFor
+import net.milkbowl.vault.chat.Chat
 import org.bukkit.Bukkit
 import org.bukkit.ChatColor
 import org.bukkit.Material
 import org.bukkit.inventory.Inventory
+import org.bukkit.inventory.InventoryView
 import org.bukkit.inventory.ItemStack
+import org.bukkit.inventory.meta.ItemMeta
 
 class AHGui {
     companion object {
         lateinit var browseGui: Inventory
         lateinit var mainGui: Inventory
+        lateinit var borderGui: Inventory
 
         lateinit var weapon: ItemStack
         lateinit var armor: ItemStack
@@ -22,6 +27,17 @@ class AHGui {
         lateinit var blocks: ItemStack
         lateinit var misc: ItemStack
 
+        lateinit var browseButton: ItemStack
+        lateinit var viewButton: ItemStack
+        lateinit var createButton: ItemStack
+        lateinit var aucsButton: ItemStack
+
+        val noBorderSlots = arrayOf(
+            10,11,12,13,14,15,16,
+            19,20,21,22,23,24,25,
+            28,29,30,31,32,33,34,
+            37,38,39,40,41,42,43,
+        )
         val auctionSlots = arrayOf(
             11,12,13,14,15,16,
             20,21,22,23,24,25,
@@ -36,6 +52,10 @@ class AHGui {
         createFoodButton()
         createBlocksButton()
         createMiscButton()
+        createAuctionCreateItem()
+        createAuctionViewItem()
+        createAuctionBrowseItem()
+        createBorderPage()
         val fGui = GUIFactory.createInventory("Auction House", 54)
 
         val layer1bk = ArrayList<BackgroundItem>()
@@ -60,7 +80,7 @@ class AHGui {
         browseGui = GUIFactory.produceInventory(fGui)
 
         // Creates the Main GUI
-        val mGui = GUIFactory.createInventory("Auction Manager", 44)
+        val mGui = GUIFactory.createInventory("Auction Manager", 45)
         val layer1 = ArrayList<BackgroundItem>()
 
         for (index in 0..43) {
@@ -69,12 +89,99 @@ class AHGui {
 
         val layer2 = ArrayList<GUIButton>()
 
+        layer2.add(GUIButton(
+            browseButton,
+            11,
+            fun(gui: OpenGUI) {
+                gui.player.openInventory(browseGui)
+            }))
+
+        layer2.add(GUIButton(
+            viewButton,
+            13,
+            ::makeAucsPage))
+
+        layer2.add(GUIButton(
+            aucsButton,
+            15,
+            ::makeBidsPage))
+
+        layer2.add(GUIButton(
+            createButton,
+            31,
+            ::makeBidsPage))
+
+        mGui.layers.add(GUILayer(layer2, layer1))
+
+        mainGui = GUIFactory.produceInventory(mGui)
     }
 
-    private fun createAuctionBrowse() {
+    private fun createAuctionBrowseItem() {
         val item = ItemStack(Material.GOLD_BLOCK)
-        val itemMeta = Bukkit.getItemFactory().getItemMeta(Material.GOLD_BLOCK)
+        val meta = Bukkit.getItemFactory().getItemMeta(Material.GOLD_BLOCK)
+        val lore = ArrayList<String>()
 
+        meta.displayName = "${ChatColor.GOLD}Browse Auctions"
+        lore.add("")
+        lore.add("${ChatColor.GRAY}Look through the magnificent")
+        lore.add("${ChatColor.GRAY}auctions that other players have")
+        lore.add("${ChatColor.GRAY}created. It's time to lowball!")
+
+        meta.lore = lore
+        item.itemMeta = meta
+
+        browseButton = item
+    }
+
+    private fun createAuctionViewItem() {
+        val item = ItemStack(Material.GLASS)
+        val meta = Bukkit.getItemFactory().getItemMeta(Material.GLASS)
+        val lore = ArrayList<String>()
+
+        meta.displayName = "${ChatColor.GOLD}Browse Auctions"
+        lore.add("")
+        lore.add("${ChatColor.GRAY}Look through the magnificent")
+        lore.add("${ChatColor.GRAY}auctions that other players have")
+        lore.add("${ChatColor.GRAY}created. It's time to lowball!")
+
+        meta.lore = lore
+        item.itemMeta = meta
+
+        viewButton = item
+    }
+
+    private fun createAuctionCreateItem() {
+        val item = ItemStack(Material.WORKBENCH)
+        val meta = Bukkit.getItemFactory().getItemMeta(Material.WORKBENCH)
+        val lore = ArrayList<String>()
+
+        meta.displayName = "${ChatColor.GOLD}Browse Auctions"
+        lore.add("")
+        lore.add("${ChatColor.GRAY}Look through the magnificent")
+        lore.add("${ChatColor.GRAY}auctions that other players have")
+        lore.add("${ChatColor.GRAY}created. It's time to lowball!")
+
+        meta.lore = lore
+        item.itemMeta = meta
+
+        browseButton = item
+    }
+
+    private fun createAuctionAucsItem() {
+        val item = ItemStack(Material.SKULL_ITEM)
+        val meta = Bukkit.getItemFactory().getItemMeta(Material.SKULL_ITEM)
+        val lore = ArrayList<String>()
+
+        meta.displayName = "${ChatColor.GOLD}Browse Auctions"
+        lore.add("")
+        lore.add("${ChatColor.GRAY}Look through the magnificent")
+        lore.add("${ChatColor.GRAY}auctions that other players have")
+        lore.add("${ChatColor.GRAY}created. It's time to lowball!")
+
+        meta.lore = lore
+        item.itemMeta = meta
+
+        browseButton = item
     }
 
     private fun switchToWeaponPage(gui: OpenGUI) {
@@ -86,6 +193,7 @@ class AHGui {
         }
         for ((index, aucSlot) in auctionSlots.withIndex()) {
             try {
+                createAuctionItemFor(weaponAucs[index])
                 gui.inv.setItem(aucSlot, weaponAucs[index].item)
             } catch (ignore: IndexOutOfBoundsException) {
                 gui.inv.setItem(aucSlot, null)
@@ -102,6 +210,7 @@ class AHGui {
         }
         for ((index, aucSlot) in auctionSlots.withIndex()) {
             try {
+                createAuctionItemFor(weaponAucs[index])
                 gui.inv.setItem(aucSlot, weaponAucs[index].item)
             } catch (ignore: IndexOutOfBoundsException) {
                 gui.inv.setItem(aucSlot, null)
@@ -118,6 +227,7 @@ class AHGui {
         }
         for ((index, aucSlot) in auctionSlots.withIndex()) {
             try {
+                createAuctionItemFor(weaponAucs[index])
                 gui.inv.setItem(aucSlot, weaponAucs[index].item)
             } catch (ignore: IndexOutOfBoundsException) {
                 gui.inv.setItem(aucSlot, null)
@@ -134,6 +244,7 @@ class AHGui {
         }
         for ((index, aucSlot) in auctionSlots.withIndex()) {
             try {
+                createAuctionItemFor(weaponAucs[index])
                 gui.inv.setItem(aucSlot, weaponAucs[index].item)
             } catch (ignore: IndexOutOfBoundsException) {
                 gui.inv.setItem(aucSlot, null)
@@ -150,6 +261,7 @@ class AHGui {
         }
         for ((index, aucSlot) in auctionSlots.withIndex()) {
             try {
+                createAuctionItemFor(weaponAucs[index])
                 gui.inv.setItem(aucSlot, weaponAucs[index].item)
             } catch (ignore: IndexOutOfBoundsException) {
                 gui.inv.setItem(aucSlot, null)
@@ -166,11 +278,58 @@ class AHGui {
         }
         for ((index, aucSlot) in auctionSlots.withIndex()) {
             try {
+                createAuctionItemFor(weaponAucs[index])
                 gui.inv.setItem(aucSlot, weaponAucs[index].item)
             } catch (ignore: IndexOutOfBoundsException) {
                 gui.inv.setItem(aucSlot, null)
             }
         }
+    }
+
+    private fun createBorderPage() {
+        val mGui = GUIFactory.createInventory("${ChatColor.GOLD}Your Auctions", 54)
+        val layer1 = ArrayList<BackgroundItem>()
+
+        for (index in 0..53) {
+            if (noBorderSlots.contains(index)) {
+                layer1.add(BackgroundItem(ItemStack(Material.AIR), index))
+                continue
+            }
+            layer1.add(BackgroundItem(StandardBackground, index))
+        }
+        mGui.layers.add(GUILayer(ArrayList(), layer1))
+
+        borderGui = GUIFactory.produceInventory(mGui)
+    }
+
+    private fun makeAucsPage(gui: OpenGUI) {
+        val items = ArrayList<ItemStack>()
+
+        for (auc in Main.auctions) {
+            if (auc.creator == gui.player.name) {
+                items.add(createAuctionItemFor(auc))
+            }
+        }
+        val inv = cloneInv(borderGui)
+        for ((index, i) in noBorderSlots.withIndex()) {
+            inv.setItem(i, items[index])
+        }
+        gui.player.openInventory(inv)
+    }
+
+    private fun makeBidsPage(gui: OpenGUI) {
+        val items = ArrayList<ItemStack>()
+
+        for (auc in Main.auctions) {
+            if (auc.currentBidder == gui.player.name) {
+                items.add(createAuctionItemFor(auc))
+            }
+        }
+        val inv = cloneInv(borderGui)
+        for ((index, i) in noBorderSlots.withIndex()) {
+            inv.setItem(i, items[index])
+        }
+        gui.player.openInventory(inv)
     }
 
     private fun createWeaponButton() {

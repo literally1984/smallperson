@@ -84,7 +84,7 @@ class AuctionCommand : CommandExecutor {
                 }
 
                 "house" -> {
-                    sender.openInventory(cloneInv(AHGui.browseGui))
+                    sender.openInventory(cloneInv(AHGui.mainGui))
                 }
 
                 "bid" -> {
@@ -110,7 +110,7 @@ class AuctionCommand : CommandExecutor {
                         return true
                     }
 
-                    if (sender.displayName == auc.creator.displayName) {
+                    if (sender.displayName == auc.creator) {
                         sender.sendMessage("${ChatColor.RED}You cannot bid on your own auction!")
                         return true
                     }
@@ -133,7 +133,7 @@ class AuctionCommand : CommandExecutor {
                     }
 
                     auc.highestBid = bid
-                    auc.currentBidder = sender
+                    auc.currentBidder = sender.name
                     Main.econ.withdrawPlayer(sender.name, bid)
                     sender.sendMessage(
                         "${ChatColor.GREEN}You bid $bid on ${auc.ID} (" +
@@ -175,7 +175,7 @@ class AuctionCommand : CommandExecutor {
                         return true
                     }
 
-                    val auc = Auction(sender.itemInHand, startingBid, sender, time)
+                    val auc = Auction(sender.itemInHand, startingBid, sender.name, time)
                     val countdown = Bukkit.getScheduler().runTaskTimer(Main.instance, AuctionTimer(auc), 0, 20)
                     auc.task = countdown
                     sender.sendMessage(
