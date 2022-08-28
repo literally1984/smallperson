@@ -21,6 +21,7 @@ class PlayerJoinEvent : Listener {
     @EventHandler(priority = EventPriority.HIGHEST)
     fun playerJoinEvent(e: PlayerJoinEvent) {
         val onlineBPlayer = OnlineBPlayer(e.player)
+        OnlineBPlayers[e.player] = onlineBPlayer
 
         if (onlineBPlayer.config.contains("o.msg")) {
             for (msg in onlineBPlayer.config.getStringList("o.msg")) {
@@ -42,7 +43,6 @@ class PlayerJoinEvent : Listener {
             Main.serverIp
         playerBar.health = 300
         playerBar.display()
-        OnlineBPlayers[e.player] = onlineBPlayer
         Bukkit.getServer().consoleSender.sendMessage("${e.player.displayName}'s data files have been instanced and mapped at")
         Bukkit.getServer().consoleSender.sendMessage(onlineBPlayer.file.path)
         for (item in e.player.inventory.contents) {

@@ -67,13 +67,16 @@ fun getAuctions(result: ResultSet): List<Auction> {
 }
 
 fun createAuctionItemFor(auc: Auction): ItemStack {
-    val item = auc.item
+    val item = auc.item.clone()
     lateinit var meta: ItemMeta
     lateinit var lore: ArrayList<String>
 
     if (item.hasItemMeta()) {
-        meta = item.itemMeta
+        meta = auc.item.itemMeta.clone()
         lore = meta.lore as ArrayList<String>
+        if (lore[lore.size-1].contains("${ChatColor.GOLD}ID: ")) {
+            return item
+        }
     } else {
         meta = Bukkit.getItemFactory().getItemMeta(item.type)
         lore = ArrayList()

@@ -56,6 +56,7 @@ class AHGui {
         createAuctionViewItem()
         createAuctionBrowseItem()
         createBorderPage()
+        createAuctionAucsItem()
         val fGui = GUIFactory.createInventory("Auction House", 54)
 
         val layer1bk = ArrayList<BackgroundItem>()
@@ -99,12 +100,12 @@ class AHGui {
         layer2.add(GUIButton(
             viewButton,
             13,
-            ::makeAucsPage))
+            ::makeBidsPage))
 
         layer2.add(GUIButton(
             aucsButton,
             15,
-            ::makeBidsPage))
+            ::makeAucsPage))
 
         layer2.add(GUIButton(
             createButton,
@@ -138,11 +139,11 @@ class AHGui {
         val meta = Bukkit.getItemFactory().getItemMeta(Material.GLASS)
         val lore = ArrayList<String>()
 
-        meta.displayName = "${ChatColor.GOLD}Browse Auctions"
+        meta.displayName = "${ChatColor.GOLD}Browse Bids"
         lore.add("")
-        lore.add("${ChatColor.GRAY}Look through the magnificent")
-        lore.add("${ChatColor.GRAY}auctions that other players have")
-        lore.add("${ChatColor.GRAY}created. It's time to lowball!")
+        lore.add("${ChatColor.GRAY}Look at auctions that you have")
+        lore.add("${ChatColor.GRAY}bid on to make sure no one outbids")
+        lore.add("${ChatColor.GRAY}you!")
 
         meta.lore = lore
         item.itemMeta = meta
@@ -155,16 +156,16 @@ class AHGui {
         val meta = Bukkit.getItemFactory().getItemMeta(Material.WORKBENCH)
         val lore = ArrayList<String>()
 
-        meta.displayName = "${ChatColor.GOLD}Browse Auctions"
+        meta.displayName = "${ChatColor.GOLD}Create Auction"
         lore.add("")
-        lore.add("${ChatColor.GRAY}Look through the magnificent")
-        lore.add("${ChatColor.GRAY}auctions that other players have")
-        lore.add("${ChatColor.GRAY}created. It's time to lowball!")
+        lore.add("${ChatColor.GRAY}Too lazy to use the command? No")
+        lore.add("${ChatColor.GRAY}problem! Just create an auction")
+        lore.add("${ChatColor.GRAY}with this GUI!")
 
         meta.lore = lore
         item.itemMeta = meta
 
-        browseButton = item
+        createButton = item
     }
 
     private fun createAuctionAucsItem() {
@@ -172,16 +173,16 @@ class AHGui {
         val meta = Bukkit.getItemFactory().getItemMeta(Material.SKULL_ITEM)
         val lore = ArrayList<String>()
 
-        meta.displayName = "${ChatColor.GOLD}Browse Auctions"
+        meta.displayName = "${ChatColor.GOLD}Your Auctions"
         lore.add("")
-        lore.add("${ChatColor.GRAY}Look through the magnificent")
-        lore.add("${ChatColor.GRAY}auctions that other players have")
-        lore.add("${ChatColor.GRAY}created. It's time to lowball!")
+        lore.add("${ChatColor.GRAY}Look through the Auctions you have")
+        lore.add("${ChatColor.GRAY}created, see their highest bids")
+        lore.add("${ChatColor.GRAY}and who bid on them. Stonks!")
 
         meta.lore = lore
         item.itemMeta = meta
 
-        browseButton = item
+        aucsButton = item
     }
 
     private fun switchToWeaponPage(gui: OpenGUI) {
@@ -193,8 +194,7 @@ class AHGui {
         }
         for ((index, aucSlot) in auctionSlots.withIndex()) {
             try {
-                createAuctionItemFor(weaponAucs[index])
-                gui.inv.setItem(aucSlot, weaponAucs[index].item)
+                gui.inv.setItem(aucSlot, createAuctionItemFor(weaponAucs[index]))
             } catch (ignore: IndexOutOfBoundsException) {
                 gui.inv.setItem(aucSlot, null)
             }
@@ -210,8 +210,7 @@ class AHGui {
         }
         for ((index, aucSlot) in auctionSlots.withIndex()) {
             try {
-                createAuctionItemFor(weaponAucs[index])
-                gui.inv.setItem(aucSlot, weaponAucs[index].item)
+                gui.inv.setItem(aucSlot, createAuctionItemFor(weaponAucs[index]))
             } catch (ignore: IndexOutOfBoundsException) {
                 gui.inv.setItem(aucSlot, null)
             }
@@ -227,8 +226,7 @@ class AHGui {
         }
         for ((index, aucSlot) in auctionSlots.withIndex()) {
             try {
-                createAuctionItemFor(weaponAucs[index])
-                gui.inv.setItem(aucSlot, weaponAucs[index].item)
+                gui.inv.setItem(aucSlot, createAuctionItemFor(weaponAucs[index]))
             } catch (ignore: IndexOutOfBoundsException) {
                 gui.inv.setItem(aucSlot, null)
             }
@@ -244,8 +242,7 @@ class AHGui {
         }
         for ((index, aucSlot) in auctionSlots.withIndex()) {
             try {
-                createAuctionItemFor(weaponAucs[index])
-                gui.inv.setItem(aucSlot, weaponAucs[index].item)
+                gui.inv.setItem(aucSlot, createAuctionItemFor(weaponAucs[index]))
             } catch (ignore: IndexOutOfBoundsException) {
                 gui.inv.setItem(aucSlot, null)
             }
@@ -261,8 +258,7 @@ class AHGui {
         }
         for ((index, aucSlot) in auctionSlots.withIndex()) {
             try {
-                createAuctionItemFor(weaponAucs[index])
-                gui.inv.setItem(aucSlot, weaponAucs[index].item)
+                gui.inv.setItem(aucSlot, createAuctionItemFor(weaponAucs[index]))
             } catch (ignore: IndexOutOfBoundsException) {
                 gui.inv.setItem(aucSlot, null)
             }
@@ -278,8 +274,7 @@ class AHGui {
         }
         for ((index, aucSlot) in auctionSlots.withIndex()) {
             try {
-                createAuctionItemFor(weaponAucs[index])
-                gui.inv.setItem(aucSlot, weaponAucs[index].item)
+                gui.inv.setItem(aucSlot, createAuctionItemFor(weaponAucs[index]))
             } catch (ignore: IndexOutOfBoundsException) {
                 gui.inv.setItem(aucSlot, null)
             }
@@ -312,8 +307,14 @@ class AHGui {
         }
         val inv = cloneInv(borderGui)
         for ((index, i) in noBorderSlots.withIndex()) {
-            inv.setItem(i, items[index])
+            try {
+                inv.setItem(i, items[index])
+            } catch (e: IndexOutOfBoundsException) {
+                inv.setItem(i, null)
+                continue
+            }
         }
+        gui.player.closeInventory()
         gui.player.openInventory(inv)
     }
 
@@ -327,8 +328,14 @@ class AHGui {
         }
         val inv = cloneInv(borderGui)
         for ((index, i) in noBorderSlots.withIndex()) {
-            inv.setItem(i, items[index])
+            try {
+                inv.setItem(i, items[index])
+            } catch (e: IndexOutOfBoundsException) {
+                inv.setItem(i, null)
+                continue
+            }
         }
+        gui.player.closeInventory()
         gui.player.openInventory(inv)
     }
 

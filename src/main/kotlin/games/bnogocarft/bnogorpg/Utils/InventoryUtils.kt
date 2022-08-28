@@ -76,8 +76,8 @@ fun serializeItem(item: ItemStack): List<String> {
             serialized.add(lore)
         }
     } else {
-        serialized.add("no meta")
         serialized.add(item.type.toString())
+        serialized.add("no meta")
     }
 
     return serialized

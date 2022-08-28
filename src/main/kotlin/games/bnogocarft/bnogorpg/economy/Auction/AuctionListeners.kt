@@ -10,7 +10,7 @@ class AuctionListeners : Listener{
     @EventHandler
     fun onAuctionPut(e: InventoryClickEvent) {
         if (e.inventory.name == "Auction House") {
-            if (e.click == ClickType.SHIFT_RIGHT && e.slotType != InventoryType.SlotType.QUICKBAR) {
+            if (e.click == ClickType.SHIFT_LEFT) {
                 e.isCancelled = true
             }
         }

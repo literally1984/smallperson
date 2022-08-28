@@ -14,7 +14,7 @@ class BnogoSQL {
         }
 
         fun getResult(path: String): ResultSet {
-            val query = con.prepareStatement("SELECT * FROM users")
+            val query = con.prepareStatement("SELECT * FROM auctions")
             return query.executeQuery()
         }
 

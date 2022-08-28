@@ -154,7 +154,7 @@ class AuctionCommand : CommandExecutor {
                         return true
                     }
 
-                    if (sender.itemInHand == null && sender.itemInHand.type == Material.AIR) {
+                    if (sender.itemInHand == null || sender.itemInHand.type == Material.AIR) {
                         sender.sendMessage("${ChatColor.RED}You are not holding an item to auction!")
                         return true
                     }
