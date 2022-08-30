@@ -35,9 +35,9 @@ class CombatLogTimer(player: OnlineBPlayer) : BukkitRunnable() {
         }
         p.metadata["combat"] = (p.metadata["combat"] as Int) - 1
         for (bar2 in p.bars) {
-            if (bar2 is ComboBar) {
+            if (bar2 is CombatLogBar) {
                 bar2.health -= 4
-                if (p.currentBar is ComboBar) {
+                if (p.currentBar is CombatLogBar) {
                     p.bar.health = bar2.health
                     p.bar.text = bar2.name
                 }

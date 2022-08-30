@@ -18,7 +18,7 @@ import org.bukkit.event.player.PlayerJoinEvent
 
 class PlayerJoinEvent : Listener {
 
-    @EventHandler(priority = EventPriority.HIGHEST)
+    @EventHandler(priority = EventPriority.HIGH)
     fun playerJoinEvent(e: PlayerJoinEvent) {
         val onlineBPlayer = OnlineBPlayer(e.player)
         OnlineBPlayers[e.player] = onlineBPlayer

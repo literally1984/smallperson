@@ -120,6 +120,7 @@ class Main : JavaPlugin() {
         cSender.sendMessage("$logo Utlils have been constructed")
 
         cSender.sendMessage("$logo Registering listeners")
+        server.pluginManager.registerEvents(EventUtils(), this)
         server.pluginManager.registerEvents(PlayerJoinEvent(), this)
         server.pluginManager.registerEvents(HotbarChangeEvent(), this)
         server.pluginManager.registerEvents(PlayerLeaveEvent(), this)

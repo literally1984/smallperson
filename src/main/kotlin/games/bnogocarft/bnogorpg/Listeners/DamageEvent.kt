@@ -20,7 +20,7 @@ import org.bukkit.event.entity.EntityDamageByEntityEvent
 import org.bukkit.scheduler.BukkitTask
 
 class DamageEvent : Listener {
-    @EventHandler(priority = EventPriority.HIGHEST)
+    @EventHandler(priority = EventPriority.LOW)
     fun onPlayerDamage(e: EntityDamageByEntityEvent) {
         if (e.entity is LivingEntity) {
             // handlers for if the damager is player and recipient is a mob
@@ -30,7 +30,7 @@ class DamageEvent : Listener {
                 // Checks if the damaged entity is also a player
                 if (e.entity is Player) {
                     lateinit var combatLogTask: BukkitTask
-                    val combat: CombatLog? = bDamager.metadata["combo"] as CombatLog?
+                    val combat: CombatLog? = bDamager.metadata["combat"] as CombatLog?
                     if (combat == null) {// Checks if the player is currently in combat
                         bDamager.metadata["combat"] = CombatLog(combatLogTask)
 
@@ -56,12 +56,13 @@ class DamageEvent : Listener {
                         if (display) {
                             bDamager.bar.text = cBar.name
                             bDamager.bar.health = cBar.health
+                            bDamager.currentBar = cBar
                         }
                     }
 
                     // Starts a combat log timer for the damaged
                     val bDamaged = OnlineBPlayers[e.entity]!!
-                    val combat2: CombatLog? = bDamaged.metadata["combo"] as CombatLog?
+                    val combat2: CombatLog? = bDamaged.metadata["combat"] as CombatLog?
                     if (combat2 != null) {
                         lateinit var combatLogTask2: BukkitTask
                         bDamaged.metadata["combat"] = CombatLog(combatLogTask)
@@ -84,6 +85,7 @@ class DamageEvent : Listener {
                         if (display2) {
                             bDamaged.bar.text = cBar2.name
                             bDamaged.bar.health = cBar2.health
+                            bDamaged.currentBar = cBar2
                         }
                     }
                 }

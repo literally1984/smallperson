@@ -21,7 +21,7 @@ import org.bukkit.util.Vector
 
 class AbilityListeners : Listener {
 
-    @EventHandler(priority = EventPriority.HIGHEST)
+    @EventHandler(priority = EventPriority.HIGH)
     fun onDoubleJumpAttempt(event: PlayerMoveEvent) {
         if (event.from.y < event.to.y) {
             for (armor in event.player.inventory.armorContents) {
@@ -35,7 +35,7 @@ class AbilityListeners : Listener {
         }
     }
 
-    @EventHandler(priority = EventPriority.HIGHEST)
+    @EventHandler(priority = EventPriority.HIGH)
     fun onFlightAttempt(event: PlayerToggleFlightEvent) {
         val boots = event.player.inventory.boots
         if (!event.isFlying && event.player.gameMode != GameMode.CREATIVE) {
