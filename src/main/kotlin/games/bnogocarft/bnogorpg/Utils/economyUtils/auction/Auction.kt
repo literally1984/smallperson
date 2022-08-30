@@ -1,12 +1,10 @@
 package games.bnogocarft.bnogorpg.Utils.economyUtils.auction
 
 import games.bnogocarft.bnogorpg.Main
-import games.bnogocarft.bnogorpg.Utils.BPlayer.OfflineBPlayer
 import games.bnogocarft.bnogorpg.Utils.Senders.ItemSender
 import games.bnogocarft.bnogorpg.Utils.Senders.MessageSender
 import org.bukkit.Bukkit
 import org.bukkit.ChatColor
-import org.bukkit.entity.Player
 import org.bukkit.inventory.ItemStack
 import org.bukkit.scheduler.BukkitTask
 

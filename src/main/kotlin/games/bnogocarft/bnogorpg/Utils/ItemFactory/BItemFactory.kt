@@ -72,15 +72,17 @@ class BItemFactory {
                     lore.add("")
                     lore.add("${ChatColor.GOLD}${ChatColor.ITALIC}Armor Item")
 
-                    lore.add(when (item.rarity) {
-                        Rarity.COMMON -> "${ChatColor.GOLD}✪"
-                        Rarity.UNCOMMON -> "${ChatColor.GOLD}✪✪"
-                        Rarity.RARE -> "${ChatColor.GOLD}✪✪✪"
-                        Rarity.EPIC -> "${ChatColor.GOLD}✪✪✪✪"
-                        Rarity.LEGENDARY -> "${ChatColor.GOLD}✪✪✪✪✪"
-                        Rarity.MYTHICAL -> "${ChatColor.GOLD}✪✪✪✪✪✪"
-                        Rarity.DIVINE -> "${ChatColor.GOLD}✪✪✪✪✪✪✪"
-                    })
+                    lore.add(
+                        when (item.rarity) {
+                            Rarity.COMMON -> "${ChatColor.GOLD}✪"
+                            Rarity.UNCOMMON -> "${ChatColor.GOLD}✪✪"
+                            Rarity.RARE -> "${ChatColor.GOLD}✪✪✪"
+                            Rarity.EPIC -> "${ChatColor.GOLD}✪✪✪✪"
+                            Rarity.LEGENDARY -> "${ChatColor.GOLD}✪✪✪✪✪"
+                            Rarity.MYTHICAL -> "${ChatColor.GOLD}✪✪✪✪✪✪"
+                            Rarity.DIVINE -> "${ChatColor.GOLD}✪✪✪✪✪✪✪"
+                        }
+                    )
 
                     meta.lore = lore
                     itemStack.itemMeta = meta
@@ -128,15 +130,17 @@ class BItemFactory {
                     lore.add("")
                     lore.add("${ChatColor.GOLD}${ChatColor.ITALIC}Weapon")
 
-                    lore.add(when (item.rarity) {
-                        Rarity.COMMON -> "${ChatColor.GOLD}✪"
-                        Rarity.UNCOMMON -> "${ChatColor.GOLD}✪✪"
-                        Rarity.RARE -> "${ChatColor.GOLD}✪✪✪"
-                        Rarity.EPIC -> "${ChatColor.GOLD}✪✪✪✪"
-                        Rarity.LEGENDARY -> "${ChatColor.GOLD}✪✪✪✪✪"
-                        Rarity.MYTHICAL -> "${ChatColor.GOLD}✪✪✪✪✪✪"
-                        Rarity.DIVINE -> "${ChatColor.GOLD}✪✪✪✪✪✪✪"
-                    })
+                    lore.add(
+                        when (item.rarity) {
+                            Rarity.COMMON -> "${ChatColor.GOLD}✪"
+                            Rarity.UNCOMMON -> "${ChatColor.GOLD}✪✪"
+                            Rarity.RARE -> "${ChatColor.GOLD}✪✪✪"
+                            Rarity.EPIC -> "${ChatColor.GOLD}✪✪✪✪"
+                            Rarity.LEGENDARY -> "${ChatColor.GOLD}✪✪✪✪✪"
+                            Rarity.MYTHICAL -> "${ChatColor.GOLD}✪✪✪✪✪✪"
+                            Rarity.DIVINE -> "${ChatColor.GOLD}✪✪✪✪✪✪✪"
+                        }
+                    )
                     if (item.armorColor != null) {
                         val armorMeta = meta as LeatherArmorMeta
                         armorMeta.color = item.armorColor
@@ -164,15 +168,17 @@ class BItemFactory {
 
                     lore.add("")
                     lore.add("${ChatColor.GOLD}${ChatColor.ITALIC}Talisman")
-                    lore.add(when (item.rarity) {
-                        Rarity.COMMON -> "${ChatColor.GOLD}✪"
-                        Rarity.UNCOMMON -> "${ChatColor.GOLD}✪✪"
-                        Rarity.RARE -> "${ChatColor.GOLD}✪✪✪"
-                        Rarity.EPIC -> "${ChatColor.GOLD}✪✪✪✪"
-                        Rarity.LEGENDARY -> "${ChatColor.GOLD}✪✪✪✪✪"
-                        Rarity.MYTHICAL -> "${ChatColor.GOLD}✪✪✪✪✪✪"
-                        Rarity.DIVINE -> "${ChatColor.GOLD}✪✪✪✪✪✪✪"
-                    })
+                    lore.add(
+                        when (item.rarity) {
+                            Rarity.COMMON -> "${ChatColor.GOLD}✪"
+                            Rarity.UNCOMMON -> "${ChatColor.GOLD}✪✪"
+                            Rarity.RARE -> "${ChatColor.GOLD}✪✪✪"
+                            Rarity.EPIC -> "${ChatColor.GOLD}✪✪✪✪"
+                            Rarity.LEGENDARY -> "${ChatColor.GOLD}✪✪✪✪✪"
+                            Rarity.MYTHICAL -> "${ChatColor.GOLD}✪✪✪✪✪✪"
+                            Rarity.DIVINE -> "${ChatColor.GOLD}✪✪✪✪✪✪✪"
+                        }
+                    )
 
                     meta.lore = lore
                     itemStack.itemMeta = meta
@@ -195,21 +201,24 @@ class BItemFactory {
                     lore.add("${ChatColor.GREEN}Level Requirement: ${ChatColor.GRAY}${item.levelReq}")
                     lore.add("")
                     lore.add("${ChatColor.GOLD}${ChatColor.ITALIC}Ability Scroll")
-                    lore.add(when (item.rarity) {
-                        Rarity.COMMON -> "${ChatColor.GOLD}✪"
-                        Rarity.UNCOMMON -> "${ChatColor.GOLD}✪✪"
-                        Rarity.RARE -> "${ChatColor.GOLD}✪✪✪"
-                        Rarity.EPIC -> "${ChatColor.GOLD}✪✪✪✪"
-                        Rarity.LEGENDARY -> "${ChatColor.GOLD}✪✪✪✪✪"
-                        Rarity.MYTHICAL -> "${ChatColor.GOLD}✪✪✪✪✪✪"
-                        Rarity.DIVINE -> "${ChatColor.GOLD}✪✪✪✪✪✪✪"
-                    })
+                    lore.add(
+                        when (item.rarity) {
+                            Rarity.COMMON -> "${ChatColor.GOLD}✪"
+                            Rarity.UNCOMMON -> "${ChatColor.GOLD}✪✪"
+                            Rarity.RARE -> "${ChatColor.GOLD}✪✪✪"
+                            Rarity.EPIC -> "${ChatColor.GOLD}✪✪✪✪"
+                            Rarity.LEGENDARY -> "${ChatColor.GOLD}✪✪✪✪✪"
+                            Rarity.MYTHICAL -> "${ChatColor.GOLD}✪✪✪✪✪✪"
+                            Rarity.DIVINE -> "${ChatColor.GOLD}✪✪✪✪✪✪✪"
+                        }
+                    )
 
                     meta.lore = lore
                     itemStack.itemMeta = meta
 
                     return itemStack
                 }
+
                 BItemType.MISC -> {
                     val itemStack = ItemStack(item.mat)
                     val meta = Bukkit.getItemFactory().getItemMeta(item.mat)
@@ -223,15 +232,17 @@ class BItemFactory {
                     }
                     lore.add("")
                     lore.add("${ChatColor.GOLD}${ChatColor.ITALIC}Misc Item")
-                    lore.add(when (item.rarity) {
-                        Rarity.COMMON -> "${ChatColor.GOLD}✪"
-                        Rarity.UNCOMMON -> "${ChatColor.GOLD}✪✪"
-                        Rarity.RARE -> "${ChatColor.GOLD}✪✪✪"
-                        Rarity.EPIC -> "${ChatColor.GOLD}✪✪✪✪"
-                        Rarity.LEGENDARY -> "${ChatColor.GOLD}✪✪✪✪✪"
-                        Rarity.MYTHICAL -> "${ChatColor.GOLD}✪✪✪✪✪✪"
-                        Rarity.DIVINE -> "${ChatColor.GOLD}✪✪✪✪✪✪✪"
-                    })
+                    lore.add(
+                        when (item.rarity) {
+                            Rarity.COMMON -> "${ChatColor.GOLD}✪"
+                            Rarity.UNCOMMON -> "${ChatColor.GOLD}✪✪"
+                            Rarity.RARE -> "${ChatColor.GOLD}✪✪✪"
+                            Rarity.EPIC -> "${ChatColor.GOLD}✪✪✪✪"
+                            Rarity.LEGENDARY -> "${ChatColor.GOLD}✪✪✪✪✪"
+                            Rarity.MYTHICAL -> "${ChatColor.GOLD}✪✪✪✪✪✪"
+                            Rarity.DIVINE -> "${ChatColor.GOLD}✪✪✪✪✪✪✪"
+                        }
+                    )
 
                     meta.lore = lore
                     itemStack.itemMeta = meta
@@ -247,17 +258,25 @@ class BItemFactory {
 
             val lore = meta.lore
 
-            lore.add(0, "${ChatColor.AQUA}ID: ${Main.ymlConfig.getInt("items.indexes." +
-                    meta.displayName.replace(" ", "")
-            )}")
+            lore.add(
+                0, "${ChatColor.AQUA}ID: ${
+                    Main.ymlConfig.getInt(
+                        "items.indexes." +
+                                meta.displayName.replace(" ", "")
+                    )
+                }"
+            )
 
             meta.lore = lore
             item.itemMeta = meta
 
-            Main.ymlConfig.set("items.indexes." + meta.displayName.replace(" ", ""),
-                Main.ymlConfig.getInt("items.indexes." +
-                    meta.displayName.replace(" ", "")
-                ) + 1)
+            Main.ymlConfig.set(
+                "items.indexes." + meta.displayName.replace(" ", ""),
+                Main.ymlConfig.getInt(
+                    "items.indexes." +
+                            meta.displayName.replace(" ", "")
+                ) + 1
+            )
             return item
         }
     }

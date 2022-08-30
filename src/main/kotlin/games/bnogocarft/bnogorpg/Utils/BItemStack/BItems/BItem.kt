@@ -6,7 +6,6 @@ import games.bnogocarft.bnogorpg.Utils.EnchantUtils.BEnchantment
 import games.bnogocarft.bnogorpg.Utils.Exceptions.InvalidConstructorInputException
 import org.bukkit.ChatColor
 import org.bukkit.inventory.ItemStack
-import java.lang.NullPointerException
 
 open class BItem(item: ItemStack) {
     val Enchants = ArrayList<BEnchantment>()
@@ -18,7 +17,7 @@ open class BItem(item: ItemStack) {
             "002" -> Update.zerozerotwo
             else -> Update.zerozerotwo
         }*/
-    var rarity = RarityUtils.getRarity(item.itemMeta.lore[item.itemMeta.lore.size - 1].split(" ")[0])
+    var rarity = RarityUtils.getRarity(item.itemMeta.lore[item.itemMeta.lore.size - 1])
     var type: BItemType =
         try {
             when (item.itemMeta.lore[item.itemMeta.lore.size - 2]) {
