@@ -61,7 +61,7 @@ class AHGui {
         val layer1bk = ArrayList<BackgroundItem>()
         for (index in 0..53) {
             if (auctionSlots.contains(index)) {
-                layer1bk.add(BackgroundItem(ItemStack(Material.AIR), index))
+                layer1bk.add(GUIButton(ItemStack(Material.AIR), index, ::infoClickHandler))
                 continue
             }
             layer1bk.add(BackgroundItem(sBK, index))
@@ -389,13 +389,16 @@ class AHGui {
     }
 
     private fun infoClickHandler(gui: OpenGUI) {
+        if (gui.currentItem.type == Material.AIR) {
+            return
+        }
         gui.player.closeInventory()
         gui.player.openInventory(
             createAuctionInfoGui(
                 getAuctionByID(
                     gui.currentItem.itemMeta.lore[
                             gui.currentItem.itemMeta.lore.size - 1
-                    ].split(": ")[1]
+                    ].split(": ${ChatColor.GRAY}")[1]
                 )
             )
         )

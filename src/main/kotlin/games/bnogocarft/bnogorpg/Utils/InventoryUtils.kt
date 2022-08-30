@@ -93,7 +93,7 @@ fun serializeItem(item: ItemStack): List<String> {
 
 fun deserializeItem(serialized: List<String>): ItemStack {
     val deserialized = ItemStack(Material.valueOf(serialized[0]))
-    if (serialized[0] != "no meta") {
+    if (serialized[1] != "no meta") {
         val meta = Bukkit.getItemFactory().getItemMeta(Material.valueOf(serialized[0]))
         meta.displayName = serialized[1]
         val lore = ArrayList<String>()

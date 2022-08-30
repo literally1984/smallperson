@@ -10,11 +10,11 @@ import games.bnogocarft.bnogorpg.economy.Auction.AHGui
 import org.bukkit.Bukkit
 import org.bukkit.ChatColor
 import org.bukkit.Material
-import org.bukkit.event.player.AsyncPlayerChatEvent
-import org.bukkit.event.player.PlayerEvent
+import org.bukkit.entity.Player
 import org.bukkit.inventory.Inventory
 import org.bukkit.inventory.ItemStack
 import org.bukkit.inventory.meta.ItemMeta
+import sun.audio.AudioPlayer.player
 import java.sql.ResultSet
 
 
@@ -139,40 +139,24 @@ fun createAuctionInfoGui(auc: Auction): Inventory {
                 val auction = getAuctionByID(
                     gui.inv.getItem(13).itemMeta.lore[
                             gui.inv.getItem(13).itemMeta.lore.size - 1
-                    ].split(": ")[1]
+                    ].split(": ${ChatColor.GRAY}")[1]
                 )
                 var bid: Double? = null
-                EventUtils.listenForNextEvent(
-                    "AsyncPlayerChatEvent",
+
+                val inp = ChatInput()
+                inp.promptInput(
                     gui.player,
-                    fun(e: PlayerEvent) {
-                        if (e is AsyncPlayerChatEvent) {
-                            e.isCancelled = true
+                    arrayListOf("Enter your bid:"),
+                    object: ChatInput.InputListener {
+                        override fun onDone(msg: String) {
                             try {
-                                bid = e.message.toDouble()
-                            } catch (ex: NumberFormatException) {
-                                e.player.sendMessage("${ChatColor.RED}Invalid bid amount!")
-                                e.player.sendMessage("Please enter how much you want to bid")
-                                EventUtils.listenForNextEvent(
-                                    "AsyncPlayerChatEvent",
-                                    gui.player,
-                                    fun(e: PlayerEvent) {
-                                        if (e is AsyncPlayerChatEvent) {
-                                            e.isCancelled = true
-                                            try {
-                                                bid = e.message.toDouble()
-                                            } catch (ex: NumberFormatException) {
-                                                e.player.sendMessage("${ChatColor.RED}Bid prompt cancelled")
-                                                return
-                                            }
-                                        }
-                                    }
-                                )
+                                bid = msg.toDouble()
+                            } catch (e: NumberFormatException) {
+                                gui.player.sendMessage("Invalid bid.")
                                 return
                             }
                         }
-                    }
-                )
+                    })
                 if (bid == null) {
                     return
                 }

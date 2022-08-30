@@ -63,12 +63,15 @@ class Main : JavaPlugin() {
         var lastAuctionID by Delegates.notNull<String>()
 
         lateinit var econ: Economy
+
+        lateinit var input: SignInputer
     }
 
     override fun onEnable() {
         BnogoSQL.enaableDB()
         instance = this
         serverFile = File("${instance.dataFolder}/server.yml")
+        input = SignInputer(this)
         ymlConfig = YamlConfiguration.loadConfiguration(serverFile)
         if (!(serverFile.exists())) {
             ymlConfig.set("items.indexes.DiamondHelmet", 0)
@@ -120,8 +123,8 @@ class Main : JavaPlugin() {
         cSender.sendMessage("$logo Utlils have been constructed")
 
         cSender.sendMessage("$logo Registering listeners")
-        server.pluginManager.registerEvents(EventUtils(), this)
         server.pluginManager.registerEvents(PlayerJoinEvent(), this)
+        server.pluginManager.registerEvents(ChatInput.ChatListener(), this)
         server.pluginManager.registerEvents(HotbarChangeEvent(), this)
         server.pluginManager.registerEvents(PlayerLeaveEvent(), this)
         server.pluginManager.registerEvents(ArmorWearListeners(), this)

@@ -7,7 +7,7 @@ import org.bukkit.Bukkit
 import org.bukkit.Material
 import org.bukkit.inventory.ItemStack
 
-val enchants = arrayListOf(BEnchant.BANE_OF_ARTHROPODS, BEnchant.DURABILITY)
+val enchants = arrayListOf(BEnchant.BANE_OF_ARTHROPODS, BEnchant.UNBREAKING)
 
 class EnchantUtils {
     companion object {
