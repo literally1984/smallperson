@@ -44,7 +44,7 @@ data class RecipePage(val recipe: Recipe) {
             )
             val backgroundz = ArrayList<BackgroundItem>()
             for (index in 0..53) {
-                backgroundz.add(BackgroundItem(StandardBackground, index))
+                backgroundz.add(BackgroundItem(sBK, index))
             }
             val backgroundLayer = GUILayer(ArrayList(), backgroundz)
 
@@ -90,7 +90,7 @@ data class RecipePage(val recipe: Recipe) {
 
             val l1backgroundz = ArrayList<BackgroundItem>()
             for (index in 0..53) {
-                l1backgroundz.add(BackgroundItem(StandardBackground, index))
+                l1backgroundz.add(BackgroundItem(sBK, index))
             }
             val layer1 = GUILayer(ArrayList(), l1backgroundz)
 

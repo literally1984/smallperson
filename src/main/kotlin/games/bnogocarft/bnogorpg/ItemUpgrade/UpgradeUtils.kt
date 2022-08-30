@@ -146,7 +146,7 @@ class UpgradeUtils {
             if (index == 22) {
                 continue
             }
-            backgroundItems.add(BackgroundItem(StandardBackground, index))
+            backgroundItems.add(BackgroundItem(sBK, index))
         }
         val backgroundLayer = GUILayer(ArrayList(), backgroundItems)
 

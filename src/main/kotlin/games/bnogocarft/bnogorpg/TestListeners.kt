@@ -8,8 +8,5 @@ class TestListeners : Listener {
 
     @EventHandler
     fun onPlayerClickInv(e: InventoryClickEvent) {
-        println(e.slot)
-        println(e.rawSlot)
-        println(e.slotType.name)
     }
 }

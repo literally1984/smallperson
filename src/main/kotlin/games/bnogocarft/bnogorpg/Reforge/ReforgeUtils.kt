@@ -110,7 +110,7 @@ class ReforgeUtils {
 
         for (i in 0..53) {
             if (i == 13) continue
-            backgrounds.add(BackgroundItem(StandardBackground, i))
+            backgrounds.add(BackgroundItem(sBK, i))
         }
         for (i in 45..53) {
             backgrounds.add(BackgroundItem(WoolBackground, i))

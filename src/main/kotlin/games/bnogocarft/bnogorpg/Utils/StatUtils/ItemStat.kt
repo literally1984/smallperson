@@ -1,5 +1,6 @@
 package games.bnogocarft.bnogorpg.Utils.StatUtils
 
+import games.bnogocarft.bnogorpg.Utils.Exceptions.InvalidConstructorInputException
 import org.bukkit.ChatColor
 import org.bukkit.inventory.ItemStack
 
@@ -20,9 +21,11 @@ data class ItemStat(val item: ItemStack) {
                 if (s.contains("${ChatColor.RED}Damage: ${ChatColor.DARK_GRAY}+")) {
                     val index = item.itemMeta.lore.indexOf(s)
                     val copy = item.itemMeta.clone()
-                    print(copy.lore[index])
-                    copy.lore[index] = "${ChatColor.RED}Damage: ${ChatColor.DARK_GRAY}+$field"
-                    print(copy.lore[index])
+                    val copyLore = copy.lore
+                    print(copyLore[index])
+                    copyLore[index] = "${ChatColor.RED}Damage: ${ChatColor.DARK_GRAY}+$field"
+                    print(copyLore[index])
+                    copy.lore = copyLore
                     item.itemMeta = copy
                     print(item.itemMeta.lore[index])
                 }
@@ -90,18 +93,24 @@ data class ItemStat(val item: ItemStack) {
         }
 
     init {
+        var constructed = false
         for (s: String in item.itemMeta.lore) {
-            if (s.contains("Damage: +")) {
+            if (s.contains("${ChatColor.RED}Damage: ${ChatColor.DARK_GRAY}+")) {
+                constructed =true
                 val lore = item.itemMeta.lore
                 val indexOfS = lore.indexOf(s)
 
-                damage = s.split(": +")[1].toInt()// Damage
-                defense = lore[indexOfS + 1].split(": ${ChatColor.GRAY}+")[1].toInt()// defense
-                magicDmg = lore[indexOfS + 2].split(": ${ChatColor.GRAY}+")[1].toInt()// magic damage
-                magicDef = lore[indexOfS + 3].split(": ${ChatColor.GRAY}+")[1].toInt()// magic defense
-                mana = lore[indexOfS + 4].split(": ${ChatColor.GRAY}+")[1].toInt()// mana
-                stamina = lore[indexOfS + 5].split(": ${ChatColor.GRAY}+")[1].toInt()// stamina
+                damage = s.split(": ${ChatColor.DARK_GRAY}+")[1].toInt()// Damage
+                defense = lore[indexOfS + 1].split(": ${ChatColor.DARK_GRAY}+")[1].toInt()// defense
+                magicDmg = lore[indexOfS + 2].split(": ${ChatColor.DARK_GRAY}+")[1].toInt()// magic damage
+                magicDef = lore[indexOfS + 3].split(": ${ChatColor.DARK_GRAY}+")[1].toInt()// magic defense
+                mana = lore[indexOfS + 4].split(": ${ChatColor.DARK_GRAY}+")[1].toInt()// mana
+                stamina = lore[indexOfS + 5].split(": ${ChatColor.DARK_GRAY}+")[1].toInt()// stamina
             }
+        }
+
+        if (!constructed) {
+            throw InvalidConstructorInputException("Lore for item stats not found!")
         }
     }
 }

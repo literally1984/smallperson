@@ -191,7 +191,7 @@ class Main : JavaPlugin() {
         cSender.sendMessage("$logo RecipeBook has been enabled")
 
         cSender.sendMessage("$logo Enabling GUI stuff...")
-        server.pluginManager.registerEvents(GUIListeners(Inventories), this)
+        server.pluginManager.registerEvents(GUIListeners(guis), this)
         cSender.sendMessage("$logo GUI Utils enabled")
 
         cSender.sendMessage("$logo Enabling Economy...")
@@ -237,7 +237,8 @@ class Main : JavaPlugin() {
                 auc.timeLeft.minutes,
                 auc.timeLeft.seconds,
                 auc.currentBidder,
-                auc.highestBid)
+                auc.highestBid
+            )
             BnogoSQL.con.prepareStatement(
                 "INSERT INTO auctions (id, item, starting, creator, timeLeftDays, timeLeftHours, timeLeftMins, timeLeftSecs, cB, hB) " +
                         "VALUES ('urmom', 'sister', true, true)"

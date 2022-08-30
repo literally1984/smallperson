@@ -81,7 +81,7 @@ class EnchantUtils {
             val fInv = GUIFactory.createInventory("Enchantment Table", 54)
             val backgroundz = ArrayList<BackgroundItem>()
             for (i in 0..53) {
-                backgroundz.add(BackgroundItem(StandardBackground, i))
+                backgroundz.add(BackgroundItem(sBK, i))
             }
 
             val bottomRow = ItemStack(Material.ENCHANTED_BOOK)

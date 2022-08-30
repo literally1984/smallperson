@@ -5,13 +5,14 @@ import games.bnogocarft.bnogorpg.Main
 import org.bukkit.Bukkit
 import org.bukkit.ChatColor
 import org.bukkit.event.EventHandler
+import org.bukkit.event.EventPriority
 import org.bukkit.event.Listener
 import org.bukkit.event.player.AsyncPlayerChatEvent
 
 
 class ChatListeners : Listener {
 
-    @EventHandler
+    @EventHandler(priority = EventPriority.LOW)
     fun onChat(event: AsyncPlayerChatEvent) {
         if (Main.onChatCooldown.contains(event.player)) {
             event.isCancelled = true

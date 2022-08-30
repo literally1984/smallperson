@@ -12,11 +12,12 @@ class CraftingListeners : Listener {
     fun onCraft(event: PrepareItemCraftEvent) {
         if (event.recipe.result.hasItemMeta() && (
                     event.recipe.result.itemMeta.displayName.contains("diamond") ||
-                    event.recipe.result.itemMeta.displayName.contains("gold") ||
-                    event.recipe.result.itemMeta.displayName.contains("iron") ||
-                    event.recipe.result.itemMeta.displayName.contains("stone") ||
-                    event.recipe.result.itemMeta.displayName.contains("leather") ||
-                    event.recipe.result.itemMeta.displayName.contains("wood"))) {
+                            event.recipe.result.itemMeta.displayName.contains("gold") ||
+                            event.recipe.result.itemMeta.displayName.contains("iron") ||
+                            event.recipe.result.itemMeta.displayName.contains("stone") ||
+                            event.recipe.result.itemMeta.displayName.contains("leather") ||
+                            event.recipe.result.itemMeta.displayName.contains("wood"))
+        ) {
             event.inventory.result = BItemFactory.makeItem(BItemUtils.getBMaterial(event.inventory.result))
         }
     }

@@ -2,10 +2,12 @@ package games.bnogocarft.bnogorpg.economy.Auction
 
 import games.bnogocarft.bnogorpg.Main
 import games.bnogocarft.bnogorpg.Main.Companion.auctions
+import games.bnogocarft.bnogorpg.Utils.Senders.MessageSender
 import games.bnogocarft.bnogorpg.Utils.cloneInv
 import games.bnogocarft.bnogorpg.Utils.economyUtils.auction.Auction
 import games.bnogocarft.bnogorpg.Utils.economyUtils.auction.AuctionTime
 import games.bnogocarft.bnogorpg.Utils.economyUtils.auction.AuctionTimer
+import games.bnogocarft.bnogorpg.Utils.economyUtils.auction.bidOnAuction
 import games.bnogocarft.bnogorpg.Utils.logo
 import org.bukkit.Bukkit
 import org.bukkit.ChatColor
@@ -14,7 +16,6 @@ import org.bukkit.command.Command
 import org.bukkit.command.CommandExecutor
 import org.bukkit.command.CommandSender
 import org.bukkit.entity.Player
-import org.bukkit.inventory.Inventory
 import java.util.logging.Level
 
 class AuctionCommand : CommandExecutor {
@@ -85,6 +86,7 @@ class AuctionCommand : CommandExecutor {
 
                 "house" -> {
                     sender.openInventory(cloneInv(AHGui.mainGui))
+                    return true
                 }
 
                 "bid" -> {
@@ -132,19 +134,7 @@ class AuctionCommand : CommandExecutor {
                         return true
                     }
 
-                    auc.highestBid = bid
-                    auc.currentBidder = sender.name
-                    Main.econ.withdrawPlayer(sender.name, bid)
-                    sender.sendMessage(
-                        "${ChatColor.GREEN}You bid $bid on ${auc.ID} (" +
-                                "${
-                                    if (auc.item.hasItemMeta())
-                                        auc.item.itemMeta.displayName
-                                    else
-                                        auc.item.type.toString()
-                                })"
-                    )
-                    return true
+                    bidOnAuction(sender.name, auc, bid, true)
                 }
 
                 "create" -> {
@@ -197,7 +187,7 @@ class AuctionCommand : CommandExecutor {
                 }
             }
         } else {
-            sender.sendMessage("${ChatColor.RED}You must provide one of the following arguments: list, bid, add")
+            sender.sendMessage("${ChatColor.RED}You must provide one of the following arguments: list, bid, create, house, forceend")
             return true
         }
         return false

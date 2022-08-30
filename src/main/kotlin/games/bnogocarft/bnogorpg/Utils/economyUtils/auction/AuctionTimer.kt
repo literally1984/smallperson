@@ -10,7 +10,8 @@ class AuctionTimer(auction: Auction) : BukkitRunnable() {
             auc.endAuction()
             try {
                 cancel()
-            } catch (ignored: IllegalStateException) {}
+            } catch (ignored: IllegalStateException) {
+            }
             return
         }
         if (auc.ended) {
