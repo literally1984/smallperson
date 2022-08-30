@@ -161,7 +161,7 @@ fun createAuctionInfoGui(auc: Auction): Inventory {
                                 }
                             })"),
                     object: ChatInput.InputListener {
-                        override fun onDone(msg: String) {
+                        override fun onSend(msg: String) {
                             try {
                                 bid = msg.toDouble()
                                 print(bid)

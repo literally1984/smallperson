@@ -17,14 +17,14 @@ class ChatInput {
         }
     }
     interface InputListener {
-        fun onDone(msg: String)
+        fun onSend(msg: String)
     }
 
     internal class ChatListener : Listener {
         @EventHandler(priority = EventPriority.HIGHEST)
         fun onPlayerChat(e: AsyncPlayerChatEvent) {
             if (waiting.contains(e.player.name)) {
-                waiting[e.player.name]!!.onDone(e.message)
+                waiting[e.player.name]!!.onSend(e.message)
                 waiting.remove(e.player.name)
                 e.isCancelled = true
             }

@@ -4,10 +4,7 @@ import games.bnogocarft.bnogorpg.Main
 import games.bnogocarft.bnogorpg.Main.Companion.auctions
 import games.bnogocarft.bnogorpg.Utils.Senders.MessageSender
 import games.bnogocarft.bnogorpg.Utils.cloneInv
-import games.bnogocarft.bnogorpg.Utils.economyUtils.auction.Auction
-import games.bnogocarft.bnogorpg.Utils.economyUtils.auction.AuctionTime
-import games.bnogocarft.bnogorpg.Utils.economyUtils.auction.AuctionTimer
-import games.bnogocarft.bnogorpg.Utils.economyUtils.auction.bidOnAuction
+import games.bnogocarft.bnogorpg.Utils.economyUtils.auction.*
 import games.bnogocarft.bnogorpg.Utils.logo
 import org.bukkit.Bukkit
 import org.bukkit.ChatColor
@@ -34,16 +31,16 @@ class AuctionCommand : CommandExecutor {
                             return true
                         }
 
-                        for (auc in auctions) {
-                            if (args[1] == auc.ID) {
-                                sender.sendMessage("${ChatColor.GOLD}You ${ChatColor.RED}${ChatColor.BOLD}Force Ended${ChatColor.GOLD} auction ${ChatColor.BLUE}${ChatColor.BOLD}#${auc.ID}")
-                                Bukkit.getLogger().log(
-                                    Level.INFO,
-                                    "$logo ${ChatColor.GREEN}${sender.displayName} ${ChatColor.RED}${ChatColor.BOLD}Force Ended${ChatColor.GOLD} auction #${auc.ID}"
-                                )
-
-                            }
+                        val auc: Auction
+                        try {
+                            auc = getAuctionByID(args[1])
+                        } catch (e: IllegalArgumentException) {
+                            sender.sendMessage("${ChatColor.RED}Invalid auction ID!")
+                            return true
                         }
+
+                        auc.endAuction()
+
                     } else {
                         sender.sendMessage("${ChatColor.RED}You do not have permission to do this!")
                         return true
