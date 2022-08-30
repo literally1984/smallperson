@@ -395,11 +395,15 @@ class AHGui {
         gui.player.closeInventory()
         gui.player.openInventory(
             createAuctionInfoGui(
-                getAuctionByID(
-                    gui.currentItem.itemMeta.lore[
-                            gui.currentItem.itemMeta.lore.size - 1
-                    ].split(": ${ChatColor.GRAY}")[1]
-                )
+                try {
+                    getAuctionByID(
+                        gui.currentItem.itemMeta.lore[
+                                gui.currentItem.itemMeta.lore.size - 1
+                        ].split(": ${ChatColor.GRAY}")[1]
+                    )
+                } catch (e: IllegalArgumentException) {
+                    return
+                }
             )
         )
     }

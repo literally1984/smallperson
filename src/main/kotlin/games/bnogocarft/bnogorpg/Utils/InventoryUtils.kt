@@ -92,7 +92,11 @@ fun serializeItem(item: ItemStack): List<String> {
 }
 
 fun deserializeItem(serialized: List<String>): ItemStack {
-    val deserialized = ItemStack(Material.valueOf(serialized[0]))
+    val deserialized = try {
+        ItemStack(Material.valueOf(serialized[0]))
+    } catch (ignored: IllegalArgumentException) {
+        ItemStack(Material.valueOf(serialized[1]))
+    }
     if (serialized[1] != "no meta") {
         val meta = Bukkit.getItemFactory().getItemMeta(Material.valueOf(serialized[0]))
         meta.displayName = serialized[1]

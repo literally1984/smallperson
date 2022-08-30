@@ -133,35 +133,55 @@ fun createAuctionInfoGui(auc: Auction): Inventory {
     bk.add(BackgroundItem(createAuctionItemFor(auc), 13))
     buttons.add(
         GUIButton(
-            AHGui.bidItem, 15,
+            AHGui.bidItem, 31,
             fun(gui: OpenGUI) {
-                gui.player.closeInventory()
                 val auction = getAuctionByID(
                     gui.inv.getItem(13).itemMeta.lore[
                             gui.inv.getItem(13).itemMeta.lore.size - 1
                     ].split(": ${ChatColor.GRAY}")[1]
                 )
+                if (auction.creator == gui.player.name) {
+                    gui.player.sendMessage("${ChatColor.RED}You cannot bid on your own auction!")
+                    return
+                }
+                gui.player.closeInventory()
+
                 var bid: Double? = null
+                var valid = true
 
                 val inp = ChatInput()
                 inp.promptInput(
                     gui.player,
-                    arrayListOf("Enter your bid:"),
+                    arrayListOf("${ChatColor.GREEN}Enter your bid for this auction! (Current highest bid: " +
+                            "${
+                                if (auction.highestBid > 0) {
+                                    auction.highestBid
+                                } else {
+                                    auction.startingBid
+                                }
+                            })"),
                     object: ChatInput.InputListener {
                         override fun onDone(msg: String) {
                             try {
                                 bid = msg.toDouble()
+                                print(bid)
+                                if (bid != null && auction.highestBid < bid!!) {
+                                    bidOnAuction(gui.player.name, auction, bid!!, true)
+                                    gui.player.openInventory(createAuctionInfoGui(auction))
+                                } else {
+                                    gui.player.sendMessage("${ChatColor.RED}Bid must be higher than current highest bid!")
+                                }
                             } catch (e: NumberFormatException) {
-                                gui.player.sendMessage("Invalid bid.")
-                                return
+                                gui.player.sendMessage("${ChatColor.RED}Invalid bid!")
+                                valid = false
                             }
                         }
-                    })
-                if (bid == null) {
+                    }
+                )
+                if (!valid) {
+                    gui.player.openInventory(createAuctionInfoGui(auction))
                     return
                 }
-                gui.player.openInventory(createAuctionInfoGui(auction))
-                bidOnAuction(gui.player.name, auction, bid!!, true)
             }
         )
     )
@@ -172,18 +192,20 @@ fun createAuctionInfoGui(auc: Auction): Inventory {
 }
 
 fun bidOnAuction(name: String, auc: Auction, amount: Double, online: Boolean) {
-    val mSender = MessageSender(auc.currentBidder!!)
-    mSender.messages.add("${ChatColor.RED}You have been outbid on auction #${auc.ID}")
-    mSender.messages.add(
-        "${ChatColor.RED}(" +
-                "${
-                    if (auc.item.hasItemMeta())
-                        auc.item.itemMeta.displayName
-                    else
-                        auc.item.type.toString()
-                })"
-    )
-    mSender.sendMessage()
+    if (auc.currentBidder != null) {
+        val mSender = MessageSender(auc.currentBidder!!)
+        mSender.messages.add("${ChatColor.RED}You have been outbid on auction #${auc.ID}")
+        mSender.messages.add(
+            "${ChatColor.RED}(" +
+                    "${
+                        if (auc.item.hasItemMeta())
+                            auc.item.itemMeta.displayName
+                        else
+                            auc.item.type.toString()
+                    })"
+        )
+        mSender.sendMessage()
+    }
     auc.highestBid = amount
     auc.currentBidder = name
     Main.econ.withdrawPlayer(name, amount)
