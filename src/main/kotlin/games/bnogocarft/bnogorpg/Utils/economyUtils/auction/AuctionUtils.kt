@@ -15,7 +15,11 @@ import org.bukkit.inventory.Inventory
 import org.bukkit.inventory.ItemStack
 import org.bukkit.inventory.meta.ItemMeta
 import sun.audio.AudioPlayer.player
+import java.lang.Math.floor
+import java.sql.Date
 import java.sql.ResultSet
+import java.sql.Timestamp
+import java.text.SimpleDateFormat
 
 
 fun getAuctionType(item: ItemStack): AuctionType {
@@ -108,12 +112,30 @@ fun createAuctionItemFor(auc: Auction): ItemStack {
                 }"
     )
     lore.add("")
+    var diff = auc.timeLeft - System.currentTimeMillis()/1000
+    var days: Int = 0
+    var hours: Int = 0
+    var minutes: Int = 0
+    var seconds: Int = 0
+
+    while (diff > 86400) {
+        days += 1
+        diff -= 86400
+    }
+    while (diff > 3600) {
+        hours += 1
+        diff -= 3600
+    }
+    while (diff > 60) {
+        minutes += 1
+        diff -= 60
+    }
     lore.add(
         "${ChatColor.GOLD}Ends in: ${ChatColor.GRAY}" +
-                "${auc.timeLeft.days} Days, " +
-                "${auc.timeLeft.hours} Hours, " +
-                "${auc.timeLeft.minutes} Minutes, " +
-                "${auc.timeLeft.seconds} Seconds"
+                "$days Days, " +
+                "$hours Hours, " +
+                "$minutes Minutes, " +
+                "$diff Seconds"
     )
     lore.add("${ChatColor.GOLD}ID: ${ChatColor.GRAY}${auc.ID}")
 

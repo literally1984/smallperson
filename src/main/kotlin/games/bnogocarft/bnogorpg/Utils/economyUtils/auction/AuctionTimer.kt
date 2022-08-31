@@ -1,12 +1,12 @@
 package games.bnogocarft.bnogorpg.Utils.economyUtils.auction
 
 import org.bukkit.scheduler.BukkitRunnable
+import kotlin.math.floor
 
 class AuctionTimer(auction: Auction) : BukkitRunnable() {
     val auc = auction
     override fun run() {
-        auc.timeLeft.subtract("0D0H0M1S")
-        if (auc.timeLeft.seconds <= 0 && auc.timeLeft.minutes <= 0 && auc.timeLeft.hours <= 0 && auc.timeLeft.days <= 0) {
+        if ((System.currentTimeMillis()/1000) >= auc.timeLeft && !(auc.ended)) {
             auc.endAuction()
             try {
                 cancel()
@@ -16,7 +16,7 @@ class AuctionTimer(auction: Auction) : BukkitRunnable() {
         }
         if (auc.ended) {
             try {
-                auc.task!!.cancel()
+                cancel()
             } catch (ignored: IllegalStateException) {
             }
         }

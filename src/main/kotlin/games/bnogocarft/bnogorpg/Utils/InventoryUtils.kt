@@ -77,7 +77,7 @@ fun changeInventoryTo(from: Inventory, to: Inventory) {
 
 fun serializeItem(item: ItemStack): List<String> {
     val serialized = ArrayList<String>()
-    if (item.hasItemMeta()) {
+    if (item.hasItemMeta() && item.itemMeta.hasLore()) {
         serialized.add(item.type.toString())
         serialized.add(item.itemMeta.displayName)
         for (lore in item.itemMeta.lore) {
@@ -92,13 +92,10 @@ fun serializeItem(item: ItemStack): List<String> {
 }
 
 fun deserializeItem(serialized: List<String>): ItemStack {
-    val deserialized = try {
-        ItemStack(Material.valueOf(serialized[0]))
-    } catch (ignored: IllegalArgumentException) {
-        ItemStack(Material.valueOf(serialized[1]))
-    }
+    val deserialized = ItemStack(Material.valueOf(serialized[0]))
+
     if (serialized[1] != "no meta") {
-        val meta = Bukkit.getItemFactory().getItemMeta(Material.valueOf(serialized[0]))
+        val meta = Bukkit.getItemFactory().getItemMeta(deserialized.type)
         meta.displayName = serialized[1]
         val lore = ArrayList<String>()
 

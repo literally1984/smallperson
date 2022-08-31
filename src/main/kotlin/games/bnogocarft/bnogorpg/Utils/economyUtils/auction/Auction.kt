@@ -1,6 +1,7 @@
 package games.bnogocarft.bnogorpg.Utils.economyUtils.auction
 
 import games.bnogocarft.bnogorpg.Main
+import games.bnogocarft.bnogorpg.Utils.Database.BnogoSQL
 import games.bnogocarft.bnogorpg.Utils.Senders.ItemSender
 import games.bnogocarft.bnogorpg.Utils.Senders.MessageSender
 import org.bukkit.Bukkit
@@ -12,7 +13,7 @@ data class Auction(
     val item: ItemStack,
     val startingBid: Double,
     val creator: String,
-    var timeLeft: AuctionTime
+    var timeLeft: Int
 ) {
 
     var currentBidder: String? = null
@@ -26,7 +27,7 @@ data class Auction(
         item: ItemStack,
         startingBid: Double,
         creator: String,
-        timeLeft: AuctionTime,
+        timeLeft: Int,
         currentBidder: String?,
         highestBid: Double,
         ID: String
@@ -38,6 +39,8 @@ data class Auction(
 
     fun endAuction() {
         Main.auctions.remove(this)
+        BnogoSQL.con.prepareStatement("DELETE FROM auctions WHERE id = '$ID';").execute()
+
         if (highestBid > 0) {
             var bidderOnline = false
             var creatorOnline = false

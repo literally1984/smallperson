@@ -13,6 +13,7 @@ import org.bukkit.command.Command
 import org.bukkit.command.CommandExecutor
 import org.bukkit.command.CommandSender
 import org.bukkit.entity.Player
+import java.lang.Math.floor
 import java.util.logging.Level
 
 class AuctionCommand : CommandExecutor {
@@ -72,10 +73,10 @@ class AuctionCommand : CommandExecutor {
                                             "${ChatColor.GREEN}Starting Bid: ${auc.startingBid}"
                                         }
                                     } ${ChatColor.LIGHT_PURPLE}Ending in: " +
-                                    "${auc.timeLeft.days}D, " +
-                                    "${auc.timeLeft.hours}H, " +
-                                    "${auc.timeLeft.minutes}M, " +
-                                    "${auc.timeLeft.seconds}S"
+                                    "${floor(floor(auc.timeLeft/86400.0))}D, " +
+                                    "${floor(floor(auc.timeLeft/3600.0))}H, " +
+                                    "${floor(floor(auc.timeLeft/60.0))}M, " +
+                                    "${floor(auc.timeLeft.toDouble())}S"
                         )
                     }
                     return true
@@ -135,6 +136,16 @@ class AuctionCommand : CommandExecutor {
                 }
 
                 "create" -> {
+                    var playerAuctions = 0
+                    for (a in Main.auctions) {
+                        if (a.creator == sender.name) {
+                            playerAuctions++
+                        }
+                    }
+                    if (playerAuctions >= 3) {
+                        sender.sendMessage("${ChatColor.RED}You can only have 3 auctions at a time!")
+                        return true
+                    }
                     // /auction create <time> <starting bid>
                     if (args.size != 3) {
                         sender.sendMessage("${ChatColor.RED}Insufficient arguments!")
@@ -145,8 +156,14 @@ class AuctionCommand : CommandExecutor {
                         sender.sendMessage("${ChatColor.RED}You are not holding an item to auction!")
                         return true
                     }
+                    val stringTime = args[1].split(Regex("[A-Za-z]"))
+
+                    val daysMili: Int = (stringTime[0].toInt()*86400)
+                    val hoursMili: Int = (stringTime[1].toInt()*3600)
+                    val minutesMili: Int = (stringTime[2].toInt()*60)
+                    val secondsMili: Int = stringTime[3].toInt()
                     val time = try {
-                        AuctionTime(args[1])
+                        daysMili + hoursMili + minutesMili + secondsMili + (System.currentTimeMillis()/1000)
                     } catch (e: NumberFormatException) {
                         sender.sendMessage("${ChatColor.RED}Invalid time! (NumberFormatException)")
                         return true
@@ -154,6 +171,8 @@ class AuctionCommand : CommandExecutor {
                         sender.sendMessage("${ChatColor.RED}Invalid time! (IndexOutOfBoundsException)")
                         return true
                     }
+                    print(time)
+                    print(System.currentTimeMillis()/1000)
 
                     val startingBid = try {
                         args[2].toDouble()
@@ -162,7 +181,7 @@ class AuctionCommand : CommandExecutor {
                         return true
                     }
 
-                    val auc = Auction(sender.itemInHand, startingBid, sender.name, time)
+                    val auc = Auction(sender.itemInHand, startingBid, sender.name, time.toInt())
                     val countdown = Bukkit.getScheduler().runTaskTimer(Main.instance, AuctionTimer(auc), 0, 20)
                     auc.task = countdown
                     sender.sendMessage(
