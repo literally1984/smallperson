@@ -14,7 +14,6 @@ class AHGui {
     companion object {
         lateinit var browseGui: Inventory
         lateinit var mainGui: Inventory
-        lateinit var borderGui: Inventory
 
         lateinit var weapon: ItemStack
         lateinit var armor: ItemStack
@@ -410,6 +409,7 @@ class AHGui {
     }
 
     private fun bidsClickHandler(gui: OpenGUI) {
+        //Gets the players auctions
         val items = ArrayList<ItemStack>()
 
         for (auc in Main.auctions) {
@@ -417,17 +417,24 @@ class AHGui {
                 items.add(createAuctionItemFor(auc))
             }
         }
-        val inv = cloneInv(borderGui, "Your Bids")
+
+        //Sets the Inventory to display the players auctions
+        val inv = createBorderPage("${ChatColor.GOLD}Your Bids")
+        val aucBKs = ArrayList<BackgroundItem>()
+        val aucButtons = ArrayList<GUIButton>()
         for ((index, i) in noBorderSlots.withIndex()) {
             try {
-                inv.setItem(i, items[index])
+                aucButtons.add(GUIButton(items[index], i, ::infoClickHandler))
             } catch (e: IndexOutOfBoundsException) {
-                inv.setItem(i, null)
+                aucBKs.add(BackgroundItem(ItemStack(Material.AIR), i))
                 continue
             }
         }
+
+        inv.layers.add(GUILayer(aucButtons, aucBKs))
+
         gui.player.closeInventory()
-        gui.player.openInventory(inv)
+        gui.player.openInventory(GUIFactory.produceInventory(inv))
     }
 
     private fun createWeaponButton() {

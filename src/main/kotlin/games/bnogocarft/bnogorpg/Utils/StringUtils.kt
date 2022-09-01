@@ -2,7 +2,6 @@ package games.bnogocarft.bnogorpg.Utils
 
 import games.bnogocarft.bnogorpg.Main
 import games.bnogocarft.bnogorpg.Utils.economyUtils.auction.Auction
-import games.bnogocarft.bnogorpg.Utils.economyUtils.auction.AuctionTime
 import games.bnogocarft.bnogorpg.Utils.economyUtils.auction.AuctionTimer
 import org.bukkit.Bukkit
 import org.bukkit.ChatColor
@@ -37,10 +36,7 @@ fun serializeAuction(auction: Auction): String {
     returnString += "itemDataSeperator,"
     returnString += "${auction.startingBid},"
     returnString += "${auction.creator},"
-    returnString += "${auction.timeLeft.seconds},"
-    returnString += "${auction.timeLeft.minutes},"
-    returnString += "${auction.timeLeft.hours},"
-    returnString += "${auction.timeLeft.days},"
+    returnString += "${auction.timeLeft},"
     returnString += "${if (auction.currentBidder == null) "null" else auction.currentBidder!!},"
     returnString += "${auction.highestBid}"
     returnString += auction.ID
@@ -63,18 +59,18 @@ fun deserializeAuction(s: String): Auction {
         } catch (e: NullPointerException) {
             Bukkit.getOfflinePlayer(aucData[1]).player.name
         },
-        AuctionTime(aucData[5].toInt(), aucData[4].toInt(), aucData[3].toInt(), aucData[2].toInt()),
+        aucData[2].toInt(),
         if (aucData[6] == "null") {
             null
         } else {
             try {
-                Bukkit.getPlayer(aucData[6]).name
+                Bukkit.getPlayer(aucData[3]).name
             } catch (e: NullPointerException) {
-                Bukkit.getOfflinePlayer(aucData[6]).player.name
+                Bukkit.getOfflinePlayer(aucData[3]).player.name
             }
         },
-        aucData[7].toDouble(),
-        aucData[8]
+        aucData[4].toDouble(),
+        aucData[5]
     )
 
     val task = Bukkit.getScheduler().runTaskTimer(Main.instance, AuctionTimer(deserializedAuc), 0, 20)

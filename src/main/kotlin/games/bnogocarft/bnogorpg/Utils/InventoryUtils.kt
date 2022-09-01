@@ -79,12 +79,14 @@ fun serializeItem(item: ItemStack): List<String> {
     val serialized = ArrayList<String>()
     if (item.hasItemMeta() && item.itemMeta.hasLore()) {
         serialized.add(item.type.toString())
+        serialized.add(item.amount.toString())
         serialized.add(item.itemMeta.displayName)
         for (lore in item.itemMeta.lore) {
             serialized.add(lore)
         }
     } else {
         serialized.add(item.type.toString())
+        serialized.add(item.amount.toString())
         serialized.add("no meta")
     }
 
@@ -92,15 +94,19 @@ fun serializeItem(item: ItemStack): List<String> {
 }
 
 fun deserializeItem(serialized: List<String>): ItemStack {
-    val deserialized = ItemStack(Material.valueOf(serialized[0]))
+    print(serialized)
+    val mSerialized = serialized.toMutableList()
+    print(mSerialized)
+    mSerialized[0] = mSerialized[0].replace(Regex("[\\[[\\]]*\\]]"), "")
+    val deserialized = ItemStack(Material.valueOf(mSerialized[0]), mSerialized[1].toInt())
 
-    if (serialized[1] != "no meta") {
+    if (mSerialized[2] != "no meta") {
         val meta = Bukkit.getItemFactory().getItemMeta(deserialized.type)
-        meta.displayName = serialized[1]
+        meta.displayName = mSerialized[2]
         val lore = ArrayList<String>()
 
-        for (index in 2 until serialized.size) {
-            lore.add(serialized[index])
+        for (index in 3 until mSerialized.size) {
+            lore.add(mSerialized[index])
         }
 
         meta.lore = lore

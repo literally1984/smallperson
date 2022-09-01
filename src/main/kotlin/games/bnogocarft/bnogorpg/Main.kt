@@ -30,18 +30,22 @@ import games.bnogocarft.bnogorpg.Utils.Database.YMLUtils
 import games.bnogocarft.bnogorpg.Utils.EnchantUtils.Glow
 import games.bnogocarft.bnogorpg.Utils.ItemFactory.ItemAbility
 import games.bnogocarft.bnogorpg.Utils.economyUtils.auction.Auction
+import games.bnogocarft.bnogorpg.Utils.economyUtils.auction.AuctionTimer
 import games.bnogocarft.bnogorpg.Utils.others.PlaytimeUtils
 import games.bnogocarft.bnogorpg.animation.animationTestCommand
 import games.bnogocarft.bnogorpg.economy.Auction.AHGui
 import games.bnogocarft.bnogorpg.economy.Auction.AuctionCommand
 import games.bnogocarft.bnogorpg.economy.Auction.AuctionListeners
 import net.milkbowl.vault.economy.Economy
+import org.bukkit.Bukkit
 import org.bukkit.ChatColor
 import org.bukkit.configuration.file.YamlConfiguration
 import org.bukkit.enchantments.Enchantment
 import org.bukkit.entity.Player
 import org.bukkit.plugin.Plugin
 import org.bukkit.plugin.java.JavaPlugin
+import org.bukkit.scheduler.BukkitTask
+import org.postgresql.util.PSQLException
 import java.io.File
 import kotlin.properties.Delegates
 
@@ -155,6 +159,27 @@ class Main : JavaPlugin() {
         //ComUtils.main()
         cSender.sendMessage("$logo Websocket Server has been enabled")
 
+        cSender.sendMessage("Initializing Auctions...")
+
+        val aucs = BnogoSQL.con.prepareStatement("SELECT * FROM auctions").executeQuery()
+        while (aucs.next()) {
+            print(aucs.getString("item").replace(Regex("[\\[[\\]]*\\]]"), "").split(", "))
+            val auction = Auction(
+                deserializeItem(aucs.getString("item").replace(Regex("[\\[[\\]]*\\]]"), "").split(", ")),
+                aucs.getFloat("startBid").toDouble(),
+                aucs.getString("creator"),
+                aucs.getInt("endTime") + (System.currentTimeMillis() - aucs.getInt("lastServerStop")).toInt(),
+                aucs.getString("currentBidder"),
+                aucs.getFloat("highestBid").toDouble(),
+                aucs.getString("id")
+            )
+            auctions.add(auction)
+            val task: BukkitTask = Bukkit.getScheduler().runTaskTimer(instance, AuctionTimer(auction), 0, 20)
+            auction.task = task
+        }
+        AHGui()
+        cSender.sendMessage("All paused auctions are continued!")
+
         cSender.sendMessage("$logo Enabling other commands...")
         getCommand("giv").executor = GiveCommand()
         getCommand("playtime").executor = PlayTimeCommand()
@@ -165,21 +190,6 @@ class Main : JavaPlugin() {
         getCommand("auction").executor = AuctionCommand()
         getCommand("stash").executor = StashCommand()
         cSender.sendMessage("$logo all commands are enabled!")
-
-        cSender.sendMessage("Initializing Auctions...")
-        try {
-            for (auctionId in ymlConfig.getString("auction.pausedAucs").split("")) {
-                if (auctionId == "" || ymlConfig.getString("auction.${auctionId}") == null) {
-                    continue
-                }
-                deserializeAuction(ymlConfig.getString("auction.${auctionId}"))
-            }
-        } catch (e: NullPointerException) {
-            ymlConfig.set("auction.pausedAucs", "")
-            YMLUtils.saveCustomYml(ymlConfig, serverFile)
-        }
-        AHGui()
-        cSender.sendMessage("All paused auctions are continued!")
 
         cSender.sendMessage("$logo Registering custom ItemStacks...")
         CactusArmor()
@@ -208,6 +218,9 @@ class Main : JavaPlugin() {
         cSender.sendMessage(
             "${ChatColor.LIGHT_PURPLE} $logo ${ChatColor.GREEN} BnogoRPG Vdev-0.0.4 has been ${ChatColor.GREEN}Enabled"
         )
+        Bukkit.getScheduler().scheduleSyncRepeatingTask(this, {
+            update()
+        }, 20, 80)
         saveDefaultConfig()
         System.gc()
     }
@@ -221,9 +234,11 @@ class Main : JavaPlugin() {
             PlaytimeUtils.addPlaytime(bPlayer)
             bPlayer.saveStats()
         }
+        update()
         for (auc in auctions) {
-            ymlConfig.set("auction.${auc.ID}", serializeAuction(auc))
-            ymlConfig.set("auction.pausedAucs", "${ymlConfig.getString("auction.pausedAucs")}${auc.ID},")
+            val query = BnogoSQL.con.prepareStatement(
+                "UPDATE auctions SET lastServerStop = ${System.currentTimeMillis()/1000} WHERE id = '${auc.ID}';")
+            query.execute()
         }
         ymlConfig.set("auction.lastAucID", lastAuctionID)
         YMLUtils.saveCustomYml(ymlConfig, serverFile)
@@ -231,22 +246,13 @@ class Main : JavaPlugin() {
 
     fun update() {
         for (auc in auctions) {
-            val list = arrayListOf(
-                auc.ID,
-                serializeItem(auc.item),
-                auc.startingBid,
-                auc.creator,
-                auc.timeLeft.days,
-                auc.timeLeft.hours,
-                auc.timeLeft.minutes,
-                auc.timeLeft.seconds,
-                auc.currentBidder,
-                auc.highestBid
-            )
-            BnogoSQL.con.prepareStatement(
-                "INSERT INTO auctions (id, item, starting, creator, timeLeftDays, timeLeftHours, timeLeftMins, timeLeftSecs, cB, hB) " +
-                        "VALUES ('urmom', 'sister', true, true)"
-            )
+            val replace = BnogoSQL.con.prepareStatement("UPDATE auctions SET 'currentBidder' = '${auc.currentBidder}', highestBid = ${auc.highestBid} WHERE id = '${auc.ID}';").executeUpdate()
+            if (replace > 0) {
+                continue
+            }
+            val query = BnogoSQL.con.prepareStatement(
+                "INSERT INTO auctions VALUES ('${auc.ID}', '${serializeItem(auc.item)}', ${auc.startingBid}, '${auc.currentBidder}', ${auc.highestBid}, '${auc.creator}', '${auc.timeLeft}');")
+            query.execute()
         }
     }
 

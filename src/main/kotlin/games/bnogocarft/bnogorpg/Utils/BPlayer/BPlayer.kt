@@ -1,9 +1,10 @@
+@file:Suppress("UNCHECKED_CAST")
+
 package games.bnogocarft.bnogorpg.Utils.BPlayer
 
 import games.bnogocarft.bnogorpg.Utils.Abilities.PlayerAbility.Ability
-import games.bnogocarft.bnogorpg.Utils.Abilities.PlayerAbility.AbilityUtils
 import games.bnogocarft.bnogorpg.Utils.BItemStack.Talisman.Talisman
-import games.bnogocarft.bnogorpg.Utils.BItemStack.Talisman.TalismanUtils
+import games.bnogocarft.bnogorpg.Utils.Database.BnogoSQL
 import games.bnogocarft.bnogorpg.Utils.Database.YMLUtils
 import games.bnogocarft.bnogorpg.Utils.StashArrayList
 import games.bnogocarft.bnogorpg.Utils.deserializeItem
@@ -11,25 +12,8 @@ import games.bnogocarft.bnogorpg.Utils.serializeItem
 import org.bukkit.configuration.file.YamlConfiguration
 import java.io.File
 
+@Suppress("SENSELESS_COMPARISON", "LeakingThis")
 open class BPlayer(open val player: String) {
-    /**
-     * The latest update of the player's base Axe break speed
-     * with their fist
-     */
-    var baseAxeBreakSpeed: Int
-
-    /**
-     * The latest update of the player's base Pickaxe break speed
-     * using their fist
-     */
-    var basePickBreakSpeed: Int
-
-    /**
-     * The latest update of the player's base Shovel break speed
-     * using their fist
-     */
-    var baseShovelBreakSpeed: Int
-
     /**
      * The player's current talismans
      */
@@ -53,129 +37,131 @@ open class BPlayer(open val player: String) {
     var config: YamlConfiguration = YamlConfiguration.loadConfiguration(file)
     var playTime: String
 
-    var meleeEXP: Long = 0
-    var meleeLVL: Long
-    var spellcastEXP: Long
-    var spellcastLVL: Long
-    var woodCuttingEXP: Long
-    var woodCuttingLVL: Long
-    var miningEXP: Long
-    var miningLVL: Long
-    var combatEXP: Long
-    var combatLVL: Long
-    var farmingEXP: Long
-    var farmingLVL: Long
+    var meleeEXP: Float
+    var meleeLVL: Int
+    var spellcastEXP: Float
+    var spellcastLVL: Int
+    var woodCuttingEXP: Float
+    var woodCuttingLVL: Int
+    var miningEXP: Float
+    var miningLVL: Int
+    var combatEXP: Float
+    var combatLVL: Int
+    var farmingEXP: Float
+    var farmingLVL: Int
 
     val stash = StashArrayList()
 
     init {
-        // Makes sure the PPlayer's data file is saved when PPlayer is created
-        if (!(file.exists())) {
-            config.set("i.ta", "")
-            config.set("i.ab", "")
-            config.set("s.bs.p", 1)
-            config.set("s.bs.a", 1)
-            config.set("s.bs.s", 1)
-
-            config.set("o.pl", "0 0")
-            for (index in 0..53) {
-                config.set("o.st.$index", "")
-            }
-
-            config.set("s.l.me.e", 0L)
-            config.set("s.l.me.l", 0L)
-
-            config.set("s.l.sp.e", 0L)
-            config.set("s.l.sp.l", 0L)
-
-            config.set("s.l.wo.e", 0L)
-            config.set("s.l.wo.l", 0L)
-
-            config.set("s.l.mi.e", 0L)
-            config.set("s.l.mi.l", 0L)
-
-            config.set("s.l.co.e", 0L)
-            config.set("s.l.co.l", 0L)
-
-            config.set("s.l.fa.e", 0L)
-            config.set("s.l.fa.l", 0L)
-            config.set("o.cl", false)
+        // Creates a SQL entry for the player if it is not already created
+        val exitResult = BnogoSQL.con.prepareStatement("SELECT name FROM players WHERE name = '$player'").executeQuery()
+        if (!exitResult.next()) {
+            val query = BnogoSQL.con.prepareStatement("INSERT INTO players VALUES ('0 0', 0, 0.0, 0, 0.0, 0, 0.0, 0, 0.0, 0, 0.0, ARRAY[null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null], '$player', 0, 0)")
+            query.execute()
+            print("Created new SQL entry for $player")
         }
-        YMLUtils.saveCustomYml(config, file)
 
-        playTime = config.getString("o.pl")
-        baseAxeBreakSpeed = config.getInt("s.bs.a")
-        basePickBreakSpeed = config.getInt("s.bs.p")
-        baseShovelBreakSpeed = config.getInt("s.bs.s")
-        meleeEXP = config.getLong("s.l.me.e")
-        meleeLVL = config.getLong("s.l.me.l")
-        spellcastEXP = config.getLong("s.l.sp.e")
-        spellcastLVL = config.getLong("s.l.sp.l")
-        woodCuttingEXP = config.getLong("s.l.wo.e")
-        woodCuttingLVL = config.getLong("s.l.wo.l")
-        miningEXP = config.getLong("s.l.mi.e")
-        miningLVL = config.getLong("s.l.mi.l")
-        combatEXP = config.getLong("s.l.co.e")
-        combatLVL = config.getLong("s.l.co.l")
-        farmingEXP = config.getLong("s.l.fa.ed")
-        farmingLVL = config.getLong("s.l.fa.l")
-        for (index in 0..53) {
-            if (config.getString("o.st.$index") != "") {
-                stash.adde(deserializeItem(config.getString("o.st.$index").split(",").dropLast(1)))
+        // Instances player to variables
+        val playerData = BnogoSQL.con.prepareStatement("SELECT * FROM players WHERE name = '$player'").executeQuery()
+        playerData.next()
+
+        playTime = playerData.getString("playTime") //Gets Playtime
+        // Gets stash
+        for (item in playerData.getArray("stash").array as Array<String>) {
+            if (item != null && item != "null") {
+                stash.adde(deserializeItem(item.split("||")))
             }
         }
+        // instances EXP and Levels
+        meleeEXP = playerData.getFloat("meleeExp")
+        meleeLVL = playerData.getInt("meleeLevel")
 
-        // Gets player Talismans from file
-        for (s: String in config.getString("i.ta").split(",".toRegex())) {
-            talismans.add(TalismanUtils.getTalisman(s))
-        }
-        // Gets Player abilities from file
-        for (s: String in config.getString("i.ab").split(",".toRegex())) {
-            abilities.add(AbilityUtils.getAbility(s))
-        }
+        spellcastEXP = playerData.getFloat("spellcastExp")
+        spellcastLVL = playerData.getInt("spellcastLevel")
+
+        woodCuttingEXP = playerData.getFloat("woodcutExp")
+        woodCuttingLVL = playerData.getInt("woodcutLevel")
+
+        miningEXP = playerData.getFloat("miningExp")
+        miningLVL = playerData.getInt("miningLevel")
+
+        combatEXP = playerData.getFloat("combatExp")
+        combatLVL = playerData.getInt("combatLevel")
+
+        farmingEXP = playerData.getFloat("farmingExp")
+        farmingLVL = playerData.getInt("farmingLevel")
     }
 
     fun saveStats() {
-        for (tal in talismans) {
-            config.set("i.ta", "${tal.name},")
-        }
-        for (ab in abilities) {
-            config.set("i.ab", "${ab.name},")
-        }
-        config.set("s.bs.p", basePickBreakSpeed)
-        config.set("s.bs.a", baseAxeBreakSpeed)
-        config.set("s.bs.s", baseShovelBreakSpeed)
-
-        config.set("s.l.me.e", meleeEXP)
-        config.set("s.l.me.l", meleeLVL)
-
-        config.set("s.l.sp.e", spellcastEXP)
-        config.set("s.l.sp.l", spellcastLVL)
-
-        config.set("s.l.wo.e", woodCuttingEXP)
-        config.set("s.l.wo.l", woodCuttingLVL)
-
-        config.set("s.l.mi.e", miningEXP)
-        config.set("s.l.mi.l", miningLVL)
-
-        config.set("s.l.co.e", combatEXP)
-        config.set("s.l.co.l", combatLVL)
-
-        config.set("s.l.fa.e", farmingEXP)
-        config.set("s.l.fa.l", farmingLVL)
-
-        for (index in 0..53) {
-            config.set("o.st.$index", "")
-            if (stash[index] == null) {
-                continue
-            }
-
-            var singleStringSerialized = ""
-            for (s in serializeItem(stash[index]!!)) {
-                singleStringSerialized += "$s,"
-            }
-            config.set("o.st.$index", singleStringSerialized)
-        }
-        YMLUtils.saveCustomYml(config, file)
+        BnogoSQL.con.prepareStatement(
+            "UPDATE players SET \"playTime\" = '$playTime', " +
+                    "\"meleeLevel\" = $meleeLVL, " +
+                    "\"meleeExp\" = $meleeEXP, " +
+                    "\"miningLevel\" = $miningEXP, " +
+                    "\"miningExp\" = $miningLVL, " +
+                    "\"spellcastLevel\" = $spellcastLVL, " +
+                    "\"spellcastExp\" = $spellcastEXP, " +
+                    "\"woodcutLevel\" = $woodCuttingLVL, " +
+                    "\"woodcutExp\" = $woodCuttingEXP, " +
+                    "\"combatLevel\" = $combatLVL, " +
+                    "\"combatExp\" = $combatEXP, " +
+                    "stash = ARRAY [" +
+                    "'${if (stash[0] != null) serializeItem(stash[0]!!).joinToString("||") else null}', " +
+                    "'${if (stash[1] != null) serializeItem(stash[1]!!).joinToString("||") else null}', " +
+                    "'${if (stash[2] != null) serializeItem(stash[2]!!).joinToString("||") else null}', " +
+                    "'${if (stash[3] != null) serializeItem(stash[3]!!).joinToString("||") else null}', " +
+                    "'${if (stash[4] != null) serializeItem(stash[4]!!).joinToString("||") else null}', " +
+                    "'${if (stash[5] != null) serializeItem(stash[5]!!).joinToString("||") else null}', " +
+                    "'${if (stash[6] != null) serializeItem(stash[6]!!).joinToString("||") else null}', " +
+                    "'${if (stash[7] != null) serializeItem(stash[7]!!).joinToString("||") else null}', " +
+                    "'${if (stash[8] != null) serializeItem(stash[8]!!).joinToString("||") else null}', " +
+                    "'${if (stash[8] != null) serializeItem(stash[8]!!).joinToString("||") else null}', " +
+                    "'${if (stash[10] != null) serializeItem(stash[10]!!).joinToString("||") else null}', " +
+                    "'${if (stash[11] != null) serializeItem(stash[11]!!).joinToString("||") else null}', " +
+                    "'${if (stash[12] != null) serializeItem(stash[12]!!).joinToString("||") else null}', " +
+                    "'${if (stash[13] != null) serializeItem(stash[13]!!).joinToString("||") else null}', " +
+                    "'${if (stash[12] != null) serializeItem(stash[12]!!).joinToString("||") else null}', " +
+                    "'${if (stash[15] != null) serializeItem(stash[15]!!).joinToString("||") else null}', " +
+                    "'${if (stash[16] != null) serializeItem(stash[16]!!).joinToString("||") else null}', " +
+                    "'${if (stash[17] != null) serializeItem(stash[17]!!).joinToString("||") else null}', " +
+                    "'${if (stash[18] != null) serializeItem(stash[18]!!).joinToString("||") else null}', " +
+                    "'${if (stash[19] != null) serializeItem(stash[19]!!).joinToString("||") else null}', " +
+                    "'${if (stash[20] != null) serializeItem(stash[20]!!).joinToString("||") else null}', " +
+                    "'${if (stash[21] != null) serializeItem(stash[21]!!).joinToString("||") else null}', " +
+                    "'${if (stash[22] != null) serializeItem(stash[22]!!).joinToString("||") else null}', " +
+                    "'${if (stash[23] != null) serializeItem(stash[23]!!).joinToString("||") else null}', " +
+                    "'${if (stash[24] != null) serializeItem(stash[24]!!).joinToString("||") else null}', " +
+                    "'${if (stash[25] != null) serializeItem(stash[25]!!).joinToString("||") else null}', " +
+                    "'${if (stash[26] != null) serializeItem(stash[26]!!).joinToString("||") else null}', " +
+                    "'${if (stash[27] != null) serializeItem(stash[27]!!).joinToString("||") else null}', " +
+                    "'${if (stash[28] != null) serializeItem(stash[28]!!).joinToString("||") else null}', " +
+                    "'${if (stash[29] != null) serializeItem(stash[29]!!).joinToString("||") else null}', " +
+                    "'${if (stash[30] != null) serializeItem(stash[30]!!).joinToString("||") else null}', " +
+                    "'${if (stash[31] != null) serializeItem(stash[31]!!).joinToString("||") else null}', " +
+                    "'${if (stash[32] != null) serializeItem(stash[32]!!).joinToString("||") else null}', " +
+                    "'${if (stash[33] != null) serializeItem(stash[33]!!).joinToString("||") else null}', " +
+                    "'${if (stash[34] != null) serializeItem(stash[34]!!).joinToString("||") else null}', " +
+                    "'${if (stash[35] != null) serializeItem(stash[35]!!).joinToString("||") else null}', " +
+                    "'${if (stash[36] != null) serializeItem(stash[36]!!).joinToString("||") else null}', " +
+                    "'${if (stash[37] != null) serializeItem(stash[37]!!).joinToString("||") else null}', " +
+                    "'${if (stash[38] != null) serializeItem(stash[38]!!).joinToString("||") else null}', " +
+                    "'${if (stash[39] != null) serializeItem(stash[39]!!).joinToString("||") else null}', " +
+                    "'${if (stash[40] != null) serializeItem(stash[40]!!).joinToString("||") else null}', " +
+                    "'${if (stash[41] != null) serializeItem(stash[41]!!).joinToString("||") else null}', " +
+                    "'${if (stash[42] != null) serializeItem(stash[42]!!).joinToString("||") else null}', " +
+                    "'${if (stash[43] != null) serializeItem(stash[43]!!).joinToString("||") else null}', " +
+                    "'${if (stash[44] != null) serializeItem(stash[44]!!).joinToString("||") else null}', " +
+                    "'${if (stash[45] != null) serializeItem(stash[45]!!).joinToString("||") else null}', " +
+                    "'${if (stash[46] != null) serializeItem(stash[46]!!).joinToString("||") else null}', " +
+                    "'${if (stash[47] != null) serializeItem(stash[47]!!).joinToString("||") else null}', " +
+                    "'${if (stash[48] != null) serializeItem(stash[48]!!).joinToString("||") else null}', " +
+                    "'${if (stash[49] != null) serializeItem(stash[49]!!).joinToString("||") else null}', " +
+                    "'${if (stash[50] != null) serializeItem(stash[50]!!).joinToString("||") else null}', " +
+                    "'${if (stash[51] != null) serializeItem(stash[51]!!).joinToString("||") else null}', " +
+                    "'${if (stash[52] != null) serializeItem(stash[52]!!).joinToString("||") else null}', " +
+                    "'${if (stash[53] != null) serializeItem(stash[53]!!).joinToString("||") else null}'], " +
+                    "\"farmingLevel\" = $farmingLVL, " +
+                    "\"farmingExp\" = $farmingEXP WHERE name = '$player';"
+        ).execute()
     }
 }

@@ -1,6 +1,7 @@
 package games.bnogocarft.bnogorpg.Utils.others
 
 import games.bnogocarft.bnogorpg.Utils.BPlayer.OnlineBPlayer
+import games.bnogocarft.bnogorpg.Utils.Database.BnogoSQL
 import games.bnogocarft.bnogorpg.Utils.Database.YMLUtils
 import java.text.SimpleDateFormat
 import java.util.*
@@ -13,6 +14,10 @@ class PlaytimeUtils {
          * @param player The BPlayer to add Playtime to
          */
         fun addPlaytime(player: OnlineBPlayer) {
+            val pl = BnogoSQL.con.prepareStatement(
+                "SELECT 'playTime' FROM players WHERE name = ${player.player}"
+            ).executeQuery()
+            pl.next()
             val joinTime = player.joinTime
 
             val now = Date()
@@ -22,7 +27,7 @@ class PlaytimeUtils {
             val nowDate = format.parse(format.format(now))
 
             val diff = nowDate.time - joinDate.time
-            val beforeTime = player.config.getString("o.pl").split(" ")
+            val beforeTime = pl.getString("playTime").split(" ")
             var hourDiff = (diff / ((1000 * 60 * 60)) % 24) + (beforeTime[0].toInt())
             var minuteDiff = (diff / ((1000 * 60)) % 60) + (beforeTime[1].toInt())
 
@@ -31,8 +36,10 @@ class PlaytimeUtils {
                 hourDiff++
             }
 
-            player.config.set("o.pl", "$hourDiff $minuteDiff")
-            YMLUtils.saveCustomYml(player.config, player.file)
+            BnogoSQL.con.prepareStatement(
+                "UPDATE players SET 'playTime' = '$hourDiff $minuteDiff' WHERE name = ${player.player}"
+            ).executeUpdate()
+
             player.joinTime = format.format(now)
         }
     }
