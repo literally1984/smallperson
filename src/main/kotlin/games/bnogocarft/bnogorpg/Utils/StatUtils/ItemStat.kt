@@ -96,7 +96,7 @@ data class ItemStat(val item: ItemStack) {
         var constructed = false
         for (s: String in item.itemMeta.lore) {
             if (s.contains("${ChatColor.RED}Damage: ${ChatColor.DARK_GRAY}+")) {
-                constructed =true
+                constructed = true
                 val lore = item.itemMeta.lore
                 val indexOfS = lore.indexOf(s)
 

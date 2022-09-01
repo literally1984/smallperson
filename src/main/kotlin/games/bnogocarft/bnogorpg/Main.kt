@@ -45,7 +45,6 @@ import org.bukkit.entity.Player
 import org.bukkit.plugin.Plugin
 import org.bukkit.plugin.java.JavaPlugin
 import org.bukkit.scheduler.BukkitTask
-import org.postgresql.util.PSQLException
 import java.io.File
 import kotlin.properties.Delegates
 
@@ -237,7 +236,8 @@ class Main : JavaPlugin() {
         update()
         for (auc in auctions) {
             val query = BnogoSQL.con.prepareStatement(
-                "UPDATE auctions SET lastServerStop = ${System.currentTimeMillis()/1000} WHERE id = '${auc.ID}';")
+                "UPDATE auctions SET lastServerStop = ${System.currentTimeMillis() / 1000} WHERE id = '${auc.ID}';"
+            )
             query.execute()
         }
         ymlConfig.set("auction.lastAucID", lastAuctionID)
@@ -246,12 +246,15 @@ class Main : JavaPlugin() {
 
     fun update() {
         for (auc in auctions) {
-            val replace = BnogoSQL.con.prepareStatement("UPDATE auctions SET 'currentBidder' = '${auc.currentBidder}', highestBid = ${auc.highestBid} WHERE id = '${auc.ID}';").executeUpdate()
+            val replace =
+                BnogoSQL.con.prepareStatement("UPDATE auctions SET 'currentBidder' = '${auc.currentBidder}', highestBid = ${auc.highestBid} WHERE id = '${auc.ID}';")
+                    .executeUpdate()
             if (replace > 0) {
                 continue
             }
             val query = BnogoSQL.con.prepareStatement(
-                "INSERT INTO auctions VALUES ('${auc.ID}', '${serializeItem(auc.item)}', ${auc.startingBid}, '${auc.currentBidder}', ${auc.highestBid}, '${auc.creator}', '${auc.timeLeft}');")
+                "INSERT INTO auctions VALUES ('${auc.ID}', '${serializeItem(auc.item)}', ${auc.startingBid}, '${auc.currentBidder}', ${auc.highestBid}, '${auc.creator}', '${auc.timeLeft}');"
+            )
             query.execute()
         }
     }

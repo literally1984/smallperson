@@ -2,10 +2,11 @@ package games.bnogocarft.bnogorpg.economy.Auction
 
 import games.bnogocarft.bnogorpg.Main
 import games.bnogocarft.bnogorpg.Main.Companion.auctions
-import games.bnogocarft.bnogorpg.Utils.Senders.MessageSender
 import games.bnogocarft.bnogorpg.Utils.cloneInv
-import games.bnogocarft.bnogorpg.Utils.economyUtils.auction.*
-import games.bnogocarft.bnogorpg.Utils.logo
+import games.bnogocarft.bnogorpg.Utils.economyUtils.auction.Auction
+import games.bnogocarft.bnogorpg.Utils.economyUtils.auction.AuctionTimer
+import games.bnogocarft.bnogorpg.Utils.economyUtils.auction.bidOnAuction
+import games.bnogocarft.bnogorpg.Utils.economyUtils.auction.getAuctionByID
 import org.bukkit.Bukkit
 import org.bukkit.ChatColor
 import org.bukkit.Material
@@ -14,7 +15,6 @@ import org.bukkit.command.CommandExecutor
 import org.bukkit.command.CommandSender
 import org.bukkit.entity.Player
 import java.lang.Math.floor
-import java.util.logging.Level
 
 class AuctionCommand : CommandExecutor {
     override fun onCommand(sender: CommandSender, cmd: Command, label: String, args: Array<String>): Boolean {
@@ -73,9 +73,9 @@ class AuctionCommand : CommandExecutor {
                                             "${ChatColor.GREEN}Starting Bid: ${auc.startingBid}"
                                         }
                                     } ${ChatColor.LIGHT_PURPLE}Ending in: " +
-                                    "${floor(floor(auc.timeLeft/86400.0))}D, " +
-                                    "${floor(floor(auc.timeLeft/3600.0))}H, " +
-                                    "${floor(floor(auc.timeLeft/60.0))}M, " +
+                                    "${floor(floor(auc.timeLeft / 86400.0))}D, " +
+                                    "${floor(floor(auc.timeLeft / 3600.0))}H, " +
+                                    "${floor(floor(auc.timeLeft / 60.0))}M, " +
                                     "${floor(auc.timeLeft.toDouble())}S"
                         )
                     }
@@ -137,7 +137,7 @@ class AuctionCommand : CommandExecutor {
 
                 "create" -> {
                     var playerAuctions = 0
-                    for (a in Main.auctions) {
+                    for (a in auctions) {
                         if (a.creator == sender.name) {
                             playerAuctions++
                         }
@@ -158,12 +158,12 @@ class AuctionCommand : CommandExecutor {
                     }
                     val stringTime = args[1].split(Regex("[A-Za-z]"))
 
-                    val daysMili: Int = (stringTime[0].toInt()*86400)
-                    val hoursMili: Int = (stringTime[1].toInt()*3600)
-                    val minutesMili: Int = (stringTime[2].toInt()*60)
+                    val daysMili: Int = (stringTime[0].toInt() * 86400)
+                    val hoursMili: Int = (stringTime[1].toInt() * 3600)
+                    val minutesMili: Int = (stringTime[2].toInt() * 60)
                     val secondsMili: Int = stringTime[3].toInt()
                     val time = try {
-                        daysMili + hoursMili + minutesMili + secondsMili + (System.currentTimeMillis()/1000)
+                        daysMili + hoursMili + minutesMili + secondsMili + (System.currentTimeMillis() / 1000)
                     } catch (e: NumberFormatException) {
                         sender.sendMessage("${ChatColor.RED}Invalid time! (NumberFormatException)")
                         return true
@@ -172,7 +172,7 @@ class AuctionCommand : CommandExecutor {
                         return true
                     }
                     print(time)
-                    print(System.currentTimeMillis()/1000)
+                    print(System.currentTimeMillis() / 1000)
 
                     val startingBid = try {
                         args[2].toDouble()

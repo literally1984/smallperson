@@ -56,7 +56,8 @@ open class BPlayer(open val player: String) {
         // Creates a SQL entry for the player if it is not already created
         val exitResult = BnogoSQL.con.prepareStatement("SELECT name FROM players WHERE name = '$player'").executeQuery()
         if (!exitResult.next()) {
-            val query = BnogoSQL.con.prepareStatement("INSERT INTO players VALUES ('0 0', 0, 0.0, 0, 0.0, 0, 0.0, 0, 0.0, 0, 0.0, ARRAY[null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null], '$player', 0, 0)")
+            val query =
+                BnogoSQL.con.prepareStatement("INSERT INTO players VALUES ('0 0', 0, 0.0, 0, 0.0, 0, 0.0, 0, 0.0, 0, 0.0, ARRAY[null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null], '$player', 0, 0)")
             query.execute()
             print("Created new SQL entry for $player")
         }

@@ -10,12 +10,14 @@ class ChatInput {
     companion object {
         val waiting = HashMap<String, InputListener>()
     }
+
     fun promptInput(p: Player, message: List<String>, listener: InputListener) {
         waiting[p.name] = listener
         for (msg in message) {
             p.sendMessage(msg)
         }
     }
+
     interface InputListener {
         fun onSend(msg: String)
     }

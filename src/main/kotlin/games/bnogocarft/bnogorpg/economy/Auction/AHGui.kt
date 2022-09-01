@@ -8,7 +8,6 @@ import org.bukkit.ChatColor
 import org.bukkit.Material
 import org.bukkit.inventory.Inventory
 import org.bukkit.inventory.ItemStack
-import kotlin.math.floor
 
 class AHGui {
     companion object {

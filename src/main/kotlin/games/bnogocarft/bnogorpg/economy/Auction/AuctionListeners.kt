@@ -33,7 +33,7 @@ class AuctionListeners : Listener {
             } catch (ex: ConcurrentModificationException) {
                 Bukkit.getScheduler().scheduleSyncDelayedTask(
                     Main.instance,
-                     tryAgainTimer(e.inventory), 30
+                    tryAgainTimer(e.inventory), 30
                 )
             }
         }

@@ -2,7 +2,6 @@ package games.bnogocarft.bnogorpg.combat.CombatLog
 
 import games.bnogocarft.bnogorpg.Player.PlayerBar.Bar
 import games.bnogocarft.bnogorpg.Player.PlayerBar.CombatLogBar
-import games.bnogocarft.bnogorpg.Player.PlayerBar.ComboBar
 import games.bnogocarft.bnogorpg.Utils.BPlayer.OnlineBPlayer
 import org.bukkit.ChatColor
 import org.bukkit.scheduler.BukkitRunnable

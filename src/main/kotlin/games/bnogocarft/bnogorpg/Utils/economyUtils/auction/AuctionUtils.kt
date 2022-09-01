@@ -10,16 +10,10 @@ import games.bnogocarft.bnogorpg.economy.Auction.AHGui
 import org.bukkit.Bukkit
 import org.bukkit.ChatColor
 import org.bukkit.Material
-import org.bukkit.entity.Player
 import org.bukkit.inventory.Inventory
 import org.bukkit.inventory.ItemStack
 import org.bukkit.inventory.meta.ItemMeta
-import sun.audio.AudioPlayer.player
-import java.lang.Math.floor
-import java.sql.Date
 import java.sql.ResultSet
-import java.sql.Timestamp
-import java.text.SimpleDateFormat
 
 
 fun getAuctionType(item: ItemStack): AuctionType {
@@ -112,7 +106,7 @@ fun createAuctionItemFor(auc: Auction): ItemStack {
                 }"
     )
     lore.add("")
-    var diff = auc.timeLeft - System.currentTimeMillis()/1000
+    var diff = auc.timeLeft - System.currentTimeMillis() / 1000
     var days: Int = 0
     var hours: Int = 0
     var minutes: Int = 0
@@ -174,15 +168,17 @@ fun createAuctionInfoGui(auc: Auction): Inventory {
                 val inp = ChatInput()
                 inp.promptInput(
                     gui.player,
-                    arrayListOf("${ChatColor.GREEN}Enter your bid for this auction! (Current highest bid: " +
-                            "${
-                                if (auction.highestBid > 0) {
-                                    auction.highestBid
-                                } else {
-                                    auction.startingBid
-                                }
-                            })"),
-                    object: ChatInput.InputListener {
+                    arrayListOf(
+                        "${ChatColor.GREEN}Enter your bid for this auction! (Current highest bid: " +
+                                "${
+                                    if (auction.highestBid > 0) {
+                                        auction.highestBid
+                                    } else {
+                                        auction.startingBid
+                                    }
+                                })"
+                    ),
+                    object : ChatInput.InputListener {
                         override fun onSend(msg: String) {
                             try {
                                 bid = msg.toDouble()
