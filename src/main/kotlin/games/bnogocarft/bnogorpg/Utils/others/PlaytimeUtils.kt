@@ -37,6 +37,7 @@ class PlaytimeUtils {
             ).executeUpdate()
 
             player.joinTime = format.format(now)
+            player.playTime = "$hourDiff $minuteDiff"
         }
     }
 }

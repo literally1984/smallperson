@@ -30,16 +30,17 @@ class ComboTimer(p: OnlineBPlayer) : BukkitRunnable() {
             return
         }
         for (bar2 in player.bars) {
-            if (bar2 is CombatLogBar) {
+            if (bar2 is ComboBar) {
                 bar.health -= 4
+                print("subtracted")
                 if (player.currentBar is ComboBar) {
                     player.bar.health = bar2.health
                     player.bar.text = bar2.name
                 }
+                if (bar2.health % 75 == 0) {
+                    player.combo!!.timeLeft - 1
+                }
             }
-        }
-        if (bar.health % 75 == 0) {
-            player.combo!!.timeLeft - 1
         }
     }
 }

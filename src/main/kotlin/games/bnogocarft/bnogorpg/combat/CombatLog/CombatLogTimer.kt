@@ -10,7 +10,7 @@ class CombatLogTimer(player: OnlineBPlayer) : BukkitRunnable() {
     val t = (player.metadata["combat"] as CombatLog).task
     val p = player
     override fun run() {
-        if (p.metadata["combat"] == 0) {
+        if ((p.metadata["combat"] as CombatLog).timeLeft == 0) {
             p.metadata.remove("combat")
             t.cancel()
             p.p.sendMessage(
@@ -32,7 +32,7 @@ class CombatLogTimer(player: OnlineBPlayer) : BukkitRunnable() {
             p.bar.health = mBar.health
             p.currentBar = mBar
         }
-        p.metadata["combat"] = (p.metadata["combat"] as Int) - 1
+        (p.metadata["combat"] as CombatLog).timeLeft--
         for (bar2 in p.bars) {
             if (bar2 is CombatLogBar) {
                 bar2.health -= 4

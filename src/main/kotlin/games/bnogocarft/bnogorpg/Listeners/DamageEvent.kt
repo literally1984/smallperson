@@ -32,13 +32,13 @@ class DamageEvent : Listener {
                     lateinit var combatLogTask: BukkitTask
                     val combat: CombatLog? = bDamager.metadata["combat"] as CombatLog?
                     if (combat == null) {// Checks if the player is currently in combat
-                        bDamager.metadata["combat"] = CombatLog(combatLogTask)
 
                         // Runs a task to decide when the player is going to get out of combat
                         combatLogTask =
                             Bukkit.getScheduler().runTaskTimer(Main.instance, CombatLogTimer(bDamager), 0, 20)
                         (e.damager as Player).sendMessage("${ChatColor.RED}You are in Combat! Please do not log out or else")
                         (e.damager as Player).sendMessage("${ChatColor.RED}you will lose all of your items!")
+                        bDamager.metadata["combat"] = CombatLog(combatLogTask)
 
                         // Adds a full combat bar to the player's bars
                         val cBar = CombatLogBar(5, 300)
@@ -100,10 +100,13 @@ class DamageEvent : Listener {
                     var display = true
                     for (bar in bDamager.bars) {
                         if (bar.priority > 2) {
+                            print(bar.priority)
+                            print(bar.name)
                             display = false
                         }
                     }
                     if (display) {
+                        print("displaying")
                         bDamager.currentBar = coBar
                         bDamager.bar.text = coBar.name
                         bDamager.bar.health = coBar.health
