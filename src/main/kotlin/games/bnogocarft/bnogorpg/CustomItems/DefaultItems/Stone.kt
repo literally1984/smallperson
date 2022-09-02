@@ -25,6 +25,7 @@ class Stone : ToolSet {
         createPickaxe()
         createAxe()
         createShovel()
+        createCursedPickaxe()
     }
 
     override fun createSword() {
@@ -34,7 +35,7 @@ class Stone : ToolSet {
         factoryItem.rarity = Rarity.RARE
 
         sword = BItemFactory.produceItem(factoryItem)
-        BItemFactory.register("stonesword", sword)
+        BItemFactory.register("stone_sword", sword)
 
         val recipe = ShapedRecipe(sword)
         recipe.shape(" d ", " d ", " s ")
@@ -75,6 +76,18 @@ class Stone : ToolSet {
         val recipe = ShapedRecipe(shovel)
         recipe.shape(" d ", " s ", " s ")
         recipe.setIngredient('d', Material.COBBLESTONE)
+        recipe.setIngredient('s', Material.STICK)
+        Bukkit.addRecipe(recipe)
+    }
+
+    fun createCursedPickaxe() {
+        val cursed = ItemStack(Material.STONE_PICKAXE)
+        val meta = Bukkit.getItemFactory().getItemMeta(Material.STONE_PICKAXE)
+        meta.displayName = "Cursed Pickaxe"
+        cursed.durability = 62
+        val recipe = ShapedRecipe(cursed)
+        recipe.shape("ddd", " s ", " s ")
+        recipe.setIngredient('d', Material.STEP)
         recipe.setIngredient('s', Material.STICK)
         Bukkit.addRecipe(recipe)
     }

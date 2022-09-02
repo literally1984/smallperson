@@ -39,11 +39,53 @@ open class BGear(item: ItemStack) : BItem(item) {
     Rarity
      */
     open val item = item
+    var id: Int = 0
+        set(value) {
+            field = value
+            val copy = item.itemMeta.clone()
+            val copyLore = copy.lore
+            copyLore[idLine] = "${ChatColor.AQUA}ID: $value"
+            copy.lore = copyLore
+            item.itemMeta = copy
+        }
     var stats = ItemStat(item)
     var reforge = Reforge.NONE
+        set(value) {
+            val newMeta = item.itemMeta.clone()
+
+            if (field == Reforge.NONE) {
+                newMeta.displayName = "$value ${item.itemMeta.displayName}"
+                item.itemMeta = newMeta
+            } else {
+                val displayArray = newMeta.displayName.split(" ").toMutableList()
+                displayArray[0] = "$value"
+                newMeta.displayName = displayArray.joinToString(" ")
+                item.itemMeta = newMeta
+            }
+
+            field = value
+        }
     val abilities = ArrayList<ItemAbility>()
     var exp: Long = 0
+        set(value) {
+            val copy = item.itemMeta.clone()
+            val copyLore = copy.lore
+            copyLore[copyLore.size - 4] = "${ChatColor.GREEN}EXP: ${ChatColor.GRAY}$value"
+            copy.lore = copyLore
+            item.itemMeta = copy
+            field = value
+        }
     var level: Long = 0
+        set(value) {
+            val copy = item.itemMeta.clone()
+            val copyLore = copy.lore
+            copyLore[copyLore.size - 5] = "${ChatColor.YELLOW}Level: ${ChatColor.GRAY}$value"
+            copy.lore = copyLore
+            item.itemMeta = copy
+            field = value
+        }
+
+    private var idLine = 0
 
     init {
         reforge = try {
@@ -53,6 +95,10 @@ open class BGear(item: ItemStack) : BItem(item) {
         }
         val clore = item.itemMeta.lore
         for (lore in item.itemMeta.lore) {
+            if (lore.contains("${ChatColor.AQUA}ID: ")) {
+                id = lore.split("ID: ")[1].toInt()
+                idLine = clore.indexOf(lore)
+            }
             if (lore.contains("Level:")) {
                 level = lore.split(": ${ChatColor.GRAY}")[1].toLong()
                 exp = clore[clore.indexOf(lore) + 1].split(": ${ChatColor.GRAY}")[1].split("/")[0].toLong()
@@ -62,6 +108,8 @@ open class BGear(item: ItemStack) : BItem(item) {
                 abilities.add(ItemAbility.revNameMap[clore[clore.indexOf(lore)].split(": ${ChatColor.RESET}${ChatColor.RED}")[1]]!!)
             }
         }
+
+
     }
 
     fun applyChange(change: Change) {

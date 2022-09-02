@@ -59,27 +59,9 @@ fun Reforge(gui: OpenGUI) {
                 Reforge.Dull, Reforge.Dull, Reforge.Dull, Reforge.Dull, Reforge.Dull
             )
             val reforge = weightedList.random()
-            val newMeta = reforgeItem.itemMeta.clone()
-            val bItem = BGear(reforgeItem)
+            val bItem = BItemUtils.getBGear(reforgeItem)
 
-            if (bItem.reforge == Reforge.NONE) {
-                newMeta.displayName = "$reforge ${reforgeItem.itemMeta.displayName}"
-                reforgeItem.itemMeta = newMeta
-            } else {
-                bItem.reforge = reforge
-                val displayArray = newMeta.displayName.split(" ").toMutableList()
-                displayArray[0] = "$reforge"
-                newMeta.displayName = displayArray.joinToString(" ")
-                reforgeItem.itemMeta = newMeta
-            }
-
-            Main.econ.withdrawPlayer(gui.player.name, 1500.0)
-
-            if (BItemUtils.getBType(reforgeItem) == "weapon") {
-                BItemUtils.addBWeapon(reforgeItem, BWeapon(reforgeItem))
-            } else {
-                BItemUtils.addBArmor(reforgeItem, BArmor(reforgeItem))
-            }
+            bItem.reforge = reforge
 
             val chance = (weightedList.size) / (Collections.frequency(weightedList, reforge))
 

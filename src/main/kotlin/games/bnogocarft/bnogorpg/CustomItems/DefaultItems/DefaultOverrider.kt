@@ -60,6 +60,7 @@ class DefaultOverrider {
             Gold()
             Iron()
             Leather()
+            Stone()
             Wood()
         }
     }

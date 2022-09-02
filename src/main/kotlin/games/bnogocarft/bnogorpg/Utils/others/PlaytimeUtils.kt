@@ -13,10 +13,6 @@ class PlaytimeUtils {
          * @param player The BPlayer to add Playtime to
          */
         fun addPlaytime(player: OnlineBPlayer) {
-            val pl = BnogoSQL.con.prepareStatement(
-                "SELECT 'playTime' FROM players WHERE name = ${player.player}"
-            ).executeQuery()
-            pl.next()
             val joinTime = player.joinTime
 
             val now = Date()
@@ -26,7 +22,8 @@ class PlaytimeUtils {
             val nowDate = format.parse(format.format(now))
 
             val diff = nowDate.time - joinDate.time
-            val beforeTime = pl.getString("playTime").split(" ")
+            val beforeTime = player.playTime
+            print(beforeTime)
             var hourDiff = (diff / ((1000 * 60 * 60)) % 24) + (beforeTime[0].toInt())
             var minuteDiff = (diff / ((1000 * 60)) % 60) + (beforeTime[1].toInt())
 
@@ -36,7 +33,7 @@ class PlaytimeUtils {
             }
 
             BnogoSQL.con.prepareStatement(
-                "UPDATE players SET 'playTime' = '$hourDiff $minuteDiff' WHERE name = ${player.player}"
+                "UPDATE players SET \"playTime\" = '$hourDiff $minuteDiff' WHERE name = '${player.player}';"
             ).executeUpdate()
 
             player.joinTime = format.format(now)

@@ -3,6 +3,7 @@ package games.bnogocarft.bnogorpg.Utils.BPlayer
 import games.bnogocarft.bnogorpg.Player.PlayerBar.Bar
 import games.bnogocarft.bnogorpg.Player.PlayerBar.MainBar
 import games.bnogocarft.bnogorpg.Utils.Abilities.SetBonus
+import games.bnogocarft.bnogorpg.Utils.Database.BnogoSQL
 import games.bnogocarft.bnogorpg.Utils.Mode.Mode
 import games.bnogocarft.bnogorpg.Utils.StatUtils.StatManager
 import games.bnogocarft.bnogorpg.combat.ComboCounter.Combo
@@ -89,7 +90,12 @@ data class OnlineBPlayer(val p: Player) : BPlayer(p.name) {
     }
 
     fun updatePlayTime() {
-        playTime = config.getString("o.pl")
+        val query = BnogoSQL.con.prepareStatement(
+            "SELECT \"playTime\" FROM players WHERE name = '${player}';"
+        ).executeQuery()
+
+        query.next()
+        playTime = query.getString("playTime")
     }
 
     /**
