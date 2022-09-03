@@ -6,7 +6,7 @@ import games.bnogocarft.bnogorpg.Utils.Abilities.PlayerAbility.Ability
 import games.bnogocarft.bnogorpg.Utils.BItemStack.Talisman.Talisman
 import games.bnogocarft.bnogorpg.Utils.Database.BnogoSQL
 import games.bnogocarft.bnogorpg.Utils.Database.YMLUtils
-import games.bnogocarft.bnogorpg.Utils.StashArrayList
+import games.bnogocarft.bnogorpg.Utils.JVMUtils.StashArrayList
 import games.bnogocarft.bnogorpg.Utils.deserializeItem
 import games.bnogocarft.bnogorpg.Utils.serializeItem
 import org.bukkit.configuration.file.YamlConfiguration

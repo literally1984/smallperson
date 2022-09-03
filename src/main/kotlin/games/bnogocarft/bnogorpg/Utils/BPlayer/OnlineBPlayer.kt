@@ -4,6 +4,7 @@ import games.bnogocarft.bnogorpg.Player.PlayerBar.Bar
 import games.bnogocarft.bnogorpg.Player.PlayerBar.MainBar
 import games.bnogocarft.bnogorpg.Utils.Abilities.SetBonus
 import games.bnogocarft.bnogorpg.Utils.Database.BnogoSQL
+import games.bnogocarft.bnogorpg.Utils.JVMUtils.BarArrayList
 import games.bnogocarft.bnogorpg.Utils.Mode.Mode
 import games.bnogocarft.bnogorpg.Utils.StatUtils.StatManager
 import games.bnogocarft.bnogorpg.combat.ComboCounter.Combo
@@ -28,7 +29,7 @@ data class OnlineBPlayer(val p: Player) : BPlayer(p.name) {
     var joinTime: String
 
     val bar = BossBar(p)
-    var bars = arrayListOf<Bar>(MainBar())
+    var bars = BarArrayList()
     var currentBar: Bar = MainBar()
 
     var combo: Combo? = null
@@ -51,6 +52,7 @@ data class OnlineBPlayer(val p: Player) : BPlayer(p.name) {
     val metadata = HashMap<String, Any>()
 
     init {
+        bars.add(MainBar())
         metadata["combatLogged"] = config.getBoolean("o.cl")
 
         val now = Date()

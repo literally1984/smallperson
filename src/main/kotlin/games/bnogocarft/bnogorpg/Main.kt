@@ -34,6 +34,7 @@ import games.bnogocarft.bnogorpg.Utils.economyUtils.auction.AuctionTimer
 import games.bnogocarft.bnogorpg.Utils.others.PlaytimeUtils
 import games.bnogocarft.bnogorpg.animation.animationTestCommand
 import games.bnogocarft.bnogorpg.economy.Auction.AHGui
+import games.bnogocarft.bnogorpg.economy.Auction.AhGuiUpdater
 import games.bnogocarft.bnogorpg.economy.Auction.AuctionCommand
 import games.bnogocarft.bnogorpg.economy.Auction.AuctionListeners
 import net.milkbowl.vault.economy.Economy
@@ -167,16 +168,20 @@ class Main : JavaPlugin() {
                 deserializeItem(aucs.getString("item").replace(Regex("[\\[[\\]]*\\]]"), "").split(", ")),
                 aucs.getFloat("startBid").toDouble(),
                 aucs.getString("creator"),
-                aucs.getInt("endTime") + (System.currentTimeMillis() - aucs.getInt("lastServerStop")).toInt(),
+                ((aucs.getInt("endTime") + (System.currentTimeMillis()/1000)) - aucs.getInt("lastServerStop")).toInt(),
                 aucs.getString("currentBidder"),
                 aucs.getFloat("highestBid").toDouble(),
                 aucs.getString("id")
             )
-            auctions.add(auction)
+            if ((System.currentTimeMillis()/1000) > auction.timeLeft) {
+                auction.endAuction()
+                continue
+            }
             val task: BukkitTask = Bukkit.getScheduler().runTaskTimer(instance, AuctionTimer(auction), 0, 20)
             auction.task = task
         }
         AHGui()
+        Bukkit.getScheduler().scheduleSyncRepeatingTask(this, AhGuiUpdater(), 0, 20)
         cSender.sendMessage("All paused auctions are continued!")
 
         cSender.sendMessage("$logo Enabling other commands...")
@@ -236,7 +241,7 @@ class Main : JavaPlugin() {
         update()
         for (auc in auctions) {
             val query = BnogoSQL.con.prepareStatement(
-                "UPDATE auctions SET lastServerStop = ${System.currentTimeMillis() / 1000} WHERE id = '${auc.ID}';"
+                "UPDATE auctions SET \"lastServerStop\" = ${System.currentTimeMillis() / 1000} WHERE \"id\" = '${auc.ID}';"
             )
             query.execute()
         }
@@ -247,7 +252,7 @@ class Main : JavaPlugin() {
     fun update() {
         for (auc in auctions) {
             val replace =
-                BnogoSQL.con.prepareStatement("UPDATE auctions SET 'currentBidder' = '${auc.currentBidder}', highestBid = ${auc.highestBid} WHERE id = '${auc.ID}';")
+                BnogoSQL.con.prepareStatement("UPDATE auctions SET \"currentBidder\" = '${auc.currentBidder}', \"highestBid\" = ${auc.highestBid} WHERE id = '${auc.ID}';")
                     .executeUpdate()
             if (replace > 0) {
                 continue
