@@ -249,6 +249,53 @@ class BItemFactory {
 
                     return itemStack
                 }
+
+                BItemType.CRAFT_ITEM -> {
+                    val itemStack = ItemStack(item.mat)
+                    val meta = Bukkit.getItemFactory().getItemMeta(item.mat)
+                    val lore = ArrayList<String>()
+                    meta.displayName = item.name
+                    var type = ""
+
+                    // Stats lore
+                    lore.add("${ChatColor.RED}Damage: ${ChatColor.DARK_GRAY}+${item.stats[0]}-${item.stats[1]}")
+                    lore.add("${ChatColor.GREEN}Defense: ${ChatColor.DARK_GRAY}+${item.stats[2]}-${item.stats[3]}")
+                    lore.add("${ChatColor.LIGHT_PURPLE}Magic Dmg: ${ChatColor.DARK_GRAY}+${item.stats[4]}-${item.stats[5]}")
+                    lore.add("${ChatColor.DARK_PURPLE}Magic Def: ${ChatColor.DARK_GRAY}+${item.stats[6]}-${item.stats[7]}")
+                    lore.add("${ChatColor.AQUA}Mana: ${ChatColor.DARK_GRAY}+${item.stats[8]}-${item.stats[9]}")
+                    lore.add("${ChatColor.GOLD}Stamina: ${ChatColor.DARK_GRAY}+${item.stats[10]}-${item.stats[11]}")
+                    lore.add("")
+
+                    // abilities lore
+                    for (ability in item.abilities) {
+                        if (ability.getType().equals(AbilityTrigger.SET_BONUS)) {
+                            lore.add("${ChatColor.YELLOW}${ChatColor.BOLD}Set Bonus: ${ChatColor.RESET}${ChatColor.RED}${ItemAbility.nameMap[ability]}")
+                            type = "armor"
+                            for (s in ability.getDescription()) lore.add("${ChatColor.GRAY}$s")
+                            lore.add("")
+                            continue
+                        }
+                        lore.add("${ChatColor.YELLOW}${ChatColor.BOLD}${ability.getTypeString()} ${ChatColor.RESET}${ChatColor.RED}Ability:")
+                        for (s in ability.getDescription()) lore.add("${ChatColor.GRAY}$s")
+                        lore.add("")
+                    }
+                    lore.add("${ChatColor.BLUE}Enchantments:")
+                    lore.add("")
+                    lore.add("${ChatColor.GOLD}${ChatColor.ITALIC}Weapon")
+
+                    lore.add("${ChatColor.GOLD}${item.stats[12]}-${item.stats[13]} ✪Star✪")
+                    if (item.armorColor != null) {
+                        val armorMeta = meta as LeatherArmorMeta
+                        armorMeta.color = item.armorColor
+                    }
+
+                    meta.lore = lore
+                    itemStack.itemMeta = meta
+
+                    BItemUtils.addBWeapon(itemStack, item.stats)
+
+                    return itemStack
+                }
             }
         }
 

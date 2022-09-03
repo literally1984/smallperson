@@ -54,6 +54,16 @@ commands:
     name: Stash
     usage: /<command>
     description: Opens up the user's stash
+  hologram:
+    name: Hologram
+    aliases: [hologram, holo]
+    usage: /<command>
+    description: Spawns a hologram at your location
+  displaynick:
+    name: DisplayNick
+    aliases: [dnick, dn]
+    usage: /<command> <player>
+    description: Displays the nick of a player
 permissions:
   bnogorpg.*:
     description: Gives access to all BnogoRPG commands

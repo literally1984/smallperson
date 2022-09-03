@@ -3,7 +3,7 @@ package games.bnogocarft.bnogorpg.Utils.BItemStack.BItems
 import games.bnogocarft.bnogorpg.Utils.StatUtils.ItemStat
 import org.bukkit.inventory.ItemStack
 
-data class BWeapon(override var item: ItemStack) : BGear(item) {
+data class BWeapon(override var Item: ItemStack) : BGear(Item) {
 
     constructor(stats: List<Int>, item: ItemStack) : this(item) {
         this.stats = ItemStat(stats, item)

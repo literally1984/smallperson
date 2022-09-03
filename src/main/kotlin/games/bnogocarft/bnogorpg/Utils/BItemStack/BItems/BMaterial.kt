@@ -2,6 +2,7 @@ package games.bnogocarft.bnogorpg.Utils.BItemStack.BItems
 
 import games.bnogocarft.bnogorpg.CustomItems.*
 import games.bnogocarft.bnogorpg.CustomItems.DefaultItems.*
+import games.bnogocarft.bnogorpg.Utils.BItemStack.Rarity.Rarity
 import org.bukkit.Material
 import org.bukkit.inventory.meta.ItemMeta
 
@@ -192,5 +193,428 @@ enum class BMaterial {
             WOOD_SHOVEL -> Wood.shovel.itemMeta
             DOUBLE_JUMP_BOOTS -> DoubleJumpBoots.boots.itemMeta
         }
+    }
+    fun getStatVary(): ArrayList<String> {
+        val vary = ArrayList<String>()
+        when (this) {
+            CACTUS_HELMET -> {
+                vary.add("0-1")
+                vary.add("9-11")
+                vary.add("0")
+                vary.add("7-9")
+                vary.add("3-5")
+                vary.add("5-10")
+            }
+            CACTUS_CHESTPLATE -> {
+                vary.add("0-1")
+                vary.add("9-11")
+                vary.add("0")
+                vary.add("7-9")
+                vary.add("3-5")
+                vary.add("5-10")
+            }
+            CACTUS_LEGGINGS -> {
+                vary.add("0-1")
+                vary.add("9-11")
+                vary.add("0")
+                vary.add("7-9")
+                vary.add("3-5")
+                vary.add("5-10")
+            }
+            CACTUS_BOOTS -> {
+                vary.add("0-1")
+                vary.add("9-11")
+                vary.add("0")
+                vary.add("7-9")
+                vary.add("3-5")
+                vary.add("5-10")
+            }
+            LAPIS_HELMET -> {
+                vary.add("0-1")
+                vary.add("9-11")
+                vary.add("0")
+                vary.add("7-9")
+                vary.add("3-5")
+                vary.add("5-10")
+            }
+            LAPIS_CHESTPLATE -> {
+                vary.add("0-1")
+                vary.add("9-11")
+                vary.add("0")
+                vary.add("7-9")
+                vary.add("3-5")
+                vary.add("5-10")
+            }
+            LAPIS_LEGGINGS -> {
+                vary.add("0-1")
+                vary.add("9-11")
+                vary.add("0")
+                vary.add("7-9")
+                vary.add("3-5")
+                vary.add("5-10")
+            }
+            LAPIS_BOOTS -> {
+                vary.add("0-1")
+                vary.add("9-11")
+                vary.add("0")
+                vary.add("7-9")
+                vary.add("3-5")
+                vary.add("5-10")
+            }
+            IRON_HELMET -> {
+                vary.add("0-1")
+                vary.add("9-11")
+                vary.add("0")
+                vary.add("7-9")
+                vary.add("3-5")
+                vary.add("5-10")
+            }
+            IRON_CHESTPLATE -> {
+                vary.add("0-1")
+                vary.add("9-11")
+                vary.add("0")
+                vary.add("7-9")
+                vary.add("3-5")
+                vary.add("5-10")
+            }
+            IRON_LEGGINGS -> {
+                vary.add("0-1")
+                vary.add("9-11")
+                vary.add("0")
+                vary.add("7-9")
+                vary.add("3-5")
+                vary.add("5-10")
+            }
+            IRON_BOOTS -> {
+                vary.add("0-1")
+                vary.add("9-11")
+                vary.add("0")
+                vary.add("7-9")
+                vary.add("3-5")
+                vary.add("5-10")
+            }
+            IRON_SWORD -> {
+                vary.add("0-1")
+                vary.add("9-11")
+                vary.add("0")
+                vary.add("7-9")
+                vary.add("3-5")
+                vary.add("5-10")
+            }
+            IRON_AXE -> {
+                vary.add("0-1")
+                vary.add("9-11")
+                vary.add("0")
+                vary.add("7-9")
+                vary.add("3-5")
+                vary.add("5-10")
+            }
+            IRON_HOE -> {
+                vary.add("0-1")
+                vary.add("9-11")
+                vary.add("0")
+                vary.add("7-9")
+                vary.add("3-5")
+                vary.add("5-10")
+            }
+            IRON_PICKAXE -> {
+                vary.add("0-1")
+                vary.add("9-11")
+                vary.add("0")
+                vary.add("7-9")
+                vary.add("3-5")
+                vary.add("5-10")
+            }
+            IRON_SHOVEL -> {
+                vary.add("0-1")
+                vary.add("9-11")
+                vary.add("0")
+                vary.add("7-9")
+                vary.add("3-5")
+                vary.add("5-10")
+            }
+            GOLD_HELMET -> {
+                vary.add("0-1")
+                vary.add("9-11")
+                vary.add("0")
+                vary.add("7-9")
+                vary.add("3-5")
+                vary.add("5-10")
+            }
+            GOLD_CHESTPLATE -> {
+                vary.add("0-1")
+                vary.add("9-11")
+                vary.add("0")
+                vary.add("7-9")
+                vary.add("3-5")
+                vary.add("5-10")
+            }
+            GOLD_LEGGINGS -> {
+                vary.add("0-1")
+                vary.add("9-11")
+                vary.add("0")
+                vary.add("7-9")
+                vary.add("3-5")
+                vary.add("5-10")
+            }
+            GOLD_BOOTS -> {
+                vary.add("0-1")
+                vary.add("9-11")
+                vary.add("0")
+                vary.add("7-9")
+                vary.add("3-5")
+                vary.add("5-10")
+            }
+            GOLD_SWORD -> {
+                vary.add("0-1")
+                vary.add("9-11")
+                vary.add("0")
+                vary.add("7-9")
+                vary.add("3-5")
+                vary.add("5-10")
+            }
+            GOLD_AXE -> {
+                vary.add("0-1")
+                vary.add("9-11")
+                vary.add("0")
+                vary.add("7-9")
+                vary.add("3-5")
+                vary.add("5-10")
+            }
+            GOLD_HOE -> {
+                vary.add("0-1")
+                vary.add("9-11")
+                vary.add("0")
+                vary.add("7-9")
+                vary.add("3-5")
+                vary.add("5-10")
+            }
+            GOLD_PICKAXE -> {
+                vary.add("0-1")
+                vary.add("9-11")
+                vary.add("0")
+                vary.add("7-9")
+                vary.add("3-5")
+                vary.add("5-10")
+            }
+            GOLD_SHOVEL -> {
+                vary.add("0-1")
+                vary.add("9-11")
+                vary.add("0")
+                vary.add("7-9")
+                vary.add("3-5")
+                vary.add("5-10")
+            }
+            DIAMOND_HELMET -> {
+                vary.add("0-1")
+                vary.add("9-11")
+                vary.add("0")
+                vary.add("7-9")
+                vary.add("3-5")
+                vary.add("5-10")
+            }
+            DIAMOND_CHESTPLATE -> {
+                vary.add("0-1")
+                vary.add("9-11")
+                vary.add("0")
+                vary.add("7-9")
+                vary.add("3-5")
+                vary.add("5-10")
+            }
+            DIAMOND_LEGGINGS -> {
+                vary.add("0-1")
+                vary.add("9-11")
+                vary.add("0")
+                vary.add("7-9")
+                vary.add("3-5")
+                vary.add("5-10")
+            }
+            DIAMOND_BOOTS -> {
+                vary.add("0-1")
+                vary.add("9-11")
+                vary.add("0")
+                vary.add("7-9")
+                vary.add("3-5")
+                vary.add("5-10")
+            }
+            DIAMOND_SWORD -> {
+                vary.add("0-1")
+                vary.add("9-11")
+                vary.add("0")
+                vary.add("7-9")
+                vary.add("3-5")
+                vary.add("5-10")
+            }
+            DIAMOND_AXE -> {
+                vary.add("0-1")
+                vary.add("9-11")
+                vary.add("0")
+                vary.add("7-9")
+                vary.add("3-5")
+                vary.add("5-10")
+            }
+            DIAMOND_HOE -> {
+                vary.add("0-1")
+                vary.add("9-11")
+                vary.add("0")
+                vary.add("7-9")
+                vary.add("3-5")
+                vary.add("5-10")
+            }
+            DIAMOND_PICKAXE -> {
+                vary.add("0-1")
+                vary.add("9-11")
+                vary.add("0")
+                vary.add("7-9")
+                vary.add("3-5")
+                vary.add("5-10")
+            }
+            DIAMOND_SHOVEL -> {
+                vary.add("0-1")
+                vary.add("9-11")
+                vary.add("0")
+                vary.add("7-9")
+                vary.add("3-5")
+                vary.add("5-10")
+            }
+            STONE_SWORD -> {
+                vary.add("0-1")
+                vary.add("9-11")
+                vary.add("0")
+                vary.add("7-9")
+                vary.add("3-5")
+                vary.add("5-10")
+            }
+            STONE_AXE -> {
+                vary.add("0-1")
+                vary.add("9-11")
+                vary.add("0")
+                vary.add("7-9")
+                vary.add("3-5")
+                vary.add("5-10")
+            }
+            STONE_HOE -> {
+                vary.add("0-1")
+                vary.add("9-11")
+                vary.add("0")
+                vary.add("7-9")
+                vary.add("3-5")
+                vary.add("5-10")
+            }
+            STONE_PICKAXE -> {
+                vary.add("0-1")
+                vary.add("9-11")
+                vary.add("0")
+                vary.add("7-9")
+                vary.add("3-5")
+                vary.add("5-10")
+            }
+            STONE_SHOVEL -> {
+                vary.add("0-1")
+                vary.add("9-11")
+                vary.add("0")
+                vary.add("7-9")
+                vary.add("3-5")
+                vary.add("5-10")
+            }
+            LEATHER_HELMET -> {
+                vary.add("0-1")
+                vary.add("9-11")
+                vary.add("0")
+                vary.add("7-9")
+                vary.add("3-5")
+                vary.add("5-10")
+            }
+            LEATHER_CHESTPLATE -> {
+                vary.add("0-1")
+                vary.add("9-11")
+                vary.add("0")
+                vary.add("7-9")
+                vary.add("3-5")
+                vary.add("5-10")
+            }
+            LEATHER_LEGGINGS -> {
+                vary.add("0-1")
+                vary.add("9-11")
+                vary.add("0")
+                vary.add("7-9")
+                vary.add("3-5")
+                vary.add("5-10")
+            }
+            LEATHER_BOOTS -> {
+                vary.add("0-1")
+                vary.add("9-11")
+                vary.add("0")
+                vary.add("7-9")
+                vary.add("3-5")
+                vary.add("5-10")
+            }
+            WOOD_SWORD -> {
+                vary.add("0-1")
+                vary.add("9-11")
+                vary.add("0")
+                vary.add("7-9")
+                vary.add("3-5")
+                vary.add("5-10")
+            }
+            WOOD_AXE -> {
+                vary.add("0-1")
+                vary.add("9-11")
+                vary.add("0")
+                vary.add("7-9")
+                vary.add("3-5")
+                vary.add("5-10")
+            }
+            WOOD_HOE -> {
+                vary.add("0-1")
+                vary.add("9-11")
+                vary.add("0")
+                vary.add("7-9")
+                vary.add("3-5")
+                vary.add("5-10")
+            }
+            WOOD_PICKAXE -> {
+                vary.add("0-1")
+                vary.add("9-11")
+                vary.add("0")
+                vary.add("7-9")
+                vary.add("3-5")
+                vary.add("5-10")
+            }
+            WOOD_SHOVEL -> {
+                vary.add("0-1")
+                vary.add("9-11")
+                vary.add("0")
+                vary.add("7-9")
+                vary.add("3-5")
+                vary.add("5-10")
+            }
+            BLADE_OF_HERMES -> {
+                vary.add("0-1")
+                vary.add("9-11")
+                vary.add("0")
+                vary.add("7-9")
+                vary.add("3-5")
+                vary.add("5-10")
+            }
+            GRAPPLING_HOOK -> {
+                vary.add("0-1")
+                vary.add("9-11")
+                vary.add("0")
+                vary.add("7-9")
+                vary.add("3-5")
+                vary.add("5-10")
+            }
+            DOUBLE_JUMP_BOOTS -> {
+                vary.add("0-1")
+                vary.add("9-11")
+                vary.add("0")
+                vary.add("7-9")
+                vary.add("3-5")
+                vary.add("5-10")
+            }
+        }
+
+        return vary
     }
 }

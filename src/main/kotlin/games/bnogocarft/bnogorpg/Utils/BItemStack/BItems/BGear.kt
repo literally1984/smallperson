@@ -3,6 +3,7 @@ package games.bnogocarft.bnogorpg.Utils.BItemStack.BItems
 import games.bnogocarft.bnogorpg.Updater.Change.Change
 import games.bnogocarft.bnogorpg.Updater.Change.StatChange
 import games.bnogocarft.bnogorpg.Utils.BItemStack.Reforge
+import games.bnogocarft.bnogorpg.Utils.Database.BnogoSQL
 import games.bnogocarft.bnogorpg.Utils.ItemFactory.ItemAbility
 import games.bnogocarft.bnogorpg.Utils.StatUtils.ItemStat
 import org.bukkit.ChatColor
@@ -38,78 +39,87 @@ open class BGear(item: ItemStack) : BItem(item) {
 
     Rarity
      */
-    open val item = item
+    open val Item = item
+    lateinit var initItem: ItemStack
     var id: Int = 0
         set(value) {
             field = value
-            val copy = item.itemMeta.clone()
+            val copy = this.initItem.itemMeta.clone()
             val copyLore = copy.lore
             copyLore[idLine] = "${ChatColor.AQUA}ID: $value"
             copy.lore = copyLore
-            item.itemMeta = copy
+            this.initItem.itemMeta = copy
         }
     var stats = ItemStat(item)
     var reforge = Reforge.NONE
         set(value) {
-            val newMeta = item.itemMeta.clone()
+            if (this.initItem == null) {
+                print("Item is null")
+            }
+            if (this.initItem.itemMeta == null) {
+                print("ItemMeta is null")
+            }
+            val newMeta = this.initItem.itemMeta
 
             if (field == Reforge.NONE) {
-                newMeta.displayName = "$value ${item.itemMeta.displayName}"
-                item.itemMeta = newMeta
+                newMeta.displayName = this.initItem.itemMeta.displayName
+                this.initItem.itemMeta = newMeta
             } else {
                 val displayArray = newMeta.displayName.split(" ").toMutableList()
                 displayArray[0] = "$value"
                 newMeta.displayName = displayArray.joinToString(" ")
-                item.itemMeta = newMeta
+                this.initItem.itemMeta = newMeta
             }
-
             field = value
         }
     val abilities = ArrayList<ItemAbility>()
     var exp: Long = 0
         set(value) {
-            val copy = item.itemMeta.clone()
+            val copy = this.initItem.itemMeta.clone()
             val copyLore = copy.lore
             copyLore[copyLore.size - 4] = "${ChatColor.GREEN}EXP: ${ChatColor.GRAY}$value"
             copy.lore = copyLore
-            item.itemMeta = copy
+            this.initItem.itemMeta = copy
             field = value
         }
     var level: Long = 0
         set(value) {
-            val copy = item.itemMeta.clone()
+            val copy = this.initItem.itemMeta.clone()
             val copyLore = copy.lore
             copyLore[copyLore.size - 5] = "${ChatColor.YELLOW}Level: ${ChatColor.GRAY}$value"
             copy.lore = copyLore
-            item.itemMeta = copy
+            this.initItem.itemMeta = copy
             field = value
         }
 
     private var idLine = 0
 
     init {
-        reforge = try {
-            Reforge.valueOf(item.itemMeta.displayName.split(" ")[0])
-        } catch (e: IllegalArgumentException) {
-            Reforge.NONE
-        }
-        val clore = item.itemMeta.lore
-        for (lore in item.itemMeta.lore) {
-            if (lore.contains("${ChatColor.AQUA}ID: ")) {
-                id = lore.split("ID: ")[1].toInt()
-                idLine = clore.indexOf(lore)
+        if (item.itemMeta != null) {
+            this.initItem = item
+            val clore = item.itemMeta.lore
+            for (lore in item.itemMeta.lore) {
+                if (lore.contains("${ChatColor.AQUA}ID: ")) {
+                    id = lore.split("ID: ")[1].toInt()
+                    idLine = clore.indexOf(lore)
+                }
+                if (lore.contains("Level:")) {
+                    level = lore.split(": ${ChatColor.GRAY}")[1].toLong()
+                    exp = clore[clore.indexOf(lore) + 1].split(": ${ChatColor.GRAY}")[1].split("/")[0].toLong()
+                }
+                if (lore.contains("${ChatColor.YELLOW}${ChatColor.BOLD}SET BONUS: ")) {
+                    println(clore[clore.indexOf(lore)].split(": ${ChatColor.RESET}${ChatColor.RED}")[1])
+                    abilities.add(ItemAbility.revNameMap[clore[clore.indexOf(lore)].split(": ${ChatColor.RESET}${ChatColor.RED}")[1]]!!)
+                }
             }
-            if (lore.contains("Level:")) {
-                level = lore.split(": ${ChatColor.GRAY}")[1].toLong()
-                exp = clore[clore.indexOf(lore) + 1].split(": ${ChatColor.GRAY}")[1].split("/")[0].toLong()
+            reforge = try {
+                Reforge.valueOf(item.itemMeta.displayName.split(" ")[0])
+            } catch (e: IllegalArgumentException) {
+                Reforge.NONE
             }
-            if (lore.contains("${ChatColor.YELLOW}${ChatColor.BOLD}SET BONUS: ")) {
-                println(clore[clore.indexOf(lore)].split(": ${ChatColor.RESET}${ChatColor.RED}")[1])
-                abilities.add(ItemAbility.revNameMap[clore[clore.indexOf(lore)].split(": ${ChatColor.RESET}${ChatColor.RED}")[1]]!!)
-            }
-        }
 
-
+            BnogoSQL.con.prepareStatement("INSERT INTO \"gearItems\" VALUES ($id, )")
+        }
     }
 
     fun applyChange(change: Change) {

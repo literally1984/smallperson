@@ -5,5 +5,6 @@ enum class BItemType {
     SCROLL,
     WEAPON,
     ARMOR,
+    CRAFT_ITEM,
     MISC
 }

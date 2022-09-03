@@ -30,6 +30,7 @@ fun getAuctionType(item: ItemStack): AuctionType {
                 BItemType.WEAPON -> AuctionType.WEAPON
                 BItemType.ARMOR -> AuctionType.ARMOR
                 BItemType.MISC -> AuctionType.OTHER
+                BItemType.CRAFT_ITEM -> AuctionType.OTHER
             }
         }
         // Checks if the item is a food item
