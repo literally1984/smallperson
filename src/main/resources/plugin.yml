@@ -1,6 +1,6 @@
 name: BnogoRPG
 version: 0.0.4
-main: games.bnogocarft.bnogorpg.Main
+main: me.bnogocarft.bnogorpg.Main
 prefix: BnogoRPG
 authors: [BongoCat]
 description: A custom coded plugin made for BnogoCarft

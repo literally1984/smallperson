@@ -2,12 +2,18 @@ package me.bnogocarft.bnogorpg.Utils.BItemStack.BItems
 
 import me.bnogocarft.bnogorpg.Updater.Change.Change
 import me.bnogocarft.bnogorpg.Updater.Change.StatChange
+import me.bnogocarft.bnogorpg.Utils.BItemStack.Rarity.Rarity
+import me.bnogocarft.bnogorpg.Utils.BItemStack.Rarity.RarityUtils
 import me.bnogocarft.bnogorpg.Utils.BItemStack.Reforge
 import me.bnogocarft.bnogorpg.Utils.Database.BnogoSQL
+import me.bnogocarft.bnogorpg.Utils.Exceptions.InvalidConstructorInputException
 import me.bnogocarft.bnogorpg.Utils.ItemFactory.ItemAbility
 import me.bnogocarft.bnogorpg.Utils.StatUtils.ItemStat
+import me.bnogocarft.bnogorpg.Utils.serializeItem
 import org.bukkit.ChatColor
 import org.bukkit.inventory.ItemStack
+import org.omg.CORBA.Object
+import java.util.Objects
 
 open class BGear(item: ItemStack) : BItem(item) {
 
@@ -41,7 +47,7 @@ open class BGear(item: ItemStack) : BItem(item) {
      */
     open val Item = item
     lateinit var initItem: ItemStack
-    var id: Int = 0
+    var id: Int = -1
         set(value) {
             field = value
             val copy = this.initItem.itemMeta.clone()
@@ -89,30 +95,56 @@ open class BGear(item: ItemStack) : BItem(item) {
     private var idLine = 0
 
     init {
-        if (item.itemMeta != null) {
-            this.initItem = item
-            val clore = item.itemMeta.lore
-            for (lore in item.itemMeta.lore) {
-                if (lore.contains("${ChatColor.AQUA}ID: ")) {
-                    id = lore.split("ID: ")[1].toInt()
-                    idLine = clore.indexOf(lore)
+        run {
+            if (item.itemMeta != null) {
+                this.initItem = item
+                val clore = item.itemMeta.lore
+                for (lore in item.itemMeta.lore) {
+                    if (lore.contains("${ChatColor.AQUA}ID: ")) {
+                        id = lore.split("ID: ")[1].toInt()
+                        idLine = clore.indexOf(lore)
+                    }
+                    if (lore.contains("Level:")) {
+                        level = lore.split(": ${ChatColor.GRAY}")[1].toLong()
+                        exp = clore[clore.indexOf(lore) + 1].split(": ${ChatColor.GRAY}")[1].split("/")[0].toLong()
+                    }
+                    if (lore.contains("${ChatColor.YELLOW}${ChatColor.BOLD}SET BONUS: ")) {
+                        println(clore[clore.indexOf(lore)].split(": ${ChatColor.RESET}${ChatColor.RED}")[1])
+                        abilities.add(ItemAbility.revNameMap[clore[clore.indexOf(lore)].split(": ${ChatColor.RESET}${ChatColor.RED}")[1]]!!)
+                    }
                 }
-                if (lore.contains("Level:")) {
-                    level = lore.split(": ${ChatColor.GRAY}")[1].toLong()
-                    exp = clore[clore.indexOf(lore) + 1].split(": ${ChatColor.GRAY}")[1].split("/")[0].toLong()
-                }
-                if (lore.contains("${ChatColor.YELLOW}${ChatColor.BOLD}SET BONUS: ")) {
-                    println(clore[clore.indexOf(lore)].split(": ${ChatColor.RESET}${ChatColor.RED}")[1])
-                    abilities.add(ItemAbility.revNameMap[clore[clore.indexOf(lore)].split(": ${ChatColor.RESET}${ChatColor.RED}")[1]]!!)
-                }
-            }
-            reforge = try {
-                Reforge.valueOf(item.itemMeta.displayName.split(" ")[0])
-            } catch (e: IllegalArgumentException) {
-                Reforge.NONE
-            }
 
-            BnogoSQL.con.prepareStatement("INSERT INTO \"gearItems\" VALUES ($id, )")
+                if (id == -1) {
+                    throw InvalidConstructorInputException("Item does not have an ID Line")
+                }
+
+                reforge = try {
+                    Reforge.valueOf(item.itemMeta.displayName.split(" ")[0])
+                } catch (e: IllegalArgumentException) {
+                    Reforge.NONE
+                }
+
+                val stringAbilityArray = ArrayList<String>()
+                for (ability in abilities) {
+                    stringAbilityArray.add("\"${ability}\"")
+                }
+                val beforeString = stringAbilityArray.joinToString(", ")
+
+                print("INSERT INTO \"gearItems\" VALUES (" +
+                        "$id, " +
+                        "'$material', " +
+                        "${rarity!!.getStars()}, " +
+                        "'${item.itemMeta.displayName}', " +
+                        "'${serializeItem(item)}', " +
+                        "ARRAY [$beforeString];")
+                BnogoSQL.con.prepareStatement("INSERT INTO \"gearItems\" VALUES (" +
+                        "$id, " +
+                        "'$material', " +
+                        "${rarity!!.getStars()}, " +
+                        "'${item.itemMeta.displayName}', " +
+                        "'${serializeItem(item)}', " +
+                        "ARRAY [$beforeString]::text[]);").execute()
+            }
         }
     }
 
