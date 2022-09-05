@@ -7,6 +7,7 @@ import me.bnogocarft.bnogorpg.Utils.BItemStack.BItemType
 import me.bnogocarft.bnogorpg.Utils.BItemStack.BItems.BItemUtils
 import me.bnogocarft.bnogorpg.Utils.BItemStack.BItems.BMaterial
 import me.bnogocarft.bnogorpg.Utils.BItemStack.Rarity.Rarity
+import me.bnogocarft.bnogorpg.Utils.Exceptions.InvalidConstructorInputException
 import org.bukkit.Bukkit
 import org.bukkit.ChatColor
 import org.bukkit.Color
@@ -87,7 +88,9 @@ class BItemFactory {
                     meta.lore = lore
                     itemStack.itemMeta = meta
 
-                    BItemUtils.addBArmor(itemStack, item.stats)
+                    try {
+                        BItemUtils.addBArmor(itemStack, item.stats)
+                    } catch (ignored: InvalidConstructorInputException) {}
 
                     return itemStack
                 }
@@ -102,8 +105,8 @@ class BItemFactory {
                     // Stats lore
                     lore.add("${ChatColor.RED}Damage: ${ChatColor.DARK_GRAY}+${item.stats[0]}")
                     lore.add("${ChatColor.GREEN}Defense: ${ChatColor.DARK_GRAY}+${item.stats[1]}")
-                    lore.add("${ChatColor.LIGHT_PURPLE}Magic Dmg: ${ChatColor.DARK_GRAY}+${item.stats[2]}")
-                    lore.add("${ChatColor.DARK_PURPLE}Magic Def: ${ChatColor.DARK_GRAY}+${item.stats[3]}")
+                    lore.add("${ChatColor.LIGHT_PURPLE}Magic DMG: ${ChatColor.DARK_GRAY}+${item.stats[2]}")
+                    lore.add("${ChatColor.DARK_PURPLE}Magic DEF: ${ChatColor.DARK_GRAY}+${item.stats[3]}")
                     lore.add("${ChatColor.AQUA}Mana: ${ChatColor.DARK_GRAY}+${item.stats[4]}")
                     lore.add("${ChatColor.GOLD}Stamina: ${ChatColor.DARK_GRAY}+${item.stats[5]}")
                     lore.add("")
@@ -149,7 +152,9 @@ class BItemFactory {
                     meta.lore = lore
                     itemStack.itemMeta = meta
 
-                    BItemUtils.addBWeapon(itemStack, item.stats)
+                    try {
+                        BItemUtils.addBWeapon(itemStack, item.stats)
+                    } catch (ignored: InvalidConstructorInputException) {}
 
                     return itemStack
                 }
