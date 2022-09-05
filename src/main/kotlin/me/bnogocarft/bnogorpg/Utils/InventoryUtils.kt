@@ -106,11 +106,15 @@ class GUIFactory {
 
         fun produceInventory(inv: FactoryInventory): Inventory {
             val inve = inv.inventory
-            val clickables = HashMap<Int, BackgroundItem>()
+            val clickables = HashMap<Int, GUIBackground>()
+            val slotFuncs = ArrayList<SlotFunction>()
             for (layer in inv.layers) {
-                for (item in layer.background) {
+                for (item in layer.backgrounds) {
                     inve.setItem(item.slot, item.item)
                     clickables[item.slot] = item
+                }
+                for (func in layer.slotFuncs) {
+                    slotFuncs.add(func)
                 }
                 for (button in layer.buttons) {
                     inve.setItem(button.slot, button.item)
@@ -118,19 +122,19 @@ class GUIFactory {
                 }
             }
             val buttons = ArrayList<GUIButton>()
-            val backgroundItems = ArrayList<BackgroundItem>()
+            val GUIBackgrounds = ArrayList<GUIBackground>()
             for (slot in clickables.keys) {
                 if (clickables[slot]!! is GUIButton) {
                     buttons.add(clickables[slot] as GUIButton)
                     continue
                 }
-                if (clickables[slot] is BackgroundItem) {
-                    backgroundItems.add(clickables[slot]!!)
+                if (clickables[slot] is GUIBackground) {
+                    GUIBackgrounds.add(clickables[slot]!!)
                     continue
                 }
             }
 
-            guis.add(GUI(inve, buttons, backgroundItems))
+            guis.add(GUI(inve, buttons, GUIBackgrounds, slotFuncs))
             return inve
         }
     }
@@ -141,16 +145,26 @@ data class FactoryInventory(val name: String, val size: Int) {
     var layers = ArrayList<GUILayer>()
 }
 
-data class GUILayer(val buttons: List<GUIButton>, val background: List<BackgroundItem>)
+class GUILayer {
+    val buttons = ArrayList<GUIButton>()
+    val backgrounds = ArrayList<GUIBackground>()
+    val slotFuncs = ArrayList<SlotFunction>()
+}
 
 data class GUIButton(override var item: ItemStack, override var slot: Int, val run: (OpenGUI) -> Unit) :
-    BackgroundItem(item, slot)
+    GUIBackground(item, slot)
 
-open class BackgroundItem(open var item: ItemStack, open var slot: Int)
+open class GUIBackground(open var item: ItemStack, open var slot: Int)
 
-open class GUI(open val inv: Inventory, open val buttons: List<GUIButton>, open val background: List<BackgroundItem>)
-data class OpenGUI(val gui: GUI, val player: Player, val slot: Int, val currentItem: ItemStack) :
-    GUI(gui.inv, gui.buttons, gui.background)
+data class SlotFunction(val slot: Int, val run: (OpenGUI) -> Unit)
+
+open class GUI(
+    open val inv: Inventory,
+    open val buttons: List<GUIButton>,
+    open val background: List<GUIBackground>,
+    open val slotFuncs: List<SlotFunction>)
+data class OpenGUI(val gui: GUI, val player: Player, val slot: Int, var currentItem: ItemStack) :
+    GUI(gui.inv, gui.buttons, gui.background, gui.slotFuncs)
 
 class GUIListeners(inventories: List<GUI>) : Listener {
     var invs = inventories
@@ -161,18 +175,22 @@ class GUIListeners(inventories: List<GUI>) : Listener {
             if (e.inventory.title.equals(inv.inv.name)) {// Checks for matching GUI name
                 for (button in inv.buttons) {// Checks for matching button slots
                     if (e.rawSlot == button.slot) {
-                        print(button.slot)
-                        print("button")
                         // Runs the button's function
                         e.isCancelled = true
                         button.run(OpenGUI(inv, e.whoClicked as Player, e.slot, e.currentItem))
                         return
                     }
                 }
+                for (func in inv.slotFuncs) {// Checks for matching button slots
+                    if (e.rawSlot == func.slot) {
+                        // Runs the button's function
+                        e.isCancelled = true
+                        func.run(OpenGUI(inv, e.whoClicked as Player, e.slot, e.currentItem))
+                        return
+                    }
+                }
                 for (background in inv.background) {
                     if (e.rawSlot == background.slot) {
-                        print(background.slot)
-                        print("backgroound")
                         e.isCancelled = true
                         return
                     }

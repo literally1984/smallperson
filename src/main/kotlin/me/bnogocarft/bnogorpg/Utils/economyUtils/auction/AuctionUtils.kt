@@ -7,6 +7,7 @@ import me.bnogocarft.bnogorpg.Utils.BItemStack.BItems.BItem
 import me.bnogocarft.bnogorpg.Utils.Exceptions.InvalidConstructorInputException
 import me.bnogocarft.bnogorpg.Utils.Senders.MessageSender
 import me.bnogocarft.bnogorpg.economy.Auction.AHGui
+import me.bnogocarft.bnogorpg.economy.Auction.AHGui.Companion.returnToManagerPage
 import org.bukkit.Bukkit
 import org.bukkit.ChatColor
 import org.bukkit.Material
@@ -141,14 +142,13 @@ fun createAuctionItemFor(auc: Auction): ItemStack {
 
 fun createAuctionInfoGui(auc: Auction): Inventory {
     val fGui = GUIFactory.createInventory("${ChatColor.GOLD}Auction Info for: ${auc.ID}", 45)
-    val bk = ArrayList<BackgroundItem>()
-    val buttons = ArrayList<GUIButton>()
+    val layer1 = GUILayer()
     for (index in 0..44) {
-        bk.add(BackgroundItem(sBK, index))
+        layer1.backgrounds.add(GUIBackground(sBK, index))
     }
 
-    bk.add(BackgroundItem(createAuctionItemFor(auc), 13))
-    buttons.add(
+    layer1.backgrounds.add(GUIBackground(createAuctionItemFor(auc), 13))
+    layer1.buttons.add(
         GUIButton(
             AHGui.bidItem, 31,
             fun(gui: OpenGUI) {
@@ -204,7 +204,8 @@ fun createAuctionInfoGui(auc: Auction): Inventory {
             }
         )
     )
-    val layer1 = GUILayer(buttons, bk)
+
+    layer1.buttons.add(GUIButton(AHGui.exitItem, 8, ::returnToManagerPage))
 
     fGui.layers.add(layer1)
     return GUIFactory.produceInventory(fGui)

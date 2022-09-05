@@ -79,9 +79,9 @@ class EnchantUtils {
 
         fun generateBaseEnchantGUI() {
             val fInv = GUIFactory.createInventory("Enchantment Table", 54)
-            val backgroundz = ArrayList<BackgroundItem>()
+            val backgroundz = ArrayList<GUIBackground>()
             for (i in 0..53) {
-                backgroundz.add(BackgroundItem(sBK, i))
+                backgroundz.add(GUIBackground(sBK, i))
             }
 
             val bottomRow = ItemStack(Material.ENCHANTED_BOOK)
@@ -89,7 +89,7 @@ class EnchantUtils {
             meta.displayName = ""
             bottomRow.itemMeta = meta
             for (i in 45..53) {
-                backgroundz.add(BackgroundItem(bottomRow, i))
+                backgroundz.add(GUIBackground(bottomRow, i))
             }
 
             val buttons = ArrayList<GUIButton>()

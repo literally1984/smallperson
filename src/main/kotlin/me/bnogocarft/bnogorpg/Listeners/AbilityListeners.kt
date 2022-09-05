@@ -44,7 +44,7 @@ class AbilityListeners : Listener {
                     event.isCancelled = true
                     event.player.allowFlight = false
                     event.player.isFlying = false
-                    event.player.velocity = event.player.velocity.add(Vector(0.0, 1.0, 0.0))
+                    event.player.velocity = event.player.velocity.add(Vector(0.0, 3.0, 0.0))
                     print("Flight attempt cancelled")
                 }
             }

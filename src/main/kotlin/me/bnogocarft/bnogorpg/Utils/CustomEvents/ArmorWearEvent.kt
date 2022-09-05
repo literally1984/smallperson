@@ -56,6 +56,7 @@ class ArmorWearListeners : Listener {
 
                     val clickedItemStack = e.inventory.getItem(e.slot)
                     val armorEvent = ArmorWearEvent(p, clickedItemStack, "shift_left", type)
+                    Bukkit.getPluginManager().callEvent(armorEvent)
                     if (armorEvent.isCancelled) {
                         e.isCancelled = true
                     }
@@ -87,6 +88,7 @@ class ArmorWearListeners : Listener {
                 for (slot in nullSlots) {
                     if (getArmorSlot(item) == slot) {
                         val armorEvent = ArmorWearEvent(e.player, item, "right", type)
+                        Bukkit.getPluginManager().callEvent(armorEvent)
                         if (armorEvent.isCancelled) {
                             e.isCancelled = true
                         }

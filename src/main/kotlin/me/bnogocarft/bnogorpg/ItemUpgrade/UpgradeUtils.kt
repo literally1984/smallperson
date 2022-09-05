@@ -139,32 +139,29 @@ class UpgradeUtils {
         22 = empty slot
         */
         val fGui = GUIFactory.createInventory("Upgrade Item", 54)
-        val backgroundItems = ArrayList<BackgroundItem>()
+        val backgroundLayer = GUILayer()
 
         // Sets the backgound
         for (index in 0..53) {
             if (index == 22) {
                 continue
             }
-            backgroundItems.add(BackgroundItem(sBK, index))
+            backgroundLayer.backgrounds.add(GUIBackground(sBK, index))
         }
-        val backgroundLayer = GUILayer(ArrayList(), backgroundItems)
 
-        val buttons = ArrayList<GUIButton>()
-        buttons.add(GUIButton(atkItem, 1, ::upgradeATK))
-        buttons.add(GUIButton(defItem, 7, ::upgradeDEF))
-        buttons.add(GUIButton(mAtkItem, 19, ::upgradeMAGATK))
-        buttons.add(GUIButton(mDefItem, 25, ::upgradeMAGDEF))
-        buttons.add(GUIButton(stamItem, 37, ::upgradeSTAM))
-        buttons.add(GUIButton(manaItem, 43, ::upgradeMANA))
-        val layer2 = GUILayer(buttons, ArrayList())
+        val layer2 = GUILayer()
+        layer2.buttons.add(GUIButton(atkItem, 1, ::upgradeATK))
+        layer2.buttons.add(GUIButton(defItem, 7, ::upgradeDEF))
+        layer2.buttons.add(GUIButton(mAtkItem, 19, ::upgradeMAGATK))
+        layer2.buttons.add(GUIButton(mDefItem, 25, ::upgradeMAGDEF))
+        layer2.buttons.add(GUIButton(stamItem, 37, ::upgradeSTAM))
+        layer2.buttons.add(GUIButton(manaItem, 43, ::upgradeMANA))
         fGui.layers.add(backgroundLayer)
         fGui.layers.add(layer2)
 
         gui = GUIFactory.produceInventory(fGui)
     }
 
-    @SuppressWarnings("Deprecated")
     private fun upgradeATK(gui: OpenGUI) {
         val inv = gui.inv
         if (inv.getItem(22) != null) {
@@ -173,7 +170,6 @@ class UpgradeUtils {
                 val gear = BItemUtils.getBGear(item)
                 gear.stats.damage = gear.stats.damage + 1
                 gui.inv.setItem(22, gear.stats.item)
-                gui.player.updateInventory()
             }
         }
     }
@@ -184,7 +180,8 @@ class UpgradeUtils {
             val item = inv.getItem(22)
             if (BItemUtils.getBType(item) != null) {
                 val gear = BItemUtils.getBGear(item)
-                gear.stats.defense = gear.stats.defense + 1
+                gear.stats.damage = gear.stats.defense + 1
+                gui.inv.setItem(22, gear.stats.item)
             }
         }
     }
@@ -195,7 +192,8 @@ class UpgradeUtils {
             val item = inv.getItem(22)
             if (BItemUtils.getBType(item) != null) {
                 val gear = BItemUtils.getBGear(item)
-                gear.stats.magicDmg = gear.stats.magicDmg + 1
+                gear.stats.damage = gear.stats.magicDmg + 1
+                gui.inv.setItem(22, gear.stats.item)
             }
         }
     }
@@ -206,7 +204,8 @@ class UpgradeUtils {
             val item = inv.getItem(22)
             if (BItemUtils.getBType(item) != null) {
                 val gear = BItemUtils.getBGear(item)
-                gear.stats.magicDef = gear.stats.magicDef + 1
+                gear.stats.damage = gear.stats.magicDef + 1
+                gui.inv.setItem(22, gear.stats.item)
             }
         }
     }
@@ -217,7 +216,8 @@ class UpgradeUtils {
             val item = inv.getItem(22)
             if (BItemUtils.getBType(item) != null) {
                 val gear = BItemUtils.getBGear(item)
-                gear.stats.mana = gear.stats.mana + 1
+                gear.stats.damage = gear.stats.mana + 1
+                gui.inv.setItem(22, gear.stats.item)
             }
         }
     }
@@ -228,7 +228,8 @@ class UpgradeUtils {
             val item = inv.getItem(22)
             if (BItemUtils.getBType(item) != null) {
                 val gear = BItemUtils.getBGear(item)
-                gear.stats.stamina = gear.stats.stamina + 1
+                gear.stats.damage = gear.stats.stamina + 1
+                gui.inv.setItem(22, gear.stats.item)
             }
         }
     }

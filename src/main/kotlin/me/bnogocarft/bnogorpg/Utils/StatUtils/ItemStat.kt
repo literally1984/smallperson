@@ -22,12 +22,9 @@ data class ItemStat(val item: ItemStack) {
                     val index = item.itemMeta.lore.indexOf(s)
                     val copy = item.itemMeta.clone()
                     val copyLore = copy.lore
-                    print(copyLore[index])
                     copyLore[index] = "${ChatColor.RED}Damage: ${ChatColor.DARK_GRAY}+$field"
-                    print(copyLore[index])
                     copy.lore = copyLore
                     item.itemMeta = copy
-                    print(item.itemMeta.lore[index])
                 }
             }
         }
@@ -36,9 +33,11 @@ data class ItemStat(val item: ItemStack) {
             field = value
             for (s: String in item.itemMeta.lore) {
                 if (s.contains("${ChatColor.GREEN}Defense: ${ChatColor.DARK_GRAY}+")) {
+                    val index = item.itemMeta.lore.indexOf(s)
                     val copy = item.itemMeta.clone()
-                    val lore = copy.lore
-                    lore[lore.indexOf(s)] = "${ChatColor.GREEN}Defense: ${ChatColor.DARK_GRAY}+$value"
+                    val copyLore = copy.lore
+                    copyLore[index] = "${ChatColor.GREEN}Defense: ${ChatColor.DARK_GRAY}+$field"
+                    copy.lore = copyLore
                     item.itemMeta = copy
                 }
             }
@@ -47,10 +46,12 @@ data class ItemStat(val item: ItemStack) {
         set(value) {
             field = value
             for (s: String in item.itemMeta.lore) {
-                if (s.contains("${ChatColor.LIGHT_PURPLE}Magic Dmg: ${ChatColor.DARK_GRAY}+")) {
+                if (s.contains("${ChatColor.LIGHT_PURPLE}Magic DMG: ${ChatColor.DARK_GRAY}+")) {
+                    val index = item.itemMeta.lore.indexOf(s)
                     val copy = item.itemMeta.clone()
-                    val lore = copy.lore
-                    lore[lore.indexOf(s)] = "${ChatColor.LIGHT_PURPLE}Magic Dmg: ${ChatColor.DARK_GRAY}+$value"
+                    val copyLore = copy.lore
+                    copyLore[index] = "${ChatColor.LIGHT_PURPLE}Magic DMG: ${ChatColor.DARK_GRAY}+$field"
+                    copy.lore = copyLore
                     item.itemMeta = copy
                 }
             }
@@ -59,10 +60,12 @@ data class ItemStat(val item: ItemStack) {
         set(value) {
             field = value
             for (s: String in item.itemMeta.lore) {
-                if (s.contains("${ChatColor.DARK_PURPLE}Magic Def: ${ChatColor.DARK_GRAY}+")) {
+                if (s.contains("${ChatColor.DARK_PURPLE}Magic DEF: ${ChatColor.DARK_GRAY}+")) {
+                    val index = item.itemMeta.lore.indexOf(s)
                     val copy = item.itemMeta.clone()
-                    val lore = copy.lore
-                    lore[lore.indexOf(s)] = "${ChatColor.DARK_PURPLE}Magic Def: ${ChatColor.DARK_GRAY}+$value"
+                    val copyLore = copy.lore
+                    copyLore[index] = "${ChatColor.DARK_PURPLE}Magic DEF: ${ChatColor.DARK_GRAY}+$field"
+                    copy.lore = copyLore
                     item.itemMeta = copy
                 }
             }
@@ -72,9 +75,11 @@ data class ItemStat(val item: ItemStack) {
             field = value
             for (s: String in item.itemMeta.lore) {
                 if (s.contains("${ChatColor.AQUA}Mana: ${ChatColor.DARK_GRAY}+")) {
+                    val index = item.itemMeta.lore.indexOf(s)
                     val copy = item.itemMeta.clone()
-                    val lore = copy.lore
-                    lore[lore.indexOf(s)] = "${ChatColor.AQUA}Mana: ${ChatColor.DARK_GRAY}+$value"
+                    val copyLore = copy.lore
+                    copyLore[index] = "${ChatColor.AQUA}Mana: ${ChatColor.DARK_GRAY}+$field"
+                    copy.lore = copyLore
                     item.itemMeta = copy
                 }
             }
@@ -84,9 +89,11 @@ data class ItemStat(val item: ItemStack) {
             field = value
             for (s: String in item.itemMeta.lore) {
                 if (s.contains("${ChatColor.GOLD}Stamina: ${ChatColor.DARK_GRAY}+")) {
+                    val index = item.itemMeta.lore.indexOf(s)
                     val copy = item.itemMeta.clone()
-                    val lore = copy.lore
-                    lore[lore.indexOf(s)] = "${ChatColor.GOLD}Stamina: ${ChatColor.DARK_GRAY}+$value"
+                    val copyLore = copy.lore
+                    copyLore[index] = "${ChatColor.GOLD}Stamina: ${ChatColor.DARK_GRAY}+$field"
+                    copy.lore = copyLore
                     item.itemMeta = copy
                 }
             }

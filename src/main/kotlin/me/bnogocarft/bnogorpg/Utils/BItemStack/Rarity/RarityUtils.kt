@@ -5,7 +5,7 @@ import me.bnogocarft.bnogorpg.Utils.StringUtils
 class RarityUtils {
     companion object {
         fun getRarity(s: String): Rarity? {
-            when (s) {
+            return when (s) {
                 StringUtils.Common -> Rarity.COMMON
                 StringUtils.Uncommon -> Rarity.UNCOMMON
                 StringUtils.Rare -> Rarity.RARE
@@ -14,8 +14,10 @@ class RarityUtils {
                 StringUtils.Legendary -> Rarity.LEGENDARY
                 StringUtils.Mythical -> Rarity.MYTHICAL
                 StringUtils.Divine -> Rarity.DIVINE
+                else -> {
+                    null
+                }
             }
-            return null
         }
     }
 }
