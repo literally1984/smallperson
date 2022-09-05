@@ -64,6 +64,7 @@ enum class BMaterial {
     WOOD_SHOVEL,
 
     BLADE_OF_HERMES,
+    THUNDERBOLT,
 
     GRAPPLING_HOOK,
 
@@ -124,6 +125,7 @@ enum class BMaterial {
             LAPIS_LEGGINGS -> Material.LEATHER_LEGGINGS
             LAPIS_BOOTS -> Material.LEATHER_BOOTS
             DOUBLE_JUMP_BOOTS -> Material.LEATHER_BOOTS
+            THUNDERBOLT -> Material.BLAZE_ROD
         }
     }
 
@@ -191,6 +193,7 @@ enum class BMaterial {
             WOOD_PICKAXE -> Wood.pickaxe.itemMeta
             WOOD_SHOVEL -> Wood.shovel.itemMeta
             DOUBLE_JUMP_BOOTS -> DoubleJumpBoots.boots.itemMeta
+            THUNDERBOLT -> Thunderbolt.blade.itemMeta
         }
     }
     fun getStatVary(): ArrayList<String> {
@@ -611,6 +614,15 @@ enum class BMaterial {
                 vary.add("7-9")
                 vary.add("3-5")
                 vary.add("5-10")
+            }
+
+            THUNDERBOLT -> {
+                vary.add("10-12")
+                vary.add("2-4")
+                vary.add("8-10")
+                vary.add("1-3")
+                vary.add("40-50")
+                vary.add("35-45")
             }
         }
 

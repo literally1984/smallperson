@@ -10,6 +10,7 @@ enum class ItemAbility {
     QuickDash,
     BloodLust,
     DivineRetribution,
+    LightningChain,
     NONE;
 
     val CactusDesc = arrayListOf(
@@ -30,14 +31,18 @@ enum class ItemAbility {
     )
 
     val DivineDesc = arrayListOf(
-        "When an enemy is hit with this",
-        "weapon, they will have a 45%",
-        "chance to be smited"
+        "When an enemy is hit, they will",
+        "have a 45% chance to be smited",
     )
 
     val DoubleDesc = arrayListOf(
         "When the wearer jumps twice, they",
         "will jump again in the air"
+    )
+    val LightningDesc = arrayListOf(
+        "When the user right clicks with",
+        "this item in hand, a chain of",
+        "lighting strikes in front of them"
     )
 
     companion object {
@@ -48,6 +53,7 @@ enum class ItemAbility {
             nameMap[DivineRetribution] = "Divine Retribution"
             nameMap[BloodLust] = "Blood Lust"
             nameMap[DoubleJump] = "Double Jump"
+            nameMap[LightningChain] = "Lighting Chain"
 
             revNameMap["Spikey Spikes"] = CactusSet
             revNameMap["Enhanced Magic"] = LapisSet
@@ -55,6 +61,7 @@ enum class ItemAbility {
             revNameMap["Divine Retribution"] = DivineRetribution
             revNameMap["BloodLust"] = BloodLust
             revNameMap["Double Jump"] = DoubleJump
+            revNameMap["Lightning Chain"] = LightningChain
         }
 
         val nameMap = HashMap<ItemAbility, String>()
@@ -68,6 +75,7 @@ enum class ItemAbility {
             QuickDash -> QuickDashDesc
             DivineRetribution -> DivineDesc
             DoubleJump -> DoubleDesc
+            LightningChain -> LightningDesc
             else -> {
                 arrayListOf("")
             }
@@ -80,6 +88,7 @@ enum class ItemAbility {
             LapisSet -> AbilityTrigger.SET_BONUS
             QuickDash -> AbilityTrigger.RIGHT_AIR
             DivineRetribution -> AbilityTrigger.ATTACK
+            LightningChain -> AbilityTrigger.RIGHT_AIR
             DoubleJump -> AbilityTrigger.JUMP
             else -> {
                 AbilityTrigger.NONE
@@ -93,6 +102,7 @@ enum class ItemAbility {
             LapisSet -> "Set Bonus"
             QuickDash -> "Right Click"
             DivineRetribution -> "On-Hit"
+            LightningChain -> "Right Click"
             DoubleJump -> "Jump"
             else -> {
                 "NONE"
