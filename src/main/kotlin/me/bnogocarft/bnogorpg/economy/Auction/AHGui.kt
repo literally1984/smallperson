@@ -2,6 +2,7 @@ package me.bnogocarft.bnogorpg.economy.Auction
 
 import me.bnogocarft.bnogorpg.Main
 import me.bnogocarft.bnogorpg.Utils.*
+import me.bnogocarft.bnogorpg.Utils.BPlayer.OnlineBPlayers
 import me.bnogocarft.bnogorpg.Utils.economyUtils.auction.*
 import org.bukkit.Bukkit
 import org.bukkit.ChatColor
@@ -123,7 +124,7 @@ class AHGui {
             GUIButton(
                 createButton,
                 31,
-                ::bidsClickHandler
+                ::createClickHandler
             )
         )
         mGui.layers.add(mGUILayer1)
@@ -376,6 +377,23 @@ class AHGui {
 
     private fun selectHandler(gui: OpenGUI) {
         if (gui.currentItem.type != Material.AIR) {
+            // Checks if an Item is already selected for auction
+            if (gui.inv.getItem(13) != createItem) {
+                var addedToInv = false
+
+                //Checks if there is extra space in the player's inventory
+                for (item in gui.player.inventory.contents) {
+                    if (item == null || item.type == Material.AIR) {
+                        gui.player.inventory.addItem(gui.inv.getItem(13))
+                        addedToInv = true
+                    }
+                }
+
+                if (!addedToInv) {
+                    val player = OnlineBPlayers.get(gui.player)
+                    player!!.stash.add(gui.currentItem)
+                }
+            }
             gui.inv.setItem(13, gui.currentItem)
             gui.currentItem = ItemStack(Material.AIR)
         }
@@ -392,6 +410,8 @@ class AHGui {
             }
             layer1.backgrounds.add(GUIBackground(sBK, index))
         }
+
+        mGui.layers.add(layer1)
 
         return mGui
     }
@@ -417,6 +437,8 @@ class AHGui {
                 continue
             }
         }
+
+        inv.layers.add(layer1)
 
         gui.player.closeInventory()
         gui.player.openInventory(GUIFactory.produceInventory(inv))
@@ -463,9 +485,15 @@ class AHGui {
                 continue
             }
         }
+       inv.layers.add(layer1)
 
         gui.player.closeInventory()
         gui.player.openInventory(GUIFactory.produceInventory(inv))
+    }
+
+    private fun createClickHandler(gui: OpenGUI) {
+        gui.player.closeInventory()
+        gui.player.openInventory(createAucGui)
     }
 
     private fun createWeaponButton() {

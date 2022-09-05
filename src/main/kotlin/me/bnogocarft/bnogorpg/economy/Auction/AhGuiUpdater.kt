@@ -6,6 +6,7 @@ import me.bnogocarft.bnogorpg.Main
 import me.bnogocarft.bnogorpg.Utils.economyUtils.auction.*
 import org.bukkit.Bukkit
 import org.bukkit.ChatColor
+import org.bukkit.Material
 import org.bukkit.scheduler.BukkitRunnable
 
 class AhGuiUpdater : BukkitRunnable() {
@@ -13,7 +14,7 @@ class AhGuiUpdater : BukkitRunnable() {
         for (player in Bukkit.getOnlinePlayers()) {
             if (player.openInventory.title == "Auction House") {
                 val inventory = player.openInventory
-                if (inventory.getItem(11) == null) {
+                if (inventory.getItem(11).type == Material.AIR) {
                     return
                 }
                 when (

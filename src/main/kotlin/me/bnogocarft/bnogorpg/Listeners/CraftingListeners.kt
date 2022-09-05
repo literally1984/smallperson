@@ -18,7 +18,6 @@ class CraftingListeners : Listener {
                             event.recipe.result.itemMeta.displayName.contains("leather", true) ||
                             event.recipe.result.itemMeta.displayName.contains("wood", true))
         ) {
-            print("trigger")
             if (event.inventory.result != null) {
                 event.inventory.result = BItemFactory.makeItem(BItemUtils.getBMaterial(event.inventory.result))
             }

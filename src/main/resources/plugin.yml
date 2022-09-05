@@ -74,11 +74,18 @@ permissions:
     description: Gives all admin permissions
     children:
       bnogorpg.auction.forceend: true
+      bnogorpg.chat.admin: true
+      bnogorpg.mod: true
+  bnogorpg.mod:
+    description: gives you mod rank in chat
+    children:
+      bnogorpg.chat.mod: true
+      bnogorpg.auction.forceend: true
+  bnogorpg.auction.forceend:
+    description: Forces an auction to end
+  bnogorpg.chat.helper:
+    description: Gives you helper rank in chat
   bnogorpg.chat.admin:
     description: gives you admin rank in chat
   bnogorpg.chat.mod:
-    description: gives you mod rank in chat
-  bnogorpg.chat.helper:
-    description: Gives you helper rank in chat
-  bnogorpg.auction.forceend:
-    description: Forces an auction to end
+    description: gives you admin rank in chat

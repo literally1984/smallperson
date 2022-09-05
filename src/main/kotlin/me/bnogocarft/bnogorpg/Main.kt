@@ -23,6 +23,7 @@ import me.bnogocarft.bnogorpg.Reforge.ReforgeBlockListener
 import me.bnogocarft.bnogorpg.Reforge.ReforgeCommand
 import me.bnogocarft.bnogorpg.Updater.Updates.Update
 import me.bnogocarft.bnogorpg.Utils.*
+import me.bnogocarft.bnogorpg.Utils.BItemStack.BItems.BItemUtils
 import me.bnogocarft.bnogorpg.Utils.BPlayer.OnlineBPlayers
 import me.bnogocarft.bnogorpg.Utils.CustomEvents.ArmorWearListeners
 import me.bnogocarft.bnogorpg.Utils.Database.BnogoSQL
@@ -163,7 +164,7 @@ class Main : JavaPlugin() {
 
         val aucs = BnogoSQL.con.prepareStatement("SELECT * FROM auctions").executeQuery()
         while (aucs.next()) {
-            print(aucs.getString("item").replace(Regex("[\\[[\\]]*\\]]"), "").split(", "))
+            @Suppress("RegExpRedundantEscape", "RegExpSimplifiable", "RegExpRedundantNestedCharacterClass")
             val auction = Auction(
                 deserializeItem(aucs.getString("item").replace(Regex("[\\[[\\]]*\\]]"), "").split(", ")),
                 aucs.getFloat("startBid").toDouble(),
@@ -261,6 +262,21 @@ class Main : JavaPlugin() {
                 "INSERT INTO auctions VALUES ('${auc.ID}', '${serializeItem(auc.item)}', ${auc.startingBid}, '${auc.currentBidder}', ${auc.highestBid}, '${auc.creator}', '${auc.timeLeft}');"
             )
             query.execute()
+        }
+
+        for (item in BItemUtils.BGears.values) {
+            val stringAbilityArray = ArrayList<String>()
+            for (ability in item.abilities) {
+                stringAbilityArray.add("\"${ability}\"")
+            }
+            val beforeString = stringAbilityArray.joinToString(", ")
+            BnogoSQL.con.prepareStatement(
+                "UPDATE \"gearItems\" SET " +
+                        "\"stars\" = ${item.rarity!!.getStars()}, " +
+                        "\"name\" = '${item.initItem.itemMeta.displayName}', " +
+                        "\"itemStack\" = '${serializeItem(item.initItem)}', " +
+                        "\"abilities\" = ARRAY [$beforeString]::text[] " +
+                        "WHERE \"id\" = ${item.id}, \"type\" = ${item.initItem.itemMeta.displayName};").executeUpdate()
         }
     }
 

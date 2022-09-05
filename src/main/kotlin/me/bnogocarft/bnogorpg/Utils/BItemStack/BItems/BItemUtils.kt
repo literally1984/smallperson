@@ -6,9 +6,9 @@ import org.bukkit.inventory.ItemStack
 class BItemUtils {
 
     companion object {
-        private var BWeapons: HashMap<ItemStack, BWeapon> = HashMap()
-        private var BArmor: HashMap<ItemStack, BArmor> = HashMap()
-        private var BGears: HashMap<ItemStack, BGear> = HashMap()
+        private val BWeapons: HashMap<ItemStack, BWeapon> = HashMap()
+        private val BArmor: HashMap<ItemStack, BArmor> = HashMap()
+        val BGears: HashMap<ItemStack, BGear> = HashMap()
 
         fun getBType(item: ItemStack): String? {
             if (item.itemMeta != null && item.itemMeta.displayName != null) {
@@ -76,18 +76,18 @@ class BItemUtils {
 
         fun getBGear(item: ItemStack): BGear {
             if (BGears.containsKey(item)) return BGears[item]!!
-            when (getBType(item)) {
+            return when (getBType(item)) {
                 "weapon" -> {
                     addBWeapon(item, BWeapon(item))
-                    return BGears[item]!!
+                    BGears[item]!!
                 }
 
                 "armor" -> {
                     addBArmor(item, BArmor(item))
-                    return BGears[item]!!
+                    BGears[item]!!
                 }
 
-                else -> return BGears[item]!!
+                else -> BGears[item]!!
             }
         }
 

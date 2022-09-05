@@ -2,8 +2,6 @@ package me.bnogocarft.bnogorpg.Utils.BItemStack.BItems
 
 import me.bnogocarft.bnogorpg.Updater.Change.Change
 import me.bnogocarft.bnogorpg.Updater.Change.StatChange
-import me.bnogocarft.bnogorpg.Utils.BItemStack.Rarity.Rarity
-import me.bnogocarft.bnogorpg.Utils.BItemStack.Rarity.RarityUtils
 import me.bnogocarft.bnogorpg.Utils.BItemStack.Reforge
 import me.bnogocarft.bnogorpg.Utils.Database.BnogoSQL
 import me.bnogocarft.bnogorpg.Utils.Exceptions.InvalidConstructorInputException
@@ -12,8 +10,6 @@ import me.bnogocarft.bnogorpg.Utils.StatUtils.ItemStat
 import me.bnogocarft.bnogorpg.Utils.serializeItem
 import org.bukkit.ChatColor
 import org.bukkit.inventory.ItemStack
-import org.omg.CORBA.Object
-import java.util.Objects
 
 open class BGear(item: ItemStack) : BItem(item) {
 
@@ -130,20 +126,23 @@ open class BGear(item: ItemStack) : BItem(item) {
                 }
                 val beforeString = stringAbilityArray.joinToString(", ")
 
-                print("INSERT INTO \"gearItems\" VALUES (" +
-                        "$id, " +
-                        "'$material', " +
-                        "${rarity!!.getStars()}, " +
-                        "'${item.itemMeta.displayName}', " +
-                        "'${serializeItem(item)}', " +
-                        "ARRAY [$beforeString];")
-                BnogoSQL.con.prepareStatement("INSERT INTO \"gearItems\" VALUES (" +
-                        "$id, " +
-                        "'$material', " +
-                        "${rarity!!.getStars()}, " +
-                        "'${item.itemMeta.displayName}', " +
-                        "'${serializeItem(item)}', " +
-                        "ARRAY [$beforeString]::text[]);").execute()
+                val affectedLines = BnogoSQL.con.prepareStatement(
+                    "UPDATE \"gearItems\" SET " +
+                        "\"stars\" = ${rarity!!.getStars()}, " +
+                        "\"name\" = '${item.itemMeta.displayName}', " +
+                        "\"itemStack\" = '${serializeItem(item)}', " +
+                        "\"abilities\" = ARRAY [$beforeString]::text[] " +
+                            "WHERE \"id\" = ${id}, \"type\" = ${item.itemMeta.displayName};").executeUpdate()
+
+                if (affectedLines == 0) {
+                    BnogoSQL.con.prepareStatement("INSERT INTO \"gearItems\" VALUES (" +
+                            "$id, " +
+                            "'$material', " +
+                            "${rarity!!.getStars()}, " +
+                            "'${item.itemMeta.displayName}', " +
+                            "'${serializeItem(item)}', " +
+                            "ARRAY [$beforeString]::text[]);").execute()
+                }
             }
         }
     }
