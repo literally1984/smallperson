@@ -73,6 +73,7 @@ class EnchantUtils {
                 BMaterial.BLADE_OF_HERMES -> TODO()
                 BMaterial.GRAPPLING_HOOK -> TODO()
                 BMaterial.DOUBLE_JUMP_BOOTS -> TODO()
+                BMaterial.THUNDERBOLT -> TODO()
             }
             return returnList
         }

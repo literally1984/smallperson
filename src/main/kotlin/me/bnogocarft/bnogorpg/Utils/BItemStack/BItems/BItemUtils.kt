@@ -16,6 +16,7 @@ class BItemUtils {
                     item.itemMeta.displayName.lowercase().contains("blade") ||
                     item.itemMeta.displayName.lowercase().contains("waraxe") ||
                     item.itemMeta.displayName.lowercase().contains("warhammer") ||
+                    item.itemMeta.displayName.lowercase().contains("thunderbolt") ||
                     item.itemMeta.displayName.lowercase().contains("scythe")
                 ) {
                     return "weapon"

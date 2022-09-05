@@ -202,6 +202,7 @@ class Main : JavaPlugin() {
         BladeOfHermes()
         GrapplerItem()
         DoubleJumpBoots()
+        Thunderbolt()
         cSender.sendMessage("$logo Registered custom Items")
 
         cSender.sendMessage("$logo Enabling RecipeBook...")
@@ -276,7 +277,7 @@ class Main : JavaPlugin() {
                         "\"name\" = '${item.initItem.itemMeta.displayName}', " +
                         "\"itemStack\" = '${serializeItem(item.initItem)}', " +
                         "\"abilities\" = ARRAY [$beforeString]::text[] " +
-                        "WHERE \"id\" = ${item.id}, \"type\" = ${item.initItem.itemMeta.displayName};").executeUpdate()
+                        "WHERE \"id\" = ${item.id} AND \"type\" = '${item.initItem.itemMeta.displayName}';").executeUpdate()
         }
     }
 

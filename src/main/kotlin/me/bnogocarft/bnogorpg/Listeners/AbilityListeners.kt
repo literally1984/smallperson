@@ -81,26 +81,41 @@ class AbilityListeners : Listener {
                             val dir = p.location.direction.normalize()
                             val world = p.location.world
                             val strike1 = p.location.add(dir.multiply(2))
-                            val strike2 = p.location.add(dir.multiply(3))
-                            val strike3 = p.location.add(dir.multiply(4))
+                            val strike2 = p.location.add(p.location.direction.normalize().multiply(3))
+                            val strike3 = p.location.add(p.location.direction.normalize().multiply(4))
                             world.strikeLightning(strike1)
+                            world.strikeLightningEffect(strike1)
+                            world.strikeLightning(strike1)
+                            world.strikeLightningEffect(strike1)
+                            world.strikeLightning(strike1)
+                            world.strikeLightningEffect(strike1)
                             world.createExplosion(strike1, 1f)
 
                             Bukkit.getScheduler().scheduleSyncDelayedTask(
                                 Main.instance,
                                 {
                                     world.strikeLightning(strike2)
+                                    world.strikeLightningEffect(strike2)
+                                    world.strikeLightning(strike2)
+                                    world.strikeLightningEffect(strike2)
+                                    world.strikeLightning(strike2)
+                                    world.strikeLightningEffect(strike2)
                                     world.createExplosion(strike2, 1f)
 
                                     Bukkit.getScheduler().scheduleSyncDelayedTask(
                                         Main.instance,
                                         {
                                             world.strikeLightning(strike3)
+                                            world.strikeLightningEffect(strike3)
+                                            world.strikeLightning(strike3)
+                                            world.strikeLightningEffect(strike3)
+                                            world.strikeLightning(strike3)
+                                            world.strikeLightningEffect(strike3)
                                             world.createExplosion(strike3, 1f)
-                                        }, 20
+                                        }, 10
                                     )
 
-                                }, 20
+                                }, 10
                             )
                         }
                     }

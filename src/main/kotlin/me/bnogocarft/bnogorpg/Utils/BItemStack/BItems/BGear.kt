@@ -132,7 +132,7 @@ open class BGear(item: ItemStack) : BItem(item) {
                         "\"name\" = '${item.itemMeta.displayName}', " +
                         "\"itemStack\" = '${serializeItem(item)}', " +
                         "\"abilities\" = ARRAY [$beforeString]::text[] " +
-                            "WHERE \"id\" = ${id}, \"type\" = ${item.itemMeta.displayName};").executeUpdate()
+                            "WHERE \"id\" = ${id} AND \"type\" = '$material';").executeUpdate()
 
                 if (affectedLines == 0) {
                     BnogoSQL.con.prepareStatement("INSERT INTO \"gearItems\" VALUES (" +
