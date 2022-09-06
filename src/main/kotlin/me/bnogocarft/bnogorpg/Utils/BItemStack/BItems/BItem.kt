@@ -8,7 +8,6 @@ import org.bukkit.ChatColor
 import org.bukkit.inventory.ItemStack
 
 open class BItem(item: ItemStack) {
-    val Enchants = ArrayList<BEnchantment>()
 
     var material: BMaterial
 
@@ -68,13 +67,5 @@ open class BItem(item: ItemStack) {
                 BMaterial.valueOf(newName)
             }
         }
-    }
-
-    fun addEnchantment(enchantment: BEnchantment) {
-        Enchants.add(enchantment)
-    }
-
-    fun removeEnchantment(enchantment: BEnchantment) {
-        Enchants.remove(enchantment)
     }
 }

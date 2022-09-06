@@ -131,7 +131,7 @@ class AHGui {
 
         mainGui = GUIFactory.produceInventory(mGui)
 
-        val createGui = GUIFactory.createInventory("Create an Auction", 45)
+        val createGui = GUIFactory.createInventory("Create an Auction", 54)
         val createGUILayer1 = GUILayer()
         for (index in 0..53) {
             createGUILayer1.backgrounds.add(GUIBackground(sBK, index))
@@ -142,6 +142,7 @@ class AHGui {
         }
 
         createGUILayer1.backgrounds.add(GUIBackground(createItem, 13))
+        createGui.layers.add(createGUILayer1)
 
         createAucGui = GUIFactory.produceInventory(createGui)
     }
@@ -379,23 +380,11 @@ class AHGui {
         if (gui.currentItem.type != Material.AIR) {
             // Checks if an Item is already selected for auction
             if (gui.inv.getItem(13) != createItem) {
-                var addedToInv = false
-
-                //Checks if there is extra space in the player's inventory
-                for (item in gui.player.inventory.contents) {
-                    if (item == null || item.type == Material.AIR) {
-                        gui.player.inventory.addItem(gui.inv.getItem(13))
-                        addedToInv = true
-                    }
-                }
-
-                if (!addedToInv) {
-                    val player = OnlineBPlayers.get(gui.player)
-                    player!!.stash.add(gui.currentItem)
-                }
+                gui.player.inventory.addItem(gui.inv.getItem(13))
             }
-            gui.inv.setItem(13, gui.currentItem)
+            gui.player.openInventory.setItem(13, gui.currentItem)
             gui.currentItem = ItemStack(Material.AIR)
+            gui.player.openInventory.bottomInventory.setItem(gui.slot, null)
         }
     }
 

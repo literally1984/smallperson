@@ -17,6 +17,19 @@ class AhGuiUpdater : BukkitRunnable() {
                 if (inventory.getItem(11).type == Material.AIR) {
                     return
                 }
+
+                val auc = try {
+                    getAuctionByID(
+                        inventory.getItem(11).itemMeta.lore[
+                                inventory.getItem(11).itemMeta.lore.size - 1
+                        ].split(
+                            ": ${ChatColor.GRAY}"
+                        )[1])
+                } catch (e: IllegalArgumentException) {
+                    inventory.setItem(11, null)
+                    return
+                }
+
                 when (
                     getAuctionType(
                         getAuctionByID(

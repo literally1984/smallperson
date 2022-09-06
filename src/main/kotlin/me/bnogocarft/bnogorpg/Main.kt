@@ -116,7 +116,7 @@ class Main : JavaPlugin() {
 
         cSender.sendMessage("$logo Main class variables have been instanced")
         cSender.sendMessage("$logo Overriding default combat Items...")
-        DefaultOverrider.overrideRecipes()
+        //DefaultOverrider.overrideRecipes()
         cSender.sendMessage("$logo Overriding default combat Items... Done")
 
         registerGlow()
@@ -201,7 +201,7 @@ class Main : JavaPlugin() {
         LapisArmor()
         BladeOfHermes()
         GrapplerItem()
-        DoubleJumpBoots()
+        //DoubleJumpBoots()
         Thunderbolt()
         cSender.sendMessage("$logo Registered custom Items")
 
