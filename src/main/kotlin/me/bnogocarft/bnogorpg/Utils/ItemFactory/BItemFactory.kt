@@ -6,8 +6,10 @@ import me.bnogocarft.bnogorpg.Utils.Abilities.ItemAbility.AbilityTrigger
 import me.bnogocarft.bnogorpg.Utils.BItemStack.BItemType
 import me.bnogocarft.bnogorpg.Utils.BItemStack.BItems.BItemUtils
 import me.bnogocarft.bnogorpg.Utils.BItemStack.BItems.BMaterial
+import me.bnogocarft.bnogorpg.Utils.BItemStack.CraftItemType
 import me.bnogocarft.bnogorpg.Utils.BItemStack.Rarity.Rarity
 import me.bnogocarft.bnogorpg.Utils.Exceptions.InvalidConstructorInputException
+import me.bnogocarft.bnogorpg.Utils.StatUtils.ItemStat
 import org.bukkit.Bukkit
 import org.bukkit.ChatColor
 import org.bukkit.Color
@@ -18,10 +20,11 @@ import org.bukkit.inventory.meta.LeatherArmorMeta
 data class FactoryItem(val name: String, val mat: Material, val type: BItemType) {
     val abilities = ArrayList<ItemAbility>()
     val customAbility = ArrayList<String>()
-    val levelReq = 0
+    val levelReq = -1
     var stats = ArrayList<Int>()
     var rarity = Rarity.COMMON
     var armorColor: Color? = null
+    var craftItemType: CraftItemType? = null
 }
 
 class BItemFactory {
@@ -88,10 +91,6 @@ class BItemFactory {
                     meta.lore = lore
                     itemStack.itemMeta = meta
 
-                    try {
-                        BItemUtils.addBArmor(itemStack, item.stats)
-                    } catch (ignored: InvalidConstructorInputException) {}
-
                     return itemStack
                 }
 
@@ -151,10 +150,6 @@ class BItemFactory {
 
                     meta.lore = lore
                     itemStack.itemMeta = meta
-
-                    try {
-                        BItemUtils.addBWeapon(itemStack, item.stats)
-                    } catch (ignored: InvalidConstructorInputException) {}
 
                     return itemStack
                 }
@@ -262,42 +257,95 @@ class BItemFactory {
                     meta.displayName = item.name
                     var type = ""
 
-                    // Stats lore
-                    lore.add("${ChatColor.RED}Damage: ${ChatColor.DARK_GRAY}+${item.stats[0]}-${item.stats[1]}")
-                    lore.add("${ChatColor.GREEN}Defense: ${ChatColor.DARK_GRAY}+${item.stats[2]}-${item.stats[3]}")
-                    lore.add("${ChatColor.LIGHT_PURPLE}Magic Dmg: ${ChatColor.DARK_GRAY}+${item.stats[4]}-${item.stats[5]}")
-                    lore.add("${ChatColor.DARK_PURPLE}Magic Def: ${ChatColor.DARK_GRAY}+${item.stats[6]}-${item.stats[7]}")
-                    lore.add("${ChatColor.AQUA}Mana: ${ChatColor.DARK_GRAY}+${item.stats[8]}-${item.stats[9]}")
-                    lore.add("${ChatColor.GOLD}Stamina: ${ChatColor.DARK_GRAY}+${item.stats[10]}-${item.stats[11]}")
-                    lore.add("")
-
-                    // abilities lore
-                    for (ability in item.abilities) {
-                        if (ability.getType().equals(AbilityTrigger.SET_BONUS)) {
-                            lore.add("${ChatColor.YELLOW}${ChatColor.BOLD}Set Bonus: ${ChatColor.RESET}${ChatColor.RED}${ItemAbility.nameMap[ability]}")
-                            type = "armor"
-                            for (s in ability.getDescription()) lore.add("${ChatColor.GRAY}$s")
+                    when (item.craftItemType) {
+                        CraftItemType.WEAPON -> {
+                            // Stats lore
+                            lore.add("${ChatColor.RED}Damage: ${ChatColor.DARK_GRAY}+${item.stats[0]}-${item.stats[1]}")
+                            lore.add("${ChatColor.GREEN}Defense: ${ChatColor.DARK_GRAY}+${item.stats[2]}-${item.stats[3]}")
+                            lore.add("${ChatColor.LIGHT_PURPLE}Magic Dmg: ${ChatColor.DARK_GRAY}+${item.stats[4]}-${item.stats[5]}")
+                            lore.add("${ChatColor.DARK_PURPLE}Magic Def: ${ChatColor.DARK_GRAY}+${item.stats[6]}-${item.stats[7]}")
+                            lore.add("${ChatColor.AQUA}Mana: ${ChatColor.DARK_GRAY}+${item.stats[8]}-${item.stats[9]}")
+                            lore.add("${ChatColor.GOLD}Stamina: ${ChatColor.DARK_GRAY}+${item.stats[10]}-${item.stats[11]}")
                             lore.add("")
-                            continue
+
+                            // abilities lore
+                            for (ability in item.abilities) {
+                                lore.add("${ChatColor.YELLOW}${ChatColor.BOLD}${ability.getTypeString()} ${ChatColor.RESET}${ChatColor.RED}Ability:")
+                                for (s in ability.getDescription()) lore.add("${ChatColor.GRAY}$s")
+                                lore.add("")
+                            }
+                            lore.add("${ChatColor.GOLD}${ChatColor.ITALIC}Weapon")
+
+                            lore.add("${ChatColor.GOLD}${item.stats[12]}-${item.stats[13]} ✪Star✪")
+
+                            meta.lore = lore
+                            itemStack.itemMeta = meta
                         }
-                        lore.add("${ChatColor.YELLOW}${ChatColor.BOLD}${ability.getTypeString()} ${ChatColor.RESET}${ChatColor.RED}Ability:")
-                        for (s in ability.getDescription()) lore.add("${ChatColor.GRAY}$s")
-                        lore.add("")
+                        CraftItemType.TALISMAN -> {
+                            lore.add("")
+                            for (s in item.customAbility) {
+                                lore.add(s)
+                            }
+                            lore.add("")
+                            lore.add("${ChatColor.GOLD}${ChatColor.ITALIC}Talisman")
+
+                            lore.add("${ChatColor.GOLD}${item.stats[12]}-${item.stats[13]} ✪Star✪")
+
+                            meta.lore = lore
+                            itemStack.itemMeta = meta
+                        }
+                        CraftItemType.ABILITY_SCROLL -> {
+                            lore.add("")
+                            for (s in item.customAbility) {
+                                lore.add(s)
+                            }
+                            lore.add("")
+                            lore.add("${ChatColor.GREEN}Level Requirement: ${ChatColor.GRAY}${item.levelReq}")
+                            lore.add("")
+                            lore.add("${ChatColor.GOLD}${ChatColor.ITALIC}Ability Scroll")
+
+                            lore.add("${ChatColor.GOLD}${item.stats[0]}-${item.stats[1]} ✪Star✪")
+
+                            meta.lore = lore
+                            itemStack.itemMeta = meta
+                        }
+                        CraftItemType.ARMOR -> {
+                            // Stats lore
+                            lore.add("${ChatColor.RED}Damage: ${ChatColor.DARK_GRAY}+${item.stats[0]}-${item.stats[1]}")
+                            lore.add("${ChatColor.GREEN}Defense: ${ChatColor.DARK_GRAY}+${item.stats[2]}-${item.stats[3]}")
+                            lore.add("${ChatColor.LIGHT_PURPLE}Magic Dmg: ${ChatColor.DARK_GRAY}+${item.stats[4]}-${item.stats[5]}")
+                            lore.add("${ChatColor.DARK_PURPLE}Magic Def: ${ChatColor.DARK_GRAY}+${item.stats[6]}-${item.stats[7]}")
+                            lore.add("${ChatColor.AQUA}Mana: ${ChatColor.DARK_GRAY}+${item.stats[8]}-${item.stats[9]}")
+                            lore.add("${ChatColor.GOLD}Stamina: ${ChatColor.DARK_GRAY}+${item.stats[10]}-${item.stats[11]}")
+                            lore.add("")
+
+                            // abilities lore
+                            for (ability in item.abilities) {
+                                lore.add("${ChatColor.YELLOW}${ChatColor.BOLD}Set Bonus: ${ChatColor.RESET}${ChatColor.RED}${ItemAbility.nameMap[ability]}")
+                                for (s in ability.getDescription()) lore.add("${ChatColor.GRAY}$s")
+                                lore.add("")
+                            }
+                            lore.add("${ChatColor.GOLD}${ChatColor.ITALIC}Armor")
+
+                            lore.add("${ChatColor.GOLD}${item.stats[12]}-${item.stats[13]} ✪Star✪")
+
+                            meta.lore = lore
+                            itemStack.itemMeta = meta
+                        }
+                        CraftItemType.MISC -> {
+                            lore.add("")
+                            for (s in item.customAbility) {
+                                lore.add(s)
+                            }
+                            lore.add("")
+                            lore.add("${ChatColor.GOLD}${ChatColor.ITALIC}Misc Item")
+                            lore.add("${ChatColor.GOLD}${item.stats[0]}-${item.stats[1]} ✪Star✪")
+
+                            meta.lore = lore
+                            itemStack.itemMeta = meta
+                        }
+                        null -> {}
                     }
-                    lore.add("${ChatColor.BLUE}Enchantments:")
-                    lore.add("")
-                    lore.add("${ChatColor.GOLD}${ChatColor.ITALIC}Weapon")
-
-                    lore.add("${ChatColor.GOLD}${item.stats[12]}-${item.stats[13]} ✪Star✪")
-                    if (item.armorColor != null) {
-                        val armorMeta = meta as LeatherArmorMeta
-                        armorMeta.color = item.armorColor
-                    }
-
-                    meta.lore = lore
-                    itemStack.itemMeta = meta
-
-                    BItemUtils.addBWeapon(itemStack, item.stats)
 
                     return itemStack
                 }
@@ -307,6 +355,8 @@ class BItemFactory {
         fun makeItem(mat: BMaterial): ItemStack {
             val item = ItemStack(mat.getBukkitMaterial())
             val meta = mat.getDefaultMeta()
+            val stats = ItemStat(item)
+            stats.damage
 
             val lore = meta.lore
 
