@@ -48,11 +48,21 @@ class PlayerJoinEvent : Listener {
         for (item in e.player.inventory.contents) {
             if (item != null) {
                 if (BItemUtils.getBType(item).equals("weapon")) {
-                    BItemUtils.addBWeapon(item, BWeapon(item))
+                    try {
+                        BItemUtils.addBWeapon(item, BWeapon(item))
+                    } catch (e: NumberFormatException) {
+                        continue
+                    }
+                    continue
                 }
 
                 if (BItemUtils.getBType(item).equals("armor")) {
-                    BItemUtils.addBArmor(item, BArmor(item))
+                    try {
+                        BItemUtils.addBArmor(item, BArmor(item))
+                    } catch (e: NumberFormatException) {
+                        continue
+                    }
+                    continue
                 }
 
                 if (item.itemMeta.displayName == "Plane Key") {

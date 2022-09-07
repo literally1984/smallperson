@@ -381,5 +381,23 @@ class BItemFactory {
             )
             return item
         }
+
+        fun makeItem(item: ItemStack): ItemStack {
+            val meta = item.itemMeta.clone()
+
+            val lore = meta.lore
+
+            lore.add(
+                0, "${ChatColor.AQUA}ID: ${
+                    Main.ymlConfig.getInt(
+                        "items.indexes." +
+                                meta.displayName.replace(" ", "")
+                    )
+                }"
+            )
+            meta.lore = lore
+            item.itemMeta = meta
+            return item
+        }
     }
 }

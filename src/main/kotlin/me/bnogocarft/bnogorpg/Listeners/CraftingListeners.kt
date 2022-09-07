@@ -19,9 +19,9 @@ class CraftingListeners : Listener {
             event.recipe.result.itemMeta.displayName.contains("boots", true) ||
             event.recipe.result.itemMeta.displayName.contains("warhammer", true) ||
             event.recipe.result.itemMeta.displayName.contains("thunderbolt", true))) {
-            val gear = CraftGear(event.recipe.result).craft()
-            BItemUtils.getBGear(gear)
+            val gear = BItemFactory.makeItem(CraftGear(event.recipe.result).craft())
             event.inventory.result = gear
+            BItemUtils.getBGear(gear)
         }
     }
 }

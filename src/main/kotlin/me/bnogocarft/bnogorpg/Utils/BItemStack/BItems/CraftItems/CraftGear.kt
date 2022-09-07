@@ -111,10 +111,15 @@ data class CraftGear(override var item: ItemStack) : CraftItem {
         lore[defLine] = "${ChatColor.GREEN}Defense: ${ChatColor.DARK_GRAY}+${stats[1]}"
         lore[mDmgLine] = "${ChatColor.LIGHT_PURPLE}Magic Dmg: ${ChatColor.DARK_GRAY}+${stats[2]}"
         lore[mDefLine] = "${ChatColor.DARK_PURPLE}Magic Def: ${ChatColor.DARK_GRAY}+${stats[3]}"
-        lore[mana] = "${ChatColor.AQUA}Mana ${ChatColor.DARK_GRAY}+${stats[4]}"
+        lore[mana] = "${ChatColor.AQUA}Mana: ${ChatColor.DARK_GRAY}+${stats[4]}"
         lore[stamina] = "${ChatColor.GOLD}Stamina: ${ChatColor.DARK_GRAY}+${stats[5]}"
         val stars = rarityVary.first.getStars() + randomIndex
         lore[lore.size - 1] = Rarity.getRarity(stars).getStarsString()
+        lore.add(lore.size - 3, "")
+        lore.add(lore.size - 3, "${ChatColor.BLUE}Enchantments:")
+        lore.add(lore.size - 3, "")
+        lore.add(lore.size - 3, "${ChatColor.YELLOW}Level: ${ChatColor.GRAY}0")
+        lore.add(lore.size - 3, "${ChatColor.GREEN}EXP: ${ChatColor.GRAY}0/10")
 
         val cloneItem = item.clone()
 

@@ -3,6 +3,7 @@ package me.bnogocarft.bnogorpg
 import com.comphenix.protocol.ProtocolLibrary
 import com.comphenix.protocol.ProtocolManager
 import me.bnogocarft.bnogorpg.CustomItems.*
+import me.bnogocarft.bnogorpg.CustomItems.DefaultItems.DefaultOverrider
 import me.bnogocarft.bnogorpg.Enchants.EnchantListeners
 import me.bnogocarft.bnogorpg.ItemUpgrade.UpgradeCMD
 import me.bnogocarft.bnogorpg.ItemUpgrade.UpgradeUtils
@@ -114,7 +115,7 @@ class Main : JavaPlugin() {
 
         cSender.sendMessage("$logo Main class variables have been instanced")
         cSender.sendMessage("$logo Overriding default combat Items...")
-        //DefaultOverrider.overrideRecipes()
+        DefaultOverrider.overrideRecipes()
         cSender.sendMessage("$logo Overriding default combat Items... Done")
 
         registerGlow()
@@ -198,7 +199,7 @@ class Main : JavaPlugin() {
         LapisArmor()
         BladeOfHermes()
         GrapplerItem()
-        //DoubleJumpBoots()
+        DoubleJumpBoots()
         Thunderbolt()
         cSender.sendMessage("$logo Registered custom Items")
 
