@@ -1,6 +1,7 @@
 package me.bnogocarft.bnogorpg.Listeners
 
 import me.bnogocarft.bnogorpg.Utils.BItemStack.BItems.BItemUtils
+import me.bnogocarft.bnogorpg.Utils.BItemStack.BItems.CraftItems.CraftGear
 import me.bnogocarft.bnogorpg.Utils.ItemFactory.BItemFactory
 import org.bukkit.event.EventHandler
 import org.bukkit.event.Listener
@@ -11,16 +12,16 @@ class CraftingListeners : Listener {
     @EventHandler
     fun onCraft(event: CraftItemEvent) {
         if (event.recipe.result.hasItemMeta() && (
-                    event.recipe.result.itemMeta.displayName.contains("diamond", true) ||
-                            event.recipe.result.itemMeta.displayName.contains("gold", true) ||
-                            event.recipe.result.itemMeta.displayName.contains("iron", true) ||
-                            event.recipe.result.itemMeta.displayName.contains("stone", true) ||
-                            event.recipe.result.itemMeta.displayName.contains("leather", true) ||
-                            event.recipe.result.itemMeta.displayName.contains("wood", true))
-        ) {
-            if (event.inventory.result != null) {
-                event.inventory.result = BItemFactory.makeItem(BItemUtils.getBMaterial(event.inventory.result))
-            }
+            event.recipe.result.itemMeta.displayName.contains("sword", true) ||
+            event.recipe.result.itemMeta.displayName.contains("helmet", true) ||
+            event.recipe.result.itemMeta.displayName.contains("chestplate", true) ||
+            event.recipe.result.itemMeta.displayName.contains("leggings", true) ||
+            event.recipe.result.itemMeta.displayName.contains("boots", true) ||
+            event.recipe.result.itemMeta.displayName.contains("warhammer", true) ||
+            event.recipe.result.itemMeta.displayName.contains("thunderbolt", true))) {
+            val gear = CraftGear(event.recipe.result).craft()
+            BItemUtils.getBGear(gear)
+            event.inventory.result = gear
         }
     }
 }

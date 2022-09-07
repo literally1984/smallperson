@@ -3,8 +3,6 @@ package me.bnogocarft.bnogorpg
 import com.comphenix.protocol.ProtocolLibrary
 import com.comphenix.protocol.ProtocolManager
 import me.bnogocarft.bnogorpg.CustomItems.*
-import me.bnogocarft.bnogorpg.CustomItems.DefaultItems.DefaultOverrider
-import me.bnogocarft.bnogorpg.Enchants.EnchantCommand
 import me.bnogocarft.bnogorpg.Enchants.EnchantListeners
 import me.bnogocarft.bnogorpg.ItemUpgrade.UpgradeCMD
 import me.bnogocarft.bnogorpg.ItemUpgrade.UpgradeUtils
@@ -191,7 +189,6 @@ class Main : JavaPlugin() {
         getCommand("reforge").executor = ReforgeCommand()
         getCommand("anim").executor = animationTestCommand()
         getCommand("upgrade").executor = UpgradeCMD()
-        getCommand("ench").executor = EnchantCommand()
         getCommand("auction").executor = AuctionCommand()
         getCommand("stash").executor = StashCommand()
         cSender.sendMessage("$logo all commands are enabled!")

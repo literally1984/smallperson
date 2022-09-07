@@ -41,10 +41,10 @@ commands:
     aliases: [upg, up]
     usage: /<command>
     description: Opens up the Upgrade GUI
-  ench:
-    name: Enchant
-    usage: /<command> <enchant>
-    description: adds enchant to your item in hand
+  test:
+    name: Test
+    usage: /<command>
+    description: test stuff
   auction:
     name: Auction
     aliases: [auc]

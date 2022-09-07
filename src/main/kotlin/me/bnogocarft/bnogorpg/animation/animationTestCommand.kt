@@ -1,7 +1,6 @@
 package me.bnogocarft.bnogorpg.animation
 
 import me.bnogocarft.bnogorpg.Utils.Particle.HelixAnimation
-import me.bnogocarft.bnogorpg.Utils.Particle.playAnimation
 import org.bukkit.command.Command
 import org.bukkit.command.CommandExecutor
 import org.bukkit.command.CommandSender
@@ -18,8 +17,14 @@ class animationTestCommand : CommandExecutor {
 
         val player = sender as Player
 
-        val animation = HelixAnimation(1.0, 5.0, player.location, "flame", 5, Vector(0.0, 0.0, 0.0))
-        playAnimation(animation)
+        val animation = HelixAnimation(
+            1.0,
+            5.0,
+            5,
+            Vector(0.0, 0.0, 0.0),
+            "flame",
+            player.location)
+        animation.play()
         return true
     }
 }

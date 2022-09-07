@@ -11,6 +11,21 @@ enum class Rarity {
     MYTHICAL,
     DIVINE;
 
+    companion object {
+        fun getRarity(stars: Int): Rarity {
+            return when (stars) {
+                1 -> COMMON
+                2 -> UNCOMMON
+                3 -> RARE
+                4 -> EPIC
+                5 -> LEGENDARY
+                6 -> MYTHICAL
+                7 -> DIVINE
+                else -> COMMON
+            }
+        }
+    }
+
     fun getStarsString(): String {
         return when (this) {
             COMMON -> "${ChatColor.GOLD}✪"
