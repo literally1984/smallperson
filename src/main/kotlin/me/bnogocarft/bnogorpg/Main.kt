@@ -258,7 +258,16 @@ class Main : JavaPlugin() {
                 continue
             }
             val query = BnogoSQL.con.prepareStatement(
-                "INSERT INTO auctions VALUES ('${auc.ID}', '${serializeItem(auc.item)}', ${auc.startingBid}, '${auc.currentBidder}', ${auc.highestBid}, '${auc.creator}', '${auc.timeLeft}');"
+                "INSERT INTO auctions VALUES (" +
+                        "'${auc.ID}', " +
+                        "'${serializeItem(auc.item)}', " +
+                        "${auc.startingBid}, " +
+                        "'${auc.currentBidder}', " +
+                        "${auc.highestBid}, " +
+                        "'${auc.creator}', " +
+                        "'${auc.timeLeft}', " +
+                        "-1, " +
+                        "'${auc.itemType}');"
             )
             query.execute()
         }
