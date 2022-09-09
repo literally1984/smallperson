@@ -27,7 +27,7 @@ import me.bnogocarft.bnogorpg.Utils.BPlayer.OnlineBPlayers
 import me.bnogocarft.bnogorpg.Utils.CustomEvents.ArmorWearListeners
 import me.bnogocarft.bnogorpg.Utils.Database.BnogoSQL
 import me.bnogocarft.bnogorpg.Utils.Database.YMLUtils
-import me.bnogocarft.bnogorpg.Utils.EnchantUtils.Glow
+import me.bnogocarft.bnogorpg.Utils.BItemStack.EnchantUtils.Glow
 import me.bnogocarft.bnogorpg.Utils.ItemFactory.ItemAbility
 import me.bnogocarft.bnogorpg.Utils.economyUtils.auction.Auction
 import me.bnogocarft.bnogorpg.Utils.economyUtils.auction.AuctionTimer
@@ -224,7 +224,7 @@ class Main : JavaPlugin() {
         )
         Bukkit.getScheduler().scheduleSyncRepeatingTask(this, {
             update()
-        }, 20, 80)
+        }, 20, 20*60*60*2)
         saveDefaultConfig()
         System.gc()
     }

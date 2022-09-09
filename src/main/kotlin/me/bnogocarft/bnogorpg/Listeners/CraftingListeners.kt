@@ -1,7 +1,7 @@
 package me.bnogocarft.bnogorpg.Listeners
 
 import me.bnogocarft.bnogorpg.Utils.BItemStack.BItems.BItemUtils
-import me.bnogocarft.bnogorpg.Utils.BItemStack.BItems.CraftItems.CraftGear
+import me.bnogocarft.bnogorpg.Utils.BItemStack.CraftItems.CraftGear
 import me.bnogocarft.bnogorpg.Utils.ItemFactory.BItemFactory
 import org.bukkit.event.EventHandler
 import org.bukkit.event.Listener

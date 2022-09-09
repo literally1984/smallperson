@@ -1,8 +1,6 @@
 package me.bnogocarft.bnogorpg.Utils.BItemStack.BItems
 
-import me.bnogocarft.bnogorpg.Utils.BItemStack.BItemType
 import me.bnogocarft.bnogorpg.Utils.BItemStack.Rarity.RarityUtils
-import me.bnogocarft.bnogorpg.Utils.EnchantUtils.BEnchantment
 import me.bnogocarft.bnogorpg.Utils.Exceptions.InvalidConstructorInputException
 import org.bukkit.ChatColor
 import org.bukkit.inventory.ItemStack

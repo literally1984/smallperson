@@ -2,7 +2,6 @@ package me.bnogocarft.bnogorpg.Utils.BItemStack.BItems
 
 import me.bnogocarft.bnogorpg.Updater.Change.Change
 import me.bnogocarft.bnogorpg.Updater.Change.StatChange
-import me.bnogocarft.bnogorpg.Utils.BItemStack.Reforge
 import me.bnogocarft.bnogorpg.Utils.Database.BnogoSQL
 import me.bnogocarft.bnogorpg.Utils.Exceptions.InvalidConstructorInputException
 import me.bnogocarft.bnogorpg.Utils.ItemFactory.ItemAbility

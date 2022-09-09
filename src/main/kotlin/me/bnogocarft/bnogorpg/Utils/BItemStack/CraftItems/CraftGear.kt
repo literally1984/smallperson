@@ -1,4 +1,4 @@
-package me.bnogocarft.bnogorpg.Utils.BItemStack.BItems.CraftItems
+package me.bnogocarft.bnogorpg.Utils.BItemStack.CraftItems
 
 import me.bnogocarft.bnogorpg.Utils.BItemStack.BItems.BMaterial
 import me.bnogocarft.bnogorpg.Utils.BItemStack.Rarity.Rarity
@@ -68,7 +68,7 @@ data class CraftGear(override var item: ItemStack) : CraftItem {
         }
     }
 
-    fun craft(): ItemStack {
+    override fun craft(): ItemStack {
         val stats = ArrayList<Int>()
 
         //Gets the range of the amnt of stars the weapon has

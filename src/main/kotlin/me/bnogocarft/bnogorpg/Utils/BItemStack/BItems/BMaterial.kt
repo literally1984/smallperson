@@ -201,21 +201,21 @@ enum class BMaterial {
         when (this) {
             CACTUS_HELMET -> {
                 vary.add("0-1")
-                vary.add("9-11")
-                vary.add("0-2")
-                vary.add("7-9")
-                vary.add("3-5")
-                vary.add("5-10")
-                vary.add("3-4")
+                vary.add("2-5")
+                vary.add("0-1")
+                vary.add("1-3")
+                vary.add("4-7")
+                vary.add("6-9")
+                vary.add("2-3")
             }
             CACTUS_CHESTPLATE -> {
                 vary.add("1-3")
-                vary.add("9-11")
-                vary.add("0-2")
-                vary.add("7-9")
-                vary.add("3-5")
+                vary.add("7-10")
+                vary.add("1-2")
+                vary.add("5-8")
+                vary.add("12-17")
                 vary.add("5-10")
-                vary.add("3-4")
+                vary.add("2-3")
             }
             CACTUS_LEGGINGS -> {
                 vary.add("0-1")
@@ -224,7 +224,7 @@ enum class BMaterial {
                 vary.add("7-9")
                 vary.add("3-5")
                 vary.add("5-10")
-                vary.add("3-4")
+                vary.add("2-3")
             }
             CACTUS_BOOTS -> {
                 vary.add("0-1")
@@ -233,7 +233,7 @@ enum class BMaterial {
                 vary.add("7-9")
                 vary.add("3-5")
                 vary.add("5-10")
-                vary.add("3-4")
+                vary.add("2-3")
             }
             LAPIS_HELMET -> {
                 vary.add("0-1")
@@ -316,42 +316,8 @@ enum class BMaterial {
                 vary.add("5-10")
                 vary.add("3-4")
             }
-            IRON_AXE -> {
-                vary.add("0-1")
-                vary.add("9-11")
-                vary.add("0-2")
-                vary.add("7-9")
-                vary.add("3-5")
-                vary.add("5-10")
-                vary.add("3-4")
-            }
-            IRON_HOE -> {
-                vary.add("0-1")
-                vary.add("9-11")
-                vary.add("0-2")
-                vary.add("7-9")
-                vary.add("3-5")
-                vary.add("5-10")
-                vary.add("3-4")
-            }
-            IRON_PICKAXE -> {
-                vary.add("0-1")
-                vary.add("9-11")
-                vary.add("0-2")
-                vary.add("7-9")
-                vary.add("3-5")
-                vary.add("5-10")
-                vary.add("3-4")
-            }
-            IRON_SHOVEL -> {
-                vary.add("0-1")
-                vary.add("9-11")
-                vary.add("0-2")
-                vary.add("7-9")
-                vary.add("3-5")
-                vary.add("5-10")
-                vary.add("3-4")
-            }
+
+
             GOLD_HELMET -> {
                 vary.add("0-1")
                 vary.add("9-11")
@@ -389,42 +355,6 @@ enum class BMaterial {
                 vary.add("3-4")
             }
             GOLD_SWORD -> {
-                vary.add("0-1")
-                vary.add("9-11")
-                vary.add("0-2")
-                vary.add("7-9")
-                vary.add("3-5")
-                vary.add("5-10")
-                vary.add("3-4")
-            }
-            GOLD_AXE -> {
-                vary.add("0-1")
-                vary.add("9-11")
-                vary.add("0-2")
-                vary.add("7-9")
-                vary.add("3-5")
-                vary.add("5-10")
-                vary.add("3-4")
-            }
-            GOLD_HOE -> {
-                vary.add("0-1")
-                vary.add("9-11")
-                vary.add("0-2")
-                vary.add("7-9")
-                vary.add("3-5")
-                vary.add("5-10")
-                vary.add("3-4")
-            }
-            GOLD_PICKAXE -> {
-                vary.add("0-1")
-                vary.add("9-11")
-                vary.add("0-2")
-                vary.add("7-9")
-                vary.add("3-5")
-                vary.add("5-10")
-                vary.add("3-4")
-            }
-            GOLD_SHOVEL -> {
                 vary.add("0-1")
                 vary.add("9-11")
                 vary.add("0-2")
@@ -478,42 +408,7 @@ enum class BMaterial {
                 vary.add("5-10")
                 vary.add("3-4")
             }
-            DIAMOND_AXE -> {
-                vary.add("0-1")
-                vary.add("9-11")
-                vary.add("0-2")
-                vary.add("7-9")
-                vary.add("3-5")
-                vary.add("5-10")
-                vary.add("3-4")
-            }
-            DIAMOND_HOE -> {
-                vary.add("0-1")
-                vary.add("9-11")
-                vary.add("0-2")
-                vary.add("7-9")
-                vary.add("3-5")
-                vary.add("5-10")
-                vary.add("3-4")
-            }
-            DIAMOND_PICKAXE -> {
-                vary.add("0-1")
-                vary.add("9-11")
-                vary.add("0-2")
-                vary.add("7-9")
-                vary.add("3-5")
-                vary.add("5-10")
-                vary.add("3-4")
-            }
-            DIAMOND_SHOVEL -> {
-                vary.add("0-1")
-                vary.add("9-11")
-                vary.add("0-2")
-                vary.add("7-9")
-                vary.add("3-5")
-                vary.add("5-10")
-                vary.add("3-4")
-            }
+
             STONE_SWORD -> {
                 vary.add("0-1")
                 vary.add("9-11")
@@ -523,42 +418,8 @@ enum class BMaterial {
                 vary.add("5-10")
                 vary.add("3-4")
             }
-            STONE_AXE -> {
-                vary.add("0-1")
-                vary.add("9-11")
-                vary.add("0-2")
-                vary.add("7-9")
-                vary.add("3-5")
-                vary.add("5-10")
-                vary.add("3-4")
-            }
-            STONE_HOE -> {
-                vary.add("0-1")
-                vary.add("9-11")
-                vary.add("0-2")
-                vary.add("7-9")
-                vary.add("3-5")
-                vary.add("5-10")
-                vary.add("3-4")
-            }
-            STONE_PICKAXE -> {
-                vary.add("0-1")
-                vary.add("9-11")
-                vary.add("0-2")
-                vary.add("7-9")
-                vary.add("3-5")
-                vary.add("5-10")
-                vary.add("3-4")
-            }
-            STONE_SHOVEL -> {
-                vary.add("0-1")
-                vary.add("9-11")
-                vary.add("0-2")
-                vary.add("7-9")
-                vary.add("3-5")
-                vary.add("5-10")
-                vary.add("3-4")
-            }
+
+
             LEATHER_HELMET -> {
                 vary.add("0-1")
                 vary.add("9-11")
@@ -604,52 +465,7 @@ enum class BMaterial {
                 vary.add("5-10")
                 vary.add("3-4")
             }
-            WOOD_AXE -> {
-                vary.add("0-1")
-                vary.add("9-11")
-                vary.add("0-2")
-                vary.add("7-9")
-                vary.add("3-5")
-                vary.add("5-10")
-                vary.add("3-4")
-            }
-            WOOD_HOE -> {
-                vary.add("0-1")
-                vary.add("9-11")
-                vary.add("0-2")
-                vary.add("7-9")
-                vary.add("3-5")
-                vary.add("5-10")
-                vary.add("3-4")
-            }
-            WOOD_PICKAXE -> {
-                vary.add("0-1")
-                vary.add("9-11")
-                vary.add("0-2")
-                vary.add("7-9")
-                vary.add("3-5")
-                vary.add("5-10")
-                vary.add("3-4")
-            }
-            WOOD_SHOVEL -> {
-                vary.add("0-1")
-                vary.add("9-11")
-                vary.add("0-2")
-                vary.add("7-9")
-                vary.add("3-5")
-                vary.add("5-10")
-                vary.add("3-4")
-            }
             BLADE_OF_HERMES -> {
-                vary.add("0-1")
-                vary.add("9-11")
-                vary.add("0-2")
-                vary.add("7-9")
-                vary.add("3-5")
-                vary.add("5-10")
-                vary.add("3-4")
-            }
-            GRAPPLING_HOOK -> {
                 vary.add("0-1")
                 vary.add("9-11")
                 vary.add("0-2")
@@ -677,6 +493,7 @@ enum class BMaterial {
                 vary.add("35-45")
                 vary.add("3-4")
             }
+            else -> {}
         }
 
         return vary

@@ -3,19 +3,20 @@ package me.bnogocarft.bnogorpg.Utils.ItemFactory
 import me.bnogocarft.bnogorpg.Main
 import me.bnogocarft.bnogorpg.OtherCommands.customItemMap
 import me.bnogocarft.bnogorpg.Utils.Abilities.ItemAbility.AbilityTrigger
-import me.bnogocarft.bnogorpg.Utils.BItemStack.BItemType
-import me.bnogocarft.bnogorpg.Utils.BItemStack.BItems.BItemUtils
+import me.bnogocarft.bnogorpg.Utils.BItemStack.BItems.BItemType
 import me.bnogocarft.bnogorpg.Utils.BItemStack.BItems.BMaterial
-import me.bnogocarft.bnogorpg.Utils.BItemStack.CraftItemType
+import me.bnogocarft.bnogorpg.Utils.BItemStack.CraftItems.CraftItemType
+import me.bnogocarft.bnogorpg.Utils.BItemStack.CraftItems.TalismanVariable
 import me.bnogocarft.bnogorpg.Utils.BItemStack.Rarity.Rarity
-import me.bnogocarft.bnogorpg.Utils.Exceptions.InvalidConstructorInputException
 import me.bnogocarft.bnogorpg.Utils.StatUtils.ItemStat
 import org.bukkit.Bukkit
 import org.bukkit.ChatColor
 import org.bukkit.Color
 import org.bukkit.Material
 import org.bukkit.inventory.ItemStack
+import org.bukkit.inventory.ShapedRecipe
 import org.bukkit.inventory.meta.LeatherArmorMeta
+import java.util.Arrays
 
 data class FactoryItem(val name: String, val mat: Material, val type: BItemType) {
     val abilities = ArrayList<ItemAbility>()
@@ -29,12 +30,18 @@ data class FactoryItem(val name: String, val mat: Material, val type: BItemType)
 
 class BItemFactory {
     companion object {
+        val craftTalismanList = HashMap<ItemStack, List<TalismanVariable>>()
+
         fun register(name: String, Item: ItemStack) {
             customItemMap[name] = Item
         }
 
         fun createBItem(displayName: String, mat: Material, type: BItemType): FactoryItem {
             return FactoryItem(displayName, mat, type)
+        }
+
+        fun registerCraftTalisman(vars: List<TalismanVariable>, itemStack: ItemStack) {
+
         }
 
         fun produceItem(item: FactoryItem): ItemStack { // Don't even try to understand this shit lmao

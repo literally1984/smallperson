@@ -1,13 +1,18 @@
 package me.bnogocarft.bnogorpg.CustomItems
 
-import me.bnogocarft.bnogorpg.Utils.BItemStack.BItemType
+import me.bnogocarft.bnogorpg.CustomItems.DefaultItems.Diamond
+import me.bnogocarft.bnogorpg.Utils.BItemStack.BItems.BItemType
+import me.bnogocarft.bnogorpg.Utils.BItemStack.BItems.BMaterial
+import me.bnogocarft.bnogorpg.Utils.BItemStack.CraftItems.CraftItemType
 import me.bnogocarft.bnogorpg.Utils.BItemStack.Interfaces.ArmorSet
 import me.bnogocarft.bnogorpg.Utils.BItemStack.Rarity.Rarity
 import me.bnogocarft.bnogorpg.Utils.ItemFactory.BItemFactory
 import me.bnogocarft.bnogorpg.Utils.ItemFactory.ItemAbility
+import org.bukkit.Bukkit
 import org.bukkit.Color
 import org.bukkit.Material
 import org.bukkit.inventory.ItemStack
+import org.bukkit.inventory.ShapedRecipe
 
 class CactusArmor : ArmorSet {
     companion object {
@@ -15,6 +20,13 @@ class CactusArmor : ArmorSet {
         lateinit var chestplate: ItemStack
         lateinit var leggings: ItemStack
         lateinit var boots: ItemStack
+
+        lateinit var craftHelmet: ItemStack
+        lateinit var craftChestplate: ItemStack
+        lateinit var craftLeggings: ItemStack
+        lateinit var craftBoots: ItemStack
+
+        lateinit var craftShard: ItemStack
     }
 
     init {
@@ -34,7 +46,42 @@ class CactusArmor : ArmorSet {
         factoryItem.armorColor = Color.GREEN
 
         helm = BItemFactory.produceItem(factoryItem)
-        BItemFactory.register("cactushelmet", helm)
+        BItemFactory.register("cactus_helmet", helm)
+    }
+
+    fun createCraftHelmet() {
+        val factoryItem = BItemFactory.createBItem("Cactus Helmet", Material.LEATHER_HELMET, BItemType.CRAFT_ITEM)
+        factoryItem.craftItemType = CraftItemType.ARMOR
+
+        val statsVary = BMaterial.DIAMOND_HELMET.getStatVary()
+
+        val atkVary = statsVary[0].split("-")
+        val defVary = statsVary[1].split("-")
+        val mAtkVary = statsVary[2].split("-")
+        val mDefVary = statsVary[3].split("-")
+        val manaVary = statsVary[4].split("-")
+        val stamVary = statsVary[5].split("-")
+
+
+        factoryItem.stats = arrayListOf(
+            atkVary[0].toInt(),
+            atkVary[1].toInt(),
+            defVary[0].toInt(),
+            defVary[1].toInt(),
+            mAtkVary[0].toInt(),
+            mAtkVary[1].toInt(),
+            mDefVary[0].toInt(),
+            mDefVary[1].toInt(),
+            manaVary[0].toInt(),
+            manaVary[1].toInt(),
+            stamVary[0].toInt(),
+            stamVary[1].toInt(),
+            3, 4)
+        Diamond.craftHelmet = BItemFactory.produceItem(factoryItem)
+        val recipe = ShapedRecipe(Diamond.craftHelmet)
+        recipe.shape("ddd", "d d", "   ")
+        recipe.setIngredient('d', Material.DIAMOND)
+        Bukkit.addRecipe(recipe)
     }
 
     override fun createChestplate() {
@@ -47,7 +94,7 @@ class CactusArmor : ArmorSet {
         factoryItem.armorColor = Color.GREEN
 
         chestplate = BItemFactory.produceItem(factoryItem)
-        BItemFactory.register("cactuschestplate", chestplate)
+        BItemFactory.register("cactus_chestplate", chestplate)
     }
 
     override fun createLeggings() {

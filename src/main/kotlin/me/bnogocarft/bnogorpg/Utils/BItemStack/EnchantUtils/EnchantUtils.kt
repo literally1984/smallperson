@@ -1,11 +1,8 @@
-package me.bnogocarft.bnogorpg.Utils.EnchantUtils
+package me.bnogocarft.bnogorpg.Utils.BItemStack.EnchantUtils
 
 import me.bnogocarft.bnogorpg.Utils.*
 import me.bnogocarft.bnogorpg.Utils.BItemStack.BItems.BGear
 import me.bnogocarft.bnogorpg.Utils.BItemStack.BItems.BMaterial
-import org.bukkit.Bukkit
-import org.bukkit.Material
-import org.bukkit.inventory.ItemStack
 
 val enchants = arrayListOf(BEnchant.BANE_OF_ARTHROPODS, BEnchant.UNBREAKING)
 
@@ -76,36 +73,6 @@ class EnchantUtils {
                 BMaterial.THUNDERBOLT -> TODO()
             }
             return returnList
-        }
-
-        fun generateBaseEnchantGUI() {
-            val fInv = GUIFactory.createInventory("Enchantment Table", 54)
-            val backgroundz = ArrayList<GUIBackground>()
-            for (i in 0..53) {
-                backgroundz.add(GUIBackground(sBK, i))
-            }
-
-            val bottomRow = ItemStack(Material.ENCHANTED_BOOK)
-            val meta = Bukkit.getItemFactory().getItemMeta(Material.ENCHANTED_BOOK)
-            meta.displayName = ""
-            bottomRow.itemMeta = meta
-            for (i in 45..53) {
-                backgroundz.add(GUIBackground(bottomRow, i))
-            }
-
-            val buttons = ArrayList<GUIButton>()
-            buttons.add(GUIButton(ItemStack(Material.BOOK), 29, ::Enchant))
-            buttons.add(GUIButton(ItemStack(Material.BOOK), 31, ::Enchant))
-            buttons.add(GUIButton(ItemStack(Material.BOOK), 33, ::Enchant))
-        }
-
-        private fun Enchant(gui: OpenGUI) {
-            val clickedItem = gui.inv.getItem(gui.slot)
-            when (clickedItem.itemMeta.displayName) {
-                "Enchant" -> {
-                    val enchant = generateEnchantsFor(BGear(clickedItem))
-                }
-            }
         }
     }
 }

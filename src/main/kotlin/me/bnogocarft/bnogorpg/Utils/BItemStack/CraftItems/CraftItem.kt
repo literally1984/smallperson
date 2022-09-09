@@ -1,4 +1,4 @@
-package me.bnogocarft.bnogorpg.Utils.BItemStack.BItems.CraftItems
+package me.bnogocarft.bnogorpg.Utils.BItemStack.CraftItems
 
 import me.bnogocarft.bnogorpg.Utils.BItemStack.BItems.BMaterial
 import me.bnogocarft.bnogorpg.Utils.BItemStack.Rarity.Rarity
@@ -9,4 +9,5 @@ interface CraftItem {
     var type: BMaterial
     var amount: Int
     var rarityVary: Pair<Rarity, Rarity>
+    fun craft(): ItemStack
 }
