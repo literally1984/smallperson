@@ -40,6 +40,8 @@ data class OnlineBPlayer(val p: Player) : BPlayer(p.name) {
      */
     var mode: Mode = Mode.NONE
 
+    val hitbox = Hitbox(p)
+
     /**
      * The latest update of the player's [PlayerStat]
      */

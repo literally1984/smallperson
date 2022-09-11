@@ -11,16 +11,26 @@ import me.bnogocarft.bnogorpg.Utils.BPlayer.OnlineBPlayer
 import me.bnogocarft.bnogorpg.Utils.BPlayer.OnlineBPlayers
 import org.bukkit.Bukkit
 import org.bukkit.ChatColor
+import org.bukkit.OfflinePlayer
 import org.bukkit.event.EventHandler
 import org.bukkit.event.EventPriority
 import org.bukkit.event.Listener
 import org.bukkit.event.player.PlayerJoinEvent
+import org.bukkit.scoreboard.DisplaySlot
 
 class PlayerJoinEvent : Listener {
 
     @EventHandler(priority = EventPriority.HIGH)
     fun playerJoinEvent(e: PlayerJoinEvent) {
         val onlineBPlayer = OnlineBPlayer(e.player)
+        val board = Bukkit.getScoreboardManager().newScoreboard
+        val obj = board.registerNewObjective("test", "dummy")
+        obj.displaySlot = DisplaySlot.SIDEBAR
+        obj.displayName = "${ChatColor.GOLD}${ChatColor.BOLD}RPG Factions"
+        val score = obj.getScore(Bukkit.getOfflinePlayer("${ChatColor.GOLD}Balance: 1"))
+        score.score = 1
+        e.player.scoreboard = board
+
         OnlineBPlayers[e.player] = onlineBPlayer
 
         if (onlineBPlayer.config.contains("o.msg")) {
