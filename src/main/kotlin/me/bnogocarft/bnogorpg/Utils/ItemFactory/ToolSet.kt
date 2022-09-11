@@ -1,4 +1,4 @@
-package me.bnogocarft.bnogorpg.Utils.BItemStack.Interfaces
+package me.bnogocarft.bnogorpg.Utils.ItemFactory
 
 interface ToolSet {
     fun createSword()

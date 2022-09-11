@@ -2,6 +2,7 @@ package me.bnogocarft.bnogorpg.Utils.BItemStack.BItems
 
 import me.bnogocarft.bnogorpg.Updater.Change.Change
 import me.bnogocarft.bnogorpg.Updater.Change.StatChange
+import me.bnogocarft.bnogorpg.Utils.BItemStack.Reforge
 import me.bnogocarft.bnogorpg.Utils.Database.BnogoSQL
 import me.bnogocarft.bnogorpg.Utils.Exceptions.InvalidConstructorInputException
 import me.bnogocarft.bnogorpg.Utils.ItemFactory.ItemAbility
@@ -127,20 +128,23 @@ open class BGear(item: ItemStack) : BItem(item) {
 
                 val affectedLines = BnogoSQL.con.prepareStatement(
                     "UPDATE \"gearItems\" SET " +
-                        "\"stars\" = ${rarity!!.getStars()}, " +
-                        "\"name\" = '${item.itemMeta.displayName}', " +
-                        "\"itemStack\" = '${serializeItem(item)}', " +
-                        "\"abilities\" = ARRAY [$beforeString]::text[] " +
-                            "WHERE \"id\" = ${id} AND \"type\" = '$material';").executeUpdate()
+                            "\"stars\" = ${rarity!!.getStars()}, " +
+                            "\"name\" = '${item.itemMeta.displayName}', " +
+                            "\"itemStack\" = '${serializeItem(item)}', " +
+                            "\"abilities\" = ARRAY [$beforeString]::text[] " +
+                            "WHERE \"id\" = ${id} AND \"type\" = '$material';"
+                ).executeUpdate()
 
                 if (affectedLines == 0) {
-                    BnogoSQL.con.prepareStatement("INSERT INTO \"gearItems\" VALUES (" +
-                            "$id, " +
-                            "'$material', " +
-                            "${rarity!!.getStars()}, " +
-                            "'${item.itemMeta.displayName}', " +
-                            "'${serializeItem(item)}', " +
-                            "ARRAY [$beforeString]::text[]);").execute()
+                    BnogoSQL.con.prepareStatement(
+                        "INSERT INTO \"gearItems\" VALUES (" +
+                                "$id, " +
+                                "'$material', " +
+                                "${rarity!!.getStars()}, " +
+                                "'${item.itemMeta.displayName}', " +
+                                "'${serializeItem(item)}', " +
+                                "ARRAY [$beforeString]::text[]);"
+                    ).execute()
                 }
             }
         }

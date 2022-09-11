@@ -6,15 +6,20 @@ import org.bukkit.Location
 import org.bukkit.entity.Player
 
 data class Hitbox(val player: Player) {
-    var top1: Location = Location(player.world, player.location.x-0.3, player.location.y+1.8, player.location.z-0.3)
-    var top2: Location = Location(player.world, player.location.x+0.3, player.location.y+1.8, player.location.z-0.3)
-    var top3: Location = Location(player.world, player.location.x-0.3, player.location.y+1.8, player.location.z+0.3)
-    var top4: Location = Location(player.world, player.location.x+0.3, player.location.y+1.8, player.location.z+0.3)
+    var top1: Location =
+        Location(player.world, player.location.x - 0.3, player.location.y + 1.8, player.location.z - 0.3)
+    var top2: Location =
+        Location(player.world, player.location.x + 0.3, player.location.y + 1.8, player.location.z - 0.3)
+    var top3: Location =
+        Location(player.world, player.location.x - 0.3, player.location.y + 1.8, player.location.z + 0.3)
+    var top4: Location =
+        Location(player.world, player.location.x + 0.3, player.location.y + 1.8, player.location.z + 0.3)
 
-    var bottom1: Location = Location(player.world, player.location.x-0.3, player.location.y, player.location.z-0.3)
-    var bottom2: Location = Location(player.world, player.location.x+0.3, player.location.y, player.location.z-0.3)
-    var bottom3: Location = Location(player.world, player.location.x-0.3, player.location.y, player.location.z+0.3)
-    var bottom4: Location = Location(player.world, player.location.x+0.3, player.location.y, player.location.z+0.3)
+    var bottom1: Location = Location(player.world, player.location.x - 0.3, player.location.y, player.location.z - 0.3)
+    var bottom2: Location = Location(player.world, player.location.x + 0.3, player.location.y, player.location.z - 0.3)
+    var bottom3: Location = Location(player.world, player.location.x - 0.3, player.location.y, player.location.z + 0.3)
+    var bottom4: Location = Location(player.world, player.location.x + 0.3, player.location.y, player.location.z + 0.3)
+
     init {
         Bukkit.getScheduler().scheduleSyncRepeatingTask(
             Main.instance,
@@ -29,15 +34,15 @@ data class Hitbox(val player: Player) {
     }
 
     fun update() {
-        var top1 = Location(player.world, player.location.x-0.3, player.location.y+1.8, player.location.z-0.3)
-        var top2 = Location(player.world, player.location.x+0.3, player.location.y+1.8, player.location.z-0.3)
-        var top3 = Location(player.world, player.location.x-0.3, player.location.y+1.8, player.location.z+0.3)
-        var top4 = Location(player.world, player.location.x+0.3, player.location.y+1.8, player.location.z+0.3)
+        var top1 = Location(player.world, player.location.x - 0.3, player.location.y + 1.8, player.location.z - 0.3)
+        var top2 = Location(player.world, player.location.x + 0.3, player.location.y + 1.8, player.location.z - 0.3)
+        var top3 = Location(player.world, player.location.x - 0.3, player.location.y + 1.8, player.location.z + 0.3)
+        var top4 = Location(player.world, player.location.x + 0.3, player.location.y + 1.8, player.location.z + 0.3)
 
-        var bottom1 = Location(player.world, player.location.x-0.3, player.location.y, player.location.z-0.3)
-        var bottom2 = Location(player.world, player.location.x+0.3, player.location.y, player.location.z-0.3)
-        var bottom3 = Location(player.world, player.location.x-0.3, player.location.y, player.location.z+0.3)
-        var bottom4 = Location(player.world, player.location.x+0.3, player.location.y, player.location.z+0.3)
+        var bottom1 = Location(player.world, player.location.x - 0.3, player.location.y, player.location.z - 0.3)
+        var bottom2 = Location(player.world, player.location.x + 0.3, player.location.y, player.location.z - 0.3)
+        var bottom3 = Location(player.world, player.location.x - 0.3, player.location.y, player.location.z + 0.3)
+        var bottom4 = Location(player.world, player.location.x + 0.3, player.location.y, player.location.z + 0.3)
     }
 
     fun isInHitbox(location: Location): Boolean {

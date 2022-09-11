@@ -1,4 +1,4 @@
-package me.bnogocarft.bnogorpg.Utils.BItemStack.Rarity
+package me.bnogocarft.bnogorpg.Utils.others.Rarity
 
 import org.bukkit.ChatColor
 

@@ -24,8 +24,8 @@ class PlaytimeUtils {
             val diff = nowDate.time - joinDate.time
             val beforeTime = player.playTime
             print(beforeTime)
-            var hourDiff = (diff / ((1000 * 60 * 60)) % 24) + (beforeTime[0].toInt())
-            var minuteDiff = (diff / ((1000 * 60)) % 60) + (beforeTime[1].toInt())
+            var hourDiff = (diff / ((1000 * 60 * 60)) % 24) + (beforeTime[0].code)
+            var minuteDiff = (diff / ((1000 * 60)) % 60) + (beforeTime[1].code)
 
             while (minuteDiff >= 60) {
                 minuteDiff -= 60

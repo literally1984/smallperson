@@ -2,7 +2,6 @@ package me.bnogocarft.bnogorpg.economy.Auction
 
 import me.bnogocarft.bnogorpg.Main
 import me.bnogocarft.bnogorpg.Utils.*
-import me.bnogocarft.bnogorpg.Utils.BPlayer.OnlineBPlayers
 import me.bnogocarft.bnogorpg.Utils.economyUtils.auction.*
 import org.bukkit.Bukkit
 import org.bukkit.ChatColor
@@ -137,7 +136,7 @@ class AHGui {
             createGUILayer1.backgrounds.add(GUIBackground(sBK, index))
         }
 
-        for (index2 in 54..54+36) {
+        for (index2 in 54..54 + 36) {
             createGUILayer1.slotFuncs.add(SlotFunction(index2, ::selectHandler))
         }
 
@@ -474,7 +473,7 @@ class AHGui {
                 continue
             }
         }
-       inv.layers.add(layer1)
+        inv.layers.add(layer1)
 
         gui.player.closeInventory()
         gui.player.openInventory(GUIFactory.produceInventory(inv))

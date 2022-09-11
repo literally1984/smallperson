@@ -24,7 +24,8 @@ class AhGuiUpdater : BukkitRunnable() {
                                 inventory.getItem(11).itemMeta.lore.size - 1
                         ].split(
                             ": ${ChatColor.GRAY}"
-                        )[1])
+                        )[1]
+                    )
                 } catch (e: IllegalArgumentException) {
                     inventory.setItem(11, null)
                     return
@@ -37,7 +38,8 @@ class AhGuiUpdater : BukkitRunnable() {
                                     inventory.getItem(11).itemMeta.lore.size - 1
                             ].split(
                                 ": ${ChatColor.GRAY}"
-                            )[1]).item
+                            )[1]
+                        ).item
                     )
                 ) {
                     AuctionType.WEAPON -> {

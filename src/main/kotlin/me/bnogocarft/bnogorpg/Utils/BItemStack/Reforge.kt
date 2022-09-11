@@ -1,4 +1,4 @@
-package me.bnogocarft.bnogorpg.Utils.BItemStack.BItems
+package me.bnogocarft.bnogorpg.Utils.BItemStack
 
 enum class Reforge {
     Vampiric,

@@ -1,10 +1,10 @@
 package me.bnogocarft.bnogorpg.CustomItems.DefaultItems
 
 import me.bnogocarft.bnogorpg.Utils.BItemStack.BItems.BItemType
-import me.bnogocarft.bnogorpg.Utils.BItemStack.BItems.BMaterial
+import me.bnogocarft.bnogorpg.Utils.BItemStack.BMaterial
 import me.bnogocarft.bnogorpg.Utils.BItemStack.CraftItems.CraftItemType
-import me.bnogocarft.bnogorpg.Utils.BItemStack.Interfaces.FullSet
-import me.bnogocarft.bnogorpg.Utils.BItemStack.Rarity.Rarity
+import me.bnogocarft.bnogorpg.Utils.ItemFactory.FullSet
+import me.bnogocarft.bnogorpg.Utils.others.Rarity.Rarity
 import me.bnogocarft.bnogorpg.Utils.ItemFactory.BItemFactory
 import org.bukkit.Bukkit
 import org.bukkit.Material
@@ -83,7 +83,8 @@ class Diamond : FullSet {
             manaVary[1].toInt(),
             stamVary[0].toInt(),
             stamVary[1].toInt(),
-            3, 4)
+            3, 4
+        )
         craftSword = BItemFactory.produceItem(factoryItem)
         val recipe = ShapedRecipe(craftSword)
         recipe.shape(" d ", " d ", " s ")
@@ -170,7 +171,8 @@ class Diamond : FullSet {
             manaVary[1].toInt(),
             stamVary[0].toInt(),
             stamVary[1].toInt(),
-            3, 4)
+            3, 4
+        )
         craftHelmet = BItemFactory.produceItem(factoryItem)
         val recipe = ShapedRecipe(craftHelmet)
         recipe.shape("ddd", "d d", "   ")
@@ -194,7 +196,8 @@ class Diamond : FullSet {
     }
 
     fun createCraftChestplate() {
-        val factoryItem = BItemFactory.createBItem("Diamond Chestplate", Material.DIAMOND_CHESTPLATE, BItemType.CRAFT_ITEM)
+        val factoryItem =
+            BItemFactory.createBItem("Diamond Chestplate", Material.DIAMOND_CHESTPLATE, BItemType.CRAFT_ITEM)
         factoryItem.craftItemType = CraftItemType.ARMOR
 
         val statsVary = BMaterial.DIAMOND_CHESTPLATE.getStatVary()
@@ -220,7 +223,8 @@ class Diamond : FullSet {
             manaVary[1].toInt(),
             stamVary[0].toInt(),
             stamVary[1].toInt(),
-            3, 4)
+            3, 4
+        )
         craftChestplate = BItemFactory.produceItem(factoryItem)
         val recipe = ShapedRecipe(craftChestplate)
         recipe.shape("d d", "ddd", "ddd")

@@ -1,7 +1,7 @@
 package me.bnogocarft.bnogorpg.Utils.BItemStack.CraftItems
 
-import me.bnogocarft.bnogorpg.Utils.BItemStack.BItems.BMaterial
-import me.bnogocarft.bnogorpg.Utils.BItemStack.Rarity.Rarity
+import me.bnogocarft.bnogorpg.Utils.BItemStack.BMaterial
+import me.bnogocarft.bnogorpg.Utils.others.Rarity.Rarity
 import org.bukkit.inventory.ItemStack
 
 interface CraftItem {

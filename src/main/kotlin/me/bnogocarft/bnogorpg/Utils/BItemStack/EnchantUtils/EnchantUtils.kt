@@ -1,8 +1,7 @@
 package me.bnogocarft.bnogorpg.Utils.BItemStack.EnchantUtils
 
-import me.bnogocarft.bnogorpg.Utils.*
 import me.bnogocarft.bnogorpg.Utils.BItemStack.BItems.BGear
-import me.bnogocarft.bnogorpg.Utils.BItemStack.BItems.BMaterial
+import me.bnogocarft.bnogorpg.Utils.BItemStack.BMaterial
 
 val enchants = arrayListOf(BEnchant.BANE_OF_ARTHROPODS, BEnchant.UNBREAKING)
 

@@ -11,7 +11,6 @@ import me.bnogocarft.bnogorpg.Utils.BPlayer.OnlineBPlayer
 import me.bnogocarft.bnogorpg.Utils.BPlayer.OnlineBPlayers
 import org.bukkit.Bukkit
 import org.bukkit.ChatColor
-import org.bukkit.OfflinePlayer
 import org.bukkit.event.EventHandler
 import org.bukkit.event.EventPriority
 import org.bukkit.event.Listener

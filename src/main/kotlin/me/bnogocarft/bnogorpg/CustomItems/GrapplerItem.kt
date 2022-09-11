@@ -1,7 +1,7 @@
 package me.bnogocarft.bnogorpg.CustomItems
 
 import me.bnogocarft.bnogorpg.Utils.BItemStack.BItems.BItemType
-import me.bnogocarft.bnogorpg.Utils.BItemStack.Rarity.Rarity
+import me.bnogocarft.bnogorpg.Utils.others.Rarity.Rarity
 import me.bnogocarft.bnogorpg.Utils.ItemFactory.BItemFactory
 import org.bukkit.ChatColor
 import org.bukkit.Material

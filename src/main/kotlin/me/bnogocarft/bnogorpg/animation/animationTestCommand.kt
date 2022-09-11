@@ -23,7 +23,8 @@ class animationTestCommand : CommandExecutor {
             5,
             Vector(0.0, 0.0, 0.0),
             "flame",
-            player.location)
+            player.location
+        )
         animation.play()
         return true
     }

@@ -4,7 +4,5 @@ enum class Mode {
     NONE,
     REAPER,
     FLAME,
-    GOD,
-    NINJA,
-
+    GOD;
 }

@@ -2,10 +2,10 @@ package me.bnogocarft.bnogorpg.CustomItems
 
 import me.bnogocarft.bnogorpg.CustomItems.DefaultItems.Diamond
 import me.bnogocarft.bnogorpg.Utils.BItemStack.BItems.BItemType
-import me.bnogocarft.bnogorpg.Utils.BItemStack.BItems.BMaterial
+import me.bnogocarft.bnogorpg.Utils.BItemStack.BMaterial
 import me.bnogocarft.bnogorpg.Utils.BItemStack.CraftItems.CraftItemType
-import me.bnogocarft.bnogorpg.Utils.BItemStack.Interfaces.ArmorSet
-import me.bnogocarft.bnogorpg.Utils.BItemStack.Rarity.Rarity
+import me.bnogocarft.bnogorpg.Utils.ItemFactory.ArmorSet
+import me.bnogocarft.bnogorpg.Utils.others.Rarity.Rarity
 import me.bnogocarft.bnogorpg.Utils.ItemFactory.BItemFactory
 import me.bnogocarft.bnogorpg.Utils.ItemFactory.ItemAbility
 import org.bukkit.Bukkit
@@ -76,7 +76,8 @@ class CactusArmor : ArmorSet {
             manaVary[1].toInt(),
             stamVary[0].toInt(),
             stamVary[1].toInt(),
-            3, 4)
+            3, 4
+        )
         Diamond.craftHelmet = BItemFactory.produceItem(factoryItem)
         val recipe = ShapedRecipe(Diamond.craftHelmet)
         recipe.shape("ddd", "d d", "   ")

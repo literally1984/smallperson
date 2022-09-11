@@ -3,7 +3,7 @@ package me.bnogocarft.bnogorpg.Reforge
 import me.bnogocarft.bnogorpg.Main
 import me.bnogocarft.bnogorpg.Utils.*
 import me.bnogocarft.bnogorpg.Utils.BItemStack.BItems.BItemUtils
-import me.bnogocarft.bnogorpg.Utils.BItemStack.BItems.Reforge
+import me.bnogocarft.bnogorpg.Utils.BItemStack.Reforge
 import org.bukkit.Bukkit
 import org.bukkit.ChatColor
 import org.bukkit.Material

@@ -42,7 +42,8 @@ class GiveCommand : CommandExecutor {
                 }
 
                 if (customItemMap.containsKey(args[1].lowercase())) {
-                    val item = BItemFactory.makeItem(BItemUtils.getBMaterial(customItemMap[args[0].lowercase()]!!.clone()))
+                    val item =
+                        BItemFactory.makeItem(BItemUtils.getBMaterial(customItemMap[args[0].lowercase()]!!.clone()))
                     player.inventory.addItem(item)
                     Bukkit.getLogger()
                         .log(Level.ALL, "You just gave ${player.displayName} a ${item.itemMeta.displayName}!")
@@ -54,7 +55,8 @@ class GiveCommand : CommandExecutor {
         if (sender is Player) {
             if (args.size == 1) {
                 if (customItemMap.containsKey(args[0].lowercase())) {
-                    val item = BItemFactory.makeItem(BItemUtils.getBMaterial(customItemMap[args[0].lowercase()]!!.clone()))
+                    val item =
+                        BItemFactory.makeItem(BItemUtils.getBMaterial(customItemMap[args[0].lowercase()]!!.clone()))
                     sender.inventory.addItem(item)
                     when (BItemUtils.getBType(item)) {
                         "weapon" -> BItemUtils.addBWeapon(item, BWeapon(item))
@@ -85,7 +87,8 @@ class GiveCommand : CommandExecutor {
                 }
 
                 if (customItemMap.containsKey(args[1].lowercase())) {
-                    val item = BItemFactory.makeItem(BItemUtils.getBMaterial(customItemMap[args[0].lowercase()]!!.clone()))
+                    val item =
+                        BItemFactory.makeItem(BItemUtils.getBMaterial(customItemMap[args[0].lowercase()]!!.clone()))
                     player.inventory.addItem(item)
                     sender.sendMessage("You just gave ${player.displayName} a ${item.itemMeta.displayName}!")
                     return true

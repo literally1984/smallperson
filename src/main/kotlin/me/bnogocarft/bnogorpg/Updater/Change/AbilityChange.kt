@@ -1,7 +1,7 @@
 package me.bnogocarft.bnogorpg.Updater.Change
 
 import me.bnogocarft.bnogorpg.Updater.Updates.Update
-import me.bnogocarft.bnogorpg.Utils.BItemStack.BItems.BMaterial
+import me.bnogocarft.bnogorpg.Utils.BItemStack.BMaterial
 
 data class AbilityChange(
     override val mat: BMaterial,

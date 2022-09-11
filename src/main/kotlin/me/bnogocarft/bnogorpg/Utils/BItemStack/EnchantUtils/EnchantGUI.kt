@@ -1,15 +1,12 @@
 package me.bnogocarft.bnogorpg.Utils.BItemStack.EnchantUtils
 
 import me.bnogocarft.bnogorpg.Utils.*
-import me.bnogocarft.bnogorpg.Utils.BItemStack.BItems.BGear
 import org.bukkit.Bukkit
 import org.bukkit.Material
 import org.bukkit.inventory.ItemStack
 
 class EnchantGUI {
-    companion object {
-
-    }
+    companion object;
 
     init {
 

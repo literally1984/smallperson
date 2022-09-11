@@ -1,4 +1,4 @@
-package me.bnogocarft.bnogorpg.Utils.BItemStack.BItems
+package me.bnogocarft.bnogorpg.Utils.BItemStack
 
 import me.bnogocarft.bnogorpg.CustomItems.*
 import me.bnogocarft.bnogorpg.CustomItems.DefaultItems.*
@@ -196,6 +196,7 @@ enum class BMaterial {
             THUNDERBOLT -> Thunderbolt.blade.itemMeta
         }
     }
+
     fun getStatVary(): ArrayList<String> {
         val vary = ArrayList<String>()
         when (this) {
@@ -208,6 +209,7 @@ enum class BMaterial {
                 vary.add("6-9")
                 vary.add("2-3")
             }
+
             CACTUS_CHESTPLATE -> {
                 vary.add("1-3")
                 vary.add("7-10")
@@ -217,6 +219,7 @@ enum class BMaterial {
                 vary.add("5-10")
                 vary.add("2-3")
             }
+
             CACTUS_LEGGINGS -> {
                 vary.add("0-1")
                 vary.add("9-11")
@@ -226,6 +229,7 @@ enum class BMaterial {
                 vary.add("5-10")
                 vary.add("2-3")
             }
+
             CACTUS_BOOTS -> {
                 vary.add("0-1")
                 vary.add("9-11")
@@ -235,6 +239,7 @@ enum class BMaterial {
                 vary.add("5-10")
                 vary.add("2-3")
             }
+
             LAPIS_HELMET -> {
                 vary.add("0-1")
                 vary.add("9-11")
@@ -244,6 +249,7 @@ enum class BMaterial {
                 vary.add("5-10")
                 vary.add("3-4")
             }
+
             LAPIS_CHESTPLATE -> {
                 vary.add("0-1")
                 vary.add("9-11")
@@ -253,6 +259,7 @@ enum class BMaterial {
                 vary.add("5-10")
                 vary.add("3-4")
             }
+
             LAPIS_LEGGINGS -> {
                 vary.add("0-1")
                 vary.add("9-11")
@@ -262,6 +269,7 @@ enum class BMaterial {
                 vary.add("5-10")
                 vary.add("3-4")
             }
+
             LAPIS_BOOTS -> {
                 vary.add("0-1")
                 vary.add("9-11")
@@ -271,6 +279,7 @@ enum class BMaterial {
                 vary.add("5-10")
                 vary.add("3-4")
             }
+
             IRON_HELMET -> {
                 vary.add("0-1")
                 vary.add("9-11")
@@ -280,6 +289,7 @@ enum class BMaterial {
                 vary.add("5-10")
                 vary.add("3-4")
             }
+
             IRON_CHESTPLATE -> {
                 vary.add("0-1")
                 vary.add("9-11")
@@ -289,6 +299,7 @@ enum class BMaterial {
                 vary.add("5-10")
                 vary.add("3-4")
             }
+
             IRON_LEGGINGS -> {
                 vary.add("0-1")
                 vary.add("9-11")
@@ -298,6 +309,7 @@ enum class BMaterial {
                 vary.add("5-10")
                 vary.add("3-4")
             }
+
             IRON_BOOTS -> {
                 vary.add("0-1")
                 vary.add("9-11")
@@ -307,6 +319,7 @@ enum class BMaterial {
                 vary.add("5-10")
                 vary.add("3-4")
             }
+
             IRON_SWORD -> {
                 vary.add("0-1")
                 vary.add("9-11")
@@ -327,6 +340,7 @@ enum class BMaterial {
                 vary.add("5-10")
                 vary.add("3-4")
             }
+
             GOLD_CHESTPLATE -> {
                 vary.add("0-1")
                 vary.add("9-11")
@@ -336,6 +350,7 @@ enum class BMaterial {
                 vary.add("5-10")
                 vary.add("3-4")
             }
+
             GOLD_LEGGINGS -> {
                 vary.add("0-1")
                 vary.add("9-11")
@@ -345,6 +360,7 @@ enum class BMaterial {
                 vary.add("5-10")
                 vary.add("3-4")
             }
+
             GOLD_BOOTS -> {
                 vary.add("0-1")
                 vary.add("9-11")
@@ -354,6 +370,7 @@ enum class BMaterial {
                 vary.add("5-10")
                 vary.add("3-4")
             }
+
             GOLD_SWORD -> {
                 vary.add("0-1")
                 vary.add("9-11")
@@ -363,6 +380,7 @@ enum class BMaterial {
                 vary.add("5-10")
                 vary.add("3-4")
             }
+
             DIAMOND_HELMET -> {
                 vary.add("0-1")
                 vary.add("9-11")
@@ -372,6 +390,7 @@ enum class BMaterial {
                 vary.add("5-10")
                 vary.add("3-4")
             }
+
             DIAMOND_CHESTPLATE -> {
                 vary.add("0-1")
                 vary.add("9-11")
@@ -381,6 +400,7 @@ enum class BMaterial {
                 vary.add("5-10")
                 vary.add("3-4")
             }
+
             DIAMOND_LEGGINGS -> {
                 vary.add("0-1")
                 vary.add("9-11")
@@ -390,6 +410,7 @@ enum class BMaterial {
                 vary.add("5-10")
                 vary.add("3-4")
             }
+
             DIAMOND_BOOTS -> {
                 vary.add("0-1")
                 vary.add("9-11")
@@ -399,6 +420,7 @@ enum class BMaterial {
                 vary.add("5-10")
                 vary.add("3-4")
             }
+
             DIAMOND_SWORD -> {
                 vary.add("0-1")
                 vary.add("9-11")
@@ -429,6 +451,7 @@ enum class BMaterial {
                 vary.add("5-10")
                 vary.add("3-4")
             }
+
             LEATHER_CHESTPLATE -> {
                 vary.add("0-1")
                 vary.add("9-11")
@@ -438,6 +461,7 @@ enum class BMaterial {
                 vary.add("5-10")
                 vary.add("3-4")
             }
+
             LEATHER_LEGGINGS -> {
                 vary.add("0-1")
                 vary.add("9-11")
@@ -447,6 +471,7 @@ enum class BMaterial {
                 vary.add("5-10")
                 vary.add("3-4")
             }
+
             LEATHER_BOOTS -> {
                 vary.add("0-1")
                 vary.add("9-11")
@@ -456,6 +481,7 @@ enum class BMaterial {
                 vary.add("5-10")
                 vary.add("3-4")
             }
+
             WOOD_SWORD -> {
                 vary.add("0-1")
                 vary.add("9-11")
@@ -465,6 +491,7 @@ enum class BMaterial {
                 vary.add("5-10")
                 vary.add("3-4")
             }
+
             BLADE_OF_HERMES -> {
                 vary.add("0-1")
                 vary.add("9-11")
@@ -474,6 +501,7 @@ enum class BMaterial {
                 vary.add("5-10")
                 vary.add("3-4")
             }
+
             DOUBLE_JUMP_BOOTS -> {
                 vary.add("0-1")
                 vary.add("9-11")
@@ -493,6 +521,7 @@ enum class BMaterial {
                 vary.add("35-45")
                 vary.add("3-4")
             }
+
             else -> {}
         }
 

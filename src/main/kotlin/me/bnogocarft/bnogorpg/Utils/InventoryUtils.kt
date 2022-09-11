@@ -162,7 +162,9 @@ open class GUI(
     open val inv: Inventory,
     open val buttons: List<GUIButton>,
     open val background: List<GUIBackground>,
-    open val slotFuncs: List<SlotFunction>)
+    open val slotFuncs: List<SlotFunction>
+)
+
 data class OpenGUI(val gui: GUI, val player: Player, val slot: Int, var currentItem: ItemStack) :
     GUI(gui.inv, gui.buttons, gui.background, gui.slotFuncs)
 
