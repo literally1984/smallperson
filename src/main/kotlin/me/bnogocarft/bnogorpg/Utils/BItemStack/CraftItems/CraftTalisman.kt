@@ -15,13 +15,31 @@ class CraftTalisman(override var item: ItemStack, val variables: List<TalismanVa
 
     override fun craft(): ItemStack {
         val indexOfAbility = 1
-        val lore = item.itemMeta.lore
+        val copyItem = item.clone()
+        val copyMeta = copyItem.itemMeta
+        val lore = copyMeta.lore
         while (lore[indexOfAbility] != "") {
             for (vari in variables) {
                 if (lore.indexOf(lore[indexOfAbility]) == vari.loreLine) {
-                    lore[lore.indexOf(lore[indexOfAbility])] = lore[lore.indexOf(lore[indexOfAbility])].replace(vari.key, vari.value)
+                    lore[
+                            lore.indexOf(
+                                lore[indexOfAbility]
+                            )
+                    ] =
+                        lore[
+                                lore.indexOf(
+                                    lore[indexOfAbility]
+                                )
+                        ].replace(
+                            vari.key,
+                            vari.value.toString()
+                        )
                 }
             }
         }
+        copyMeta.lore = lore
+        copyItem.itemMeta = copyMeta
+
+        return copyItem
     }
 }

@@ -1,5 +1,7 @@
 package me.bnogocarft.bnogorpg.Utils.BItemStack.CraftItems
 
-data class TalismanVariable(val key: String, private val value: Pair<Int, Int>, val loreLine: Int) {
+import kotlin.random.Random
 
+data class TalismanVariable(val key: String, private val possibleValues: Pair<Int, Int>, val loreLine: Int) {
+    val value = Random.nextInt(possibleValues.first, possibleValues.second+1)
 }
