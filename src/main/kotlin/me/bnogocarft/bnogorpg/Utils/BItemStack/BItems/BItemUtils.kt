@@ -10,7 +10,9 @@ class BItemUtils {
         private val BWeapons: HashMap<ItemStack, BWeapon> = HashMap()
         private val BArmor: HashMap<ItemStack, BArmor> = HashMap()
         val BGears: HashMap<ItemStack, BGear> = HashMap()
+        val BItems = HashMap<ItemStack, BItem>()
 
+        @Deprecated("Switch to getting BItem and then getting type")
         fun getBType(item: ItemStack): String? {
             if (item.itemMeta != null && item.itemMeta.displayName != null) {
                 if (item.itemMeta.displayName.lowercase().contains("sword") ||
@@ -38,6 +40,7 @@ class BItemUtils {
             val bweapon = BWeapon(item)
             val BGear = bweapon as BGear
             BGears[item] = BGear
+            BItems[item] = BGear
             BWeapons[item] = bweapon
             return bweapon
         }
@@ -46,12 +49,14 @@ class BItemUtils {
             BWeapons[item] = bWeapon
             val BGear = bWeapon as BGear
             BGears[item] = BGear
+            BItems[item] = BGear
         }
 
         fun addBWeapon(item: ItemStack, stats: List<Int>) {
             BWeapons[item] = BWeapon(stats, item)
             val BGear = BWeapons[item] as BGear
             BGears[item] = BGear
+            BItems[item] = BGear
         }
 
         fun getBArmor(item: ItemStack): BArmor {
@@ -60,6 +65,7 @@ class BItemUtils {
             BArmor[item] = barmor
             val BGear = barmor as BGear
             BGears[item] = BGear
+            BItems[item] = BGear
             return barmor
         }
 
@@ -68,23 +74,28 @@ class BItemUtils {
             BArmor[item] = bArmor
             val BGear = bArmor as BGear
             BGears[item] = BGear
+            BItems[item] = BGear
         }
 
         fun addBArmor(item: ItemStack, stats: List<Int>) {
             BArmor[item] = BArmor(stats, item)
             val BGear = BArmor[item] as BGear
             BGears[item] = BGear
+            BItems[item] = BGear
         }
 
         fun getBGear(item: ItemStack): BGear {
             if (BGears.containsKey(item)) return BGears[item]!!
-            return when (getBType(item)) {
-                "weapon" -> {
+            val bItem = BItem(item)
+            BItems[item] = bItem
+
+            return when (bItem.type) {
+                BItemType.WEAPON -> {
                     addBWeapon(item, BWeapon(item))
                     BGears[item]!!
                 }
 
-                "armor" -> {
+                BItemType.ARMOR -> {
                     addBArmor(item, BArmor(item))
                     BGears[item]!!
                 }

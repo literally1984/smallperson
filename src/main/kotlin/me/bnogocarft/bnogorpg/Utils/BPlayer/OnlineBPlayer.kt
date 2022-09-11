@@ -10,6 +10,7 @@ import me.bnogocarft.bnogorpg.Utils.StatUtils.StatManager
 import me.bnogocarft.bnogorpg.combat.ComboCounter.Combo
 import org.bukkit.entity.LivingEntity
 import org.bukkit.entity.Player
+import org.bukkit.inventory.ItemStack
 import tech.nully.BossBarAPI.BossBar
 import java.text.SimpleDateFormat
 import java.util.*
@@ -39,6 +40,23 @@ data class OnlineBPlayer(val p: Player) : BPlayer(p.name) {
      * The player's current [Mode]
      */
     var mode: Mode = Mode.NONE
+
+    val regHotbar = arrayListOf<ItemStack?>(null, null, null, null, null, null, null, null, null)
+    var isInCastMode = false
+        set(value) {
+            if (!field) {
+                for (i in 0..8) {
+                    regHotbar[i] = p.inventory.getItem(i)
+                    p.inventory.setItem(i, spells[i].displayItem)
+                }
+            } else {
+                for (i in 0..8) {
+                    p.inventory.setItem(i, regHotbar[i])
+                    regHotbar[i] = null
+                }
+            }
+            field = value
+        }
 
     val hitbox = Hitbox(p)
 

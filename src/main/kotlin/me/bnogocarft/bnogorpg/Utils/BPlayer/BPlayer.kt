@@ -2,7 +2,7 @@
 
 package me.bnogocarft.bnogorpg.Utils.BPlayer
 
-import me.bnogocarft.bnogorpg.Utils.Abilities.PlayerAbility.Ability
+import me.bnogocarft.bnogorpg.Utils.Abilities.Spell
 import me.bnogocarft.bnogorpg.Utils.BItemStack.Talisman.Talisman
 import me.bnogocarft.bnogorpg.Utils.Database.BnogoSQL
 import me.bnogocarft.bnogorpg.Utils.Database.YMLUtils
@@ -20,9 +20,9 @@ open class BPlayer(open val player: String) {
     val talismans = ArrayList<Talisman>()
 
     /**
-     * The player's [Ability]s
+     * The player's [Spell]s
      */
-    val abilities = ArrayList<Ability>()
+    val spells = ArrayList<Spell>()
 
     /**
      * Used to get the player of the player's
