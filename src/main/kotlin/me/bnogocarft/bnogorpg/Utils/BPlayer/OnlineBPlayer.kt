@@ -3,6 +3,7 @@ package me.bnogocarft.bnogorpg.Utils.BPlayer
 import me.bnogocarft.bnogorpg.Player.PlayerBar.Bar
 import me.bnogocarft.bnogorpg.Player.PlayerBar.MainBar
 import me.bnogocarft.bnogorpg.Utils.Abilities.SetBonus
+import me.bnogocarft.bnogorpg.Utils.Abilities.Spell
 import me.bnogocarft.bnogorpg.Utils.Database.BnogoSQL
 import me.bnogocarft.bnogorpg.Utils.JVMUtils.BarArrayList
 import me.bnogocarft.bnogorpg.Utils.Mode.Mode
@@ -14,6 +15,7 @@ import org.bukkit.inventory.ItemStack
 import tech.nully.BossBarAPI.BossBar
 import java.text.SimpleDateFormat
 import java.util.*
+import kotlin.collections.HashMap
 import kotlin.math.roundToInt
 
 
@@ -42,12 +44,25 @@ data class OnlineBPlayer(val p: Player) : BPlayer(p.name) {
     var mode: Mode = Mode.NONE
 
     val regHotbar = arrayListOf<ItemStack?>(null, null, null, null, null, null, null, null, null)
+    val spellItemMap = HashMap<ItemStack, Spell>()
     var isInCastMode = false
         set(value) {
+            // If the Player was not previously in spellcast form
             if (!field) {
+                val castItem = p.itemInHand
                 for (i in 0..8) {
+                    if (i == 0) {
+                        p.inventory.setItem(0, castItem)
+                        continue
+                    }
                     regHotbar[i] = p.inventory.getItem(i)
-                    p.inventory.setItem(i, spells[i].displayItem)
+                    try {
+                        val disItem = spells[i].displayItem
+                        p.inventory.setItem(i, disItem)
+                        spellItemMap[disItem] = spells[i]
+                    } catch (e: IndexOutOfBoundsException) {
+                        continue
+                    }
                 }
             } else {
                 for (i in 0..8) {
@@ -125,7 +140,7 @@ data class OnlineBPlayer(val p: Player) : BPlayer(p.name) {
      */
     fun dealDamage(other: LivingEntity, amount: Int) {
         val damage = if (other is Player) {
-            val player = OnlineBPlayers[other]!!
+            val player = OnlineBPlayers[other]
             try {
                 amount * (player.stats.defense / player.stats.defense + 10)
             } catch (e: ArithmeticException) {

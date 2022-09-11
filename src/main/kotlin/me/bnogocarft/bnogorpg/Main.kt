@@ -20,6 +20,7 @@ import me.bnogocarft.bnogorpg.RecipeBook.RecipeBookCommand
 import me.bnogocarft.bnogorpg.RecipeBook.RecipeManager
 import me.bnogocarft.bnogorpg.Reforge.ReforgeBlockListener
 import me.bnogocarft.bnogorpg.Reforge.ReforgeCommand
+import me.bnogocarft.bnogorpg.Spells.SpellCastListener
 import me.bnogocarft.bnogorpg.Updater.Updates.Update
 import me.bnogocarft.bnogorpg.Utils.*
 import me.bnogocarft.bnogorpg.Utils.BItemStack.BItems.BItemUtils
@@ -104,7 +105,6 @@ class Main : JavaPlugin() {
             ymlConfig.set("items.indexes.DoubleJumpBoots", 0)
 
             ymlConfig.set("auction.lastAucID", "0")
-            ymlConfig.set("auction.pausedAucs", "")
         }
         YMLUtils.saveCustomYml(ymlConfig, serverFile)
 
@@ -141,6 +141,7 @@ class Main : JavaPlugin() {
         server.pluginManager.registerEvents(StashListener(), this)
         server.pluginManager.registerEvents(CraftingListeners(), this)
         server.pluginManager.registerEvents(AuctionListeners(), this)
+        server.pluginManager.registerEvents(SpellCastListener(), this)
         cSender.sendMessage("$logo Registered Listeners")
 
         cSender.sendMessage("$logo Enabling ItemUpgrades...")
@@ -234,7 +235,7 @@ class Main : JavaPlugin() {
             "${ChatColor.LIGHT_PURPLE} $logo ${ChatColor.RED} BnogoRPG has been disabled D:"
         )
         for (player in server.onlinePlayers) {
-            val bPlayer = OnlineBPlayers[player]!!
+            val bPlayer = OnlineBPlayers[player]
             PlaytimeUtils.addPlaytime(bPlayer)
             bPlayer.saveStats()
         }
