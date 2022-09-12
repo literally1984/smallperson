@@ -33,6 +33,7 @@ class SpellCastListener : Listener {
                 }
                 val spellItem = e.player.inventory.getItem(e.newSlot)
                 bPlayer.spellItemMap[spellItem]!!.cast(e.player)
+                e.isCancelled = true
             }
         }
     }
