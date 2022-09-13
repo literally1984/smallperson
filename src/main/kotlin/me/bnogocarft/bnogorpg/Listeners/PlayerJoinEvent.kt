@@ -27,8 +27,8 @@ class PlayerJoinEvent : Listener {
         val obj = board.registerNewObjective("test", "dummy")
         obj.displaySlot = DisplaySlot.SIDEBAR
         obj.displayName = "${ChatColor.GOLD}${ChatColor.BOLD}RPG Factions"
-        val score = obj.getScore(Bukkit.getOfflinePlayer("${ChatColor.GOLD}\$Balance: ${Main.econ.getBalance(e.player.name)}"))
-        Ticker.oldPlayerBalanceScores[e.player] = "${ChatColor.GOLD}\$Balance: 1"
+        val score = obj.getScore(Bukkit.getOfflinePlayer("${ChatColor.GOLD}Bal: ${Main.econ.getBalance(e.player.name)}"))
+        Ticker.oldPlayerBalanceScores[e.player] = "${ChatColor.GOLD}Bal: ${Main.econ.getBalance(e.player.name)}"
         score.score = 1
         e.player.scoreboard = board
 

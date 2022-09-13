@@ -32,11 +32,11 @@ class SpellCastListener : Listener {
         val bPlayer = OnlineBPlayers[e.player]
         if (bPlayer.isInCastMode) {
             if (e.newSlot != 0) {
-                if (e.player.inventory.getItem(e.newSlot) != null) {
+                if (e.player.inventory.getItem(e.newSlot) == null) {
                     e.isCancelled = true
                     return
                 }
-                if (e.player.inventory.getItem(e.newSlot).type != Material.AIR) {
+                if (e.player.inventory.getItem(e.newSlot).type == Material.AIR) {
                     e.isCancelled = true
                     return
                 }

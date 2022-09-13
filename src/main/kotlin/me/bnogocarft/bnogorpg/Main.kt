@@ -38,6 +38,7 @@ import me.bnogocarft.bnogorpg.economy.Auction.AHGui
 import me.bnogocarft.bnogorpg.economy.Auction.AhGuiUpdater
 import me.bnogocarft.bnogorpg.economy.Auction.AuctionCommand
 import me.bnogocarft.bnogorpg.economy.Auction.AuctionListeners
+import me.bnogocarft.bnogorpg.tickUpdater.Ticker
 import net.milkbowl.vault.economy.Economy
 import org.bukkit.Bukkit
 import org.bukkit.ChatColor
@@ -226,7 +227,7 @@ class Main : JavaPlugin() {
         Bukkit.getScheduler().scheduleSyncRepeatingTask(this, {
             update()
         }, 20, 20 * 60 * 60 * 2)
-        //Ticker.startPlayerUpdater()
+        Ticker.startPlayerUpdater()
         saveDefaultConfig()
         System.gc()
     }
@@ -240,6 +241,7 @@ class Main : JavaPlugin() {
             bPlayer.isInCastMode = false
             PlaytimeUtils.addPlaytime(bPlayer)
             bPlayer.saveStats()
+            player.kickPlayer("Server is restarting, please rejoin in about 20 seconds")
         }
         update()
         for (auc in auctions) {
