@@ -9,6 +9,7 @@ import me.bnogocarft.bnogorpg.Utils.JVMUtils.BarArrayList
 import me.bnogocarft.bnogorpg.Utils.Mode.Mode
 import me.bnogocarft.bnogorpg.Utils.StatUtils.StatManager
 import me.bnogocarft.bnogorpg.combat.ComboCounter.Combo
+import org.bukkit.ChatColor
 import org.bukkit.entity.LivingEntity
 import org.bukkit.entity.Player
 import org.bukkit.inventory.ItemStack
@@ -49,10 +50,12 @@ data class OnlineBPlayer(val p: Player) : BPlayer(p.name) {
         set(value) {
             // If the Player was not previously in spellcast form
             if (!field) {
+                p.sendMessage("${ChatColor.GREEN}Combat mode ${ChatColor.BOLD}ON")
                 val castItem = p.itemInHand
                 for (i in 0..8) {
                     if (i == 0) {
                         p.inventory.setItem(0, castItem)
+                        regHotbar[i] = p.inventory.getItem(i)
                         continue
                     }
                     regHotbar[i] = p.inventory.getItem(i)
@@ -61,10 +64,13 @@ data class OnlineBPlayer(val p: Player) : BPlayer(p.name) {
                         p.inventory.setItem(i, disItem)
                         spellItemMap[disItem] = spells[i]
                     } catch (e: IndexOutOfBoundsException) {
+                        p.inventory.setItem(i, null)
                         continue
                     }
                 }
+                p.inventory.heldItemSlot = 0
             } else {
+                p.sendMessage("${ChatColor.GREEN}Combat mode ${ChatColor.BOLD}OFF")
                 for (i in 0..8) {
                     p.inventory.setItem(i, regHotbar[i])
                     regHotbar[i] = null

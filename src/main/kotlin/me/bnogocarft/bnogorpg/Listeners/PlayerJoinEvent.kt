@@ -9,6 +9,7 @@ import me.bnogocarft.bnogorpg.Utils.BItemStack.BItems.BItemUtils
 import me.bnogocarft.bnogorpg.Utils.BItemStack.BItems.BWeapon
 import me.bnogocarft.bnogorpg.Utils.BPlayer.OnlineBPlayer
 import me.bnogocarft.bnogorpg.Utils.BPlayer.OnlineBPlayers
+import me.bnogocarft.bnogorpg.tickUpdater.Ticker
 import org.bukkit.Bukkit
 import org.bukkit.ChatColor
 import org.bukkit.event.EventHandler
@@ -26,7 +27,8 @@ class PlayerJoinEvent : Listener {
         val obj = board.registerNewObjective("test", "dummy")
         obj.displaySlot = DisplaySlot.SIDEBAR
         obj.displayName = "${ChatColor.GOLD}${ChatColor.BOLD}RPG Factions"
-        val score = obj.getScore(Bukkit.getOfflinePlayer("${ChatColor.GOLD}Balance: 1"))
+        val score = obj.getScore(Bukkit.getOfflinePlayer("${ChatColor.GOLD}\$Balance: ${Main.econ.getBalance(e.player.name)}"))
+        Ticker.oldPlayerBalanceScores[e.player] = "${ChatColor.GOLD}\$Balance: 1"
         score.score = 1
         e.player.scoreboard = board
 

@@ -10,7 +10,8 @@ class PlayerLeaveEvent : Listener {
 
     @EventHandler
     fun onPlayerLeave(e: PlayerQuitEvent) {
-        val player = OnlineBPlayers[e.player]!!
+        val player = OnlineBPlayers[e.player]
+        player.isInCastMode = false
         if (player.metadata["combat"] != null) {
             player.metadata["combatLogged"] = true
             for (item in e.player.inventory) {

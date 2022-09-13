@@ -1,4 +1,4 @@
-package me.bnogocarft.bnogorpg.animation
+package me.bnogocarft.bnogorpg.Particle
 
 import me.bnogocarft.bnogorpg.Utils.Particle.HelixAnimation
 import org.bukkit.command.Command

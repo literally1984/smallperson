@@ -33,7 +33,7 @@ import me.bnogocarft.bnogorpg.Utils.ItemFactory.ItemAbility
 import me.bnogocarft.bnogorpg.Utils.economyUtils.auction.Auction
 import me.bnogocarft.bnogorpg.Utils.economyUtils.auction.AuctionTimer
 import me.bnogocarft.bnogorpg.Utils.others.PlaytimeUtils
-import me.bnogocarft.bnogorpg.animation.animationTestCommand
+import me.bnogocarft.bnogorpg.Particle.animationTestCommand
 import me.bnogocarft.bnogorpg.economy.Auction.AHGui
 import me.bnogocarft.bnogorpg.economy.Auction.AhGuiUpdater
 import me.bnogocarft.bnogorpg.economy.Auction.AuctionCommand
@@ -226,6 +226,7 @@ class Main : JavaPlugin() {
         Bukkit.getScheduler().scheduleSyncRepeatingTask(this, {
             update()
         }, 20, 20 * 60 * 60 * 2)
+        //Ticker.startPlayerUpdater()
         saveDefaultConfig()
         System.gc()
     }
@@ -236,6 +237,7 @@ class Main : JavaPlugin() {
         )
         for (player in server.onlinePlayers) {
             val bPlayer = OnlineBPlayers[player]
+            bPlayer.isInCastMode = false
             PlaytimeUtils.addPlaytime(bPlayer)
             bPlayer.saveStats()
         }
