@@ -3,15 +3,25 @@ package me.bnogocarft.bnogorpg.Spells.spells
 import me.bnogocarft.bnogorpg.Main
 import me.bnogocarft.bnogorpg.Utils.Abilities.Spell
 import org.bukkit.Bukkit
+import org.bukkit.ChatColor
 import org.bukkit.Material
 import org.bukkit.entity.Fireball
 import org.bukkit.entity.Player
 import org.bukkit.inventory.ItemStack
 import org.bukkit.util.Vector
 
-class MeteorSpell : Spell {
+class MeteorSpell(r: Int) : Spell {
     override var displayItem: ItemStack = ItemStack(Material.FIREBALL)
-    override var name: String = "Meteor Strike"
+        get() {
+            val copy = field.itemMeta
+            val copylore = copy.lore
+            copylore[copylore.size - 2] = "${ChatColor.GOLD}Spell Rank: $rank"
+            copy.lore = copylore
+            field.itemMeta = copy
+            return field
+        }
+    override val name: String = "${ChatColor.RED}Meteor Strike"
+    override var rank = r
 
     override fun cast(caster: Player) {
         val targetLocation = caster.getTargetBlock(null, 200).location

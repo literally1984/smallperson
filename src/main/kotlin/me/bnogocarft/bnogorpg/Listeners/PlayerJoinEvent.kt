@@ -24,12 +24,46 @@ class PlayerJoinEvent : Listener {
     fun playerJoinEvent(e: PlayerJoinEvent) {
         val onlineBPlayer = OnlineBPlayer(e.player)
         val board = Bukkit.getScoreboardManager().newScoreboard
-        val obj = board.registerNewObjective("test", "dummy")
+        val obj = board.registerNewObjective("Mainboard", "dummy")
         obj.displaySlot = DisplaySlot.SIDEBAR
-        obj.displayName = "${ChatColor.GOLD}${ChatColor.BOLD}RPG Factions"
-        val score = obj.getScore(Bukkit.getOfflinePlayer("${ChatColor.GOLD}Bal: ${Main.econ.getBalance(e.player.name)}"))
-        Ticker.oldPlayerBalanceScores[e.player] = "${ChatColor.GOLD}Bal: ${Main.econ.getBalance(e.player.name)}"
-        score.score = 1
+        obj.displayName = "      ${ChatColor.BOLD}${ChatColor.RED}R${ChatColor.GREEN}P${ChatColor.BLUE}G ${ChatColor.YELLOW}Factions"
+
+        val mana = obj
+            .getScore(
+                Bukkit.getOfflinePlayer(
+                    "${ChatColor.AQUA}Mana: " +
+                            "${onlineBPlayer.stats.currentMana}" +
+                            "/" +
+                            "${onlineBPlayer.stats.maxMana}"
+                )
+            )
+
+        val stamina = obj
+            .getScore(
+                Bukkit.getOfflinePlayer(
+                    "${ChatColor.GOLD}Stamina: " +
+                            "${onlineBPlayer.stats.currentStamina}" +
+                            "/" +
+                            "${onlineBPlayer.stats.maxStamina}"
+                )
+            )
+
+        val bal = obj.getScore(Bukkit.getOfflinePlayer("${ChatColor.GREEN}Bal: ${Main.econ.getBalance(e.player.name)}"))
+
+        Ticker.oldPlayerBalanceScores[e.player] = "${ChatColor.GREEN}Bal: ${Main.econ.getBalance(e.player.name)}"
+        Ticker.oldPlayerManaScores[e.player] = "${ChatColor.AQUA}Mana: " +
+                "${onlineBPlayer.stats.currentMana}" +
+                "/" +
+                "${onlineBPlayer.stats.maxMana}"
+
+        Ticker.oldPlayerStaminaScores[e.player] = "${ChatColor.GOLD}Stamina: " +
+                "${onlineBPlayer.stats.currentStamina}" +
+                "/" +
+                "${onlineBPlayer.stats.maxStamina}"
+
+        bal.score = 1
+        mana.score = 2
+        stamina.score = 3
         e.player.scoreboard = board
 
         OnlineBPlayers[e.player] = onlineBPlayer

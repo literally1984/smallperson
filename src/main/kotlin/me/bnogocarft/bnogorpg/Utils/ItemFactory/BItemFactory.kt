@@ -333,7 +333,7 @@ class BItemFactory {
                                 for (s in ability.getDescription()) lore.add("${ChatColor.GRAY}$s")
                                 lore.add("")
                             }
-                            lore.add("${ChatColor.GOLD}${ChatColor.ITALIC}Armor")
+                            lore.add("${ChatColor.GOLD}${ChatColor.ITALIC}Armor Item")
 
                             lore.add("${ChatColor.GOLD}${item.stats[12]}-${item.stats[13]} ✪Star✪")
 

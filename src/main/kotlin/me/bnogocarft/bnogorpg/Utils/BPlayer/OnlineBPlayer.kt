@@ -49,31 +49,33 @@ data class OnlineBPlayer(val p: Player) : BPlayer(p.name) {
     var isInCastMode = false
         set(value) {
             // If the Player was not previously in spellcast form
-            if (!field) {
-                p.sendMessage("${ChatColor.GREEN}Combat mode ${ChatColor.BOLD}ON")
-                val castItem = p.itemInHand
-                for (i in 0..8) {
-                    if (i == 0) {
-                        p.inventory.setItem(0, castItem)
+            if (field != value) {
+                if (value) {
+                    p.sendMessage("${ChatColor.GREEN}Combat mode ${ChatColor.BOLD}ON")
+                    val castItem = p.itemInHand
+                    for (i in 0..8) {
+                        if (i == 0) {
+                            p.inventory.setItem(0, castItem)
+                            regHotbar[i] = p.inventory.getItem(i)
+                            continue
+                        }
                         regHotbar[i] = p.inventory.getItem(i)
-                        continue
+                        try {
+                            val disItem = spells[i].displayItem
+                            p.inventory.setItem(i, disItem)
+                            spellItemMap[disItem] = spells[i]
+                        } catch (e: IndexOutOfBoundsException) {
+                            p.inventory.setItem(i, null)
+                            continue
+                        }
                     }
-                    regHotbar[i] = p.inventory.getItem(i)
-                    try {
-                        val disItem = spells[i].displayItem
-                        p.inventory.setItem(i, disItem)
-                        spellItemMap[disItem] = spells[i]
-                    } catch (e: IndexOutOfBoundsException) {
-                        p.inventory.setItem(i, null)
-                        continue
+                    p.inventory.heldItemSlot = 0
+                } else {
+                    p.sendMessage("${ChatColor.GREEN}Combat mode ${ChatColor.BOLD}OFF")
+                    for (i in 0..8) {
+                        p.inventory.setItem(i, regHotbar[i])
+                        regHotbar[i] = null
                     }
-                }
-                p.inventory.heldItemSlot = 0
-            } else {
-                p.sendMessage("${ChatColor.GREEN}Combat mode ${ChatColor.BOLD}OFF")
-                for (i in 0..8) {
-                    p.inventory.setItem(i, regHotbar[i])
-                    regHotbar[i] = null
                 }
             }
             field = value

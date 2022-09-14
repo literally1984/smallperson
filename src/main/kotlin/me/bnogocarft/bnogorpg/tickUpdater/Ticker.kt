@@ -5,10 +5,13 @@ import me.bnogocarft.bnogorpg.Utils.BPlayer.OnlineBPlayers
 import org.bukkit.Bukkit
 import org.bukkit.ChatColor
 import org.bukkit.entity.Player
+import org.bukkit.scoreboard.DisplaySlot
 
 class Ticker {
     companion object {
         val oldPlayerBalanceScores = HashMap<Player, String>()
+        val oldPlayerManaScores = HashMap<Player, String>()
+        val oldPlayerStaminaScores = HashMap<Player, String>()
         fun startPlayerUpdater() {
             Bukkit.getScheduler().scheduleSyncRepeatingTask(Main.instance, {
                 for (player in Bukkit.getOnlinePlayers()) {
@@ -18,15 +21,52 @@ class Ticker {
             }, 0, 5*60)
             Bukkit.getScheduler().scheduleSyncRepeatingTask(Main.instance, {
                 for (player in Bukkit.getOnlinePlayers()) {
-                    player.scoreboard.resetScores(Bukkit.getOfflinePlayer(oldPlayerBalanceScores[player]))
-                    player.scoreboard.getObjective("test")
+                    val bplayer = OnlineBPlayers[player]
+
+                    val board = player.scoreboard
+                    val obj = board.getObjective("Mainboard")
+
+                    board.resetScores(Bukkit.getOfflinePlayer(oldPlayerBalanceScores[player]))
+                    board.resetScores(Bukkit.getOfflinePlayer(oldPlayerManaScores[player]))
+                    board.resetScores(Bukkit.getOfflinePlayer(oldPlayerStaminaScores[player]))
+
+                    val mana = obj
                         .getScore(
                             Bukkit.getOfflinePlayer(
-                                "${ChatColor.GOLD}\$Balance: ${Main.econ.getBalance(player.name)}"
+                                "${ChatColor.AQUA}Mana: " +
+                                        "${bplayer.stats.currentMana}" +
+                                        "/" +
+                                        "${bplayer.stats.maxMana}"
                             )
                         )
-                }
 
+                    val stamina = obj
+                        .getScore(
+                            Bukkit.getOfflinePlayer(
+                                "${ChatColor.GOLD}Stamina: " +
+                                        "${bplayer.stats.currentStamina}" +
+                                        "/" +
+                                        "${bplayer.stats.maxStamina}"
+                            )
+                        )
+
+                    val bal = obj.getScore(Bukkit.getOfflinePlayer("${ChatColor.GREEN}Bal: ${Main.econ.getBalance(player.name)}"))
+                    bal.score = 1
+                    mana.score = 2
+                    stamina.score = 3
+
+                    player.scoreboard = board
+                    oldPlayerBalanceScores[player] = "${ChatColor.GOLD}Bal: ${Main.econ.getBalance(player.name)}"
+                    oldPlayerManaScores[player] = "${ChatColor.AQUA}Mana: " +
+                            "${bplayer.stats.currentMana}" +
+                            "/" +
+                            "${bplayer.stats.maxMana}"
+
+                    oldPlayerStaminaScores[player] = "${ChatColor.GOLD}Stamina: " +
+                            "${bplayer.stats.currentStamina}" +
+                            "/" +
+                            "${bplayer.stats.maxStamina}"
+                }
             }, 0, 10)
         }
     }
