@@ -34,6 +34,8 @@ import me.bnogocarft.bnogorpg.Utils.economyUtils.auction.Auction
 import me.bnogocarft.bnogorpg.Utils.economyUtils.auction.AuctionTimer
 import me.bnogocarft.bnogorpg.Utils.others.PlaytimeUtils
 import me.bnogocarft.bnogorpg.Particle.animationTestCommand
+import me.bnogocarft.bnogorpg.Spells.spells.FireballSpell
+import me.bnogocarft.bnogorpg.Spells.spells.MeteorSpell
 import me.bnogocarft.bnogorpg.economy.Auction.AHGui
 import me.bnogocarft.bnogorpg.economy.Auction.AhGuiUpdater
 import me.bnogocarft.bnogorpg.economy.Auction.AuctionCommand
@@ -44,6 +46,7 @@ import org.bukkit.Bukkit
 import org.bukkit.ChatColor
 import org.bukkit.configuration.file.YamlConfiguration
 import org.bukkit.enchantments.Enchantment
+import org.bukkit.entity.Fireball
 import org.bukkit.entity.Player
 import org.bukkit.plugin.Plugin
 import org.bukkit.plugin.java.JavaPlugin
@@ -220,6 +223,11 @@ class Main : JavaPlugin() {
             server.pluginManager.disablePlugin(this)
             return
         }
+        cSender.sendMessage("$logo Economy enabled")
+        cSender.sendMessage("$logo Enabling Spells")
+        FireballSpell.scroll
+        MeteorSpell.scroll
+        cSender.sendMessage("$logo Spells enabled")
 
         cSender.sendMessage(
             "${ChatColor.LIGHT_PURPLE} $logo ${ChatColor.GREEN} BnogoRPG Vdev-0.0.4 has been ${ChatColor.GREEN}Enabled"

@@ -2,6 +2,9 @@ package me.bnogocarft.bnogorpg.Spells.spells
 
 import me.bnogocarft.bnogorpg.Main
 import me.bnogocarft.bnogorpg.Utils.Abilities.Spell
+import me.bnogocarft.bnogorpg.Utils.BItemStack.BItems.BItemType
+import me.bnogocarft.bnogorpg.Utils.ItemFactory.BItemFactory
+import me.bnogocarft.bnogorpg.Utils.others.Rarity.Rarity
 import org.bukkit.Bukkit
 import org.bukkit.ChatColor
 import org.bukkit.Material
@@ -20,8 +23,27 @@ class MeteorSpell(r: Int) : Spell {
             field.itemMeta = copy
             return field
         }
-    override val name: String = "${ChatColor.RED}Meteor Strike"
+    override val name: String = "${ChatColor.RED}Meteor Summon"
+    override val codeName = "meteor"
     override var rank = r
+
+    companion object {
+        var scroll = ItemStack(Material.PAPER)
+        fun init() {
+            val fItem = BItemFactory.createBItem(
+                "Meteor Summon Scroll",
+                Material.PAPER,
+                BItemType.SCROLL
+            )
+            fItem.customAbility.add("${ChatColor.YELLOW}Summons a meteor at the block your")
+            fItem.customAbility.add("${ChatColor.YELLOW}cursor is on")
+            fItem.levelReq = 10
+
+            fItem.rarity = Rarity.EPIC
+            scroll = BItemFactory.produceItem(fItem)
+            BItemFactory.register("fireball", scroll)
+        }
+    }
 
     override fun cast(caster: Player) {
         val targetLocation = caster.getTargetBlock(null, 200).location

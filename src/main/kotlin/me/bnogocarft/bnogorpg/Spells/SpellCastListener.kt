@@ -1,5 +1,7 @@
 package me.bnogocarft.bnogorpg.Spells
 
+import me.bnogocarft.bnogorpg.Spells.spells.FireballSpell
+import me.bnogocarft.bnogorpg.Spells.spells.MeteorSpell
 import me.bnogocarft.bnogorpg.Utils.BItemStack.BItems.BItem
 import me.bnogocarft.bnogorpg.Utils.BItemStack.BItems.BItemType
 import me.bnogocarft.bnogorpg.Utils.BPlayer.OnlineBPlayers
@@ -16,11 +18,24 @@ class SpellCastListener : Listener {
     fun onCombatSwitch(e: PlayerInteractEvent) {
         if (e.player.itemInHand != null && e.player.itemInHand.hasItemMeta()) {
             val bItem = BItem(e.player.itemInHand)
+            val bPlayer = OnlineBPlayers[e.player]
             if (bItem.type == BItemType.WEAPON) {
                 if (e.action == Action.RIGHT_CLICK_AIR || e.action == Action.RIGHT_CLICK_BLOCK) {
                     if (e.player.isSneaking) {
-                        val bPlayer = OnlineBPlayers[e.player]
                         bPlayer.isInCastMode = !bPlayer.isInCastMode
+                    }
+                }
+            }
+
+            if (bItem.type == BItemType.SCROLL) {
+                if (e.action == Action.RIGHT_CLICK_AIR || e.action == Action.RIGHT_CLICK_BLOCK) {
+                    when (e.player.itemInHand.itemMeta.displayName) {
+                        "Fireball Spell Scroll" -> {
+                            bPlayer.spells.add(FireballSpell(1))
+                        }
+                        "Meteor Summon Scroll" -> {
+                            bPlayer.spells.add(MeteorSpell(1))
+                        }
                     }
                 }
             }

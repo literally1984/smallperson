@@ -21,21 +21,27 @@ class FireballSpell(r: Int) : Spell {
             return field
         }
     companion object {
-        val scroll = ItemStack(Material.PAPER)
+        var scroll = ItemStack(Material.PAPER)
+        fun init() {
+            val fItem = BItemFactory.createBItem(
+                "Fireball Spell Scroll",
+                Material.PAPER,
+                BItemType.SCROLL
+            )
+            fItem.customAbility.add("${ChatColor.YELLOW}Shoots a fireball at the direction")
+            fItem.customAbility.add("${ChatColor.YELLOW}you are lookig at")
+            fItem.levelReq = 5
+
+            fItem.rarity = Rarity.UNCOMMON
+
+            scroll = BItemFactory.produceItem(fItem)
+            BItemFactory.register("fireball", scroll)
+        }
     }
 
     override val name = "Fireball"
+    override val codeName = "fireball"
     override var rank = r
-
-    init {
-        val fItem = BItemFactory.createBItem(
-            "Meteor Summon Scroll",
-            Material.PAPER,
-            BItemType.SCROLL
-        )
-
-        fItem.rarity = Rarity.RARE
-    }
 
     override fun cast(caster: Player) {
         val fireball = caster.world.spawn(caster.location, Fireball::class.java)

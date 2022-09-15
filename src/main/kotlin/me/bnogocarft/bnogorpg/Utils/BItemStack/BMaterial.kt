@@ -2,6 +2,8 @@ package me.bnogocarft.bnogorpg.Utils.BItemStack
 
 import me.bnogocarft.bnogorpg.CustomItems.*
 import me.bnogocarft.bnogorpg.CustomItems.DefaultItems.*
+import me.bnogocarft.bnogorpg.Spells.spells.FireballSpell
+import me.bnogocarft.bnogorpg.Spells.spells.MeteorSpell
 import org.bukkit.Material
 import org.bukkit.inventory.meta.ItemMeta
 
@@ -68,7 +70,13 @@ enum class BMaterial {
 
     GRAPPLING_HOOK,
 
-    DOUBLE_JUMP_BOOTS;
+    DOUBLE_JUMP_BOOTS,
+
+    //Ability scrolls
+    FireballSpellScroll,
+    MeteorSummonScroll;
+
+
 
     fun getBukkitMaterial(): Material {
         return when (this) {
@@ -126,6 +134,9 @@ enum class BMaterial {
             LAPIS_BOOTS -> Material.LEATHER_BOOTS
             DOUBLE_JUMP_BOOTS -> Material.LEATHER_BOOTS
             THUNDERBOLT -> Material.BLAZE_ROD
+            else -> {
+                Material.PAPER
+            }
         }
     }
 
@@ -194,6 +205,8 @@ enum class BMaterial {
             WOOD_SHOVEL -> Wood.shovel.itemMeta
             DOUBLE_JUMP_BOOTS -> DoubleJumpBoots.boots.itemMeta
             THUNDERBOLT -> Thunderbolt.blade.itemMeta
+            FireballSpellScroll -> FireballSpell.scroll.itemMeta
+            MeteorSummonScroll -> MeteorSpell.scroll.itemMeta
         }
     }
 

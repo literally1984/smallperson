@@ -19,7 +19,7 @@ import org.bukkit.inventory.meta.LeatherArmorMeta
 data class FactoryItem(val name: String, val mat: Material, val type: BItemType) {
     val abilities = ArrayList<ItemAbility>()
     val customAbility = ArrayList<String>()
-    val levelReq = -1
+    var levelReq = -1
     var stats = ArrayList<Int>()
     var rarity = Rarity.COMMON
     var armorColor: Color? = null
@@ -203,7 +203,8 @@ class BItemFactory {
                         lore.add(s)
                     }
                     lore.add("")
-                    lore.add("${ChatColor.GREEN}Level Requirement: ${ChatColor.GRAY}${item.levelReq}")
+                    lore.add("${ChatColor.GREEN}Spellcast Level Requirement: ${ChatColor.GRAY}${item.levelReq}")
+                    lore.add("${ChatColor.GOLD}Rank: ${ChatColor.YELLOW}I")
                     lore.add("")
                     lore.add("${ChatColor.GOLD}${ChatColor.ITALIC}Ability Scroll")
                     lore.add(
