@@ -73,8 +73,8 @@ enum class BMaterial {
     DOUBLE_JUMP_BOOTS,
 
     //Ability scrolls
-    FireballSpellScroll,
-    MeteorSummonScroll;
+    FIREBALL_SPELL_SCROLL,
+    METEOR_SUMMON_SCROLL;
 
 
 
@@ -205,8 +205,8 @@ enum class BMaterial {
             WOOD_SHOVEL -> Wood.shovel.itemMeta
             DOUBLE_JUMP_BOOTS -> DoubleJumpBoots.boots.itemMeta
             THUNDERBOLT -> Thunderbolt.blade.itemMeta
-            FireballSpellScroll -> FireballSpell.scroll.itemMeta
-            MeteorSummonScroll -> MeteorSpell.scroll.itemMeta
+            FIREBALL_SPELL_SCROLL -> FireballSpell.scroll.itemMeta
+            METEOR_SUMMON_SCROLL -> MeteorSpell.scroll.itemMeta
         }
     }
 

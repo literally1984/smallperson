@@ -34,6 +34,7 @@ import me.bnogocarft.bnogorpg.Utils.economyUtils.auction.Auction
 import me.bnogocarft.bnogorpg.Utils.economyUtils.auction.AuctionTimer
 import me.bnogocarft.bnogorpg.Utils.others.PlaytimeUtils
 import me.bnogocarft.bnogorpg.Particle.animationTestCommand
+import me.bnogocarft.bnogorpg.Spells.GiveScrollCommand
 import me.bnogocarft.bnogorpg.Spells.spells.FireballSpell
 import me.bnogocarft.bnogorpg.Spells.spells.MeteorSpell
 import me.bnogocarft.bnogorpg.economy.Auction.AHGui
@@ -197,6 +198,7 @@ class Main : JavaPlugin() {
         getCommand("upgrade").executor = UpgradeCMD()
         getCommand("auction").executor = AuctionCommand()
         getCommand("stash").executor = StashCommand()
+        getCommand("scroll").executor = GiveScrollCommand()
         cSender.sendMessage("$logo all commands are enabled!")
 
         cSender.sendMessage("$logo Registering custom ItemStacks...")
@@ -225,8 +227,8 @@ class Main : JavaPlugin() {
         }
         cSender.sendMessage("$logo Economy enabled")
         cSender.sendMessage("$logo Enabling Spells")
-        FireballSpell.scroll
-        MeteorSpell.scroll
+        FireballSpell.init()
+        MeteorSpell.init()
         cSender.sendMessage("$logo Spells enabled")
 
         cSender.sendMessage(

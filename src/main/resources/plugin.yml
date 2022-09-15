@@ -59,11 +59,11 @@ commands:
     aliases: [hologram, holo]
     usage: /<command>
     description: Spawns a hologram at your location
-  displaynick:
-    name: DisplayNick
-    aliases: [dnick, dn]
+  scroll:
+    name: GiveScroll
+    aliases: [gs]
     usage: /<command> <player>
-    description: Displays the nick of a player
+    description: Gives a player an ability scroll
 permissions:
   bnogorpg.*:
     description: Gives access to all BnogoRPG commands

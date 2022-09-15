@@ -35,7 +35,6 @@ class FireballSpell(r: Int) : Spell {
             fItem.rarity = Rarity.UNCOMMON
 
             scroll = BItemFactory.produceItem(fItem)
-            BItemFactory.register("fireball", scroll)
         }
     }
 
