@@ -55,12 +55,11 @@ data class OnlineBPlayer(val p: Player) : BPlayer(p.name) {
                     p.sendMessage("${ChatColor.GREEN}Combat mode ${ChatColor.BOLD}ON")
                     val castItem = p.itemInHand
                     for (i in 0..8) {
+                        regHotbar[i] = p.inventory.getItem(i)
                         if (i == 0) {
-                            regHotbar[i] = p.inventory.getItem(i)
                             p.inventory.setItem(0, castItem)
                             continue
                         }
-                        regHotbar[i] = p.inventory.getItem(i)
                         try {
                             val disItem = spells[i].displayItem
                             p.inventory.setItem(i, disItem)

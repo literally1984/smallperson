@@ -1,6 +1,7 @@
 package me.bnogocarft.bnogorpg.Spells
 
 import me.bnogocarft.bnogorpg.Spells.spells.FireballSpell
+import me.bnogocarft.bnogorpg.Spells.spells.MeteorSpell
 import org.bukkit.Bukkit
 import org.bukkit.command.Command
 import org.bukkit.command.CommandExecutor
@@ -26,7 +27,7 @@ class GiveScrollCommand : CommandExecutor {
                     }
 
                     "meteor" -> {
-                        player.inventory.addItem(FireballSpell.scroll)
+                        player.inventory.addItem(MeteorSpell.scroll)
                         sender.sendMessage("§aYou have given ${args[0]} a Meteor Spell Scroll!")
                         return true
                     }
@@ -53,7 +54,7 @@ class GiveScrollCommand : CommandExecutor {
                     }
 
                     "meteor" -> {
-                        player.inventory.addItem(FireballSpell.scroll)
+                        player.inventory.addItem(MeteorSpell.scroll)
                         sender.sendMessage("§aYou have given ${args[0]} a Meteor Spell Scroll!")
                         return true
                     }
@@ -69,7 +70,7 @@ class GiveScrollCommand : CommandExecutor {
                     }
 
                     "meteor" -> {
-                        sender.inventory.addItem(FireballSpell.scroll)
+                        sender.inventory.addItem(MeteorSpell.scroll)
                         sender.sendMessage("§aYou have given ${args[0]} a Meteor Spell Scroll!")
                         return true
                     }

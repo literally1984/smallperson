@@ -26,10 +26,7 @@ class Ticker {
                     val board = player.scoreboard
                     val obj = board.getObjective("Mainboard")
 
-                    board.resetScores(Bukkit.getOfflinePlayer(oldPlayerBalanceScores[player]))
                     board.resetScores(Bukkit.getOfflinePlayer(oldPlayerManaScores[player]))
-                    board.resetScores(Bukkit.getOfflinePlayer(oldPlayerStaminaScores[player]))
-
                     val mana = obj
                         .getScore(
                             Bukkit.getOfflinePlayer(
@@ -40,6 +37,7 @@ class Ticker {
                             )
                         )
 
+                    board.resetScores(Bukkit.getOfflinePlayer(oldPlayerStaminaScores[player]))
                     val stamina = obj
                         .getScore(
                             Bukkit.getOfflinePlayer(
@@ -50,7 +48,9 @@ class Ticker {
                             )
                         )
 
+                    board.resetScores(Bukkit.getOfflinePlayer(oldPlayerBalanceScores[player]))
                     val bal = obj.getScore(Bukkit.getOfflinePlayer("${ChatColor.GREEN}Bal: ${Main.econ.getBalance(player.name)}"))
+
                     bal.score = 1
                     mana.score = 2
                     stamina.score = 3
