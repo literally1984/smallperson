@@ -89,7 +89,12 @@ data class OnlineBPlayer(val p: Player) : BPlayer(p.name) {
      */
     var stats = PlayerStat(playerStats)
         get() {
-            stats = PlayerStat(StatManager.calculateStats(p))
+            val manaDiff = field.maxMana - field.currentMana
+            val staminaDiff = field.maxStamina - field.currentStamina
+            val gearStats = StatManager.calculateStats(p).toMutableList()
+            field = PlayerStat(gearStats)
+            field.currentMana -= manaDiff
+            field.currentStamina -= staminaDiff
             return field
         }
 

@@ -10,6 +10,7 @@ class StatRegenTimer(player: OnlineBPlayer) : BukkitRunnable() {
         if (p.stats.currentMana < p.stats.maxMana) {
             p.stats.currentMana += p.stats.maxMana / 100
             if (p.stats.currentMana > p.stats.maxMana) p.stats.currentMana = p.stats.maxMana
+            print("regened")
         }
     }
 }

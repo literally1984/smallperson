@@ -47,7 +47,6 @@ class MeteorSpell(r: Int) : Spell {
 
             fItem.rarity = Rarity.EPIC
             scroll = BItemFactory.produceItem(fItem)
-            BItemFactory.register("fireball", scroll)
         }
     }
 
@@ -81,17 +80,6 @@ class MeteorSpell(r: Int) : Spell {
         meteor1.velocity = (targetLocation.toVector().subtract(meteor3.location.toVector())).normalize().multiply(2)
         meteor1.velocity = (targetLocation.toVector().subtract(meteor4.location.toVector())).normalize().multiply(2)
         meteor1.velocity = (targetLocation.toVector().subtract(meteor5.location.toVector())).normalize().multiply(2)
-
-        Bukkit.getScheduler().scheduleSyncRepeatingTask(
-            Main.instance,
-            {
-                meteor1.velocity = (targetLocation.toVector().subtract(meteor1.location.toVector())).normalize().multiply(1)
-                meteor1.velocity = (targetLocation.toVector().subtract(meteor2.location.toVector())).normalize().multiply(1)
-                meteor1.velocity = (targetLocation.toVector().subtract(meteor3.location.toVector())).normalize().multiply(1)
-                meteor1.velocity = (targetLocation.toVector().subtract(meteor4.location.toVector())).normalize().multiply(1)
-                meteor1.velocity = (targetLocation.toVector().subtract(meteor5.location.toVector())).normalize().multiply(1)
-            }, 0, 1
-        )
         val p = OnlineBPlayers[caster]
         p.stats.currentMana -= 20
     }
