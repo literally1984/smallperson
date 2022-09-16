@@ -9,5 +9,7 @@ interface Spell {
     val name: String
     val codeName: String
     var rank: Int
+
+    var manaCost: Int
     fun cast(caster: Player)
 }

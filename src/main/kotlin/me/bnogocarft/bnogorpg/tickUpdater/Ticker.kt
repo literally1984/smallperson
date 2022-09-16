@@ -5,7 +5,7 @@ import me.bnogocarft.bnogorpg.Utils.BPlayer.OnlineBPlayers
 import org.bukkit.Bukkit
 import org.bukkit.ChatColor
 import org.bukkit.entity.Player
-import org.bukkit.scoreboard.DisplaySlot
+import kotlin.math.ceil
 
 class Ticker {
     companion object {
@@ -68,6 +68,16 @@ class Ticker {
                             "${bplayer.stats.maxStamina}"
                 }
             }, 0, 10)
+            Bukkit.getScheduler().scheduleSyncRepeatingTask(Main.instance, {
+                for (player in Bukkit.getOnlinePlayers()) {
+                    val p = OnlineBPlayers[player]
+                    if (p.stats.currentMana < p.stats.maxMana) {
+                        val regen = ceil(p.stats.maxMana / 100.0).toInt()
+                        p.stats.currentMana += regen
+                        if (p.stats.currentMana > p.stats.maxMana) p.stats.currentMana = p.stats.maxMana
+                    }
+                }
+            }, 0, 40)
         }
     }
 }

@@ -56,7 +56,13 @@ class SpellCastListener : Listener {
                     return
                 }
                 val spellItem = e.player.inventory.getItem(e.newSlot)
-                bPlayer.spellItemMap[spellItem]!!.cast(e.player)
+                val spell = bPlayer.spellItemMap[spellItem]!!
+                if (bPlayer.stats.currentMana >= spell.manaCost) {
+                    spell.cast(e.player)
+                    bPlayer.stats.currentMana -= spell.manaCost
+                } else {
+                    bPlayer.sendMessage("You don't have enough mana to cast this spell!")
+                }
                 e.isCancelled = true
             }
         }

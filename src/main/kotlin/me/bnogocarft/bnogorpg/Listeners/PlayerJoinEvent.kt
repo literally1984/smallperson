@@ -3,7 +3,6 @@ package me.bnogocarft.bnogorpg.Listeners
 import me.bnogocarft.bnogorpg.Main
 import me.bnogocarft.bnogorpg.Planes.PlaneEntity
 import me.bnogocarft.bnogorpg.Planes.planeEntitites
-import me.bnogocarft.bnogorpg.Player.StatRegenTimer
 import me.bnogocarft.bnogorpg.Utils.BItemStack.BItems.BArmor
 import me.bnogocarft.bnogorpg.Utils.BItemStack.BItems.BItemUtils
 import me.bnogocarft.bnogorpg.Utils.BItemStack.BItems.BWeapon
@@ -115,6 +114,5 @@ class PlayerJoinEvent : Listener {
                 }
             }
         }
-        Bukkit.getScheduler().scheduleSyncRepeatingTask(Main.instance, StatRegenTimer(onlineBPlayer), 0, 20)
     }
 }

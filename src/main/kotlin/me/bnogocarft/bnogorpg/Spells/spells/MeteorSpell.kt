@@ -32,6 +32,7 @@ class MeteorSpell(r: Int) : Spell {
     override val name: String = "${ChatColor.RED}Meteor Summon"
     override val codeName = "meteor"
     override var rank = r
+    override var manaCost = 20
 
     companion object {
         var scroll = ItemStack(Material.PAPER)
@@ -81,6 +82,5 @@ class MeteorSpell(r: Int) : Spell {
         meteor1.velocity = (targetLocation.toVector().subtract(meteor4.location.toVector())).normalize().multiply(2)
         meteor1.velocity = (targetLocation.toVector().subtract(meteor5.location.toVector())).normalize().multiply(2)
         val p = OnlineBPlayers[caster]
-        p.stats.currentMana -= 20
     }
 }

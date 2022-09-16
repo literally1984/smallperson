@@ -48,6 +48,7 @@ class FireballSpell(r: Int) : Spell {
     override val name = "Fireball"
     override val codeName = "fireball"
     override var rank = r
+    override var manaCost = 10
 
     override fun cast(caster: Player) {
         val fireball = caster.world.spawn(
@@ -55,6 +56,5 @@ class FireballSpell(r: Int) : Spell {
             Fireball::class.java)
         fireball.velocity = caster.location.direction.normalize().multiply(2)
         val p = OnlineBPlayers[caster]
-        p.stats.currentMana -= 10
     }
 }

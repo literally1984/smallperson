@@ -246,4 +246,8 @@ data class OnlineBPlayer(val p: Player) : BPlayer(p.name) {
             }
         }
     }
+
+    fun sendMessage(message: String) {
+        p.sendMessage(message)
+    }
 }
