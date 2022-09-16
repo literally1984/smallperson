@@ -130,7 +130,7 @@ class AbilityListeners : Listener {
 
     @EventHandler(priority = EventPriority.HIGHEST)
     fun onGrapple(event: PlayerFishEvent) {
-        val player = OnlineBPlayers[event.player]!!
+        val player = OnlineBPlayers[event.player]
         val item = event.player.itemInHand
         if (item.itemMeta == null) return
 

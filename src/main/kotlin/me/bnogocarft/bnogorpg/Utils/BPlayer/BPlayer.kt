@@ -70,7 +70,8 @@ open class BPlayer(open val player: String) {
                             "ARRAY[null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null], " +
                             "'$player', " +
                             "0, 0," +
-                            "ARRAY[]::text[]);")
+                            "ARRAY[]::text[]);"
+                )
             query.execute()
             print("Created new SQL entry for $player")
         }

@@ -7,8 +7,8 @@ import me.bnogocarft.bnogorpg.Utils.BItemStack.BItems.BItemType
 import me.bnogocarft.bnogorpg.Utils.BItemStack.BMaterial
 import me.bnogocarft.bnogorpg.Utils.BItemStack.CraftItems.CraftItemType
 import me.bnogocarft.bnogorpg.Utils.BItemStack.CraftItems.TalismanVariable
-import me.bnogocarft.bnogorpg.Utils.others.Rarity.Rarity
 import me.bnogocarft.bnogorpg.Utils.StatUtils.ItemStat
+import me.bnogocarft.bnogorpg.Utils.others.Rarity.Rarity
 import org.bukkit.Bukkit
 import org.bukkit.ChatColor
 import org.bukkit.Color

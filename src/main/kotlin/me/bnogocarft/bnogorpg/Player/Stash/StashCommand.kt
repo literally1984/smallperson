@@ -16,7 +16,7 @@ class StashCommand : CommandExecutor {
         }
 
         val stashInv = Bukkit.createInventory(null, 54, "${ChatColor.GOLD}Your Stash")
-        val player = OnlineBPlayers[sender]!!
+        val player = OnlineBPlayers[sender]
         for (item in player.stash) {
             if (item != null) stashInv.addItem(item)
         }

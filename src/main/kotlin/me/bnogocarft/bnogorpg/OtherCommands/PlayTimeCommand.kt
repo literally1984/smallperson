@@ -15,7 +15,7 @@ class PlayTimeCommand : CommandExecutor {
             return true
         }
 
-        val bPlayer = OnlineBPlayers[sender]!!
+        val bPlayer = OnlineBPlayers[sender]
         PlaytimeUtils.addPlaytime(bPlayer)
         bPlayer.updatePlayTime()
 

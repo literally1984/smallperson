@@ -22,7 +22,7 @@ data class ItemSender(val player: String) {
             if (isOnline) {
                 val bplayer = OnlineBPlayers[Bukkit.getPlayer(player)]
                 for (item in items) {
-                    bplayer!!.stash.adde(item)
+                    bplayer.stash.adde(item)
                 }
             } else {
                 val bplayer = OfflineBPlayer(player)

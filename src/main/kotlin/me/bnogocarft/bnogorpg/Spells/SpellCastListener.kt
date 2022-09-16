@@ -33,6 +33,7 @@ class SpellCastListener : Listener {
                         "Fireball Spell Scroll" -> {
                             bPlayer.spells.add(FireballSpell(1))
                         }
+
                         "Meteor Summon Scroll" -> {
                             bPlayer.spells.add(MeteorSpell(1))
                         }
@@ -42,7 +43,7 @@ class SpellCastListener : Listener {
         }
     }
 
-    @EventHandler (priority = EventPriority.HIGHEST)
+    @EventHandler(priority = EventPriority.HIGHEST)
     fun onSpellCast(e: PlayerItemHeldEvent) {
         val bPlayer = OnlineBPlayers[e.player]
         if (bPlayer.isInCastMode) {

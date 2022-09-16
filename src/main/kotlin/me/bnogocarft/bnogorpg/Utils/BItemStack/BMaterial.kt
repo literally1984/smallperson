@@ -77,7 +77,6 @@ enum class BMaterial {
     METEOR_SUMMON_SCROLL;
 
 
-
     fun getBukkitMaterial(): Material {
         return when (this) {
             IRON_HELMET -> Material.valueOf(this.toString())

@@ -18,7 +18,7 @@ class Ticker {
                     OnlineBPlayers[player].saveStats()
                 }
 
-            }, 0, 5*60)
+            }, 0, 5 * 60)
             Bukkit.getScheduler().scheduleSyncRepeatingTask(Main.instance, {
                 for (player in Bukkit.getOnlinePlayers()) {
                     val bplayer = OnlineBPlayers[player]
@@ -49,7 +49,8 @@ class Ticker {
                         )
 
                     board.resetScores(Bukkit.getOfflinePlayer(oldPlayerBalanceScores[player]))
-                    val bal = obj.getScore(Bukkit.getOfflinePlayer("${ChatColor.GREEN}Bal: ${Main.econ.getBalance(player.name)}"))
+                    val bal =
+                        obj.getScore(Bukkit.getOfflinePlayer("${ChatColor.GREEN}Bal: ${Main.econ.getBalance(player.name)}"))
 
                     bal.score = 1
                     mana.score = 2

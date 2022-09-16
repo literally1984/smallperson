@@ -1,6 +1,5 @@
 package me.bnogocarft.bnogorpg.Spells.spells
 
-import me.bnogocarft.bnogorpg.Main
 import me.bnogocarft.bnogorpg.Utils.Abilities.Spell
 import me.bnogocarft.bnogorpg.Utils.BItemStack.BItems.BItemType
 import me.bnogocarft.bnogorpg.Utils.BPlayer.OnlineBPlayers

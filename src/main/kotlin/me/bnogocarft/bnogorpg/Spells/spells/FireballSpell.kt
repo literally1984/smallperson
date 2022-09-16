@@ -27,6 +27,7 @@ class FireballSpell(r: Int) : Spell {
             field.itemMeta = copy
             return field
         }
+
     companion object {
         var scroll = ItemStack(Material.PAPER)
         fun init() {
@@ -53,7 +54,8 @@ class FireballSpell(r: Int) : Spell {
     override fun cast(caster: Player) {
         val fireball = caster.world.spawn(
             caster.location.add(caster.location.direction.normalize().multiply(1)),
-            Fireball::class.java)
+            Fireball::class.java
+        )
         fireball.velocity = caster.location.direction.normalize().multiply(2)
         val p = OnlineBPlayers[caster]
     }

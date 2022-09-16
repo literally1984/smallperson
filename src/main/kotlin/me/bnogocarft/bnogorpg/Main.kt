@@ -10,6 +10,7 @@ import me.bnogocarft.bnogorpg.ItemUpgrade.UpgradeUtils
 import me.bnogocarft.bnogorpg.Listeners.*
 import me.bnogocarft.bnogorpg.OtherCommands.GiveCommand
 import me.bnogocarft.bnogorpg.OtherCommands.PlayTimeCommand
+import me.bnogocarft.bnogorpg.Particle.animationTestCommand
 import me.bnogocarft.bnogorpg.Planes.PlaneKeyItem
 import me.bnogocarft.bnogorpg.Planes.PlaneListeners
 import me.bnogocarft.bnogorpg.Planes.SteerListener
@@ -20,7 +21,10 @@ import me.bnogocarft.bnogorpg.RecipeBook.RecipeBookCommand
 import me.bnogocarft.bnogorpg.RecipeBook.RecipeManager
 import me.bnogocarft.bnogorpg.Reforge.ReforgeBlockListener
 import me.bnogocarft.bnogorpg.Reforge.ReforgeCommand
+import me.bnogocarft.bnogorpg.Spells.GiveScrollCommand
 import me.bnogocarft.bnogorpg.Spells.SpellCastListener
+import me.bnogocarft.bnogorpg.Spells.spells.FireballSpell
+import me.bnogocarft.bnogorpg.Spells.spells.MeteorSpell
 import me.bnogocarft.bnogorpg.Updater.Updates.Update
 import me.bnogocarft.bnogorpg.Utils.*
 import me.bnogocarft.bnogorpg.Utils.BItemStack.BItems.BItemUtils
@@ -33,10 +37,6 @@ import me.bnogocarft.bnogorpg.Utils.ItemFactory.ItemAbility
 import me.bnogocarft.bnogorpg.Utils.economyUtils.auction.Auction
 import me.bnogocarft.bnogorpg.Utils.economyUtils.auction.AuctionTimer
 import me.bnogocarft.bnogorpg.Utils.others.PlaytimeUtils
-import me.bnogocarft.bnogorpg.Particle.animationTestCommand
-import me.bnogocarft.bnogorpg.Spells.GiveScrollCommand
-import me.bnogocarft.bnogorpg.Spells.spells.FireballSpell
-import me.bnogocarft.bnogorpg.Spells.spells.MeteorSpell
 import me.bnogocarft.bnogorpg.economy.Auction.AHGui
 import me.bnogocarft.bnogorpg.economy.Auction.AhGuiUpdater
 import me.bnogocarft.bnogorpg.economy.Auction.AuctionCommand
@@ -47,7 +47,6 @@ import org.bukkit.Bukkit
 import org.bukkit.ChatColor
 import org.bukkit.configuration.file.YamlConfiguration
 import org.bukkit.enchantments.Enchantment
-import org.bukkit.entity.Fireball
 import org.bukkit.entity.Player
 import org.bukkit.plugin.Plugin
 import org.bukkit.plugin.java.JavaPlugin

@@ -30,7 +30,9 @@ class GiveCommand : CommandExecutor {
                 lateinit var player: Player
 
                 for (p in Bukkit.getOnlinePlayers()) {
-                    if (p.displayName.lowercase().equals(args[0].lowercase()) || p.name.lowercase() == args[0].lowercase()) {
+                    if (p.displayName.lowercase()
+                            .equals(args[0].lowercase()) || p.name.lowercase() == args[0].lowercase()
+                    ) {
                         argIsValidPlayer = true
                         player = p
                     }

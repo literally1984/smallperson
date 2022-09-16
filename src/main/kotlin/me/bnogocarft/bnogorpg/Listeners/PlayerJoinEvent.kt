@@ -25,7 +25,8 @@ class PlayerJoinEvent : Listener {
         val board = Bukkit.getScoreboardManager().newScoreboard
         val obj = board.registerNewObjective("Mainboard", "dummy")
         obj.displaySlot = DisplaySlot.SIDEBAR
-        obj.displayName = "      ${ChatColor.BOLD}${ChatColor.RED}R${ChatColor.GREEN}P${ChatColor.BLUE}G ${ChatColor.YELLOW}Factions"
+        obj.displayName =
+            "      ${ChatColor.BOLD}${ChatColor.RED}R${ChatColor.GREEN}P${ChatColor.BLUE}G ${ChatColor.YELLOW}Factions"
 
         val mana = obj
             .getScore(
