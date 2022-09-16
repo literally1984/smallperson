@@ -54,7 +54,11 @@ open class BItem(item: ItemStack) {
         }
 
         material = if (this !is BGear) {
-            BMaterial.valueOf(item.itemMeta.displayName.replace(" ", "_").uppercase())
+            try {
+                BMaterial.valueOf(item.itemMeta.displayName.replace(" ", "_").uppercase())
+            } catch (e: IllegalArgumentException) {
+                throw InvalidConstructorInputException("ItemStack does not have a valid BMaterial")
+            }
         } else {
             val name = item.itemMeta.displayName
             try {
