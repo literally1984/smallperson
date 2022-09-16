@@ -1,5 +1,6 @@
 package me.bnogocarft.bnogorpg.Spells.spells
 
+import me.bnogocarft.bnogorpg.Main
 import me.bnogocarft.bnogorpg.Utils.Abilities.Spell
 import me.bnogocarft.bnogorpg.Utils.BItemStack.BItems.BItemType
 import me.bnogocarft.bnogorpg.Utils.BPlayer.OnlineBPlayers
@@ -7,11 +8,14 @@ import me.bnogocarft.bnogorpg.Utils.ItemFactory.BItemFactory
 import me.bnogocarft.bnogorpg.Utils.others.Rarity.Rarity
 import org.bukkit.Bukkit
 import org.bukkit.ChatColor
+import org.bukkit.Location
 import org.bukkit.Material
 import org.bukkit.entity.Fireball
 import org.bukkit.entity.Player
 import org.bukkit.inventory.ItemStack
+import org.bukkit.scheduler.BukkitTask
 import org.bukkit.util.Vector
+import kotlin.random.Random
 
 class MeteorSpell(r: Int) : Spell {
     override var displayItem: ItemStack = ItemStack(Material.FIREBALL)
@@ -51,35 +55,39 @@ class MeteorSpell(r: Int) : Spell {
     }
 
     override fun cast(caster: Player) {
-        val targetLocation = caster.getTargetBlock(null, 200).location
+        val targetLocation = caster.getTargetBlock(null, 50).location
+
+        val possibleSpawnPoints = ArrayList<Location>()
+        for (row in 0..40) {
+            for (column in 0..40) {
+                possibleSpawnPoints.add(
+                    Location(
+                        targetLocation.world,
+                        caster.location.x + row,
+                        caster.location.y + 6,
+                        caster.location.z + column
+                    )
+                )
+            }
+        }
 
         val world = caster.world
-        val meteor1 = world.spawn(
-            caster.location.add(Vector(0.0, 3.0, 0.0)),
-            Fireball::class.java
+        var indexOfFireball = 0
+        var task: BukkitTask? = null
+        task = Bukkit.getScheduler().runTaskTimer(
+            Main.instance,
+            {
+                if (indexOfFireball < 50) {
+                    val loc = possibleSpawnPoints[Random.nextInt(possibleSpawnPoints.size)]
+                    loc.world.spawn(loc, Fireball::class.java).apply {
+                        velocity = (targetLocation.toVector().subtract(location.toVector())).normalize().multiply(2)
+                        shooter = caster
+                    }
+                    indexOfFireball++
+                } else {
+                    Bukkit.getScheduler().cancelTask(task!!.taskId)
+                }
+            }, 0, 5
         )
-        val meteor2 = world.spawn(
-            caster.location.add(Vector(0.0, 5.0, 0.0)),
-            Fireball::class.java
-        )
-        val meteor3 = world.spawn(
-            caster.location.add(Vector(0.0, 7.0, 0.0)),
-            Fireball::class.java
-        )
-        val meteor4 = world.spawn(
-            caster.location.add(Vector(0.0, 9.0, 0.0)),
-            Fireball::class.java
-        )
-        val meteor5 = world.spawn(
-            caster.location.add(Vector(0.0, 11.0, 0.0)),
-            Fireball::class.java
-        )
-
-        meteor1.velocity = (targetLocation.toVector().subtract(meteor1.location.toVector())).normalize().multiply(2)
-        meteor1.velocity = (targetLocation.toVector().subtract(meteor2.location.toVector())).normalize().multiply(2)
-        meteor1.velocity = (targetLocation.toVector().subtract(meteor3.location.toVector())).normalize().multiply(2)
-        meteor1.velocity = (targetLocation.toVector().subtract(meteor4.location.toVector())).normalize().multiply(2)
-        meteor1.velocity = (targetLocation.toVector().subtract(meteor5.location.toVector())).normalize().multiply(2)
-        val p = OnlineBPlayers[caster]
     }
 }

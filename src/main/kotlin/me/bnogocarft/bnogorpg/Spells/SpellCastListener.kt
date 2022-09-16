@@ -32,10 +32,14 @@ class SpellCastListener : Listener {
                     when (e.player.itemInHand.itemMeta.displayName) {
                         "Fireball Spell Scroll" -> {
                             bPlayer.spells.add(FireballSpell(1))
+                            bPlayer.sendMessage("You have learned the Fireball spell!")
+                            bPlayer.p.itemInHand = null
                         }
 
                         "Meteor Summon Scroll" -> {
                             bPlayer.spells.add(MeteorSpell(1))
+                            bPlayer.sendMessage("You have learned the Meteor Summon spell!")
+                            bPlayer.p.itemInHand = null
                         }
                     }
                 }

@@ -54,7 +54,7 @@ data class OnlineBPlayer(val p: Player) : BPlayer(p.name) {
                     val castItem = p.itemInHand
                     for (i in 0..8) {
                         regHotbar[i] = p.inventory.getItem(i)
-                        if (i == 0) {
+                        if (i == 8) {
                             p.inventory.setItem(0, castItem)
                             continue
                         }
