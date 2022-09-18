@@ -29,6 +29,8 @@ class HotbarChangeEvent : Listener {
                 BItemUtils.getBGear(newItem)
             } catch (e: InvalidConstructorInputException) {
                 return
+            } catch (e: NullPointerException) {
+                return
             }
             bplayer.stats.add(bItem.stats)
         } else {

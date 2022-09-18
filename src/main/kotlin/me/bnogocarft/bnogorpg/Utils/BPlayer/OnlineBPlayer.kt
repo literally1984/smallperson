@@ -55,7 +55,7 @@ data class OnlineBPlayer(val p: Player) : BPlayer(p.name) {
                     for (i in 0..8) {
                         regHotbar[i] = p.inventory.getItem(i)
                         if (i == 8) {
-                            p.inventory.setItem(0, castItem)
+                            p.inventory.setItem(8, castItem)
                             continue
                         }
                         try {
@@ -68,7 +68,7 @@ data class OnlineBPlayer(val p: Player) : BPlayer(p.name) {
                             continue
                         }
                     }
-                    p.inventory.heldItemSlot = 0
+                    p.inventory.heldItemSlot = 8
                 } else {
                     p.sendMessage("${ChatColor.GREEN}Combat mode ${ChatColor.BOLD}OFF")
                     for (i in 0..8) {

@@ -6,6 +6,7 @@ import me.bnogocarft.bnogorpg.Utils.BItemStack.BItems.BItem
 import me.bnogocarft.bnogorpg.Utils.BItemStack.BItems.BItemType
 import me.bnogocarft.bnogorpg.Utils.BPlayer.OnlineBPlayers
 import net.minecraft.server.v1_5_R3.Material
+import org.bukkit.ChatColor
 import org.bukkit.event.EventHandler
 import org.bukkit.event.EventPriority
 import org.bukkit.event.Listener
@@ -51,7 +52,7 @@ class SpellCastListener : Listener {
     fun onSpellCast(e: PlayerItemHeldEvent) {
         val bPlayer = OnlineBPlayers[e.player]
         if (bPlayer.isInCastMode) {
-            if (e.newSlot != 0) {
+            if (e.newSlot != 8) {
                 if (e.player.inventory.getItem(e.newSlot) == null) {
                     e.isCancelled = true
                     return
@@ -66,7 +67,7 @@ class SpellCastListener : Listener {
                     spell.cast(e.player)
                     bPlayer.stats.currentMana -= spell.manaCost
                 } else {
-                    bPlayer.sendMessage("You don't have enough mana to cast this spell!")
+                    bPlayer.sendMessage("${ChatColor.RED}You don't have enough mana to cast this spell!")
                 }
                 e.isCancelled = true
             }
