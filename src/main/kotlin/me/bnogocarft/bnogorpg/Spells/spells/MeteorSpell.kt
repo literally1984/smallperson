@@ -5,6 +5,7 @@ import me.bnogocarft.bnogorpg.Utils.Abilities.Spell
 import me.bnogocarft.bnogorpg.Utils.BItemStack.BItems.BItemType
 import me.bnogocarft.bnogorpg.Utils.BPlayer.OnlineBPlayers
 import me.bnogocarft.bnogorpg.Utils.ItemFactory.BItemFactory
+import me.bnogocarft.bnogorpg.Utils.minusAssign
 import me.bnogocarft.bnogorpg.Utils.others.Rarity.Rarity
 import org.bukkit.Bukkit
 import org.bukkit.ChatColor
@@ -88,6 +89,22 @@ class MeteorSpell(r: Int) : Spell {
                     Bukkit.getScheduler().cancelTask(task!!.taskId)
                 }
             }, 0, 5
+        )
+
+        val bPlayer = OnlineBPlayers[caster]
+        bPlayer.metadata["MeteorSummonCD"] = 10
+
+        var removeTask: BukkitTask? = null
+        removeTask = Bukkit.getScheduler().runTaskTimer(
+            Main.instance,
+            {
+                if (bPlayer.metadata["MeteorSummonCD"] as Int == 0) {
+                    bPlayer.metadata.remove("MeteorSummonCD")
+                    removeTask!!.cancel()
+                    return@runTaskTimer
+                }
+                bPlayer.metadata["MeteorSummonCD"] -= 1
+            }, 0, 20
         )
     }
 }

@@ -56,7 +56,6 @@ class Ticker {
                     mana.score = 2
                     stamina.score = 3
 
-                    player.scoreboard = board
                     oldPlayerBalanceScores[player] = "${ChatColor.GOLD}Bal: ${Main.econ.getBalance(player.name)}"
                     oldPlayerManaScores[player] = "${ChatColor.AQUA}Mana: " +
                             "${bplayer.stats.currentMana}" +
@@ -68,7 +67,7 @@ class Ticker {
                             "/" +
                             "${bplayer.stats.maxStamina}"
                 }
-            }, 0, 10)
+            }, 0, 12)
             Bukkit.getScheduler().scheduleSyncRepeatingTask(Main.instance, {
                 for (player in Bukkit.getOnlinePlayers()) {
                     val p = OnlineBPlayers[player]

@@ -74,6 +74,7 @@ class Main : JavaPlugin() {
         lateinit var econ: Economy
 
         lateinit var input: SignInputer
+        val defaultTeam = Bukkit.getScoreboardManager().mainScoreboard.registerNewTeam("hologram")
     }
 
     override fun onEnable() {
