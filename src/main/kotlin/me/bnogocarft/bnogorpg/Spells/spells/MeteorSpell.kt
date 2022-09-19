@@ -56,6 +56,12 @@ class MeteorSpell(r: Int) : Spell {
     }
 
     override fun cast(caster: Player) {
+        val bPlayer = OnlineBPlayers[caster]
+
+        if (bPlayer.metadata.contains("MeteorSummonCD")) {
+            caster.sendMessage("${ChatColor.RED}This Spell is on cooldown!")
+            return
+        }
         val targetLocation = caster.getTargetBlock(null, 50).location
 
         val possibleSpawnPoints = ArrayList<Location>()
@@ -91,7 +97,6 @@ class MeteorSpell(r: Int) : Spell {
             }, 0, 5
         )
 
-        val bPlayer = OnlineBPlayers[caster]
         bPlayer.metadata["MeteorSummonCD"] = 10
 
         var removeTask: BukkitTask? = null

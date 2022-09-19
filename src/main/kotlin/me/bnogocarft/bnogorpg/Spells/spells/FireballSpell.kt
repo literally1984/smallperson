@@ -1,9 +1,11 @@
 package me.bnogocarft.bnogorpg.Spells.spells
 
+import me.bnogocarft.bnogorpg.Main
 import me.bnogocarft.bnogorpg.Utils.Abilities.Spell
 import me.bnogocarft.bnogorpg.Utils.BItemStack.BItems.BItemType
 import me.bnogocarft.bnogorpg.Utils.BPlayer.OnlineBPlayers
 import me.bnogocarft.bnogorpg.Utils.ItemFactory.BItemFactory
+import me.bnogocarft.bnogorpg.Utils.minusAssign
 import me.bnogocarft.bnogorpg.Utils.others.Rarity.Rarity
 import org.bukkit.Bukkit
 import org.bukkit.ChatColor
@@ -11,6 +13,7 @@ import org.bukkit.Material
 import org.bukkit.entity.Fireball
 import org.bukkit.entity.Player
 import org.bukkit.inventory.ItemStack
+import org.bukkit.scheduler.BukkitTask
 
 class FireballSpell(r: Int) : Spell {
     override var displayItem: ItemStack = ItemStack(Material.FIREBALL)
@@ -52,11 +55,31 @@ class FireballSpell(r: Int) : Spell {
     override var manaCost = 10
 
     override fun cast(caster: Player) {
+        val bPlayer = OnlineBPlayers[caster]
+
+        if (bPlayer.metadata.contains("FireballCD")) {
+            caster.sendMessage("${ChatColor.RED}This Spell is on cooldown!")
+            return
+        }
         val fireball = caster.world.spawn(
             caster.location.add(caster.location.direction.normalize().multiply(1)),
             Fireball::class.java
         )
         fireball.velocity = caster.location.direction.normalize().multiply(2)
-        val p = OnlineBPlayers[caster]
+
+        bPlayer.metadata["FireballCD"] = 5
+
+        var removeTask: BukkitTask? = null
+        removeTask = Bukkit.getScheduler().runTaskTimer(
+            Main.instance,
+            {
+                if (bPlayer.metadata["FireballCD"] as Int == 0) {
+                    bPlayer.metadata.remove("FireballCD")
+                    removeTask!!.cancel()
+                    return@runTaskTimer
+                }
+                bPlayer.metadata["FireballCD"] -= 1
+            }, 0, 20
+        )
     }
 }

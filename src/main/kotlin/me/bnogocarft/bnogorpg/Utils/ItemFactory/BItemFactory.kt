@@ -397,15 +397,14 @@ class BItemFactory {
             val meta = item.itemMeta.clone()
 
             val lore = meta.lore
-
-            lore.add(
-                0, "${ChatColor.AQUA}ID: ${
-                    Main.ymlConfig.getInt(
+            val configString = "${ChatColor.AQUA}ID: " +
+                    "${Main.ymlConfig.getInt(
                         "items.indexes." +
                                 meta.displayName.replace(" ", "")
-                    )
-                }"
-            )
+                    )}"
+
+            lore.add(0, Main.ymlConfig.getInt(configString).toString())
+            Main.ymlConfig.set(configString, Main.ymlConfig.getInt(configString) + 1)
             meta.lore = lore
             item.itemMeta = meta
             return item
