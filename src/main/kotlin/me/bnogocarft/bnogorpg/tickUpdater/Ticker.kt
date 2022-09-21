@@ -56,6 +56,7 @@ class Ticker {
                     mana.score = 2
                     stamina.score = 3
 
+                    player.scoreboard = board
                     oldPlayerBalanceScores[player] = "${ChatColor.GOLD}Bal: ${Main.econ.getBalance(player.name)}"
                     oldPlayerManaScores[player] = "${ChatColor.AQUA}Mana: " +
                             "${bplayer.stats.currentMana}" +

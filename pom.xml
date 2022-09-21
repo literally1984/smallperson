@@ -155,5 +155,12 @@
             <version>1.5.2</version>
             <scope>provided</scope>
         </dependency>
+        <dependency>
+            <groupId>com.andrei1058.bedwar</groupId>
+            <artifactId>bedwars1058</artifactId>
+            <version>1.0</version>
+            <scope>system</scope>
+            <systemPath>${project.basedir}/NonMavenDeps/ItemRenamer-2.0.1.jar</systemPath>
+        </dependency>
     </dependencies>
 </project>

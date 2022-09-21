@@ -1,5 +1,7 @@
 package me.bnogocarft.bnogorpg.Utils
 
+import com.comphenix.protocol.wrappers.nbt.NbtCompound
+import com.comphenix.protocol.wrappers.nbt.NbtFactory
 import me.bnogocarft.bnogorpg.Reforge.ReforgeUtils
 import net.minecraft.server.v1_5_R3.NBTTagCompound
 import net.minecraft.server.v1_5_R3.NBTTagList
@@ -13,6 +15,9 @@ import org.bukkit.event.Listener
 import org.bukkit.event.inventory.InventoryClickEvent
 import org.bukkit.inventory.Inventory
 import org.bukkit.inventory.ItemStack
+import org.shininet.bukkit.itemrenamer.api.RenamerSnapshot
+import java.util.*
+
 
 fun cloneInv(inv: Inventory): Inventory {
     val clone = Bukkit.createInventory(null, inv.size, inv.title)
@@ -22,26 +27,41 @@ fun cloneInv(inv: Inventory): Inventory {
     return clone
 }
 
+/*fun addGlow(stacks: Array<ItemStack>) {
+    for (stack in stacks) {
+        @Suppress("SENSELESS_COMPARISON")
+        if (stack != null) {
+            // Only update those stacks that have our flag enchantment
+            if (stack.getEnchantmentLevel(Enchantment.DAMAGE_ALL) == 5) {
+                val compound: NbtCompound = NbtFactory.fromItemTag(stack) as NbtCompound
+                compound.put(NbtFactory.ofList("ench"))
+            }
+        }
+    }
+}*/
+
+private const val EXAMPLE_MOD_GLOW = "§6Weapon"
+
+fun addGlow(stacks: RenamerSnapshot) {
+    for (stack in stacks) {
+        // Only update those stacks that have our flag lore
+        if (stack != null && stack.hasItemMeta()) {
+            val lore = stack.itemMeta.lore
+            if (Arrays.asList(EXAMPLE_MOD_GLOW).equals(lore)) {
+                val compound = NbtFactory.fromItemTag(stack) as NbtCompound
+                compound.put(NbtFactory.ofList<Any>("ench"))
+                compound.getCompound("display").remove<Any>("Lore")
+            }
+        }
+    }
+}
+
 fun cloneInv(inv: Inventory, name: String): Inventory {
     val clone = Bukkit.createInventory(null, inv.size, name)
     for (i in 0 until inv.size) {
         clone.setItem(i, inv.getItem(i))
     }
     return clone
-}
-
-fun addGlow(item: ItemStack?): ItemStack? {
-    val nmsStack: net.minecraft.server.v1_5_R3.ItemStack = CraftItemStack.asNMSCopy(item)
-    var tag: NBTTagCompound? = null
-    if (!nmsStack.hasTag()) {
-        tag = NBTTagCompound()
-        nmsStack.setTag(tag)
-    }
-    if (tag == null) tag = nmsStack.getTag()
-    val ench = NBTTagList()
-    tag?.set("ench", ench)
-    nmsStack.setTag(tag)
-    return CraftItemStack.asCraftMirror(nmsStack)
 }
 
 fun isInDoubleChest(slot: Int): Boolean {
