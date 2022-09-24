@@ -17,11 +17,11 @@ class PlayTimeCommand : CommandExecutor {
 
         val bPlayer = OnlineBPlayers[sender]
         PlaytimeUtils.addPlaytime(bPlayer)
-        bPlayer.updatePlayTime()
+        bPlayer.saveStats()
 
         val playTime = bPlayer.playTime.split(" ")
 
-        sender.sendMessage("${ChatColor.YELLOW}Your total Play time on RPG Factions is:")
+        sender.sendMessage("${ChatColor.YELLOW}Your total play time on RPG Factions is:")
         sender.sendMessage(
             "[${ChatColor.BLUE}${ChatColor.BOLD}${playTime[0]} ${ChatColor.RESET}${ChatColor.BLUE}Hours${ChatColor.WHITE}, " +
                     "${ChatColor.GREEN}${ChatColor.BOLD}${playTime[1]} ${ChatColor.RESET}${ChatColor.GREEN}Minutes${ChatColor.WHITE}]"

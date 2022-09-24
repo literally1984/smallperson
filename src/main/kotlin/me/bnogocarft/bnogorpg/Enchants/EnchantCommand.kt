@@ -15,7 +15,6 @@ class EnchantCommand : CommandExecutor {
         if (args.size == 1) {
             if (args[0] == "glow") {
                 if (sender.itemInHand != null) {
-                    addGlow(sender.itemInHand)
                     return true
                 }
             }

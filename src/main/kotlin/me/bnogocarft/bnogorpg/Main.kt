@@ -20,6 +20,7 @@ import me.bnogocarft.bnogorpg.Planes.PlaneKeyItem
 import me.bnogocarft.bnogorpg.Planes.PlaneListeners
 import me.bnogocarft.bnogorpg.Planes.SteerListener
 import me.bnogocarft.bnogorpg.Planes.removeScheduler
+import me.bnogocarft.bnogorpg.Player.Inspect.InspectListener
 import me.bnogocarft.bnogorpg.Player.Stash.StashCommand
 import me.bnogocarft.bnogorpg.Player.Stash.StashListener
 import me.bnogocarft.bnogorpg.RecipeBook.RecipeBookCommand
@@ -127,6 +128,7 @@ class Main : JavaPlugin() {
         server.pluginManager.registerEvents(CraftingListeners(), this)
         server.pluginManager.registerEvents(AuctionListeners(), this)
         server.pluginManager.registerEvents(SpellCastListener(), this)
+        server.pluginManager.registerEvents(InspectListener(), this)
         cSender.sendMessage("$logo Registered Listeners")
 
         cSender.sendMessage("$logo Enabling ItemUpgrades...")

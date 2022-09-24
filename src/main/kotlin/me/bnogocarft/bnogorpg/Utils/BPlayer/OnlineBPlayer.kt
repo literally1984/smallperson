@@ -1,21 +1,29 @@
 package me.bnogocarft.bnogorpg.Utils.BPlayer
 
+import me.bnogocarft.bnogorpg.Main
 import me.bnogocarft.bnogorpg.Player.PlayerBar.Bar
 import me.bnogocarft.bnogorpg.Player.PlayerBar.MainBar
 import me.bnogocarft.bnogorpg.Utils.Abilities.SetBonus
 import me.bnogocarft.bnogorpg.Utils.Abilities.Spell
 import me.bnogocarft.bnogorpg.Utils.Database.BnogoSQL
+import me.bnogocarft.bnogorpg.Utils.GUIBackground
+import me.bnogocarft.bnogorpg.Utils.GUIFactory
+import me.bnogocarft.bnogorpg.Utils.GUILayer
 import me.bnogocarft.bnogorpg.Utils.JVMUtils.BarArrayList
 import me.bnogocarft.bnogorpg.Utils.Mode.Mode
 import me.bnogocarft.bnogorpg.Utils.StatUtils.StatManager
 import me.bnogocarft.bnogorpg.combat.ComboCounter.Combo
+import org.bukkit.Bukkit
 import org.bukkit.ChatColor
+import org.bukkit.Material
 import org.bukkit.entity.LivingEntity
 import org.bukkit.entity.Player
+import org.bukkit.inventory.Inventory
 import org.bukkit.inventory.ItemStack
 import tech.nully.BossBarAPI.BossBar
 import java.text.SimpleDateFormat
 import java.util.*
+import kotlin.collections.ArrayList
 import kotlin.math.roundToInt
 
 
@@ -45,6 +53,7 @@ data class OnlineBPlayer(val p: Player) : BPlayer(p.name) {
 
     val regHotbar = arrayListOf<ItemStack?>(null, null, null, null, null, null, null, null, null)
     val spellItemMap = HashMap<ItemStack, Spell>()
+    val skull = ItemStack(Material.SKULL)
     var isInCastMode = false
         set(value) {
             // If the Player was not previously in spellcast form
@@ -111,6 +120,9 @@ data class OnlineBPlayer(val p: Player) : BPlayer(p.name) {
         } catch (e: NullPointerException) {
             config.set("o.cl", false)
         }
+        val skullMeta = Bukkit.getItemFactory().getItemMeta(Material.SKULL)
+        skullMeta.displayName = "$player's Profile"
+        skull.itemMeta = skullMeta
     }
 
     fun addToMelee(amount: Int) {
@@ -138,13 +150,47 @@ data class OnlineBPlayer(val p: Player) : BPlayer(p.name) {
         }
     }
 
-    fun updatePlayTime() {
-        val query = BnogoSQL.con.prepareStatement(
-            "SELECT \"playTime\" FROM players WHERE name = '${player}';"
-        ).executeQuery()
+    fun generateInspectGui(): Inventory {
+        val fInv = GUIFactory.createInventory("$player's Profile", 54)
+        val layer1 = GUILayer()
+        fInv.layers.add(layer1)
 
-        query.next()
-        playTime = query.getString("playTime")
+        layer1.backgrounds.add(GUIBackground(skull, 13))
+
+        val balItem = ItemStack(Material.EMERALD)
+        val balMeta = Bukkit.getItemFactory().getItemMeta(Material.EMERALD)
+        balMeta.displayName = "${ChatColor.GREEN}$player's Balance:"
+
+        val emeraldLore = ArrayList<String>()
+        emeraldLore.add("${ChatColor.GREEN}\$${Main.econ.getBalance(player)}")
+        balMeta.lore = emeraldLore
+        balItem.itemMeta = balMeta
+
+        val manaItem = ItemStack(Material.LAPIS_BLOCK)
+        val manaMeta = Bukkit.getItemFactory().getItemMeta(Material.LAPIS_BLOCK)
+        manaMeta.displayName = "${ChatColor.AQUA}$player's Mana:"
+
+        val manaLore = ArrayList<String>()
+        manaLore.add("${ChatColor.AQUA}${stats.currentMana}/${stats.maxMana}")
+        manaMeta.lore = manaLore
+        manaItem.itemMeta = manaMeta
+
+        val staminaItem = ItemStack(Material.BLAZE_POWDER)
+        val staminaMeta = Bukkit.getItemFactory().getItemMeta(Material.BLAZE_POWDER)
+        staminaMeta.displayName = "${ChatColor.GOLD}$player's Stamina:"
+
+        val staminaLore = ArrayList<String>()
+        staminaLore.add("${ChatColor.GOLD}${stats.currentMana}/${stats.maxMana}")
+        staminaMeta.lore = staminaLore
+        staminaItem.itemMeta = staminaMeta
+
+        layer1.backgrounds.add(GUIBackground(balItem, 22))
+        layer1.backgrounds.add(GUIBackground(manaItem, 21))
+        layer1.backgrounds.add(GUIBackground(staminaItem, 23))
+
+
+
+        return GUIFactory.produceInventory(fInv)
     }
 
     /**

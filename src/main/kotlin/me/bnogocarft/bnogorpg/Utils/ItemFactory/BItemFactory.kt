@@ -403,7 +403,7 @@ class BItemFactory {
                                 meta.displayName.replace(" ", "")
                     )}"
 
-            lore.add(0, Main.ymlConfig.getInt(configString).toString())
+            lore.add(0, "${ChatColor.AQUA}ID: ${ Main.ymlConfig.getInt(configString).toString() }")
             Main.ymlConfig.set(configString, Main.ymlConfig.getInt(configString) + 1)
             meta.lore = lore
             item.itemMeta = meta
