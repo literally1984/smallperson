@@ -57,7 +57,7 @@ class FireballSpell(r: Int) : Spell {
         val bPlayer = OnlineBPlayers[caster]
 
         if (bPlayer.metadata.contains("FireballCD")) {
-            caster.sendMessage("${ChatColor.RED}This Spell is on cooldown!")
+            caster.sendMessage("${ChatColor.RED}This Spell is on cooldown! (${bPlayer.metadata["FireballCD"] as Int}s)")
             return
         }
         val fireball = caster.world.spawn(

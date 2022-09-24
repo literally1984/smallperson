@@ -57,7 +57,7 @@ class MeteorSpell(r: Int) : Spell {
         val bPlayer = OnlineBPlayers[caster]
 
         if (bPlayer.metadata.contains("MeteorSummonCD")) {
-            caster.sendMessage("${ChatColor.RED}This Spell is on cooldown!")
+            caster.sendMessage("${ChatColor.RED}This Spell is on cooldown! (${bPlayer.metadata["MeteorSummonCD"] as Int}s)")
             return
         }
         val targetLocation = caster.getTargetBlock(null, 50).location.clone()
