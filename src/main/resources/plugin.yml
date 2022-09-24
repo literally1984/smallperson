@@ -64,11 +64,11 @@ commands:
     aliases: [gs]
     usage: /<command> <player>
     description: Gives a player an ability scroll
-  testholo:
-    name: TestHologram
-    aliases: [ts]
-    usage: /<command> <player>
-    description: Gives a player an ability scroll
+  stat:
+    name: Stat
+    aliases: [st]
+    usage: /<command>
+    description: Increases or decreases a stat
 permissions:
   bnogorpg.*:
     description: Gives access to all BnogoRPG commands

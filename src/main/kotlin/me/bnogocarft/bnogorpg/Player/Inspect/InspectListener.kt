@@ -12,11 +12,13 @@ class InspectListener : Listener {
     @EventHandler
     fun onInspectClose(e: InventoryCloseEvent) {
         if (e.inventory.title.contains("'s Profile")) {
-            for (gui in guis) {
-                if (e.inventory.title == gui.inv.title) {
-                    guis.remove(gui)
+            try {
+                for (gui in guis) {
+                    if (e.inventory.title == gui.inv.title) {
+                        guis.remove(gui)
+                    }
                 }
-            }
+            } catch (ignored: ConcurrentModificationException) {}
         }
     }
 

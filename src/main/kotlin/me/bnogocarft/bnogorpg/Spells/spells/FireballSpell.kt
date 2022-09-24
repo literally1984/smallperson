@@ -5,7 +5,6 @@ import me.bnogocarft.bnogorpg.Utils.Abilities.Spell
 import me.bnogocarft.bnogorpg.Utils.BItemStack.BItems.BItemType
 import me.bnogocarft.bnogorpg.Utils.BPlayer.OnlineBPlayers
 import me.bnogocarft.bnogorpg.Utils.ItemFactory.BItemFactory
-import me.bnogocarft.bnogorpg.Utils.minusAssign
 import me.bnogocarft.bnogorpg.Utils.others.Rarity.Rarity
 import org.bukkit.Bukkit
 import org.bukkit.ChatColor
@@ -65,6 +64,7 @@ class FireballSpell(r: Int) : Spell {
             caster.location.add(caster.location.direction.normalize().multiply(1)),
             Fireball::class.java
         )
+        fireball.shooter = caster
         fireball.velocity = caster.location.direction.normalize().multiply(2)
 
         bPlayer.metadata["FireballCD"] = 5
@@ -78,7 +78,8 @@ class FireballSpell(r: Int) : Spell {
                     removeTask!!.cancel()
                     return@runTaskTimer
                 }
-                bPlayer.metadata["FireballCD"] -= 1
+                val fireballCd =  bPlayer.metadata["FireballCD"] as Int
+                bPlayer.metadata["FireballCD"] = fireballCd - 1
             }, 0, 20
         )
     }

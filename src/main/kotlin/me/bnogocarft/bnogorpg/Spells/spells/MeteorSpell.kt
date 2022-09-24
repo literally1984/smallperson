@@ -5,7 +5,6 @@ import me.bnogocarft.bnogorpg.Utils.Abilities.Spell
 import me.bnogocarft.bnogorpg.Utils.BItemStack.BItems.BItemType
 import me.bnogocarft.bnogorpg.Utils.BPlayer.OnlineBPlayers
 import me.bnogocarft.bnogorpg.Utils.ItemFactory.BItemFactory
-import me.bnogocarft.bnogorpg.Utils.minusAssign
 import me.bnogocarft.bnogorpg.Utils.others.Rarity.Rarity
 import org.bukkit.Bukkit
 import org.bukkit.ChatColor
@@ -15,7 +14,6 @@ import org.bukkit.entity.Fireball
 import org.bukkit.entity.Player
 import org.bukkit.inventory.ItemStack
 import org.bukkit.scheduler.BukkitTask
-import org.bukkit.util.Vector
 import kotlin.random.Random
 
 class MeteorSpell(r: Int) : Spell {
@@ -62,7 +60,7 @@ class MeteorSpell(r: Int) : Spell {
             caster.sendMessage("${ChatColor.RED}This Spell is on cooldown!")
             return
         }
-        val targetLocation = caster.getTargetBlock(null, 50).location
+        val targetLocation = caster.getTargetBlock(null, 50).location.clone()
 
         val possibleSpawnPoints = ArrayList<Location>()
         for (row in 0..40) {
@@ -77,14 +75,12 @@ class MeteorSpell(r: Int) : Spell {
                 )
             }
         }
-
-        val world = caster.world
         var indexOfFireball = 0
         var task: BukkitTask? = null
         task = Bukkit.getScheduler().runTaskTimer(
             Main.instance,
             {
-                if (indexOfFireball < 50) {
+                if (indexOfFireball < 25) {
                     val loc = possibleSpawnPoints[Random.nextInt(possibleSpawnPoints.size)]
                     loc.world.spawn(loc, Fireball::class.java).apply {
                         velocity = (targetLocation.toVector().subtract(location.toVector())).normalize().multiply(2)
@@ -108,7 +104,8 @@ class MeteorSpell(r: Int) : Spell {
                     removeTask!!.cancel()
                     return@runTaskTimer
                 }
-                bPlayer.metadata["MeteorSummonCD"] -= 1
+                val meteorCd = bPlayer.metadata["MeteorSummonCD"] as Int
+                bPlayer.metadata["MeteorSummonCD"] = meteorCd - 1
             }, 0, 20
         )
     }

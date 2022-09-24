@@ -41,6 +41,7 @@ import me.bnogocarft.bnogorpg.Utils.CustomEvents.ArmorWearListeners
 import me.bnogocarft.bnogorpg.Utils.Database.BnogoSQL
 import me.bnogocarft.bnogorpg.Utils.Database.YMLUtils
 import me.bnogocarft.bnogorpg.Utils.ItemFactory.ItemAbility
+import me.bnogocarft.bnogorpg.Utils.StatUtils.StatCommands
 import me.bnogocarft.bnogorpg.Utils.economyUtils.auction.Auction
 import me.bnogocarft.bnogorpg.Utils.economyUtils.auction.AuctionTimer
 import me.bnogocarft.bnogorpg.Utils.others.PlaytimeUtils
@@ -181,7 +182,7 @@ class Main : JavaPlugin() {
         getCommand("auction").executor = AuctionCommand()
         getCommand("stash").executor = StashCommand()
         getCommand("scroll").executor = GiveScrollCommand()
-        getCommand("testholo").executor = TestCommand()
+        getCommand("stat").executor = StatCommands()
         cSender.sendMessage("$logo all commands are enabled!")
 
         cSender.sendMessage("$logo Registering custom ItemStacks...")
