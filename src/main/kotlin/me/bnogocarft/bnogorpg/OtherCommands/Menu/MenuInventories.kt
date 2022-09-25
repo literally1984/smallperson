@@ -2,9 +2,7 @@ package me.bnogocarft.bnogorpg.OtherCommands.Menu
 
 import me.bnogocarft.bnogorpg.Utils.*
 import me.bnogocarft.bnogorpg.Utils.BPlayer.OnlineBPlayers
-import me.bnogocarft.bnogorpg.Utils.ItemFactory.BItemFactory
-import org.bukkit.*
-import org.bukkit.event.block.BlockPlaceEvent
+import org.bukkit.ChatColor
 
 class MenuInventories {
     companion object;
@@ -26,7 +24,7 @@ class MenuInventories {
         val fInv = GUIFactory.createInventory("${ChatColor.BLUE}Your Spells", 17)
         val spellLayer = GUILayer()
         for (slot in 1..8) {
-            spellLayer.backgrounds.add(GUIBackground(player.spells[slot-1].displayItem, slot))
+            spellLayer.backgrounds.add(GUIBackground(player.spells[slot - 1].displayItem, slot))
         }
 
 

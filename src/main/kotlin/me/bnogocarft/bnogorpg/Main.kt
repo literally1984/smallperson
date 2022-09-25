@@ -1,12 +1,7 @@
 package me.bnogocarft.bnogorpg
 
-import com.comphenix.protocol.Packets
 import com.comphenix.protocol.ProtocolLibrary
 import com.comphenix.protocol.ProtocolManager
-import com.comphenix.protocol.events.ConnectionSide
-import com.comphenix.protocol.events.ListenerPriority
-import com.comphenix.protocol.events.PacketAdapter
-import com.comphenix.protocol.events.PacketEvent
 import me.bnogocarft.bnogorpg.CustomItems.*
 import me.bnogocarft.bnogorpg.CustomItems.DefaultItems.DefaultOverrider
 import me.bnogocarft.bnogorpg.Enchants.EnchantListeners
@@ -31,7 +26,6 @@ import me.bnogocarft.bnogorpg.Spells.GiveScrollCommand
 import me.bnogocarft.bnogorpg.Spells.SpellCastListener
 import me.bnogocarft.bnogorpg.Spells.spells.FireballSpell
 import me.bnogocarft.bnogorpg.Spells.spells.MeteorSpell
-import me.bnogocarft.bnogorpg.Test.TestCommand
 import me.bnogocarft.bnogorpg.Updater.Updates.Update
 import me.bnogocarft.bnogorpg.Utils.*
 import me.bnogocarft.bnogorpg.Utils.BItemStack.BItems.BItemUtils

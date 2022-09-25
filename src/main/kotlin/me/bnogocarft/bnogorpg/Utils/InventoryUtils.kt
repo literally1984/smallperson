@@ -3,11 +3,8 @@ package me.bnogocarft.bnogorpg.Utils
 import com.comphenix.protocol.wrappers.nbt.NbtCompound
 import com.comphenix.protocol.wrappers.nbt.NbtFactory
 import me.bnogocarft.bnogorpg.Reforge.ReforgeUtils
-import net.minecraft.server.v1_5_R3.NBTTagCompound
-import net.minecraft.server.v1_5_R3.NBTTagList
 import org.bukkit.Bukkit
 import org.bukkit.Material
-import org.bukkit.craftbukkit.v1_5_R3.inventory.CraftItemStack
 import org.bukkit.entity.Player
 import org.bukkit.event.EventHandler
 import org.bukkit.event.EventPriority

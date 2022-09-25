@@ -78,7 +78,7 @@ class FireballSpell(r: Int) : Spell {
                     removeTask!!.cancel()
                     return@runTaskTimer
                 }
-                val fireballCd =  bPlayer.metadata["FireballCD"] as Int
+                val fireballCd = bPlayer.metadata["FireballCD"] as Int
                 bPlayer.metadata["FireballCD"] = fireballCd - 1
             }, 0, 20
         )

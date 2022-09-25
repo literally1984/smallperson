@@ -2,11 +2,9 @@ package me.bnogocarft.bnogorpg.Utils.StatUtils
 
 import me.bnogocarft.bnogorpg.Utils.BPlayer.bPlayer
 import me.bnogocarft.bnogorpg.Utils.playSound
-import net.minecraft.server.v1_5_R3.Packet62NamedSoundEffect
 import org.bukkit.command.Command
 import org.bukkit.command.CommandExecutor
 import org.bukkit.command.CommandSender
-import org.bukkit.craftbukkit.v1_5_R3.entity.CraftPlayer
 import org.bukkit.entity.Player
 
 
@@ -20,7 +18,7 @@ class StatCommands : CommandExecutor {
         val player = sender.bPlayer()
         when (args[0]) {
             "mana" -> {
-                player.p.world.playSound(player.p.location, "~!EAG.adderall.start_instant", 0f, 0f)
+                playSound(player.p.location, "~!EAG.adderall.start_instant", 0f, 0f)
                 if (increaseOrDecrease) {
                     try {
                         player.stats.currentMana += args[2].toInt()
@@ -41,6 +39,7 @@ class StatCommands : CommandExecutor {
                     return true
                 }
             }
+
             "maxmana" -> {
                 if (increaseOrDecrease) {
                     try {
@@ -62,6 +61,7 @@ class StatCommands : CommandExecutor {
                     return true
                 }
             }
+
             "stamina" -> {
                 if (increaseOrDecrease) {
                     try {
@@ -83,6 +83,7 @@ class StatCommands : CommandExecutor {
                     return true
                 }
             }
+
             "maxstamina" -> {
                 if (increaseOrDecrease) {
                     try {

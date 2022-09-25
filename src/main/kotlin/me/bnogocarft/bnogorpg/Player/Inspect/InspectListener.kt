@@ -1,6 +1,5 @@
 package me.bnogocarft.bnogorpg.Player.Inspect
 
-import me.bnogocarft.bnogorpg.Utils.BPlayer.OnlineBPlayers
 import me.bnogocarft.bnogorpg.Utils.BPlayer.bPlayer
 import me.bnogocarft.bnogorpg.Utils.guis
 import org.bukkit.entity.Player
@@ -19,7 +18,8 @@ class InspectListener : Listener {
                         guis.remove(gui)
                     }
                 }
-            } catch (ignored: ConcurrentModificationException) {}
+            } catch (ignored: ConcurrentModificationException) {
+            }
         }
     }
 

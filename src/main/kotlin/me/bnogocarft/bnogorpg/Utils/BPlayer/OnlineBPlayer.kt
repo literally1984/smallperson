@@ -5,7 +5,6 @@ import me.bnogocarft.bnogorpg.Player.PlayerBar.Bar
 import me.bnogocarft.bnogorpg.Player.PlayerBar.MainBar
 import me.bnogocarft.bnogorpg.Utils.Abilities.SetBonus
 import me.bnogocarft.bnogorpg.Utils.Abilities.Spell
-import me.bnogocarft.bnogorpg.Utils.Database.BnogoSQL
 import me.bnogocarft.bnogorpg.Utils.GUIBackground
 import me.bnogocarft.bnogorpg.Utils.GUIFactory
 import me.bnogocarft.bnogorpg.Utils.GUILayer
@@ -23,7 +22,6 @@ import org.bukkit.inventory.ItemStack
 import tech.nully.BossBarAPI.BossBar
 import java.text.SimpleDateFormat
 import java.util.*
-import kotlin.collections.ArrayList
 import kotlin.math.roundToInt
 
 

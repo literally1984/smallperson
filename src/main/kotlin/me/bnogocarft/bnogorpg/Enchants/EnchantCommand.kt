@@ -1,6 +1,5 @@
 package me.bnogocarft.bnogorpg.Enchants
 
-import me.bnogocarft.bnogorpg.Utils.addGlow
 import org.bukkit.command.Command
 import org.bukkit.command.CommandExecutor
 import org.bukkit.command.CommandSender
