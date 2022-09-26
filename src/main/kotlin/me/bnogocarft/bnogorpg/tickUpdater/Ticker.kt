@@ -2,6 +2,7 @@ package me.bnogocarft.bnogorpg.tickUpdater
 
 import me.bnogocarft.bnogorpg.Main
 import me.bnogocarft.bnogorpg.Utils.BPlayer.OnlineBPlayers
+import me.bnogocarft.bnogorpg.Utils.BPlayer.bPlayer
 import org.bukkit.Bukkit
 import org.bukkit.ChatColor
 import org.bukkit.entity.Player
@@ -18,7 +19,7 @@ class Ticker {
                     OnlineBPlayers[player].saveStats()
                 }
 
-            }, 0, 5 * 60)
+            }, 0, 20 * 60 * 5)
             Bukkit.getScheduler().scheduleSyncRepeatingTask(Main.instance, {
                 for (player in Bukkit.getOnlinePlayers()) {
                     val bplayer = OnlineBPlayers[player]
@@ -71,11 +72,17 @@ class Ticker {
             }, 0, 12)
             Bukkit.getScheduler().scheduleSyncRepeatingTask(Main.instance, {
                 for (player in Bukkit.getOnlinePlayers()) {
-                    val p = OnlineBPlayers[player]
+                    val p = player.bPlayer()
                     if (p.stats.currentMana < p.stats.maxMana) {
                         val regen = ceil(p.stats.maxMana / 100.0).toInt()
                         p.stats.currentMana += regen
                         if (p.stats.currentMana > p.stats.maxMana) p.stats.currentMana = p.stats.maxMana
+                    }
+
+                    if (p.stats.currentStamina < p.stats.maxStamina) {
+                        val regen = ceil(p.stats.maxStamina / 100.0).toInt()
+                        p.stats.currentStamina += regen
+                        if (p.stats.currentStamina > p.stats.maxStamina) p.stats.currentStamina = p.stats.maxStamina
                     }
                 }
             }, 0, 40)

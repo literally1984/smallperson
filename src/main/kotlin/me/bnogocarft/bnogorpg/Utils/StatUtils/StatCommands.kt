@@ -14,11 +14,10 @@ class StatCommands : CommandExecutor {
             sender.sendMessage("§cYou must be a player to use this command!")
             return true
         }
-        val increaseOrDecrease = args[1] == "regen"
+        val increaseOrDecrease = args[1] == "inc"
         val player = sender.bPlayer()
         when (args[0]) {
             "mana" -> {
-                playSound(player.p.location, "~!EAG.adderall.start_instant", 0f, 0f)
                 if (increaseOrDecrease) {
                     try {
                         player.stats.currentMana += args[2].toInt()
