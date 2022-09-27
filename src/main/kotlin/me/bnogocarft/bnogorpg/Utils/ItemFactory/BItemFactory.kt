@@ -7,6 +7,7 @@ import me.bnogocarft.bnogorpg.Utils.BItemStack.BItems.BItemType
 import me.bnogocarft.bnogorpg.Utils.BItemStack.BMaterial
 import me.bnogocarft.bnogorpg.Utils.BItemStack.CraftItems.CraftItemType
 import me.bnogocarft.bnogorpg.Utils.BItemStack.CraftItems.TalismanVariable
+import me.bnogocarft.bnogorpg.Utils.ItemAbility.IAbility
 import me.bnogocarft.bnogorpg.Utils.StatUtils.ItemStat
 import me.bnogocarft.bnogorpg.Utils.others.Rarity.Rarity
 import org.bukkit.Bukkit
@@ -17,7 +18,7 @@ import org.bukkit.inventory.ItemStack
 import org.bukkit.inventory.meta.LeatherArmorMeta
 
 data class FactoryItem(val name: String, val mat: Material, val type: BItemType) {
-    val abilities = ArrayList<ItemAbility>()
+    val abilities = ArrayList<IAbility>()
     val customAbility = ArrayList<String>()
     var levelReq = -1
     var stats = ArrayList<Int>()
@@ -62,15 +63,15 @@ class BItemFactory {
 
                     // abilities lore
                     for (ability in item.abilities) {
-                        if (ability.getType().equals(AbilityTrigger.SET_BONUS)) {
-                            lore.add("${ChatColor.YELLOW}${ChatColor.BOLD}Set Bonus: ${ChatColor.RESET}${ChatColor.RED}${ItemAbility.nameMap[ability]}")
+                        if (ability.type.equals(AbilityTrigger.SET_BONUS)) {
+                            lore.add("${ChatColor.YELLOW}${ChatColor.BOLD}Set Bonus: ${ChatColor.RESET}${ChatColor.RED}${ability.name}")
                             type = "armor"
-                            for (s in ability.getDescription()) lore.add("${ChatColor.GRAY}$s")
+                            for (s in ability.description) lore.add("${ChatColor.GRAY}$s")
                             lore.add("")
                             continue
                         }
-                        lore.add("${ChatColor.YELLOW}${ChatColor.BOLD}${ability.getTypeString()} ${ChatColor.RESET}${ChatColor.RED}Ability:")
-                        for (s in ability.getDescription()) lore.add("${ChatColor.GRAY}$s")
+                        lore.add("${ChatColor.YELLOW}${ChatColor.BOLD}${ability.type.getString()} ${ChatColor.RESET}${ChatColor.RED}Ability:")
+                        for (s in ability.description) lore.add("${ChatColor.GRAY}$s")
                         lore.add("")
                     }
                     lore.add("${ChatColor.BLUE}Enchantments:")
@@ -117,15 +118,15 @@ class BItemFactory {
 
                     // abilities lore
                     for (ability in item.abilities) {
-                        if (ability.getType().equals(AbilityTrigger.SET_BONUS)) {
-                            lore.add("${ChatColor.YELLOW}${ChatColor.BOLD}Set Bonus: ${ChatColor.RESET}${ChatColor.RED}${ItemAbility.nameMap[ability]}")
+                        if (ability.type.equals(AbilityTrigger.SET_BONUS)) {
+                            lore.add("${ChatColor.YELLOW}${ChatColor.BOLD}Set Bonus: ${ChatColor.RESET}${ChatColor.RED}${ability.name}")
                             type = "armor"
-                            for (s in ability.getDescription()) lore.add("${ChatColor.GRAY}$s")
+                            for (s in ability.description) lore.add("${ChatColor.GRAY}$s")
                             lore.add("")
                             continue
                         }
-                        lore.add("${ChatColor.YELLOW}${ChatColor.BOLD}${ability.getTypeString()} ${ChatColor.RESET}${ChatColor.RED}Ability:")
-                        for (s in ability.getDescription()) lore.add("${ChatColor.GRAY}$s")
+                        lore.add("${ChatColor.YELLOW}${ChatColor.BOLD}${ability.type.getString()} ${ChatColor.RESET}${ChatColor.RED}Ability:")
+                        for (s in ability.description) lore.add("${ChatColor.GRAY}$s")
                         lore.add("")
                     }
                     lore.add("${ChatColor.BLUE}Enchantments:")
@@ -276,8 +277,8 @@ class BItemFactory {
 
                             // abilities lore
                             for (ability in item.abilities) {
-                                lore.add("${ChatColor.YELLOW}${ChatColor.BOLD}${ability.getTypeString()} ${ChatColor.RESET}${ChatColor.RED}Ability:")
-                                for (s in ability.getDescription()) lore.add("${ChatColor.GRAY}$s")
+                                lore.add("${ChatColor.YELLOW}${ChatColor.BOLD}${ability.type.getString()} ${ChatColor.RESET}${ChatColor.RED}Ability:")
+                                for (s in ability.description) lore.add("${ChatColor.GRAY}$s")
                                 lore.add("")
                             }
                             lore.add("${ChatColor.GOLD}${ChatColor.ITALIC}Weapon")
@@ -330,11 +331,16 @@ class BItemFactory {
 
                             // abilities lore
                             for (ability in item.abilities) {
-                                lore.add("${ChatColor.YELLOW}${ChatColor.BOLD}Set Bonus: ${ChatColor.RESET}${ChatColor.RED}${ItemAbility.nameMap[ability]}")
-                                for (s in ability.getDescription()) lore.add("${ChatColor.GRAY}$s")
+                                lore.add("${ChatColor.YELLOW}${ChatColor.BOLD}Set Bonus: ${ChatColor.RESET}${ChatColor.RED}${ability.name}")
+                                for (s in ability.description) lore.add("${ChatColor.GRAY}$s")
                                 lore.add("")
                             }
                             lore.add("${ChatColor.GOLD}${ChatColor.ITALIC}Armor Item")
+
+                            if (item.armorColor != null) {
+                                val colorMeta = meta as LeatherArmorMeta
+                                colorMeta.color = item.armorColor
+                            }
 
                             lore.add("${ChatColor.GOLD}${item.stats[12]}-${item.stats[13]} ✪Star✪")
 

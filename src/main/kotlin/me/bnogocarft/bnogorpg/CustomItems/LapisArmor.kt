@@ -3,7 +3,7 @@ package me.bnogocarft.bnogorpg.CustomItems
 import me.bnogocarft.bnogorpg.Utils.BItemStack.BItems.BItemType
 import me.bnogocarft.bnogorpg.Utils.ItemFactory.ArmorSet
 import me.bnogocarft.bnogorpg.Utils.ItemFactory.BItemFactory
-import me.bnogocarft.bnogorpg.Utils.ItemFactory.ItemAbility
+import me.bnogocarft.bnogorpg.Utils.ItemAbility.Abilities.EnhancedMagic
 import me.bnogocarft.bnogorpg.Utils.others.Rarity.Rarity
 import org.bukkit.Color
 import org.bukkit.Material
@@ -24,10 +24,11 @@ class LapisArmor : ArmorSet {
         createBoots()
     }
 
+    val abil = EnhancedMagic()
     override fun createHelmet() {
         val factoryItem = BItemFactory.createBItem("Lapis Helmet", Material.LEATHER_HELMET, BItemType.ARMOR)
 
-        val ability = ItemAbility.LapisSet
+        val ability = abil
         factoryItem.abilities.add(ability)
         factoryItem.stats = arrayListOf(0, 3, 1, 3, 5, 7)
         factoryItem.rarity = Rarity.UNCOMMON
@@ -40,7 +41,7 @@ class LapisArmor : ArmorSet {
     override fun createChestplate() {
         val factoryItem = BItemFactory.createBItem("Lapis Chestplate", Material.LEATHER_CHESTPLATE, BItemType.ARMOR)
 
-        val ability = ItemAbility.LapisSet
+        val ability = abil
         factoryItem.abilities.add(ability)
         factoryItem.stats = arrayListOf(2, 8, 5, 9, 15, 21)
         factoryItem.rarity = Rarity.UNCOMMON
@@ -53,7 +54,7 @@ class LapisArmor : ArmorSet {
     override fun createLeggings() {
         val factoryItem = BItemFactory.createBItem("Lapis Leggings", Material.LEATHER_LEGGINGS, BItemType.ARMOR)
 
-        val ability = ItemAbility.LapisSet
+        val ability = abil
         factoryItem.abilities.add(ability)
         factoryItem.stats = arrayListOf(1, 6, 4, 7, 12, 18)
         factoryItem.rarity = Rarity.UNCOMMON
@@ -66,7 +67,7 @@ class LapisArmor : ArmorSet {
     override fun createBoots() {
         val factoryItem = BItemFactory.createBItem("Lapis Boots", Material.LEATHER_BOOTS, BItemType.ARMOR)
 
-        val ability = ItemAbility.LapisSet
+        val ability = abil
         factoryItem.abilities.add(ability)
         factoryItem.stats = arrayListOf(0, 3, 0, 2, 5, 7)
         factoryItem.rarity = Rarity.UNCOMMON

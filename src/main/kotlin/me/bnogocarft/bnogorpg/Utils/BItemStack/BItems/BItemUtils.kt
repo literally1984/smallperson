@@ -1,6 +1,8 @@
 package me.bnogocarft.bnogorpg.Utils.BItemStack.BItems
 
+import me.bnogocarft.bnogorpg.Main
 import me.bnogocarft.bnogorpg.Utils.BItemStack.BMaterial
+import me.bnogocarft.bnogorpg.Utils.ItemAbility.IAbility
 import org.bukkit.inventory.ItemStack
 
 
@@ -106,6 +108,15 @@ class BItemUtils {
 
         fun getBMaterial(item: ItemStack): BMaterial {
             return BMaterial.valueOf(item.itemMeta.displayName.replace(" ", "_").uppercase())
+        }
+
+        fun getAbilityByName(name: String): IAbility {
+            for (ability in Main.registeredAbilities) {
+                if (ability.name == name) {
+                    return ability
+                }
+            }
+            throw IllegalArgumentException("No such Ability with name \"${name}\"")
         }
     }
 }

@@ -5,7 +5,7 @@ import me.bnogocarft.bnogorpg.Updater.Change.StatChange
 import me.bnogocarft.bnogorpg.Utils.BItemStack.Reforge
 import me.bnogocarft.bnogorpg.Utils.Database.BnogoSQL
 import me.bnogocarft.bnogorpg.Utils.Exceptions.InvalidConstructorInputException
-import me.bnogocarft.bnogorpg.Utils.ItemFactory.ItemAbility
+import me.bnogocarft.bnogorpg.Utils.ItemAbility.IAbility
 import me.bnogocarft.bnogorpg.Utils.StatUtils.ItemStat
 import me.bnogocarft.bnogorpg.Utils.serializeItem
 import org.bukkit.ChatColor
@@ -68,7 +68,7 @@ open class BGear(item: ItemStack) : BItem(item) {
             }
             field = value
         }
-    val abilities = ArrayList<ItemAbility>()
+    val abilities = ArrayList<IAbility>()
     var exp: Long = 0
         set(value) {
             val copy = this.initItem.itemMeta.clone()
@@ -106,7 +106,13 @@ open class BGear(item: ItemStack) : BItem(item) {
                     }
                     if (lore.contains("${ChatColor.YELLOW}${ChatColor.BOLD}SET BONUS: ")) {
                         println(clore[clore.indexOf(lore)].split(": ${ChatColor.RESET}${ChatColor.RED}")[1])
-                        abilities.add(ItemAbility.revNameMap[clore[clore.indexOf(lore)].split(": ${ChatColor.RESET}${ChatColor.RED}")[1]]!!)
+                        abilities.add(BItemUtils.getAbilityByName(
+                            clore[
+                                    clore.indexOf(lore)
+                            ].split(
+                                ": ${ChatColor.RESET}${ChatColor.RED}"
+                            )[1])
+                        )
                     }
                 }
 

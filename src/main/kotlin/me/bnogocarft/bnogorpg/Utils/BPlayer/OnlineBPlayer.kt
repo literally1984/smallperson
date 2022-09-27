@@ -17,11 +17,13 @@ import org.bukkit.ChatColor
 import org.bukkit.Material
 import org.bukkit.entity.LivingEntity
 import org.bukkit.entity.Player
+import org.bukkit.event.entity.EntityDamageByEntityEvent
 import org.bukkit.inventory.Inventory
 import org.bukkit.inventory.ItemStack
 import tech.nully.BossBarAPI.BossBar
 import java.text.SimpleDateFormat
 import java.util.*
+import kotlin.collections.ArrayList
 import kotlin.math.roundToInt
 
 
@@ -52,6 +54,7 @@ data class OnlineBPlayer(val p: Player) : BPlayer(p.name) {
     val regHotbar = arrayListOf<ItemStack?>(null, null, null, null, null, null, null, null, null)
     val spellItemMap = HashMap<ItemStack, Spell>()
     val skull = ItemStack(Material.SKULL)
+    val onDamage = ArrayList<DamageHandler>()
     var isInCastMode = false
         set(value) {
             // If the Player was not previously in spellcast form

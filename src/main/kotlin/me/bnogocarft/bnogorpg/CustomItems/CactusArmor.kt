@@ -1,14 +1,14 @@
 package me.bnogocarft.bnogorpg.CustomItems
 
-import me.bnogocarft.bnogorpg.CustomItems.DefaultItems.Diamond
 import me.bnogocarft.bnogorpg.Utils.BItemStack.BItems.BItemType
 import me.bnogocarft.bnogorpg.Utils.BItemStack.BMaterial
 import me.bnogocarft.bnogorpg.Utils.BItemStack.CraftItems.CraftItemType
 import me.bnogocarft.bnogorpg.Utils.ItemFactory.ArmorSet
 import me.bnogocarft.bnogorpg.Utils.ItemFactory.BItemFactory
-import me.bnogocarft.bnogorpg.Utils.ItemFactory.ItemAbility
+import me.bnogocarft.bnogorpg.Utils.ItemAbility.Abilities.SpikeySpikes
 import me.bnogocarft.bnogorpg.Utils.others.Rarity.Rarity
 import org.bukkit.Bukkit
+import org.bukkit.ChatColor
 import org.bukkit.Color
 import org.bukkit.Material
 import org.bukkit.inventory.ItemStack
@@ -34,12 +34,16 @@ class CactusArmor : ArmorSet {
         createChestplate()
         createLeggings()
         createBoots()
+
+        createCraftHelmet()
     }
 
-    override fun createHelmet() {
-        val factoryItem = BItemFactory.createBItem("Cactus Helmet", Material.LEATHER_HELMET, BItemType.ARMOR)
+    private val abil = SpikeySpikes()
 
-        val ability = ItemAbility.CactusSet
+    override fun createHelmet() {
+        val factoryItem = BItemFactory.createBItem("${ChatColor.GREEN}Cactus Helmet", Material.LEATHER_HELMET, BItemType.ARMOR)
+
+        val ability = abil
         factoryItem.abilities.add(ability)
         factoryItem.stats = arrayListOf(0, 3, 1, 3, 5, 7)
         factoryItem.rarity = Rarity.UNCOMMON
@@ -50,7 +54,7 @@ class CactusArmor : ArmorSet {
     }
 
     fun createCraftHelmet() {
-        val factoryItem = BItemFactory.createBItem("Cactus Helmet", Material.LEATHER_HELMET, BItemType.CRAFT_ITEM)
+        val factoryItem = BItemFactory.createBItem("${ChatColor.GREEN}Cactus Helmet", Material.LEATHER_HELMET, BItemType.CRAFT_ITEM)
         factoryItem.craftItemType = CraftItemType.ARMOR
 
         val statsVary = BMaterial.DIAMOND_HELMET.getStatVary()
@@ -78,17 +82,17 @@ class CactusArmor : ArmorSet {
             stamVary[1].toInt(),
             3, 4
         )
-        Diamond.craftHelmet = BItemFactory.produceItem(factoryItem)
-        val recipe = ShapedRecipe(Diamond.craftHelmet)
+        craftHelmet = BItemFactory.produceItem(factoryItem)
+        val recipe = ShapedRecipe(craftHelmet)
         recipe.shape("ddd", "d d", "   ")
         recipe.setIngredient('d', Material.DIAMOND)
         Bukkit.addRecipe(recipe)
     }
 
     override fun createChestplate() {
-        val factoryItem = BItemFactory.createBItem("Cactus Chestplate", Material.LEATHER_CHESTPLATE, BItemType.ARMOR)
+        val factoryItem = BItemFactory.createBItem("${ChatColor.GREEN}Cactus Chestplate", Material.LEATHER_CHESTPLATE, BItemType.ARMOR)
 
-        val ability = ItemAbility.CactusSet
+        val ability = abil
         factoryItem.abilities.add(ability)
         factoryItem.stats = arrayListOf(2, 8, 5, 9, 15, 21)
         factoryItem.rarity = Rarity.UNCOMMON
@@ -99,9 +103,9 @@ class CactusArmor : ArmorSet {
     }
 
     override fun createLeggings() {
-        val factoryItem = BItemFactory.createBItem("Cactus Leggings", Material.LEATHER_LEGGINGS, BItemType.ARMOR)
+        val factoryItem = BItemFactory.createBItem("${ChatColor.GREEN}Cactus Leggings", Material.LEATHER_LEGGINGS, BItemType.ARMOR)
 
-        val ability = ItemAbility.CactusSet
+        val ability = abil
         factoryItem.abilities.add(ability)
         factoryItem.stats = arrayListOf(1, 6, 4, 7, 12, 18)
         factoryItem.rarity = Rarity.UNCOMMON
@@ -112,9 +116,9 @@ class CactusArmor : ArmorSet {
     }
 
     override fun createBoots() {
-        val factoryItem = BItemFactory.createBItem("Cactus Boots", Material.LEATHER_BOOTS, BItemType.ARMOR)
+        val factoryItem = BItemFactory.createBItem("${ChatColor.GREEN}Cactus Boots", Material.LEATHER_BOOTS, BItemType.ARMOR)
 
-        val ability = ItemAbility.CactusSet
+        val ability = abil
         factoryItem.abilities.add(ability)
         factoryItem.stats = arrayListOf(0, 3, 0, 2, 5, 7)
         factoryItem.rarity = Rarity.UNCOMMON

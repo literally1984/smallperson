@@ -29,12 +29,11 @@ import me.bnogocarft.bnogorpg.Spells.spells.MeteorSpell
 import me.bnogocarft.bnogorpg.Updater.Updates.Update
 import me.bnogocarft.bnogorpg.Utils.*
 import me.bnogocarft.bnogorpg.Utils.BItemStack.BItems.BItemUtils
-import me.bnogocarft.bnogorpg.Utils.BItemStack.EnchantUtils.Glow
 import me.bnogocarft.bnogorpg.Utils.BPlayer.OnlineBPlayers
 import me.bnogocarft.bnogorpg.Utils.CustomEvents.ArmorWearListeners
 import me.bnogocarft.bnogorpg.Utils.Database.BnogoSQL
 import me.bnogocarft.bnogorpg.Utils.Database.YMLUtils
-import me.bnogocarft.bnogorpg.Utils.ItemFactory.ItemAbility
+import me.bnogocarft.bnogorpg.Utils.ItemAbility.IAbility
 import me.bnogocarft.bnogorpg.Utils.StatUtils.StatCommands
 import me.bnogocarft.bnogorpg.Utils.economyUtils.auction.Auction
 import me.bnogocarft.bnogorpg.Utils.economyUtils.auction.AuctionTimer
@@ -48,7 +47,6 @@ import net.milkbowl.vault.economy.Economy
 import org.bukkit.Bukkit
 import org.bukkit.ChatColor
 import org.bukkit.configuration.file.YamlConfiguration
-import org.bukkit.enchantments.Enchantment
 import org.bukkit.entity.Player
 import org.bukkit.plugin.Plugin
 import org.bukkit.plugin.java.JavaPlugin
@@ -76,6 +74,7 @@ class Main : JavaPlugin() {
         lateinit var econ: Economy
 
         lateinit var input: SignInputer
+        val registeredAbilities = ArrayList<IAbility>()
     }
 
     override fun onEnable() {
@@ -99,12 +98,9 @@ class Main : JavaPlugin() {
         DefaultOverrider.overrideRecipes()
         cSender.sendMessage("$logo Overriding default combat Items... Done")
 
-        registerGlow()
-
         cSender.sendMessage("$logo Constructing utils...")
         OnlineBPlayers
         initUtils()
-        ItemAbility.init()
         cSender.sendMessage("$logo Utlils have been constructed")
 
         cSender.sendMessage("$logo Registering listeners")
@@ -289,22 +285,5 @@ class Main : JavaPlugin() {
             return true
         }
         return false
-    }
-
-    fun registerGlow() {
-        try {
-            val f = Enchantment::class.java.getDeclaredField("acceptingNew")
-            f.isAccessible = true
-            f[null] = true
-        } catch (e: Exception) {
-            e.printStackTrace()
-        }
-        try {
-            val glow = Glow()
-            Enchantment.registerEnchantment(glow)
-        } catch (ignore: IllegalArgumentException) {
-        } catch (e: Exception) {
-            e.printStackTrace()
-        }
     }
 }
