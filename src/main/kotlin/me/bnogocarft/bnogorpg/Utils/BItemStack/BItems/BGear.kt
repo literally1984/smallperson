@@ -4,7 +4,7 @@ import me.bnogocarft.bnogorpg.Updater.Change.Change
 import me.bnogocarft.bnogorpg.Updater.Change.StatChange
 import me.bnogocarft.bnogorpg.Utils.BItemStack.Reforge
 import me.bnogocarft.bnogorpg.Utils.Database.BnogoSQL
-import me.bnogocarft.bnogorpg.Utils.Exceptions.InvalidConstructorInputException
+import me.bnogocarft.bnogorpg.Utils.Exceptions.IllegalConstructorArgumentException
 import me.bnogocarft.bnogorpg.Utils.ItemAbility.IAbility
 import me.bnogocarft.bnogorpg.Utils.StatUtils.ItemStat
 import me.bnogocarft.bnogorpg.Utils.serializeItem
@@ -117,7 +117,7 @@ open class BGear(item: ItemStack) : BItem(item) {
                 }
 
                 if (id == -1) {
-                    throw InvalidConstructorInputException("Item does not have an ID Line")
+                    throw IllegalConstructorArgumentException("Item does not have an ID Line")
                 }
 
                 reforge = try {

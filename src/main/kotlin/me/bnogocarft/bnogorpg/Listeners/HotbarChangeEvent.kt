@@ -2,7 +2,7 @@ package me.bnogocarft.bnogorpg.Listeners
 
 import me.bnogocarft.bnogorpg.Utils.BItemStack.BItems.BItemUtils
 import me.bnogocarft.bnogorpg.Utils.BPlayer.OnlineBPlayers
-import me.bnogocarft.bnogorpg.Utils.Exceptions.InvalidConstructorInputException
+import me.bnogocarft.bnogorpg.Utils.Exceptions.IllegalConstructorArgumentException
 import org.bukkit.event.EventHandler
 import org.bukkit.event.Listener
 import org.bukkit.event.player.PlayerItemHeldEvent
@@ -27,7 +27,7 @@ class HotbarChangeEvent : Listener {
             val newItem = player.inventory.getItem(event.newSlot)
             val bItem = try {
                 BItemUtils.getBGear(newItem)
-            } catch (e: InvalidConstructorInputException) {
+            } catch (e: IllegalConstructorArgumentException) {
                 return
             } catch (e: NullPointerException) {
                 return

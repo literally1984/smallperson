@@ -1,4 +1,6 @@
 package me.bnogocarft.bnogorpg.Utils.Armorset
 
-class ArmorSet {
+interface ArmorSet {
+    val setBonuses: ArrayList<SetBonus>
+    val name: String
 }

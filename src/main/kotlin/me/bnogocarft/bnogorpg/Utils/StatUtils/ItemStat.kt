@@ -1,6 +1,6 @@
 package me.bnogocarft.bnogorpg.Utils.StatUtils
 
-import me.bnogocarft.bnogorpg.Utils.Exceptions.InvalidConstructorInputException
+import me.bnogocarft.bnogorpg.Utils.Exceptions.IllegalConstructorArgumentException
 import org.bukkit.ChatColor
 import org.bukkit.inventory.ItemStack
 
@@ -117,7 +117,7 @@ data class ItemStat(val item: ItemStack) {
         }
 
         if (!constructed) {
-            throw InvalidConstructorInputException("Lore for item stats not found!")
+            throw IllegalConstructorArgumentException("Lore for item stats not found!")
         }
     }
 }

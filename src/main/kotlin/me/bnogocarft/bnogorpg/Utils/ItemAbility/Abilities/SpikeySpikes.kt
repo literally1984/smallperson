@@ -2,11 +2,13 @@ package me.bnogocarft.bnogorpg.Utils.ItemAbility.Abilities
 
 import me.bnogocarft.bnogorpg.Main
 import me.bnogocarft.bnogorpg.Utils.Abilities.ItemAbility.AbilityTrigger
+import me.bnogocarft.bnogorpg.Utils.Armorset.SetBonus
 import me.bnogocarft.bnogorpg.Utils.BPlayer.bPlayer
 import me.bnogocarft.bnogorpg.Utils.ItemAbility.IAbility
 import org.bukkit.entity.Player
+import org.bukkit.event.player.PlayerEvent
 
-class SpikeySpikes : IAbility {
+class SpikeySpikes : SetBonus {
     override val description: ArrayList<String> = arrayListOf(
         "When an opponent damages you,",
         "30% of the damage will be",
@@ -15,7 +17,7 @@ class SpikeySpikes : IAbility {
     override val name: String = "Spiky Spikes"
     override val type: AbilityTrigger = AbilityTrigger.HIT
 
-    override fun cast(caster: Player) {
+    override fun cast(caster: Player, abilityEvent: PlayerEvent) {
         caster.bPlayer().onDamage.add {
             val e = it
             if (e.damager is Player) {

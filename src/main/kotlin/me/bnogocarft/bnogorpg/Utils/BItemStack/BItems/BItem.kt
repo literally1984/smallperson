@@ -1,7 +1,7 @@
 package me.bnogocarft.bnogorpg.Utils.BItemStack.BItems
 
 import me.bnogocarft.bnogorpg.Utils.BItemStack.BMaterial
-import me.bnogocarft.bnogorpg.Utils.Exceptions.InvalidConstructorInputException
+import me.bnogocarft.bnogorpg.Utils.Exceptions.IllegalConstructorArgumentException
 import me.bnogocarft.bnogorpg.Utils.others.Rarity.RarityUtils
 import org.bukkit.ChatColor
 import org.bukkit.inventory.ItemStack
@@ -28,13 +28,13 @@ open class BItem(item: ItemStack) {
                 }
             }
         } catch (e: NullPointerException) {
-            throw InvalidConstructorInputException("No type identifier found in item lore")
+            throw IllegalConstructorArgumentException("No type identifier found in item lore")
         }
     private var enchantLine: Int = 0
 
     init {
         if (!(item.hasItemMeta())) {
-            throw InvalidConstructorInputException("ItemStack does not have an ItemMeta")
+            throw IllegalConstructorArgumentException("ItemStack does not have an ItemMeta")
         }
         val lore = item.itemMeta.lore
         for (clore in lore) {
@@ -57,7 +57,7 @@ open class BItem(item: ItemStack) {
             try {
                 BMaterial.valueOf(item.itemMeta.displayName.replace(" ", "_").uppercase())
             } catch (e: IllegalArgumentException) {
-                throw InvalidConstructorInputException("ItemStack does not have a valid BMaterial")
+                throw IllegalConstructorArgumentException("ItemStack does not have a valid BMaterial")
             }
         } else {
             val name = item.itemMeta.displayName

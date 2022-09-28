@@ -27,6 +27,8 @@ class CactusArmor : ArmorSetMaker {
         lateinit var craftBoots: ItemStack
 
         lateinit var craftShard: ItemStack
+
+        val abil = SpikeySpikes()
     }
 
     init {
@@ -37,8 +39,6 @@ class CactusArmor : ArmorSetMaker {
 
         createCraftHelmet()
     }
-
-    private val abil = SpikeySpikes()
 
     override fun createHelmet() {
         val factoryItem = BItemFactory.createBItem("${ChatColor.GREEN}Cactus Helmet", Material.LEATHER_HELMET, BItemType.ARMOR)

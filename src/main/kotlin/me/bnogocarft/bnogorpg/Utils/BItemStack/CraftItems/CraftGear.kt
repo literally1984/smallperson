@@ -1,7 +1,7 @@
 package me.bnogocarft.bnogorpg.Utils.BItemStack.CraftItems
 
 import me.bnogocarft.bnogorpg.Utils.BItemStack.BMaterial
-import me.bnogocarft.bnogorpg.Utils.Exceptions.InvalidConstructorInputException
+import me.bnogocarft.bnogorpg.Utils.Exceptions.IllegalConstructorArgumentException
 import me.bnogocarft.bnogorpg.Utils.others.Rarity.Rarity
 import org.bukkit.ChatColor
 import org.bukkit.inventory.ItemStack
@@ -64,7 +64,7 @@ data class CraftGear(override var item: ItemStack) : CraftItem {
             }
         }
         if (statVary.size != 12) {
-            throw InvalidConstructorInputException("Provided ItemStack does not have all the required stat lores")
+            throw IllegalConstructorArgumentException("Provided ItemStack does not have all the required stat lores")
         }
     }
 

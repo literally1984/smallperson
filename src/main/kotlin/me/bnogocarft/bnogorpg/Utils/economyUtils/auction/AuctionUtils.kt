@@ -4,7 +4,7 @@ import me.bnogocarft.bnogorpg.Main
 import me.bnogocarft.bnogorpg.Utils.*
 import me.bnogocarft.bnogorpg.Utils.BItemStack.BItems.BItem
 import me.bnogocarft.bnogorpg.Utils.BItemStack.BItems.BItemType
-import me.bnogocarft.bnogorpg.Utils.Exceptions.InvalidConstructorInputException
+import me.bnogocarft.bnogorpg.Utils.Exceptions.IllegalConstructorArgumentException
 import me.bnogocarft.bnogorpg.Utils.Senders.MessageSender
 import me.bnogocarft.bnogorpg.economy.Auction.AHGui
 import me.bnogocarft.bnogorpg.economy.Auction.AHGui.Companion.returnToManagerPage
@@ -22,7 +22,7 @@ fun getAuctionType(item: ItemStack): AuctionType {
         var bItem: BItem? = null
         try {
             bItem = BItem(item)
-        } catch (ignore: InvalidConstructorInputException) {
+        } catch (ignore: IllegalConstructorArgumentException) {
         }
         if (bItem != null) {
             return when (bItem.type) {

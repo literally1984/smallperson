@@ -3,7 +3,6 @@ package me.bnogocarft.bnogorpg.Utils.BPlayer
 import me.bnogocarft.bnogorpg.Main
 import me.bnogocarft.bnogorpg.Player.PlayerBar.Bar
 import me.bnogocarft.bnogorpg.Player.PlayerBar.MainBar
-import me.bnogocarft.bnogorpg.Utils.Abilities.SetBonus
 import me.bnogocarft.bnogorpg.Utils.Abilities.Spell
 import me.bnogocarft.bnogorpg.Utils.GUIBackground
 import me.bnogocarft.bnogorpg.Utils.GUIFactory
@@ -17,7 +16,6 @@ import org.bukkit.ChatColor
 import org.bukkit.Material
 import org.bukkit.entity.LivingEntity
 import org.bukkit.entity.Player
-import org.bukkit.event.entity.EntityDamageByEntityEvent
 import org.bukkit.inventory.Inventory
 import org.bukkit.inventory.ItemStack
 import tech.nully.BossBarAPI.BossBar
