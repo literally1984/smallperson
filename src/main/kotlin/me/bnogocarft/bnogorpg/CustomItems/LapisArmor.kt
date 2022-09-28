@@ -1,7 +1,7 @@
 package me.bnogocarft.bnogorpg.CustomItems
 
 import me.bnogocarft.bnogorpg.Utils.BItemStack.BItems.BItemType
-import me.bnogocarft.bnogorpg.Utils.ItemFactory.ArmorSet
+import me.bnogocarft.bnogorpg.Utils.ItemFactory.ArmorSetMaker
 import me.bnogocarft.bnogorpg.Utils.ItemFactory.BItemFactory
 import me.bnogocarft.bnogorpg.Utils.ItemAbility.Abilities.EnhancedMagic
 import me.bnogocarft.bnogorpg.Utils.others.Rarity.Rarity
@@ -9,7 +9,7 @@ import org.bukkit.Color
 import org.bukkit.Material
 import org.bukkit.inventory.ItemStack
 
-class LapisArmor : ArmorSet {
+class LapisArmor : ArmorSetMaker {
     companion object {
         lateinit var helm: ItemStack
         lateinit var chestplate: ItemStack

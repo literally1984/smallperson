@@ -2,14 +2,14 @@ package me.bnogocarft.bnogorpg.CustomItems.DefaultItems
 
 import me.bnogocarft.bnogorpg.Utils.BItemStack.BItems.BItemType
 import me.bnogocarft.bnogorpg.Utils.ItemFactory.BItemFactory
-import me.bnogocarft.bnogorpg.Utils.ItemFactory.FullSet
+import me.bnogocarft.bnogorpg.Utils.ItemFactory.FullSetMaker
 import me.bnogocarft.bnogorpg.Utils.others.Rarity.Rarity
 import org.bukkit.Bukkit
 import org.bukkit.Material
 import org.bukkit.inventory.ItemStack
 import org.bukkit.inventory.ShapedRecipe
 
-class Iron : FullSet {
+class Iron : FullSetMaker {
     companion object {
         lateinit var helm: ItemStack
         lateinit var chestplate: ItemStack

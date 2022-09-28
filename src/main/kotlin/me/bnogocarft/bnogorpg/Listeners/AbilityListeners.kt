@@ -1,6 +1,7 @@
 package me.bnogocarft.bnogorpg.Listeners
 
 import me.bnogocarft.bnogorpg.Main
+import me.bnogocarft.bnogorpg.Utils.BItemStack.BItems.BItem
 import me.bnogocarft.bnogorpg.Utils.BItemStack.BItems.BItemUtils
 import me.bnogocarft.bnogorpg.Utils.BItemStack.BMaterial
 import me.bnogocarft.bnogorpg.Utils.BPlayer.OnlineBPlayers
@@ -67,63 +68,12 @@ class AbilityListeners : Listener {
 
                 val bItem = BItemUtils.getBWeapon(itemInHand)
                 val p = e.player
-                when (bItem.material) {
-                    BMaterial.BLADE_OF_HERMES -> {
-                        if (e.action == Action.RIGHT_CLICK_AIR || e.action == Action.RIGHT_CLICK_BLOCK) {
-                            val dir = p.location.direction.normalize()
-                            val teleportdir = dir.multiply(6)
-                            p.teleport(p.location.add(teleportdir))
-                        }
-                    }
 
-                    BMaterial.THUNDERBOLT -> {
-                        if (e.action == Action.RIGHT_CLICK_AIR || e.action == Action.RIGHT_CLICK_BLOCK) {
-                            val dir = p.location.direction.normalize()
-                            val world = p.location.world
-                            val strike1 = p.location.add(dir.multiply(2))
-                            val strike2 = p.location.add(p.location.direction.normalize().multiply(3))
-                            val strike3 = p.location.add(p.location.direction.normalize().multiply(4))
-                            world.strikeLightning(strike1)
-                            world.strikeLightningEffect(strike1)
-                            world.strikeLightning(strike1)
-                            world.strikeLightningEffect(strike1)
-                            world.strikeLightning(strike1)
-                            world.strikeLightningEffect(strike1)
-                            world.createExplosion(strike1, 1f)
-
-                            Bukkit.getScheduler().scheduleSyncDelayedTask(
-                                Main.instance,
-                                {
-                                    world.strikeLightning(strike2)
-                                    world.strikeLightningEffect(strike2)
-                                    world.strikeLightning(strike2)
-                                    world.strikeLightningEffect(strike2)
-                                    world.strikeLightning(strike2)
-                                    world.strikeLightningEffect(strike2)
-                                    world.createExplosion(strike2, 1f)
-
-                                    Bukkit.getScheduler().scheduleSyncDelayedTask(
-                                        Main.instance,
-                                        {
-                                            world.strikeLightning(strike3)
-                                            world.strikeLightningEffect(strike3)
-                                            world.strikeLightning(strike3)
-                                            world.strikeLightningEffect(strike3)
-                                            world.strikeLightning(strike3)
-                                            world.strikeLightningEffect(strike3)
-                                            world.createExplosion(strike3, 1f)
-                                        }, 10
-                                    )
-
-                                }, 10
-                            )
-                        }
-                    }
-
-                    else -> {
-                        return
-                    }
+                for (ability in bItem.abilities) {
+                    ability.cast(p, e)
                 }
+
+                e.isCancelled = true
             }
         }
     }

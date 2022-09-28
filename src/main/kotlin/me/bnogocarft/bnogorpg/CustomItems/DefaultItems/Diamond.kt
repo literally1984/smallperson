@@ -4,14 +4,14 @@ import me.bnogocarft.bnogorpg.Utils.BItemStack.BItems.BItemType
 import me.bnogocarft.bnogorpg.Utils.BItemStack.BMaterial
 import me.bnogocarft.bnogorpg.Utils.BItemStack.CraftItems.CraftItemType
 import me.bnogocarft.bnogorpg.Utils.ItemFactory.BItemFactory
-import me.bnogocarft.bnogorpg.Utils.ItemFactory.FullSet
+import me.bnogocarft.bnogorpg.Utils.ItemFactory.FullSetMaker
 import me.bnogocarft.bnogorpg.Utils.others.Rarity.Rarity
 import org.bukkit.Bukkit
 import org.bukkit.Material
 import org.bukkit.inventory.ItemStack
 import org.bukkit.inventory.ShapedRecipe
 
-class Diamond : FullSet {
+class Diamond : FullSetMaker {
     companion object {
         lateinit var helm: ItemStack
         lateinit var chestplate: ItemStack

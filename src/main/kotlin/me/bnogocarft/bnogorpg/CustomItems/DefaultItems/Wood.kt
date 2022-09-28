@@ -2,14 +2,14 @@ package me.bnogocarft.bnogorpg.CustomItems.DefaultItems
 
 import me.bnogocarft.bnogorpg.Utils.BItemStack.BItems.BItemType
 import me.bnogocarft.bnogorpg.Utils.ItemFactory.BItemFactory
-import me.bnogocarft.bnogorpg.Utils.ItemFactory.ToolSet
+import me.bnogocarft.bnogorpg.Utils.ItemFactory.ToolSetMaker
 import me.bnogocarft.bnogorpg.Utils.others.Rarity.Rarity
 import org.bukkit.Bukkit
 import org.bukkit.Material
 import org.bukkit.inventory.ItemStack
 import org.bukkit.inventory.ShapedRecipe
 
-class Wood : ToolSet {
+class Wood : ToolSetMaker {
 
     companion object {
         lateinit var sword: ItemStack

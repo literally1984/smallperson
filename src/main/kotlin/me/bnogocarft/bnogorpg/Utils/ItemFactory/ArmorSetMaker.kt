@@ -1,6 +1,6 @@
 package me.bnogocarft.bnogorpg.Utils.ItemFactory
 
-interface ArmorSet {
+interface ArmorSetMaker {
 
     fun createHelmet()
     fun createChestplate()

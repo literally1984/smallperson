@@ -3,7 +3,7 @@ package me.bnogocarft.bnogorpg.CustomItems
 import me.bnogocarft.bnogorpg.Utils.BItemStack.BItems.BItemType
 import me.bnogocarft.bnogorpg.Utils.BItemStack.BMaterial
 import me.bnogocarft.bnogorpg.Utils.BItemStack.CraftItems.CraftItemType
-import me.bnogocarft.bnogorpg.Utils.ItemFactory.ArmorSet
+import me.bnogocarft.bnogorpg.Utils.ItemFactory.ArmorSetMaker
 import me.bnogocarft.bnogorpg.Utils.ItemFactory.BItemFactory
 import me.bnogocarft.bnogorpg.Utils.ItemAbility.Abilities.SpikeySpikes
 import me.bnogocarft.bnogorpg.Utils.others.Rarity.Rarity
@@ -14,7 +14,7 @@ import org.bukkit.Material
 import org.bukkit.inventory.ItemStack
 import org.bukkit.inventory.ShapedRecipe
 
-class CactusArmor : ArmorSet {
+class CactusArmor : ArmorSetMaker {
     companion object {
         lateinit var helm: ItemStack
         lateinit var chestplate: ItemStack

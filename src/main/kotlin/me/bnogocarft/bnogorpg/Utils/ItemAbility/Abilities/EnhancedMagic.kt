@@ -5,6 +5,7 @@ import me.bnogocarft.bnogorpg.Utils.Abilities.ItemAbility.AbilityTrigger
 import me.bnogocarft.bnogorpg.Utils.BPlayer.bPlayer
 import me.bnogocarft.bnogorpg.Utils.ItemAbility.IAbility
 import org.bukkit.entity.Player
+import org.bukkit.event.player.PlayerEvent
 
 class EnhancedMagic : IAbility {
     override val description: ArrayList<String> = arrayListOf(
@@ -14,7 +15,8 @@ class EnhancedMagic : IAbility {
     )
     override val name: String = "Enhanced Magic"
     override val type: AbilityTrigger = AbilityTrigger.SET_BONUS
-    override fun cast(caster: Player) {
+
+    override fun cast(caster: Player, abilityEvent: PlayerEvent) {
         val player = caster.bPlayer()
         player.stats.maxMana += player.stats.maxMana / 3
     }

@@ -1,6 +1,7 @@
 package me.bnogocarft.bnogorpg.CustomItems
 
 import me.bnogocarft.bnogorpg.Utils.BItemStack.BItems.BItemType
+import me.bnogocarft.bnogorpg.Utils.ItemAbility.Abilities.QuickDash
 import me.bnogocarft.bnogorpg.Utils.ItemFactory.BItemFactory
 import me.bnogocarft.bnogorpg.Utils.others.Rarity.Rarity
 import org.bukkit.Material
@@ -18,7 +19,7 @@ class BladeOfHermes {
     private fun createBlade() {
         val facItem = BItemFactory.createBItem("Blade of Hermes", Material.DIAMOND_SWORD, BItemType.WEAPON)
 
-        val ability = ItemAbility.QuickDash
+        val ability = QuickDash()
         facItem.abilities.add(ability)
         facItem.stats = arrayListOf(8, 2, 3, 1, 30, 25)
         facItem.rarity = Rarity.EPIC

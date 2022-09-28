@@ -1,6 +1,6 @@
 package me.bnogocarft.bnogorpg.Utils.ItemFactory
 
-interface ToolSet {
+interface ToolSetMaker {
     fun createSword()
     fun createHoe()
     fun createPickaxe()
