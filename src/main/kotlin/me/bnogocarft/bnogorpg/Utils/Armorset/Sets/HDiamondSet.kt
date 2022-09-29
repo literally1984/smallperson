@@ -3,7 +3,7 @@ package me.bnogocarft.bnogorpg.Utils.Armorset.Sets
 import me.bnogocarft.bnogorpg.Utils.Armorset.ArmorSet
 import me.bnogocarft.bnogorpg.Utils.Armorset.SetBonus
 
-class LapisSet : ArmorSet {
+class HDiamondSet : ArmorSet {
     override val setBonuses = ArrayList<SetBonus>()
-    override val name = "lapis"
+    override val name = "hdiamond"
 }

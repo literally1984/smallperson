@@ -60,34 +60,7 @@ class Diamond : FullSetMaker {
 
     fun createRecipeSword() {
         val factoryItem = BItemFactory.createBItem("Diamond Sword", Material.DIAMOND_SWORD, BItemType.CRAFT_ITEM)
-        factoryItem.craftItemType = CraftItemType.WEAPON
-
-        val statsVary = BMaterial.DIAMOND_SWORD.getStatVary()
-
-        val atkVary = statsVary[0].split("-")
-        val defVary = statsVary[1].split("-")
-        val mAtkVary = statsVary[2].split("-")
-        val mDefVary = statsVary[3].split("-")
-        val manaVary = statsVary[4].split("-")
-        val stamVary = statsVary[5].split("-")
-
-
-        factoryItem.stats = arrayListOf(
-            atkVary[0].toInt(),
-            atkVary[1].toInt(),
-            defVary[0].toInt(),
-            defVary[1].toInt(),
-            mAtkVary[0].toInt(),
-            mAtkVary[1].toInt(),
-            mDefVary[0].toInt(),
-            mDefVary[1].toInt(),
-            manaVary[0].toInt(),
-            manaVary[1].toInt(),
-            stamVary[0].toInt(),
-            stamVary[1].toInt(),
-            3, 4
-        )
-        craftSword = BItemFactory.produceItem(factoryItem)
+        craftSword = BItemFactory.createCraftItem(factoryItem, "3-4")
         val recipe = ShapedRecipe(craftSword)
         recipe.shape(" d ", " d ", " s ")
         recipe.setIngredient('d', Material.DIAMOND)
@@ -146,36 +119,9 @@ class Diamond : FullSetMaker {
         Bukkit.addRecipe(recipe)
     }
 
-    fun createCraftHelmet() {
+    private fun createCraftHelmet() {
         val factoryItem = BItemFactory.createBItem("Diamond Helmet", Material.DIAMOND_HELMET, BItemType.CRAFT_ITEM)
-        factoryItem.craftItemType = CraftItemType.ARMOR
-
-        val statsVary = BMaterial.DIAMOND_HELMET.getStatVary()
-
-        val atkVary = statsVary[0].split("-")
-        val defVary = statsVary[1].split("-")
-        val mAtkVary = statsVary[2].split("-")
-        val mDefVary = statsVary[3].split("-")
-        val manaVary = statsVary[4].split("-")
-        val stamVary = statsVary[5].split("-")
-
-
-        factoryItem.stats = arrayListOf(
-            atkVary[0].toInt(),
-            atkVary[1].toInt(),
-            defVary[0].toInt(),
-            defVary[1].toInt(),
-            mAtkVary[0].toInt(),
-            mAtkVary[1].toInt(),
-            mDefVary[0].toInt(),
-            mDefVary[1].toInt(),
-            manaVary[0].toInt(),
-            manaVary[1].toInt(),
-            stamVary[0].toInt(),
-            stamVary[1].toInt(),
-            3, 4
-        )
-        craftHelmet = BItemFactory.produceItem(factoryItem)
+        craftHelmet = BItemFactory.createCraftItem(factoryItem, "3-4")
         val recipe = ShapedRecipe(craftHelmet)
         recipe.shape("ddd", "d d", "   ")
         recipe.setIngredient('d', Material.DIAMOND)

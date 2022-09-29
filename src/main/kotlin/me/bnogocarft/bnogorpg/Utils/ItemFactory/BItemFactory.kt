@@ -1,5 +1,6 @@
 package me.bnogocarft.bnogorpg.Utils.ItemFactory
 
+import me.bnogocarft.bnogorpg.CustomItems.DefaultItems.Diamond
 import me.bnogocarft.bnogorpg.Main
 import me.bnogocarft.bnogorpg.OtherCommands.customItemMap
 import me.bnogocarft.bnogorpg.Utils.Abilities.ItemAbility.AbilityTrigger
@@ -30,6 +31,38 @@ data class FactoryItem(val name: String, val mat: Material, val type: BItemType)
 class BItemFactory {
     companion object {
         val craftTalismanList = HashMap<ItemStack, List<TalismanVariable>>()
+
+        fun createCraftItem(factoryItem: FactoryItem, starRange: String): ItemStack {
+            factoryItem.craftItemType = CraftItemType.WEAPON
+
+            val statsVary = BMaterial.DIAMOND_SWORD.getStatVary()
+
+            val atkVary = statsVary[0].split("-")
+            val defVary = statsVary[1].split("-")
+            val mAtkVary = statsVary[2].split("-")
+            val mDefVary = statsVary[3].split("-")
+            val manaVary = statsVary[4].split("-")
+            val stamVary = statsVary[5].split("-")
+
+
+            factoryItem.stats = arrayListOf(
+                atkVary[0].toInt(),
+                atkVary[1].toInt(),
+                defVary[0].toInt(),
+                defVary[1].toInt(),
+                mAtkVary[0].toInt(),
+                mAtkVary[1].toInt(),
+                mDefVary[0].toInt(),
+                mDefVary[1].toInt(),
+                manaVary[0].toInt(),
+                manaVary[1].toInt(),
+                stamVary[0].toInt(),
+                stamVary[1].toInt(),
+                starRange.split("-")[0].toInt(),
+                starRange.split("-")[1].toInt()
+            )
+            return produceItem(factoryItem)
+        }
 
         fun register(name: String, Item: ItemStack) {
             customItemMap[name] = Item

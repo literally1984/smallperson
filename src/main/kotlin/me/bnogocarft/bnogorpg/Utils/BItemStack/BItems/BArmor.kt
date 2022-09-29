@@ -39,11 +39,13 @@ data class BArmor(override val Item: ItemStack) : BGear(Item) {
     val set: ArmorSet
 
     init {
-        set = when (material.toString().split("_")[1]) {
-            "Lapis" -> LapisSet()
+        set = when (material.toString().split("_")[1].lowercase()) {
+            "lapis" -> LapisSet()
+
             else -> throw IllegalConstructorArgumentException(
                 "Unable to identify \"${material}\" (identifier: \"${material.toString().split("_")[1]}\""
             )
         }
+
     }
 }

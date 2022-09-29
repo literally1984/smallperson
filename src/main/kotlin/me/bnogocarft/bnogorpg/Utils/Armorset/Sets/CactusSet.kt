@@ -6,5 +6,5 @@ import me.bnogocarft.bnogorpg.Utils.Armorset.SetBonus
 
 class CactusSet : ArmorSet{
     override val setBonuses = arrayListOf<SetBonus>(CactusArmor.abil)
-    override val name = "Cactus"
+    override val name = "cactus"
 }
