@@ -12,14 +12,5 @@ class BnogoSQL {
             val url = "jdbc:postgresql://5.230.67.108:5432/main?user=postgres&password=bnogocarft&sslmode=require"
             con = DriverManager.getConnection(url)
         }
-
-        fun getResult(path: String): ResultSet {
-            val query = con.prepareStatement("SELECT * FROM auctions")
-            return query.executeQuery()
-        }
-
-        fun createTable(something: Any) {
-
-        }
     }
 }
