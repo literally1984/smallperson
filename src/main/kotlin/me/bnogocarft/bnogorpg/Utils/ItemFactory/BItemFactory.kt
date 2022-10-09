@@ -32,6 +32,21 @@ class BItemFactory {
     companion object {
         val craftTalismanList = HashMap<ItemStack, List<TalismanVariable>>()
 
+        fun getCraftType(item: ItemStack): CraftItemType {
+            val name = item.itemMeta.displayName.lowercase()
+            if (name.contains("helmet") ||
+                name.contains("chestplate") ||
+                name.contains("leggings") ||
+                name.contains("boots")) return CraftItemType.ARMOR
+
+            if (name.contains("sword") ||
+                name.contains("war") ||
+                name.contains("thunderbolt")) return CraftItemType.WEAPON
+            if (item.itemMeta.lore.contains("${ChatColor.GOLD}Talisman Item")) return CraftItemType.TALISMAN
+            if (item.itemMeta.lore.contains("${ChatColor.GOLD}Scroll Item")) return CraftItemType.ABILITY_SCROLL
+            return CraftItemType.MISC
+        }
+
         fun createCraftItem(factoryItem: FactoryItem, starRange: String): ItemStack {
             factoryItem.craftItemType = CraftItemType.WEAPON
 

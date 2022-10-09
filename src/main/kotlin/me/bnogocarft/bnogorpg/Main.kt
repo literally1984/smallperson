@@ -46,8 +46,10 @@ import me.bnogocarft.bnogorpg.tickUpdater.Ticker
 import net.milkbowl.vault.economy.Economy
 import org.bukkit.Bukkit
 import org.bukkit.ChatColor
+import org.bukkit.Material
 import org.bukkit.configuration.file.YamlConfiguration
 import org.bukkit.entity.Player
+import org.bukkit.inventory.ItemStack
 import org.bukkit.plugin.Plugin
 import org.bukkit.plugin.java.JavaPlugin
 import org.bukkit.scheduler.BukkitTask
@@ -57,6 +59,10 @@ import kotlin.properties.Delegates
 
 class Main : JavaPlugin() {
     companion object {
+        private val baseSpawnArea = SpawnArea(
+            150F, -150F, arrayListOf(null, null, null, null, null), 1
+        )
+
         lateinit var protocolManager: ProtocolManager
         lateinit var instance: Plugin
 
@@ -75,6 +81,62 @@ class Main : JavaPlugin() {
 
         lateinit var input: SignInputer
         val registeredAbilities = ArrayList<IAbility>()
+        var isBloodMoon = false
+
+        private val ring1 = SpawnRing(
+            baseSpawnArea, 250f, -250f, arrayListOf(
+                ItemStack(Material.DIAMOND_HELMET),
+                null,
+                null,
+                null,
+                null
+            ), 2
+        )
+        private val ring2 = SpawnRing(
+            ring1, 400f, -400f, arrayListOf(
+                ItemStack(Material.DIAMOND_HELMET),
+                null,
+                null,
+                null,
+                null
+            ), 3
+        )
+        private val ring3 = SpawnRing(
+            ring2, 550f, -550f, arrayListOf(
+                ItemStack(Material.DIAMOND_HELMET),
+                null,
+                null,
+                null,
+                null
+            ), 4
+        )
+        private val ring4 = SpawnRing(
+            ring3, 700f, -700f, arrayListOf(
+                ItemStack(Material.DIAMOND_HELMET),
+                null,
+                null,
+                null,
+                null
+            ), 5
+        )
+        private val rest = SpawnEdge(
+            ring4.topLeft,
+            ring4.bottomRight, arrayListOf(
+                ItemStack(Material.DIAMOND_HELMET),
+                null,
+                null,
+                null,
+                null
+            ), 7
+        )
+        val spawnZones = arrayListOf(
+            baseSpawnArea,
+            ring1,
+            ring2,
+            ring3,
+            ring4,
+            rest
+        )
     }
 
     override fun onEnable() {
@@ -120,6 +182,7 @@ class Main : JavaPlugin() {
         server.pluginManager.registerEvents(AuctionListeners(), this)
         server.pluginManager.registerEvents(SpellCastListener(), this)
         server.pluginManager.registerEvents(InspectListener(), this)
+        server.pluginManager.registerEvents(SpawnListeners(), this)
         cSender.sendMessage("$logo Registered Listeners")
 
         cSender.sendMessage("$logo Enabling ItemUpgrades...")

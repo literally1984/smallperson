@@ -12,12 +12,9 @@ import org.bukkit.event.player.PlayerEvent
 import org.bukkit.event.player.PlayerInteractEvent
 
 class LightningChain : IAbility {
-    override val description: ArrayList<String>
-        get() = TODO("Not yet implemented")
-    override val name: String
-        get() = TODO("Not yet implemented")
-    override val type: AbilityTrigger
-        get() = TODO("Not yet implemented")
+    override val description: ArrayList<String> = ArrayList()
+    override val name: String = "placeholder"
+    override val type: AbilityTrigger = AbilityTrigger.NONE
 
     override fun cast(caster: Player, abilityEvent: PlayerEvent) {
         if (abilityEvent !is PlayerInteractEvent) {

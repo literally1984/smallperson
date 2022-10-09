@@ -5,6 +5,9 @@ import me.bnogocarft.bnogorpg.Planes.planeEntitites
 import me.bnogocarft.bnogorpg.Utils.BItemStack.BItems.BArmor
 import me.bnogocarft.bnogorpg.Utils.BItemStack.BItems.BItemUtils
 import me.bnogocarft.bnogorpg.Utils.BItemStack.BItems.BWeapon
+import me.bnogocarft.bnogorpg.Utils.BItemStack.CraftItems.CraftGear
+import me.bnogocarft.bnogorpg.Utils.BItemStack.CraftItems.CraftItem
+import me.bnogocarft.bnogorpg.Utils.BItemStack.CraftItems.CraftItemType
 import me.bnogocarft.bnogorpg.Utils.ItemFactory.BItemFactory
 import org.bukkit.Bukkit
 import org.bukkit.command.Command
@@ -57,8 +60,14 @@ class GiveCommand : CommandExecutor {
         if (sender is Player) {
             if (args.size == 1) {
                 if (customItemMap.containsKey(args[0].lowercase())) {
-                    val item =
-                        BItemFactory.makeItem(BItemUtils.getBMaterial(customItemMap[args[0].lowercase()]!!.clone()))
+                    val item: ItemStack =
+                        BItemFactory.makeItem(
+                            if (BItemFactory.getCraftType(customItemMap[args[0].lowercase()]!!) == CraftItemType.WEAPON) {
+                                CraftGear(customItemMap[args[0].lowercase()]!!.clone()).craft()
+                            } else {
+                                CraftGear(customItemMap[args[0].lowercase()]!!.clone()).craft()
+                            }
+                        )
                     sender.inventory.addItem(item)
                     when (BItemUtils.getBType(item)) {
                         "weapon" -> BItemUtils.addBWeapon(item, BWeapon(item))
