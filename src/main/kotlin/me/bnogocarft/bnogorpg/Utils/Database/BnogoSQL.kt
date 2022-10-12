@@ -9,7 +9,7 @@ class BnogoSQL {
         lateinit var con: Connection
         fun enaableDB() {
             Class.forName("org.postgresql.Driver").newInstance()
-            val url = "jdbc:postgresql://5.230.67.108:5432/main?user=postgres&password=bnogocarft&sslmode=require"
+            val url = "jdbc:postgresql://140.238.71.159:5432/postgres?user=root&password=BongoIsGay1984"
             con = DriverManager.getConnection(url)
         }
     }
