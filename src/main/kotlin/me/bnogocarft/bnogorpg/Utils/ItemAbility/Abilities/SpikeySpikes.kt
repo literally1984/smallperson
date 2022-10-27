@@ -4,7 +4,6 @@ import me.bnogocarft.bnogorpg.Main
 import me.bnogocarft.bnogorpg.Utils.Abilities.ItemAbility.AbilityTrigger
 import me.bnogocarft.bnogorpg.Utils.Armorset.SetBonus
 import me.bnogocarft.bnogorpg.Utils.BPlayer.bPlayer
-import me.bnogocarft.bnogorpg.Utils.ItemAbility.IAbility
 import org.bukkit.entity.Player
 import org.bukkit.event.player.PlayerEvent
 
@@ -22,7 +21,7 @@ class SpikeySpikes : SetBonus {
             val e = it
             if (e.damager is Player) {
                 val p = e.damager as Player
-                val damage = e.damage/3
+                val damage = e.damage / 3
                 p.damage(damage)
             }
         }

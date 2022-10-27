@@ -24,7 +24,6 @@ import org.bukkit.inventory.ItemStack
 import tech.nully.BossBarAPI.BossBar
 import java.text.SimpleDateFormat
 import java.util.*
-import kotlin.collections.ArrayList
 import kotlin.math.roundToInt
 
 
@@ -45,7 +44,7 @@ data class OnlineBPlayer(val p: Player) : BPlayer(p.name) {
     var currentBar: Bar = MainBar()
 
     var combo: Combo? = null
-    var currentSetBonus = object: SetBonus {
+    var currentSetBonus = object : SetBonus {
         override val type = AbilityTrigger.NONE
         override val description = ArrayList<String>()
         override val name = "placeholder"

@@ -6,7 +6,6 @@ import me.bnogocarft.bnogorpg.Utils.BItemStack.BItems.BArmor
 import me.bnogocarft.bnogorpg.Utils.BItemStack.BItems.BItemUtils
 import me.bnogocarft.bnogorpg.Utils.BItemStack.BItems.BWeapon
 import me.bnogocarft.bnogorpg.Utils.BItemStack.CraftItems.CraftGear
-import me.bnogocarft.bnogorpg.Utils.BItemStack.CraftItems.CraftItem
 import me.bnogocarft.bnogorpg.Utils.BItemStack.CraftItems.CraftItemType
 import me.bnogocarft.bnogorpg.Utils.ItemFactory.BItemFactory
 import org.bukkit.Bukkit

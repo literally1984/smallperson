@@ -3,9 +3,7 @@ package me.bnogocarft.bnogorpg.Utils
 import net.minecraft.server.v1_5_R3.Packet62NamedSoundEffect
 import org.bukkit.Bukkit
 import org.bukkit.Location
-import org.bukkit.craftbukkit.v1_5_R3.entity.CraftLivingEntity
 import org.bukkit.craftbukkit.v1_5_R3.entity.CraftPlayer
-import org.bukkit.craftbukkit.v1_5_R3.inventory.CraftItemStack
 import org.bukkit.entity.Entity
 import org.bukkit.entity.LivingEntity
 import org.bukkit.inventory.ItemStack
@@ -31,8 +29,9 @@ interface SpawnZone {
     val mobAmount: Int
 }
 
-data class SpawnArea(override val topLeft: Location, override val bottomRight: Location,
-                     override val gear: ArrayList<ItemStack?>, override val mobAmount: Int
+data class SpawnArea(
+    override val topLeft: Location, override val bottomRight: Location,
+    override val gear: ArrayList<ItemStack?>, override val mobAmount: Int
 ) : SpawnZone {
     constructor(topLeft: Float, bottomRight: Float, gear: ArrayList<ItemStack?>, mobs: Int) : this(
         Location(Bukkit.getWorld("world"), topLeft.toDouble(), 0.0, topLeft.toDouble()),
@@ -48,6 +47,7 @@ fun Location.isInSpawnArea(SpawnArea: SpawnArea): Boolean {
             this.z >= SpawnArea.topLeft.z &&
             this.z <= SpawnArea.bottomRight.z
 }
+
 data class SpawnRing(
     override val topLeft: Location,
     override val bottomRight: Location,

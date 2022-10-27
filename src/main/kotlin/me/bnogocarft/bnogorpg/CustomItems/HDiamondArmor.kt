@@ -1,10 +1,9 @@
 package me.bnogocarft.bnogorpg.CustomItems
 
-import me.bnogocarft.bnogorpg.CustomItems.DefaultItems.Diamond
 import me.bnogocarft.bnogorpg.Utils.BItemStack.BItems.BItemType
+import me.bnogocarft.bnogorpg.Utils.BItemStack.BMaterial
 import me.bnogocarft.bnogorpg.Utils.ItemFactory.BItemFactory
 import me.bnogocarft.bnogorpg.Utils.ItemFactory.CombatSetMaker
-import me.bnogocarft.bnogorpg.Utils.ItemFactory.FullSetMaker
 import org.bukkit.Bukkit
 import org.bukkit.Material
 import org.bukkit.inventory.ItemStack
@@ -34,7 +33,9 @@ class HDiamondArmor : CombatSetMaker {
 
     private fun createCraftHelmet() {
         val factoryItem = BItemFactory.createBItem("Diamond Helmet", Material.DIAMOND_HELMET, BItemType.CRAFT_ITEM)
-        craftHelmet = BItemFactory.createCraftItem(factoryItem, "3-4")
+        craftHelmet = BItemFactory.createCraftItem(factoryItem,
+            BMaterial.HARDENED_DIAMOND_HELMET,
+            "4-6")
         val recipe = ShapedRecipe(craftHelmet)
         recipe.shape("ddd", "d d", "   ")
         recipe.setIngredient('d', Material.DIAMOND)
@@ -46,8 +47,11 @@ class HDiamondArmor : CombatSetMaker {
     }
 
     private fun createCraftChestplate() {
-        val factoryItem = BItemFactory.createBItem("Diamond Chestplate", Material.DIAMOND_CHESTPLATE, BItemType.CRAFT_ITEM)
-        craftHelmet = BItemFactory.createCraftItem(factoryItem, "3-4")
+        val factoryItem =
+            BItemFactory.createBItem("Diamond Chestplate", Material.DIAMOND_CHESTPLATE, BItemType.CRAFT_ITEM)
+        craftHelmet = BItemFactory.createCraftItem(factoryItem,
+            BMaterial.HARDENED_DIAMOND_CHESTPLATE,
+            "4-6")
         val recipe = ShapedRecipe(craftHelmet)
         recipe.shape("ddd", "d d", "   ")
         recipe.setIngredient('d', Material.DIAMOND)
@@ -60,7 +64,9 @@ class HDiamondArmor : CombatSetMaker {
 
     private fun createCraftLeggings() {
         val factoryItem = BItemFactory.createBItem("Diamond Leggings", Material.DIAMOND_LEGGINGS, BItemType.CRAFT_ITEM)
-        craftChestplate = BItemFactory.createCraftItem(factoryItem, "3-4")
+        craftChestplate = BItemFactory.createCraftItem(factoryItem,
+            BMaterial.HARDENED_DIAMOND_LEGGINGS,
+            "4-6")
         val recipe = ShapedRecipe(craftChestplate)
         recipe.shape("d d", "ddd", "ddd")
         recipe.setIngredient('d', Material.DIAMOND)
@@ -73,7 +79,9 @@ class HDiamondArmor : CombatSetMaker {
 
     private fun createCraftBoots() {
         val factoryItem = BItemFactory.createBItem("Diamond Boots", Material.DIAMOND_BOOTS, BItemType.CRAFT_ITEM)
-        craftHelmet = BItemFactory.createCraftItem(factoryItem, "3-4")
+        craftHelmet = BItemFactory.createCraftItem(factoryItem,
+            BMaterial.HARDENED_DIAMOND_BOOTS,
+            "4-6")
         val recipe = ShapedRecipe(craftHelmet)
         recipe.shape("ddd", "d d", "   ")
         recipe.setIngredient('d', Material.DIAMOND)

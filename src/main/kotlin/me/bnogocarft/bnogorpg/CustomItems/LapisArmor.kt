@@ -1,9 +1,9 @@
 package me.bnogocarft.bnogorpg.CustomItems
 
 import me.bnogocarft.bnogorpg.Utils.BItemStack.BItems.BItemType
+import me.bnogocarft.bnogorpg.Utils.ItemAbility.Abilities.EnhancedMagic
 import me.bnogocarft.bnogorpg.Utils.ItemFactory.ArmorSetMaker
 import me.bnogocarft.bnogorpg.Utils.ItemFactory.BItemFactory
-import me.bnogocarft.bnogorpg.Utils.ItemAbility.Abilities.EnhancedMagic
 import me.bnogocarft.bnogorpg.Utils.others.Rarity.Rarity
 import org.bukkit.Color
 import org.bukkit.Material
@@ -26,7 +26,11 @@ class LapisArmor : ArmorSetMaker {
 
     val abil = EnhancedMagic()
     override fun createHelmet() {
-        val factoryItem = BItemFactory.createBItem("Lapis Helmet", Material.LEATHER_HELMET, BItemType.ARMOR)
+        val factoryItem = BItemFactory.createBItem(
+            "Lapis Helmet",
+            Material.LEATHER_HELMET,
+            BItemType.ARMOR
+        )
 
         val ability = abil
         factoryItem.abilities.add(ability)
@@ -35,7 +39,7 @@ class LapisArmor : ArmorSetMaker {
         factoryItem.armorColor = Color.BLUE
 
         helm = BItemFactory.produceItem(factoryItem)
-        BItemFactory.register("lapishelmet", helm)
+        BItemFactory.register("lapis_helmet", helm)
     }
 
     override fun createChestplate() {
@@ -48,7 +52,7 @@ class LapisArmor : ArmorSetMaker {
         factoryItem.armorColor = Color.BLUE
 
         chestplate = BItemFactory.produceItem(factoryItem)
-        BItemFactory.register("lapischestplate", chestplate)
+        BItemFactory.register("lapis_chestplate", chestplate)
     }
 
     override fun createLeggings() {
@@ -61,7 +65,7 @@ class LapisArmor : ArmorSetMaker {
         factoryItem.armorColor = Color.BLUE
 
         leggings = BItemFactory.produceItem(factoryItem)
-        BItemFactory.register("lapisleggings", leggings)
+        BItemFactory.register("lapis_leggings", leggings)
     }
 
     override fun createBoots() {
@@ -74,6 +78,6 @@ class LapisArmor : ArmorSetMaker {
         factoryItem.armorColor = Color.BLUE
 
         boots = BItemFactory.produceItem(factoryItem)
-        BItemFactory.register("lapisboots", boots)
+        BItemFactory.register("lapis_boots", boots)
     }
 }

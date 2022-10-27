@@ -203,7 +203,7 @@ class Main : JavaPlugin() {
 
         cSender.sendMessage("Initializing Auctions...")
 
-        val aucs = BnogoSQL.con.prepareStatement("SELECT * FROM auctions").executeQuery()
+        val aucs = BnogoSQL.con.prepareStatement("SELECT * FROM auctions;").executeQuery()
         while (aucs.next()) {
             @Suppress("RegExpRedundantEscape", "RegExpSimplifiable", "RegExpRedundantNestedCharacterClass")
             val auction = Auction(
@@ -293,7 +293,7 @@ class Main : JavaPlugin() {
         update()
         for (auc in auctions) {
             val query = BnogoSQL.con.prepareStatement(
-                "UPDATE auctions SET \"lastServerStop\" = ${System.currentTimeMillis() / 1000} WHERE \"id\" = '${auc.ID}';"
+                "UPDATE auctions SET \"lastStop\" = ${System.currentTimeMillis() / 1000} WHERE \"id\" = '${auc.ID}';"
             )
             query.execute()
         }
@@ -331,7 +331,7 @@ class Main : JavaPlugin() {
             }
             val beforeString = stringAbilityArray.joinToString(", ")
             BnogoSQL.con.prepareStatement(
-                "UPDATE \"gearItems\" SET " +
+                "UPDATE \"combatGear\" SET " +
                         "\"stars\" = ${item.rarity!!.getStars()}, " +
                         "\"name\" = '${item.initItem.itemMeta.displayName}', " +
                         "\"itemStack\" = '${serializeItem(item.initItem)}', " +

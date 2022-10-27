@@ -1,7 +1,6 @@
 package me.bnogocarft.bnogorpg.Listeners
 
 import me.bnogocarft.bnogorpg.Main
-import me.bnogocarft.bnogorpg.Utils.BItemStack.BItems.BItem
 import me.bnogocarft.bnogorpg.Utils.BItemStack.BItems.BItemUtils
 import me.bnogocarft.bnogorpg.Utils.BItemStack.BMaterial
 import me.bnogocarft.bnogorpg.Utils.BPlayer.OnlineBPlayers
@@ -11,7 +10,6 @@ import org.bukkit.GameMode
 import org.bukkit.event.EventHandler
 import org.bukkit.event.EventPriority
 import org.bukkit.event.Listener
-import org.bukkit.event.block.Action
 import org.bukkit.event.player.PlayerFishEvent
 import org.bukkit.event.player.PlayerInteractEvent
 import org.bukkit.event.player.PlayerMoveEvent

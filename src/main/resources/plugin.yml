@@ -2,7 +2,7 @@ name: BnogoRPG
 version: 0.0.4
 main: me.bnogocarft.bnogorpg.Main
 prefix: BnogoRPG
-authors: [BongoCat]
+authors: [ BongoCat ]
 description: A custom coded plugin made for BnogoCarft
 depend:
   - BossBarAPI
@@ -13,32 +13,32 @@ website: https://bnogocarft.games
 commands:
   playtime:
     name: Playtime
-    aliases: [pt]
+    aliases: [ pt ]
     usage: /<command>
     description: Get your playtime
   giv:
     name: Give
-    aliases: [g]
-    usage: /<command> <player | > <item>
+    aliases: [ g ]
+    usage: /<command> <player> <item>
     description: gives a player an item
   reforge:
     name: Reforge
-    aliases: [ref]
+    aliases: [ ref ]
     usage: /<command>
     description: opens up a reforge inventory to the player
   anim:
     name: Animation
-    aliases: [a]
+    aliases: [ a ]
     usage: /<command>
     description: A test command for the Animation function
   recipes:
     name: Recipes
-    aliases: [rec]
+    aliases: [ rec ]
     usage: /<command> <recipe>
     description: Opens up the RecipeBook to the provided Recipe
   upgrade:
     name: Upgrade
-    aliases: [upg, up]
+    aliases: [ upg, up ]
     usage: /<command>
     description: Opens up the Upgrade GUI
   test:
@@ -47,7 +47,7 @@ commands:
     description: test stuff
   auction:
     name: Auction
-    aliases: [auc]
+    aliases: [ auc ]
     usage: Correct usage is /<command> <bid/list/create> <extra args>
     description: The base auctions command
   stash:
@@ -56,17 +56,17 @@ commands:
     description: Opens up the user's stash
   hologram:
     name: Hologram
-    aliases: [hologram, holo]
+    aliases: [ hologram, holo ]
     usage: /<command>
     description: Spawns a hologram at your location
   scroll:
     name: GiveScroll
-    aliases: [gs]
+    aliases: [ gs ]
     usage: /<command> <player>
     description: Gives a player an ability scroll
   stat:
     name: Stat
-    aliases: [st]
+    aliases: [ st ]
     usage: /<command>
     description: Increases or decreases a stat
 permissions:

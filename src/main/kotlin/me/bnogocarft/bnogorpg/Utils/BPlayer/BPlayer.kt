@@ -67,10 +67,10 @@ open class BPlayer(open val player: String) {
                             "0, 0.0, " +
                             "0, 0.0, " +
                             "0, 0.0, " +
+                            "0, 0.0, " +
                             "ARRAY[null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null], " +
-                            "'$player', " +
-                            "0, 0," +
-                            "ARRAY[]::text[]);"
+                            "ARRAY[]::text[], " +
+                            "'$player');"
                 )
             query.execute()
             print("Created new SQL entry for $player")
@@ -124,17 +124,19 @@ open class BPlayer(open val player: String) {
             }
         }
         BnogoSQL.con.prepareStatement(
-            "UPDATE players SET \"playTime\" = '$playTime', " +
+            "UPDATE players SET \"playtime\" = '$playTime', " +
                     "\"meleeLevel\" = $meleeLVL, " +
                     "\"meleeExp\" = $meleeEXP, " +
-                    "\"miningLevel\" = $miningEXP, " +
-                    "\"miningExp\" = $miningLVL, " +
                     "\"spellcastLevel\" = $spellcastLVL, " +
                     "\"spellcastExp\" = $spellcastEXP, " +
                     "\"woodcutLevel\" = $woodCuttingLVL, " +
                     "\"woodcutExp\" = $woodCuttingEXP, " +
                     "\"combatLevel\" = $combatLVL, " +
                     "\"combatExp\" = $combatEXP, " +
+                    "\"farmingLevel\" = $farmingLVL, " +
+                    "\"farmingExp\" = $farmingEXP," +
+                    "\"miningLevel\" = $miningEXP, " +
+                    "\"miningExp\" = $miningLVL, " +
                     "stash = ARRAY [" +
                     "'${if (stash[0] != null) serializeItem(stash[0]!!).joinToString("||") else null}', " +
                     "'${if (stash[1] != null) serializeItem(stash[1]!!).joinToString("||") else null}', " +
@@ -190,8 +192,6 @@ open class BPlayer(open val player: String) {
                     "'${if (stash[51] != null) serializeItem(stash[51]!!).joinToString("||") else null}', " +
                     "'${if (stash[52] != null) serializeItem(stash[52]!!).joinToString("||") else null}', " +
                     "'${if (stash[53] != null) serializeItem(stash[53]!!).joinToString("||") else null}'], " +
-                    "\"farmingLevel\" = $farmingLVL, " +
-                    "\"farmingExp\" = $farmingEXP," +
                     "abilities = ARRAY[" +
                     "'${spellsTmp[0]?.codeName}||${spellsTmp[0]?.rank}', " +
                     "'${spellsTmp[1]?.codeName}||${spellsTmp[1]?.rank}', " +

@@ -1,8 +1,6 @@
 package me.bnogocarft.bnogorpg.CustomItems.DefaultItems
 
 import me.bnogocarft.bnogorpg.Utils.BItemStack.BItems.BItemType
-import me.bnogocarft.bnogorpg.Utils.BItemStack.BMaterial
-import me.bnogocarft.bnogorpg.Utils.BItemStack.CraftItems.CraftItemType
 import me.bnogocarft.bnogorpg.Utils.ItemFactory.BItemFactory
 import me.bnogocarft.bnogorpg.Utils.ItemFactory.FullSetMaker
 import me.bnogocarft.bnogorpg.Utils.others.Rarity.Rarity

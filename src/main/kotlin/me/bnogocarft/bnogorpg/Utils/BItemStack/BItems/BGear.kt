@@ -106,12 +106,14 @@ open class BGear(item: ItemStack) : BItem(item) {
                     }
                     if (lore.contains("${ChatColor.YELLOW}${ChatColor.BOLD}SET BONUS: ")) {
                         println(clore[clore.indexOf(lore)].split(": ${ChatColor.RESET}${ChatColor.RED}")[1])
-                        abilities.add(BItemUtils.getAbilityByName(
-                            clore[
-                                    clore.indexOf(lore)
-                            ].split(
-                                ": ${ChatColor.RESET}${ChatColor.RED}"
-                            )[1])
+                        abilities.add(
+                            BItemUtils.getAbilityByName(
+                                clore[
+                                        clore.indexOf(lore)
+                                ].split(
+                                    ": ${ChatColor.RESET}${ChatColor.RED}"
+                                )[1]
+                            )
                         )
                     }
                 }
@@ -133,17 +135,17 @@ open class BGear(item: ItemStack) : BItem(item) {
                 val beforeString = stringAbilityArray.joinToString(", ")
 
                 val affectedLines = BnogoSQL.con.prepareStatement(
-                    "UPDATE \"gearItems\" SET " +
+                    "UPDATE \"combatGear\" SET " +
                             "\"stars\" = ${rarity!!.getStars()}, " +
                             "\"name\" = '${item.itemMeta.displayName}', " +
                             "\"itemStack\" = '${serializeItem(item)}', " +
                             "\"abilities\" = ARRAY [$beforeString]::text[] " +
-                            "WHERE \"id\" = ${id} AND \"type\" = '$material';"
+                            "WHERE \"id\" = ${id} AND \"material\" = '$material';"
                 ).executeUpdate()
 
                 if (affectedLines == 0) {
                     BnogoSQL.con.prepareStatement(
-                        "INSERT INTO \"gearItems\" VALUES (" +
+                        "INSERT INTO \"combatGear\" VALUES (" +
                                 "$id, " +
                                 "'$material', " +
                                 "${rarity!!.getStars()}, " +

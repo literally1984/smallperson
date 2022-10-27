@@ -1,13 +1,12 @@
 package me.bnogocarft.bnogorpg.Utils.ItemFactory
 
-import me.bnogocarft.bnogorpg.CustomItems.DefaultItems.Diamond
 import me.bnogocarft.bnogorpg.Main
 import me.bnogocarft.bnogorpg.OtherCommands.customItemMap
 import me.bnogocarft.bnogorpg.Utils.Abilities.ItemAbility.AbilityTrigger
 import me.bnogocarft.bnogorpg.Utils.BItemStack.BItems.BItemType
 import me.bnogocarft.bnogorpg.Utils.BItemStack.BMaterial
 import me.bnogocarft.bnogorpg.Utils.BItemStack.CraftItems.CraftItemType
-import me.bnogocarft.bnogorpg.Utils.BItemStack.CraftItems.TalismanVariable
+import me.bnogocarft.bnogorpg.Utils.BItemStack.CraftItems.ItemVariable
 import me.bnogocarft.bnogorpg.Utils.ItemAbility.IAbility
 import me.bnogocarft.bnogorpg.Utils.StatUtils.ItemStat
 import me.bnogocarft.bnogorpg.Utils.others.Rarity.Rarity
@@ -30,27 +29,29 @@ data class FactoryItem(val name: String, val mat: Material, val type: BItemType)
 
 class BItemFactory {
     companion object {
-        val craftTalismanList = HashMap<ItemStack, List<TalismanVariable>>()
+        val craftTalismanList = HashMap<ItemStack, List<ItemVariable>>()
 
         fun getCraftType(item: ItemStack): CraftItemType {
             val name = item.itemMeta.displayName.lowercase()
             if (name.contains("helmet") ||
                 name.contains("chestplate") ||
                 name.contains("leggings") ||
-                name.contains("boots")) return CraftItemType.ARMOR
+                name.contains("boots")
+            ) return CraftItemType.ARMOR
 
             if (name.contains("sword") ||
                 name.contains("war") ||
-                name.contains("thunderbolt")) return CraftItemType.WEAPON
+                name.contains("thunderbolt")
+            ) return CraftItemType.WEAPON
             if (item.itemMeta.lore.contains("${ChatColor.GOLD}Talisman Item")) return CraftItemType.TALISMAN
             if (item.itemMeta.lore.contains("${ChatColor.GOLD}Scroll Item")) return CraftItemType.ABILITY_SCROLL
             return CraftItemType.MISC
         }
 
-        fun createCraftItem(factoryItem: FactoryItem, starRange: String): ItemStack {
+        fun createCraftItem(factoryItem: FactoryItem, material: BMaterial, starRange: String): ItemStack {
             factoryItem.craftItemType = CraftItemType.WEAPON
 
-            val statsVary = BMaterial.DIAMOND_SWORD.getStatVary()
+            val statsVary = material.getStatVary()
 
             val atkVary = statsVary[0].split("-")
             val defVary = statsVary[1].split("-")
@@ -87,7 +88,7 @@ class BItemFactory {
             return FactoryItem(displayName, mat, type)
         }
 
-        fun registerCraftTalisman(vars: List<TalismanVariable>, itemStack: ItemStack) {
+        fun registerCraftTalisman(vars: List<ItemVariable>, itemStack: ItemStack) {
 
         }
 
@@ -111,7 +112,8 @@ class BItemFactory {
 
                     // abilities lore
                     for (ability in item.abilities) {
-                        if (ability.type.equals(AbilityTrigger.SET_BONUS)) {
+                        if (ability == null) continue
+                        if (ability.type == AbilityTrigger.SET_BONUS) {
                             lore.add("${ChatColor.YELLOW}${ChatColor.BOLD}Set Bonus: ${ChatColor.RESET}${ChatColor.RED}${ability.name}")
                             type = "armor"
                             for (s in ability.description) lore.add("${ChatColor.GRAY}$s")
