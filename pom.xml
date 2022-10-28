@@ -16,7 +16,7 @@
     <properties>
         <java.version>1.8</java.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <kotlin.version>1.7.10</kotlin.version>
+        <kotlin.version>1.7.20</kotlin.version>
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
         <slf4j.version>1.7.36</slf4j.version>
@@ -156,11 +156,9 @@
             <scope>provided</scope>
         </dependency>
         <dependency>
-            <groupId>com.andrei1058.bedwar</groupId>
-            <artifactId>bedwars1058</artifactId>
-            <version>1.0</version>
-            <scope>system</scope>
-            <systemPath>${project.basedir}/NonMavenDeps/ItemRenamer-2.0.1.jar</systemPath>
+            <groupId>org.jetbrains.kotlin</groupId>
+            <artifactId>kotlin-stdlib</artifactId>
+            <version>${kotlin.version}</version>
         </dependency>
     </dependencies>
 </project>

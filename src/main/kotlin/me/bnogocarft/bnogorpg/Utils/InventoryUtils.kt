@@ -12,7 +12,6 @@ import org.bukkit.event.Listener
 import org.bukkit.event.inventory.InventoryClickEvent
 import org.bukkit.inventory.Inventory
 import org.bukkit.inventory.ItemStack
-import org.shininet.bukkit.itemrenamer.api.RenamerSnapshot
 import java.util.*
 
 
@@ -22,35 +21,6 @@ fun cloneInv(inv: Inventory): Inventory {
         clone.setItem(i, inv.getItem(i))
     }
     return clone
-}
-
-/*fun addGlow(stacks: Array<ItemStack>) {
-    for (stack in stacks) {
-        @Suppress("SENSELESS_COMPARISON")
-        if (stack != null) {
-            // Only update those stacks that have our flag enchantment
-            if (stack.getEnchantmentLevel(Enchantment.DAMAGE_ALL) == 5) {
-                val compound: NbtCompound = NbtFactory.fromItemTag(stack) as NbtCompound
-                compound.put(NbtFactory.ofList("ench"))
-            }
-        }
-    }
-}*/
-
-private const val EXAMPLE_MOD_GLOW = "§6Weapon"
-
-fun addGlow(stacks: RenamerSnapshot) {
-    for (stack in stacks) {
-        // Only update those stacks that have our flag lore
-        if (stack != null && stack.hasItemMeta()) {
-            val lore = stack.itemMeta.lore
-            if (Arrays.asList(EXAMPLE_MOD_GLOW).equals(lore)) {
-                val compound = NbtFactory.fromItemTag(stack) as NbtCompound
-                compound.put(NbtFactory.ofList<Any>("ench"))
-                compound.getCompound("display").remove<Any>("Lore")
-            }
-        }
-    }
 }
 
 fun cloneInv(inv: Inventory, name: String): Inventory {

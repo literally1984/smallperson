@@ -70,7 +70,7 @@ class HDiamondSet : CombatSetMaker {
             BMaterial.HARDENED_DIAMOND_BOOTS,
             "4-6")
         val recipe = ShapedRecipe(boots)
-        recipe.shape("ddd", "d d", "   ")
+        recipe.shape("   ", "d d", "d d")
         recipe.setIngredient('d', Material.DIAMOND_BLOCK)
         Bukkit.addRecipe(recipe)
     }
