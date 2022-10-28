@@ -48,6 +48,16 @@ enum class BMaterial {
     DIAMOND_PICKAXE,
     DIAMOND_SHOVEL,
 
+    HARDENED_DIAMOND_HELMET,
+    HARDENED_DIAMOND_CHESTPLATE,
+    HARDENED_DIAMOND_LEGGINGS,
+    HARDENED_DIAMOND_BOOTS,
+    HARDENED_DIAMOND_SWORD,
+    HARDENED_DIAMOND_AXE,
+    HARDENED_DIAMOND_HOE,
+    HARDENED_DIAMOND_PICKAXE,
+    HARDENED_DIAMOND_SHOVEL,
+
     STONE_SWORD,
     STONE_AXE,
     STONE_HOE,
@@ -206,6 +216,15 @@ enum class BMaterial {
             THUNDERBOLT -> Thunderbolt.blade.itemMeta
             FIREBALL_SPELL_SCROLL -> FireballSpell.scroll.itemMeta
             METEOR_SUMMON_SCROLL -> MeteorSpell.scroll.itemMeta
+            HARDENED_DIAMOND_HELMET -> TODO()
+            HARDENED_DIAMOND_CHESTPLATE -> TODO()
+            HARDENED_DIAMOND_LEGGINGS -> TODO()
+            HARDENED_DIAMOND_BOOTS -> TODO()
+            HARDENED_DIAMOND_SWORD -> TODO()
+            HARDENED_DIAMOND_AXE -> TODO()
+            HARDENED_DIAMOND_HOE -> TODO()
+            HARDENED_DIAMOND_PICKAXE -> TODO()
+            HARDENED_DIAMOND_SHOVEL -> TODO()
         }
     }
 

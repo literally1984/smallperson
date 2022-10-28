@@ -37,6 +37,8 @@ class RecipeBookCommand : CommandExecutor {
 
             sender.openInventory(recipePage.pageInventory)
             return true
+        } else if (args.isEmpty()) {
+            sender.openInventory(RecipeBook.pages[0].pageInventory)
         }
 
 

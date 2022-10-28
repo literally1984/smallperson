@@ -1,5 +1,7 @@
 package me.bnogocarft.bnogorpg.RecipeBook
 
+import me.bnogocarft.bnogorpg.Utils.BItemStack.BItems.BItem
+import me.bnogocarft.bnogorpg.Utils.BItemStack.BItems.BItemType
 import me.bnogocarft.bnogorpg.Utils.BItemStack.BItems.BItemUtils
 import me.bnogocarft.bnogorpg.Utils.OpenGUI
 import me.bnogocarft.bnogorpg.Utils.changeInventoryTo
@@ -48,7 +50,7 @@ class RecipeManager {
         val textRecipeMap = HashMap<String, Recipe>()
 
         fun registerRecipes(recipes: Iterator<Recipe>) { // Registers all recipes in the iterator
-            while (recipes.hasNext()) {
+            while (recipes.hasNext()) { // Loops through all the registered recipes
                 val currentRecipe = recipes.next()
                 if (currentRecipe.result.type.toString().lowercase().contains("helmet") ||
                     currentRecipe.result.type.toString().lowercase().contains("chestplate") ||
@@ -57,13 +59,12 @@ class RecipeManager {
                 ) {
                     armorItems.add(currentRecipe.result)
                 } else if (currentRecipe.result.hasItemMeta()) {
-                    if (BItemUtils.getBType(currentRecipe.result) != null) {
-                        when (BItemUtils.getBType(currentRecipe.result)) {
-                            "weapon" -> weaponItems.add(currentRecipe.result)
-                            "armor" -> armorItems.add(currentRecipe.result)
-                        }
+                    val bItem = BItem(currentRecipe.result)
+                    if (bItem.type == BItemType.WEAPON) {
+                        weaponItems.add(currentRecipe.result)
                     }
                 }
+
                 val recipePage = RecipePage(currentRecipe)
 
                 RecipeBook.pages.add(recipePage) // Adds the recipe page

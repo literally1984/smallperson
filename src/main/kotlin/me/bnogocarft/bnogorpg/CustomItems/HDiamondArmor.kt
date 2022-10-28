@@ -9,18 +9,21 @@ import org.bukkit.Material
 import org.bukkit.inventory.ItemStack
 import org.bukkit.inventory.ShapedRecipe
 
-class HDiamondArmor : CombatSetMaker {
+class HDiamondSet : CombatSetMaker {
     companion object {
         lateinit var helm: ItemStack
         lateinit var chestplate: ItemStack
         lateinit var leggings: ItemStack
         lateinit var boots: ItemStack
+        lateinit var sword: ItemStack
+    }
 
-        lateinit var craftHelmet: ItemStack
-        lateinit var craftChestplate: ItemStack
-        lateinit var craftLeggings: ItemStack
-        lateinit var craftBoots: ItemStack
-
+    init {
+        createHelmet()
+        createBoots()
+        createChestplate()
+        createLeggings()
+        createSword()
     }
 
     override fun createSword() {
@@ -28,63 +31,47 @@ class HDiamondArmor : CombatSetMaker {
     }
 
     override fun createHelmet() {
-        TODO("Not yet implemented")
-    }
-
-    private fun createCraftHelmet() {
-        val factoryItem = BItemFactory.createBItem("Diamond Helmet", Material.DIAMOND_HELMET, BItemType.CRAFT_ITEM)
-        craftHelmet = BItemFactory.createCraftItem(factoryItem,
+        val factoryItem = BItemFactory.createBItem("Hardened Diamond Helmet", Material.DIAMOND_HELMET, BItemType.CRAFT_ITEM)
+        helm = BItemFactory.createCraftItem(factoryItem,
             BMaterial.HARDENED_DIAMOND_HELMET,
             "4-6")
-        val recipe = ShapedRecipe(craftHelmet)
+        val recipe = ShapedRecipe(helm)
         recipe.shape("ddd", "d d", "   ")
-        recipe.setIngredient('d', Material.DIAMOND)
+        recipe.setIngredient('d', Material.DIAMOND_BLOCK)
         Bukkit.addRecipe(recipe)
     }
 
     override fun createChestplate() {
-        TODO("Not yet implemented")
-    }
-
-    private fun createCraftChestplate() {
         val factoryItem =
-            BItemFactory.createBItem("Diamond Chestplate", Material.DIAMOND_CHESTPLATE, BItemType.CRAFT_ITEM)
-        craftHelmet = BItemFactory.createCraftItem(factoryItem,
+            BItemFactory.createBItem("Hardened Diamond Chestplate", Material.DIAMOND_CHESTPLATE, BItemType.CRAFT_ITEM)
+        chestplate = BItemFactory.createCraftItem(factoryItem,
             BMaterial.HARDENED_DIAMOND_CHESTPLATE,
             "4-6")
-        val recipe = ShapedRecipe(craftHelmet)
+        val recipe = ShapedRecipe(chestplate)
         recipe.shape("ddd", "d d", "   ")
-        recipe.setIngredient('d', Material.DIAMOND)
+        recipe.setIngredient('d', Material.DIAMOND_BLOCK)
         Bukkit.addRecipe(recipe)
     }
 
     override fun createLeggings() {
-        TODO("Not yet implemented")
-    }
-
-    private fun createCraftLeggings() {
-        val factoryItem = BItemFactory.createBItem("Diamond Leggings", Material.DIAMOND_LEGGINGS, BItemType.CRAFT_ITEM)
-        craftChestplate = BItemFactory.createCraftItem(factoryItem,
+        val factoryItem = BItemFactory.createBItem("Hardened Diamond Leggings", Material.DIAMOND_LEGGINGS, BItemType.CRAFT_ITEM)
+        leggings = BItemFactory.createCraftItem(factoryItem,
             BMaterial.HARDENED_DIAMOND_LEGGINGS,
             "4-6")
-        val recipe = ShapedRecipe(craftChestplate)
+        val recipe = ShapedRecipe(leggings)
         recipe.shape("d d", "ddd", "ddd")
-        recipe.setIngredient('d', Material.DIAMOND)
+        recipe.setIngredient('d', Material.DIAMOND_BLOCK)
         Bukkit.addRecipe(recipe)
     }
 
     override fun createBoots() {
-        TODO("Not yet implemented")
-    }
-
-    private fun createCraftBoots() {
-        val factoryItem = BItemFactory.createBItem("Diamond Boots", Material.DIAMOND_BOOTS, BItemType.CRAFT_ITEM)
-        craftHelmet = BItemFactory.createCraftItem(factoryItem,
+        val factoryItem = BItemFactory.createBItem("Hardened Diamond Boots", Material.DIAMOND_BOOTS, BItemType.CRAFT_ITEM)
+        boots = BItemFactory.createCraftItem(factoryItem,
             BMaterial.HARDENED_DIAMOND_BOOTS,
             "4-6")
-        val recipe = ShapedRecipe(craftHelmet)
+        val recipe = ShapedRecipe(boots)
         recipe.shape("ddd", "d d", "   ")
-        recipe.setIngredient('d', Material.DIAMOND)
+        recipe.setIngredient('d', Material.DIAMOND_BLOCK)
         Bukkit.addRecipe(recipe)
     }
 }

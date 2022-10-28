@@ -1,5 +1,6 @@
 package me.bnogocarft.bnogorpg.Utils.BItemStack.CraftItems
 
+import me.bnogocarft.bnogorpg.Utils.BItemStack.BItems.getRandomStat
 import me.bnogocarft.bnogorpg.Utils.BItemStack.BMaterial
 import me.bnogocarft.bnogorpg.Utils.Exceptions.IllegalConstructorArgumentException
 import me.bnogocarft.bnogorpg.Utils.others.Rarity.Rarity
@@ -69,41 +70,9 @@ data class CraftGear(override var item: ItemStack) : CraftItem {
     }
 
     override fun craft(): ItemStack {
-        val stats = ArrayList<Int>()
-
-        //Gets the range of the amnt of stars the weapon has
         val starsDiff = rarityVary.second.getStars() - rarityVary.first.getStars()
-        val loopList = arrayListOf(
-            Pair(0, 1),
-            Pair(2, 3),
-            Pair(4, 5),
-            Pair(6, 7),
-            Pair(8, 9),
-            Pair(10, 11)
-        )
         val randomIndex = Random.nextInt(1, starsDiff + 1)
-
-        for ((indexOfStat, indexOfRange) in loopList.withIndex()) {
-            //Gets the Range that the stat can be in
-            val vary = arrayListOf(statVary[indexOfRange.first], statVary[indexOfRange.second])
-            //Gets the increments evenly divided with the last increment taking the remainder
-            val atkIncs = ArrayList<Int>()
-            for (i in 1..starsDiff) {
-                atkIncs.add((vary[1] - vary[0]) / starsDiff)
-            }
-            atkIncs[atkIncs.size - 1] = atkIncs[atkIncs.size - 1] + (vary[1] - vary[0]) % starsDiff
-
-            //Sets the first element of the stats array to the lowest possible value from the stats range
-            stats.add(vary[0])
-            //Adds increments based on star vary
-            for (index in 0 until randomIndex) {
-                try {
-                    stats[indexOfStat] += Random.nextInt(1, atkIncs[index] + 1)
-                } catch (e: IllegalArgumentException) {
-                    stats[indexOfStat] += 1
-                }
-            }
-        }
+        val stats = getRandomStat(rarityVary, statVary, randomIndex)
 
         val copy = item.itemMeta.clone()
         val lore = copy.lore

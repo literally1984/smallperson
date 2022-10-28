@@ -3,8 +3,48 @@ package me.bnogocarft.bnogorpg.Utils.BItemStack.BItems
 import me.bnogocarft.bnogorpg.Main
 import me.bnogocarft.bnogorpg.Utils.BItemStack.BMaterial
 import me.bnogocarft.bnogorpg.Utils.ItemAbility.IAbility
+import me.bnogocarft.bnogorpg.Utils.others.Rarity.Rarity
 import org.bukkit.inventory.ItemStack
+import kotlin.random.Random
 
+fun getRandomStat(rarityVary: Pair<Rarity, Rarity>, statVary: ArrayList<Int>, starIndex: Int): ArrayList<Int> {
+    val stats = ArrayList<Int>()
+
+    //Gets the range of the amnt of stars the weapon has
+    val starsDiff = rarityVary.second.getStars() - rarityVary.first.getStars()
+    val loopList = arrayListOf(
+        Pair(0, 1),
+        Pair(2, 3),
+        Pair(4, 5),
+        Pair(6, 7),
+        Pair(8, 9),
+        Pair(10, 11)
+    )
+
+    for ((indexOfStat, indexOfRange) in loopList.withIndex()) {
+        //Gets the Range that the stat can be in
+        val vary = arrayListOf(statVary[indexOfRange.first], statVary[indexOfRange.second])
+        //Gets the increments evenly divided with the last increment taking the remainder
+        val atkIncs = ArrayList<Int>()
+        for (i in 1..starsDiff) {
+            atkIncs.add((vary[1] - vary[0]) / starsDiff)
+        }
+        atkIncs[atkIncs.size - 1] = atkIncs[atkIncs.size - 1] + (vary[1] - vary[0]) % starsDiff
+
+        //Sets the first element of the stats array to the lowest possible value from the stats range
+        stats.add(vary[0])
+        //Adds increments based on star vary
+        for (index in 0 until starIndex) {
+            try {
+                stats[indexOfStat] += Random.nextInt(1, atkIncs[index] + 1)
+            } catch (e: IllegalArgumentException) {
+                stats[indexOfStat] += 1
+            }
+        }
+    }
+
+    return stats
+}
 
 class BItemUtils {
 
