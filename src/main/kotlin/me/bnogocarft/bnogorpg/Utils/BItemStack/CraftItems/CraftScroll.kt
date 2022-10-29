@@ -18,6 +18,9 @@ data class CraftScroll(override var item: ItemStack, val variables: ArrayList<It
                 val onlyStarLore = lore.drop(2).dropLast(7).split("-")
                 rarityVary = Pair(Rarity.getRarity(onlyStarLore[0].toInt()), Rarity.getRarity(onlyStarLore[1].toInt()))
             }
+            if (lore.contains("${ChatColor.LIGHT_PURPLE}${ChatColor.GREEN}")) {
+                val splitLore = lore.split("${ChatColor.LIGHT_PURPLE}${ChatColor.GREEN}")
+            }
         }
     }
 

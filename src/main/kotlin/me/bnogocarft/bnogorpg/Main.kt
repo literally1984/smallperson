@@ -26,6 +26,7 @@ import me.bnogocarft.bnogorpg.Spells.GiveScrollCommand
 import me.bnogocarft.bnogorpg.Spells.SpellCastListener
 import me.bnogocarft.bnogorpg.Spells.spells.FireballSpell
 import me.bnogocarft.bnogorpg.Spells.spells.MeteorSpell
+import me.bnogocarft.bnogorpg.Test.TestCommand
 import me.bnogocarft.bnogorpg.Updater.Updates.Update
 import me.bnogocarft.bnogorpg.Utils.*
 import me.bnogocarft.bnogorpg.Utils.BItemStack.BItems.BItemUtils
@@ -236,6 +237,7 @@ class Main : JavaPlugin() {
         getCommand("stash").executor = StashCommand()
         getCommand("scroll").executor = GiveScrollCommand()
         getCommand("stat").executor = StatCommands()
+        getCommand("test").executor = TestCommand()
         cSender.sendMessage("$logo all commands are enabled!")
 
         cSender.sendMessage("$logo Registering custom ItemStacks...")
@@ -336,7 +338,7 @@ class Main : JavaPlugin() {
                         "\"name\" = '${item.initItem.itemMeta.displayName}', " +
                         "\"itemStack\" = '${serializeItem(item.initItem)}', " +
                         "\"abilities\" = ARRAY [$beforeString]::text[] " +
-                        "WHERE \"id\" = ${item.id} AND \"type\" = '${item.initItem.itemMeta.displayName}';"
+                        "WHERE \"id\" = ${item.id} AND \"material\" = '${item.initItem.itemMeta.displayName}';"
             ).executeUpdate()
         }
     }

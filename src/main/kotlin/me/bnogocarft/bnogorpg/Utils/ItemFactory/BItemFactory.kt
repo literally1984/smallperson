@@ -25,6 +25,7 @@ data class FactoryItem(val name: String, val mat: Material, val type: BItemType)
     var rarity = Rarity.COMMON
     var armorColor: Color? = null
     var craftItemType: CraftItemType? = null
+    val extras = HashMap<String, Any>()
 }
 
 class BItemFactory {

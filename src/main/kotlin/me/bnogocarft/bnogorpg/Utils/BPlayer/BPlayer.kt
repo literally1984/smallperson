@@ -124,7 +124,7 @@ open class BPlayer(open val player: String) {
             }
         }
         BnogoSQL.con.prepareStatement(
-            "UPDATE players SET \"playtime\" = '$playTime', " +
+            "UPDATE players SET \"playTime\" = '$playTime', " +
                     "\"meleeLevel\" = $meleeLVL, " +
                     "\"meleeExp\" = $meleeEXP, " +
                     "\"spellcastLevel\" = $spellcastLVL, " +
