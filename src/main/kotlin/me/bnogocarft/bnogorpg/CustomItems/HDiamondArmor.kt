@@ -31,10 +31,13 @@ class HDiamondSet : CombatSetMaker {
     }
 
     override fun createHelmet() {
-        val factoryItem = BItemFactory.createBItem("Hardened Diamond Helmet", Material.DIAMOND_HELMET, BItemType.CRAFT_ITEM)
-        helm = BItemFactory.createCraftItem(factoryItem,
+        val factoryItem =
+            BItemFactory.createBItem("Hardened Diamond Helmet", Material.DIAMOND_HELMET, BItemType.CRAFT_ITEM)
+        helm = BItemFactory.createCraftItem(
+            factoryItem,
             BMaterial.HARDENED_DIAMOND_HELMET,
-            "4-6")
+            "4-6"
+        )
         val recipe = ShapedRecipe(helm)
         recipe.shape("ddd", "d d", "   ")
         recipe.setIngredient('d', Material.DIAMOND_BLOCK)
@@ -44,9 +47,11 @@ class HDiamondSet : CombatSetMaker {
     override fun createChestplate() {
         val factoryItem =
             BItemFactory.createBItem("Hardened Diamond Chestplate", Material.DIAMOND_CHESTPLATE, BItemType.CRAFT_ITEM)
-        chestplate = BItemFactory.createCraftItem(factoryItem,
+        chestplate = BItemFactory.createCraftItem(
+            factoryItem,
             BMaterial.HARDENED_DIAMOND_CHESTPLATE,
-            "4-6")
+            "4-6"
+        )
         val recipe = ShapedRecipe(chestplate)
         recipe.shape("ddd", "d d", "   ")
         recipe.setIngredient('d', Material.DIAMOND_BLOCK)
@@ -54,10 +59,13 @@ class HDiamondSet : CombatSetMaker {
     }
 
     override fun createLeggings() {
-        val factoryItem = BItemFactory.createBItem("Hardened Diamond Leggings", Material.DIAMOND_LEGGINGS, BItemType.CRAFT_ITEM)
-        leggings = BItemFactory.createCraftItem(factoryItem,
+        val factoryItem =
+            BItemFactory.createBItem("Hardened Diamond Leggings", Material.DIAMOND_LEGGINGS, BItemType.CRAFT_ITEM)
+        leggings = BItemFactory.createCraftItem(
+            factoryItem,
             BMaterial.HARDENED_DIAMOND_LEGGINGS,
-            "4-6")
+            "4-6"
+        )
         val recipe = ShapedRecipe(leggings)
         recipe.shape("d d", "ddd", "ddd")
         recipe.setIngredient('d', Material.DIAMOND_BLOCK)
@@ -65,10 +73,13 @@ class HDiamondSet : CombatSetMaker {
     }
 
     override fun createBoots() {
-        val factoryItem = BItemFactory.createBItem("Hardened Diamond Boots", Material.DIAMOND_BOOTS, BItemType.CRAFT_ITEM)
-        boots = BItemFactory.createCraftItem(factoryItem,
+        val factoryItem =
+            BItemFactory.createBItem("Hardened Diamond Boots", Material.DIAMOND_BOOTS, BItemType.CRAFT_ITEM)
+        boots = BItemFactory.createCraftItem(
+            factoryItem,
             BMaterial.HARDENED_DIAMOND_BOOTS,
-            "4-6")
+            "4-6"
+        )
         val recipe = ShapedRecipe(boots)
         recipe.shape("   ", "d d", "d d")
         recipe.setIngredient('d', Material.DIAMOND_BLOCK)

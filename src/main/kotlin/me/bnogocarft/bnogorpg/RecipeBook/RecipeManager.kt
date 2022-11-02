@@ -2,7 +2,6 @@ package me.bnogocarft.bnogorpg.RecipeBook
 
 import me.bnogocarft.bnogorpg.Utils.BItemStack.BItems.BItem
 import me.bnogocarft.bnogorpg.Utils.BItemStack.BItems.BItemType
-import me.bnogocarft.bnogorpg.Utils.BItemStack.BItems.BItemUtils
 import me.bnogocarft.bnogorpg.Utils.OpenGUI
 import me.bnogocarft.bnogorpg.Utils.changeInventoryTo
 import org.bukkit.ChatColor
@@ -15,7 +14,7 @@ import org.bukkit.inventory.ShapedRecipe
 fun openRecipePageFor(gui: OpenGUI) {
     val clickedItem = gui.currentItem
     gui.player.closeInventory()
-    val recipes = RecipeBook.getRecipePagesFor(clickedItem)
+    val recipes = RecipeBook.getRecipePagesFor(clickedItem!!)
     if (recipes.isEmpty()) {
         gui.player.sendMessage(ChatColor.RED.toString() + "No recipes found for this item.")
         return

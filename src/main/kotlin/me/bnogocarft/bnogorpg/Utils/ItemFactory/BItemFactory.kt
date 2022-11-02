@@ -9,6 +9,7 @@ import me.bnogocarft.bnogorpg.Utils.BItemStack.CraftItems.CraftItemType
 import me.bnogocarft.bnogorpg.Utils.BItemStack.CraftItems.ItemVariable
 import me.bnogocarft.bnogorpg.Utils.ItemAbility.IAbility
 import me.bnogocarft.bnogorpg.Utils.StatUtils.ItemStat
+import me.bnogocarft.bnogorpg.Utils.encode
 import me.bnogocarft.bnogorpg.Utils.others.Rarity.Rarity
 import org.bukkit.Bukkit
 import org.bukkit.ChatColor
@@ -415,6 +416,7 @@ class BItemFactory {
                         null -> {}
                     }
 
+                    itemStack.itemMeta.lore[lore.size] += encode("bitem")
                     return itemStack
                 }
             }

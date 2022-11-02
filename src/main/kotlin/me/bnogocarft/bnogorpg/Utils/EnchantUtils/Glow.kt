@@ -1,4 +1,4 @@
-package me.bnogocarft.bnogorpg.Utils.BItemStack.EnchantUtils
+package me.bnogocarft.bnogorpg.Utils.EnchantUtils
 
 import org.bukkit.enchantments.Enchantment
 import org.bukkit.enchantments.EnchantmentTarget

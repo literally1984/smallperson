@@ -2,7 +2,7 @@ package me.bnogocarft.bnogorpg.Utils.BItemStack.BItems
 
 import me.bnogocarft.bnogorpg.Utils.Armorset.ArmorSet
 import me.bnogocarft.bnogorpg.Utils.Armorset.Sets.LapisSet
-import me.bnogocarft.bnogorpg.Utils.Exceptions.IllegalConstructorArgumentException
+import me.bnogocarft.bnogorpg.Utils.Exceptions.IllegalParameterException
 import me.bnogocarft.bnogorpg.Utils.StatUtils.ItemStat
 import org.bukkit.inventory.ItemStack
 
@@ -42,7 +42,7 @@ data class BArmor(override val Item: ItemStack) : BGear(Item) {
         set = when (material.toString().split("_")[1].lowercase()) {
             "lapis" -> LapisSet()
 
-            else -> throw IllegalConstructorArgumentException(
+            else -> throw IllegalParameterException(
                 "Unable to identify \"${material}\" (identifier: \"${material.toString().split("_")[1]}\""
             )
         }

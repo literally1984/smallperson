@@ -1,7 +1,5 @@
 package me.bnogocarft.bnogorpg.Utils
 
-import com.comphenix.protocol.wrappers.nbt.NbtCompound
-import com.comphenix.protocol.wrappers.nbt.NbtFactory
 import me.bnogocarft.bnogorpg.Reforge.ReforgeUtils
 import org.bukkit.Bukkit
 import org.bukkit.Material
@@ -12,7 +10,6 @@ import org.bukkit.event.Listener
 import org.bukkit.event.inventory.InventoryClickEvent
 import org.bukkit.inventory.Inventory
 import org.bukkit.inventory.ItemStack
-import java.util.*
 
 
 fun cloneInv(inv: Inventory): Inventory {
@@ -152,7 +149,13 @@ open class GUI(
     open val slotFuncs: List<SlotFunction>
 )
 
-data class OpenGUI(val gui: GUI, val player: Player, val slot: Int, var currentItem: ItemStack) :
+data class OpenGUI(
+    val gui: GUI,
+    val player: Player,
+    val slot: Int,
+    var currentItem: ItemStack?,
+    var cancelled: Boolean = true
+) :
     GUI(gui.inv, gui.buttons, gui.background, gui.slotFuncs)
 
 class GUIListeners(inventories: List<GUI>) : Listener {
@@ -165,16 +168,18 @@ class GUIListeners(inventories: List<GUI>) : Listener {
                 for (button in inv.buttons) {// Checks for matching button slots
                     if (e.rawSlot == button.slot) {
                         // Runs the button's function
-                        e.isCancelled = true
-                        button.run(OpenGUI(inv, e.whoClicked as Player, e.slot, e.currentItem))
+                        val gui = OpenGUI(inv, e.whoClicked as Player, e.slot, e.currentItem)
+                        button.run(gui)
+                        e.isCancelled = gui.cancelled
                         return
                     }
                 }
                 for (func in inv.slotFuncs) {// Checks for matching button slots
                     if (e.rawSlot == func.slot) {
                         // Runs the button's function
-                        e.isCancelled = true
-                        func.run(OpenGUI(inv, e.whoClicked as Player, e.slot, e.currentItem))
+                        val gui = OpenGUI(inv, e.whoClicked as Player, e.slot, e.currentItem)
+                        func.run(gui)
+                        e.isCancelled = gui.cancelled
                         return
                     }
                 }
