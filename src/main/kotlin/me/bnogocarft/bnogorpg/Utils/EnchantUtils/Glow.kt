@@ -21,8 +21,8 @@ class Glow : Enchantment(WATER_WORKER.id) {
         return 0
     }
 
-    override fun getName(): String? {
-        return null
+    override fun getName(): String {
+        return ""
     }
 
     override fun getStartLevel(): Int {

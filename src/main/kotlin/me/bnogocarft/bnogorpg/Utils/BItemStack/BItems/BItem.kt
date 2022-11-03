@@ -1,13 +1,19 @@
 package me.bnogocarft.bnogorpg.Utils.BItemStack.BItems
 
 import me.bnogocarft.bnogorpg.Utils.BItemStack.BMaterial
+import me.bnogocarft.bnogorpg.Utils.EnchantUtils.BEnchantment
 import me.bnogocarft.bnogorpg.Utils.Exceptions.IllegalParameterException
 import me.bnogocarft.bnogorpg.Utils.encode
+import me.bnogocarft.bnogorpg.Utils.glow
 import me.bnogocarft.bnogorpg.Utils.others.Rarity.RarityUtils
 import org.bukkit.ChatColor
+import org.bukkit.enchantments.Enchantment
 import org.bukkit.inventory.ItemStack
+import java.util.*
+import kotlin.collections.ArrayList
 
 open class BItem(item: ItemStack) {
+    val item = item
 
     var material: BMaterial
 
@@ -16,6 +22,7 @@ open class BItem(item: ItemStack) {
             "002" -> Update.zerozerotwo
             else -> Update.zerozerotwo
         }*/
+    private val enchantments = ArrayList<BEnchantment>()
     var rarity = RarityUtils.getRarity(item.itemMeta.lore[item.itemMeta.lore.size - 1])
     var type: BItemType =
         try {
@@ -44,7 +51,7 @@ open class BItem(item: ItemStack) {
         val lore = item.itemMeta.lore
         for (clore in lore) {
             if (clore.contains("${ChatColor.BLUE}Enchantments:")) { // Gets the line that marks the start of enchantments
-                enchantLine = lore.indexOf(clore)
+                enchantLine = lore.indexOf(clore) + 1
                 var index = item.itemMeta.lore.indexOf(clore) + 1 // Gets the index of the line after the marker above
                 while (!(lore[index].equals(""))) { // Loops through the enchants until it finds "" which is the seperator
                     index++
@@ -69,12 +76,36 @@ open class BItem(item: ItemStack) {
             val name = item.itemMeta.displayName
             try {
                 BMaterial.valueOf(name.replace(" ", "_").uppercase())
-            } catch (e: IllegalArgumentException) {
-                val newNmae = name.split(" ").toMutableList()
-                newNmae.removeAt(0)
-                val newName = newNmae.joinToString("_").uppercase()
-                BMaterial.valueOf(newName)
+            } catch (e: IllegalArgumentException) { // If there is no material with a name from replacing space with _, it is a reforge
+                // Remove the reforge text
+                val newName = name.split(" ").toMutableList()
+                newName.removeAt(0)
+
+                BMaterial.valueOf(newName.joinToString("_").uppercase())
             }
         }
+    }
+
+    fun addEnchant(enchant: BEnchantment) {
+        enchantments.add(enchant)
+        // checks if the item has no enchantments
+        if (item.itemMeta.lore[enchantLine] != "") {
+            item.itemMeta.lore.add(
+                enchantLine,
+                "${ChatColor.BLUE}${
+                    enchant.enchant.toString()
+                                        .replace("_", " ").lowercase()
+                        .replaceFirstChar { if (it.isLowerCase()) it.titlecase(Locale.getDefault()) else it.toString() }
+                }"
+            )
+
+
+        }
+        if (item.containsEnchantment(Enchantment.ARROW_DAMAGE) ||
+            item.containsEnchantment(Enchantment.WATER_WORKER)
+        ) {
+            return
+        }
+        item.glow()
     }
 }

@@ -15,6 +15,7 @@ import me.bnogocarft.bnogorpg.Utils.StatUtils.StatManager
 import me.bnogocarft.bnogorpg.combat.ComboCounter.Combo
 import org.bukkit.Bukkit
 import org.bukkit.ChatColor
+import org.bukkit.GameMode
 import org.bukkit.Material
 import org.bukkit.entity.LivingEntity
 import org.bukkit.entity.Player
@@ -52,6 +53,8 @@ data class OnlineBPlayer(val p: Player) : BPlayer(p.name) {
         override fun cast(caster: Player, abilityEvent: PlayerEvent) {
         }
     }
+
+    var gamemode = GameMode.SURVIVAL
 
     /**
      * The player's current [Mode]

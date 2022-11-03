@@ -1,7 +1,5 @@
 package me.bnogocarft.bnogorpg.RecipeBook
 
-import me.bnogocarft.bnogorpg.Utils.BItemStack.BItems.BItem
-import me.bnogocarft.bnogorpg.Utils.BItemStack.BItems.BItemType
 import me.bnogocarft.bnogorpg.Utils.OpenGUI
 import me.bnogocarft.bnogorpg.Utils.changeInventoryTo
 import org.bukkit.ChatColor
@@ -51,18 +49,6 @@ class RecipeManager {
         fun registerRecipes(recipes: Iterator<Recipe>) { // Registers all recipes in the iterator
             while (recipes.hasNext()) { // Loops through all the registered recipes
                 val currentRecipe = recipes.next()
-                if (currentRecipe.result.type.toString().lowercase().contains("helmet") ||
-                    currentRecipe.result.type.toString().lowercase().contains("chestplate") ||
-                    currentRecipe.result.type.toString().lowercase().contains("leggings") ||
-                    currentRecipe.result.type.toString().lowercase().contains("boots")
-                ) {
-                    armorItems.add(currentRecipe.result)
-                } else if (currentRecipe.result.hasItemMeta()) {
-                    val bItem = BItem(currentRecipe.result)
-                    if (bItem.type == BItemType.WEAPON) {
-                        weaponItems.add(currentRecipe.result)
-                    }
-                }
 
                 val recipePage = RecipePage(currentRecipe)
 

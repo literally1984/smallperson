@@ -1,11 +1,13 @@
 package me.bnogocarft.bnogorpg.Utils.EnchantUtils
 
 import me.bnogocarft.bnogorpg.Utils.*
-import me.bnogocarft.bnogorpg.Utils.BItemStack.BItems.BItemUtils
+import me.bnogocarft.bnogorpg.Utils.BItemStack.BItems.BItem
 import org.bukkit.Bukkit
 import org.bukkit.ChatColor
 import org.bukkit.Material
 import org.bukkit.inventory.ItemStack
+import java.util.*
+import kotlin.collections.ArrayList
 
 class EnchantGUI {
     companion object {
@@ -64,13 +66,22 @@ class EnchantGUI {
 
                 val itemList = arrayListOf(newEnchant1, newEnchant2, newEnchant3)
 
-                val enchants = EnchantUtils.generateEnchantsFor(BItemUtils.getBGear(it.currentItem!!))
+                val enchants = EnchantUtils.generateEnchantsFor(BItem(it.currentItem!!))
 
-                for (item in itemList) {
-
+                for ((index, item) in itemList.withIndex()) {
+                    item.itemMeta.displayName = "${ChatColor.GREEN}${
+                        enchants[index].enchant.toString().replace(
+                                                "_", " "
+                                            ).lowercase()
+                            .replaceFirstChar { if (it.isLowerCase()) it.titlecase(Locale.getDefault()) else it.toString() }
+                    } ${makeRoman(enchants[index].level)}"
                 }
             }
         })
+
+
+
+        fInv.layers.add(layer1)
     }
 
     private fun enchantHandler(gui: OpenGUI) {

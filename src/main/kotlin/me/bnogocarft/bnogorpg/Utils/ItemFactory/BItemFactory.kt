@@ -416,7 +416,7 @@ class BItemFactory {
                         null -> {}
                     }
 
-                    itemStack.itemMeta.lore[lore.size] += encode("bitem")
+                    itemStack.itemMeta.lore[lore.size - 1] += encode("bitem")
                     return itemStack
                 }
             }

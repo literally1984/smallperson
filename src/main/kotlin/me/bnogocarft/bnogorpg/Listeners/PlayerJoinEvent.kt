@@ -8,12 +8,15 @@ import me.bnogocarft.bnogorpg.Utils.BItemStack.BItems.BItemUtils
 import me.bnogocarft.bnogorpg.Utils.BItemStack.BItems.BWeapon
 import me.bnogocarft.bnogorpg.Utils.BPlayer.OnlineBPlayer
 import me.bnogocarft.bnogorpg.Utils.BPlayer.OnlineBPlayers
+import me.bnogocarft.bnogorpg.Utils.BPlayer.bPlayer
 import me.bnogocarft.bnogorpg.tickUpdater.Ticker
 import org.bukkit.Bukkit
 import org.bukkit.ChatColor
+import org.bukkit.GameMode
 import org.bukkit.event.EventHandler
 import org.bukkit.event.EventPriority
 import org.bukkit.event.Listener
+import org.bukkit.event.player.PlayerGameModeChangeEvent
 import org.bukkit.event.player.PlayerJoinEvent
 import org.bukkit.scoreboard.DisplaySlot
 
@@ -114,6 +117,15 @@ class PlayerJoinEvent : Listener {
                     planeEntitites[item] = PlaneEntity(item)
                 }
             }
+        }
+    }
+
+    @EventHandler
+    fun onGamemodeChange(e: PlayerGameModeChangeEvent) {
+        if (e.newGameMode == GameMode.CREATIVE) {
+            e.isCancelled = true
+            e.player.allowFlight = true
+            e.player.bPlayer().gamemode = GameMode.CREATIVE
         }
     }
 }

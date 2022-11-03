@@ -13,7 +13,7 @@ import org.bukkit.event.player.PlayerInteractEvent
 
 class LightningChain : IAbility {
     override val description: ArrayList<String> = ArrayList()
-    override val name: String = "placeholder"
+    override val name: String = "Lightning Chain"
     override val type: AbilityTrigger = AbilityTrigger.NONE
 
     override fun cast(caster: Player, abilityEvent: PlayerEvent) {

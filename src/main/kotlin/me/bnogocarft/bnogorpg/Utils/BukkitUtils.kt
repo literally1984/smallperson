@@ -3,11 +3,23 @@ package me.bnogocarft.bnogorpg.Utils
 import net.minecraft.server.v1_5_R3.Packet62NamedSoundEffect
 import org.bukkit.Bukkit
 import org.bukkit.Location
+import org.bukkit.Material
 import org.bukkit.craftbukkit.v1_5_R3.entity.CraftPlayer
+import org.bukkit.enchantments.Enchantment
 import org.bukkit.entity.Entity
 import org.bukkit.entity.LivingEntity
 import org.bukkit.entity.Player
 import org.bukkit.inventory.ItemStack
+
+fun ItemStack.glow(): ItemStack {
+    if (type == Material.BOW) {
+        addEnchantment(Enchantment.WATER_WORKER, 32)
+        return this
+    } else {
+        addEnchantment(Enchantment.ARROW_DAMAGE, 32)
+        return this
+    }
+}
 
 infix fun Player.has(item: ItemStack): Boolean {
     return inventory.contains(item)

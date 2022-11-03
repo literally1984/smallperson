@@ -376,7 +376,7 @@ class AHGui {
     }
 
     private fun selectHandler(gui: OpenGUI) {
-        if (gui.currentItem.type != Material.AIR) {
+        if (gui.currentItem!!.type != Material.AIR) {
             // Checks if an Item is already selected for auction
             if (gui.inv.getItem(13) != createItem) {
                 gui.player.inventory.addItem(gui.inv.getItem(13))
@@ -433,7 +433,7 @@ class AHGui {
     }
 
     private fun infoClickHandler(gui: OpenGUI) {
-        if (gui.currentItem.type == Material.AIR) {
+        if (gui.currentItem!!.type == Material.AIR) {
             return
         }
         gui.player.closeInventory()
@@ -441,8 +441,8 @@ class AHGui {
             createAuctionInfoGui(
                 try {
                     getAuctionByID(
-                        gui.currentItem.itemMeta.lore[
-                                gui.currentItem.itemMeta.lore.size - 1
+                        gui.currentItem!!.itemMeta.lore[
+                                gui.currentItem!!.itemMeta.lore.size - 1
                         ].split(": ${ChatColor.GRAY}")[1]
                     )
                 } catch (e: IllegalArgumentException) {

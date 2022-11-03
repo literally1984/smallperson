@@ -1,7 +1,13 @@
 package me.bnogocarft.bnogorpg
 
+import com.comphenix.protocol.PacketType.Play
 import com.comphenix.protocol.ProtocolLibrary
 import com.comphenix.protocol.ProtocolManager
+import com.comphenix.protocol.events.ListenerPriority
+import com.comphenix.protocol.events.PacketAdapter
+import com.comphenix.protocol.events.PacketEvent
+import com.comphenix.protocol.wrappers.nbt.NbtCompound
+import com.comphenix.protocol.wrappers.nbt.NbtFactory
 import me.bnogocarft.bnogorpg.CustomItems.*
 import me.bnogocarft.bnogorpg.CustomItems.DefaultItems.DefaultOverrider
 import me.bnogocarft.bnogorpg.Enchants.EnchantListeners
@@ -49,6 +55,7 @@ import org.bukkit.Bukkit
 import org.bukkit.ChatColor
 import org.bukkit.Material
 import org.bukkit.configuration.file.YamlConfiguration
+import org.bukkit.enchantments.Enchantment
 import org.bukkit.entity.Player
 import org.bukkit.inventory.ItemStack
 import org.bukkit.plugin.Plugin
@@ -270,6 +277,44 @@ class Main : JavaPlugin() {
         MeteorSpell.init()
         cSender.sendMessage("$logo Spells enabled")
 
+        /*ProtocolLibrary.getProtocolManager().addPacketListener(object : PacketAdapter(
+            this, ConnectionSide.SERVER_SIDE, ListenerPriority.HIGH,
+            Packets.Server.SET_SLOT, Packets.Server.WINDOW_ITEMS
+        ) {
+            override fun onPacketSending(event: PacketEvent) {
+                if (event.packetID == Packets.Server.SET_SLOT) {
+                    if (event.packet.itemModifier.read(0) != null) {
+                        addGlow(arrayOf(event.packet.itemModifier.read(0)))
+                    }
+                } else {
+                    if (event.packet.itemArrayModifier.read(0) != null) {
+                        addGlow(event.packet.itemArrayModifier.read(0))
+                    }
+                }
+            }
+        })*/
+
+        protocolManager.addPacketListener(
+            object : PacketAdapter(
+                this,
+                ListenerPriority.HIGHEST,
+                Play.Server.WINDOW_ITEMS,
+                Play.Server.SET_SLOT
+            ) {
+                override fun onPacketSending(event: PacketEvent) {
+                    if (event.packetType == Play.Server.SET_SLOT) {
+                        if (event.packet.itemModifier.read(0) != null) {
+                            addGlow(arrayOf(event.packet.itemModifier.read(0)))
+                        }
+                    } else {
+                        if (event.packet.itemArrayModifier.read(0) != null) {
+                            addGlow(event.packet.itemArrayModifier.read(0))
+                        }
+                    }
+                }
+            }
+        )
+
         cSender.sendMessage(
             "${ChatColor.LIGHT_PURPLE} $logo ${ChatColor.GREEN} BnogoRPG Vdev-0.0.4 has been ${ChatColor.GREEN}Enabled"
         )
@@ -350,5 +395,26 @@ class Main : JavaPlugin() {
             return true
         }
         return false
+    }
+
+    private fun addGlow(stacks: Array<ItemStack?>) {
+        for (stack in stacks) {
+            if (stack != null) {
+                // Only update those stacks that have our flag enchantment
+                if (stack.type != Material.BOW) {
+                    if (stack.getEnchantmentLevel(Enchantment.ARROW_DAMAGE) == 32) {
+                        val compound = NbtFactory.fromItemTag(stack) as NbtCompound
+                        compound.put(NbtFactory.ofList<Any>("ench"))
+                        continue
+                    }
+                } else {
+                    if (stack.getEnchantmentLevel(Enchantment.WATER_WORKER) == 32) {
+                        val compound = NbtFactory.fromItemTag(stack) as NbtCompound
+                        compound.put(NbtFactory.ofList<Any>("ench"))
+                        continue
+                    }
+                }
+            }
+        }
     }
 }
