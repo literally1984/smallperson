@@ -5,7 +5,7 @@ package me.bnogocarft.bnogorpg.Utils.BPlayer
 import me.bnogocarft.bnogorpg.Spells.spells.FireballSpell
 import me.bnogocarft.bnogorpg.Spells.spells.MeteorSpell
 import me.bnogocarft.bnogorpg.Utils.Abilities.Spell
-import me.bnogocarft.bnogorpg.Utils.BItemStack.Talisman.Talisman
+import me.bnogocarft.bnogorpg.Utils.BItemStack.BItems.Talisman
 import me.bnogocarft.bnogorpg.Utils.Database.BnogoSQL
 import me.bnogocarft.bnogorpg.Utils.Database.YMLUtils
 import me.bnogocarft.bnogorpg.Utils.JVMUtils.StashArrayList

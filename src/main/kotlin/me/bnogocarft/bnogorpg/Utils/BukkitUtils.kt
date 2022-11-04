@@ -1,5 +1,11 @@
 package me.bnogocarft.bnogorpg.Utils
 
+import me.bnogocarft.bnogorpg.Utils.BItemStack.BItems.BArmor
+import me.bnogocarft.bnogorpg.Utils.BItemStack.BItems.BGear
+import me.bnogocarft.bnogorpg.Utils.BItemStack.BItems.BItem
+import me.bnogocarft.bnogorpg.Utils.BItemStack.BItems.BWeapon
+import me.bnogocarft.bnogorpg.Utils.ItemFactory.armorIdentifier
+import me.bnogocarft.bnogorpg.Utils.ItemFactory.weaponIdentifier
 import net.minecraft.server.v1_5_R3.Packet62NamedSoundEffect
 import org.bukkit.Bukkit
 import org.bukkit.Location
@@ -19,6 +25,44 @@ fun ItemStack.glow(): ItemStack {
         addEnchantment(Enchantment.ARROW_DAMAGE, 32)
         return this
     }
+}
+
+enum class BItemClass {
+    WEAPON, ARMOR, GEAR, ITEM;
+}
+
+infix fun ItemStack.canBe(type: BItemClass): Boolean {
+    if (!hasItemMeta() && itemMeta.lore == null) return false
+    when (type) {
+        BItemClass.GEAR -> {
+            if (this canBe BItemClass.ITEM) {
+                val identifier = itemMeta.lore[itemMeta.lore.size - 2]
+                if (identifier.contains(armorIdentifier) || identifier.contains(weaponIdentifier)) return true
+            }
+            return false
+        }
+
+        BItemClass.ARMOR -> {
+            if (this canBe BItemClass.GEAR) {
+                val identifier = itemMeta.lore[itemMeta.lore.size - 2]
+                if (identifier.contains(armorIdentifier)) return true
+            }
+            return false
+        }
+
+        BItemClass.WEAPON -> {
+            if (this canBe BItemClass.GEAR) {
+                val identifier = itemMeta.lore[itemMeta.lore.size - 2]
+                if (identifier.contains(weaponIdentifier)) return true
+            }
+            return false
+        }
+
+        BItemClass.ITEM -> {
+            TODO()
+        }
+    }
+    return false
 }
 
 infix fun Player.has(item: ItemStack): Boolean {

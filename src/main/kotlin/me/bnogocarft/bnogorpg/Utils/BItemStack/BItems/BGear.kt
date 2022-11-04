@@ -4,12 +4,17 @@ import me.bnogocarft.bnogorpg.Updater.Change.Change
 import me.bnogocarft.bnogorpg.Updater.Change.StatChange
 import me.bnogocarft.bnogorpg.Utils.BItemStack.Reforge
 import me.bnogocarft.bnogorpg.Utils.Database.BnogoSQL
+import me.bnogocarft.bnogorpg.Utils.EnchantUtils.BEnchantment
 import me.bnogocarft.bnogorpg.Utils.Exceptions.IllegalParameterException
 import me.bnogocarft.bnogorpg.Utils.ItemAbility.IAbility
 import me.bnogocarft.bnogorpg.Utils.StatUtils.ItemStat
+import me.bnogocarft.bnogorpg.Utils.glow
 import me.bnogocarft.bnogorpg.Utils.serializeItem
 import org.bukkit.ChatColor
+import org.bukkit.enchantments.Enchantment
 import org.bukkit.inventory.ItemStack
+import java.util.*
+import kotlin.collections.ArrayList
 
 open class BGear(item: ItemStack) : BItem(item) {
 
@@ -41,8 +46,10 @@ open class BGear(item: ItemStack) : BItem(item) {
 
     Rarity
      */
-    open val Item = item
+    override val item = item
     lateinit var initItem: ItemStack
+    private val enchantments = ArrayList<BEnchantment>()
+    private var enchantLine: Int = 0
     var id: Int = -1
         set(value) {
             field = value
@@ -91,69 +98,81 @@ open class BGear(item: ItemStack) : BItem(item) {
     private var idLine = 0
 
     init {
-        run {
-            if (item.itemMeta != null) {
-                this.initItem = item
-                val clore = item.itemMeta.lore
-                for (lore in item.itemMeta.lore) {
-                    if (lore.contains("${ChatColor.AQUA}ID: ")) {
-                        id = lore.split("ID: ")[1].toInt()
-                        idLine = clore.indexOf(lore)
+        if (item.itemMeta != null) {
+            this.initItem = item
+            val lore = item.itemMeta.lore
+            for (cLore in item.itemMeta.lore) {
+                if (cLore.contains("${ChatColor.BLUE}Enchantments:")) { // Gets the line that marks the start of enchantments
+                    enchantLine = cLore.indexOf(cLore) + 1
+                    var index =
+                        item.itemMeta.lore.indexOf(cLore) + 1 // Gets the index of the line after the marker above
+                    while (!(cLore[index].equals(""))) { // Loops through the enchants until it finds "" which is the seperator
+                        index++
+                        val enchantsInLine = cLore.split(", ")
+                        for (enchant in enchantsInLine) {
+                            //Enchants.add(EnchantUtils.parseEnchant(enchant))
+                            TODO("Add enchant parsing")
+                        }
                     }
-                    if (lore.contains("Level:")) {
-                        level = lore.split(": ${ChatColor.GRAY}")[1].toLong()
-                        exp = clore[clore.indexOf(lore) + 1].split(": ${ChatColor.GRAY}")[1].split("/")[0].toLong()
-                    }
-                    if (lore.contains("${ChatColor.YELLOW}${ChatColor.BOLD}SET BONUS: ")) {
-                        println(clore[clore.indexOf(lore)].split(": ${ChatColor.RESET}${ChatColor.RED}")[1])
-                        abilities.add(
-                            BItemUtils.getAbilityByName(
-                                clore[
-                                        clore.indexOf(lore)
-                                ].split(
-                                    ": ${ChatColor.RESET}${ChatColor.RED}"
-                                )[1]
-                            )
+                    continue
+                }
+                if (cLore.contains("${ChatColor.AQUA}ID: ")) {
+                    id = cLore.split("ID: ")[1].toInt()
+                    idLine = cLore.indexOf(cLore)
+                }
+                if (cLore.contains("Level:")) {
+                    level = cLore.split(": ${ChatColor.GRAY}")[1].toLong()
+                    exp = lore[lore.indexOf(cLore) + 1].split(": ${ChatColor.GRAY}")[1].split("/")[0].toLong()
+                }
+                if (cLore.contains("${ChatColor.YELLOW}${ChatColor.BOLD}SET BONUS: ")) {
+                    println(lore[lore.indexOf(cLore)].split(": ${ChatColor.RESET}${ChatColor.RED}")[1])
+                    abilities.add(
+                        BItemUtils.getAbilityByName(
+                            lore[
+                                    lore.indexOf(cLore)
+                            ].split(
+                                ": ${ChatColor.RESET}${ChatColor.RED}"
+                            )[1]
                         )
-                    }
+                    )
                 }
+            }
 
-                if (id == -1) {
-                    throw IllegalParameterException("Item does not have an ID Line")
-                }
+            if (id == -1) {
+                throw IllegalParameterException("Item does not have an ID Line")
+            }
 
-                reforge = try {
-                    Reforge.valueOf(item.itemMeta.displayName.split(" ")[0])
-                } catch (e: IllegalArgumentException) {
-                    Reforge.NONE
-                }
+            reforge = try {
+                Reforge.valueOf(item.itemMeta.displayName.split(" ")[0])
+            } catch (e: IllegalArgumentException) {
+                Reforge.NONE
+            }
 
-                val stringAbilityArray = ArrayList<String>()
-                for (ability in abilities) {
-                    stringAbilityArray.add("\"${ability}\"")
-                }
-                val beforeString = stringAbilityArray.joinToString(", ")
+            val stringAbilityArray = ArrayList<String>()
+            for (ability in abilities) {
+                stringAbilityArray.add("\"${ability}\"")
+            }
+            val beforeString = stringAbilityArray.joinToString(", ")
 
-                val affectedLines = BnogoSQL.con.prepareStatement(
-                    "UPDATE \"combatGear\" SET " +
-                            "\"stars\" = ${rarity!!.getStars()}, " +
-                            "\"name\" = '${item.itemMeta.displayName}', " +
-                            "\"itemStack\" = '${serializeItem(item)}', " +
-                            "\"abilities\" = ARRAY [$beforeString]::text[] " +
-                            "WHERE \"id\" = ${id} AND \"material\" = '$material';"
-                ).executeUpdate()
+            val affectedLines = BnogoSQL.con.prepareStatement(
+                "UPDATE \"combatGear\" SET " +
+                        "\"stars\" = ${rarity!!.getStars()}, " +
+                        "\"name\" = '${item.itemMeta.displayName}', " +
+                        "\"itemStack\" = '${serializeItem(item)}', " +
+                        "\"abilities\" = ARRAY [$beforeString]::text[] " +
+                        "WHERE \"id\" = ${id} AND \"material\" = '$material';"
+            ).executeUpdate()
 
-                if (affectedLines == 0) {
-                    BnogoSQL.con.prepareStatement(
-                        "INSERT INTO \"combatGear\" VALUES (" +
-                                "$id, " +
-                                "'$material', " +
-                                "${rarity!!.getStars()}, " +
-                                "'${item.itemMeta.displayName}', " +
-                                "'${serializeItem(item)}', " +
-                                "ARRAY [$beforeString]::text[]);"
-                    ).execute()
-                }
+            if (affectedLines == 0) {
+                BnogoSQL.con.prepareStatement(
+                    "INSERT INTO \"combatGear\" VALUES (" +
+                            "$id, " +
+                            "'$material', " +
+                            "${rarity!!.getStars()}, " +
+                            "'${item.itemMeta.displayName}', " +
+                            "'${serializeItem(item)}', " +
+                            "ARRAY [$beforeString]::text[]);"
+                ).execute()
             }
         }
     }
@@ -216,5 +235,41 @@ open class BGear(item: ItemStack) : BItem(item) {
                 }
             }
         }
+    }
+
+    fun addEnchant(enchant: BEnchantment) {
+        enchantments.add(enchant)
+        // checks if the item has no enchantments
+        if (item.itemMeta.lore[enchantLine] == "") {
+            item.itemMeta.lore.add(
+                enchantLine,
+                "${ChatColor.BLUE}${
+                    enchant.enchant.toString()
+                        .replace("_", " ").lowercase()
+                        .replaceFirstChar { if (it.isLowerCase()) it.titlecase(Locale.getDefault()) else it.toString() }
+                }"
+            )
+        } else {
+            while ("${item.itemMeta.lore[enchantLine].length}, ${ChatColor.BLUE}${
+                    enchant.enchant.toString()
+                        .replace("_", " ").lowercase()
+                        .replaceFirstChar { if (it.isLowerCase()) it.titlecase(Locale.getDefault()) else it.toString() }
+                }".length >= 32) { // If the old enchantments and the new enchantments in one string is longer than 32 chars
+                enchantLine++
+            }
+            item.itemMeta.lore[enchantLine] += ", ${ChatColor.BLUE}${
+                enchant.enchant.toString()
+                    .replace("_", " ").lowercase()
+                    .replaceFirstChar { if (it.isLowerCase()) it.titlecase(Locale.getDefault()) else it.toString() }
+            }"
+        }
+
+
+        if (item.containsEnchantment(Enchantment.ARROW_DAMAGE) ||
+            item.containsEnchantment(Enchantment.WATER_WORKER)
+        ) {
+            return
+        }
+        item.glow()
     }
 }

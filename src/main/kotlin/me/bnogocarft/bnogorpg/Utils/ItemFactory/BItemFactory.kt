@@ -18,6 +18,13 @@ import org.bukkit.Material
 import org.bukkit.inventory.ItemStack
 import org.bukkit.inventory.meta.LeatherArmorMeta
 
+val scrollIdentifier = "${ChatColor.GOLD}${ChatColor.ITALIC}Ability Scroll"
+val armorIdentifier = "${ChatColor.GOLD}${ChatColor.ITALIC}Armor"
+val weaponIdentifier = "${ChatColor.GOLD}${ChatColor.ITALIC}Weapon"
+val miscIdentifier = "${ChatColor.GOLD}${ChatColor.ITALIC}Misc"
+val talismanIdentifier = "${ChatColor.GOLD}${ChatColor.ITALIC}Talisman"
+
+
 data class FactoryItem(val name: String, val mat: Material, val type: BItemType) {
     val abilities = ArrayList<IAbility>()
     val customAbility = ArrayList<String>()
@@ -132,7 +139,7 @@ class BItemFactory {
                     lore.add("${ChatColor.YELLOW}Level: ${ChatColor.GRAY}0")
                     lore.add("${ChatColor.GREEN}EXP: ${ChatColor.GRAY}0/10")
                     lore.add("")
-                    lore.add("${ChatColor.GOLD}${ChatColor.ITALIC}Armor Item")
+                    lore.add(armorIdentifier)
 
                     lore.add(
                         when (item.rarity) {
@@ -188,7 +195,7 @@ class BItemFactory {
                     lore.add("${ChatColor.GREEN}EXP: ${ChatColor.GRAY}0/10")
 
                     lore.add("")
-                    lore.add("${ChatColor.GOLD}${ChatColor.ITALIC}Weapon")
+                    lore.add(weaponIdentifier)
 
                     lore.add(
                         when (item.rarity) {
@@ -225,7 +232,7 @@ class BItemFactory {
                     }
 
                     lore.add("")
-                    lore.add("${ChatColor.GOLD}${ChatColor.ITALIC}Talisman")
+                    lore.add(talismanIdentifier)
                     lore.add(
                         when (item.rarity) {
                             Rarity.COMMON -> "${ChatColor.GOLD}✪"
@@ -259,7 +266,7 @@ class BItemFactory {
                     lore.add("${ChatColor.GREEN}Spellcast Level Requirement: ${ChatColor.GRAY}${item.levelReq}")
                     lore.add("${ChatColor.GOLD}Rank: ${ChatColor.YELLOW}I")
                     lore.add("")
-                    lore.add("${ChatColor.GOLD}${ChatColor.ITALIC}Ability Scroll")
+                    lore.add(scrollIdentifier)
                     lore.add(
                         when (item.rarity) {
                             Rarity.COMMON -> "${ChatColor.GOLD}✪"
@@ -290,7 +297,7 @@ class BItemFactory {
                         lore.add(s)
                     }
                     lore.add("")
-                    lore.add("${ChatColor.GOLD}${ChatColor.ITALIC}Misc Item")
+                    lore.add(miscIdentifier)
                     lore.add(
                         when (item.rarity) {
                             Rarity.COMMON -> "${ChatColor.GOLD}✪"
@@ -333,7 +340,7 @@ class BItemFactory {
                                 for (s in ability.description) lore.add("${ChatColor.GRAY}$s")
                                 lore.add("")
                             }
-                            lore.add("${ChatColor.GOLD}${ChatColor.ITALIC}Weapon")
+                            lore.add(weaponIdentifier)
 
                             lore.add("${ChatColor.GOLD}${item.stats[12]}-${item.stats[13]} ✪Star✪")
 
@@ -347,7 +354,7 @@ class BItemFactory {
                                 lore.add(s)
                             }
                             lore.add("")
-                            lore.add("${ChatColor.GOLD}${ChatColor.ITALIC}Talisman")
+                            lore.add(talismanIdentifier)
 
                             lore.add("${ChatColor.GOLD}${item.stats[12]}-${item.stats[13]} ✪Star✪")
 
@@ -363,7 +370,7 @@ class BItemFactory {
                             lore.add("")
                             lore.add("${ChatColor.GREEN}Level Requirement: ${ChatColor.GRAY}${item.levelReq}")
                             lore.add("")
-                            lore.add("${ChatColor.GOLD}${ChatColor.ITALIC}Ability Scroll")
+                            lore.add(scrollIdentifier)
 
                             lore.add("${ChatColor.GOLD}${item.stats[0]}-${item.stats[1]} ✪Star✪")
 
@@ -387,7 +394,7 @@ class BItemFactory {
                                 for (s in ability.description) lore.add("${ChatColor.GRAY}$s")
                                 lore.add("")
                             }
-                            lore.add("${ChatColor.GOLD}${ChatColor.ITALIC}Armor Item")
+                            lore.add(armorIdentifier)
 
                             if (item.armorColor != null) {
                                 val colorMeta = meta as LeatherArmorMeta
@@ -406,7 +413,7 @@ class BItemFactory {
                                 lore.add(s)
                             }
                             lore.add("")
-                            lore.add("${ChatColor.GOLD}${ChatColor.ITALIC}Misc Item")
+                            lore.add(miscIdentifier)
                             lore.add("${ChatColor.GOLD}${item.stats[0]}-${item.stats[1]} ✪Star✪")
 
                             meta.lore = lore

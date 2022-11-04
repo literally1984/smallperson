@@ -38,4 +38,10 @@ enum class BEnchant {
     }
 }
 
-data class BEnchantment(val enchant: BEnchant, val level: Int)
+data class BEnchantment(val enchant: BEnchant, val level: Int) {
+    init {
+        if (level > enchant.getMaxLevel()) {
+            throw IllegalArgumentException("Level cannot be higher than the max level of the enchantment")
+        }
+    }
+}
