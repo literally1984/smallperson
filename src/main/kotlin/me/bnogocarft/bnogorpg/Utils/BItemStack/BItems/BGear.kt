@@ -16,7 +16,7 @@ import org.bukkit.inventory.ItemStack
 import java.util.*
 import kotlin.collections.ArrayList
 
-open class BGear(item: ItemStack) : BItem(item) {
+open class BGear(override val item: ItemStack) : BItem(item), Enchantable {
 
     constructor(stats: List<Int>, item: ItemStack) : this(item) {
         this.stats = ItemStat(stats, item)
@@ -46,10 +46,10 @@ open class BGear(item: ItemStack) : BItem(item) {
 
     Rarity
      */
-    override val item = item
     lateinit var initItem: ItemStack
-    private val enchantments = ArrayList<BEnchantment>()
-    private var enchantLine: Int = 0
+    override val enchantments: ArrayList<BEnchantment> = ArrayList()
+    override var enchantLine = 0
+    override val enchantImpl = EnchantImpl(this, item)
     var id: Int = -1
         set(value) {
             field = value
@@ -102,20 +102,7 @@ open class BGear(item: ItemStack) : BItem(item) {
             this.initItem = item
             val lore = item.itemMeta.lore
             for (cLore in item.itemMeta.lore) {
-                if (cLore.contains("${ChatColor.BLUE}Enchantments:")) { // Gets the line that marks the start of enchantments
-                    enchantLine = cLore.indexOf(cLore) + 1
-                    var index =
-                        item.itemMeta.lore.indexOf(cLore) + 1 // Gets the index of the line after the marker above
-                    while (!(cLore[index].equals(""))) { // Loops through the enchants until it finds "" which is the seperator
-                        index++
-                        val enchantsInLine = cLore.split(", ")
-                        for (enchant in enchantsInLine) {
-                            //Enchants.add(EnchantUtils.parseEnchant(enchant))
-                            TODO("Add enchant parsing")
-                        }
-                    }
-                    continue
-                }
+                enchantImpl.init(cLore)
                 if (cLore.contains("${ChatColor.AQUA}ID: ")) {
                     id = cLore.split("ID: ")[1].toInt()
                     idLine = cLore.indexOf(cLore)
@@ -237,39 +224,7 @@ open class BGear(item: ItemStack) : BItem(item) {
         }
     }
 
-    fun addEnchant(enchant: BEnchantment) {
-        enchantments.add(enchant)
-        // checks if the item has no enchantments
-        if (item.itemMeta.lore[enchantLine] == "") {
-            item.itemMeta.lore.add(
-                enchantLine,
-                "${ChatColor.BLUE}${
-                    enchant.enchant.toString()
-                        .replace("_", " ").lowercase()
-                        .replaceFirstChar { if (it.isLowerCase()) it.titlecase(Locale.getDefault()) else it.toString() }
-                }"
-            )
-        } else {
-            while ("${item.itemMeta.lore[enchantLine].length}, ${ChatColor.BLUE}${
-                    enchant.enchant.toString()
-                        .replace("_", " ").lowercase()
-                        .replaceFirstChar { if (it.isLowerCase()) it.titlecase(Locale.getDefault()) else it.toString() }
-                }".length >= 32) { // If the old enchantments and the new enchantments in one string is longer than 32 chars
-                enchantLine++
-            }
-            item.itemMeta.lore[enchantLine] += ", ${ChatColor.BLUE}${
-                enchant.enchant.toString()
-                    .replace("_", " ").lowercase()
-                    .replaceFirstChar { if (it.isLowerCase()) it.titlecase(Locale.getDefault()) else it.toString() }
-            }"
-        }
-
-
-        if (item.containsEnchantment(Enchantment.ARROW_DAMAGE) ||
-            item.containsEnchantment(Enchantment.WATER_WORKER)
-        ) {
-            return
-        }
-        item.glow()
+    override fun addEnchant(enchant: BEnchantment) {
+        enchantImpl.enchant(enchant)
     }
 }

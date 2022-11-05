@@ -16,18 +16,18 @@ enum class AbilityTrigger {
 
     fun getString(): String {
         return when (this) {
-            RIGHT_AIR -> "Right Air"
-            RIGHT_BLOCK -> "Right Block"
-            SHIFT_RIGHT_AIR -> "Shift Right Air"
-            LEFT_AIR -> "Left Air"
-            LEFT_BLOCK -> "Left Block"
-            SHIFT_LEFT_AIR -> "Shift Left Air"
+            RIGHT_AIR -> "Right Click Air"
+            RIGHT_BLOCK -> "Right Click Block"
+            SHIFT_RIGHT_AIR -> "Shift Right Click"
+            LEFT_AIR -> "Left Click Air"
+            LEFT_BLOCK -> "Left Click Block"
+            SHIFT_LEFT_AIR -> "Shift Left Click Air"
             SHIFT -> "Shift"
-            ATTACK -> "Damage"
+            ATTACK -> "On Attack"
             JUMP -> "Jump"
             SET_BONUS -> "Set Bonus"
             NONE -> "None"
-            HIT -> "On-Hit"
+            HIT -> "On Damaged"
         }
     }
 }

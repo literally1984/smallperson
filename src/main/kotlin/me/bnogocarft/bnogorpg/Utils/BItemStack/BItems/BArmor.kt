@@ -6,7 +6,7 @@ import me.bnogocarft.bnogorpg.Utils.Exceptions.IllegalParameterException
 import me.bnogocarft.bnogorpg.Utils.StatUtils.ItemStat
 import org.bukkit.inventory.ItemStack
 
-data class BArmor(override val Item: ItemStack) : BGear(Item) {
+data class BArmor(override val item: ItemStack) : BGear(item) {
 
     constructor(stats: List<Int>, item: ItemStack) : this(item) {
         this.stats = ItemStat(stats, item)

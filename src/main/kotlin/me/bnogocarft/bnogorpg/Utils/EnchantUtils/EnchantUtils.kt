@@ -1,6 +1,7 @@
 package me.bnogocarft.bnogorpg.Utils.EnchantUtils
 
 import me.bnogocarft.bnogorpg.Utils.BItemStack.BItems.BItem
+import me.bnogocarft.bnogorpg.Utils.BItemStack.BItems.Enchantable
 
 val enchants = arrayListOf(BEnchant.BANE_OF_ARTHROPODS, BEnchant.UNBREAKING)
 
@@ -10,7 +11,7 @@ class EnchantUtils {
             TODO()
         }
 
-        fun generateEnchantsFor(item: BItem): List<BEnchantment> {
+        fun generateEnchantsFor(enchantable: Enchantable): List<BEnchantment> {
             val returnList = ArrayList<BEnchantment>()
 
             return returnList
