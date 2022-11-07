@@ -1,6 +1,6 @@
 package me.bnogocarft.bnogorpg.Particle
 
-import me.bnogocarft.bnogorpg.Utils.Particle.HelixAnimation
+import me.bnogocarft.bnogorpg.utils.Particle.HelixAnimation
 import org.bukkit.command.Command
 import org.bukkit.command.CommandExecutor
 import org.bukkit.command.CommandSender

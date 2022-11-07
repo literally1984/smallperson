@@ -1,9 +1,9 @@
 package me.bnogocarft.bnogorpg.Listeners
 
 import me.bnogocarft.bnogorpg.Main
-import me.bnogocarft.bnogorpg.Utils.BItemStack.BItems.BItemUtils
-import me.bnogocarft.bnogorpg.Utils.BItemStack.BMaterial
-import me.bnogocarft.bnogorpg.Utils.BPlayer.OnlineBPlayers
+import me.bnogocarft.bnogorpg.utils.BItemStack.BItems.BItemUtils
+import me.bnogocarft.bnogorpg.utils.BItemStack.BMaterial
+import me.bnogocarft.bnogorpg.utils.BPlayer.OnlineBPlayers
 import org.bukkit.Bukkit
 import org.bukkit.ChatColor
 import org.bukkit.GameMode

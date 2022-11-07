@@ -1,6 +1,6 @@
 package me.bnogocarft.bnogorpg.Listeners
 
-import me.bnogocarft.bnogorpg.Utils.CustomEvents.ArmorWearEvent
+import me.bnogocarft.bnogorpg.utils.CustomEvents.ArmorWearEvent
 import org.bukkit.event.EventHandler
 import org.bukkit.event.EventPriority
 import org.bukkit.event.Listener

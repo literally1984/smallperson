@@ -1,7 +1,7 @@
 package me.bnogocarft.bnogorpg.economy.Auction
 
 import me.bnogocarft.bnogorpg.Main
-import me.bnogocarft.bnogorpg.Utils.guis
+import me.bnogocarft.bnogorpg.utils.guis
 import org.bukkit.Bukkit
 import org.bukkit.event.EventHandler
 import org.bukkit.event.Listener

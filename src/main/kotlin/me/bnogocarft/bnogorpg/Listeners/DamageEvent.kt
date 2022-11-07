@@ -4,7 +4,7 @@ import me.bnogocarft.bnogorpg.Main
 import me.bnogocarft.bnogorpg.Player.PlayerBar.Bar
 import me.bnogocarft.bnogorpg.Player.PlayerBar.CombatLogBar
 import me.bnogocarft.bnogorpg.Player.PlayerBar.ComboBar
-import me.bnogocarft.bnogorpg.Utils.BPlayer.OnlineBPlayers
+import me.bnogocarft.bnogorpg.utils.BPlayer.OnlineBPlayers
 import me.bnogocarft.bnogorpg.combat.CombatLog.CombatLog
 import me.bnogocarft.bnogorpg.combat.CombatLog.CombatLogTimer
 import me.bnogocarft.bnogorpg.combat.ComboCounter.Combo

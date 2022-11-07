@@ -1,7 +1,7 @@
 package me.bnogocarft.bnogorpg.Listeners
 
-import me.bnogocarft.bnogorpg.Utils.BPlayer.OnlineBPlayers
-import me.bnogocarft.bnogorpg.Utils.others.PlaytimeUtils
+import me.bnogocarft.bnogorpg.utils.BPlayer.OnlineBPlayers
+import me.bnogocarft.bnogorpg.utils.others.PlaytimeUtils
 import org.bukkit.event.EventHandler
 import org.bukkit.event.Listener
 import org.bukkit.event.player.PlayerQuitEvent

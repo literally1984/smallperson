@@ -1,7 +1,7 @@
 package me.bnogocarft.bnogorpg.ItemUpgrade
 
-import me.bnogocarft.bnogorpg.Utils.*
-import me.bnogocarft.bnogorpg.Utils.BItemStack.BItems.BItemUtils
+import me.bnogocarft.bnogorpg.utils.*
+import me.bnogocarft.bnogorpg.utils.BItemStack.BItems.BItemUtils
 import org.bukkit.Bukkit
 import org.bukkit.ChatColor
 import org.bukkit.Color

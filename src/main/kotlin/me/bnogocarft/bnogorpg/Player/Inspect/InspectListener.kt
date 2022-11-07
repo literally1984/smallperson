@@ -1,7 +1,7 @@
 package me.bnogocarft.bnogorpg.Player.Inspect
 
-import me.bnogocarft.bnogorpg.Utils.BPlayer.bPlayer
-import me.bnogocarft.bnogorpg.Utils.guis
+import me.bnogocarft.bnogorpg.utils.BPlayer.bPlayer
+import me.bnogocarft.bnogorpg.utils.guis
 import org.bukkit.entity.Player
 import org.bukkit.event.EventHandler
 import org.bukkit.event.Listener

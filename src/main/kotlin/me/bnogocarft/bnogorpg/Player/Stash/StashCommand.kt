@@ -1,6 +1,6 @@
 package me.bnogocarft.bnogorpg.Player.Stash
 
-import me.bnogocarft.bnogorpg.Utils.BPlayer.OnlineBPlayers
+import me.bnogocarft.bnogorpg.utils.BPlayer.OnlineBPlayers
 import org.bukkit.Bukkit
 import org.bukkit.ChatColor
 import org.bukkit.command.Command

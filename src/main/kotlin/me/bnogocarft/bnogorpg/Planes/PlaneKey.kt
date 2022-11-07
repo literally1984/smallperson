@@ -1,8 +1,8 @@
 package me.bnogocarft.bnogorpg.Planes
 
 import me.bnogocarft.bnogorpg.Main
-import me.bnogocarft.bnogorpg.Utils.Abilities.getYawFromVector
-import me.bnogocarft.bnogorpg.Utils.ItemFactory.BItemFactory
+import me.bnogocarft.bnogorpg.utils.Abilities.getYawFromVector
+import me.bnogocarft.bnogorpg.utils.ItemFactory.BItemFactory
 import org.bukkit.Bukkit
 import org.bukkit.ChatColor
 import org.bukkit.Location

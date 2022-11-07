@@ -1,7 +1,7 @@
 package me.bnogocarft.bnogorpg.Listeners
 
 import me.bnogocarft.bnogorpg.Main.Companion.spawnZones
-import me.bnogocarft.bnogorpg.Utils.*
+import me.bnogocarft.bnogorpg.utils.*
 import org.bukkit.event.EventHandler
 import org.bukkit.event.Listener
 import org.bukkit.event.entity.CreatureSpawnEvent

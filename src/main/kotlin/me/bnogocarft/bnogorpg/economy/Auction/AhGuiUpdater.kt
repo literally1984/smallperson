@@ -3,7 +3,8 @@
 package me.bnogocarft.bnogorpg.economy.Auction
 
 import me.bnogocarft.bnogorpg.Main
-import me.bnogocarft.bnogorpg.Utils.economyUtils.auction.*
+import me.bnogocarft.bnogorpg.utils.Economy.auction.*
+import me.bnogocarft.bnogorpg.utils.economyUtils.auction.*
 import org.bukkit.Bukkit
 import org.bukkit.ChatColor
 import org.bukkit.Material

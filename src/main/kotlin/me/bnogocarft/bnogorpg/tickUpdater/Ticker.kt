@@ -1,8 +1,8 @@
 package me.bnogocarft.bnogorpg.tickUpdater
 
 import me.bnogocarft.bnogorpg.Main
-import me.bnogocarft.bnogorpg.Utils.BPlayer.OnlineBPlayers
-import me.bnogocarft.bnogorpg.Utils.BPlayer.bPlayer
+import me.bnogocarft.bnogorpg.utils.BPlayer.OnlineBPlayers
+import me.bnogocarft.bnogorpg.utils.BPlayer.bPlayer
 import org.bukkit.Bukkit
 import org.bukkit.ChatColor
 import org.bukkit.entity.Player
