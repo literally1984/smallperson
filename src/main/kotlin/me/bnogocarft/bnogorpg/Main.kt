@@ -11,6 +11,7 @@ import com.comphenix.protocol.wrappers.nbt.NbtFactory
 import me.bnogocarft.bnogorpg.items.*
 import me.bnogocarft.bnogorpg.items.DefaultItems.DefaultOverrider
 import me.bnogocarft.bnogorpg.Enchants.EnchantListeners
+import me.bnogocarft.bnogorpg.Events.BloodMoon
 import me.bnogocarft.bnogorpg.ItemUpgrade.UpgradeCMD
 import me.bnogocarft.bnogorpg.ItemUpgrade.UpgradeUtils
 import me.bnogocarft.bnogorpg.Listeners.*
@@ -90,6 +91,14 @@ class Main : JavaPlugin() {
         lateinit var input: SignInputer
         val registeredAbilities = ArrayList<IAbility>()
         var isBloodMoon = false
+            set(value) {
+                field = value
+                if (value) {
+                    Bukkit.broadcastMessage("${ChatColor.RED}${ChatColor.BOLD}Blood Moon has started!")
+                } else {
+                    Bukkit.broadcastMessage("${ChatColor.RED}${ChatColor.BOLD}Blood Moon has ended!")
+                }
+            }
 
         private val ring1 = SpawnRing(
             baseSpawnArea, 250f, -250f, arrayListOf(
@@ -276,23 +285,9 @@ class Main : JavaPlugin() {
         FireballSpell.init()
         MeteorSpell.init()
         cSender.sendMessage("$logo Spells enabled")
-
-        /*ProtocolLibrary.getProtocolManager().addPacketListener(object : PacketAdapter(
-            this, ConnectionSide.SERVER_SIDE, ListenerPriority.HIGH,
-            Packets.Server.SET_SLOT, Packets.Server.WINDOW_ITEMS
-        ) {
-            override fun onPacketSending(event: PacketEvent) {
-                if (event.packetID == Packets.Server.SET_SLOT) {
-                    if (event.packet.itemModifier.read(0) != null) {
-                        addGlow(arrayOf(event.packet.itemModifier.read(0)))
-                    }
-                } else {
-                    if (event.packet.itemArrayModifier.read(0) != null) {
-                        addGlow(event.packet.itemArrayModifier.read(0))
-                    }
-                }
-            }
-        })*/
+        cSender.sendMessage("$logo Starting events...")
+        BloodMoon.startListener()
+        cSender.sendMessage("$logo Events enabled")
 
         protocolManager.addPacketListener(
             object : PacketAdapter(
