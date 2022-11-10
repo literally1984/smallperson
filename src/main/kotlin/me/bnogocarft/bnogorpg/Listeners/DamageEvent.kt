@@ -18,10 +18,12 @@ class DamageEvent : Listener {
             // If the damager is a player
             if (damager is Player) {
                 val bDamager = damager.bPlayer()
+                bDamager.bars
                 // If the player is in PVP
                 if (victim is Player) {
                     val bVictim = victim.bPlayer()
-                    bDamager.bars.add(CombatLogBar(bVictim))
+                    bDamager.bars.add(CombatLogBar(bDamager))
+                    bVictim.bars.add(CombatLogBar(bVictim))
                 }
             }
         }

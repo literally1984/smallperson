@@ -15,10 +15,17 @@ data class ComboBar(val player: OnlineBPlayer) : Bar {
     override var health = 300
 
     init {
-        Bukkit.getScheduler().scheduleSyncRepeatingTask(Main.instance, {
+        var id = 0
+        id = Bukkit.getScheduler().scheduleSyncRepeatingTask(Main.instance, {
+            if (timeLeft <= 0) {
+                player.bars.remove(this)
+                Bukkit.getScheduler().cancelTask(id)
+            }
             timeLeft -= 0.05f
-            player.bar.health = health
-            player.bar.text = name
+            if (player.bars.current() == this) {
+                player.bar.health = health
+                player.bar.text = name
+            }
         }, 0, 1)
     }
 }
