@@ -10,6 +10,7 @@ import org.bukkit.enchantments.Enchantment
 import org.bukkit.entity.Entity
 import org.bukkit.entity.LivingEntity
 import org.bukkit.entity.Player
+import org.bukkit.event.player.PlayerInteractEvent
 import org.bukkit.inventory.ItemStack
 
 fun ItemStack.glow(): ItemStack {
@@ -28,10 +29,10 @@ enum class BItemClass {
 
 infix fun ItemStack.canBe(type: BItemClass): Boolean {
     if (!hasItemMeta() && itemMeta.lore == null) return false
+    val identifier = itemMeta.lore[itemMeta.lore.size - 2]
     when (type) {
         BItemClass.GEAR -> {
             if (this canBe BItemClass.ITEM) {
-                val identifier = itemMeta.lore[itemMeta.lore.size - 2]
                 if (identifier.contains(armorIdentifier) || identifier.contains(weaponIdentifier)) return true
             }
             return false
@@ -39,7 +40,6 @@ infix fun ItemStack.canBe(type: BItemClass): Boolean {
 
         BItemClass.ARMOR -> {
             if (this canBe BItemClass.GEAR) {
-                val identifier = itemMeta.lore[itemMeta.lore.size - 2]
                 if (identifier.contains(armorIdentifier)) return true
             }
             return false
@@ -47,14 +47,12 @@ infix fun ItemStack.canBe(type: BItemClass): Boolean {
 
         BItemClass.WEAPON -> {
             if (this canBe BItemClass.GEAR) {
-                val identifier = itemMeta.lore[itemMeta.lore.size - 2]
                 if (identifier.contains(weaponIdentifier)) return true
             }
             return false
         }
 
         BItemClass.ITEM -> {
-            val identifier = itemMeta.lore[itemMeta.lore.size - 2]
             return identifier.contains(weaponIdentifier) ||
                     identifier.contains(talismanIdentifier) ||
                     identifier.contains(armorIdentifier) ||
@@ -64,14 +62,12 @@ infix fun ItemStack.canBe(type: BItemClass): Boolean {
 
         BItemClass.TALISMAN -> {
             if (this canBe BItemClass.MAGIC_ITEM) {
-                val identifier = itemMeta.lore[itemMeta.lore.size - 2]
                 if (identifier.contains(talismanIdentifier)) return true
             }
             return false
         }
         BItemClass.SCROLL -> {
             if (this canBe BItemClass.MAGIC_ITEM) {
-                val identifier = itemMeta.lore[itemMeta.lore.size - 2]
                 if (identifier.contains(scrollIdentifier)) return true
             }
             return false
@@ -85,8 +81,12 @@ infix fun ItemStack.canBe(type: BItemClass): Boolean {
             }
             return false
         }
-        BItemClass.MISC -> TODO()
-        BItemClass.MAGIC_ITEM -> TODO()
+        BItemClass.MISC -> {
+            if (identifier.contains(miscIdentifier)) return true
+        }
+        BItemClass.MAGIC_ITEM -> {
+            if (this canBe BItemClass.TALISMAN || this canBe BItemClass.SCROLL) return true
+        }
     }
     return false
 }
@@ -207,4 +207,19 @@ fun Entity.setGear(slot: Int, item: ItemStack) {
         4 -> equipment.boots = item
         5 -> equipment.itemInHand = item
     }
+}
+
+fun getExpAtLevel(level: Int): Int {
+    return if (level <= 16) {
+        (Math.pow(level.toDouble(), 2.0) + 6 * level).toInt()
+    } else if (level <= 31) {
+        (2.5 * Math.pow(level.toDouble(), 2.0) - 40.5 * level + 360.0).toInt()
+    } else {
+        (4.5 * Math.pow(level.toDouble(), 2.0) - 162.5 * level + 2220.0).toInt()
+    }
+}
+
+val currentlyClicking = HashMap<Player, PlayerInteractEvent>()
+fun PlayerInteractEvent.onStop(handler: (playerInteractEvent: PlayerInteractEvent) -> Unit) {
+
 }

@@ -19,6 +19,7 @@ import org.bukkit.GameMode
 import org.bukkit.Material
 import org.bukkit.entity.LivingEntity
 import org.bukkit.entity.Player
+import org.bukkit.event.Event
 import org.bukkit.event.player.PlayerEvent
 import org.bukkit.inventory.Inventory
 import org.bukkit.inventory.ItemStack
@@ -35,22 +36,43 @@ import kotlin.math.roundToInt
 data class OnlineBPlayer(val p: Player) : BPlayer(p.name) {
     private val playerStats = StatManager.calculateStats(p)
 
+    var isRightClicking = false
+
+    /**
+     * The Player's EXP animation progress bar manager for charging attacks etc
+     */
+    val chargeBar = ChargeBar(this)
+
     /**
      * The server time in which the player joined
      */
     var joinTime: String
 
+    /**
+     * The Player's currently displayed bossbar, defaults to default server text
+     */
     val bar = BossBar(p)
-    var bars = BarArrayList()
-    var currentBar: Bar = MainBar()
 
+    /**
+     * A modified version of an ArrayList that works similar to a stack,
+     * constantly displaying the top of the list which is being sorted by priority
+     */
+    var bars = BarArrayList(this)
+
+    /**
+     * The Player's currently active combo if there is one
+     */
     var combo: Combo? = null
+
+    /**
+     * The Player's current armor set Bonus
+     */
     var currentSetBonus = object : SetBonus {
         override val type = AbilityTrigger.NONE
         override val description = ArrayList<String>()
         override val name = "placeholder"
 
-        override fun cast(caster: Player, abilityEvent: PlayerEvent) {
+        override fun cast(caster: Player, abilityEvent: Event) {
         }
     }
 
@@ -61,8 +83,19 @@ data class OnlineBPlayer(val p: Player) : BPlayer(p.name) {
      */
     var mode: Mode = Mode.NONE
 
+    /**
+     * The Player's regular hotbar, used for combat mode switching
+     */
     val regHotbar = arrayListOf<ItemStack?>(null, null, null, null, null, null, null, null, null)
+
+    /**
+     * A hashmap linking ItemStacks to spells in the player's hotbar in combat mode
+     */
     val spellItemMap = HashMap<ItemStack, Spell>()
+
+    /**
+     * The Player's skull item
+     */
     val skull = ItemStack(Material.SKULL)
     val onDamage = ArrayList<DamageHandler>()
     var isInCastMode = false
@@ -119,18 +152,15 @@ data class OnlineBPlayer(val p: Player) : BPlayer(p.name) {
     val metadata = HashMap<String, Any>()
 
     init {
+        Bukkit.getScheduler().scheduleSyncRepeatingTask(Main.instance, {
+            isRightClicking = false
+        }, 0, 3)
         bars.add(MainBar())
-        metadata["combatLogged"] = config.getBoolean("o.cl")
 
         val now = Date()
         val format = SimpleDateFormat("dd-MM-yyyy HH:mm:ss")
         joinTime = format.format(now)
 
-        try {
-            config.set("o.cl", metadata["combatLogged"])
-        } catch (e: NullPointerException) {
-            config.set("o.cl", false)
-        }
         val skullMeta = Bukkit.getItemFactory().getItemMeta(Material.SKULL)
         skullMeta.displayName = "$player's Profile"
         skull.itemMeta = skullMeta

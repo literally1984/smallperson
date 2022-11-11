@@ -1,5 +1,6 @@
 package me.bnogocarft.bnogorpg.utils
 
+import me.bnogocarft.bnogorpg.utils.BPlayer.OnlineBPlayer
 import org.bukkit.ChatColor
 
 
@@ -50,7 +51,7 @@ fun makeRoman(Int: Int): String? {
     return res
 }
 
-fun repeat(s: String?, n: Int): String? {
+private fun repeat(s: String?, n: Int): String? {
     if (s == null) {
         return null
     }
