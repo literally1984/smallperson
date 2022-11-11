@@ -12,6 +12,7 @@ import me.bnogocarft.bnogorpg.items.*
 import me.bnogocarft.bnogorpg.items.DefaultItems.DefaultOverrider
 import me.bnogocarft.bnogorpg.Enchants.EnchantListeners
 import me.bnogocarft.bnogorpg.Events.BloodMoon
+import me.bnogocarft.bnogorpg.Events.BloodMoonCommand
 import me.bnogocarft.bnogorpg.ItemUpgrade.UpgradeCMD
 import me.bnogocarft.bnogorpg.ItemUpgrade.UpgradeUtils
 import me.bnogocarft.bnogorpg.Listeners.*
@@ -94,7 +95,7 @@ class Main : JavaPlugin() {
             set(value) {
                 field = value
                 if (value) {
-                    Bukkit.broadcastMessage("${ChatColor.RED}${ChatColor.BOLD}Blood Moon has started!")
+                    Bukkit.broadcastMessage("${ChatColor.RED}${ChatColor.BOLD}Blood Moon has risen! Stay at your bases!")
                 } else {
                     Bukkit.broadcastMessage("${ChatColor.RED}${ChatColor.BOLD}Blood Moon has ended!")
                 }
@@ -200,6 +201,7 @@ class Main : JavaPlugin() {
         server.pluginManager.registerEvents(SpellCastListener(), this)
         server.pluginManager.registerEvents(InspectListener(), this)
         server.pluginManager.registerEvents(SpawnListeners(), this)
+        server.pluginManager.registerEvents(ExpListeners(), this)
         cSender.sendMessage("$logo Registered Listeners")
 
         cSender.sendMessage("$logo Enabling ItemUpgrades...")
@@ -254,6 +256,7 @@ class Main : JavaPlugin() {
         getCommand("scroll").executor = GiveScrollCommand()
         getCommand("stat").executor = StatCommands()
         getCommand("test").executor = TestCommand()
+        getCommand("bloodmoon").executor = BloodMoonCommand()
         cSender.sendMessage("$logo all commands are enabled!")
 
         cSender.sendMessage("$logo Registering custom ItemStacks...")

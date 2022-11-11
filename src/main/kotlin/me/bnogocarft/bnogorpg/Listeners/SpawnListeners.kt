@@ -1,5 +1,6 @@
 package me.bnogocarft.bnogorpg.Listeners
 
+import me.bnogocarft.bnogorpg.Main
 import me.bnogocarft.bnogorpg.Main.Companion.spawnZones
 import me.bnogocarft.bnogorpg.utils.*
 import org.bukkit.event.EventHandler
@@ -14,7 +15,11 @@ class SpawnListeners : Listener {
                 is SpawnRing -> {
                     if (e.location.isInSpawnRing(zone)) {
                         val entity = e.entity.type
-                        for (mobIndex in 0..zone.mobAmount) {
+                        var amount = zone.mobAmount
+                        if (Main.isBloodMoon) {
+                            amount *= 4
+                        }
+                        for (mobIndex in 0..amount) {
                             val spawnedEntity = e.location.world.spawnEntity(e.location, entity)
                             for (slot in 1..5) {
                                 if (zone.gear[slot - 1] != null) {
@@ -30,7 +35,11 @@ class SpawnListeners : Listener {
                 is SpawnEdge -> {
                     if (e.location.isInSpawnEdge(zone)) {
                         val entity = e.entity.type
-                        for (mobIndex in 0..zone.mobAmount) {
+                        var amount = zone.mobAmount
+                        if (Main.isBloodMoon) {
+                            amount *= 4
+                        }
+                        for (mobIndex in 0..amount) {
                             val spawnedEntity = e.location.world.spawnEntity(e.location, entity)
                             for (slot in 1..5) {
                                 if (zone.gear[slot - 1] != null) {

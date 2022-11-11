@@ -1,10 +1,14 @@
 package me.bnogocarft.bnogorpg.utils.enchants
 
 import me.bnogocarft.bnogorpg.utils.*
+import me.bnogocarft.bnogorpg.utils.BItemStack.BItems.BGear
 import me.bnogocarft.bnogorpg.utils.BItemStack.BItems.BItem
+import me.bnogocarft.bnogorpg.utils.BItemStack.BItems.Enchantable
+import me.bnogocarft.bnogorpg.utils.BItemStack.BItems.Talisman
 import org.bukkit.Bukkit
 import org.bukkit.ChatColor
 import org.bukkit.Material
+import org.bukkit.inventory.Inventory
 import org.bukkit.inventory.ItemStack
 import java.util.*
 import kotlin.collections.ArrayList
@@ -12,6 +16,7 @@ import kotlin.collections.ArrayList
 class EnchantGUI {
     companion object {
         val noItem = ItemStack(Material.BOOK)
+        lateinit var gui: Inventory
     }
 
     init {
@@ -51,9 +56,15 @@ class EnchantGUI {
             13
         ) {
             if (it.currentItem != null && it.inv.getItem(13) == null) {
+                val item = it.currentItem!!
                 // Checks if the Item is a BItem
-                if (it.currentItem!!.hasItemMeta()) {
-                    TODO("Check if item is a BItem")
+                if (!(it.currentItem!! canBe BItemClass.ENCHANTABLE)) {
+                    return@SlotFunction
+                }
+                val bItem: Enchantable = if (item canBe BItemClass.TALISMAN) {
+                    Talisman(item)
+                } else {
+                    BGear(item)
                 }
 
                 // Changes the enchant buttons
@@ -66,11 +77,11 @@ class EnchantGUI {
 
                 val itemList = arrayListOf(newEnchant1, newEnchant2, newEnchant3)
 
-                val enchants = EnchantUtils.generateEnchantsFor(BItem(it.currentItem!!))
+                val enchants = EnchantUtils.generateEnchantsFor(bItem)
 
                 for ((index, item) in itemList.withIndex()) {
                     item.itemMeta.displayName = "${ChatColor.GREEN}${
-                        enchants[index].enchant.toString().replace(
+                        enchants[index].name.replace(
                                                 "_", " "
                                             ).lowercase()
                             .replaceFirstChar { if (it.isLowerCase()) it.titlecase(Locale.getDefault()) else it.toString() }

@@ -2,13 +2,14 @@ package me.bnogocarft.bnogorpg.utils.enchants.enchantments
 
 import me.bnogocarft.bnogorpg.utils.enchants.BEnchantment
 import me.bnogocarft.bnogorpg.utils.enchants.DamageBoostEnchant
+import org.bukkit.entity.Skeleton
+import org.bukkit.entity.Zombie
 import org.bukkit.event.Event
 import org.bukkit.event.entity.EntityDamageByEntityEvent
-import org.bukkit.event.entity.EntityDamageEvent
 import org.bukkit.event.entity.EntityEvent
 
-data class Sharpness(override val level: Int) : BEnchantment, DamageBoostEnchant {
-    override val name = "SHARPNESS"
+data class Smite(override val level: Int) : BEnchantment, DamageBoostEnchant {
+    override val name = "SMITE"
     override val maxLevel = 10
     override val extraDamage = when (level) {
         1 -> 3

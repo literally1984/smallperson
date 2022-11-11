@@ -19,4 +19,8 @@ data class BarArrayList(val player: OnlineBPlayer) : ArrayList<Bar>() {
         player.bar.text = this[this.lastIndex].name
         return true
     }
+
+    fun current(): Bar {
+        return this[this.lastIndex]
+    }
 }
