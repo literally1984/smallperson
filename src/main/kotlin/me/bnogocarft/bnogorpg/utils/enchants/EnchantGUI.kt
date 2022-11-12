@@ -2,7 +2,6 @@ package me.bnogocarft.bnogorpg.utils.enchants
 
 import me.bnogocarft.bnogorpg.utils.*
 import me.bnogocarft.bnogorpg.utils.BItemStack.BItems.BGear
-import me.bnogocarft.bnogorpg.utils.BItemStack.BItems.BItem
 import me.bnogocarft.bnogorpg.utils.BItemStack.BItems.Enchantable
 import me.bnogocarft.bnogorpg.utils.BItemStack.BItems.Talisman
 import org.bukkit.Bukkit
@@ -11,7 +10,6 @@ import org.bukkit.Material
 import org.bukkit.inventory.Inventory
 import org.bukkit.inventory.ItemStack
 import java.util.*
-import kotlin.collections.ArrayList
 
 class EnchantGUI {
     companion object {
@@ -82,8 +80,8 @@ class EnchantGUI {
                 for ((index, item) in itemList.withIndex()) {
                     item.itemMeta.displayName = "${ChatColor.GREEN}${
                         enchants[index].name.replace(
-                                                "_", " "
-                                            ).lowercase()
+                            "_", " "
+                        ).lowercase()
                             .replaceFirstChar { if (it.isLowerCase()) it.titlecase(Locale.getDefault()) else it.toString() }
                     } ${makeRoman(enchants[index].level)}"
                 }

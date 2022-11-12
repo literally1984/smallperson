@@ -32,7 +32,7 @@ class ComboTimer(p: OnlineBPlayer) : BukkitRunnable() {
             if (bar2 is ComboBar) {
                 bar.health -= 4
                 print("subtracted")
-                if (player.currentBar is ComboBar) {
+                if (player.bars.current is ComboBar) {
                     player.bar.health = bar2.health
                     player.bar.text = bar2.name
                 }

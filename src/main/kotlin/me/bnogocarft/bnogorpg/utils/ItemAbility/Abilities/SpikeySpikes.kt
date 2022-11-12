@@ -5,7 +5,10 @@ import me.bnogocarft.bnogorpg.utils.Abilities.ItemAbility.AbilityTrigger
 import me.bnogocarft.bnogorpg.utils.Armorset.SetBonus
 import me.bnogocarft.bnogorpg.utils.BPlayer.bPlayer
 import org.bukkit.entity.Player
+import org.bukkit.event.Event
+import org.bukkit.event.entity.EntityEvent
 import org.bukkit.event.player.PlayerEvent
+import java.util.EventListener
 
 class SpikeySpikes : SetBonus {
     override val description: ArrayList<String> = arrayListOf(
@@ -14,9 +17,10 @@ class SpikeySpikes : SetBonus {
         "reflected back to them."
     )
     override val name: String = "Spiky Spikes"
+
     override val type: AbilityTrigger = AbilityTrigger.HIT
 
-    override fun cast(caster: Player, abilityEvent: PlayerEvent) {
+    override fun cast(caster: Player, abilityEvent: Event) {
         caster.bPlayer().onDamage.add {
             val e = it
             if (e.damager is Player) {

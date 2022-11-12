@@ -4,10 +4,10 @@ import me.bnogocarft.bnogorpg.Updater.Change.Change
 import me.bnogocarft.bnogorpg.Updater.Change.StatChange
 import me.bnogocarft.bnogorpg.utils.BItemStack.Reforge
 import me.bnogocarft.bnogorpg.utils.Database.BnogoSQL
-import me.bnogocarft.bnogorpg.utils.enchants.BEnchantment
 import me.bnogocarft.bnogorpg.utils.Exceptions.IllegalParameterException
 import me.bnogocarft.bnogorpg.utils.ItemAbility.IAbility
 import me.bnogocarft.bnogorpg.utils.StatUtils.ItemStat
+import me.bnogocarft.bnogorpg.utils.enchants.BEnchantment
 import me.bnogocarft.bnogorpg.utils.serializeItem
 import org.bukkit.ChatColor
 import org.bukkit.inventory.ItemStack

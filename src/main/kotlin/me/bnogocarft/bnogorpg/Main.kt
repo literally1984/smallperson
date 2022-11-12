@@ -8,16 +8,12 @@ import com.comphenix.protocol.events.PacketAdapter
 import com.comphenix.protocol.events.PacketEvent
 import com.comphenix.protocol.wrappers.nbt.NbtCompound
 import com.comphenix.protocol.wrappers.nbt.NbtFactory
-import me.bnogocarft.bnogorpg.items.*
-import me.bnogocarft.bnogorpg.items.DefaultItems.DefaultOverrider
 import me.bnogocarft.bnogorpg.Enchants.EnchantListeners
 import me.bnogocarft.bnogorpg.Events.BloodMoon
 import me.bnogocarft.bnogorpg.Events.BloodMoonCommand
 import me.bnogocarft.bnogorpg.ItemUpgrade.UpgradeCMD
 import me.bnogocarft.bnogorpg.ItemUpgrade.UpgradeUtils
 import me.bnogocarft.bnogorpg.Listeners.*
-import me.bnogocarft.bnogorpg.miscCommands.GiveCommand
-import me.bnogocarft.bnogorpg.miscCommands.PlayTimeCommand
 import me.bnogocarft.bnogorpg.Particle.animationTestCommand
 import me.bnogocarft.bnogorpg.Planes.PlaneKeyItem
 import me.bnogocarft.bnogorpg.Planes.PlaneListeners
@@ -26,6 +22,16 @@ import me.bnogocarft.bnogorpg.Planes.removeScheduler
 import me.bnogocarft.bnogorpg.Player.Inspect.InspectListener
 import me.bnogocarft.bnogorpg.Player.Stash.StashCommand
 import me.bnogocarft.bnogorpg.Player.Stash.StashListener
+import me.bnogocarft.bnogorpg.Test.TestCommand
+import me.bnogocarft.bnogorpg.Updater.Updates.Update
+import me.bnogocarft.bnogorpg.economy.Auction.AHGui
+import me.bnogocarft.bnogorpg.economy.Auction.AhGuiUpdater
+import me.bnogocarft.bnogorpg.economy.Auction.AuctionCommand
+import me.bnogocarft.bnogorpg.economy.Auction.AuctionListeners
+import me.bnogocarft.bnogorpg.items.*
+import me.bnogocarft.bnogorpg.items.DefaultItems.DefaultOverrider
+import me.bnogocarft.bnogorpg.miscCommands.GiveCommand
+import me.bnogocarft.bnogorpg.miscCommands.PlayTimeCommand
 import me.bnogocarft.bnogorpg.recipe.RecipeBookCommand
 import me.bnogocarft.bnogorpg.recipe.RecipeManager
 import me.bnogocarft.bnogorpg.reforge.ReforgeBlockListener
@@ -34,24 +40,18 @@ import me.bnogocarft.bnogorpg.spells.GiveScrollCommand
 import me.bnogocarft.bnogorpg.spells.SpellCastListener
 import me.bnogocarft.bnogorpg.spells.spells.FireballSpell
 import me.bnogocarft.bnogorpg.spells.spells.MeteorSpell
-import me.bnogocarft.bnogorpg.Test.TestCommand
-import me.bnogocarft.bnogorpg.Updater.Updates.Update
+import me.bnogocarft.bnogorpg.tickUpdater.Ticker
 import me.bnogocarft.bnogorpg.utils.*
 import me.bnogocarft.bnogorpg.utils.BItemStack.BItems.BItemUtils
 import me.bnogocarft.bnogorpg.utils.BPlayer.OnlineBPlayers
 import me.bnogocarft.bnogorpg.utils.CustomEvents.ArmorWearListeners
 import me.bnogocarft.bnogorpg.utils.Database.BnogoSQL
 import me.bnogocarft.bnogorpg.utils.Database.YMLUtils
-import me.bnogocarft.bnogorpg.utils.ItemAbility.IAbility
-import me.bnogocarft.bnogorpg.utils.StatUtils.StatCommands
 import me.bnogocarft.bnogorpg.utils.Economy.auction.Auction
 import me.bnogocarft.bnogorpg.utils.Economy.auction.AuctionTimer
+import me.bnogocarft.bnogorpg.utils.ItemAbility.IAbility
+import me.bnogocarft.bnogorpg.utils.StatUtils.StatCommands
 import me.bnogocarft.bnogorpg.utils.others.PlaytimeUtils
-import me.bnogocarft.bnogorpg.economy.Auction.AHGui
-import me.bnogocarft.bnogorpg.economy.Auction.AhGuiUpdater
-import me.bnogocarft.bnogorpg.economy.Auction.AuctionCommand
-import me.bnogocarft.bnogorpg.economy.Auction.AuctionListeners
-import me.bnogocarft.bnogorpg.tickUpdater.Ticker
 import net.milkbowl.vault.economy.Economy
 import org.bukkit.Bukkit
 import org.bukkit.ChatColor
@@ -69,6 +69,7 @@ import kotlin.properties.Delegates
 
 class Main : JavaPlugin() {
     companion object {
+        val socket  = Websocket(8888)
         private val baseSpawnArea = SpawnArea(
             150F, -150F, arrayListOf(null, null, null, null, null), 1
         )
@@ -202,6 +203,7 @@ class Main : JavaPlugin() {
         server.pluginManager.registerEvents(InspectListener(), this)
         server.pluginManager.registerEvents(SpawnListeners(), this)
         server.pluginManager.registerEvents(ExpListeners(), this)
+        server.pluginManager.registerEvents(PlayerUtilListeners(), this)
         cSender.sendMessage("$logo Registered Listeners")
 
         cSender.sendMessage("$logo Enabling ItemUpgrades...")
@@ -217,7 +219,7 @@ class Main : JavaPlugin() {
         cSender.sendMessage("$logo Planes have been enabled")
 
         cSender.sendMessage("$logo Enabling Websocket Server")
-        //ComUtils.main()
+        socket.run()
         cSender.sendMessage("$logo Websocket Server has been enabled")
 
         cSender.sendMessage("Initializing Auctions...")

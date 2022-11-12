@@ -8,6 +8,6 @@ open class MagicItem(item: ItemStack) : BItem(item) {
     val variables = ArrayList<ItemVariable>()
 
     init {
-        
+
     }
 }

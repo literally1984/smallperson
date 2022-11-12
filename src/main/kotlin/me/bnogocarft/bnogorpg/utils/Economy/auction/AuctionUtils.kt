@@ -1,13 +1,13 @@
 package me.bnogocarft.bnogorpg.utils.Economy.auction
 
 import me.bnogocarft.bnogorpg.Main
+import me.bnogocarft.bnogorpg.economy.Auction.AHGui
+import me.bnogocarft.bnogorpg.economy.Auction.AHGui.Companion.returnToManagerPage
 import me.bnogocarft.bnogorpg.utils.*
 import me.bnogocarft.bnogorpg.utils.BItemStack.BItems.BItem
 import me.bnogocarft.bnogorpg.utils.BItemStack.BItems.BItemType
 import me.bnogocarft.bnogorpg.utils.Exceptions.IllegalParameterException
 import me.bnogocarft.bnogorpg.utils.Senders.MessageSender
-import me.bnogocarft.bnogorpg.economy.Auction.AHGui
-import me.bnogocarft.bnogorpg.economy.Auction.AHGui.Companion.returnToManagerPage
 import org.bukkit.Bukkit
 import org.bukkit.ChatColor
 import org.bukkit.Material

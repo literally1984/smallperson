@@ -1,7 +1,6 @@
 package me.bnogocarft.bnogorpg.Player.PlayerBar
 
 import me.bnogocarft.bnogorpg.Main
-import me.bnogocarft.bnogorpg.utils.BPlayer.BPlayer
 import me.bnogocarft.bnogorpg.utils.BPlayer.OnlineBPlayer
 import org.bukkit.Bukkit
 
@@ -23,7 +22,7 @@ data class CombatLogBar(val player: OnlineBPlayer) : Bar {
                 Bukkit.getScheduler().cancelTask(id)
             }
             timeLeft -= 0.05f
-            if (player.bars.current() == this) {
+            if (player.bars.current == this) {
                 player.bar.health = health
                 player.bar.text = name
             }

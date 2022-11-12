@@ -2,9 +2,6 @@ package me.bnogocarft.bnogorpg.utils.enchants.enchantments
 
 import me.bnogocarft.bnogorpg.utils.enchants.BEnchantment
 import me.bnogocarft.bnogorpg.utils.enchants.DamageBoostEnchant
-import org.bukkit.entity.Skeleton
-import org.bukkit.entity.Zombie
-import org.bukkit.event.Event
 import org.bukkit.event.entity.EntityDamageByEntityEvent
 import org.bukkit.event.entity.EntityEvent
 
@@ -22,12 +19,12 @@ data class Smite(override val level: Int) : BEnchantment, DamageBoostEnchant {
         8 -> 10
         9 -> 11
         10 -> 12
-        else -> throw(IllegalArgumentException("Provided level is higher than the max level or lower than 1!"))
+        else -> throw (IllegalArgumentException("Provided level is higher than the max level or lower than 1!"))
     }
 
     init {
         if (level > maxLevel || level < 1) {
-            throw(IllegalArgumentException("Provided level is higher than the max level or lower than 1!"))
+            throw (IllegalArgumentException("Provided level is higher than the max level or lower than 1!"))
         }
     }
 

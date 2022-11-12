@@ -1,7 +1,7 @@
 package me.bnogocarft.bnogorpg.items
 
-import me.bnogocarft.bnogorpg.items.DefaultItems.Diamond
 import me.bnogocarft.bnogorpg.Main
+import me.bnogocarft.bnogorpg.items.DefaultItems.Diamond
 import me.bnogocarft.bnogorpg.utils.Abilities.ItemAbility.AbilityTrigger
 import me.bnogocarft.bnogorpg.utils.BItemStack.BItems.BItemType
 import me.bnogocarft.bnogorpg.utils.BItemStack.BItems.BItemUtils
@@ -13,6 +13,7 @@ import org.bukkit.Bukkit
 import org.bukkit.Color
 import org.bukkit.Material
 import org.bukkit.entity.Player
+import org.bukkit.event.Event
 import org.bukkit.event.block.Action
 import org.bukkit.event.player.PlayerEvent
 import org.bukkit.event.player.PlayerInteractEvent
@@ -52,7 +53,7 @@ class DoubleJump : IAbility {
     override val name: String = "placeholder"
     override val type: AbilityTrigger = AbilityTrigger.NONE
 
-    override fun cast(caster: Player, abilityEvent: PlayerEvent) {
+    override fun cast(caster: Player, abilityEvent: Event) {
         if (abilityEvent !is PlayerInteractEvent) {
             return
         }

@@ -1,8 +1,8 @@
 package me.bnogocarft.bnogorpg.utils.BPlayer
 
 import me.bnogocarft.bnogorpg.Main
-import me.bnogocarft.bnogorpg.Player.PlayerBar.Bar
 import me.bnogocarft.bnogorpg.Player.PlayerBar.MainBar
+import me.bnogocarft.bnogorpg.combat.ComboCounter.Combo
 import me.bnogocarft.bnogorpg.utils.Abilities.ItemAbility.AbilityTrigger
 import me.bnogocarft.bnogorpg.utils.Abilities.Spell
 import me.bnogocarft.bnogorpg.utils.Armorset.SetBonus
@@ -12,7 +12,6 @@ import me.bnogocarft.bnogorpg.utils.GUILayer
 import me.bnogocarft.bnogorpg.utils.JVMUtils.BarArrayList
 import me.bnogocarft.bnogorpg.utils.Mode.Mode
 import me.bnogocarft.bnogorpg.utils.StatUtils.StatManager
-import me.bnogocarft.bnogorpg.combat.ComboCounter.Combo
 import org.bukkit.Bukkit
 import org.bukkit.ChatColor
 import org.bukkit.GameMode
@@ -20,7 +19,6 @@ import org.bukkit.Material
 import org.bukkit.entity.LivingEntity
 import org.bukkit.entity.Player
 import org.bukkit.event.Event
-import org.bukkit.event.player.PlayerEvent
 import org.bukkit.inventory.Inventory
 import org.bukkit.inventory.ItemStack
 import tech.nully.BossBarAPI.BossBar

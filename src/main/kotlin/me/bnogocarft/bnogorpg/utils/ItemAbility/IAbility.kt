@@ -3,7 +3,6 @@ package me.bnogocarft.bnogorpg.utils.ItemAbility
 import me.bnogocarft.bnogorpg.utils.Abilities.ItemAbility.AbilityTrigger
 import org.bukkit.entity.Player
 import org.bukkit.event.Event
-import org.bukkit.event.player.PlayerEvent
 
 interface IAbility {
     val description: ArrayList<String>

@@ -90,13 +90,14 @@ enum class BMaterial {
 
     fun getPossibleEnchants(): List<BEnchant> {
         val enchants = ArrayList<BEnchant>()
-        when  {
+        when {
             this.toString().contains("helmet", true) -> enchants.addAll(EnchantUtils.helmetEnchants)
             this.toString().contains("chestplate", true) -> enchants.addAll(EnchantUtils.helmetEnchants)
             this.toString().contains("leggings", true) -> enchants.addAll(EnchantUtils.helmetEnchants)
             this.toString().contains("boots", true) -> enchants.addAll(EnchantUtils.helmetEnchants)
             this.toString().contains("sword", true) -> enchants.addAll(EnchantUtils.helmetEnchants)
         }
+        return enchants
     }
 
 

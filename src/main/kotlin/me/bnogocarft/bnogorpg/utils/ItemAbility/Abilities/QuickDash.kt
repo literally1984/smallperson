@@ -6,6 +6,7 @@ import me.bnogocarft.bnogorpg.utils.BItemStack.BItems.BItemUtils
 import me.bnogocarft.bnogorpg.utils.BItemStack.BMaterial
 import me.bnogocarft.bnogorpg.utils.ItemAbility.IAbility
 import org.bukkit.entity.Player
+import org.bukkit.event.Event
 import org.bukkit.event.block.Action
 import org.bukkit.event.player.PlayerEvent
 import org.bukkit.event.player.PlayerInteractEvent
@@ -17,7 +18,7 @@ class QuickDash : IAbility {
     override val name: String = "Quick Dash"
     override val type: AbilityTrigger = AbilityTrigger.RIGHT_AIR
 
-    override fun cast(caster: Player, abilityEvent: PlayerEvent) {
+    override fun cast(caster: Player, abilityEvent: Event) {
         if (abilityEvent !is PlayerInteractEvent) {
             return
         }

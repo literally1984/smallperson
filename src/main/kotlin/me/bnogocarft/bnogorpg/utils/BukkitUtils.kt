@@ -66,12 +66,14 @@ infix fun ItemStack.canBe(type: BItemClass): Boolean {
             }
             return false
         }
+
         BItemClass.SCROLL -> {
             if (this canBe BItemClass.MAGIC_ITEM) {
                 if (identifier.contains(scrollIdentifier)) return true
             }
             return false
         }
+
         BItemClass.ENCHANTABLE -> {
             if (this canBe BItemClass.GEAR) {
                 return true
@@ -81,9 +83,11 @@ infix fun ItemStack.canBe(type: BItemClass): Boolean {
             }
             return false
         }
+
         BItemClass.MISC -> {
             if (identifier.contains(miscIdentifier)) return true
         }
+
         BItemClass.MAGIC_ITEM -> {
             if (this canBe BItemClass.TALISMAN || this canBe BItemClass.SCROLL) return true
         }

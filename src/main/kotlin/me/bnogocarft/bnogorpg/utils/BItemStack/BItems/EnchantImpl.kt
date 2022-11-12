@@ -15,21 +15,22 @@ class EnchantImpl(private val instance: Enchantable, val item: ItemStack) {
             item.itemMeta.lore.add(
                 instance.enchantLine,
                 "${ChatColor.BLUE}${
-                    enchant.enchant.toString()
+                    enchant.name
                         .replace("_", " ").lowercase()
                         .replaceFirstChar { if (it.isLowerCase()) it.titlecase(Locale.getDefault()) else it.toString() }
                 }"
             )
         } else {
             while ("${item.itemMeta.lore[instance.enchantLine].length}, ${ChatColor.BLUE}${
-                    enchant.enchant.toString()
+                    enchant.name
                         .replace("_", " ").lowercase()
                         .replaceFirstChar { if (it.isLowerCase()) it.titlecase(Locale.getDefault()) else it.toString() }
-                }".length >= 32) { // If the old enchantments and the new enchantments in one string is longer than 32 chars
+                }".length >= 32
+            ) { // If the old enchantments and the new enchantments in one string is longer than 32 chars
                 instance.enchantLine++
             }
             item.itemMeta.lore[instance.enchantLine] += ", ${ChatColor.BLUE}${
-                enchant.enchant.toString()
+                enchant.name
                     .replace("_", " ").lowercase()
                     .replaceFirstChar { if (it.isLowerCase()) it.titlecase(Locale.getDefault()) else it.toString() }
             }"

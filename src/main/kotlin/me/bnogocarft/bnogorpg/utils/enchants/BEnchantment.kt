@@ -1,6 +1,5 @@
 package me.bnogocarft.bnogorpg.utils.enchants
 
-import org.bukkit.event.Event
 import org.bukkit.event.entity.EntityEvent
 
 enum class BEnchant {
@@ -37,10 +36,10 @@ enum class BEnchant {
     fun getMaxLevel(): Int {
         return when (this) {
             SHARPNESS, SMITE, BANE_OF_ARTHROPODS, LOOTING, UNBREAKING, EFFICIENCY, PROTECTION, BLAST_PROTECTION,
-            PROJECTILE_PROTECTION, MAGIC_PROTECTION, POTION_PROTECTION, FALL_PROTECTION, FIRE_PROTECTION-> 5
+            PROJECTILE_PROTECTION, MAGIC_PROTECTION, POTION_PROTECTION, FALL_PROTECTION, FIRE_PROTECTION -> 5
 
-            FORTUNE, KNOCKBACK, -> 3
-            FIRE_ASPECT, LIGHTNING_ASPECT, LAVA_ASPECT, POISON_ASPECT,-> 2
+            FORTUNE, KNOCKBACK -> 3
+            FIRE_ASPECT, LIGHTNING_ASPECT, LAVA_ASPECT, POISON_ASPECT -> 2
             SMELTING, SILK_TOUCH -> 1
             EXPLOSION_ASPECT -> TODO()
             BLOODTHIRST -> TODO()

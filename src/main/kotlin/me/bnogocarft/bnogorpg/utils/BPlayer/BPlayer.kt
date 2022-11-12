@@ -17,6 +17,7 @@ import java.io.File
 @Suppress("SENSELESS_COMPARISON", "LeakingThis")
 open class BPlayer(open val player: String) {
     var isStunned = false
+
     /**
      * The player's current talismans
      */

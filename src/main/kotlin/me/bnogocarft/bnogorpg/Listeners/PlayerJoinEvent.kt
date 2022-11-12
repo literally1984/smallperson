@@ -3,13 +3,13 @@ package me.bnogocarft.bnogorpg.Listeners
 import me.bnogocarft.bnogorpg.Main
 import me.bnogocarft.bnogorpg.Planes.PlaneEntity
 import me.bnogocarft.bnogorpg.Planes.planeEntitites
+import me.bnogocarft.bnogorpg.tickUpdater.Ticker
 import me.bnogocarft.bnogorpg.utils.BItemStack.BItems.BArmor
 import me.bnogocarft.bnogorpg.utils.BItemStack.BItems.BItemUtils
 import me.bnogocarft.bnogorpg.utils.BItemStack.BItems.BWeapon
 import me.bnogocarft.bnogorpg.utils.BPlayer.OnlineBPlayer
 import me.bnogocarft.bnogorpg.utils.BPlayer.OnlineBPlayers
 import me.bnogocarft.bnogorpg.utils.BPlayer.bPlayer
-import me.bnogocarft.bnogorpg.tickUpdater.Ticker
 import org.bukkit.Bukkit
 import org.bukkit.ChatColor
 import org.bukkit.GameMode

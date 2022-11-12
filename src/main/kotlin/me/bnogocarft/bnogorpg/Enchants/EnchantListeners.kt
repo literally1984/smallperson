@@ -38,7 +38,7 @@ class EnchantListeners : Listener {
         }
     }
 
-    @EventHandler (priority = EventPriority.HIGHEST)
+    @EventHandler(priority = EventPriority.HIGHEST)
     fun onHit(e: EntityDamageByEntityEvent) {
         if (e.damager is Player) {
             val damaged = (e.damager as Player)

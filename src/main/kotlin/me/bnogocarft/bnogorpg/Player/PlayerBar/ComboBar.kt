@@ -22,7 +22,7 @@ data class ComboBar(val player: OnlineBPlayer) : Bar {
                 Bukkit.getScheduler().cancelTask(id)
             }
             timeLeft -= 0.05f
-            if (player.bars.current() == this) {
+            if (player.bars.current == this) {
                 player.bar.health = health
                 player.bar.text = name
             }

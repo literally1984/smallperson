@@ -3,7 +3,6 @@ package me.bnogocarft.bnogorpg.utils.BItemStack.BItems
 import me.bnogocarft.bnogorpg.utils.Abilities.ItemAbility.AbilityTrigger
 import me.bnogocarft.bnogorpg.utils.enchants.BEnchantment
 import org.bukkit.inventory.ItemStack
-import kotlin.collections.ArrayList
 
 data class Talisman(override val item: ItemStack) : MagicItem(item), Enchantable {
     var trigger: AbilityTrigger = AbilityTrigger.NONE

@@ -1,6 +1,5 @@
 package me.bnogocarft.bnogorpg.utils
 
-import me.bnogocarft.bnogorpg.utils.BPlayer.OnlineBPlayer
 import org.bukkit.ChatColor
 
 
