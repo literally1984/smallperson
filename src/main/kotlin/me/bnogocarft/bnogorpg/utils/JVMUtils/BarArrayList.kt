@@ -1,7 +1,7 @@
 package me.bnogocarft.bnogorpg.utils.JVMUtils
 
-import me.bnogocarft.bnogorpg.Player.PlayerBar.Bar
-import me.bnogocarft.bnogorpg.utils.BPlayer.OnlineBPlayer
+import me.bnogocarft.bnogorpg.player.PlayerBar.Bar
+import me.bnogocarft.bnogorpg.utils.player.OnlineBPlayer
 
 data class BarArrayList(val player: OnlineBPlayer) : ArrayList<Bar>() {
     override fun add(element: Bar): Boolean {
@@ -19,5 +19,10 @@ data class BarArrayList(val player: OnlineBPlayer) : ArrayList<Bar>() {
         player.bar.text = this[this.lastIndex].name
         return true
     }
-    val current = this[this.lastIndex]
+
+    val current: Bar? = try {
+        this[this.lastIndex]
+    } catch (e: ArrayIndexOutOfBoundsException) {
+        null
+    }
 }

@@ -1,7 +1,7 @@
 package me.bnogocarft.bnogorpg.utils.others
 
-import me.bnogocarft.bnogorpg.utils.BPlayer.OnlineBPlayer
 import me.bnogocarft.bnogorpg.utils.Database.BnogoSQL
+import me.bnogocarft.bnogorpg.utils.player.OnlineBPlayer
 import java.text.SimpleDateFormat
 import java.util.*
 

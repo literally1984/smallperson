@@ -1,13 +1,13 @@
 package me.bnogocarft.bnogorpg.items
 
 import me.bnogocarft.bnogorpg.Main
-import me.bnogocarft.bnogorpg.items.DefaultItems.Diamond
-import me.bnogocarft.bnogorpg.utils.Abilities.ItemAbility.AbilityTrigger
-import me.bnogocarft.bnogorpg.utils.BItemStack.BItems.BItemType
-import me.bnogocarft.bnogorpg.utils.BItemStack.BItems.BItemUtils
-import me.bnogocarft.bnogorpg.utils.BItemStack.BMaterial
-import me.bnogocarft.bnogorpg.utils.ItemAbility.IAbility
-import me.bnogocarft.bnogorpg.utils.ItemFactory.BItemFactory
+import me.bnogocarft.bnogorpg.items.overriden.Diamond
+import me.bnogocarft.bnogorpg.utils.abilities.ItemAbility.AbilityTrigger
+import me.bnogocarft.bnogorpg.utils.ability.IAbility
+import me.bnogocarft.bnogorpg.utils.bitem.BItems.BItemType
+import me.bnogocarft.bnogorpg.utils.bitem.BItems.BItemUtils
+import me.bnogocarft.bnogorpg.utils.bitem.BMaterial
+import me.bnogocarft.bnogorpg.utils.bitem.factory.BItemFactory
 import me.bnogocarft.bnogorpg.utils.others.Rarity.Rarity
 import org.bukkit.Bukkit
 import org.bukkit.Color
@@ -15,7 +15,6 @@ import org.bukkit.Material
 import org.bukkit.entity.Player
 import org.bukkit.event.Event
 import org.bukkit.event.block.Action
-import org.bukkit.event.player.PlayerEvent
 import org.bukkit.event.player.PlayerInteractEvent
 import org.bukkit.inventory.ItemStack
 import org.bukkit.inventory.ShapedRecipe

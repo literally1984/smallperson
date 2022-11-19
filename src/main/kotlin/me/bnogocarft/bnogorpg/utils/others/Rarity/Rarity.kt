@@ -8,45 +8,30 @@ enum class Rarity {
     RARE,
     EPIC,
     LEGENDARY,
-    MYTHICAL,
+    MYTHIC,
     DIVINE;
 
-    companion object {
-        fun getRarity(stars: Int): Rarity {
-            return when (stars) {
-                1 -> COMMON
-                2 -> UNCOMMON
-                3 -> RARE
-                4 -> EPIC
-                5 -> LEGENDARY
-                6 -> MYTHICAL
-                7 -> DIVINE
-                else -> COMMON
-            }
+    fun getText(): String {
+        return when (this) {
+            COMMON -> "${ChatColor.GRAY}${ChatColor.BOLD}COMMON"
+            UNCOMMON -> "${ChatColor.GREEN}${ChatColor.BOLD}UNCOMMON"
+            RARE -> "${ChatColor.BLUE}${ChatColor.BOLD}RARE"
+            EPIC -> "${ChatColor.DARK_PURPLE}${ChatColor.BOLD}EPIC"
+            LEGENDARY -> "${ChatColor.GOLD}${ChatColor.BOLD}LEGENDARY"
+            MYTHIC -> "${ChatColor.LIGHT_PURPLE}${ChatColor.BOLD}MYTHIC"
+            DIVINE -> "${ChatColor.DARK_RED}${ChatColor.BOLD}DIVINE"
         }
     }
 
-    fun getStarsString(): String {
+    fun getColor(): String {
         return when (this) {
-            COMMON -> "${ChatColor.GOLD}✪"
-            UNCOMMON -> "${ChatColor.GOLD}✪✪"
-            RARE -> "${ChatColor.GOLD}✪✪✪"
-            EPIC -> "${ChatColor.GOLD}✪✪✪✪"
-            LEGENDARY -> "${ChatColor.GOLD}✪✪✪✪✪"
-            MYTHICAL -> "${ChatColor.GOLD}✪✪✪✪✪✪"
-            DIVINE -> "${ChatColor.GOLD}✪✪✪✪✪✪✪"
-        }
-    }
-
-    fun getStars(): Int {
-        return when (this) {
-            COMMON -> 1
-            UNCOMMON -> 2
-            RARE -> 3
-            EPIC -> 4
-            LEGENDARY -> 5
-            MYTHICAL -> 6
-            DIVINE -> 7
+            COMMON -> "${ChatColor.GRAY}"
+            UNCOMMON -> "${ChatColor.GREEN}"
+            RARE -> "${ChatColor.BLUE}"
+            EPIC -> "${ChatColor.DARK_PURPLE}"
+            LEGENDARY -> "${ChatColor.GOLD}"
+            MYTHIC -> "${ChatColor.LIGHT_PURPLE}"
+            DIVINE -> "${ChatColor.DARK_RED}"
         }
     }
 }

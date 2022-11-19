@@ -1,17 +1,55 @@
 package me.bnogocarft.bnogorpg.utils
 
-import me.bnogocarft.bnogorpg.utils.ItemFactory.*
-import net.minecraft.server.v1_5_R3.Packet62NamedSoundEffect
+import me.bnogocarft.bnogorpg.utils.bitem.factory.*
+import net.minecraft.server.v1_8_R3.BlockPosition
+import net.minecraft.server.v1_8_R3.Packet
+import net.minecraft.server.v1_8_R3.PacketPlayOutBlockChange
+import net.minecraft.server.v1_8_R3.PacketPlayOutNamedSoundEffect
 import org.bukkit.Bukkit
 import org.bukkit.Location
 import org.bukkit.Material
-import org.bukkit.craftbukkit.v1_5_R3.entity.CraftPlayer
+import org.bukkit.craftbukkit.v1_8_R3.CraftWorld
+import org.bukkit.craftbukkit.v1_8_R3.entity.CraftPlayer
 import org.bukkit.enchantments.Enchantment
 import org.bukkit.entity.Entity
 import org.bukkit.entity.LivingEntity
 import org.bukkit.entity.Player
 import org.bukkit.event.player.PlayerInteractEvent
 import org.bukkit.inventory.ItemStack
+import org.bukkit.util.Vector
+
+val entityMetadata = HashMap<Entity, Pair<String, Any>>()
+fun Entity.addData(key: String, value: Any) {
+    entityMetadata[this] = Pair(key, value)
+}
+
+fun Entity.hasData(key: String): Boolean {
+    return entityMetadata.contains(this) && try {
+        entityMetadata[this]?.first == key
+    } catch (e: NullPointerException) {
+        false
+    }
+}
+
+fun Entity.getData(key: String): Any? {
+    return entityMetadata[this]?.second
+}
+
+operator fun Vector.plus(vector: Vector): Vector {
+    return this.add(vector)
+}
+
+operator fun Vector.minus(vector: Vector): Vector {
+    return this.subtract(vector)
+}
+
+operator fun Vector.times(vector: Vector): Vector {
+    return this.multiply(vector)
+}
+
+operator fun Vector.div(vector: Vector): Vector {
+    return this.divide(vector)
+}
 
 fun ItemStack.glow(): ItemStack {
     if (type == Material.BOW) {
@@ -100,7 +138,7 @@ infix fun Player.has(item: ItemStack): Boolean {
 }
 
 fun playSound(location: Location, sound: String, volume: Float, pitch: Float) {
-    val packet = Packet62NamedSoundEffect(
+    val packet = PacketPlayOutNamedSoundEffect(
         sound,
         location.x,
         location.y,
@@ -227,3 +265,14 @@ val currentlyClicking = HashMap<Player, PlayerInteractEvent>()
 fun PlayerInteractEvent.onStop(handler: (playerInteractEvent: PlayerInteractEvent) -> Unit) {
 
 }
+
+fun Location.addFakeBlock(who: Player, block: Material): PacketPlayOutBlockChange {
+    val packet = PacketPlayOutBlockChange((this.world as CraftWorld).handle, BlockPosition(this.x, this.y, this.z))
+    (who as CraftPlayer).sendPacket(packet)
+    return packet
+}
+
+fun Player.sendPacket(packet: Packet<*>) {
+    (this as CraftPlayer).handle.playerConnection.sendPacket(packet)
+}
+

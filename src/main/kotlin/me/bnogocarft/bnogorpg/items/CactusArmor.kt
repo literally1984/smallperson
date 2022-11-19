@@ -1,11 +1,11 @@
 package me.bnogocarft.bnogorpg.items
 
-import me.bnogocarft.bnogorpg.utils.BItemStack.BItems.BItemType
-import me.bnogocarft.bnogorpg.utils.BItemStack.BMaterial
-import me.bnogocarft.bnogorpg.utils.BItemStack.CraftItems.CraftItemType
-import me.bnogocarft.bnogorpg.utils.ItemAbility.Abilities.SpikeySpikes
-import me.bnogocarft.bnogorpg.utils.ItemFactory.ArmorSetMaker
-import me.bnogocarft.bnogorpg.utils.ItemFactory.BItemFactory
+import me.bnogocarft.bnogorpg.utils.ability.Abilities.SpikeySpikes
+import me.bnogocarft.bnogorpg.utils.bitem.BItems.BItemType
+import me.bnogocarft.bnogorpg.utils.bitem.BMaterial
+import me.bnogocarft.bnogorpg.utils.bitem.CraftItems.CraftItemType
+import me.bnogocarft.bnogorpg.utils.bitem.factory.ArmorSetMaker
+import me.bnogocarft.bnogorpg.utils.bitem.factory.BItemFactory
 import me.bnogocarft.bnogorpg.utils.others.Rarity.Rarity
 import org.bukkit.Bukkit
 import org.bukkit.ChatColor

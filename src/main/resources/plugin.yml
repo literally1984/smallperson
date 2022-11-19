@@ -69,6 +69,16 @@ commands:
     aliases: [ st ]
     usage: /<command>
     description: Increases or decreases a stat
+  bloodmoon:
+    name: BloodMoon
+    aliases: [ blm ]
+    usage: /<command> <start/end>
+    description: Starts or ends the bloodmoon event
+  summon:
+    name: summon
+    aliases: [ sum ]
+    usage: /<command> <mob>
+    description: Summons a mob
 permissions:
   bnogorpg.*:
     description: Gives access to all BnogoRPG commands

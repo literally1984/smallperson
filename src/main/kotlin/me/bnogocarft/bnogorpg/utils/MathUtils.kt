@@ -1,4 +1,4 @@
-package me.bnogocarft.bnogorpg.utils.Abilities
+package me.bnogocarft.bnogorpg.utils
 
 import org.bukkit.util.Vector
 import java.nio.ByteBuffer

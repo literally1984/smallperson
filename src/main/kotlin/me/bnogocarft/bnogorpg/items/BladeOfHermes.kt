@@ -1,8 +1,8 @@
 package me.bnogocarft.bnogorpg.items
 
-import me.bnogocarft.bnogorpg.utils.BItemStack.BItems.BItemType
-import me.bnogocarft.bnogorpg.utils.ItemAbility.Abilities.QuickDash
-import me.bnogocarft.bnogorpg.utils.ItemFactory.BItemFactory
+import me.bnogocarft.bnogorpg.utils.ability.Abilities.QuickDash
+import me.bnogocarft.bnogorpg.utils.bitem.BItems.BItemType
+import me.bnogocarft.bnogorpg.utils.bitem.factory.BItemFactory
 import me.bnogocarft.bnogorpg.utils.others.Rarity.Rarity
 import org.bukkit.Material
 import org.bukkit.inventory.ItemStack

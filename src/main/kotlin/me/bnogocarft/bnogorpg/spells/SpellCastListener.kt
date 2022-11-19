@@ -2,10 +2,11 @@ package me.bnogocarft.bnogorpg.spells
 
 import me.bnogocarft.bnogorpg.spells.spells.FireballSpell
 import me.bnogocarft.bnogorpg.spells.spells.MeteorSpell
-import me.bnogocarft.bnogorpg.utils.BItemStack.BItems.BItem
-import me.bnogocarft.bnogorpg.utils.BItemStack.BItems.BItemType
-import me.bnogocarft.bnogorpg.utils.BPlayer.OnlineBPlayers
 import me.bnogocarft.bnogorpg.utils.Exceptions.IllegalParameterException
+import me.bnogocarft.bnogorpg.utils.bitem.BItems.BItem
+import me.bnogocarft.bnogorpg.utils.bitem.BItems.BItemType
+import me.bnogocarft.bnogorpg.utils.player.OnlineBPlayers
+import me.bnogocarft.bnogorpg.utils.player.bPlayer
 import net.minecraft.server.v1_5_R3.Material
 import org.bukkit.ChatColor
 import org.bukkit.event.EventHandler
@@ -55,7 +56,7 @@ class SpellCastListener : Listener {
 
     @EventHandler(priority = EventPriority.HIGHEST)
     fun onSpellCast(e: PlayerItemHeldEvent) {
-        val bPlayer = OnlineBPlayers[e.player]
+        val bPlayer = e.player.bPlayer()
         if (bPlayer.isInCastMode) {
             if (e.newSlot != 8) {
                 if (e.player.inventory.getItem(e.newSlot) == null) {

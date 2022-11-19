@@ -2,8 +2,8 @@ package me.bnogocarft.bnogorpg.reforge
 
 import me.bnogocarft.bnogorpg.Main
 import me.bnogocarft.bnogorpg.utils.*
-import me.bnogocarft.bnogorpg.utils.BItemStack.BItems.BItemUtils
-import me.bnogocarft.bnogorpg.utils.BItemStack.Reforge
+import me.bnogocarft.bnogorpg.utils.bitem.BItems.BItemUtils
+import me.bnogocarft.bnogorpg.utils.bitem.Reforge
 import org.bukkit.Bukkit
 import org.bukkit.ChatColor
 import org.bukkit.Material

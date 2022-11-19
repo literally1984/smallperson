@@ -1,6 +1,6 @@
 package me.bnogocarft.bnogorpg.utils.StatUtils
 
-import me.bnogocarft.bnogorpg.utils.BPlayer.bPlayer
+import me.bnogocarft.bnogorpg.utils.player.bPlayer
 import org.bukkit.command.Command
 import org.bukkit.command.CommandExecutor
 import org.bukkit.command.CommandSender

@@ -1,33 +1,29 @@
 package me.bnogocarft.bnogorpg.recipe
 
 import org.bukkit.Bukkit
-import org.bukkit.inventory.Inventory
 import org.bukkit.inventory.ItemStack
 
-class RecipeBook {
+class RecipeBook : ArrayList<RecipeItem>() {
     init {
 
     }
 
-    companion object {
-        val pages = ArrayList<RecipePage>()
-        lateinit var frontPage: Inventory
+    val items = ArrayList<ItemStack>()
 
-        /**
-         * Gets a [RecipePage] by an [ItemStack], can return null if there is no [RecipePage] associated with the [ItemStack]
-         * @param item The RecipePage of the [ItemStack] you want to view
-         * @return The [RecipePage] you requested from the given [ItemStack]
-         */
-        fun getRecipePagesFor(item: ItemStack): List<RecipePage> { // Returns a recipe page for the given item, returns null if no recipe is found
-            val recipes = Bukkit.getRecipesFor(item)
-            val returnList = ArrayList<RecipePage>()
-            for (recipe in recipes) {
-                if (RecipePage(recipe).pageInventory != null) {
-                    returnList.add(RecipePage(recipe))
-                }
+    /**
+     * Gets a [RecipeItem] by an [ItemStack], can return null if there is no [RecipeItem] associated with the [ItemStack]
+     * @param item The RecipePage of the [ItemStack] you want to view
+     * @return The [RecipeItem] you requested from the given [ItemStack]
+     */
+    fun getRecipePagesFor(item: ItemStack): List<RecipeItem> { // Returns a recipe page for the given item, returns null if no recipe is found
+        val recipes = Bukkit.getRecipesFor(item)
+        val returnList = ArrayList<RecipeItem>()
+        for (recipe in recipes) {
+            if (RecipeItem(recipe).pageInventory != null) {
+                returnList.add(RecipeItem(recipe))
             }
-            return returnList
         }
+        return returnList
     }
 
     private fun createRecipeFrontPage() {

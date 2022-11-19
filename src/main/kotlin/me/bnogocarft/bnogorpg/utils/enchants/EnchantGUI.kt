@@ -1,9 +1,9 @@
 package me.bnogocarft.bnogorpg.utils.enchants
 
 import me.bnogocarft.bnogorpg.utils.*
-import me.bnogocarft.bnogorpg.utils.BItemStack.BItems.BGear
-import me.bnogocarft.bnogorpg.utils.BItemStack.BItems.Enchantable
-import me.bnogocarft.bnogorpg.utils.BItemStack.BItems.Talisman
+import me.bnogocarft.bnogorpg.utils.bitem.BItems.BGear
+import me.bnogocarft.bnogorpg.utils.bitem.BItems.Enchantable
+import me.bnogocarft.bnogorpg.utils.bitem.BItems.Talisman
 import org.bukkit.Bukkit
 import org.bukkit.ChatColor
 import org.bukkit.Material

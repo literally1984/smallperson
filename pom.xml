@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0"
-        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-        xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>me.bnogocarft</groupId>
@@ -47,31 +47,6 @@
             </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-compiler-plugin</artifactId>
-                <version>3.5.1</version>
-                <executions>
-                    <execution>
-                        <id>default-compile</id>
-                        <phase>none</phase>
-                    </execution>
-                    <execution>
-                        <id>default-testCompile</id>
-                        <phase>none</phase>
-                    </execution>
-                    <execution>
-                        <id>java-compile</id>
-                        <phase>compile</phase>
-                        <goals> <goal>compile</goal> </goals>
-                    </execution>
-                    <execution>
-                        <id>java-test-compile</id>
-                        <phase>test-compile</phase>
-                        <goals> <goal>testCompile</goal> </goals>
-                    </execution>
-                </executions>
-            </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-shade-plugin</artifactId>
                 <version>3.2.4</version>
                 <executions>
@@ -91,6 +66,10 @@
             <id>PrimCoreRepos-repos</id>
             <url>https://github.com/darverdevs/EaglerMavenRepo/raw/main</url>
         </repository>
+        <repository>
+            <id>spigot-repo</id>
+            <url>https://hub.spigotmc.org/nexus/content/repositories/snapshots/</url>
+        </repository>
     </repositories>
     <dependencies>
         <dependency>
@@ -103,13 +82,13 @@
         <dependency>
             <groupId>com.github.EaglerMaven</groupId>
             <artifactId>Vault</artifactId>
-            <version>1.2.26</version>
+            <version>1.8.8</version>
             <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>com.github.EaglerMaven</groupId>
             <artifactId>MassiveCore</artifactId>
-            <version>6.4.1</version>
+            <version>1.8.8</version>
             <scope>provided</scope>
         </dependency>
         <dependency>
@@ -121,19 +100,19 @@
         <dependency>
             <groupId>com.github.EaglerMaven</groupId>
             <artifactId>Factions</artifactId>
-            <version>2.0.1</version>
+            <version>1.8.8</version>
             <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>com.github.EaglerMaven</groupId>
-            <artifactId>EffectLib</artifactId>
-            <version>3.0</version>
+            <artifactId>Citizens</artifactId>
+            <version>1.5.2</version>
             <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>com.github.EaglerMaven</groupId>
             <artifactId>ProtocolLib</artifactId>
-            <version>3.6.4</version>
+            <version>1.8.8</version>
             <scope>provided</scope>
         </dependency>
         <!-- PrimCore dependencies -->
@@ -151,8 +130,8 @@
         </dependency>
         <dependency>
             <groupId>com.github.EaglerMaven</groupId>
-            <artifactId>BongoBukkit</artifactId>
-            <version>1.5.2</version>
+            <artifactId>spigot</artifactId>
+            <version>1.8.8</version>
             <scope>provided</scope>
         </dependency>
         <dependency>
@@ -165,6 +144,12 @@
             <groupId>org.java-websocket</groupId>
             <artifactId>Java-WebSocket</artifactId>
             <version>1.5.3</version>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.github.EaglerMaven</groupId>
+            <artifactId>HolographicDisplays</artifactId>
+            <version>1.8.8</version>
             <scope>compile</scope>
         </dependency>
     </dependencies>

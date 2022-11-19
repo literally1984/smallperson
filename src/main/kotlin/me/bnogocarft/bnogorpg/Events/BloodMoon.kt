@@ -12,7 +12,9 @@ class BloodMoon {
             // Start the blood moon
             Bukkit.getScheduler().scheduleSyncRepeatingTask(Main.instance, {
                 if (Bukkit.getWorld("world").time > 19000) {
-                    Main.isBloodMoon = true
+                    if (!Main.isBloodMoon) {
+                        Main.isBloodMoon = true
+                    }
 
                 }
             }, 0, 5 * 20)
@@ -20,7 +22,7 @@ class BloodMoon {
             // Ends the blood moon
             Bukkit.getScheduler().scheduleSyncRepeatingTask(Main.instance, {
                 if (Bukkit.getWorld("world").time < 7000 && Bukkit.getWorld("world").time < 19000) {
-                    Main.isBloodMoon = false
+                    if (Main.isBloodMoon) Main.isBloodMoon = false
                 }
             }, 0, 7 * 20)
         }

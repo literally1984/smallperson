@@ -1,6 +1,6 @@
 package me.bnogocarft.bnogorpg.utils.enchants
 
-import me.bnogocarft.bnogorpg.utils.BItemStack.BItems.Enchantable
+import me.bnogocarft.bnogorpg.utils.bitem.BItems.Enchantable
 
 class EnchantUtils {
     companion object {

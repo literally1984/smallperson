@@ -2,10 +2,10 @@ package me.bnogocarft.bnogorpg.economy.Auction
 
 import me.bnogocarft.bnogorpg.Main
 import me.bnogocarft.bnogorpg.Main.Companion.auctions
-import me.bnogocarft.bnogorpg.utils.Economy.auction.Auction
-import me.bnogocarft.bnogorpg.utils.Economy.auction.AuctionTimer
-import me.bnogocarft.bnogorpg.utils.Economy.auction.bidOnAuction
-import me.bnogocarft.bnogorpg.utils.Economy.auction.getAuctionByID
+import me.bnogocarft.bnogorpg.utils.auction.Auction
+import me.bnogocarft.bnogorpg.utils.auction.AuctionTimer
+import me.bnogocarft.bnogorpg.utils.auction.bidOnAuction
+import me.bnogocarft.bnogorpg.utils.auction.getAuctionByID
 import me.bnogocarft.bnogorpg.utils.cloneInv
 import org.bukkit.Bukkit
 import org.bukkit.ChatColor

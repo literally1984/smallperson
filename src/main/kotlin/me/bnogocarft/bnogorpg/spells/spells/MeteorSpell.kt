@@ -1,11 +1,11 @@
 package me.bnogocarft.bnogorpg.spells.spells
 
 import me.bnogocarft.bnogorpg.Main
-import me.bnogocarft.bnogorpg.utils.Abilities.Spell
-import me.bnogocarft.bnogorpg.utils.BItemStack.BItems.BItemType
-import me.bnogocarft.bnogorpg.utils.BPlayer.OnlineBPlayers
-import me.bnogocarft.bnogorpg.utils.ItemFactory.BItemFactory
+import me.bnogocarft.bnogorpg.utils.abilities.Spell
+import me.bnogocarft.bnogorpg.utils.bitem.BItems.BItemType
+import me.bnogocarft.bnogorpg.utils.bitem.factory.BItemFactory
 import me.bnogocarft.bnogorpg.utils.others.Rarity.Rarity
+import me.bnogocarft.bnogorpg.utils.player.OnlineBPlayers
 import org.bukkit.Bukkit
 import org.bukkit.ChatColor
 import org.bukkit.Location

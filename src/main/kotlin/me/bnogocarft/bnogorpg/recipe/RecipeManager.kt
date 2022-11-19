@@ -9,7 +9,7 @@ import org.bukkit.inventory.Recipe
 import org.bukkit.inventory.ShapedRecipe
 
 
-fun openRecipePageFor(gui: OpenGUI) {
+fun recipeHandler(gui: OpenGUI) {
     val clickedItem = gui.currentItem
     gui.player.closeInventory()
     val recipes = RecipeBook.getRecipePagesFor(clickedItem!!)
@@ -40,20 +40,21 @@ fun switchToPage(gui: OpenGUI) {
 
 class RecipeManager {
     companion object {
-        val pageMap = HashMap<Recipe, RecipePage>()
+        val pageMap = HashMap<Recipe, RecipeItem>()
         val armorItems = ArrayList<ItemStack>()
         val utilItems = ArrayList<ItemStack>()
         val weaponItems = ArrayList<ItemStack>()
         val textRecipeMap = HashMap<String, Recipe>()
 
-        fun registerRecipes(recipes: Iterator<Recipe>) { // Registers all recipes in the iterator
+        fun registerRecipes(recipes: Iterator<Recipe>): RecipeBook { // Registers all recipes in the iterator
+            val book = RecipeBook()
             while (recipes.hasNext()) { // Loops through all the registered recipes
                 val currentRecipe = recipes.next()
 
-                val recipePage = RecipePage(currentRecipe)
+                val recipeItem = RecipeItem(currentRecipe)
 
-                RecipeBook.pages.add(recipePage) // Adds the recipe page
-                pageMap[currentRecipe] = recipePage // Adds to the recipe map
+                book.add(recipeItem) // Adds the recipe page
+                pageMap[currentRecipe] = recipeItem // Adds to the recipe map
 
 
                 textRecipeMap[if (currentRecipe.result.hasItemMeta())
@@ -67,6 +68,7 @@ class RecipeManager {
                     ).lowercase()
                 ] = currentRecipe
             }
+            return book
         }
     }
 }

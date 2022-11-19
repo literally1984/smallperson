@@ -1,8 +1,8 @@
 package me.bnogocarft.bnogorpg.utils
 
 import me.bnogocarft.bnogorpg.Main
-import me.bnogocarft.bnogorpg.utils.Economy.auction.Auction
-import me.bnogocarft.bnogorpg.utils.Economy.auction.AuctionTimer
+import me.bnogocarft.bnogorpg.utils.auction.Auction
+import me.bnogocarft.bnogorpg.utils.auction.AuctionTimer
 import org.bukkit.Bukkit
 import org.bukkit.ChatColor
 
@@ -21,7 +21,7 @@ class StringUtils {
 }
 
 fun encode(s: String): String {
-    return s.replace("", "§")
+    return s.replace("", "§").dropLast(1)
 }
 
 fun decode(s: String): String {
