@@ -8,6 +8,5 @@ interface CraftItem {
     var item: ItemStack
     var type: BMaterial
     var amount: Int
-    var rarityVary: Pair<Rarity, Rarity>
     fun craft(): ItemStack
 }

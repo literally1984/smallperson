@@ -8,7 +8,6 @@ import org.bukkit.inventory.ItemStack
 class CraftTalisman(override var item: ItemStack, val variables: List<ItemVariable>) : CraftItem {
     override var type: BMaterial = BMaterial.valueOf(item.itemMeta.displayName.replace(" ", "_").uppercase())
     override var amount: Int = item.amount
-    override var rarityVary: Pair<Rarity, Rarity> = Pair(Rarity.COMMON, Rarity.COMMON)
 
     init {
 

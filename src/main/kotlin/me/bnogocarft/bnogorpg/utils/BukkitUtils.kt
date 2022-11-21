@@ -1,10 +1,7 @@
 package me.bnogocarft.bnogorpg.utils
 
 import me.bnogocarft.bnogorpg.utils.bitem.factory.*
-import net.minecraft.server.v1_8_R3.BlockPosition
-import net.minecraft.server.v1_8_R3.Packet
-import net.minecraft.server.v1_8_R3.PacketPlayOutBlockChange
-import net.minecraft.server.v1_8_R3.PacketPlayOutNamedSoundEffect
+import net.minecraft.server.v1_8_R3.*
 import org.bukkit.Bukkit
 import org.bukkit.Location
 import org.bukkit.Material
@@ -43,7 +40,7 @@ operator fun Vector.minus(vector: Vector): Vector {
     return this.subtract(vector)
 }
 
-operator fun Vector.times(vector: Vector): Vector {
+operator fun Vector.times(vector: Double): Vector {
     return this.multiply(vector)
 }
 
@@ -270,6 +267,24 @@ fun Location.addFakeBlock(who: Player, block: Material): PacketPlayOutBlockChang
     val packet = PacketPlayOutBlockChange((this.world as CraftWorld).handle, BlockPosition(this.x, this.y, this.z))
     (who as CraftPlayer).sendPacket(packet)
     return packet
+}
+
+fun Location.spawnParticle(particle: EnumParticle) {
+    val packet = PacketPlayOutWorldParticles(
+        particle,
+        true,
+        this.x.toFloat(),
+        this.y.toFloat(),
+        this.z.toFloat(),
+        0f,
+        0f,
+        0f,
+        0f,
+        1
+    )
+    for (player in Bukkit.getOnlinePlayers()) {
+        (player as CraftPlayer).handle.playerConnection.sendPacket(packet)
+    }
 }
 
 fun Player.sendPacket(packet: Packet<*>) {

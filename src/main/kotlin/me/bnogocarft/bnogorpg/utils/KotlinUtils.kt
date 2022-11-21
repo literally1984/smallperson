@@ -1,7 +1,24 @@
 package me.bnogocarft.bnogorpg.utils
 
+import org.apache.commons.lang.math.DoubleRange
+import org.apache.commons.lang.math.FloatRange
 import org.bukkit.ChatColor
+import java.util.Arrays
+import kotlin.random.Random
 
+fun <K, V> HashMap<K, V>.put(pair: Pair<K, V>) {
+    this[pair.first] = pair.second
+}
+
+fun rand(min: Float, max: Float): Float {
+    return min + Random.nextFloat() * (max - min)
+}
+
+operator fun String.set(index: Int, value: Char): String {
+    val e = this.toCharArray()
+    e[index] = value
+    return String(e)
+}
 
 fun String.insert(index: Int, string: String): String {
     return this.substring(0, index) + string + this.substring(index)

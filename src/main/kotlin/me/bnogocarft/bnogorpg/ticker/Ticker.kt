@@ -7,6 +7,7 @@ import org.bukkit.Bukkit
 import org.bukkit.ChatColor
 import org.bukkit.entity.Player
 import kotlin.math.ceil
+import kotlin.math.roundToInt
 
 class Ticker {
     companion object {
@@ -39,10 +40,26 @@ class Ticker {
                 for (player in Bukkit.getOnlinePlayers()) {
                     val onlineBPlayer = player.bPlayer()
                     val s = onlineBPlayer.stats
-                    onlineBPlayer.sendActionBar(
-                        "${ChatColor.AQUA}Mana: ${s.currentMana}/${s.maxMana} || " +
-                                "${ChatColor.GOLD}Stamina: ${s.currentStamina}/${s.maxStamina}"
-                    )
+                    // M: 10/10[██████████] || S: 10/10[██████████]
+                    val mBars = (s.currentMana/(s.maxMana/10))
+                    val sBars = (s.currentStamina/(s.maxStamina/10))
+                    val mBar = "[          ]".toCharArray()
+                    val sBar = "[          ]".toCharArray()
+
+                    var indexOfMBlock = 1
+                    for (i in 1..mBars) {
+                        mBar[indexOfMBlock] = '█'
+                        indexOfMBlock++
+                    }
+
+                    var indexOfSBlock = 1
+                    for (i in 1..sBars) {
+                        sBar[indexOfSBlock] = '█'
+                        indexOfSBlock++
+                    }
+                    val message = "${ChatColor.AQUA}M: ${s.currentMana}/${s.maxMana}${String(mBar)} || " +
+                            "${ChatColor.GOLD}S: ${s.currentStamina}/${s.maxStamina}${String(sBar)}"
+                    onlineBPlayer.sendActionBar(message)
                 }
             }, 0, 2)
         }

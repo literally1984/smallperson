@@ -4,43 +4,58 @@ import me.bnogocarft.bnogorpg.Main
 import me.bnogocarft.bnogorpg.utils.ability.IAbility
 import me.bnogocarft.bnogorpg.utils.bitem.BMaterial
 import me.bnogocarft.bnogorpg.utils.others.Rarity.Rarity
+import me.bnogocarft.bnogorpg.utils.put
+import org.bukkit.ChatColor
 import org.bukkit.inventory.ItemStack
+import kotlin.math.roundToInt
 import kotlin.random.Random
 
-fun getRandomStat(rarityVary: Pair<Rarity, Rarity>, statVary: ArrayList<Int>, starIndex: Int): ArrayList<Int> {
-    val stats = ArrayList<Int>()
+fun getRandomStat(quality: Float, original: Int, rarity: Rarity): Int {
+    val perQuality = rarity.getQualityCap() / 100.0
+    return original + (quality * perQuality).roundToInt()
+}
 
-    //Gets the range of the amnt of stars the weapon has
-    val starsDiff = rarityVary.second.getStars() - rarityVary.first.getStars()
-    val loopList = arrayListOf(
-        Pair(0, 1),
-        Pair(2, 3),
-        Pair(4, 5),
-        Pair(6, 7),
-        Pair(8, 9),
-        Pair(10, 11)
-    )
+fun getStats(item: ItemStack): HashMap<String, Int> {
+    if (!item.hasItemMeta() || !item.itemMeta.hasLore()) {
+        throw IllegalArgumentException("Item does not have lore or Meta")
+    }
+    val stats = HashMap<String, Int>()
 
-    for ((indexOfStat, indexOfRange) in loopList.withIndex()) {
-        //Gets the Range that the stat can be in
-        val vary = arrayListOf(statVary[indexOfRange.first], statVary[indexOfRange.second])
-        //Gets the increments evenly divided with the last increment taking the remainder
-        val atkIncs = ArrayList<Int>()
-        for (i in 1..starsDiff) {
-            atkIncs.add((vary[1] - vary[0]) / starsDiff)
+    for (lore in item.itemMeta.lore) {
+        if (lore.contains("${ChatColor.RED}Damage: ")) {
+            val atk = lore.split(" ")[1].drop(1).toInt()
+            stats.put("atk" to atk)
+            continue
         }
-        atkIncs[atkIncs.size - 1] = atkIncs[atkIncs.size - 1] + (vary[1] - vary[0]) % starsDiff
-
-        //Sets the first element of the stats array to the lowest possible value from the stats range
-        stats.add(vary[0])
-        //Adds increments based on star vary
-        for (index in 0 until starIndex) {
-            try {
-                stats[indexOfStat] += Random.nextInt(1, atkIncs[index] + 1)
-            } catch (e: IllegalArgumentException) {
-                stats[indexOfStat] += 1
-            }
+        if (lore.contains("${ChatColor.RED}Defense: ")) {
+            val def = lore.split(" ")[1].drop(1).toInt()
+            stats.put("def" to def)
+            continue
         }
+        if (lore.contains("${ChatColor.LIGHT_PURPLE}Magic Dmg: ")) {
+            val mDmg = lore.split(" ")[1].drop(1).toInt()
+            stats.put("mDmg" to mDmg)
+            continue
+        }
+        if (lore.contains("${ChatColor.DARK_PURPLE}Magic Def: ")) {
+            val mDef = lore.split(" ")[1].drop(1).toInt()
+            stats.put("mDef" to mDef)
+            continue
+        }
+        if (lore.contains("${ChatColor.AQUA}Mana: ")) {
+            val mana = lore.split(" ")[1].drop(1).toInt()
+            stats.put("mana" to mana)
+            continue
+        }
+        if (lore.contains("${ChatColor.GOLD}Stamina: ")) {
+            val stam = lore.split(" ")[1].drop(1).toInt()
+            stats.put("stam" to stam)
+            continue
+        }
+    }
+
+    if (stats.size != 6) {
+        throw IllegalArgumentException("Item does not have all stats or is lacking some stats")
     }
 
     return stats
