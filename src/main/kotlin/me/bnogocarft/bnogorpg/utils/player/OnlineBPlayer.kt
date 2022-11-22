@@ -227,10 +227,10 @@ data class OnlineBPlayer(val p: Player) : BPlayer(p.name) {
 
     fun generateInspectGui(): Inventory {
         val fInv = GUIFactory.createInventory("$player's Profile", 54)
-        val layer1 = GUILayer()
+        val layer1 = GUILayer(fInv)
         fInv.layers.add(layer1)
 
-        layer1.backgrounds.add(GUIBackground(skull, 13))
+        layer1.backgrounds.add(GUIBackground(13, skull))
 
         val balItem = ItemStack(Material.EMERALD)
         val balMeta = Bukkit.getItemFactory().getItemMeta(Material.EMERALD)
@@ -259,9 +259,9 @@ data class OnlineBPlayer(val p: Player) : BPlayer(p.name) {
         staminaMeta.lore = staminaLore
         staminaItem.itemMeta = staminaMeta
 
-        layer1.backgrounds.add(GUIBackground(balItem, 22))
-        layer1.backgrounds.add(GUIBackground(manaItem, 21))
-        layer1.backgrounds.add(GUIBackground(staminaItem, 23))
+        layer1.backgrounds.add(GUIBackground(22, balItem))
+        layer1.backgrounds.add(GUIBackground(21, manaItem))
+        layer1.backgrounds.add(GUIBackground(23, staminaItem))
 
 
 

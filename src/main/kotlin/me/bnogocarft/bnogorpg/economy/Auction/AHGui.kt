@@ -65,22 +65,22 @@ class AHGui {
         createBidItem()
         val fGui = GUIFactory.createInventory("Auction House", 54)
 
-        val fGUILayer1 = GUILayer()
+        val fGUILayer1 = GUILayer(fGui)
         for (index in 0..53) {
             if (auctionSlots.contains(index)) {
-                fGUILayer1.buttons.add(GUIButton(ItemStack(Material.AIR), index, ::infoClickHandler))
+                fGUILayer1.buttons.add(GUIButton(index, ItemStack(Material.AIR), ::infoClickHandler))
                 continue
             }
-            fGUILayer1.backgrounds.add(GUIBackground(sBK, index))
+            fGUILayer1.backgrounds.add(GUIBackground(index, sBK))
         }
 
-        fGUILayer1.buttons.add(GUIButton(weapon, 0, ::weaponPageHandler))
-        fGUILayer1.buttons.add(GUIButton(armor, 9, ::armorPageHandler))
-        fGUILayer1.buttons.add(GUIButton(magicItems, 18, ::magicPageHandler))
-        fGUILayer1.buttons.add(GUIButton(food, 27, ::foodPageHandler))
-        fGUILayer1.buttons.add(GUIButton(blocks, 36, ::blockPageHandler))
-        fGUILayer1.buttons.add(GUIButton(misc, 45, ::miscPageHandler))
-        fGUILayer1.buttons.add(GUIButton(exitItem, 53, ::returnToManagerPage))
+        fGUILayer1.buttons.add(GUIButton(0, weapon, ::weaponPageHandler))
+        fGUILayer1.buttons.add(GUIButton(9, armor, ::armorPageHandler))
+        fGUILayer1.buttons.add(GUIButton(18, magicItems, ::magicPageHandler))
+        fGUILayer1.buttons.add(GUIButton(27, food, ::foodPageHandler))
+        fGUILayer1.buttons.add(GUIButton(36, blocks, ::blockPageHandler))
+        fGUILayer1.buttons.add(GUIButton(45, misc, ::miscPageHandler))
+        fGUILayer1.buttons.add(GUIButton(53, exitItem, ::returnToManagerPage))
         fGui.layers.add(fGUILayer1)
 
 
@@ -88,16 +88,16 @@ class AHGui {
 
         // Creates the Main GUI
         val mGui = GUIFactory.createInventory("Auction Manager", 45)
-        val mGUILayer1 = GUILayer()
+        val mGUILayer1 = GUILayer(mGui)
 
         for (index in 0..43) {
-            mGUILayer1.backgrounds.add(GUIBackground(sBK, index))
+            mGUILayer1.backgrounds.add(GUIBackground(index, sBK))
         }
 
         mGUILayer1.buttons.add(
             GUIButton(
-                browseButton,
                 11,
+                browseButton,
                 fun(gui: OpenGUI) {
                     gui.player.openInventory(browseGui)
                 })
@@ -105,24 +105,24 @@ class AHGui {
 
         mGUILayer1.buttons.add(
             GUIButton(
-                viewButton,
                 13,
+                viewButton,
                 ::bidsClickHandler
             )
         )
 
         mGUILayer1.buttons.add(
             GUIButton(
-                aucsButton,
                 15,
+                aucsButton,
                 ::auctionsClickHandler
             )
         )
 
         mGUILayer1.buttons.add(
             GUIButton(
-                createButton,
                 31,
+                createButton,
                 ::createClickHandler
             )
         )
@@ -131,16 +131,16 @@ class AHGui {
         mainGui = GUIFactory.produceInventory(mGui)
 
         val createGui = GUIFactory.createInventory("Create an Auction", 54)
-        val createGUILayer1 = GUILayer()
+        val createGUILayer1 = GUILayer(createGui)
         for (index in 0..53) {
-            createGUILayer1.backgrounds.add(GUIBackground(sBK, index))
+            createGUILayer1.backgrounds.add(GUIBackground(index, sBK))
         }
 
         for (index2 in 54..54 + 36) {
             createGUILayer1.slotFuncs.add(SlotFunction(index2, ::selectHandler))
         }
 
-        createGUILayer1.backgrounds.add(GUIBackground(createItem, 13))
+        createGUILayer1.backgrounds.add(GUIBackground(13, createItem))
         createGui.layers.add(createGUILayer1)
 
         createAucGui = GUIFactory.produceInventory(createGui)
@@ -389,14 +389,14 @@ class AHGui {
 
     private fun createBorderPage(name: String): FactoryInventory {
         val mGui = GUIFactory.createInventory(name, 54)
-        val layer1 = GUILayer()
+        val layer1 = GUILayer(mGui)
 
         for (index in 0..53) {
             if (noBorderSlots.contains(index)) {
-                layer1.backgrounds.add(GUIBackground(ItemStack(Material.AIR), index))
+                layer1.backgrounds.add(GUIBackground(index, ItemStack(Material.AIR)))
                 continue
             }
-            layer1.backgrounds.add(GUIBackground(sBK, index))
+            layer1.backgrounds.add(GUIBackground(index, sBK))
         }
 
         mGui.layers.add(layer1)
@@ -416,12 +416,12 @@ class AHGui {
 
         //Sets the Inventory to display the players auctions
         val inv = createBorderPage("${ChatColor.GOLD}Your Auctions")
-        val layer1 = GUILayer()
+        val layer1 = GUILayer(inv)
         for ((index, i) in noBorderSlots.withIndex()) {
             try {
-                layer1.buttons.add(GUIButton(items[index], i, ::infoClickHandler))
+                layer1.buttons.add(GUIButton(i, items[index], ::infoClickHandler))
             } catch (e: IndexOutOfBoundsException) {
-                layer1.backgrounds.add(GUIBackground(ItemStack(Material.AIR), i))
+                layer1.backgrounds.add(GUIBackground(i, ItemStack(Material.AIR)))
                 continue
             }
         }
@@ -464,12 +464,12 @@ class AHGui {
 
         //Sets the Inventory to display the players auctions
         val inv = createBorderPage("${ChatColor.GOLD}Your Bids")
-        val layer1 = GUILayer()
+        val layer1 = GUILayer(inv)
         for ((index, i) in noBorderSlots.withIndex()) {
             try {
-                layer1.buttons.add(GUIButton(items[index], i, ::infoClickHandler))
+                layer1.buttons.add(GUIButton(i, items[index], ::infoClickHandler))
             } catch (e: IndexOutOfBoundsException) {
-                layer1.backgrounds.add(GUIBackground(ItemStack(Material.AIR), i))
+                layer1.backgrounds.add(GUIBackground(i, ItemStack(Material.AIR)))
                 continue
             }
         }

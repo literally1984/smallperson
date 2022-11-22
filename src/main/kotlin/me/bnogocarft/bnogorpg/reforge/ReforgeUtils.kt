@@ -81,17 +81,17 @@ class ReforgeUtils {
 
     private fun generateReforgeGUI() {
         val inv = GUIFactory.createInventory("${ChatColor.BLACK}Reforge", 54)
-        val layer1 = GUILayer()
+        val layer1 = GUILayer(inv)
         val background = ItemStack(Material.FIRE)
         background.addUnsafeEnchantment(Enchantment.FIRE_ASPECT, 5)
         background.itemMeta.displayName = ""
 
         for (i in 0..53) {
             if (i == 13) continue
-            layer1.backgrounds.add(GUIBackground(sBK, i))
+            layer1.backgrounds.add(GUIBackground(i, sBK))
         }
         for (i in 45..53) {
-            layer1.backgrounds.add(GUIBackground(background, i))
+            layer1.backgrounds.add(GUIBackground(i, background))
         }
 
         val reforgeAnvil = ItemStack(Material.ANVIL)
@@ -102,7 +102,7 @@ class ReforgeUtils {
         reforgeLore.add("${ChatColor.GREEN}Click to reforge your item")
         reforgeMeta.lore = reforgeLore
         reforgeAnvil.itemMeta = reforgeMeta
-        val reforgeButton = GUIButton(reforgeAnvil, 40, ::Reforge)
+        val reforgeButton = GUIButton(40, reforgeAnvil, ::Reforge)
         layer1.buttons.add(reforgeButton)
 
 

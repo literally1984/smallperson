@@ -34,21 +34,21 @@ class EnchantGUI {
 
     private fun generateBaseEnchantGUI() {
         val fInv = GUIFactory.createInventory("Enchantment Table", 54)
-        val layer1 = GUILayer()
+        val layer1 = GUILayer(fInv)
         for (i in 0..53) {
-            layer1.backgrounds.add(GUIBackground(sBK, i))
+            layer1.backgrounds.add(GUIBackground(i, sBK))
         }
         val bottomRow = ItemStack(Material.ENCHANTED_BOOK)
         val meta = Bukkit.getItemFactory().getItemMeta(Material.ENCHANTED_BOOK)
         meta.displayName = ""
         bottomRow.itemMeta = meta
         for (i in 45..53) {
-            layer1.backgrounds.add(GUIBackground(bottomRow, i))
+            layer1.backgrounds.add(GUIBackground(i, bottomRow))
         }
 
-        layer1.backgrounds.add(GUIButton(noItem, 29, ::enchantHandler))
-        layer1.backgrounds.add(GUIButton(noItem, 31, ::enchantHandler))
-        layer1.backgrounds.add(GUIButton(noItem, 33, ::enchantHandler))
+        layer1.backgrounds.add(GUIButton(29, noItem, ::enchantHandler))
+        layer1.backgrounds.add(GUIButton(31, noItem, ::enchantHandler))
+        layer1.backgrounds.add(GUIButton(33, noItem, ::enchantHandler))
 
         layer1.slotFuncs.add(SlotFunction(
             13

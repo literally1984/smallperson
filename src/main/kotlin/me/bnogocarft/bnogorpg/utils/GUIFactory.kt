@@ -127,18 +127,28 @@ class GUIFactory {
 data class FactoryInventory(val name: String, val size: Int) {
     var inventory: Inventory = Bukkit.createInventory(null, size, name)
     var layers = ArrayList<GUILayer>()
+        private set
 }
 
-class GUILayer {
+class GUILayer(val fInv: FactoryInventory) {
     val buttons = ArrayList<GUIButton>()
     val backgrounds = ArrayList<GUIBackground>()
     val slotFuncs = ArrayList<SlotFunction>()
+    fun fill(item: ItemStack) {
+        for (i in 0 until fInv.size) {
+            backgrounds.add(GUIBackground(i, item))
+        }
+    }
+
+    init {
+        fInv.layers.add(this)
+    }
 }
 
-data class GUIButton(override var item: ItemStack, override var slot: Int, val run: (OpenGUI) -> Unit) :
-    GUIBackground(item, slot)
+data class GUIButton(override var slot: Int, override var item: ItemStack, val run: (OpenGUI) -> Unit) :
+    GUIBackground(slot, item)
 
-open class GUIBackground(open var item: ItemStack, open var slot: Int)
+open class GUIBackground(open var slot: Int, open var item: ItemStack)
 
 data class SlotFunction(val slot: Int, val run: (OpenGUI) -> Unit)
 

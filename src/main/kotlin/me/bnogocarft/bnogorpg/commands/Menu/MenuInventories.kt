@@ -22,9 +22,9 @@ class MenuInventories {
     private fun spellsClickHandler(gui: OpenGUI) {
         val player = OnlineBPlayers[gui.player]
         val fInv = GUIFactory.createInventory("${ChatColor.BLUE}Your Spells", 17)
-        val spellLayer = GUILayer()
+        val spellLayer = GUILayer(fInv)
         for (slot in 1..8) {
-            spellLayer.backgrounds.add(GUIBackground(player.spells[slot - 1].displayItem, slot))
+            spellLayer.backgrounds.add(GUIBackground(slot, player.spells[slot - 1].displayItem))
         }
 
 

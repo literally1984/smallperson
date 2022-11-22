@@ -23,7 +23,7 @@ class PlaneListeners : Listener {
             if (planes.containsKey(event.entity)) {
                 event.isCancelled = true
                 val planeEntity = planes[event.entity]!!
-                planeEntity.stats.currentHealth = planeEntity.stats.currentHealth - event.damage
+                //planeEntity.stats.currentHealth = planeEntity.stats.currentHealth - event.damage
                 if (planeEntity.stats.currentHealth <= 0) {
                     planeEntity.isDestroyed = true
                 }

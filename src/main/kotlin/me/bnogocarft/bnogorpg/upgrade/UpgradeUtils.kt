@@ -139,23 +139,23 @@ class UpgradeUtils {
         22 = empty slot
         */
         val fGui = GUIFactory.createInventory("Upgrade Item", 54)
-        val backgroundLayer = GUILayer()
+        val backgroundLayer = GUILayer(fGui)
 
         // Sets the backgound
         for (index in 0..53) {
             if (index == 22) {
                 continue
             }
-            backgroundLayer.backgrounds.add(GUIBackground(sBK, index))
+            backgroundLayer.backgrounds.add(GUIBackground(index, sBK))
         }
 
-        val layer2 = GUILayer()
-        layer2.buttons.add(GUIButton(atkItem, 1, ::upgradeATK))
-        layer2.buttons.add(GUIButton(defItem, 7, ::upgradeDEF))
-        layer2.buttons.add(GUIButton(mAtkItem, 19, ::upgradeMAGATK))
-        layer2.buttons.add(GUIButton(mDefItem, 25, ::upgradeMAGDEF))
-        layer2.buttons.add(GUIButton(stamItem, 37, ::upgradeSTAM))
-        layer2.buttons.add(GUIButton(manaItem, 43, ::upgradeMANA))
+        val layer2 = GUILayer(fGui)
+        layer2.buttons.add(GUIButton(1, atkItem, ::upgradeATK))
+        layer2.buttons.add(GUIButton(7, defItem, ::upgradeDEF))
+        layer2.buttons.add(GUIButton(19, mAtkItem, ::upgradeMAGATK))
+        layer2.buttons.add(GUIButton(25, mDefItem, ::upgradeMAGDEF))
+        layer2.buttons.add(GUIButton(37, stamItem, ::upgradeSTAM))
+        layer2.buttons.add(GUIButton(43, manaItem, ::upgradeMANA))
         fGui.layers.add(backgroundLayer)
         fGui.layers.add(layer2)
 

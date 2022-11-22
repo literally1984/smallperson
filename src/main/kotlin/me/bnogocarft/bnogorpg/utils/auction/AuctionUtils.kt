@@ -142,15 +142,15 @@ fun createAuctionItemFor(auc: Auction): ItemStack {
 
 fun createAuctionInfoGui(auc: Auction): Inventory {
     val fGui = GUIFactory.createInventory("${ChatColor.GOLD}Auction Info for: ${auc.ID}", 45)
-    val layer1 = GUILayer()
+    val layer1 = GUILayer(fGui)
     for (index in 0..44) {
-        layer1.backgrounds.add(GUIBackground(sBK, index))
+        layer1.backgrounds.add(GUIBackground(index, sBK))
     }
 
-    layer1.backgrounds.add(GUIBackground(createAuctionItemFor(auc), 13))
+    layer1.backgrounds.add(GUIBackground(13, createAuctionItemFor(auc)))
     layer1.buttons.add(
         GUIButton(
-            AHGui.bidItem, 31,
+            31, AHGui.bidItem,
             fun(gui: OpenGUI) {
                 val auction = getAuctionByID(
                     gui.inv.getItem(13).itemMeta.lore[
@@ -205,7 +205,7 @@ fun createAuctionInfoGui(auc: Auction): Inventory {
         )
     )
 
-    layer1.buttons.add(GUIButton(AHGui.exitItem, 8, ::returnToManagerPage))
+    layer1.buttons.add(GUIButton(8, AHGui.exitItem, ::returnToManagerPage))
 
     fGui.layers.add(layer1)
     return GUIFactory.produceInventory(fGui)

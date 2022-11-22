@@ -1,7 +1,7 @@
 package me.bnogocarft.bnogorpg.planes
 
 import me.bnogocarft.bnogorpg.Main
-import me.bnogocarft.bnogorpg.utils.bitem.factory.BItemFactory
+import me.bnogocarft.bnogorpg.utils.bitem.factory.FactoryMisc
 import me.bnogocarft.bnogorpg.utils.getYawFromVector
 import org.bukkit.Bukkit
 import org.bukkit.ChatColor
@@ -23,33 +23,7 @@ class PlaneKeyItem {
     companion object {
         var key: ItemStack = ItemStack(Material.TRIPWIRE)
         private fun makePlaneKey() {
-            // final will look like this:
-            // Plane Key
-            // Used to spawn and collect planes
-            // Right click this on the ground to spawn
-            // your plane and Right click your spawned
-            // plane to collect it.
 
-            // Speed: x (x% of max x speed)
-            // Health: x (x% of max x health)
-            // Fuel: x (x% of max x fuel)
-            val k = ItemStack(Material.IRON_INGOT)
-            val meta = Bukkit.getItemFactory().getItemMeta(Material.IRON_INGOT)
-            val lore = ArrayList<String>()
-            meta.displayName = "Plane Key"
-            lore.add("${ChatColor.YELLOW}Used to spawn and collect planes")
-            lore.add("${ChatColor.YELLOW}Right click this on the ground to spawn")
-            lore.add("${ChatColor.YELLOW}your plane and Right click your spawned")
-            lore.add("${ChatColor.YELLOW}plane to collect it.")
-            lore.add("")
-            lore.add("${ChatColor.YELLOW}Speed: ${ChatColor.WHITE}3 ${ChatColor.DARK_GRAY}(75% of max 4 speed)")
-            lore.add("${ChatColor.YELLOW}Health: ${ChatColor.WHITE}50 ${ChatColor.DARK_GRAY}(100% of max 50 health)")
-            lore.add("${ChatColor.YELLOW}Fuel: ${ChatColor.WHITE}100 ${ChatColor.DARK_GRAY}(100% of max 100 fuel)")
-            meta.lore = lore
-            k.itemMeta = meta
-
-            key = k
-            BItemFactory.register("planekey", key)
         }
     }
 }
