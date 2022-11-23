@@ -41,8 +41,8 @@ class Ticker {
                     val onlineBPlayer = player.bPlayer()
                     val s = onlineBPlayer.stats
                     // M: 10/10[██████████] || S: 10/10[██████████]
-                    val mBars = (s.currentMana/(s.maxMana/10))
-                    val sBars = (s.currentStamina/(s.maxStamina/10))
+                    val mBars = (s.currentMana/s.maxMana)*10
+                    val sBars = (s.currentStamina/s.maxStamina)*10
                     val mBar = "[          ]".toCharArray()
                     val sBar = "[          ]".toCharArray()
 
