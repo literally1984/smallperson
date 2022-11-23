@@ -1,4 +1,4 @@
-package me.bnogocarft.bnogorpg.items
+package me.bnogocarft.bnogorpg.items.single
 
 import me.bnogocarft.bnogorpg.utils.bitem.BItems.BItemType
 import me.bnogocarft.bnogorpg.utils.bitem.factory.BItemFactory

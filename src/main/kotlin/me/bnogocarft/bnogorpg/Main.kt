@@ -19,13 +19,17 @@ import me.bnogocarft.bnogorpg.economy.Auction.AuctionCommand
 import me.bnogocarft.bnogorpg.economy.Auction.AuctionListeners
 import me.bnogocarft.bnogorpg.enchants.EnchantListeners
 import me.bnogocarft.bnogorpg.items.*
-import me.bnogocarft.bnogorpg.items.overriden.DefaultOverrider
+import me.bnogocarft.bnogorpg.items.DefaultOverrider
+import me.bnogocarft.bnogorpg.items.armorSets.LapisArmor
+import me.bnogocarft.bnogorpg.items.comatSets.CactusArmor
+import me.bnogocarft.bnogorpg.items.single.BladeOfHermes
+import me.bnogocarft.bnogorpg.items.single.GrapplerItem
+import me.bnogocarft.bnogorpg.items.single.Thunderbolt
 import me.bnogocarft.bnogorpg.items.updater.Updates.Update
 import me.bnogocarft.bnogorpg.listeners.*
 import me.bnogocarft.bnogorpg.particle.animationTestCommand
 import me.bnogocarft.bnogorpg.planes.PlaneKeyItem
 import me.bnogocarft.bnogorpg.planes.PlaneListeners
-import me.bnogocarft.bnogorpg.planes.SteerListener
 import me.bnogocarft.bnogorpg.planes.removeScheduler
 import me.bnogocarft.bnogorpg.player.Inspect.InspectListener
 import me.bnogocarft.bnogorpg.player.Stash.StashCommand
@@ -218,7 +222,6 @@ class Main : JavaPlugin() {
         server.pluginManager.registerEvents(PlaneListeners(), this)
 
         server.scheduler.scheduleSyncRepeatingTask(this, removeScheduler(), 0, 3)
-        server.pluginManager.registerEvents(SteerListener(), this)
         cSender.sendMessage("$logo Planes have been enabled")
 
         cSender.sendMessage("$logo Enabling Websocket Server")
@@ -383,7 +386,7 @@ class Main : JavaPlugin() {
             val beforeString = stringAbilityArray.joinToString(", ")
             BnogoSQL.con.prepareStatement(
                 "UPDATE \"combatGear\" SET " +
-                        "\"stars\" = ${item.rarity!!.getStars()}, " +
+                        "\"stars\" = ${item.rarity!!.toString()}, " +
                         "\"name\" = '${item.initItem.itemMeta.displayName}', " +
                         "\"itemStack\" = '${serializeItem(item.initItem)}', " +
                         "\"abilities\" = ARRAY [$beforeString]::text[] " +

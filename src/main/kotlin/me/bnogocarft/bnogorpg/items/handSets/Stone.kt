@@ -1,4 +1,4 @@
-package me.bnogocarft.bnogorpg.items.overriden
+package me.bnogocarft.bnogorpg.items.handSets
 
 import me.bnogocarft.bnogorpg.utils.bitem.BItems.BItemType
 import me.bnogocarft.bnogorpg.utils.bitem.factory.BItemFactory

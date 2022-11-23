@@ -8,9 +8,15 @@ import me.bnogocarft.bnogorpg.utils.StatUtils.ItemStat
 import me.bnogocarft.bnogorpg.utils.ability.IAbility
 import me.bnogocarft.bnogorpg.utils.bitem.Reforge
 import me.bnogocarft.bnogorpg.utils.enchants.BEnchantment
+import me.bnogocarft.bnogorpg.utils.getNeededExp
+import me.bnogocarft.bnogorpg.utils.player.getNeededEXP
 import me.bnogocarft.bnogorpg.utils.serializeItem
+import net.minecraft.server.v1_8_R3.EnchantmentDurability
 import org.bukkit.ChatColor
 import org.bukkit.inventory.ItemStack
+import kotlin.math.pow
+import kotlin.math.roundToInt
+import kotlin.properties.Delegates
 
 open class BGear(override val item: ItemStack) : BItem(item), Enchantable {
 
@@ -43,6 +49,26 @@ open class BGear(override val item: ItemStack) : BItem(item), Enchantable {
     Rarity
      */
     lateinit var initItem: ItemStack
+    private var durabilityLine by Delegates.notNull<Int>()
+    var levelLine = 0
+
+    var durability = item.durability
+        set(value) {
+            val durabilityPercent = (value / item.type.maxDurability.toDouble()) * 100
+            var durabilityColor = ChatColor.GREEN
+            if (durabilityPercent < 33) {
+                durabilityColor = ChatColor.RED
+            }
+            if (durabilityPercent > 33) {
+                durabilityColor = ChatColor.YELLOW
+            }
+            if (durabilityPercent > 66) {
+                durabilityColor = ChatColor.GREEN
+            }
+            item.itemMeta.lore[durabilityLine] = "${ChatColor.GRAY}Durability: $durabilityColor${value}/${item.type.maxDurability}"
+            field = value
+        }
+
     override val enchantments: ArrayList<BEnchantment> = ArrayList()
     override var enchantLine = 0
     final override val enchantImpl = EnchantImpl(this, item)
@@ -76,7 +102,16 @@ open class BGear(override val item: ItemStack) : BItem(item), Enchantable {
         set(value) {
             val copy = this.initItem.itemMeta.clone()
             val copyLore = copy.lore
-            copyLore[copyLore.size - 4] = "${ChatColor.GREEN}EXP: ${ChatColor.GRAY}$value"
+            val bars = (value/level.getNeededExp())*10
+            val bar = "[          ]".toCharArray()
+            var indexOfMBlock = 1
+
+            for (i in 1..bars) {
+                bar[indexOfMBlock] = '█'
+                indexOfMBlock++
+            }
+
+            copyLore[levelLine + 1] = "${ChatColor.GREEN}EXP: $value/${level.getNeededExp()}${String(bar)}"
             copy.lore = copyLore
             this.initItem.itemMeta = copy
             field = value
@@ -85,7 +120,7 @@ open class BGear(override val item: ItemStack) : BItem(item), Enchantable {
         set(value) {
             val copy = this.initItem.itemMeta.clone()
             val copyLore = copy.lore
-            copyLore[copyLore.size - 5] = "${ChatColor.YELLOW}Level: ${ChatColor.GRAY}$value"
+            copyLore[levelLine] = "${ChatColor.YELLOW}Level: ${ChatColor.GRAY}$value"
             copy.lore = copyLore
             this.initItem.itemMeta = copy
             field = value
@@ -103,9 +138,10 @@ open class BGear(override val item: ItemStack) : BItem(item), Enchantable {
                     id = cLore.split("ID: ")[1].toInt()
                     idLine = cLore.indexOf(cLore)
                 }
-                if (cLore.contains("Level:")) {
+                if (cLore.contains("Level: ")) {
                     level = cLore.split(": ${ChatColor.GRAY}")[1].toLong()
                     exp = lore[lore.indexOf(cLore) + 1].split(": ${ChatColor.GRAY}")[1].split("/")[0].toLong()
+                    levelLine = lore.indexOf(cLore)
                 }
                 if (cLore.contains("${ChatColor.YELLOW}${ChatColor.BOLD}SET BONUS: ")) {
                     println(lore[lore.indexOf(cLore)].split(": ${ChatColor.RESET}${ChatColor.RED}")[1])
@@ -118,6 +154,10 @@ open class BGear(override val item: ItemStack) : BItem(item), Enchantable {
                             )[1]
                         )
                     )
+                }
+                if (cLore.contains("${ChatColor.GRAY}Durability: ")) {
+                    durabilityLine = lore.indexOf(cLore)
+                    durability = cLore.split(": ")[1].drop(2).toShort()
                 }
             }
 
@@ -139,7 +179,7 @@ open class BGear(override val item: ItemStack) : BItem(item), Enchantable {
 
             val affectedLines = BnogoSQL.con.prepareStatement(
                 "UPDATE \"combatGear\" SET " +
-                        "\"stars\" = ${rarity!!.getStars()}, " +
+                        "\"rarity\" = ${rarity}, " +
                         "\"name\" = '${initItem.itemMeta.displayName}', " +
                         "\"itemStack\" = '${serializeItem(item)}', " +
                         "\"abilities\" = ARRAY [$beforeString]::text[] " +
@@ -151,7 +191,7 @@ open class BGear(override val item: ItemStack) : BItem(item), Enchantable {
                     "INSERT INTO \"combatGear\" VALUES (" +
                             "$id, " +
                             "'$material', " +
-                            "${rarity!!.getStars()}, " +
+                            "${rarity}, " +
                             "'${initItem.itemMeta.displayName}', " +
                             "'${serializeItem(item)}', " +
                             "ARRAY [$beforeString]::text[]);"

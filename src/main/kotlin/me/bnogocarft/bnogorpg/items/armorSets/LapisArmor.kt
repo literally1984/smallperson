@@ -1,12 +1,17 @@
-package me.bnogocarft.bnogorpg.items
+package me.bnogocarft.bnogorpg.items.armorSets
 
-import me.bnogocarft.bnogorpg.utils.ability.Abilities.EnhancedMagic
+import me.bnogocarft.bnogorpg.Main
+import me.bnogocarft.bnogorpg.utils.abilities.ItemAbility.AbilityTrigger
+import me.bnogocarft.bnogorpg.utils.ability.IAbility
 import me.bnogocarft.bnogorpg.utils.bitem.BItems.BItemType
 import me.bnogocarft.bnogorpg.utils.bitem.factory.ArmorSetMaker
 import me.bnogocarft.bnogorpg.utils.bitem.factory.BItemFactory
 import me.bnogocarft.bnogorpg.utils.others.Rarity.Rarity
+import me.bnogocarft.bnogorpg.utils.player.bPlayer
 import org.bukkit.Color
 import org.bukkit.Material
+import org.bukkit.entity.Player
+import org.bukkit.event.Event
 import org.bukkit.inventory.ItemStack
 
 class LapisArmor : ArmorSetMaker {
@@ -79,5 +84,24 @@ class LapisArmor : ArmorSetMaker {
 
         boots = BItemFactory.produceItem(factoryItem)
         BItemFactory.register("lapis_boots", boots)
+    }
+}
+
+class EnhancedMagic : IAbility {
+    override val description: ArrayList<String> = arrayListOf(
+        "While wearing this armor in",
+        "full set, the user gains +30%",
+        "mana"
+    )
+    override val name: String = "Enhanced Magic"
+    override val type: AbilityTrigger = AbilityTrigger.SET_BONUS
+
+    override fun cast(caster: Player, abilityEvent: Event) {
+        val player = caster.bPlayer()
+        player.stats.maxMana += player.stats.maxMana / 3
+    }
+
+    init {
+        Main.registeredAbilities.add(this)
     }
 }

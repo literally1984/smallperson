@@ -207,7 +207,6 @@ fun createAuctionInfoGui(auc: Auction): Inventory {
 
     layer1.buttons.add(GUIButton(8, AHGui.exitItem, ::returnToManagerPage))
 
-    fGui.layers.add(layer1)
     return GUIFactory.produceInventory(fGui)
 }
 

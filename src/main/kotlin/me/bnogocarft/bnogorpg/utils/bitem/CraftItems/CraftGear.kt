@@ -9,9 +9,8 @@ import org.bukkit.ChatColor
 import org.bukkit.inventory.ItemStack
 import kotlin.random.Random
 
-data class CraftGear(override var item: ItemStack) : CraftItem {
+data class CraftGear(override var item: ItemStack) : CraftItem(item) {
     override var type: BMaterial = BMaterial.valueOf(item.itemMeta.displayName.replace(" ", "_").uppercase())
-    override var amount: Int = item.amount
     private var dmgLine: Int = 0
     private var defLine: Int = 0
     private var mDmgLine: Int = 0

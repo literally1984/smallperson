@@ -156,8 +156,6 @@ class UpgradeUtils {
         layer2.buttons.add(GUIButton(25, mDefItem, ::upgradeMAGDEF))
         layer2.buttons.add(GUIButton(37, stamItem, ::upgradeSTAM))
         layer2.buttons.add(GUIButton(43, manaItem, ::upgradeMANA))
-        fGui.layers.add(backgroundLayer)
-        fGui.layers.add(layer2)
 
         gui = GUIFactory.produceInventory(fGui)
     }

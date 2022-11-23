@@ -1,5 +1,11 @@
-package me.bnogocarft.bnogorpg.items.overriden
+package me.bnogocarft.bnogorpg.items
 
+import me.bnogocarft.bnogorpg.items.armorSets.Leather
+import me.bnogocarft.bnogorpg.items.handSets.Stone
+import me.bnogocarft.bnogorpg.items.handSets.Wood
+import me.bnogocarft.bnogorpg.items.sets.Diamond
+import me.bnogocarft.bnogorpg.items.sets.Gold
+import me.bnogocarft.bnogorpg.items.sets.Iron
 import org.bukkit.Bukkit
 
 class DefaultOverrider {

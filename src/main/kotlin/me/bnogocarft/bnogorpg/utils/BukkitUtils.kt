@@ -14,6 +14,8 @@ import org.bukkit.entity.Player
 import org.bukkit.event.player.PlayerInteractEvent
 import org.bukkit.inventory.ItemStack
 import org.bukkit.util.Vector
+import kotlin.math.pow
+import kotlin.math.roundToInt
 
 val entityMetadata = HashMap<Entity, Pair<String, Any>>()
 fun Entity.addData(key: String, value: Any) {
@@ -58,36 +60,36 @@ fun ItemStack.glow(): ItemStack {
     }
 }
 
-enum class BItemClass {
+enum class B {
     WEAPON, ARMOR, GEAR, ITEM, TALISMAN, SCROLL, ENCHANTABLE, MISC, MAGIC_ITEM;
 }
 
-infix fun ItemStack.canBe(type: BItemClass): Boolean {
+infix fun ItemStack.canBe(type: B): Boolean {
     if (!hasItemMeta() && itemMeta.lore == null) return false
     val identifier = itemMeta.lore[itemMeta.lore.size - 2]
     when (type) {
-        BItemClass.GEAR -> {
-            if (this canBe BItemClass.ITEM) {
+        B.GEAR -> {
+            if (this canBe B.ITEM) {
                 if (identifier.contains(armorIdentifier) || identifier.contains(weaponIdentifier)) return true
             }
             return false
         }
 
-        BItemClass.ARMOR -> {
-            if (this canBe BItemClass.GEAR) {
+        B.ARMOR -> {
+            if (this canBe B.GEAR) {
                 if (identifier.contains(armorIdentifier)) return true
             }
             return false
         }
 
-        BItemClass.WEAPON -> {
-            if (this canBe BItemClass.GEAR) {
+        B.WEAPON -> {
+            if (this canBe B.GEAR) {
                 if (identifier.contains(weaponIdentifier)) return true
             }
             return false
         }
 
-        BItemClass.ITEM -> {
+        B.ITEM -> {
             return identifier.contains(weaponIdentifier) ||
                     identifier.contains(talismanIdentifier) ||
                     identifier.contains(armorIdentifier) ||
@@ -95,36 +97,36 @@ infix fun ItemStack.canBe(type: BItemClass): Boolean {
                     identifier.contains(miscIdentifier)
         }
 
-        BItemClass.TALISMAN -> {
-            if (this canBe BItemClass.MAGIC_ITEM) {
+        B.TALISMAN -> {
+            if (this canBe B.MAGIC_ITEM) {
                 if (identifier.contains(talismanIdentifier)) return true
             }
             return false
         }
 
-        BItemClass.SCROLL -> {
-            if (this canBe BItemClass.MAGIC_ITEM) {
+        B.SCROLL -> {
+            if (this canBe B.MAGIC_ITEM) {
                 if (identifier.contains(scrollIdentifier)) return true
             }
             return false
         }
 
-        BItemClass.ENCHANTABLE -> {
-            if (this canBe BItemClass.GEAR) {
+        B.ENCHANTABLE -> {
+            if (this canBe B.GEAR) {
                 return true
             }
-            if (this canBe BItemClass.TALISMAN) {
+            if (this canBe B.TALISMAN) {
                 return true
             }
             return false
         }
 
-        BItemClass.MISC -> {
+        B.MISC -> {
             if (identifier.contains(miscIdentifier)) return true
         }
 
-        BItemClass.MAGIC_ITEM -> {
-            if (this canBe BItemClass.TALISMAN || this canBe BItemClass.SCROLL) return true
+        B.MAGIC_ITEM -> {
+            if (this canBe B.TALISMAN || this canBe B.SCROLL) return true
         }
     }
     return false
@@ -256,6 +258,11 @@ fun getExpAtLevel(level: Int): Int {
     } else {
         (4.5 * Math.pow(level.toDouble(), 2.0) - 162.5 * level + 2220.0).toInt()
     }
+}
+
+fun Long.getNeededExp(): Int {
+    return ((3.2 * (toDouble().pow(3.0))) / 5).roundToInt()
+
 }
 
 val currentlyClicking = HashMap<Player, PlayerInteractEvent>()

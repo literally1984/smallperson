@@ -45,6 +45,9 @@ data class OnlineBPlayer(val p: Player) : BPlayer(p.name) {
 
     var isRightClicking = false
 
+    var manaMultiplier = 1.0f
+    var staminaMultiplier = 1.0f
+
     /**
      * The Player's EXP animation progress bar manager for charging attacks etc
      */
@@ -103,7 +106,7 @@ data class OnlineBPlayer(val p: Player) : BPlayer(p.name) {
     /**
      * The Player's skull item
      */
-    val skull = ItemStack(Material.SKULL)
+    val skull = ItemStack(Material.SKULL_ITEM)
     val onDamage = ArrayList<DamageHandler>()
     var isInCastMode = false
         set(value) {
@@ -228,7 +231,6 @@ data class OnlineBPlayer(val p: Player) : BPlayer(p.name) {
     fun generateInspectGui(): Inventory {
         val fInv = GUIFactory.createInventory("$player's Profile", 54)
         val layer1 = GUILayer(fInv)
-        fInv.layers.add(layer1)
 
         layer1.backgrounds.add(GUIBackground(13, skull))
 

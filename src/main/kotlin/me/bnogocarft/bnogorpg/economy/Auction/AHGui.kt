@@ -81,7 +81,6 @@ class AHGui {
         fGUILayer1.buttons.add(GUIButton(36, blocks, ::blockPageHandler))
         fGUILayer1.buttons.add(GUIButton(45, misc, ::miscPageHandler))
         fGUILayer1.buttons.add(GUIButton(53, exitItem, ::returnToManagerPage))
-        fGui.layers.add(fGUILayer1)
 
 
         browseGui = GUIFactory.produceInventory(fGui)
@@ -126,7 +125,6 @@ class AHGui {
                 ::createClickHandler
             )
         )
-        mGui.layers.add(mGUILayer1)
 
         mainGui = GUIFactory.produceInventory(mGui)
 
@@ -141,7 +139,6 @@ class AHGui {
         }
 
         createGUILayer1.backgrounds.add(GUIBackground(13, createItem))
-        createGui.layers.add(createGUILayer1)
 
         createAucGui = GUIFactory.produceInventory(createGui)
     }
@@ -399,7 +396,6 @@ class AHGui {
             layer1.backgrounds.add(GUIBackground(index, sBK))
         }
 
-        mGui.layers.add(layer1)
 
         return mGui
     }
@@ -426,7 +422,6 @@ class AHGui {
             }
         }
 
-        inv.layers.add(layer1)
 
         gui.player.closeInventory()
         gui.player.openInventory(GUIFactory.produceInventory(inv))
@@ -473,7 +468,6 @@ class AHGui {
                 continue
             }
         }
-        inv.layers.add(layer1)
 
         gui.player.closeInventory()
         gui.player.openInventory(GUIFactory.produceInventory(inv))

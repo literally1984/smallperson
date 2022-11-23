@@ -41,8 +41,6 @@ data class RecipeItem(val recipe: Recipe) {
                 }
             }
 
-            gui.layers.add(backgroundLayer)
-            gui.layers.add(backgroundLayer2)
         }
 
         if (recipe is ShapelessRecipe) {
@@ -62,8 +60,6 @@ data class RecipeItem(val recipe: Recipe) {
             for (i in ingredients.indices) {
                 layer2.backgrounds.add(GUIBackground(craftingLines[i + 1], ingredients[i]))
             }
-            finalGUI.layers.add(layer1)
-            finalGUI.layers.add(layer2)
             pageInventory = GUIFactory.produceInventory(finalGUI)
         }
 

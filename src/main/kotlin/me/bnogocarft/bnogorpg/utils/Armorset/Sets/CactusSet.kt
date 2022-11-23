@@ -1,6 +1,6 @@
 package me.bnogocarft.bnogorpg.utils.Armorset.Sets
 
-import me.bnogocarft.bnogorpg.items.CactusArmor
+import me.bnogocarft.bnogorpg.items.comatSets.CactusArmor
 import me.bnogocarft.bnogorpg.utils.Armorset.ArmorSet
 import me.bnogocarft.bnogorpg.utils.Armorset.SetBonus
 

@@ -125,9 +125,8 @@ class GUIFactory {
 }
 
 data class FactoryInventory(val name: String, val size: Int) {
-    var inventory: Inventory = Bukkit.createInventory(null, size, name)
-    var layers = ArrayList<GUILayer>()
-        private set
+    val inventory: Inventory = Bukkit.createInventory(null, size, name)
+    val layers = ArrayList<GUILayer>()
 }
 
 class GUILayer(val fInv: FactoryInventory) {

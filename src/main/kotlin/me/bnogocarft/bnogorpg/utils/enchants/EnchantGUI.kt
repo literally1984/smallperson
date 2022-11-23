@@ -35,9 +35,7 @@ class EnchantGUI {
     private fun generateBaseEnchantGUI() {
         val fInv = GUIFactory.createInventory("Enchantment Table", 54)
         val layer1 = GUILayer(fInv)
-        for (i in 0..53) {
-            layer1.backgrounds.add(GUIBackground(i, sBK))
-        }
+        layer1.fill(sBK)
         val bottomRow = ItemStack(Material.ENCHANTED_BOOK)
         val meta = Bukkit.getItemFactory().getItemMeta(Material.ENCHANTED_BOOK)
         meta.displayName = ""
@@ -56,10 +54,10 @@ class EnchantGUI {
             if (it.currentItem != null && it.inv.getItem(13) == null) {
                 val item = it.currentItem!!
                 // Checks if the Item is a BItem
-                if (!(it.currentItem!! canBe BItemClass.ENCHANTABLE)) {
+                if (!(it.currentItem!! canBe B.ENCHANTABLE)) {
                     return@SlotFunction
                 }
-                val bItem: Enchantable = if (item canBe BItemClass.TALISMAN) {
+                val bItem: Enchantable = if (item canBe B.TALISMAN) {
                     Talisman(item)
                 } else {
                     BGear(item)
@@ -87,10 +85,6 @@ class EnchantGUI {
                 }
             }
         })
-
-
-
-        fInv.layers.add(layer1)
     }
 
     private fun enchantHandler(gui: OpenGUI) {

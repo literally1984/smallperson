@@ -1,5 +1,6 @@
 package me.bnogocarft.bnogorpg.utils.bitem.factory
 
+import me.bnogocarft.bnogorpg.commands.customItemMap
 import me.bnogocarft.bnogorpg.utils.Armorset.SetBonus
 import me.bnogocarft.bnogorpg.utils.ability.IAbility
 import me.bnogocarft.bnogorpg.utils.bitem.BItems.BItemType
@@ -25,28 +26,38 @@ interface Enhancement {
     val stats: ArrayList<Int>
 }
 
-interface FactoryItem {
-    val name: String
-    val mat: Material
-    val rarity: Rarity
-    val abilities: ArrayList<IAbility>
-    val bMat: BMaterial
-    fun produce(): ItemStack
+abstract class FactoryItem(
+    open val name: String,
+    open val rarity: Rarity,
+    open val bMat: BMaterial
+) {
+    open val abilities = ArrayList<IAbility>()
+    open fun produce(): ItemStack {
+        throw IllegalCallerException("You must override this method in order to use it!")
+    }
+
+    fun register(s: String): ItemStack {
+        val item = produce()
+        customItemMap[s] = item
+        return item
+    }
 }
 
 class FactoryWeapon(
     override val name: String,
-    override val mat: Material,
     override val rarity: Rarity,
     override val abilities: ArrayList<IAbility>,
     override val bMat: BMaterial,
     override val stats: ArrayList<Int>
-) : FactoryItem, Enhancement {
+) : FactoryItem(name, rarity, bMat), Enhancement {
+
     override fun produce(): ItemStack {
+        val mat = bMat.getBukkitMaterial()
         val item = ItemStack(mat)
         val meta = Bukkit.getItemFactory().getItemMeta(mat)
         val lore = ArrayList<String>()
         meta.displayName = name
+        lore.add("${ChatColor.GOLD}Reforge: ${ChatColor.GRAY}None")
         lore.add("${ChatColor.GRAY}Quality: ${rarity.getColor()}?")
         lore.add("${ChatColor.GRAY}When held in hand:")
         lore.add("")
@@ -79,6 +90,7 @@ class FactoryWeapon(
         }
         lore.add("${ChatColor.YELLOW}Level: ${ChatColor.GRAY}0")
         lore.add("${ChatColor.GREEN}EXP: 0/10[          ]")
+        lore.add("${ChatColor.RED}Durability: ${ChatColor.GREEN}${mat.maxDurability}/${mat.maxDurability}")
         lore.add("")
         lore.add(weaponIdentifier)
 
@@ -92,16 +104,15 @@ class FactoryWeapon(
 
 class FactoryArmor(
     override val name: String,
-    override val mat: Material,
     override val rarity: Rarity,
     override val bMat: BMaterial,
     override val stats: ArrayList<Int>,
-    val setBonuses: ArrayList<SetBonus>,
     val color: Color
-) : FactoryItem, Enhancement {
-    override val abilities = ArrayList<IAbility>()
+) : FactoryItem(name, rarity, bMat), Enhancement {
+    val setBonuses: ArrayList<SetBonus> = ArrayList()
 
     override fun produce(): ItemStack {
+        val mat = bMat.getBukkitMaterial()
         val item = ItemStack(mat)
         val meta = Bukkit.getItemFactory().getItemMeta(mat)
         val lore = ArrayList<String>()
@@ -157,13 +168,13 @@ class FactoryArmor(
 
 class FactoryTalisman(
     override val name: String,
-    override val mat: Material,
     override val rarity: Rarity,
-    override val abilities: ArrayList<IAbility>,
     override val stats: ArrayList<Int>,
     override val bMat: BMaterial
-) : FactoryItem, Enhancement {
+) : FactoryItem(name, rarity, bMat), Enhancement {
+
     override fun produce(): ItemStack {
+        val mat = bMat.getBukkitMaterial()
         val item = ItemStack(mat)
         val meta = Bukkit.getItemFactory().getItemMeta(mat)
         val lore = ArrayList<String>()
@@ -191,12 +202,11 @@ class FactoryTalisman(
 
 class FactoryAScroll(
     override val name: String,
-    override val mat: Material,
     override val rarity: Rarity,
-    override val abilities: ArrayList<IAbility>,
     override val bMat: BMaterial
-) : FactoryItem {
+) : FactoryItem(name, rarity, bMat) {
     override fun produce(): ItemStack {
+        val mat = bMat.getBukkitMaterial()
         val item = ItemStack(mat)
         val meta = Bukkit.getItemFactory().getItemMeta(mat)
         val lore = ArrayList<String>()
@@ -220,21 +230,30 @@ class FactoryAScroll(
 
 class FactorySScroll(
     override val name: String,
-    override val mat: Material,
     override val rarity: Rarity,
     override val abilities: ArrayList<IAbility>, override val bMat: BMaterial
-) : FactoryItem {
+) : FactoryItem(name, rarity, bMat) {
     override fun produce(): ItemStack {
-        TODO("Not yet implemented")
+        val mat = bMat.getBukkitMaterial()
     }
 }
 
 class FactoryMisc(
     override val name: String,
+    override val rarity: Rarity,
+    override val abilities: ArrayList<IAbility>, override val bMat: BMaterial
+) : FactoryItem(name, rarity, bMat) {
+    override fun produce(): ItemStack {
+        TODO("Not yet implemented")
+    }
+}
+
+class FactoryPotion (
+    override val name: String,
     override val mat: Material,
     override val rarity: Rarity,
     override val abilities: ArrayList<IAbility>, override val bMat: BMaterial
-) : FactoryItem {
+) : FactoryItem(name, mat, rarity, bMat) {
     override fun produce(): ItemStack {
         TODO("Not yet implemented")
     }

@@ -5,9 +5,7 @@ import me.bnogocarft.bnogorpg.utils.others.Rarity.Rarity
 import org.bukkit.ChatColor
 import org.bukkit.inventory.ItemStack
 
-class CraftTalisman(override var item: ItemStack, val variables: List<ItemVariable>) : CraftItem {
-    override var type: BMaterial = BMaterial.valueOf(item.itemMeta.displayName.replace(" ", "_").uppercase())
-    override var amount: Int = item.amount
+class CraftTalisman(override var item: ItemStack, val variables: List<ItemVariable>) : CraftItem(item) {
 
     init {
 

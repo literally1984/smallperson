@@ -1,7 +1,8 @@
-package me.bnogocarft.bnogorpg.items.overriden
+package me.bnogocarft.bnogorpg.items.sets
 
 import me.bnogocarft.bnogorpg.utils.bitem.BItems.BItemType
-import me.bnogocarft.bnogorpg.utils.bitem.factory.BItemFactory
+import me.bnogocarft.bnogorpg.utils.bitem.BMaterial
+import me.bnogocarft.bnogorpg.utils.bitem.factory.FactoryWeapon
 import me.bnogocarft.bnogorpg.utils.bitem.factory.FullSetMaker
 import me.bnogocarft.bnogorpg.utils.others.Rarity.Rarity
 import org.bukkit.Bukkit
@@ -35,12 +36,11 @@ class Gold : FullSetMaker {
     }
 
     override fun createSword() {
-        val factoryItem = BItemFactory.createBItem("Gold Sword", Material.GOLD_SWORD, BItemType.WEAPON)
+        val stats = arrayListOf(1, 12, 1, 10, 10, 20)
+        val fItem = FactoryWeapon(
+            "Gold Sword", Material.GOLD_SWORD, Rarity.RARE, arrayListOf(), BMaterial.GOLD_SWORD, stats
+        ).produce()
 
-        factoryItem.stats = arrayListOf(1, 12, 1, 10, 10, 20)
-        factoryItem.rarity = Rarity.RARE
-
-        sword = BItemFactory.produceItem(factoryItem)
         BItemFactory.register("goldsword", sword)
 
         val recipe = ShapedRecipe(sword)
