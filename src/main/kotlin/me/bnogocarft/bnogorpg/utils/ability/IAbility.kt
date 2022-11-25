@@ -8,5 +8,5 @@ interface IAbility {
     val description: ArrayList<String>
     val name: String
     val type: AbilityTrigger
-    fun cast(caster: Player, abilityEvent: Event)
+    fun cast(caster: Player, event: Event)
 }

@@ -1,5 +1,9 @@
 package me.bnogocarft.bnogorpg.utils
 
+import me.bnogocarft.bnogorpg.utils.bitem.BItems.BArmor
+import me.bnogocarft.bnogorpg.utils.bitem.BItems.BGear
+import me.bnogocarft.bnogorpg.utils.bitem.BItems.BItemUtils
+import me.bnogocarft.bnogorpg.utils.bitem.BItems.BWeapon
 import me.bnogocarft.bnogorpg.utils.bitem.factory.*
 import net.minecraft.server.v1_8_R3.*
 import org.bukkit.Bukkit
@@ -14,6 +18,7 @@ import org.bukkit.entity.Player
 import org.bukkit.event.player.PlayerInteractEvent
 import org.bukkit.inventory.ItemStack
 import org.bukkit.util.Vector
+import java.lang.IllegalArgumentException
 import kotlin.math.pow
 import kotlin.math.roundToInt
 
@@ -298,3 +303,29 @@ fun Player.sendPacket(packet: Packet<*>) {
     (this as CraftPlayer).handle.playerConnection.sendPacket(packet)
 }
 
+fun ItemStack.getBGear(): BGear? {
+    val gear = try {
+        BItemUtils.getBGear(this)
+    } catch (e: IllegalArgumentException) {
+        null
+    }
+    return gear
+}
+
+fun ItemStack.getBWeapon(): BWeapon? {
+    val gear = try {
+        BItemUtils.getBWeapon(this)
+    } catch (e: IllegalArgumentException) {
+        null
+    }
+    return gear
+}
+
+fun ItemStack.getBArmor(): BArmor? {
+    val gear = try {
+        BItemUtils.getBArmor(this)
+    } catch (e: IllegalArgumentException) {
+        null
+    }
+    return gear
+}

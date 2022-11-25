@@ -1,6 +1,5 @@
 package me.bnogocarft.bnogorpg.utils.bitem.BItems
 
-import me.bnogocarft.bnogorpg.utils.Exceptions.IllegalParameterException
 import me.bnogocarft.bnogorpg.utils.bitem.BMaterial
 import me.bnogocarft.bnogorpg.utils.encode
 import me.bnogocarft.bnogorpg.utils.others.Rarity.RarityUtils
@@ -30,7 +29,7 @@ open class BItem(item: ItemStack) {
                 }
             }
         } catch (e: NullPointerException) {
-            throw IllegalParameterException("No type identifier found in item lore")
+            throw IllegalArgumentException("No type identifier found in item lore")
         }
 
     init {
@@ -39,7 +38,7 @@ open class BItem(item: ItemStack) {
                     item.itemMeta.lore.size - 1
             ].contains(encode("bitem"))
         ) {
-            throw IllegalParameterException("ItemStack does not have BItem marker!")
+            throw IllegalArgumentException("ItemStack does not have BItem marker!")
         }
         val lore = item.itemMeta.lore
         for (clore in lore) {
@@ -51,7 +50,7 @@ open class BItem(item: ItemStack) {
             try {
                 BMaterial.valueOf(item.itemMeta.displayName.replace(" ", "_").uppercase())
             } catch (e: IllegalArgumentException) {
-                throw IllegalParameterException("ItemStack does not have a valid BMaterial")
+                throw IllegalArgumentException("ItemStack does not have a valid BMaterial")
             }
         } else {
             val name = item.itemMeta.displayName

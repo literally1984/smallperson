@@ -1,6 +1,8 @@
 package me.bnogocarft.bnogorpg.utils.abilities.ItemAbility
 
 enum class AbilityTrigger {
+    RIGHT,
+    LEFT,
     RIGHT_AIR,
     RIGHT_BLOCK,
     SHIFT_RIGHT_AIR,
@@ -28,6 +30,8 @@ enum class AbilityTrigger {
             SET_BONUS -> "Set Bonus"
             NONE -> "None"
             HIT -> "On Damaged"
+            RIGHT -> "Right Click"
+            LEFT -> "Left Click"
         }
     }
 }

@@ -5,21 +5,24 @@ data class ChargeBar(val player: OnlineBPlayer) {
         set(value) {
             field = value
             if (enabled) {
-                player.p.exp = player.p.exp - getNeededEXP(player.p.level) + (player.p.exp / 100 * percentage)
+                player.p.exp = value/100f
             }
         }
     var originalExp = player.p.exp
+    var originalLevel = player.p.level
     var enabled = false
         set(value) {
-            field = value
             if (value) {
                 originalExp = player.p.exp
-                player.p.exp = player.p.exp - getNeededEXP(player.p.level) + (player.p.exp / 100 * percentage)
+                originalLevel = player.p.level
+                player.p.exp = percentage/100f
             }
 
             if (!value) {
                 player.p.exp = originalExp
-                percentage = 0
+                player.p.level = originalLevel
             }
+
+            field = value
         }
 }

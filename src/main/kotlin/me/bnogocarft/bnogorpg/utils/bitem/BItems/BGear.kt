@@ -3,7 +3,6 @@ package me.bnogocarft.bnogorpg.utils.bitem.BItems
 import me.bnogocarft.bnogorpg.items.updater.Change.Change
 import me.bnogocarft.bnogorpg.items.updater.Change.StatChange
 import me.bnogocarft.bnogorpg.utils.Database.BnogoSQL
-import me.bnogocarft.bnogorpg.utils.Exceptions.IllegalParameterException
 import me.bnogocarft.bnogorpg.utils.StatUtils.ItemStat
 import me.bnogocarft.bnogorpg.utils.ability.IAbility
 import me.bnogocarft.bnogorpg.utils.bitem.Reforge
@@ -162,7 +161,7 @@ open class BGear(override val item: ItemStack) : BItem(item), Enchantable {
             }
 
             if (id == -1) {
-                throw IllegalParameterException("Item does not have an ID Line")
+                throw IllegalArgumentException("Item does not have an ID Line")
             }
 
             reforge = try {

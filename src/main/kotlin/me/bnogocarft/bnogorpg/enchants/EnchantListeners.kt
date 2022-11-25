@@ -1,6 +1,6 @@
 package me.bnogocarft.bnogorpg.enchants
 
-import me.bnogocarft.bnogorpg.utils.BItemClass
+import me.bnogocarft.bnogorpg.utils.B
 import me.bnogocarft.bnogorpg.utils.bitem.BItems.BItemUtils
 import me.bnogocarft.bnogorpg.utils.canBe
 import me.bnogocarft.bnogorpg.utils.enchants.EnchantGUI
@@ -42,7 +42,7 @@ class EnchantListeners : Listener {
     fun onHit(e: EntityDamageByEntityEvent) {
         if (e.damager is Player) {
             val damaged = (e.damager as Player)
-            if (damaged.itemInHand canBe BItemClass.WEAPON) {
+            if (damaged.itemInHand canBe B.WEAPON) {
                 val item = BItemUtils.getBWeapon(damaged.itemInHand)
                 for (enchant in item.enchantments) {
                     enchant.apply(e)

@@ -1,6 +1,8 @@
 package me.bnogocarft.bnogorpg.utils.bitem.BItems
 
+import me.bnogocarft.bnogorpg.utils.B
 import me.bnogocarft.bnogorpg.utils.StatUtils.ItemStat
+import me.bnogocarft.bnogorpg.utils.canBe
 import org.bukkit.inventory.ItemStack
 
 data class BWeapon(override var item: ItemStack) : BGear(item) {
@@ -37,4 +39,9 @@ data class BWeapon(override var item: ItemStack) : BGear(item) {
 
     Rarity
      */
+    init {
+        if (!(item canBe B.WEAPON)) {
+            throw IllegalArgumentException("provided item is does not have a weapon tag")
+        }
+    }
 }

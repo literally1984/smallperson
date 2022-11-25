@@ -1,16 +1,21 @@
-package me.bnogocarft.bnogorpg.items
+package me.bnogocarft.bnogorpg.items.comatSets
 
-import me.bnogocarft.bnogorpg.utils.ability.Abilities.SpikeySpikes
+import me.bnogocarft.bnogorpg.Main
+import me.bnogocarft.bnogorpg.utils.Armorset.SetBonus
+import me.bnogocarft.bnogorpg.utils.abilities.ItemAbility.AbilityTrigger
 import me.bnogocarft.bnogorpg.utils.bitem.BItems.BItemType
 import me.bnogocarft.bnogorpg.utils.bitem.BMaterial
 import me.bnogocarft.bnogorpg.utils.bitem.CraftItems.CraftItemType
 import me.bnogocarft.bnogorpg.utils.bitem.factory.ArmorSetMaker
 import me.bnogocarft.bnogorpg.utils.bitem.factory.BItemFactory
 import me.bnogocarft.bnogorpg.utils.others.Rarity.Rarity
+import me.bnogocarft.bnogorpg.utils.player.bPlayer
 import org.bukkit.Bukkit
 import org.bukkit.ChatColor
 import org.bukkit.Color
 import org.bukkit.Material
+import org.bukkit.entity.Player
+import org.bukkit.event.Event
 import org.bukkit.inventory.ItemStack
 import org.bukkit.inventory.ShapedRecipe
 
@@ -83,5 +88,24 @@ class CactusArmor : ArmorSetMaker {
 
         boots = BItemFactory.produceItem(factoryItem)
         BItemFactory.register("cactusboots", boots)
+    }
+}
+
+class SpikeySpikes : SetBonus {
+    override val description: ArrayList<String> = arrayListOf(
+        "When an opponent damages you,",
+        "30% of the damage will be",
+        "reflected back to them."
+    )
+    override val name: String = "Spiky Spikes"
+
+    override val type: AbilityTrigger = AbilityTrigger.HIT
+
+    override fun cast(caster: Player, abilityEvent: Event) {
+
+    }
+
+    init {
+        Main.registeredAbilities.add(this)
     }
 }

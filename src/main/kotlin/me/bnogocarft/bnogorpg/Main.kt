@@ -18,11 +18,10 @@ import me.bnogocarft.bnogorpg.economy.Auction.AhGuiUpdater
 import me.bnogocarft.bnogorpg.economy.Auction.AuctionCommand
 import me.bnogocarft.bnogorpg.economy.Auction.AuctionListeners
 import me.bnogocarft.bnogorpg.enchants.EnchantListeners
-import me.bnogocarft.bnogorpg.items.*
 import me.bnogocarft.bnogorpg.items.DefaultOverrider
 import me.bnogocarft.bnogorpg.items.armorSets.LapisArmor
 import me.bnogocarft.bnogorpg.items.comatSets.CactusArmor
-import me.bnogocarft.bnogorpg.items.single.BladeOfHermes
+import me.bnogocarft.bnogorpg.items.single.EnderwarriorBlade
 import me.bnogocarft.bnogorpg.items.single.GrapplerItem
 import me.bnogocarft.bnogorpg.items.single.Thunderbolt
 import me.bnogocarft.bnogorpg.items.updater.Updates.Update
@@ -55,7 +54,6 @@ import me.bnogocarft.bnogorpg.utils.ability.IAbility
 import me.bnogocarft.bnogorpg.utils.auction.Auction
 import me.bnogocarft.bnogorpg.utils.auction.AuctionTimer
 import me.bnogocarft.bnogorpg.utils.bitem.BItems.BItemUtils
-import me.bnogocarft.bnogorpg.utils.events.ArmorWearListeners
 import me.bnogocarft.bnogorpg.utils.others.PlaytimeUtils
 import me.bnogocarft.bnogorpg.utils.player.OnlineBPlayers
 import net.milkbowl.vault.economy.Economy
@@ -187,16 +185,14 @@ class Main : JavaPlugin() {
         cSender.sendMessage("$logo Overriding default combat Items... Done")
 
         cSender.sendMessage("$logo Constructing utils...")
-        OnlineBPlayers
         initUtils()
-        cSender.sendMessage("$logo Utlils have been constructed")
+        cSender.sendMessage("$logo Utils have been constructed")
 
         cSender.sendMessage("$logo Registering listeners")
         server.pluginManager.registerEvents(PlayerJoinEvent(), this)
         server.pluginManager.registerEvents(ChatInput.ChatListener(), this)
-        server.pluginManager.registerEvents(HotbarChangeEvent(), this)
+        server.pluginManager.registerEvents(PlayerAbilityChangeListeners(), this)
         server.pluginManager.registerEvents(PlayerLeaveEvent(), this)
-        server.pluginManager.registerEvents(ArmorWearListeners(), this)
         server.pluginManager.registerEvents(DamageEvent(), this)
         server.pluginManager.registerEvents(AbilityListeners(), this)
         server.pluginManager.registerEvents(ChatListeners(), this)
@@ -271,9 +267,8 @@ class Main : JavaPlugin() {
         cSender.sendMessage("$logo Registering custom ItemStacks...")
         CactusArmor()
         LapisArmor()
-        BladeOfHermes()
+        EnderwarriorBlade()
         GrapplerItem()
-        DoubleJumpBoots()
         Thunderbolt()
         cSender.sendMessage("$logo Registered custom Items")
 

@@ -3,16 +3,19 @@ package me.bnogocarft.bnogorpg.utils.player
 import me.bnogocarft.bnogorpg.Main
 import me.bnogocarft.bnogorpg.combat.ComboCounter.Combo
 import me.bnogocarft.bnogorpg.player.PlayerBar.MainBar
+import me.bnogocarft.bnogorpg.utils.*
 import me.bnogocarft.bnogorpg.utils.Armorset.SetBonus
 import me.bnogocarft.bnogorpg.utils.Database.BnogoSQL
-import me.bnogocarft.bnogorpg.utils.GUIBackground
-import me.bnogocarft.bnogorpg.utils.GUIFactory
-import me.bnogocarft.bnogorpg.utils.GUILayer
 import me.bnogocarft.bnogorpg.utils.JVMUtils.BarArrayList
 import me.bnogocarft.bnogorpg.utils.Mode.Mode
 import me.bnogocarft.bnogorpg.utils.StatUtils.StatManager
 import me.bnogocarft.bnogorpg.utils.abilities.ItemAbility.AbilityTrigger
 import me.bnogocarft.bnogorpg.utils.abilities.Spell
+import me.bnogocarft.bnogorpg.utils.ability.IAbility
+import me.bnogocarft.bnogorpg.utils.bitem.BItems.BItemUtils
+import me.bnogocarft.bnogorpg.utils.events.Button
+import me.bnogocarft.bnogorpg.utils.events.ClickState
+import me.bnogocarft.bnogorpg.utils.events.ClickStateChangeEvent
 import net.minecraft.server.v1_8_R3.IChatBaseComponent.ChatSerializer
 import net.minecraft.server.v1_8_R3.PacketPlayOutChat
 import org.bukkit.Bukkit
@@ -28,6 +31,7 @@ import org.bukkit.inventory.ItemStack
 import tech.nully.BossBarAPI.BossBar
 import java.text.SimpleDateFormat
 import java.util.*
+import kotlin.collections.ArrayList
 import kotlin.math.roundToInt
 
 
@@ -38,12 +42,37 @@ import kotlin.math.roundToInt
 data class OnlineBPlayer(val p: Player) : BPlayer(p.name) {
     private val playerStats = StatManager.calculateStats(p)
 
+    val activeAbilities = ArrayList<IAbility>()
+
     /**
      * The Player's connection to send packets to
      */
     val connection = (p as CraftPlayer).handle.playerConnection
 
     var isRightClicking = false
+        set(value) {
+            field = value
+            val event: ClickStateChangeEvent = if (value) {
+                ClickStateChangeEvent(p, Button.RIGHT, ClickState.HOLD)
+            } else {
+                ClickStateChangeEvent(p, Button.RIGHT, ClickState.RELEASE)
+            }
+
+            Bukkit.getPluginManager().callEvent(event)
+        }
+    var isLeftClicking = false
+        set(value) {
+            field = value
+            val event: ClickStateChangeEvent = if (value) {
+                ClickStateChangeEvent(p, Button.LEFT, ClickState.HOLD)
+            } else {
+                ClickStateChangeEvent(p, Button.LEFT, ClickState.RELEASE)
+            }
+
+            Bukkit.getPluginManager().callEvent(event)
+        }
+    var rcLastTick = false
+    var lcLastTick = false
 
     var manaMultiplier = 1.0f
     var staminaMultiplier = 1.0f
@@ -162,6 +191,22 @@ data class OnlineBPlayer(val p: Player) : BPlayer(p.name) {
     val metadata = HashMap<String, Any>()
 
     init {
+        for (armor in p.inventory.armorContents) {
+            if (armor != null) {
+                val bArmor = armor.getBArmor()
+                if (bArmor != null) {
+                    for (ability in bArmor.abilities) activeAbilities.add(ability)
+                }
+            }
+        }
+        if (p.itemInHand != null) {
+            if (p.itemInHand canBe B.WEAPON) {
+                val weapon = p.itemInHand.getBWeapon()
+                if (weapon != null) {
+                    for (ability in weapon.abilities) activeAbilities.add(ability)
+                }
+            }
+        }
         // Creates a SQL entry for the player if it is not already created
         val exitResult = BnogoSQL.con.prepareStatement("SELECT name FROM players WHERE name = '$player'").executeQuery()
         if (!exitResult.next()) {
@@ -185,8 +230,18 @@ data class OnlineBPlayer(val p: Player) : BPlayer(p.name) {
         }
 
         Bukkit.getScheduler().scheduleSyncRepeatingTask(Main.instance, {
-            isRightClicking = false
-        }, 0, 3)
+            if (rcLastTick) {
+                rcLastTick = false
+            } else {
+                isRightClicking = false
+            }
+
+            if (lcLastTick) {
+                lcLastTick = false
+            } else {
+                isLeftClicking = false
+            }
+        }, 0, 1)
         bars.add(MainBar())
 
         val now = Date()

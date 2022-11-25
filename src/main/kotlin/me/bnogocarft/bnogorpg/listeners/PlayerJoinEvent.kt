@@ -4,6 +4,7 @@ import me.bnogocarft.bnogorpg.Main
 import me.bnogocarft.bnogorpg.planes.Plane
 import me.bnogocarft.bnogorpg.planes.planeEntitites
 import me.bnogocarft.bnogorpg.ticker.Ticker
+import me.bnogocarft.bnogorpg.ticker.Ticker.Companion.lastArmor
 import me.bnogocarft.bnogorpg.utils.bitem.BItems.BArmor
 import me.bnogocarft.bnogorpg.utils.bitem.BItems.BItemUtils
 import me.bnogocarft.bnogorpg.utils.bitem.BItems.BWeapon
@@ -24,6 +25,8 @@ class PlayerJoinEvent : Listener {
         val onlineBPlayer = OnlineBPlayer(e.player)
 
         val s = onlineBPlayer.stats
+
+        lastArmor[e.player] = e.player.inventory.armorContents
 
         onlineBPlayer.sendActionBar(
             "${ChatColor.AQUA}M: ${s.currentMana}/${s.maxMana}[██████████] || " +

@@ -169,9 +169,8 @@ class FactoryArmor(
 class FactoryTalisman(
     override val name: String,
     override val rarity: Rarity,
-    override val stats: ArrayList<Int>,
     override val bMat: BMaterial
-) : FactoryItem(name, rarity, bMat), Enhancement {
+) : FactoryItem(name, rarity, bMat) {
 
     override fun produce(): ItemStack {
         val mat = bMat.getBukkitMaterial()
@@ -235,13 +234,32 @@ class FactorySScroll(
 ) : FactoryItem(name, rarity, bMat) {
     override fun produce(): ItemStack {
         val mat = bMat.getBukkitMaterial()
+        val item = ItemStack(mat)
+        val meta = Bukkit.getItemFactory().getItemMeta(mat)
+        val lore = ArrayList<String>()
+        meta.displayName = name
+        lore.add("")
+        for (ability in abilities) {
+            for (s in ability.description) {
+                lore.add(s)
+            }
+        }
+        lore.add("")
+        lore.add(talismanIdentifier)
+
+        lore.add(rarity.getText())
+
+        meta.lore = lore
+        item.itemMeta = meta
+        return item
     }
 }
 
 class FactoryMisc(
     override val name: String,
     override val rarity: Rarity,
-    override val abilities: ArrayList<IAbility>, override val bMat: BMaterial
+    override val abilities: ArrayList<IAbility>,
+    override val bMat: BMaterial
 ) : FactoryItem(name, rarity, bMat) {
     override fun produce(): ItemStack {
         TODO("Not yet implemented")
@@ -250,10 +268,10 @@ class FactoryMisc(
 
 class FactoryPotion (
     override val name: String,
-    override val mat: Material,
     override val rarity: Rarity,
-    override val abilities: ArrayList<IAbility>, override val bMat: BMaterial
-) : FactoryItem(name, mat, rarity, bMat) {
+    override val abilities: ArrayList<IAbility>,
+    override val bMat: BMaterial
+) : FactoryItem(name, rarity, bMat) {
     override fun produce(): ItemStack {
         TODO("Not yet implemented")
     }
