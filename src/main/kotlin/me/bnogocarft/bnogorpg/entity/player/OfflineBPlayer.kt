@@ -1,4 +1,4 @@
-package me.bnogocarft.bnogorpg.utils.player
+package me.bnogocarft.bnogorpg.entity.player
 
 import me.bnogocarft.bnogorpg.utils.Exceptions.PlayerDoesNotExistException
 import org.bukkit.Bukkit

@@ -2,8 +2,8 @@ package me.bnogocarft.bnogorpg.ticker
 
 import me.bnogocarft.bnogorpg.Main
 import me.bnogocarft.bnogorpg.utils.events.ArmorChangeEvent
-import me.bnogocarft.bnogorpg.utils.player.OnlineBPlayers
-import me.bnogocarft.bnogorpg.utils.player.bPlayer
+import me.bnogocarft.bnogorpg.entity.player.OnlineBPlayers
+import me.bnogocarft.bnogorpg.entity.player.bPlayer
 import org.bukkit.Bukkit
 import org.bukkit.ChatColor
 import org.bukkit.entity.Player
@@ -14,7 +14,7 @@ import kotlin.math.roundToInt
 class Ticker {
     companion object {
         val oldPlayerBalanceScores = HashMap<Player, String>()
-        val lastArmor = HashMap<Player, Array<ItemStack>>()
+        val lastArmor = HashMap<Player, Array<ItemStack?>>()
         fun startPlayerUpdater() {
             Bukkit.getScheduler().scheduleSyncRepeatingTask(Main.instance, {
                 for (player in Bukkit.getOnlinePlayers()) {
@@ -91,10 +91,10 @@ class Ticker {
                         } catch (e: NullPointerException) { null }
                         if (item == oldItem) continue else {
                             val event = ArmorChangeEvent(player, index, lA!!)
-                            lastArmor[player] = player.inventory.armorContents
                             Bukkit.getPluginManager().callEvent(event)
                         }
                     }
+                    lastArmor[player] = player.inventory.armorContents
                 }
             }, 0, 1)
         }

@@ -6,10 +6,12 @@ import me.bnogocarft.bnogorpg.planes.planeEntitites
 import me.bnogocarft.bnogorpg.ticker.Ticker
 import me.bnogocarft.bnogorpg.ticker.Ticker.Companion.lastArmor
 import me.bnogocarft.bnogorpg.utils.bitem.BItems.BArmor
-import me.bnogocarft.bnogorpg.utils.bitem.BItems.BItemUtils
 import me.bnogocarft.bnogorpg.utils.bitem.BItems.BWeapon
-import me.bnogocarft.bnogorpg.utils.player.OnlineBPlayer
-import me.bnogocarft.bnogorpg.utils.player.OnlineBPlayers
+import me.bnogocarft.bnogorpg.entity.player.OnlineBPlayer
+import me.bnogocarft.bnogorpg.entity.player.OnlineBPlayers
+import me.bnogocarft.bnogorpg.utils.B
+import me.bnogocarft.bnogorpg.utils.bitem.BItemUtils
+import me.bnogocarft.bnogorpg.utils.canBe
 import org.bukkit.Bukkit
 import org.bukkit.ChatColor
 import org.bukkit.event.EventHandler
@@ -72,7 +74,7 @@ class PlayerJoinEvent : Listener {
         Bukkit.getServer().consoleSender.sendMessage(onlineBPlayer.file.path)
         for (item in e.player.inventory.contents) {
             if (item != null) {
-                if (BItemUtils.getBType(item).equals("weapon")) {
+                if (item canBe B.WEAPON) {
                     try {
                         BItemUtils.addBWeapon(item, BWeapon(item))
                     } catch (e: NumberFormatException) {

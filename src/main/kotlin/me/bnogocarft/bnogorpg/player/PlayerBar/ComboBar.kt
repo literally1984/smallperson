@@ -1,7 +1,7 @@
 package me.bnogocarft.bnogorpg.player.PlayerBar
 
 import me.bnogocarft.bnogorpg.Main
-import me.bnogocarft.bnogorpg.utils.player.OnlineBPlayer
+import me.bnogocarft.bnogorpg.entity.player.OnlineBPlayer
 import org.bukkit.Bukkit
 
 data class ComboBar(val player: OnlineBPlayer) : Bar {

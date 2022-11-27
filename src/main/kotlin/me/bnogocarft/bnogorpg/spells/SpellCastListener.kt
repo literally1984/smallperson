@@ -1,13 +1,10 @@
 package me.bnogocarft.bnogorpg.spells
 
-import me.bnogocarft.bnogorpg.spells.spells.FireballSpell
-import me.bnogocarft.bnogorpg.spells.spells.MeteorSpell
-import me.bnogocarft.bnogorpg.utils.Exceptions.IllegalParameterException
-import me.bnogocarft.bnogorpg.utils.bitem.BItems.BItem
-import me.bnogocarft.bnogorpg.utils.bitem.BItems.BItemType
-import me.bnogocarft.bnogorpg.utils.player.OnlineBPlayers
-import me.bnogocarft.bnogorpg.utils.player.bPlayer
-import net.minecraft.server.v1_5_R3.Material
+import me.bnogocarft.bnogorpg.utils.B
+import me.bnogocarft.bnogorpg.utils.bitem.BItems.BScroll
+import me.bnogocarft.bnogorpg.utils.canBe
+import me.bnogocarft.bnogorpg.entity.player.OnlineBPlayers
+import me.bnogocarft.bnogorpg.entity.player.bPlayer
 import org.bukkit.ChatColor
 import org.bukkit.event.EventHandler
 import org.bukkit.event.EventPriority
@@ -17,38 +14,23 @@ import org.bukkit.event.player.PlayerInteractEvent
 import org.bukkit.event.player.PlayerItemHeldEvent
 
 class SpellCastListener : Listener {
-    @EventHandler
+    @EventHandler(priority = EventPriority.HIGHEST)
     fun onCombatSwitch(e: PlayerInteractEvent) {
         if (e.player.itemInHand != null && e.player.itemInHand.hasItemMeta()) {
-            val bItem = try {
-                BItem(e.player.itemInHand)
-            } catch (e: IllegalParameterException) {
-                return
-            }
-            val bPlayer = OnlineBPlayers[e.player]
-            if (bItem.type == BItemType.WEAPON) {
-                if (e.action == Action.RIGHT_CLICK_AIR || e.action == Action.RIGHT_CLICK_BLOCK) {
-                    if (e.player.isSneaking) {
-                        bPlayer.isInCastMode = !bPlayer.isInCastMode
+            if (e.action == Action.RIGHT_CLICK_AIR || e.action == Action.RIGHT_CLICK_BLOCK) {
+                val item = e.player.itemInHand
+                if (item canBe B.WEAPON) {
+                    val bPlayer = OnlineBPlayers[e.player]
+                    if (e.action == Action.RIGHT_CLICK_AIR || e.action == Action.RIGHT_CLICK_BLOCK) {
+                        if (e.player.isSneaking) {
+                            bPlayer.isInCastMode = !bPlayer.isInCastMode
+                        }
                     }
                 }
-            }
 
-            if (bItem.type == BItemType.SCROLL) {
-                if (e.action == Action.RIGHT_CLICK_AIR || e.action == Action.RIGHT_CLICK_BLOCK) {
-                    when (e.player.itemInHand.itemMeta.displayName) {
-                        "Fireball Spell Scroll" -> {
-                            bPlayer.spells.add(FireballSpell(1))
-                            bPlayer.sendMessage("You have learned the Fireball spell!")
-                            bPlayer.p.itemInHand = null
-                        }
-
-                        "Meteor Summon Scroll" -> {
-                            bPlayer.spells.add(MeteorSpell(1))
-                            bPlayer.sendMessage("You have learned the Meteor Summon spell!")
-                            bPlayer.p.itemInHand = null
-                        }
-                    }
+                if (e.player.itemInHand canBe B.SCROLL) {
+                    val scroll = BScroll(e.player.itemInHand)
+                    scroll.learn(e.player)
                 }
             }
         }
@@ -60,10 +42,6 @@ class SpellCastListener : Listener {
         if (bPlayer.isInCastMode) {
             if (e.newSlot != 8) {
                 if (e.player.inventory.getItem(e.newSlot) == null) {
-                    e.isCancelled = true
-                    return
-                }
-                if (e.player.inventory.getItem(e.newSlot).type == Material.AIR) {
                     e.isCancelled = true
                     return
                 }

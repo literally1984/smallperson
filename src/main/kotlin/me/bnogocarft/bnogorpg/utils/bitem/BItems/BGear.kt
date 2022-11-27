@@ -3,21 +3,16 @@ package me.bnogocarft.bnogorpg.utils.bitem.BItems
 import me.bnogocarft.bnogorpg.items.updater.Change.Change
 import me.bnogocarft.bnogorpg.items.updater.Change.StatChange
 import me.bnogocarft.bnogorpg.utils.Database.BnogoSQL
-import me.bnogocarft.bnogorpg.utils.StatUtils.ItemStat
-import me.bnogocarft.bnogorpg.utils.ability.IAbility
+import me.bnogocarft.bnogorpg.utils.stat.ItemStat
+import me.bnogocarft.bnogorpg.utils.bitem.BItemUtils
 import me.bnogocarft.bnogorpg.utils.bitem.Reforge
-import me.bnogocarft.bnogorpg.utils.enchants.BEnchantment
 import me.bnogocarft.bnogorpg.utils.getNeededExp
-import me.bnogocarft.bnogorpg.utils.player.getNeededEXP
 import me.bnogocarft.bnogorpg.utils.serializeItem
-import net.minecraft.server.v1_8_R3.EnchantmentDurability
 import org.bukkit.ChatColor
 import org.bukkit.inventory.ItemStack
-import kotlin.math.pow
-import kotlin.math.roundToInt
 import kotlin.properties.Delegates
 
-open class BGear(override val item: ItemStack) : BItem(item), Enchantable {
+open class BGear(override val item: ItemStack) : Enchantable(item) {
 
     constructor(stats: List<Int>, item: ItemStack) : this(item) {
         this.stats = ItemStat(stats, item)
@@ -68,9 +63,6 @@ open class BGear(override val item: ItemStack) : BItem(item), Enchantable {
             field = value
         }
 
-    override val enchantments: ArrayList<BEnchantment> = ArrayList()
-    override var enchantLine = 0
-    final override val enchantImpl = EnchantImpl(this, item)
     var id: Int = -1
         set(value) {
             field = value
@@ -96,7 +88,7 @@ open class BGear(override val item: ItemStack) : BItem(item), Enchantable {
             }
             field = value
         }
-    val abilities = ArrayList<IAbility>()
+
     var exp: Long = 0
         set(value) {
             val copy = this.initItem.itemMeta.clone()
@@ -132,7 +124,6 @@ open class BGear(override val item: ItemStack) : BItem(item), Enchantable {
             this.initItem = item
             val lore = initItem.itemMeta.lore
             for (cLore in initItem.itemMeta.lore) {
-                enchantImpl.init(cLore)
                 if (cLore.contains("${ChatColor.AQUA}ID: ")) {
                     id = cLore.split("ID: ")[1].toInt()
                     idLine = cLore.indexOf(cLore)
@@ -257,9 +248,5 @@ open class BGear(override val item: ItemStack) : BItem(item), Enchantable {
                 }
             }
         }
-    }
-
-    override fun addEnchant(enchant: BEnchantment) {
-        enchantImpl.enchant(enchant)
     }
 }

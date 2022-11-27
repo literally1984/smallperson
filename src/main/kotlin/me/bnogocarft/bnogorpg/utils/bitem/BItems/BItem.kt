@@ -1,5 +1,7 @@
 package me.bnogocarft.bnogorpg.utils.bitem.BItems
 
+import me.bnogocarft.bnogorpg.utils.ability.IAbility
+import me.bnogocarft.bnogorpg.utils.bitem.BItemType
 import me.bnogocarft.bnogorpg.utils.bitem.BMaterial
 import me.bnogocarft.bnogorpg.utils.encode
 import me.bnogocarft.bnogorpg.utils.others.Rarity.RarityUtils
@@ -10,12 +12,8 @@ open class BItem(item: ItemStack) {
     open val item = item
 
     var material: BMaterial
+    val abilities = ArrayList<IAbility>()
 
-    /*var lastUpdate: Update =
-        when (decode(item.itemMeta.lore[item.itemMeta.lore.size - 1].split(" ")[1])) {
-            "002" -> Update.zerozerotwo
-            else -> Update.zerozerotwo
-        }*/
     var rarity = RarityUtils.getRarity(item.itemMeta.lore[item.itemMeta.lore.size - 1])
     var type: BItemType =
         try {

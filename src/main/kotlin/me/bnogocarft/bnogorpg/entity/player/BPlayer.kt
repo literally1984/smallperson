@@ -1,6 +1,6 @@
 @file:Suppress("UNCHECKED_CAST")
 
-package me.bnogocarft.bnogorpg.utils.player
+package me.bnogocarft.bnogorpg.entity.player
 
 import me.bnogocarft.bnogorpg.spells.spells.FireballSpell
 import me.bnogocarft.bnogorpg.spells.spells.MeteorSpell

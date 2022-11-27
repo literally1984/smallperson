@@ -2,11 +2,9 @@ package me.bnogocarft.bnogorpg.listeners
 
 import me.bnogocarft.bnogorpg.Main
 import me.bnogocarft.bnogorpg.player.PlayerBar.CombatLogBar
-import me.bnogocarft.bnogorpg.utils.player.bPlayer
+import me.bnogocarft.bnogorpg.entity.player.bPlayer
 import me.bnogocarft.bnogorpg.utils.times
 import me.filoghost.holographicdisplays.api.HolographicDisplaysAPI
-import me.filoghost.holographicdisplays.api.hologram.Hologram
-import org.bukkit.Location
 import org.bukkit.entity.LivingEntity
 import org.bukkit.entity.Player
 import org.bukkit.event.EventHandler
@@ -19,7 +17,7 @@ import kotlin.math.cos
 import kotlin.math.sin
 
 class DamageEvent : Listener {
-    @EventHandler(priority = EventPriority.LOW)
+    @EventHandler(priority = EventPriority.LOWEST)
     fun onPlayerDamage(e: EntityDamageEvent) {
         if (e.cause == EntityDamageEvent.DamageCause.ENTITY_ATTACK) {
             e as EntityDamageByEntityEvent
@@ -27,6 +25,7 @@ class DamageEvent : Listener {
                 val damager = e.damager
                 val victim = e.entity
                 // If the damager is a player
+
                 if (damager is Player) {
                     val bDamager = damager.bPlayer()
                     bDamager.bars

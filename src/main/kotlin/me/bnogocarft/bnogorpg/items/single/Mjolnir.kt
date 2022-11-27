@@ -1,10 +1,8 @@
 package me.bnogocarft.bnogorpg.items
 
 import me.bnogocarft.bnogorpg.Main
-import me.bnogocarft.bnogorpg.items.single.Thunderbolt
 import me.bnogocarft.bnogorpg.utils.abilities.ItemAbility.AbilityTrigger
 import me.bnogocarft.bnogorpg.utils.ability.IAbility
-import me.bnogocarft.bnogorpg.utils.bitem.BItems.BItemType
 import me.bnogocarft.bnogorpg.utils.bitem.BMaterial
 import me.bnogocarft.bnogorpg.utils.bitem.factory.FactoryWeapon
 import me.bnogocarft.bnogorpg.utils.bitem.factory.WeaponMaker
@@ -12,10 +10,9 @@ import me.bnogocarft.bnogorpg.utils.events.Button
 import me.bnogocarft.bnogorpg.utils.events.ClickState
 import me.bnogocarft.bnogorpg.utils.events.ClickStateChangeEvent
 import me.bnogocarft.bnogorpg.utils.others.Rarity.Rarity
-import me.bnogocarft.bnogorpg.utils.player.bPlayer
+import me.bnogocarft.bnogorpg.entity.player.bPlayer
 import org.bukkit.Bukkit
 import org.bukkit.ChatColor
-import org.bukkit.Material
 import org.bukkit.entity.Player
 import org.bukkit.event.Event
 import org.bukkit.inventory.ItemStack

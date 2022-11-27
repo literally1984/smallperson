@@ -1,4 +1,4 @@
-package me.bnogocarft.bnogorpg.utils.player
+package me.bnogocarft.bnogorpg.entity.player
 
 import org.bukkit.entity.Player
 import org.bukkit.event.entity.EntityDamageByEntityEvent

@@ -1,4 +1,4 @@
-package me.bnogocarft.bnogorpg.utils.player
+package me.bnogocarft.bnogorpg.entity.player
 
 import me.bnogocarft.bnogorpg.Main
 import org.bukkit.Bukkit

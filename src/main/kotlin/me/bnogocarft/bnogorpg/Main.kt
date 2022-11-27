@@ -49,13 +49,13 @@ import me.bnogocarft.bnogorpg.upgrade.UpgradeUtils
 import me.bnogocarft.bnogorpg.utils.*
 import me.bnogocarft.bnogorpg.utils.Database.BnogoSQL
 import me.bnogocarft.bnogorpg.utils.Database.YMLUtils
-import me.bnogocarft.bnogorpg.utils.StatUtils.StatCommands
+import me.bnogocarft.bnogorpg.utils.stat.StatCommands
 import me.bnogocarft.bnogorpg.utils.ability.IAbility
 import me.bnogocarft.bnogorpg.utils.auction.Auction
 import me.bnogocarft.bnogorpg.utils.auction.AuctionTimer
-import me.bnogocarft.bnogorpg.utils.bitem.BItems.BItemUtils
 import me.bnogocarft.bnogorpg.utils.others.PlaytimeUtils
-import me.bnogocarft.bnogorpg.utils.player.OnlineBPlayers
+import me.bnogocarft.bnogorpg.entity.player.OnlineBPlayers
+import me.bnogocarft.bnogorpg.utils.bitem.BItemUtils
 import net.milkbowl.vault.economy.Economy
 import org.bukkit.Bukkit
 import org.bukkit.ChatColor

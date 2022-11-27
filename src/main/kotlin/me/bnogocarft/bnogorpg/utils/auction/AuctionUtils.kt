@@ -7,7 +7,7 @@ import me.bnogocarft.bnogorpg.utils.*
 import me.bnogocarft.bnogorpg.utils.Exceptions.IllegalParameterException
 import me.bnogocarft.bnogorpg.utils.Senders.MessageSender
 import me.bnogocarft.bnogorpg.utils.bitem.BItems.BItem
-import me.bnogocarft.bnogorpg.utils.bitem.BItems.BItemType
+import me.bnogocarft.bnogorpg.utils.bitem.BItemType
 import org.bukkit.Bukkit
 import org.bukkit.ChatColor
 import org.bukkit.Material

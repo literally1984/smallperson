@@ -1,4 +1,4 @@
-package me.bnogocarft.bnogorpg.utils.player
+package me.bnogocarft.bnogorpg.entity.player
 
 import me.bnogocarft.bnogorpg.Main
 import me.bnogocarft.bnogorpg.combat.ComboCounter.Combo
@@ -8,14 +8,14 @@ import me.bnogocarft.bnogorpg.utils.Armorset.SetBonus
 import me.bnogocarft.bnogorpg.utils.Database.BnogoSQL
 import me.bnogocarft.bnogorpg.utils.JVMUtils.BarArrayList
 import me.bnogocarft.bnogorpg.utils.Mode.Mode
-import me.bnogocarft.bnogorpg.utils.StatUtils.StatManager
+import me.bnogocarft.bnogorpg.utils.stat.StatManager
 import me.bnogocarft.bnogorpg.utils.abilities.ItemAbility.AbilityTrigger
 import me.bnogocarft.bnogorpg.utils.abilities.Spell
 import me.bnogocarft.bnogorpg.utils.ability.IAbility
-import me.bnogocarft.bnogorpg.utils.bitem.BItems.BItemUtils
 import me.bnogocarft.bnogorpg.utils.events.Button
 import me.bnogocarft.bnogorpg.utils.events.ClickState
 import me.bnogocarft.bnogorpg.utils.events.ClickStateChangeEvent
+import me.bnogocarft.bnogorpg.utils.stat.PlayerStat
 import net.minecraft.server.v1_8_R3.IChatBaseComponent.ChatSerializer
 import net.minecraft.server.v1_8_R3.PacketPlayOutChat
 import org.bukkit.Bukkit
@@ -23,6 +23,7 @@ import org.bukkit.ChatColor
 import org.bukkit.GameMode
 import org.bukkit.Material
 import org.bukkit.craftbukkit.v1_8_R3.entity.CraftPlayer
+import org.bukkit.entity.Entity
 import org.bukkit.entity.LivingEntity
 import org.bukkit.entity.Player
 import org.bukkit.event.Event
@@ -40,6 +41,12 @@ import kotlin.math.roundToInt
  * @constructor Fully constructs the RPG attributes of a given Online Player
  */
 data class OnlineBPlayer(val p: Player) : BPlayer(p.name) {
+    var controlling: Entity? = null
+        set(entity) {
+            entity?.bEntity()?.setController(p)
+            field = entity
+        }
+
     private val playerStats = StatManager.calculateStats(p)
 
     val activeAbilities = ArrayList<IAbility>()
@@ -181,7 +188,7 @@ data class OnlineBPlayer(val p: Player) : BPlayer(p.name) {
         get() {
             val manaDiff = field.maxMana - field.currentMana
             val staminaDiff = field.maxStamina - field.currentStamina
-            val gearStats = StatManager.calculateStats(p).toMutableList()
+            val gearStats = StatManager.calculateStats(p)
             field = PlayerStat(gearStats)
             field.currentMana -= manaDiff
             field.currentStamina -= staminaDiff

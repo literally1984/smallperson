@@ -1,7 +1,7 @@
 package me.bnogocarft.bnogorpg.utils.bitem.BItems
 
 import me.bnogocarft.bnogorpg.utils.B
-import me.bnogocarft.bnogorpg.utils.StatUtils.ItemStat
+import me.bnogocarft.bnogorpg.utils.stat.ItemStat
 import me.bnogocarft.bnogorpg.utils.canBe
 import org.bukkit.inventory.ItemStack
 

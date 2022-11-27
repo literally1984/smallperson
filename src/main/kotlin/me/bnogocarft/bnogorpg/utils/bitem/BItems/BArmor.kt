@@ -4,7 +4,7 @@ import me.bnogocarft.bnogorpg.utils.Armorset.ArmorSet
 import me.bnogocarft.bnogorpg.utils.Armorset.Sets.LapisSet
 import me.bnogocarft.bnogorpg.utils.B
 import me.bnogocarft.bnogorpg.utils.Exceptions.IllegalParameterException
-import me.bnogocarft.bnogorpg.utils.StatUtils.ItemStat
+import me.bnogocarft.bnogorpg.utils.stat.ItemStat
 import me.bnogocarft.bnogorpg.utils.canBe
 import org.bukkit.inventory.ItemStack
 

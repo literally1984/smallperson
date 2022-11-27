@@ -1,8 +1,10 @@
 package me.bnogocarft.bnogorpg.utils
 
+import me.bnogocarft.bnogorpg.entity.BEntity
+import me.bnogocarft.bnogorpg.entity.BLivingEntity
+import me.bnogocarft.bnogorpg.utils.bitem.BItemUtils
 import me.bnogocarft.bnogorpg.utils.bitem.BItems.BArmor
 import me.bnogocarft.bnogorpg.utils.bitem.BItems.BGear
-import me.bnogocarft.bnogorpg.utils.bitem.BItems.BItemUtils
 import me.bnogocarft.bnogorpg.utils.bitem.BItems.BWeapon
 import me.bnogocarft.bnogorpg.utils.bitem.factory.*
 import net.minecraft.server.v1_8_R3.*
@@ -10,6 +12,7 @@ import org.bukkit.Bukkit
 import org.bukkit.Location
 import org.bukkit.Material
 import org.bukkit.craftbukkit.v1_8_R3.CraftWorld
+import org.bukkit.craftbukkit.v1_8_R3.entity.CraftLivingEntity
 import org.bukkit.craftbukkit.v1_8_R3.entity.CraftPlayer
 import org.bukkit.enchantments.Enchantment
 import org.bukkit.entity.Entity
@@ -18,9 +21,9 @@ import org.bukkit.entity.Player
 import org.bukkit.event.player.PlayerInteractEvent
 import org.bukkit.inventory.ItemStack
 import org.bukkit.util.Vector
-import java.lang.IllegalArgumentException
 import kotlin.math.pow
 import kotlin.math.roundToInt
+
 
 val entityMetadata = HashMap<Entity, Pair<String, Any>>()
 fun Entity.addData(key: String, value: Any) {
@@ -253,6 +256,20 @@ fun Entity.setGear(slot: Int, item: ItemStack) {
         4 -> equipment.boots = item
         5 -> equipment.itemInHand = item
     }
+}
+
+fun Entity.bEntity(): BEntity {
+    return BEntity(this)
+}
+
+fun LivingEntity.bEntity(): BLivingEntity {
+    return BLivingEntity(this)
+}
+
+
+fun LivingEntity.setAi(enabled: Boolean) {
+    val handle = (this as CraftLivingEntity).handle
+    handle.dataWatcher.watch(15, (if (enabled) 0 else 1).toByte())
 }
 
 fun getExpAtLevel(level: Int): Int {

@@ -2,7 +2,7 @@ package me.bnogocarft.bnogorpg.combat.ComboCounter
 
 import me.bnogocarft.bnogorpg.player.PlayerBar.Bar
 import me.bnogocarft.bnogorpg.player.PlayerBar.ComboBar
-import me.bnogocarft.bnogorpg.utils.player.OnlineBPlayer
+import me.bnogocarft.bnogorpg.entity.player.OnlineBPlayer
 import org.bukkit.scheduler.BukkitRunnable
 
 class ComboTimer(p: OnlineBPlayer) : BukkitRunnable() {

@@ -1,4 +1,4 @@
-package me.bnogocarft.bnogorpg.utils.bitem.BItems
+package me.bnogocarft.bnogorpg.utils.bitem
 
 enum class BItemType {
     TALISMAN,

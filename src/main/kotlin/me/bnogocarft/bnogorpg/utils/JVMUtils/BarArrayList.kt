@@ -1,7 +1,7 @@
 package me.bnogocarft.bnogorpg.utils.JVMUtils
 
 import me.bnogocarft.bnogorpg.player.PlayerBar.Bar
-import me.bnogocarft.bnogorpg.utils.player.OnlineBPlayer
+import me.bnogocarft.bnogorpg.entity.player.OnlineBPlayer
 
 data class BarArrayList(val player: OnlineBPlayer) : ArrayList<Bar>() {
     override fun add(element: Bar): Boolean {

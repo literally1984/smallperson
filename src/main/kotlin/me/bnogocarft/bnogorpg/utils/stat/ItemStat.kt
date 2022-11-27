@@ -1,4 +1,4 @@
-package me.bnogocarft.bnogorpg.utils.StatUtils
+package me.bnogocarft.bnogorpg.utils.stat
 
 import me.bnogocarft.bnogorpg.utils.Exceptions.IllegalParameterException
 import org.bukkit.ChatColor
@@ -119,5 +119,9 @@ data class ItemStat(val item: ItemStack) {
         if (!constructed) {
             throw IllegalParameterException("Lore for item stats not found!")
         }
+    }
+
+    fun getDamageMultiplier(): Float {
+        return defense/(defense + 100f)
     }
 }

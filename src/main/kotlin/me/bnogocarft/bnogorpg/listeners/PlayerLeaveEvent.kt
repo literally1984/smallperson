@@ -1,7 +1,7 @@
 package me.bnogocarft.bnogorpg.listeners
 
 import me.bnogocarft.bnogorpg.utils.others.PlaytimeUtils
-import me.bnogocarft.bnogorpg.utils.player.OnlineBPlayers
+import me.bnogocarft.bnogorpg.entity.player.OnlineBPlayers
 import org.bukkit.event.EventHandler
 import org.bukkit.event.Listener
 import org.bukkit.event.player.PlayerQuitEvent
@@ -20,5 +20,6 @@ class PlayerLeaveEvent : Listener {
         }
         PlaytimeUtils.addPlaytime(player)
         player.saveStats()
+        OnlineBPlayers.remove(e.player)
     }
 }

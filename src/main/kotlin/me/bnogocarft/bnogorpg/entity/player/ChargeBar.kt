@@ -1,4 +1,4 @@
-package me.bnogocarft.bnogorpg.utils.player
+package me.bnogocarft.bnogorpg.entity.player
 
 data class ChargeBar(val player: OnlineBPlayer) {
     var percentage: Int = 0

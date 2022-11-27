@@ -1,14 +1,16 @@
-package me.bnogocarft.bnogorpg.utils.bitem.BItems
+package me.bnogocarft.bnogorpg.utils.bitem
 
 import me.bnogocarft.bnogorpg.Main
 import me.bnogocarft.bnogorpg.utils.ability.IAbility
-import me.bnogocarft.bnogorpg.utils.bitem.BMaterial
+import me.bnogocarft.bnogorpg.utils.bitem.BItems.BArmor
+import me.bnogocarft.bnogorpg.utils.bitem.BItems.BGear
+import me.bnogocarft.bnogorpg.utils.bitem.BItems.BItem
+import me.bnogocarft.bnogorpg.utils.bitem.BItems.BWeapon
 import me.bnogocarft.bnogorpg.utils.others.Rarity.Rarity
 import me.bnogocarft.bnogorpg.utils.put
 import org.bukkit.ChatColor
 import org.bukkit.inventory.ItemStack
 import kotlin.math.roundToInt
-import kotlin.random.Random
 
 fun getRandomStat(quality: Float, original: Int, rarity: Rarity): Int {
     val perQuality = rarity.getQualityCap() / 100.0

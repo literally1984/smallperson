@@ -1,12 +1,11 @@
 package me.bnogocarft.bnogorpg.listeners
 
-import me.bnogocarft.bnogorpg.utils.player.bPlayer
+import me.bnogocarft.bnogorpg.entity.player.bPlayer
 import org.bukkit.entity.ExperienceOrb
 import org.bukkit.entity.Player
 import org.bukkit.event.EventHandler
 import org.bukkit.event.Listener
 import org.bukkit.event.entity.EntityTargetLivingEntityEvent
-import org.bukkit.event.player.PlayerExpChangeEvent
 
 class ExpListeners : Listener {
     @EventHandler

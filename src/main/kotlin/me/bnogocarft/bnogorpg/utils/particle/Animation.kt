@@ -1,4 +1,4 @@
-package me.bnogocarft.bnogorpg.utils.Particle
+package me.bnogocarft.bnogorpg.utils.particle
 
 import org.bukkit.Location
 

@@ -3,15 +3,11 @@ package me.bnogocarft.bnogorpg.utils.bitem.factory
 import me.bnogocarft.bnogorpg.commands.customItemMap
 import me.bnogocarft.bnogorpg.utils.Armorset.SetBonus
 import me.bnogocarft.bnogorpg.utils.ability.IAbility
-import me.bnogocarft.bnogorpg.utils.bitem.BItems.BItemType
 import me.bnogocarft.bnogorpg.utils.bitem.BMaterial
-import me.bnogocarft.bnogorpg.utils.bitem.CraftItems.CraftItemType
 import me.bnogocarft.bnogorpg.utils.others.Rarity.Rarity
-import net.citizensnpcs.nms.v1_8_R3.entity.HorseController.EntityHorseNPC
 import org.bukkit.Bukkit
 import org.bukkit.ChatColor
 import org.bukkit.Color
-import org.bukkit.Material
 import org.bukkit.inventory.ItemStack
 import org.bukkit.inventory.meta.LeatherArmorMeta
 import kotlin.math.roundToInt

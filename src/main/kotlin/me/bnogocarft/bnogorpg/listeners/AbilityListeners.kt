@@ -1,18 +1,10 @@
 package me.bnogocarft.bnogorpg.listeners
 
-import com.comphenix.protocol.PacketType.Play
-import me.bnogocarft.bnogorpg.Main
 import me.bnogocarft.bnogorpg.utils.B
-import me.bnogocarft.bnogorpg.utils.bitem.BItems.BItemUtils
-import me.bnogocarft.bnogorpg.utils.bitem.BMaterial
 import me.bnogocarft.bnogorpg.utils.canBe
-import me.bnogocarft.bnogorpg.utils.events.ClickState
 import me.bnogocarft.bnogorpg.utils.events.ClickStateChangeEvent
-import me.bnogocarft.bnogorpg.utils.player.OnlineBPlayers
-import me.bnogocarft.bnogorpg.utils.player.bPlayer
-import org.bukkit.Bukkit
-import org.bukkit.ChatColor
-import org.bukkit.GameMode
+import me.bnogocarft.bnogorpg.entity.player.bPlayer
+import me.bnogocarft.bnogorpg.utils.getBWeapon
 import org.bukkit.entity.Player
 import org.bukkit.event.EventHandler
 import org.bukkit.event.EventPriority
@@ -20,10 +12,6 @@ import org.bukkit.event.Listener
 import org.bukkit.event.entity.EntityDamageEvent
 import org.bukkit.event.player.PlayerFishEvent
 import org.bukkit.event.player.PlayerInteractEvent
-import org.bukkit.event.player.PlayerMoveEvent
-import org.bukkit.event.player.PlayerToggleFlightEvent
-import org.bukkit.scheduler.BukkitTask
-import org.bukkit.util.Vector
 
 
 class AbilityListeners : Listener {
@@ -34,7 +22,7 @@ class AbilityListeners : Listener {
             val itemInHand = e.player.itemInHand
             if (itemInHand canBe B.WEAPON) { // up to this point, everything is a checker
 
-                val bItem = BItemUtils.getBWeapon(itemInHand)
+                val bItem = itemInHand.getBWeapon()!!
                 val p = e.player
 
                 for (ability in bItem.abilities) {
