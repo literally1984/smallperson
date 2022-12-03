@@ -1,6 +1,6 @@
 package me.bnogocarft.bnogorpg.items.handSets
 
-import me.bnogocarft.bnogorpg.utils.bitem.BItems.BItemType
+import me.bnogocarft.bnogorpg.utils.bitem.BItemType
 import me.bnogocarft.bnogorpg.utils.bitem.factory.BItemFactory
 import me.bnogocarft.bnogorpg.utils.bitem.factory.ToolSetMaker
 import me.bnogocarft.bnogorpg.utils.others.Rarity.Rarity

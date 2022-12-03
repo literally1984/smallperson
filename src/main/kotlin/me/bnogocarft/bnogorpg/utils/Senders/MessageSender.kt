@@ -1,6 +1,6 @@
 package me.bnogocarft.bnogorpg.utils.Senders
 
-import me.bnogocarft.bnogorpg.utils.Database.YMLUtils
+import me.bnogocarft.bnogorpg.utils.database.YMLUtils
 import org.bukkit.Bukkit
 import org.bukkit.configuration.file.YamlConfiguration
 import java.io.File

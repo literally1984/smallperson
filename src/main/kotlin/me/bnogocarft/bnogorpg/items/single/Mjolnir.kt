@@ -3,7 +3,6 @@ package me.bnogocarft.bnogorpg.items
 import me.bnogocarft.bnogorpg.Main
 import me.bnogocarft.bnogorpg.utils.abilities.ItemAbility.AbilityTrigger
 import me.bnogocarft.bnogorpg.utils.ability.IAbility
-import me.bnogocarft.bnogorpg.utils.bitem.BMaterial
 import me.bnogocarft.bnogorpg.utils.bitem.factory.FactoryWeapon
 import me.bnogocarft.bnogorpg.utils.bitem.factory.WeaponMaker
 import me.bnogocarft.bnogorpg.utils.events.Button
@@ -15,6 +14,7 @@ import org.bukkit.Bukkit
 import org.bukkit.ChatColor
 import org.bukkit.entity.Player
 import org.bukkit.event.Event
+import org.bukkit.event.entity.EntityDamageEvent
 import org.bukkit.inventory.ItemStack
 import org.bukkit.scheduler.BukkitTask
 
@@ -106,40 +106,9 @@ class Mjolnir : WeaponMaker {
         var task: BukkitTask? = null
 
         override fun cast(caster: Player, event: Event) {
-            if (event is ClickStateChangeEvent) {
+            if (event is EntityDamageEvent) {
                 if (caster.itemInHand.itemMeta.displayName == "Mjolnir") {
 
-                    if (event.button == Button.RIGHT) {
-                        //If the player just started pressing the right click button
-                        if (event.state == ClickState.HOLD) {
-                            val gp = caster.bPlayer()
-                            gp.chargeBar.enabled = true
-
-                            gp.metadata["hammerfly"] = 0.1
-                            gp.chargeBar.percentage = gp.metadata["hammerfly"] as Int
-                            task = Bukkit.getScheduler().runTaskTimer(Main.instance, {
-                                gp.metadata["hammerfly"] = (gp.metadata["hammerfly"] as Int) + 0.1
-                                gp.chargeBar.percentage = gp.metadata["hammerfly"] as Int
-                            }, 2, 2)
-                            gp.p.walkSpeed -= 0.1f
-                        } else { // If the Player releases right click
-                            val gp = caster.bPlayer()
-                            gp.p.walkSpeed += 0.1f
-                            var charge = (gp.metadata["hammerfly"] as Int).toFloat()
-                            gp.chargeBar.enabled = false
-
-                            // Scheduler to set the Player's velocity to their direction for the amount of time they charged
-                            var task: BukkitTask? = null
-                            task = Bukkit.getScheduler().runTaskTimer(Main.instance, {
-                                caster.velocity = caster.location.direction.multiply(0.5)
-                                charge -= 0.1f
-                                if (charge < 0) {
-                                    task?.cancel()
-                                }
-                            }, 2, 2)
-                            task!!.cancel()
-                        }
-                    }
                 }
             }
         }

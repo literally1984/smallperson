@@ -1,4 +1,4 @@
-package me.bnogocarft.bnogorpg.utils.Database
+package me.bnogocarft.bnogorpg.utils.database
 
 import me.bnogocarft.bnogorpg.Main
 import org.bukkit.configuration.file.FileConfiguration

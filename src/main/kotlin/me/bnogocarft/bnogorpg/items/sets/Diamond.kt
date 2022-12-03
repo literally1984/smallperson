@@ -1,55 +1,39 @@
 package me.bnogocarft.bnogorpg.items.sets
 
-import me.bnogocarft.bnogorpg.utils.bitem.BItems.BItemType
-import me.bnogocarft.bnogorpg.utils.bitem.BMaterial
-import me.bnogocarft.bnogorpg.utils.bitem.factory.FactoryWeapon
-import me.bnogocarft.bnogorpg.utils.bitem.factory.FullSetMaker
+import me.bnogocarft.bnogorpg.utils.bitem.factory.*
 import me.bnogocarft.bnogorpg.utils.others.Rarity.Rarity
 import org.bukkit.Bukkit
 import org.bukkit.Material
 import org.bukkit.inventory.ItemStack
 import org.bukkit.inventory.ShapedRecipe
 
-class Diamond : FullSetMaker {
+class Diamond : FullSetMaker, CustomItem() {
     companion object {
-        lateinit var helm: ItemStack
-        lateinit var chestplate: ItemStack
-        lateinit var leggings: ItemStack
-        lateinit var boots: ItemStack
-        lateinit var sword: ItemStack
-        lateinit var pickaxe: ItemStack
-        lateinit var axe: ItemStack
-        lateinit var hoe: ItemStack
-        lateinit var shovel: ItemStack
-    }
-
-    init {
-        createSword()
-        createHoe()
-        createPickaxe()
-        createAxe()
-        createShovel()
-        createHelmet()
-        createChestplate()
-        createLeggings()
-        createBoots()
+        lateinit var itemHelm: ItemStack
+        lateinit var itemChestplate: ItemStack
+        lateinit var itemLeggings: ItemStack
+        lateinit var itemBoots: ItemStack
+        lateinit var itemSword: ItemStack
+        lateinit var itemPick: ItemStack
+        lateinit var itemAxe: ItemStack
+        lateinit var itemHoe: ItemStack
+        lateinit var itemShovel: ItemStack
+        val rarity = Rarity.RARE
     }
 
     override fun createSword() {
-        val stats = arrayListOf(3, 24, 2, 22, 30, 40)
-        val rarity = Rarity.RARE
+        val stats = arrayListOf(7, 4, 5, 2, 30, 40)
 
-        val craftWeapon = FactoryWeapon(
+        itemSword = FactoryWeapon(
             "Diamond Sword",
-            Material.DIAMOND_SWORD,
             rarity,
             arrayListOf(),
-            BMaterial.DIAMOND_SWORD,
+            Material.DIAMOND_SWORD,
             stats
-        )
-        BItemFactory.register("diamond_sword", sword)
+        ).register("diamond_sword")
 
-        val recipe = ShapedRecipe(sword)
+
+        val recipe = ShapedRecipe(itemSword)
         recipe.shape(" d ", " d ", " s ")
         recipe.setIngredient('d', Material.DIAMOND)
         recipe.setIngredient('s', Material.STICK)
@@ -57,17 +41,19 @@ class Diamond : FullSetMaker {
     }
 
     override fun createHoe() {
-        val hoe = ItemStack(Material.DIAMOND_HOE)
-        val recipe = ShapedRecipe(hoe)
+        itemHoe = ItemStack(Material.DIAMOND_HOE)
+        val recipe = ShapedRecipe(itemHoe)
         recipe.shape("dd ", " s ", " s ")
         recipe.setIngredient('d', Material.DIAMOND)
         recipe.setIngredient('s', Material.STICK)
         Bukkit.addRecipe(recipe)
+
+        val itemL = FactoryWeapon::class
     }
 
     override fun createPickaxe() {
-        val pick = ItemStack(Material.DIAMOND_PICKAXE)
-        val recipe = ShapedRecipe(pick)
+        itemPick = ItemStack(Material.DIAMOND_PICKAXE)
+        val recipe = ShapedRecipe(itemPick)
         recipe.shape("ddd", " s ", " s ")
         recipe.setIngredient('d', Material.DIAMOND)
         recipe.setIngredient('s', Material.STICK)
@@ -75,8 +61,8 @@ class Diamond : FullSetMaker {
     }
 
     override fun createAxe() {
-        val axe = ItemStack(Material.DIAMOND_AXE)
-        val recipe = ShapedRecipe(axe)
+        itemAxe = ItemStack(Material.DIAMOND_AXE)
+        val recipe = ShapedRecipe(itemAxe)
         recipe.shape(" dd", " sd", " s ")
         recipe.setIngredient('d', Material.DIAMOND)
         recipe.setIngredient('s', Material.STICK)
@@ -84,8 +70,8 @@ class Diamond : FullSetMaker {
     }
 
     override fun createShovel() {
-        val shovel = ItemStack(Material.DIAMOND_SPADE)
-        val recipe = ShapedRecipe(shovel)
+        itemShovel = ItemStack(Material.DIAMOND_SPADE)
+        val recipe = ShapedRecipe(itemShovel)
         recipe.shape(" d ", " s ", " s ")
         recipe.setIngredient('d', Material.DIAMOND)
         recipe.setIngredient('s', Material.STICK)
@@ -93,61 +79,67 @@ class Diamond : FullSetMaker {
     }
 
     override fun createHelmet() {
-        val factoryItem = BItemFactory.createBItem("Diamond Helmet", Material.DIAMOND_HELMET, BItemType.ARMOR)
 
-        factoryItem.stats = arrayListOf(3, 24, 2, 22, 30, 40)
-        factoryItem.rarity = Rarity.RARE
+        val stats = arrayListOf(1, 14, 0, 8, 7, 15)
 
-        helm = BItemFactory.produceItem(factoryItem)
-        BItemFactory.register("diamond_helmet", helm)
+        itemHelm = FactoryWeapon(
+            "Diamond Helmet",
+            rarity,
+            arrayListOf(),
+            Material.DIAMOND_HELMET,
+            stats
+        ).register("diamond_helmet")
 
-        val recipe = ShapedRecipe(helm)
+        val recipe = ShapedRecipe(itemHelm)
         recipe.shape("ddd", "d d", "   ")
         recipe.setIngredient('d', Material.DIAMOND)
         Bukkit.addRecipe(recipe)
     }
 
     override fun createChestplate() {
-        val factoryItem = BItemFactory.createBItem("Diamond Chestplate", Material.DIAMOND_HELMET, BItemType.ARMOR)
+        val stats = arrayListOf(2, 48, 1, 40, 12, 20)
+        itemChestplate = FactoryWeapon(
+            "Diamond Chestplate",
+            rarity,
+            arrayListOf(),
+            Material.DIAMOND_CHESTPLATE,
+            stats
+        ).register("diamond_chestplate")
 
-        factoryItem.stats = arrayListOf(3, 24, 2, 22, 30, 40)
-        factoryItem.rarity = Rarity.RARE
-
-        chestplate = BItemFactory.produceItem(factoryItem)
-        BItemFactory.register("diamond_chestplate", chestplate)
-
-        val recipe = ShapedRecipe(chestplate)
+        val recipe = ShapedRecipe(itemChestplate)
         recipe.shape("d d", "ddd", "ddd")
         recipe.setIngredient('d', Material.DIAMOND)
         Bukkit.addRecipe(recipe)
     }
 
     override fun createLeggings() {
-        val factoryItem = BItemFactory.createBItem("Diamond Leggings", Material.DIAMOND_HELMET, BItemType.ARMOR)
+        val stats = arrayListOf(3, 32, 2, 22, 10, 25)
+        itemLeggings = FactoryWeapon(
+            "Diamond Leggings",
+            rarity,
+            arrayListOf(),
+            Material.DIAMOND_LEGGINGS,
+            stats
+        ).register("diamond_leggings")
 
-        factoryItem.stats = arrayListOf(3, 24, 2, 22, 30, 40)
-        factoryItem.rarity = Rarity.RARE
-
-        leggings = BItemFactory.produceItem(factoryItem)
-        BItemFactory.register("diamond_helmet", leggings)
-
-        val recipe = ShapedRecipe(leggings)
-        recipe.shape("ddd", "d d", "   ")
+        val recipe = ShapedRecipe(itemLeggings)
+        recipe.shape("ddd", "d d", "d d")
         recipe.setIngredient('d', Material.DIAMOND)
         Bukkit.addRecipe(recipe)
     }
 
     override fun createBoots() {
-        val factoryItem = BItemFactory.createBItem("Diamond Helmet", Material.DIAMOND_HELMET, BItemType.ARMOR)
+        val stats = arrayListOf(1, 14, 0, 8, 7, 15)
+        itemBoots = FactoryWeapon(
+            "Diamond Boots",
+            rarity,
+            arrayListOf(),
+            Material.DIAMOND_BOOTS,
+            stats
+        ).register("diamond_boots")
 
-        factoryItem.stats = arrayListOf(3, 24, 2, 22, 30, 40)
-        factoryItem.rarity = Rarity.RARE
-
-        boots = BItemFactory.produceItem(factoryItem)
-        BItemFactory.register("diamond_boots", boots)
-
-        val recipe = ShapedRecipe(boots)
-        recipe.shape("ddd", "d d", "   ")
+        val recipe = ShapedRecipe(itemBoots)
+        recipe.shape("   ", "d d", "d d")
         recipe.setIngredient('d', Material.DIAMOND)
         Bukkit.addRecipe(recipe)
     }

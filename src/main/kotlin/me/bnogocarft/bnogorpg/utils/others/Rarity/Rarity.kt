@@ -30,13 +30,18 @@ enum class Rarity {
 
     fun getText(): String {
         return when (this) {
-            COMMON -> "${ChatColor.GRAY}${ChatColor.BOLD}COMMON"
-            UNCOMMON -> "${ChatColor.GREEN}${ChatColor.BOLD}UNCOMMON"
-            RARE -> "${ChatColor.BLUE}${ChatColor.BOLD}RARE"
-            EPIC -> "${ChatColor.DARK_PURPLE}${ChatColor.BOLD}EPIC"
-            LEGENDARY -> "${ChatColor.GOLD}${ChatColor.BOLD}LEGENDARY"
-            MYTHIC -> "${ChatColor.LIGHT_PURPLE}${ChatColor.BOLD}MYTHIC"
-            DIVINE -> "${ChatColor.DARK_RED}${ChatColor.BOLD}DIVINE"
+            COMMON -> "${ChatColor.GRAY}${ChatColor.BOLD}COMMON "
+            UNCOMMON -> "${ChatColor.GREEN}${ChatColor.BOLD}UNCOMMON "
+            RARE -> "${ChatColor.BLUE}${ChatColor.BOLD}RARE "
+            EPIC -> "${ChatColor.DARK_PURPLE}${ChatColor.BOLD}EPIC "
+            LEGENDARY -> "${ChatColor.GOLD}${ChatColor.BOLD}LEGENDARY "
+            MYTHIC -> "${ChatColor.LIGHT_PURPLE}${ChatColor.BOLD}MYTHIC "
+            DIVINE -> "${ChatColor.BOLD}${ChatColor.RED}D" +
+                    "${ChatColor.GOLD}I" +
+                    "${ChatColor.YELLOW}V" +
+                    "${ChatColor.GREEN}I" +
+                    "${ChatColor.BLUE}N" +
+                    "${ChatColor.DARK_PURPLE}E "
         }
     }
 

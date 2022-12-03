@@ -3,7 +3,6 @@ package me.bnogocarft.bnogorpg.items.single
 import me.bnogocarft.bnogorpg.Main
 import me.bnogocarft.bnogorpg.utils.abilities.ItemAbility.AbilityTrigger
 import me.bnogocarft.bnogorpg.utils.ability.IAbility
-import me.bnogocarft.bnogorpg.utils.bitem.BMaterial
 import me.bnogocarft.bnogorpg.utils.bitem.factory.FactoryMisc
 import me.bnogocarft.bnogorpg.utils.others.Rarity.Rarity
 import me.bnogocarft.bnogorpg.entity.player.OnlineBPlayers

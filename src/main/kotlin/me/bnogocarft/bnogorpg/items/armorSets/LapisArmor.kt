@@ -3,11 +3,11 @@ package me.bnogocarft.bnogorpg.items.armorSets
 import me.bnogocarft.bnogorpg.Main
 import me.bnogocarft.bnogorpg.utils.abilities.ItemAbility.AbilityTrigger
 import me.bnogocarft.bnogorpg.utils.ability.IAbility
-import me.bnogocarft.bnogorpg.utils.bitem.BItems.BItemType
+import me.bnogocarft.bnogorpg.utils.bitem.BItemType
 import me.bnogocarft.bnogorpg.utils.bitem.factory.ArmorSetMaker
 import me.bnogocarft.bnogorpg.utils.bitem.factory.BItemFactory
 import me.bnogocarft.bnogorpg.utils.others.Rarity.Rarity
-import me.bnogocarft.bnogorpg.utils.player.bPlayer
+import me.bnogocarft.bnogorpg.entity.player.bPlayer
 import org.bukkit.Color
 import org.bukkit.Material
 import org.bukkit.entity.Player

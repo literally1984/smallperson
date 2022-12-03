@@ -53,9 +53,9 @@ class DefaultOverrider {
                     continue
                 }
             }
-            Diamond()
-            Gold()
-            Iron()
+            Diamond().init(Diamond::class)
+            Gold().init(Gold::class)
+            Iron().init(Iron::class)
             Leather()
             Stone()
             Wood()

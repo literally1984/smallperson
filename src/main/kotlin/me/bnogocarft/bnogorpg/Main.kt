@@ -47,8 +47,8 @@ import me.bnogocarft.bnogorpg.ticker.Ticker
 import me.bnogocarft.bnogorpg.upgrade.UpgradeCMD
 import me.bnogocarft.bnogorpg.upgrade.UpgradeUtils
 import me.bnogocarft.bnogorpg.utils.*
-import me.bnogocarft.bnogorpg.utils.Database.BnogoSQL
-import me.bnogocarft.bnogorpg.utils.Database.YMLUtils
+import me.bnogocarft.bnogorpg.utils.database.BnogoSQL
+import me.bnogocarft.bnogorpg.utils.database.YMLUtils
 import me.bnogocarft.bnogorpg.utils.stat.StatCommands
 import me.bnogocarft.bnogorpg.utils.ability.IAbility
 import me.bnogocarft.bnogorpg.utils.auction.Auction
@@ -56,6 +56,7 @@ import me.bnogocarft.bnogorpg.utils.auction.AuctionTimer
 import me.bnogocarft.bnogorpg.utils.others.PlaytimeUtils
 import me.bnogocarft.bnogorpg.entity.player.OnlineBPlayers
 import me.bnogocarft.bnogorpg.utils.bitem.BItemUtils
+import me.bnogocarft.bnogorpg.utils.bitem.factory.CustomItem
 import net.milkbowl.vault.economy.Economy
 import org.bukkit.Bukkit
 import org.bukkit.ChatColor
@@ -70,9 +71,11 @@ import org.bukkit.scheduler.BukkitTask
 import java.io.File
 import kotlin.properties.Delegates
 
+val items = ArrayList<CustomItem>()
 
 class Main : JavaPlugin() {
     companion object {
+        val bar = "■"
         val socket = Websocket(1234)
         private val baseSpawnArea = SpawnArea(
             150F, -150F, arrayListOf(null, null, null, null, null), 1
@@ -370,6 +373,8 @@ class Main : JavaPlugin() {
                         "-1, " +
                         "'${auc.itemType}');"
             )
+
+            BnogoSQL.insert(BnogoSQL.Table.AUCTION, auc.ID, auc.item, auc.startingBid, auc.currentBidder, auc.highestBid, auc.creator, auc.timeLeft, -1, auc.itemType)
             query.execute()
         }
 

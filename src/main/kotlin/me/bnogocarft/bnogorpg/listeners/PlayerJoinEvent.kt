@@ -31,8 +31,8 @@ class PlayerJoinEvent : Listener {
         lastArmor[e.player] = e.player.inventory.armorContents
 
         onlineBPlayer.sendActionBar(
-            "${ChatColor.AQUA}M: ${s.currentMana}/${s.maxMana}[██████████] || " +
-                    "${ChatColor.GOLD}S: ${s.currentStamina}/${s.maxStamina}[██████████]"
+            "${ChatColor.AQUA}M: ${s.currentMana}/${s.maxMana}[■■■■■■■■■■] || " +
+                    "${ChatColor.GOLD}S: ${s.currentStamina}/${s.maxStamina}[■■■■■■■■■■]"
         )
         val board = Bukkit.getScoreboardManager().newScoreboard
         val obj = board.registerNewObjective("Mainboard", "dummy")

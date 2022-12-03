@@ -1,14 +1,19 @@
 package me.bnogocarft.bnogorpg.utils.bitem.CraftItems
 
-import me.bnogocarft.bnogorpg.utils.bitem.BMaterial
-import me.bnogocarft.bnogorpg.utils.others.Rarity.Rarity
+import me.bnogocarft.bnogorpg.utils.encode
 import org.bukkit.ChatColor
 import org.bukkit.inventory.ItemStack
 
-class CraftTalisman(override var item: ItemStack, val variables: List<ItemVariable>) : CraftItem(item) {
+class CraftTalisman(override var item: ItemStack) : CraftItem(item) {
+    val variables = ArrayList<ItemVariable>()
 
     init {
+        val lore = item.itemMeta.lore
+        for (line in lore) {
+            if (line.contains(encode("ability"))) {
 
+            }
+        }
     }
 
     override fun craft(): ItemStack {

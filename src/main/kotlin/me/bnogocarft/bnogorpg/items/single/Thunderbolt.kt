@@ -4,7 +4,6 @@ import me.bnogocarft.bnogorpg.Main
 import me.bnogocarft.bnogorpg.utils.abilities.ItemAbility.AbilityTrigger
 import me.bnogocarft.bnogorpg.utils.ability.IAbility
 import me.bnogocarft.bnogorpg.utils.bitem.BItems.BItemUtils
-import me.bnogocarft.bnogorpg.utils.bitem.BMaterial
 import me.bnogocarft.bnogorpg.utils.bitem.factory.FactoryWeapon
 import me.bnogocarft.bnogorpg.utils.bitem.factory.WeaponMaker
 import me.bnogocarft.bnogorpg.utils.others.Rarity.Rarity

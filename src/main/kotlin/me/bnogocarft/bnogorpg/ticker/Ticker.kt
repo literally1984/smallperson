@@ -4,6 +4,7 @@ import me.bnogocarft.bnogorpg.Main
 import me.bnogocarft.bnogorpg.utils.events.ArmorChangeEvent
 import me.bnogocarft.bnogorpg.entity.player.OnlineBPlayers
 import me.bnogocarft.bnogorpg.entity.player.bPlayer
+import me.bnogocarft.bnogorpg.utils.getBar
 import org.bukkit.Bukkit
 import org.bukkit.ChatColor
 import org.bukkit.entity.Player
@@ -44,24 +45,13 @@ class Ticker {
                     val onlineBPlayer = player.bPlayer()
                     val s = onlineBPlayer.stats
                     // M: 10/10[██████████] || S: 10/10[██████████]
-                    val mBars = (s.currentMana/s.maxMana)*10
-                    val sBars = (s.currentStamina/s.maxStamina)*10
-                    val mBar = "[          ]".toCharArray()
-                    val sBar = "[          ]".toCharArray()
-
-                    var indexOfMBlock = 1
-                    for (i in 1..mBars) {
-                        mBar[indexOfMBlock] = '█'
-                        indexOfMBlock++
-                    }
-
-                    var indexOfSBlock = 1
-                    for (i in 1..sBars) {
-                        sBar[indexOfSBlock] = '█'
-                        indexOfSBlock++
-                    }
-                    val message = "${ChatColor.AQUA}M: ${s.currentMana}/${s.maxMana}${String(mBar)} || " +
-                            "${ChatColor.GOLD}S: ${s.currentStamina}/${s.maxStamina}${String(sBar)}"
+                    val message =
+                        "${ChatColor.AQUA}M: ${s.currentMana}/${s.maxMana}" +
+                                "${(s.currentMana.toFloat() to s.maxMana.toFloat())
+                                    .getBar("${ChatColor.GRAY}", "${ChatColor.AQUA}")} || " +
+                            "${ChatColor.GOLD}S: ${s.currentStamina}/${s.maxStamina}" +
+                                (s.currentStamina.toFloat() to s.maxStamina.toFloat())
+                                    .getBar("${ChatColor.GRAY}", "${ChatColor.GOLD}")
                     onlineBPlayer.sendActionBar(message)
                 }
             }, 0, 2)

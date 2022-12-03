@@ -3,19 +3,16 @@ package me.bnogocarft.bnogorpg.items.comatSets
 import me.bnogocarft.bnogorpg.Main
 import me.bnogocarft.bnogorpg.utils.Armorset.SetBonus
 import me.bnogocarft.bnogorpg.utils.abilities.ItemAbility.AbilityTrigger
-import me.bnogocarft.bnogorpg.utils.bitem.BItems.BItemType
-import me.bnogocarft.bnogorpg.utils.bitem.BMaterial
-import me.bnogocarft.bnogorpg.utils.bitem.CraftItems.CraftItemType
 import me.bnogocarft.bnogorpg.utils.bitem.factory.ArmorSetMaker
-import me.bnogocarft.bnogorpg.utils.bitem.factory.BItemFactory
+import me.bnogocarft.bnogorpg.utils.bitem.factory.FactoryWeapon
 import me.bnogocarft.bnogorpg.utils.others.Rarity.Rarity
-import me.bnogocarft.bnogorpg.utils.player.bPlayer
 import org.bukkit.Bukkit
 import org.bukkit.ChatColor
-import org.bukkit.Color
 import org.bukkit.Material
+import org.bukkit.entity.LivingEntity
 import org.bukkit.entity.Player
 import org.bukkit.event.Event
+import org.bukkit.event.entity.EntityDamageByEntityEvent
 import org.bukkit.inventory.ItemStack
 import org.bukkit.inventory.ShapedRecipe
 
@@ -29,6 +26,8 @@ class CactusArmor : ArmorSetMaker {
         lateinit var craftShard: ItemStack
 
         val abil = SpikeySpikes()
+
+        val rarity = Rarity.UNCOMMON
     }
 
     init {
@@ -36,11 +35,16 @@ class CactusArmor : ArmorSetMaker {
     }
 
     override fun createHelmet() {
-        val factoryItem =
-            BItemFactory.createBItem("${ChatColor.GREEN}Cactus Helmet", Material.LEATHER_HELMET, BItemType.CRAFT_ITEM)
-        factoryItem.craftItemType = CraftItemType.ARMOR
-        helm = BItemFactory.createCraftItem(factoryItem, BMaterial.CACTUS_HELMET, "3-4")
-        BItemFactory.register("cactus_helmet", helm)
+        val stats = arrayListOf(0, 6, 0, 2, 3, 7)
+
+        helm = FactoryWeapon(
+            "Cactus Helmet",
+            rarity,
+            arrayListOf(),
+            BMaterial.CACTUS_HELMET,
+            stats
+        ).register("cactus_helmet")
+
         val recipe = ShapedRecipe(helm)
         recipe.shape("ddd", "d d", "   ")
         recipe.setIngredient('d', Material.CACTUS)
@@ -48,14 +52,16 @@ class CactusArmor : ArmorSetMaker {
     }
 
     override fun createChestplate() {
-        val factoryItem = BItemFactory.createBItem(
-            "${ChatColor.GREEN}Cactus Chestplate",
-            Material.LEATHER_HELMET,
-            BItemType.CRAFT_ITEM
-        )
-        factoryItem.craftItemType = CraftItemType.ARMOR
-        chestplate = BItemFactory.createCraftItem(factoryItem, BMaterial.CACTUS_HELMET, "3-4")
-        BItemFactory.register("cactus_chestplate", chestplate)
+        val stats = arrayListOf(2, 18, 1, 10, 10, 20)
+
+        chestplate = FactoryWeapon(
+            "Cactus Chestplate",
+            rarity,
+            arrayListOf(),
+            BMaterial.CACTUS_CHESTPLATE,
+            stats
+        ).register("cactus_chestplate")
+
         val recipe = ShapedRecipe(chestplate)
         recipe.shape("d d", "ddd", "ddd")
         recipe.setIngredient('d', Material.CACTUS)
@@ -63,49 +69,55 @@ class CactusArmor : ArmorSetMaker {
     }
 
     override fun createLeggings() {
-        val factoryItem =
-            BItemFactory.createBItem("${ChatColor.GREEN}Cactus Leggings", Material.LEATHER_LEGGINGS, BItemType.ARMOR)
+        val stats = arrayListOf(1, 14, 0, 8, 7, 14)
 
-        val ability = abil
-        factoryItem.abilities.add(ability)
-        factoryItem.stats = arrayListOf(1, 6, 4, 7, 12, 18)
-        factoryItem.rarity = Rarity.UNCOMMON
-        factoryItem.armorColor = Color.GREEN
+        leggings = FactoryWeapon(
+            "Cactus Leggings",
+            rarity,
+            arrayListOf(),
+            BMaterial.CACTUS_LEGGINGS,
+            stats
+        ).register("cactus_leggings")
 
-        leggings = BItemFactory.produceItem(factoryItem)
-        BItemFactory.register("cactusleggings", leggings)
+        val recipe = ShapedRecipe(leggings)
+        recipe.shape("ddd", "d d", "d d")
+        recipe.setIngredient('d', Material.CACTUS)
+        Bukkit.addRecipe(recipe)
     }
 
     override fun createBoots() {
-        val factoryItem =
-            BItemFactory.createBItem("${ChatColor.GREEN}Cactus Boots", Material.LEATHER_BOOTS, BItemType.ARMOR)
+        val stats = arrayListOf(0, 6, 0, 3, 4, 8)
 
-        val ability = abil
-        factoryItem.abilities.add(ability)
-        factoryItem.stats = arrayListOf(0, 3, 0, 2, 5, 7)
-        factoryItem.rarity = Rarity.UNCOMMON
-        factoryItem.armorColor = Color.GREEN
-
-        boots = BItemFactory.produceItem(factoryItem)
-        BItemFactory.register("cactusboots", boots)
-    }
-}
-
-class SpikeySpikes : SetBonus {
-    override val description: ArrayList<String> = arrayListOf(
-        "When an opponent damages you,",
-        "30% of the damage will be",
-        "reflected back to them."
-    )
-    override val name: String = "Spiky Spikes"
-
-    override val type: AbilityTrigger = AbilityTrigger.HIT
-
-    override fun cast(caster: Player, abilityEvent: Event) {
-
+        helm = FactoryWeapon(
+            "Cactus Boots",
+            rarity,
+            arrayListOf(),
+            BMaterial.CACTUS_BOOTS,
+            stats
+        ).register("cactus_boots")
     }
 
-    init {
-        Main.registeredAbilities.add(this)
+    class SpikeySpikes : SetBonus {
+        override val description: ArrayList<String> = arrayListOf(
+            "When an opponent damages you,",
+            "30% of the ${ChatColor.RED}damage ${ChatColor.GRAY}will be",
+            "reflected back to them."
+        )
+        override val name: String = "Spiky Spikes"
+
+        override val type: AbilityTrigger = AbilityTrigger.PASSIVE
+
+        override fun cast(caster: Player, event: Event) {
+            if (event is EntityDamageByEntityEvent) {
+                val damage = event.damage * 0.3
+                if (event.damager is LivingEntity) {
+                    (event.damager as LivingEntity).damage(damage, caster)
+                }
+            }
+        }
+
+        init {
+            Main.registeredAbilities += this
+        }
     }
 }

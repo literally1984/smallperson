@@ -1,7 +1,6 @@
 package me.bnogocarft.bnogorpg.items.sets
 
-import me.bnogocarft.bnogorpg.utils.bitem.BItems.BItemType
-import me.bnogocarft.bnogorpg.utils.bitem.BMaterial
+import me.bnogocarft.bnogorpg.utils.bitem.factory.CustomItem
 import me.bnogocarft.bnogorpg.utils.bitem.factory.FactoryWeapon
 import me.bnogocarft.bnogorpg.utils.bitem.factory.FullSetMaker
 import me.bnogocarft.bnogorpg.utils.others.Rarity.Rarity
@@ -10,7 +9,7 @@ import org.bukkit.Material
 import org.bukkit.inventory.ItemStack
 import org.bukkit.inventory.ShapedRecipe
 
-class Gold : FullSetMaker {
+class Gold : FullSetMaker, CustomItem() {
     companion object {
         lateinit var helm: ItemStack
         lateinit var chestplate: ItemStack
@@ -21,27 +20,20 @@ class Gold : FullSetMaker {
         lateinit var axe: ItemStack
         lateinit var hoe: ItemStack
         lateinit var shovel: ItemStack
-    }
-
-    init {
-        createSword()
-        createHoe()
-        createPickaxe()
-        createAxe()
-        createShovel()
-        createHelmet()
-        createChestplate()
-        createLeggings()
-        createBoots()
+        val rarity = Rarity.UNCOMMON
     }
 
     override fun createSword() {
-        val stats = arrayListOf(1, 12, 1, 10, 10, 20)
-        val fItem = FactoryWeapon(
-            "Gold Sword", Material.GOLD_SWORD, Rarity.RARE, arrayListOf(), BMaterial.GOLD_SWORD, stats
-        ).produce()
+        val stats = arrayListOf(4, 0, 1, 0, 10, 20)
 
-        BItemFactory.register("goldsword", sword)
+        sword = FactoryWeapon(
+            "Gold Sword",
+            rarity,
+            arrayListOf(),
+            BMaterial.GOLD_SWORD,
+            stats
+        ).register("gold_sword")
+
 
         val recipe = ShapedRecipe(sword)
         recipe.shape(" d ", " d ", " s ")
@@ -87,13 +79,15 @@ class Gold : FullSetMaker {
     }
 
     override fun createHelmet() {
-        val factoryItem = BItemFactory.createBItem("Gold Helmet", Material.GOLD_HELMET, BItemType.ARMOR)
+        val stats = arrayListOf(1, 9, 0, 6, 5, 10)
 
-        factoryItem.stats = arrayListOf(1, 12, 1, 10, 10, 20)
-        factoryItem.rarity = Rarity.RARE
-
-        helm = BItemFactory.produceItem(factoryItem)
-        BItemFactory.register("goldhelmet", helm)
+        helm = FactoryWeapon(
+            "Gold Helmet",
+            rarity,
+            arrayListOf(),
+            BMaterial.GOLD_HELMET,
+            stats
+        ).register("gold_helmet")
 
         val recipe = ShapedRecipe(helm)
         recipe.shape("ddd", "d d", "   ")
@@ -102,13 +96,15 @@ class Gold : FullSetMaker {
     }
 
     override fun createChestplate() {
-        val factoryItem = BItemFactory.createBItem("Gold Chestplate", Material.GOLD_CHESTPLATE, BItemType.ARMOR)
+        val stats = arrayListOf(1, 25, 0, 15, 15, 25)
 
-        factoryItem.stats = arrayListOf(3, 24, 2, 22, 30, 40)
-        factoryItem.rarity = Rarity.RARE
-
-        chestplate = BItemFactory.produceItem(factoryItem)
-        BItemFactory.register("goldchestplate", chestplate)
+        chestplate = FactoryWeapon(
+            "Gold Chestplate",
+            rarity,
+            arrayListOf(),
+            BMaterial.GOLD_CHESTPLATE,
+            stats
+        ).register("gold_chestplate")
 
         val recipe = ShapedRecipe(chestplate)
         recipe.shape("d d", "ddd", "ddd")
@@ -117,13 +113,15 @@ class Gold : FullSetMaker {
     }
 
     override fun createLeggings() {
-        val factoryItem = BItemFactory.createBItem("Gold Leggings", Material.GOLD_LEGGINGS, BItemType.ARMOR)
+        val stats = arrayListOf(1, 14, 0, 8, 7, 15)
 
-        factoryItem.stats = arrayListOf(2, 19, 1, 17, 20, 30)
-        factoryItem.rarity = Rarity.RARE
-
-        leggings = BItemFactory.produceItem(factoryItem)
-        BItemFactory.register("goldpants", leggings)
+        leggings = FactoryWeapon(
+            "Gold Chestplate",
+            rarity,
+            arrayListOf(),
+            BMaterial.GOLD_CHESTPLATE,
+            stats
+        ).register("gold_chestplate")
 
         val recipe = ShapedRecipe(leggings)
         recipe.shape("ddd", "d d", "d d")
@@ -132,13 +130,15 @@ class Gold : FullSetMaker {
     }
 
     override fun createBoots() {
-        val factoryItem = BItemFactory.createBItem("Gold Boots", Material.GOLD_BOOTS, BItemType.ARMOR)
+        val stats = arrayListOf(0, 4, 0, 2, 3, 10)
 
-        factoryItem.stats = arrayListOf(0, 11, 0, 9, 8, 16)
-        factoryItem.rarity = Rarity.RARE
-
-        boots = BItemFactory.produceItem(factoryItem)
-        BItemFactory.register("goldboots", leggings)
+        boots = FactoryWeapon(
+            "Gold Boots",
+            rarity,
+            arrayListOf(),
+            BMaterial.GOLD_BOOTS,
+            stats
+        ).register("gold_boots")
 
         val recipe = ShapedRecipe(boots)
         recipe.shape("   ", "d d", "d d")

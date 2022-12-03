@@ -1,7 +1,7 @@
 package me.bnogocarft.bnogorpg.utils.auction
 
 import me.bnogocarft.bnogorpg.Main
-import me.bnogocarft.bnogorpg.utils.Database.BnogoSQL
+import me.bnogocarft.bnogorpg.utils.database.BnogoSQL
 import me.bnogocarft.bnogorpg.utils.Senders.ItemSender
 import me.bnogocarft.bnogorpg.utils.Senders.MessageSender
 import org.bukkit.Bukkit

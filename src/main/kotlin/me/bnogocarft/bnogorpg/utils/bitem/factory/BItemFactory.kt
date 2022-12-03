@@ -4,12 +4,15 @@ import me.bnogocarft.bnogorpg.commands.customItemMap
 import me.bnogocarft.bnogorpg.utils.Armorset.SetBonus
 import me.bnogocarft.bnogorpg.utils.ability.IAbility
 import me.bnogocarft.bnogorpg.utils.ability.ManaAbility
-import me.bnogocarft.bnogorpg.utils.bitem.BMaterial
+import me.bnogocarft.bnogorpg.utils.bitem.BItems.BItem
+import me.bnogocarft.bnogorpg.utils.bitem.CraftItems.CraftItem
+import me.bnogocarft.bnogorpg.utils.bitem.CraftItems.ItemVariable
 import me.bnogocarft.bnogorpg.utils.encode
 import me.bnogocarft.bnogorpg.utils.others.Rarity.Rarity
 import org.bukkit.Bukkit
 import org.bukkit.ChatColor
 import org.bukkit.Color
+import org.bukkit.Material
 import org.bukkit.inventory.ItemStack
 import org.bukkit.inventory.meta.LeatherArmorMeta
 import kotlin.math.roundToInt
@@ -25,11 +28,13 @@ val symbols = hashMapOf(
     "atk" to '❁',
     "crit" to '✦',
     "mana" to '☯',
-    "stamina" to 'Ω',
+    "stam" to 'Ω',
     "bar" to '■'
 )
 
 val b = "■"
+
+val BMaterial = HashMap<String, CraftItem>()
 
 interface Enhancement {
     val stats: ArrayList<Int>
@@ -38,7 +43,7 @@ interface Enhancement {
 abstract class FactoryItem(
     open val name: String,
     open val rarity: Rarity,
-    open val bMat: BMaterial
+    open val mat: Material
 ) {
     open val abilities = ArrayList<IAbility>()
     open fun produce(): ItemStack {
@@ -56,51 +61,57 @@ class FactoryWeapon(
     override val name: String,
     override val rarity: Rarity,
     override val abilities: ArrayList<IAbility>,
-    override val bMat: BMaterial,
+    override val mat: Material,
     override val stats: ArrayList<Int>
-) : FactoryItem(name, rarity, bMat), Enhancement {
+) : FactoryItem(name, rarity, mat), Enhancement {
 
     override fun produce(): ItemStack {
-        val mat = bMat.getBukkitMaterial()
         val item = ItemStack(mat)
         val meta = Bukkit.getItemFactory().getItemMeta(mat)
         val lore = ArrayList<String>()
         meta.displayName = name
+        lore.add("${ChatColor.DARK_GRAY}ID: ")
         lore.add("${ChatColor.GOLD}Reforge: ${ChatColor.GRAY}None")
         lore.add("${ChatColor.GRAY}Quality: ${rarity.getColor()}?")
         lore.add("${ChatColor.GRAY}When held in hand:")
-        lore.add("")
 
         // Damage: +1 +(0.2 Max from Quality)
         lore.add(
-            "${ChatColor.RED}Damage: ${ChatColor.DARK_GRAY}+${stats[0]} " +
+            "${ChatColor.RED}${
+                symbols["atk"]}Damage: ${ChatColor.DARK_GRAY}+${stats[0]} " +
                     "${ChatColor.GRAY}+(${(stats[0] * rarity.getQualityCap()).roundToInt()} from max Quality)"
         )
         lore.add(
-            "${ChatColor.GREEN}Defense: ${ChatColor.DARK_GRAY}+${stats[1]} " +
+            "${ChatColor.GREEN}${
+                symbols["def"]}Defense: ${ChatColor.DARK_GRAY}+${stats[1]} " +
                     "${ChatColor.GRAY}+(${(stats[1] * rarity.getQualityCap()).roundToInt()} from max Quality)"
         )
         lore.add(
-            "${ChatColor.LIGHT_PURPLE}Magic Dmg: ${ChatColor.DARK_GRAY}+${stats[2]} " +
+            "${ChatColor.LIGHT_PURPLE}${
+                symbols["mdmg"]}Magic Damage: ${ChatColor.DARK_GRAY}+${stats[2]} " +
                     "${ChatColor.GRAY}+(${(stats[2] * rarity.getQualityCap()).roundToInt()} from max Quality)"
         )
         lore.add(
-            "${ChatColor.DARK_PURPLE}Magic Def: ${ChatColor.DARK_GRAY}+${stats[3]} " +
+            "${ChatColor.DARK_PURPLE}${
+                symbols["mdef"]}Magic Defense: ${ChatColor.DARK_GRAY}+${stats[3]} " +
                     "${ChatColor.GRAY}+(${(stats[3] * rarity.getQualityCap()).roundToInt()} from max Quality)"
         )
         lore.add(
-            "${ChatColor.AQUA}Mana: ${ChatColor.DARK_GRAY}+${stats[4]} " +
+            "${ChatColor.AQUA}${
+                symbols["mana"]}Mana: ${ChatColor.DARK_GRAY}+${stats[4]} " +
                     "${ChatColor.GRAY}+(${(stats[4] * rarity.getQualityCap()).roundToInt()} from max Quality)"
         )
         lore.add(
-            "${ChatColor.GOLD}Stamina: ${ChatColor.DARK_GRAY}+${stats[5]} " +
+            "${ChatColor.GOLD}${
+                symbols["stam"]}Stamina: ${ChatColor.DARK_GRAY}+${stats[5]} " +
                     "${ChatColor.GRAY}+(${(stats[5] * rarity.getQualityCap()).roundToInt()} from max Quality)"
         )
         lore.add("")
 
         // abilities lore
         for (ability in abilities) {
-            lore.add("${encode("ability")}" +
+            lore.add(
+                encode("ability") +
                     "${ChatColor.GOLD}${ability.type.getString()} Ability: " +
                     "${rarity.getColor()}${ability.name}")
             for (s in ability.description) {
@@ -113,11 +124,11 @@ class FactoryWeapon(
         }
         lore.add("${ChatColor.YELLOW}Level: ${ChatColor.GRAY}0")
         lore.add("${ChatColor.GREEN}EXP: 0/10${rarity.getColor()}[" +
-                "${ChatColor.DARK_GRAY}$b$b$b$b$b$b$b$b$b$b" +
+                "${ChatColor.GREEN}$b$b$b$b$b$b$b$b$b$b" +
                 "${rarity.getColor()}]"
         )
         lore.add("${ChatColor.GRAY}Durability: ${ChatColor.GREEN}${mat.maxDurability}/${mat.maxDurability}" +
-                "${rarity.getColor()}[${ChatColor.DARK_GRAY}$b$b$b$b$b$b$b$b$b$b${rarity.getColor()}]")
+                "${rarity.getColor()}[${ChatColor.GREEN}$b$b$b$b$b$b$b$b$b$b${rarity.getColor()}]")
         lore.add("")
 
         lore.add(rarity.getText() + weaponIdentifier)
@@ -136,7 +147,7 @@ class FactoryWeapon(
             line += "⎯"
         }
 
-        lore.add(2, line)
+        lore.add(3, line)
 
         meta.lore = lore
         item.itemMeta = meta
@@ -147,52 +158,57 @@ class FactoryWeapon(
 class FactoryArmor(
     override val name: String,
     override val rarity: Rarity,
-    override val bMat: BMaterial,
+    override val abilities: ArrayList<IAbility>,
+    override val mat: Material,
     override val stats: ArrayList<Int>,
-    val color: Color
-) : FactoryItem(name, rarity, bMat), Enhancement {
-    val setBonuses: ArrayList<SetBonus> = ArrayList()
+    val color: Color?
+) : FactoryItem(name, rarity, mat), Enhancement {
 
 
     override fun produce(): ItemStack {
-        val mat = bMat.getBukkitMaterial()
         val item = ItemStack(mat)
         val meta = Bukkit.getItemFactory().getItemMeta(mat)
         val lore = ArrayList<String>()
         meta.displayName = name
-        lore.add("${ChatColor.GRAY}ID: ")
+        lore.add("${ChatColor.DARK_GRAY}ID: ")
         lore.add("${ChatColor.GOLD}Reforge: ${ChatColor.DARK_GRAY}?")
         lore.add("${ChatColor.GRAY}Quality: ${rarity.getColor()}?")
         lore.add("${ChatColor.GRAY}When equiped in armor slot:")
 
         lore.add(
-            "${ChatColor.RED}Damage: ${ChatColor.DARK_GRAY}+${stats[0]} " +
+            "${ChatColor.RED}${
+                symbols["atk"]}Damage: ${ChatColor.DARK_GRAY}+${stats[0]} " +
                     "${ChatColor.GRAY}+(${(stats[0] * rarity.getQualityCap()).roundToInt()} from max Quality)"
         )
         lore.add(
-            "${ChatColor.GREEN}Defense: ${ChatColor.DARK_GRAY}+${stats[1]} " +
+            "${ChatColor.GREEN}${
+                symbols["def"]}Defense: ${ChatColor.DARK_GRAY}+${stats[1]} " +
                     "${ChatColor.GRAY}+(${(stats[1] * rarity.getQualityCap()).roundToInt()} from max Quality)"
         )
         lore.add(
-            "${ChatColor.LIGHT_PURPLE}Magic Dmg: ${ChatColor.DARK_GRAY}+${stats[2]} " +
+            "${ChatColor.LIGHT_PURPLE}${
+                symbols["mdmg"]}Magic Damage: ${ChatColor.DARK_GRAY}+${stats[2]} " +
                     "${ChatColor.GRAY}+(${(stats[2] * rarity.getQualityCap()).roundToInt()} from max Quality)"
         )
         lore.add(
-            "${ChatColor.DARK_PURPLE}Magic Def: ${ChatColor.DARK_GRAY}+${stats[3]} " +
+            "${ChatColor.DARK_PURPLE}${
+                symbols["mdef"]}Magic Defense: ${ChatColor.DARK_GRAY}+${stats[3]} " +
                     "${ChatColor.GRAY}+(${(stats[3] * rarity.getQualityCap()).roundToInt()} from max Quality)"
         )
         lore.add(
-            "${ChatColor.AQUA}Mana: ${ChatColor.DARK_GRAY}+${stats[4]} " +
+            "${ChatColor.AQUA}${
+                symbols["mana"]}Mana: ${ChatColor.DARK_GRAY}+${stats[4]} " +
                     "${ChatColor.GRAY}+(${(stats[4] * rarity.getQualityCap()).roundToInt()} from max Quality)"
         )
         lore.add(
-            "${ChatColor.GOLD}Stamina: ${ChatColor.DARK_GRAY}+${stats[5]} " +
+            "${ChatColor.GOLD}${
+                symbols["stam"]}Stamina: ${ChatColor.DARK_GRAY}+${stats[5]} " +
                     "${ChatColor.GRAY}+(${(stats[5] * rarity.getQualityCap()).roundToInt()} from max Quality)"
         )
         lore.add("")
 
         // abilities lore
-        for (bonus in setBonuses) {
+        for (bonus in abilities) {
             lore.add("${encode("ability")}${ChatColor.YELLOW}Set Bonus: ${rarity.getColor()}${bonus.name}")
             for (s in bonus.description) lore.add("${ChatColor.GRAY}$s")
             if (bonus is ManaAbility) {
@@ -202,11 +218,11 @@ class FactoryArmor(
         }
         lore.add("${ChatColor.YELLOW}Level: ${ChatColor.GRAY}0")
         lore.add("${ChatColor.GREEN}EXP: 0/10${rarity.getColor()}[" +
-                "${ChatColor.DARK_GRAY}$b$b$b$b$b$b$b$b$b$b" +
+                "${ChatColor.GREEN}$b$b$b$b$b$b$b$b$b$b" +
                 "${rarity.getColor()}]"
         )
         lore.add("${ChatColor.GRAY}Durability: ${ChatColor.GREEN}${mat.maxDurability}/${mat.maxDurability}" +
-                "${rarity.getColor()}[${ChatColor.DARK_GRAY}$b$b$b$b$b$b$b$b$b$b${rarity.getColor()}]")
+                "${rarity.getColor()}[${ChatColor.GREEN}$b$b$b$b$b$b$b$b$b$b${rarity.getColor()}]")
 
         if (mat.toString().contains("leather", true)) {
             val colorMeta = meta as LeatherArmorMeta
@@ -229,7 +245,7 @@ class FactoryArmor(
             line += "⎯"
         }
 
-        lore.add(2, line)
+        lore.add(3, line)
 
         meta.lore = lore
         item.itemMeta = meta
@@ -241,11 +257,11 @@ class FactoryArmor(
 class FactoryTalisman(
     override val name: String,
     override val rarity: Rarity,
-    override val bMat: BMaterial
-) : FactoryItem(name, rarity, bMat) {
+    override val mat: Material,
+    val variables: ArrayList<ItemVariable>,
+) : FactoryItem(name, rarity, mat) {
 
     override fun produce(): ItemStack {
-        val mat = bMat.getBukkitMaterial()
         val item = ItemStack(mat)
         val meta = Bukkit.getItemFactory().getItemMeta(mat)
         val lore = ArrayList<String>()
@@ -264,7 +280,7 @@ class FactoryTalisman(
         }
         lore.add("")
         lore.add("${ChatColor.YELLOW}Level: ${ChatColor.GRAY}0")
-        lore.add("${ChatColor.GREEN}EXP: 0/10${rarity.getColor()}[${ChatColor.DARK_GRAY}$b$b$b$b$b$b$b$b$b$b${rarity.getColor()}]")
+        lore.add("${ChatColor.GREEN}EXP: 0/10${rarity.getColor()}[${ChatColor.GREEN}$b$b$b$b$b$b$b$b$b$b${rarity.getColor()}]")
         lore.add("")
 
         lore.add(rarity.getText() + talismanIdentifier)
@@ -278,10 +294,9 @@ class FactoryTalisman(
 class FactoryAScroll(
     override val name: String,
     override val rarity: Rarity,
-    override val bMat: BMaterial
-) : FactoryItem(name, rarity, bMat) {
+    override val mat: Material
+) : FactoryItem(name, rarity, mat) {
     override fun produce(): ItemStack {
-        val mat = bMat.getBukkitMaterial()
         val item = ItemStack(mat)
         val meta = Bukkit.getItemFactory().getItemMeta(mat)
         val lore = ArrayList<String>()
@@ -305,10 +320,9 @@ class FactoryAScroll(
 class FactorySScroll(
     override val name: String,
     override val rarity: Rarity,
-    override val abilities: ArrayList<IAbility>, override val bMat: BMaterial
-) : FactoryItem(name, rarity, bMat) {
+    override val abilities: ArrayList<IAbility>, override val mat: Material
+) : FactoryItem(name, rarity, mat) {
     override fun produce(): ItemStack {
-        val mat = bMat.getBukkitMaterial()
         val item = ItemStack(mat)
         val meta = Bukkit.getItemFactory().getItemMeta(mat)
         val lore = ArrayList<String>()
@@ -334,8 +348,8 @@ class FactoryMisc(
     override val name: String,
     override val rarity: Rarity,
     override val abilities: ArrayList<IAbility>,
-    override val bMat: BMaterial
-) : FactoryItem(name, rarity, bMat) {
+    override val mat: Material
+) : FactoryItem(name, rarity, mat) {
     override fun produce(): ItemStack {
         TODO("Not yet implemented")
     }
@@ -345,8 +359,8 @@ class FactoryPotion (
     override val name: String,
     override val rarity: Rarity,
     override val abilities: ArrayList<IAbility>,
-    override val bMat: BMaterial
-) : FactoryItem(name, rarity, bMat) {
+    override val mat: Material
+) : FactoryItem(name, rarity, mat) {
     override fun produce(): ItemStack {
         TODO("Not yet implemented")
     }

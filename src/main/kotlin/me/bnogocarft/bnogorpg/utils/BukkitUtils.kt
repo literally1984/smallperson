@@ -5,9 +5,12 @@ import me.bnogocarft.bnogorpg.entity.BLivingEntity
 import me.bnogocarft.bnogorpg.utils.bitem.BItemUtils
 import me.bnogocarft.bnogorpg.utils.bitem.BItems.BArmor
 import me.bnogocarft.bnogorpg.utils.bitem.BItems.BGear
+import me.bnogocarft.bnogorpg.utils.bitem.BItems.BItem
 import me.bnogocarft.bnogorpg.utils.bitem.BItems.BWeapon
+import me.bnogocarft.bnogorpg.utils.bitem.SerializableItem
 import me.bnogocarft.bnogorpg.utils.bitem.factory.*
 import net.minecraft.server.v1_8_R3.*
+import org.apache.commons.lang3.SerializationUtils
 import org.bukkit.Bukkit
 import org.bukkit.Location
 import org.bukkit.Material
@@ -21,8 +24,12 @@ import org.bukkit.entity.Player
 import org.bukkit.event.player.PlayerInteractEvent
 import org.bukkit.inventory.ItemStack
 import org.bukkit.util.Vector
+import java.io.Serializable
 import kotlin.math.pow
 import kotlin.math.roundToInt
+import kotlin.reflect.KMutableProperty
+import kotlin.reflect.full.declaredMemberProperties
+import kotlin.reflect.full.memberProperties
 
 
 val entityMetadata = HashMap<Entity, Pair<String, Any>>()
@@ -74,7 +81,7 @@ enum class B {
 
 infix fun ItemStack.canBe(type: B): Boolean {
     if (!hasItemMeta() && itemMeta.lore == null) return false
-    val identifier = itemMeta.lore[itemMeta.lore.size - 2]
+    val identifier = itemMeta.lore[itemMeta.lore.size - 1]
     when (type) {
         B.GEAR -> {
             if (this canBe B.ITEM) {
@@ -345,4 +352,8 @@ fun ItemStack.getBArmor(): BArmor? {
         null
     }
     return gear
+}
+
+fun ItemStack.toByteArray(): ByteArray {
+    return SerializationUtils.serialize(SerializableItem(this))
 }

@@ -4,7 +4,9 @@ import me.bnogocarft.bnogorpg.utils.B
 import me.bnogocarft.bnogorpg.utils.canBe
 import me.bnogocarft.bnogorpg.utils.events.ClickStateChangeEvent
 import me.bnogocarft.bnogorpg.entity.player.bPlayer
+import me.bnogocarft.bnogorpg.utils.ability.ManaAbility
 import me.bnogocarft.bnogorpg.utils.getBWeapon
+import org.bukkit.ChatColor
 import org.bukkit.entity.Player
 import org.bukkit.event.EventHandler
 import org.bukkit.event.EventPriority
@@ -13,6 +15,7 @@ import org.bukkit.event.entity.EntityDamageEvent
 import org.bukkit.event.player.PlayerFishEvent
 import org.bukkit.event.player.PlayerInteractEvent
 
+val noMana = "${ChatColor.RED}${ChatColor.BOLD}You don't have enough mana to cast this ability!"
 
 class AbilityListeners : Listener {
 
@@ -38,7 +41,15 @@ class AbilityListeners : Listener {
     fun onRightClick(e: EntityDamageEvent) {
         if (e.entity is Player) {
             val player = e.entity as Player
+            val stats = player.bPlayer().stats
             for (ability in player.bPlayer().activeAbilities) {
+                if (ability is ManaAbility) {
+                    if (stats.currentMana >= ability.manaCost) {
+                        player.bPlayer().stats.currentMana -= ability.manaCost
+                    } else {
+                        player.sendMessage()
+                    }
+                }
                 ability.cast(player, e)
             }
         }

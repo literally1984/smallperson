@@ -1,17 +1,20 @@
 package me.bnogocarft.bnogorpg.utils.bitem.BItems
 
+import me.bnogocarft.bnogorpg.Main
 import me.bnogocarft.bnogorpg.items.updater.Change.Change
 import me.bnogocarft.bnogorpg.items.updater.Change.StatChange
-import me.bnogocarft.bnogorpg.utils.Database.BnogoSQL
-import me.bnogocarft.bnogorpg.utils.stat.ItemStat
+import me.bnogocarft.bnogorpg.utils.database.BnogoSQL
 import me.bnogocarft.bnogorpg.utils.bitem.BItemUtils
 import me.bnogocarft.bnogorpg.utils.bitem.Reforge
+import me.bnogocarft.bnogorpg.utils.getBar
 import me.bnogocarft.bnogorpg.utils.getNeededExp
 import me.bnogocarft.bnogorpg.utils.serializeItem
+import me.bnogocarft.bnogorpg.utils.stat.ItemStat
 import org.bukkit.ChatColor
 import org.bukkit.inventory.ItemStack
 import kotlin.properties.Delegates
 
+@Suppress("DEPRECATION")
 open class BGear(override val item: ItemStack) : Enchantable(item) {
 
     constructor(stats: List<Int>, item: ItemStack) : this(item) {
@@ -46,9 +49,9 @@ open class BGear(override val item: ItemStack) : Enchantable(item) {
     private var durabilityLine by Delegates.notNull<Int>()
     var levelLine = 0
 
-    var durability = item.durability
+    var durability = 0
         set(value) {
-            val durabilityPercent = (value / item.type.maxDurability.toDouble()) * 100
+            val durabilityPercent = (value / initItem.type.maxDurability.toDouble()) * 100
             var durabilityColor = ChatColor.GREEN
             if (durabilityPercent < 33) {
                 durabilityColor = ChatColor.RED
@@ -59,69 +62,82 @@ open class BGear(override val item: ItemStack) : Enchantable(item) {
             if (durabilityPercent > 66) {
                 durabilityColor = ChatColor.GREEN
             }
-            item.itemMeta.lore[durabilityLine] = "${ChatColor.GRAY}Durability: $durabilityColor${value}/${item.type.maxDurability}"
+            initItem.itemMeta.lore[durabilityLine] =
+                "${ChatColor.GRAY}Durability: " +
+                        "$durabilityColor${value}/${initItem.type.maxDurability}${
+                            (value.toFloat()
+                                    to 
+                                    initItem.type.maxDurability.toFloat()).getBar(rarity!!.getColor(), "${durabilityColor}"
+                            )
+                        }"
+
             field = value
         }
 
     var id: Int = -1
         set(value) {
             field = value
-            val copy = this.initItem.itemMeta.clone()
+            val copy = initItem.itemMeta.clone()
             val copyLore = copy.lore
             copyLore[idLine] = "${ChatColor.AQUA}ID: $value"
             copy.lore = copyLore
-            this.initItem.itemMeta = copy
+            initItem.itemMeta = copy
         }
-    var stats = ItemStat(item)
-    var reforge = Reforge.NONE
+    var stats = ItemStat(initItem)
+    var reforge = Reforge.valueOf(initItem.itemMeta.lore[0].replace(" ", "_").lowercase().capitalize())
         set(value) {
-            val newMeta = this.initItem.itemMeta
+            val newMeta = initItem.itemMeta
 
             if (field == Reforge.NONE) {
-                newMeta.displayName = this.initItem.itemMeta.displayName
-                this.initItem.itemMeta = newMeta
+                newMeta.displayName = initItem.itemMeta.displayName
+                initItem.itemMeta = newMeta
             } else {
                 val displayArray = newMeta.displayName.split(" ").toMutableList()
                 displayArray[0] = "$value"
                 newMeta.displayName = displayArray.joinToString(" ")
-                this.initItem.itemMeta = newMeta
+                initItem.itemMeta = newMeta
             }
+
+            newMeta.lore[0] = "${ChatColor.GOLD}Reforge: ${ChatColor.GRAY}${
+                value.toString().replace("_", " ").lowercase().capitalize()
+            }"
             field = value
         }
 
     var exp: Long = 0
         set(value) {
-            val copy = this.initItem.itemMeta.clone()
+            val copy = initItem.itemMeta.clone()
             val copyLore = copy.lore
             val bars = (value/level.getNeededExp())*10
             val bar = "[          ]".toCharArray()
             var indexOfMBlock = 1
 
             for (i in 1..bars) {
-                bar[indexOfMBlock] = '█'
+                bar[indexOfMBlock] = Main.bar.first()
                 indexOfMBlock++
             }
 
             copyLore[levelLine + 1] = "${ChatColor.GREEN}EXP: $value/${level.getNeededExp()}${String(bar)}"
             copy.lore = copyLore
-            this.initItem.itemMeta = copy
+            initItem.itemMeta = copy
             field = value
         }
     var level: Long = 0
         set(value) {
-            val copy = this.initItem.itemMeta.clone()
+            val copy = initItem.itemMeta.clone()
             val copyLore = copy.lore
             copyLore[levelLine] = "${ChatColor.YELLOW}Level: ${ChatColor.GRAY}$value"
             copy.lore = copyLore
-            this.initItem.itemMeta = copy
+            initItem.itemMeta = copy
             field = value
         }
 
     private var idLine = 0
 
     init {
-        if (item.itemMeta != null) {
-            this.initItem = item
+        durability = initItem.durability.toInt()
+        if (initItem.itemMeta != null) {
+            initItem = item
             val lore = initItem.itemMeta.lore
             for (cLore in initItem.itemMeta.lore) {
                 if (cLore.contains("${ChatColor.AQUA}ID: ")) {
@@ -147,7 +163,7 @@ open class BGear(override val item: ItemStack) : Enchantable(item) {
                 }
                 if (cLore.contains("${ChatColor.GRAY}Durability: ")) {
                     durabilityLine = lore.indexOf(cLore)
-                    durability = cLore.split(": ")[1].drop(2).toShort()
+                    durability = cLore.split(": ")[1].drop(2).toInt()
                 }
             }
 
@@ -183,7 +199,7 @@ open class BGear(override val item: ItemStack) : Enchantable(item) {
                             "'$material', " +
                             "${rarity}, " +
                             "'${initItem.itemMeta.displayName}', " +
-                            "'${serializeItem(item)}', " +
+                            "'${serializeItem(initItem)}', " +
                             "ARRAY [$beforeString]::text[]);"
                 ).execute()
             }

@@ -4,8 +4,8 @@ package me.bnogocarft.bnogorpg.entity.player
 
 import me.bnogocarft.bnogorpg.spells.spells.FireballSpell
 import me.bnogocarft.bnogorpg.spells.spells.MeteorSpell
-import me.bnogocarft.bnogorpg.utils.Database.BnogoSQL
-import me.bnogocarft.bnogorpg.utils.Database.YMLUtils
+import me.bnogocarft.bnogorpg.utils.database.BnogoSQL
+import me.bnogocarft.bnogorpg.utils.database.YMLUtils
 import me.bnogocarft.bnogorpg.utils.JVMUtils.StashArrayList
 import me.bnogocarft.bnogorpg.utils.abilities.Spell
 import me.bnogocarft.bnogorpg.utils.bitem.BItems.Talisman

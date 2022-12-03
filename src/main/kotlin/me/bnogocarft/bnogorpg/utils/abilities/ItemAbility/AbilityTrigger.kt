@@ -14,7 +14,7 @@ enum class AbilityTrigger {
     JUMP,
     SET_BONUS,
     NONE,
-    HIT;
+    PASSIVE;
 
     fun getString(): String {
         return when (this) {

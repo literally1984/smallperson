@@ -1,7 +1,6 @@
 package me.bnogocarft.bnogorpg.items
 
-import me.bnogocarft.bnogorpg.utils.bitem.BItems.BItemType
-import me.bnogocarft.bnogorpg.utils.bitem.BMaterial
+import me.bnogocarft.bnogorpg.utils.bitem.BItemType
 import me.bnogocarft.bnogorpg.utils.bitem.factory.BItemFactory
 import me.bnogocarft.bnogorpg.utils.bitem.factory.CombatSetMaker
 import org.bukkit.Bukkit

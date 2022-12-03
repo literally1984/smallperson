@@ -4,6 +4,7 @@ import me.bnogocarft.bnogorpg.utils.*
 import me.bnogocarft.bnogorpg.utils.events.ArmorChangeEvent
 import me.bnogocarft.bnogorpg.entity.player.OnlineBPlayers
 import me.bnogocarft.bnogorpg.entity.player.bPlayer
+import me.bnogocarft.bnogorpg.utils.Armorset.SetBonus
 import org.bukkit.event.EventHandler
 import org.bukkit.event.EventPriority
 import org.bukkit.event.Listener
@@ -47,7 +48,7 @@ class PlayerAbilityChangeListeners : Listener {
                     if (old canBe B.ARMOR) {
                         val bOld = old.getBArmor()!!
                         for (ability in bOld.abilities) {
-                            event.player.bPlayer().activeAbilities.remove(ability)
+                            if (ability !is SetBonus) event.player.bPlayer().activeAbilities.remove(ability)
                         }
                     }
                 }
@@ -57,7 +58,7 @@ class PlayerAbilityChangeListeners : Listener {
                     if (armor canBe B.ARMOR) {
                         val bNew = armor.getBArmor()!!
                         for (ability in bNew.abilities) {
-                            event.player.bPlayer().activeAbilities.add(ability)
+                            if (ability !is SetBonus) event.player.bPlayer().activeAbilities.add(ability)
                         }
                     }
                 }
@@ -66,11 +67,13 @@ class PlayerAbilityChangeListeners : Listener {
                     if (armor canBe B.ARMOR) {
                         val bNew = armor.getBArmor()!!
                         for (ability in bNew.abilities) {
-                            event.player.bPlayer().activeAbilities.add(ability)
+                            if (ability !is SetBonus) event.player.bPlayer().activeAbilities.add(ability)
                         }
                     }
                 }
             }
         }
+
+
     }
 }

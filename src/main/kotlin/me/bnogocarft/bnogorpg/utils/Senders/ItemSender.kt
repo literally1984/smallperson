@@ -1,6 +1,6 @@
 package me.bnogocarft.bnogorpg.utils.Senders
 
-import me.bnogocarft.bnogorpg.utils.Database.YMLUtils
+import me.bnogocarft.bnogorpg.utils.database.YMLUtils
 import me.bnogocarft.bnogorpg.entity.player.OfflineBPlayer
 import me.bnogocarft.bnogorpg.entity.player.OnlineBPlayers
 import org.bukkit.Bukkit

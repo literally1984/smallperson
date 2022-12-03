@@ -1,66 +1,52 @@
 package me.bnogocarft.bnogorpg.utils.bitem.BItems
 
+import me.bnogocarft.bnogorpg.Main
 import me.bnogocarft.bnogorpg.utils.ability.IAbility
 import me.bnogocarft.bnogorpg.utils.bitem.BItemType
-import me.bnogocarft.bnogorpg.utils.bitem.BMaterial
+import me.bnogocarft.bnogorpg.utils.bitem.factory.*
 import me.bnogocarft.bnogorpg.utils.encode
 import me.bnogocarft.bnogorpg.utils.others.Rarity.RarityUtils
-import org.bukkit.ChatColor
 import org.bukkit.inventory.ItemStack
 
 open class BItem(item: ItemStack) {
     open val item = item
 
-    var material: BMaterial
+    var material: String
     val abilities = ArrayList<IAbility>()
 
     var rarity = RarityUtils.getRarity(item.itemMeta.lore[item.itemMeta.lore.size - 1])
     var type: BItemType =
         try {
             when (item.itemMeta.lore[item.itemMeta.lore.size - 2]) {
-                "${ChatColor.GOLD}${ChatColor.ITALIC}Talisman" -> BItemType.TALISMAN
-                "${ChatColor.GOLD}${ChatColor.ITALIC}Ability Scroll" -> BItemType.SCROLL
-                "${ChatColor.GOLD}${ChatColor.ITALIC}Weapon" -> BItemType.WEAPON
-                "${ChatColor.GOLD}${ChatColor.ITALIC}Armor Item" -> BItemType.ARMOR
-                else -> {
-                    BItemType.MISC
-                }
+                talismanIdentifier -> BItemType.TALISMAN
+                scrollIdentifier -> BItemType.SCROLL
+                weaponIdentifier -> BItemType.WEAPON
+                armorIdentifier -> BItemType.ARMOR
+                miscIdentifier -> BItemType.MISC
+                else -> BItemType.MISC
             }
         } catch (e: NullPointerException) {
             throw IllegalArgumentException("No type identifier found in item lore")
         }
 
     init {
-        if (!(item.hasItemMeta()) ||
-            !item.itemMeta.lore[
-                    item.itemMeta.lore.size - 1
-            ].contains(encode("bitem"))
-        ) {
-            throw IllegalArgumentException("ItemStack does not have BItem marker!")
-        }
         val lore = item.itemMeta.lore
-        for (clore in lore) {
-
+        for (cLore in lore) {
+            if (cLore.contains(encode("ability"))) {
+                val ability = cLore.split("Ability: ")[1].drop(2)
+                for (registeredAbility in Main.registeredAbilities) {
+                    if (registeredAbility.name == ability) {
+                        abilities.add(registeredAbility)
+                    }
+                }
+            }
         }
 
         // If this is combat gear
-        material = if (this !is BGear) {
-            try {
-                BMaterial.valueOf(item.itemMeta.displayName.replace(" ", "_").uppercase())
-            } catch (e: IllegalArgumentException) {
-                throw IllegalArgumentException("ItemStack does not have a valid BMaterial")
-            }
-        } else {
-            val name = item.itemMeta.displayName
-            try {
-                BMaterial.valueOf(name.replace(" ", "_").uppercase())
-            } catch (e: IllegalArgumentException) { // If there is no material with a name from replacing space with _, it is a reforge
-                // Remove the reforge text
-                val newName = name.split(" ").toMutableList()
-                newName.removeAt(0)
+        material = item.itemMeta.displayName.replace(" ", "_").uppercase()
+    }
 
-                BMaterial.valueOf(newName.joinToString("_").uppercase())
-            }
-        }
+    fun equals(other: BItem): Boolean {
+        return this.material == other.material && this.rarity == other.rarity && this.type == other.type
     }
 }

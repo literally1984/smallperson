@@ -1,13 +1,10 @@
 package me.bnogocarft.bnogorpg.utils.bitem.CraftItems
 
-import me.bnogocarft.bnogorpg.utils.Exceptions.IllegalParameterException
 import me.bnogocarft.bnogorpg.utils.bitem.BItems.getRandomStat
-import me.bnogocarft.bnogorpg.utils.bitem.BMaterial
 import me.bnogocarft.bnogorpg.utils.others.Rarity.Rarity
 import me.bnogocarft.bnogorpg.utils.rand
 import org.bukkit.ChatColor
 import org.bukkit.inventory.ItemStack
-import kotlin.random.Random
 
 data class CraftGear(override var item: ItemStack) : CraftItem(item) {
     override var type: BMaterial = BMaterial.valueOf(item.itemMeta.displayName.replace(" ", "_").uppercase())

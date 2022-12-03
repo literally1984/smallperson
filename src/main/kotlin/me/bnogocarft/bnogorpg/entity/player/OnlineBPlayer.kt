@@ -5,7 +5,7 @@ import me.bnogocarft.bnogorpg.combat.ComboCounter.Combo
 import me.bnogocarft.bnogorpg.player.PlayerBar.MainBar
 import me.bnogocarft.bnogorpg.utils.*
 import me.bnogocarft.bnogorpg.utils.Armorset.SetBonus
-import me.bnogocarft.bnogorpg.utils.Database.BnogoSQL
+import me.bnogocarft.bnogorpg.utils.database.BnogoSQL
 import me.bnogocarft.bnogorpg.utils.JVMUtils.BarArrayList
 import me.bnogocarft.bnogorpg.utils.Mode.Mode
 import me.bnogocarft.bnogorpg.utils.stat.StatManager
@@ -43,10 +43,15 @@ import kotlin.math.roundToInt
 data class OnlineBPlayer(val p: Player) : BPlayer(p.name) {
     var controlling: Entity? = null
         set(entity) {
-            entity?.bEntity()?.setController(p)
+            if (entity != null) {
+                if (entity is LivingEntity) {
+                    entity.setAi(false)
+                    entity.setPassenger(entity)
+                }
+            }
+
             field = entity
         }
-
     private val playerStats = StatManager.calculateStats(p)
 
     val activeAbilities = ArrayList<IAbility>()

@@ -1,10 +1,12 @@
 package me.bnogocarft.bnogorpg.utils
 
-import org.apache.commons.lang.math.DoubleRange
-import org.apache.commons.lang.math.FloatRange
+import me.bnogocarft.bnogorpg.utils.bitem.factory.symbols
 import org.bukkit.ChatColor
-import java.util.Arrays
+import org.bukkit.inventory.ItemStack
+import kotlin.math.roundToInt
 import kotlin.random.Random
+import kotlin.reflect.KClass
+import kotlin.reflect.cast
 
 fun <K, V> HashMap<K, V>.put(pair: Pair<K, V>) {
     this[pair.first] = pair.second
@@ -77,3 +79,28 @@ private fun repeat(s: String?, n: Int): String? {
     }
     return sb.toString()
 }
+
+fun Pair<Float, Float>.getBar(sidebars: String, filled: String): String {
+    val b = "■"
+    var bar = "$sidebars[$filled$b$b$b$b$b$b$b$b$b$b$sidebars]"
+    val bars = ((first/second)*10).roundToInt()
+
+    val barAsArray = bar.toCharArray().toMutableList()
+
+    if (bars >= 1) {
+        println(bars)
+        barAsArray.add(bars + 5, '§')
+        barAsArray.add(bars + 6, '8')
+        bar = barAsArray.joinToString("")
+    } else {
+        barAsArray[4] = '8'
+    }
+
+    return bar
+}
+
+class BMaterialMap() : HashMap<String, ItemStack>() {
+    fun
+}
+
+infix fun <T: Any> Any.cast(clazz: KClass<out T>): T = clazz.cast(this)
