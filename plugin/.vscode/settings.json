@@ -1,0 +1,16 @@
+{
+    "sqltools.connections": [
+        {
+            "pgOptions": {
+                "ssl": true
+            },
+            "previewLimit": 50,
+            "server": "localhost",
+            "port": 5432,
+            "askForPassword": true,
+            "driver": "PostgreSQL",
+            "connectString": "postgresql://bongo:v2_3wNrf_H3TKxYPPKSBcgn4RtPNZ2T3@db.bit.io/bongo/bnogodb",
+            "name": "BnogoDB"
+        }
+    ]
+}
