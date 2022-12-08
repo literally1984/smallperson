@@ -1,7 +1,7 @@
 package me.bnogocarft.bnogorpg.entity
 
 import me.bnogocarft.bnogorpg.Main
-import me.bnogocarft.bnogorpg.entity.player.bPlayer
+import me.bnogocarft.bnogorpg.player.utils.bPlayer
 import org.bukkit.Bukkit
 import org.bukkit.Location
 import org.bukkit.entity.Entity

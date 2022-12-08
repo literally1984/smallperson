@@ -5,7 +5,7 @@ import me.bnogocarft.bnogorpg.utils.abilities.ItemAbility.AbilityTrigger
 import me.bnogocarft.bnogorpg.utils.ability.IAbility
 import me.bnogocarft.bnogorpg.utils.bitem.factory.FactoryMisc
 import me.bnogocarft.bnogorpg.utils.others.Rarity.Rarity
-import me.bnogocarft.bnogorpg.entity.player.OnlineBPlayers
+import me.bnogocarft.bnogorpg.player.OnlineBPlayers
 import org.bukkit.Bukkit
 import org.bukkit.ChatColor
 import org.bukkit.entity.Player

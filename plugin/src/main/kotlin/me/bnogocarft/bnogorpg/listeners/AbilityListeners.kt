@@ -3,7 +3,7 @@ package me.bnogocarft.bnogorpg.listeners
 import me.bnogocarft.bnogorpg.utils.B
 import me.bnogocarft.bnogorpg.utils.canBe
 import me.bnogocarft.bnogorpg.utils.events.ClickStateChangeEvent
-import me.bnogocarft.bnogorpg.entity.player.bPlayer
+import me.bnogocarft.bnogorpg.player.utils.bPlayer
 import me.bnogocarft.bnogorpg.utils.ability.ManaAbility
 import me.bnogocarft.bnogorpg.utils.getBWeapon
 import org.bukkit.ChatColor

@@ -1,7 +1,7 @@
 package me.bnogocarft.bnogorpg.commands
 
 import me.bnogocarft.bnogorpg.utils.others.PlaytimeUtils
-import me.bnogocarft.bnogorpg.entity.player.OnlineBPlayers
+import me.bnogocarft.bnogorpg.player.OnlineBPlayers
 import org.bukkit.ChatColor
 import org.bukkit.command.Command
 import org.bukkit.command.CommandExecutor

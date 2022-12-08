@@ -2,7 +2,7 @@ package me.bnogocarft.bnogorpg.listeners
 
 import me.bnogocarft.bnogorpg.Main
 import me.bnogocarft.bnogorpg.player.PlayerBar.CombatLogBar
-import me.bnogocarft.bnogorpg.entity.player.bPlayer
+import me.bnogocarft.bnogorpg.player.utils.bPlayer
 import me.bnogocarft.bnogorpg.utils.times
 import me.filoghost.holographicdisplays.api.HolographicDisplaysAPI
 import org.bukkit.entity.LivingEntity

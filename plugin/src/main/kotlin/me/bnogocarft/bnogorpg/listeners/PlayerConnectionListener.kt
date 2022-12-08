@@ -3,8 +3,8 @@ package me.bnogocarft.bnogorpg.listeners
 import me.bnogocarft.bnogorpg.Main
 import me.bnogocarft.bnogorpg.ticker.Ticker
 import me.bnogocarft.bnogorpg.ticker.Ticker.Companion.lastArmor
-import me.bnogocarft.bnogorpg.entity.player.OnlineBPlayer
-import me.bnogocarft.bnogorpg.entity.player.OnlineBPlayers
+import me.bnogocarft.bnogorpg.player.OnlineBPlayer
+import me.bnogocarft.bnogorpg.player.OnlineBPlayers
 import me.bnogocarft.bnogorpg.database.*
 import me.bnogocarft.bnogorpg.database.data.PlayerData
 import me.bnogocarft.bnogorpg.utils.others.PlaytimeUtils

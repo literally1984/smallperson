@@ -6,7 +6,7 @@ import com.comphenix.protocol.events.ListenerPriority
 import com.comphenix.protocol.events.PacketAdapter
 import com.comphenix.protocol.events.PacketEvent
 import me.bnogocarft.bnogorpg.Main
-import me.bnogocarft.bnogorpg.entity.player.bPlayer
+import me.bnogocarft.bnogorpg.player.utils.bPlayer
 import me.bnogocarft.bnogorpg.utils.getData
 import me.bnogocarft.bnogorpg.utils.minus
 import me.bnogocarft.bnogorpg.utils.plus

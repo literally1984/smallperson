@@ -2,8 +2,8 @@ package me.bnogocarft.bnogorpg.ticker
 
 import me.bnogocarft.bnogorpg.Main
 import me.bnogocarft.bnogorpg.utils.events.ArmorChangeEvent
-import me.bnogocarft.bnogorpg.entity.player.OnlineBPlayers
-import me.bnogocarft.bnogorpg.entity.player.bPlayer
+import me.bnogocarft.bnogorpg.player.OnlineBPlayers
+import me.bnogocarft.bnogorpg.player.utils.bPlayer
 import me.bnogocarft.bnogorpg.utils.getBar
 import org.bukkit.Bukkit
 import org.bukkit.ChatColor

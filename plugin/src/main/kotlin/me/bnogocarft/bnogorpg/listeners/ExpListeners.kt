@@ -1,6 +1,6 @@
 package me.bnogocarft.bnogorpg.listeners
 
-import me.bnogocarft.bnogorpg.entity.player.bPlayer
+import me.bnogocarft.bnogorpg.player.utils.bPlayer
 import org.bukkit.entity.ExperienceOrb
 import org.bukkit.entity.Player
 import org.bukkit.event.EventHandler

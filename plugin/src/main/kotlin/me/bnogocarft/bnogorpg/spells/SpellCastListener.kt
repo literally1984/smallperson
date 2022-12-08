@@ -3,8 +3,8 @@ package me.bnogocarft.bnogorpg.spells
 import me.bnogocarft.bnogorpg.utils.B
 import me.bnogocarft.bnogorpg.utils.bitem.BItems.BScroll
 import me.bnogocarft.bnogorpg.utils.canBe
-import me.bnogocarft.bnogorpg.entity.player.OnlineBPlayers
-import me.bnogocarft.bnogorpg.entity.player.bPlayer
+import me.bnogocarft.bnogorpg.player.OnlineBPlayers
+import me.bnogocarft.bnogorpg.player.utils.bPlayer
 import org.bukkit.ChatColor
 import org.bukkit.event.EventHandler
 import org.bukkit.event.EventPriority

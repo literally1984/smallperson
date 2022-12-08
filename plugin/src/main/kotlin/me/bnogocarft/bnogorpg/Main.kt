@@ -18,7 +18,7 @@ import me.bnogocarft.bnogorpg.economy.Auction.AhGuiUpdater
 import me.bnogocarft.bnogorpg.economy.Auction.AuctionCommand
 import me.bnogocarft.bnogorpg.economy.Auction.AuctionListeners
 import me.bnogocarft.bnogorpg.enchants.EnchantListeners
-import me.bnogocarft.bnogorpg.entity.player.OnlineBPlayers
+import me.bnogocarft.bnogorpg.player.OnlineBPlayers
 import me.bnogocarft.bnogorpg.items.DefaultOverrider
 import me.bnogocarft.bnogorpg.items.armorSets.LapisArmor
 import me.bnogocarft.bnogorpg.items.comatSets.CactusArmor

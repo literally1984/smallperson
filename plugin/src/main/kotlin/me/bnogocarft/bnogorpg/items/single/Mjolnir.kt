@@ -9,7 +9,7 @@ import me.bnogocarft.bnogorpg.utils.events.Button
 import me.bnogocarft.bnogorpg.utils.events.ClickState
 import me.bnogocarft.bnogorpg.utils.events.ClickStateChangeEvent
 import me.bnogocarft.bnogorpg.utils.others.Rarity.Rarity
-import me.bnogocarft.bnogorpg.entity.player.bPlayer
+import me.bnogocarft.bnogorpg.player.utils.bPlayer
 import org.bukkit.Bukkit
 import org.bukkit.ChatColor
 import org.bukkit.entity.Player

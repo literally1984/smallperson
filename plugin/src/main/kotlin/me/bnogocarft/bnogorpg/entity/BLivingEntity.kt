@@ -1,10 +1,9 @@
 package me.bnogocarft.bnogorpg.entity
 
-import me.bnogocarft.bnogorpg.entity.player.bPlayer
+import me.bnogocarft.bnogorpg.player.utils.bPlayer
 import me.bnogocarft.bnogorpg.utils.setAi
 import me.bnogocarft.bnogorpg.utils.stat.EntityStat
 import me.bnogocarft.bnogorpg.utils.stat.StatManager
-import org.bukkit.entity.Entity
 import org.bukkit.entity.LivingEntity
 import org.bukkit.entity.Player
 

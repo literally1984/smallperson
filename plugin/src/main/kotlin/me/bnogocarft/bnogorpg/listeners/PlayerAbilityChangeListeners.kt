@@ -2,8 +2,8 @@ package me.bnogocarft.bnogorpg.listeners
 
 import me.bnogocarft.bnogorpg.utils.*
 import me.bnogocarft.bnogorpg.utils.events.ArmorChangeEvent
-import me.bnogocarft.bnogorpg.entity.player.OnlineBPlayers
-import me.bnogocarft.bnogorpg.entity.player.bPlayer
+import me.bnogocarft.bnogorpg.player.OnlineBPlayers
+import me.bnogocarft.bnogorpg.player.utils.bPlayer
 import me.bnogocarft.bnogorpg.utils.Armorset.SetBonus
 import org.bukkit.event.EventHandler
 import org.bukkit.event.EventPriority

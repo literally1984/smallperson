@@ -7,7 +7,7 @@ import me.bnogocarft.bnogorpg.utils.bitem.BItemType
 import me.bnogocarft.bnogorpg.utils.bitem.factory.ArmorSetMaker
 import me.bnogocarft.bnogorpg.utils.bitem.factory.BItemFactory
 import me.bnogocarft.bnogorpg.utils.others.Rarity.Rarity
-import me.bnogocarft.bnogorpg.entity.player.bPlayer
+import me.bnogocarft.bnogorpg.player.utils.bPlayer
 import org.bukkit.Color
 import org.bukkit.Material
 import org.bukkit.entity.Player

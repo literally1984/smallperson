@@ -1,7 +1,7 @@
 package me.bnogocarft.bnogorpg.commands.Menu
 
 import me.bnogocarft.bnogorpg.utils.*
-import me.bnogocarft.bnogorpg.entity.player.OnlineBPlayers
+import me.bnogocarft.bnogorpg.player.OnlineBPlayers
 import org.bukkit.ChatColor
 
 class MenuInventories {

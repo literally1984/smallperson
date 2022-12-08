@@ -1,8 +1,8 @@
 package me.bnogocarft.bnogorpg.utils.Senders
 
 import me.bnogocarft.bnogorpg.database.YMLUtils
-import me.bnogocarft.bnogorpg.entity.player.OfflineBPlayer
-import me.bnogocarft.bnogorpg.entity.player.OnlineBPlayers
+import me.bnogocarft.bnogorpg.player.OfflineBPlayer
+import me.bnogocarft.bnogorpg.player.OnlineBPlayers
 import org.bukkit.Bukkit
 import org.bukkit.inventory.ItemStack
 import java.io.File
