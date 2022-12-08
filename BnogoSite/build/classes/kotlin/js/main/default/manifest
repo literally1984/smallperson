@@ -1,8 +1,0 @@
-builtins_platform=JS
-unique_name=org.vanillacraft\:BnogoSite
-compiler_version=1.7.20
-depends=org.jetbrains.kotlin-wrappers\:kotlin-react org.jetbrains.kotlin-wrappers\:kotlin-react-dom org.jetbrains.kotlin-wrappers\:kotlin-emotion org.jetbrains.kotlin-wrappers\:kotlin-react-core org.jetbrains.kotlin-wrappers\:kotlin-browser org.jetbrains.kotlin-wrappers\:kotlin-csstype org.jetbrains.kotlin-wrappers\:kotlin-extensions kotlin
-jsOutputName=BnogoSite
-abi_version=1.7.0
-metadata_version=1.4.1
-ir_version=1.0.0
