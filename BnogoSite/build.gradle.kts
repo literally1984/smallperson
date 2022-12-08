@@ -3,7 +3,7 @@ plugins {
     application
 }
 
-group = "org.example"
+group = "org.vanillacraft"
 version = "1.0-SNAPSHOT"
 
 repositories {
@@ -57,7 +57,7 @@ kotlin {
 }
 
 application {
-    mainClass.set("org.example.application.ServerKt")
+    mainClass.set("org.vanillacraft.rpgsite.ServerKt")
 }
 
 tasks.named<Copy>("jvmProcessResources") {
