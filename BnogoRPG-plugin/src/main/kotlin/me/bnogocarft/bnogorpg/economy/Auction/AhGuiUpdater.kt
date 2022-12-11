@@ -44,7 +44,7 @@ class AhGuiUpdater : BukkitRunnable() {
                 ) {
                     AuctionType.WEAPON -> {
                         val weaponAucs = ArrayList<Auction>()
-                        for (auc in Main.auctions) {
+                        for (auc in Main.activeAuctions) {
                             if (auc.itemType == AuctionType.WEAPON) {
                                 weaponAucs.add(auc)
                             }
@@ -61,7 +61,7 @@ class AhGuiUpdater : BukkitRunnable() {
 
                     AuctionType.ARMOR -> {
                         val weaponAucs = ArrayList<Auction>()
-                        for (auc in Main.auctions) {
+                        for (auc in Main.activeAuctions) {
                             if (auc.itemType == AuctionType.ARMOR) {
                                 weaponAucs.add(auc)
                             }
@@ -78,7 +78,7 @@ class AhGuiUpdater : BukkitRunnable() {
 
                     AuctionType.MAGIC_ITEMS -> {
                         val weaponAucs = ArrayList<Auction>()
-                        for (auc in Main.auctions) {
+                        for (auc in Main.activeAuctions) {
                             if (auc.itemType == AuctionType.MAGIC_ITEMS) {
                                 weaponAucs.add(auc)
                             }
@@ -95,7 +95,7 @@ class AhGuiUpdater : BukkitRunnable() {
 
                     AuctionType.FOOD -> {
                         val weaponAucs = ArrayList<Auction>()
-                        for (auc in Main.auctions) {
+                        for (auc in Main.activeAuctions) {
                             if (auc.itemType == AuctionType.FOOD) {
                                 weaponAucs.add(auc)
                             }
@@ -112,7 +112,7 @@ class AhGuiUpdater : BukkitRunnable() {
 
                     AuctionType.BLOCKS -> {
                         val weaponAucs = ArrayList<Auction>()
-                        for (auc in Main.auctions) {
+                        for (auc in Main.activeAuctions) {
                             if (auc.itemType == AuctionType.BLOCKS) {
                                 weaponAucs.add(auc)
                             }
@@ -129,7 +129,7 @@ class AhGuiUpdater : BukkitRunnable() {
 
                     AuctionType.OTHER -> {
                         val weaponAucs = ArrayList<Auction>()
-                        for (auc in Main.auctions) {
+                        for (auc in Main.activeAuctions) {
                             if (auc.itemType == AuctionType.OTHER) {
                                 weaponAucs.add(auc)
                             }

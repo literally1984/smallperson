@@ -247,20 +247,6 @@ data class OnlineBPlayer(val player: Player) : BPlayer(player.name) {
         } else {
 
         }
-
-        Bukkit.getScheduler().scheduleSyncRepeatingTask(Main.instance, {
-            if (rcLastTick) {
-                rcLastTick = false
-            } else {
-                isRightClicking = false
-            }
-
-            if (lcLastTick) {
-                lcLastTick = false
-            } else {
-                isLeftClicking = false
-            }
-        }, 0, 1)
         bars.add(MainBar())
 
         val now = Date()

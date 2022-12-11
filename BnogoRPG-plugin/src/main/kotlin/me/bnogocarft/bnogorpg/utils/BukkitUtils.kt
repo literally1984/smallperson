@@ -3,10 +3,7 @@ package me.bnogocarft.bnogorpg.utils
 import me.bnogocarft.bnogorpg.entity.BEntity
 import me.bnogocarft.bnogorpg.entity.BLivingEntity
 import me.bnogocarft.bnogorpg.utils.bitem.BItemUtils
-import me.bnogocarft.bnogorpg.utils.bitem.BItems.BArmor
-import me.bnogocarft.bnogorpg.utils.bitem.BItems.BGear
-import me.bnogocarft.bnogorpg.utils.bitem.BItems.BItem
-import me.bnogocarft.bnogorpg.utils.bitem.BItems.BWeapon
+import me.bnogocarft.bnogorpg.utils.bitem.BItems.*
 import me.bnogocarft.bnogorpg.utils.bitem.SerializableItem
 import me.bnogocarft.bnogorpg.utils.bitem.factory.*
 import net.minecraft.server.v1_8_R3.*
@@ -29,6 +26,7 @@ import java.io.File
 import java.io.Serializable
 import kotlin.math.pow
 import kotlin.math.roundToInt
+import kotlin.reflect.KClass
 import kotlin.reflect.KMutableProperty
 import kotlin.reflect.full.declaredMemberProperties
 import kotlin.reflect.full.memberProperties
@@ -329,36 +327,22 @@ fun Player.sendPacket(packet: Packet<*>) {
     (this as CraftPlayer).handle.playerConnection.sendPacket(packet)
 }
 
-fun ItemStack.getBGear(): BGear? {
-    val gear = try {
-        BItemUtils.getBGear(this)
-    } catch (e: IllegalArgumentException) {
-        null
+fun ItemStack.getTopBItem(): KClass<out BItem> {
+    return if (this canBe B.TALISMAN) {
+        Talisman::class
+    } else if (this canBe B.WEAPON) {
+        BWeapon::class
+    } else if (this canBe B.ARMOR) {
+        BArmor::class
+    } else {
+        BScroll::class
     }
-    return gear
-}
-
-fun ItemStack.getBWeapon(): BWeapon? {
-    val gear = try {
-        BItemUtils.getBWeapon(this)
-    } catch (e: IllegalArgumentException) {
-        null
-    }
-    return gear
-}
-
-fun ItemStack.getBArmor(): BArmor? {
-    val gear = try {
-        BItemUtils.getBArmor(this)
-    } catch (e: IllegalArgumentException) {
-        null
-    }
-    return gear
 }
 
 fun ItemStack.toByteArray(): ByteArray {
     val file = File("ItemStack.yml")
     val config = YamlConfiguration.loadConfiguration(file)
+
     config.set("item", this)
     config.save(file)
 

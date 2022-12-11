@@ -245,7 +245,7 @@ fun getAuctionByID(id: String): Auction {
     var contains = false
     var auc: Auction? = null
 
-    for (auction in Main.auctions) {
+    for (auction in Main.activeAuctions) {
         if (auction.ID == id) {
             auc = auction
             contains = true

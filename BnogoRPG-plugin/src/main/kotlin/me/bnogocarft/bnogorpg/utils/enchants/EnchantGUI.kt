@@ -57,10 +57,10 @@ class EnchantGUI {
                 if (!(it.currentItem!! canBe B.ENCHANTABLE)) {
                     return@SlotFunction
                 }
-                val bItem: Enchantable = if (item canBe B.TALISMAN) {
-                    Talisman(item)
-                } else {
-                    BGear(item)
+                val bItem: Enchantable = try {
+                    item.getTopBItem().getConstructors(0)!!.call(item) as Enchantable
+                } catch (e: TypeCastException) {
+                    return@SlotFunction
                 }
 
                 // Changes the enchant buttons
@@ -75,8 +75,8 @@ class EnchantGUI {
 
                 val enchants = EnchantUtils.generateEnchantsFor(bItem)
 
-                for ((index, item) in itemList.withIndex()) {
-                    item.itemMeta.displayName = "${ChatColor.GREEN}${
+                for ((index, stack) in itemList.withIndex()) {
+                    stack.itemMeta.displayName = "${ChatColor.GREEN}${
                         enchants[index].name.replace(
                             "_", " "
                         ).lowercase()

@@ -1,0 +1,8 @@
+builtins_platform=JS
+unique_name=org.vanillacraft\:site
+compiler_version=1.7.20
+depends=org.jetbrains.kotlin-wrappers\:kotlin-react org.jetbrains.kotlin-wrappers\:kotlin-react-router-dom org.jetbrains.kotlin-wrappers\:kotlin-react-dom org.jetbrains.kotlin-wrappers\:kotlin-emotion org.jetbrains.kotlin-wrappers\:kotlin-react-redux org.jetbrains.kotlin-wrappers\:kotlin-redux io.ktor\:ktor-serialization-kotlinx-json io.ktor\:ktor-client-content-negotiation io.ktor\:ktor-client-core org.jetbrains.kotlin-wrappers\:kotlin-react-legacy org.jetbrains.kotlin-wrappers\:kotlin-react-core org.jetbrains.kotlin-wrappers\:kotlin-browser org.jetbrains.kotlin-wrappers\:kotlin-csstype org.jetbrains.kotlin-wrappers\:kotlin-history org.jetbrains.kotlin-wrappers\:kotlin-extensions org.jetbrains.kotlinx\:kotlinx-serialization-json io.ktor\:ktor-serialization-kotlinx io.ktor\:ktor-events io.ktor\:ktor-websocket-serialization io.ktor\:ktor-serialization io.ktor\:ktor-websockets io.ktor\:ktor-http io.ktor\:ktor-utils io.ktor\:ktor-io org.jetbrains.kotlinx\:kotlinx-coroutines-core org.jetbrains.kotlinx\:atomicfu org.jetbrains.kotlinx\:kotlinx-serialization-core kotlin org.jetbrains.kotlin\:kotlinx-atomicfu-runtime
+jsOutputName=site
+abi_version=1.7.0
+metadata_version=1.4.1
+ir_version=1.0.0

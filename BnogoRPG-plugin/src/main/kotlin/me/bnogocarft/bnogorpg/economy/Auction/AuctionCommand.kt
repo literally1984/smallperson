@@ -1,7 +1,7 @@
 package me.bnogocarft.bnogorpg.economy.Auction
 
 import me.bnogocarft.bnogorpg.Main
-import me.bnogocarft.bnogorpg.Main.Companion.auctions
+import me.bnogocarft.bnogorpg.Main.Companion.activeAuctions
 import me.bnogocarft.bnogorpg.utils.auction.Auction
 import me.bnogocarft.bnogorpg.utils.auction.AuctionTimer
 import me.bnogocarft.bnogorpg.utils.auction.bidOnAuction
@@ -51,7 +51,7 @@ class AuctionCommand : CommandExecutor {
                 "list" -> {
                     for (i in 0..9) {
                         val auc = try {
-                            auctions[i]
+                            activeAuctions[i]
                         } catch (e: IndexOutOfBoundsException) {
                             sender.sendMessage("No more auctions found!")
                             break
@@ -93,7 +93,7 @@ class AuctionCommand : CommandExecutor {
                         return true
                     }
                     var auc: Auction? = null
-                    for (auction in auctions) {
+                    for (auction in activeAuctions) {
                         try {
                             if (auction.ID == args[1]) {
                                 auc = auction
@@ -137,7 +137,7 @@ class AuctionCommand : CommandExecutor {
 
                 "create" -> {
                     var playerAuctions = 0
-                    for (a in auctions) {
+                    for (a in activeAuctions) {
                         if (a.creator == sender.name) {
                             playerAuctions++
                         }

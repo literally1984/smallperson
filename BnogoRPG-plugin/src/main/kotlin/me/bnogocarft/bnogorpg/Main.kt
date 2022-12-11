@@ -53,13 +53,21 @@ import me.bnogocarft.bnogorpg.utils.auction.Auction
 import me.bnogocarft.bnogorpg.utils.auction.AuctionTimer
 import me.bnogocarft.bnogorpg.utils.bitem.BItemUtils
 import me.bnogocarft.bnogorpg.utils.bitem.factory.CustomItem
-import me.bnogocarft.bnogorpg.database.data.AuctionData
 import me.bnogocarft.bnogorpg.database.BnogoSQL
-import me.bnogocarft.bnogorpg.database.Table
-import me.bnogocarft.bnogorpg.database.YMLUtils
+import me.bnogocarft.bnogorpg.database.auctions
+import me.bnogocarft.bnogorpg.database.auctions.bidder
+import me.bnogocarft.bnogorpg.database.auctions.creator
+import me.bnogocarft.bnogorpg.database.auctions.currentBidder
+import me.bnogocarft.bnogorpg.database.auctions.endTime
+import me.bnogocarft.bnogorpg.database.auctions.highestBid
+import me.bnogocarft.bnogorpg.database.auctions.id
+import me.bnogocarft.bnogorpg.database.auctions.item
+import me.bnogocarft.bnogorpg.database.auctions.seller
+import me.bnogocarft.bnogorpg.database.auctions.startingBid
 import me.bnogocarft.bnogorpg.utils.others.PlaytimeUtils
 import me.bnogocarft.bnogorpg.utils.stat.StatCommands
 import net.milkbowl.vault.economy.Economy
+import org.apache.commons.lang3.SerializationUtils
 import org.bukkit.Bukkit
 import org.bukkit.ChatColor
 import org.bukkit.Material
@@ -70,6 +78,7 @@ import org.bukkit.inventory.ItemStack
 import org.bukkit.plugin.Plugin
 import org.bukkit.plugin.java.JavaPlugin
 import org.bukkit.scheduler.BukkitTask
+import org.jetbrains.exposed.sql.selectAll
 import java.io.File
 import kotlin.properties.Delegates
 
@@ -95,7 +104,7 @@ class Main : JavaPlugin() {
         lateinit var serverFile: File
         lateinit var ymlConfig: YamlConfiguration
 
-        val auctions = ArrayList<Auction>()
+        val activeAuctions = ArrayList<Auction>()
         var lastAuctionID by Delegates.notNull<String>()
 
         lateinit var econ: Economy
@@ -197,7 +206,7 @@ class Main : JavaPlugin() {
         server.pluginManager.registerEvents(PlayerConnectionListener(), this)
         server.pluginManager.registerEvents(ChatInput.ChatListener(), this)
         server.pluginManager.registerEvents(PlayerAbilityChangeListeners(), this)
-        server.pluginManager.registerEvents(PlayerLeaveEvent(), this)
+        server.pluginManager.registerEvents(PlayerConnectionListener(), this)
         server.pluginManager.registerEvents(DamageEvent(), this)
         server.pluginManager.registerEvents(AbilityListeners(), this)
         server.pluginManager.registerEvents(ChatListeners(), this)
@@ -231,18 +240,23 @@ class Main : JavaPlugin() {
 
         cSender.sendMessage("Initializing Auctions...")
 
-        val aucs = BnogoSQL.select(Table.AUCTION) as AuctionData
+        val aucs = auctions.selectAll()
 
-        for (auction in aucs.data) {
+        aucs.forEach {
             val auc = Auction(
-                auction.,
-                auction["seller"] as String,
-                auction["item"] as String,
-                auction["price"] as String,
-                auction["time"] as String,
-                auction["bids"] as String
+                YamlConfiguration
+                    .loadConfiguration(
+                        SerializationUtils.deserialize<File>
+                            (it[item]))
+                    .getItemStack("item"),
+                it[startingBid].toDouble(),
+                it[creator],
+                it[endTime],
+                it[currentBidder],
+                it[highestBid].toDouble(),
+                it[id]
             )
-            auctions.add(auc)
+            activeAuctions.add(auc)
         }
         while (aucs.next()) {
             @Suppress("RegExpRedundantEscape", "RegExpSimplifiable", "RegExpRedundantNestedCharacterClass")
@@ -361,7 +375,7 @@ class Main : JavaPlugin() {
             player.kickPlayer("Server is restarting, please rejoin in about 20 seconds")
         }
         update()
-        for (auc in auctions) {
+        for (auc in activeAuctions) {
             val query = BnogoSQL.con.prepareStatement(
                 "UPDATE auctions SET \"lastStop\" = ${System.currentTimeMillis() / 1000} WHERE \"id\" = '${auc.ID}';"
             )
@@ -372,7 +386,7 @@ class Main : JavaPlugin() {
     }
 
     fun update() {
-        for (auc in auctions) {
+        for (auc in activeAuctions) {
             val replace =
                 BnogoSQL.con.prepareStatement("UPDATE auctions SET \"currentBidder\" = '${auc.currentBidder}', \"highestBid\" = ${auc.highestBid} WHERE id = '${auc.ID}';")
                     .executeUpdate()

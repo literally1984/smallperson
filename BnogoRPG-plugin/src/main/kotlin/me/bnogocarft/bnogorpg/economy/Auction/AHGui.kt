@@ -278,7 +278,7 @@ class AHGui {
 
     private fun weaponPageHandler(gui: OpenGUI) {
         val weaponAucs = ArrayList<Auction>()
-        for (auc in Main.auctions) {
+        for (auc in Main.activeAuctions) {
             if (auc.itemType == AuctionType.WEAPON) {
                 weaponAucs.add(auc)
             }
@@ -294,7 +294,7 @@ class AHGui {
 
     private fun armorPageHandler(gui: OpenGUI) {
         val weaponAucs = ArrayList<Auction>()
-        for (auc in Main.auctions) {
+        for (auc in Main.activeAuctions) {
             if (auc.itemType == AuctionType.ARMOR) {
                 weaponAucs.add(auc)
             }
@@ -310,7 +310,7 @@ class AHGui {
 
     private fun magicPageHandler(gui: OpenGUI) {
         val weaponAucs = ArrayList<Auction>()
-        for (auc in Main.auctions) {
+        for (auc in Main.activeAuctions) {
             if (auc.itemType == AuctionType.MAGIC_ITEMS) {
                 weaponAucs.add(auc)
             }
@@ -326,7 +326,7 @@ class AHGui {
 
     private fun foodPageHandler(gui: OpenGUI) {
         val weaponAucs = ArrayList<Auction>()
-        for (auc in Main.auctions) {
+        for (auc in Main.activeAuctions) {
             if (auc.itemType == AuctionType.FOOD) {
                 weaponAucs.add(auc)
             }
@@ -342,7 +342,7 @@ class AHGui {
 
     private fun blockPageHandler(gui: OpenGUI) {
         val weaponAucs = ArrayList<Auction>()
-        for (auc in Main.auctions) {
+        for (auc in Main.activeAuctions) {
             if (auc.itemType == AuctionType.BLOCKS) {
                 weaponAucs.add(auc)
             }
@@ -358,7 +358,7 @@ class AHGui {
 
     private fun miscPageHandler(gui: OpenGUI) {
         val weaponAucs = ArrayList<Auction>()
-        for (auc in Main.auctions) {
+        for (auc in Main.activeAuctions) {
             if (auc.itemType == AuctionType.OTHER) {
                 weaponAucs.add(auc)
             }
@@ -404,7 +404,7 @@ class AHGui {
         //Gets the players auctions
         val items = ArrayList<ItemStack>()
 
-        for (auc in Main.auctions) {
+        for (auc in Main.activeAuctions) {
             if (auc.creator == gui.player.name) {
                 items.add(createAuctionItemFor(auc))
             }
@@ -451,7 +451,7 @@ class AHGui {
         //Gets the players auctions
         val items = ArrayList<ItemStack>()
 
-        for (auc in Main.auctions) {
+        for (auc in Main.activeAuctions) {
             if (auc.currentBidder == gui.player.name) {
                 items.add(createAuctionItemFor(auc))
             }

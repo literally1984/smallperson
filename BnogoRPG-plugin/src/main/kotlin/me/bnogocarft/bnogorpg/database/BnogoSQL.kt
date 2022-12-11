@@ -32,10 +32,11 @@ object players: Table() {
 }
 
 object auctions: Table() {
-    val seller = varchar("seller_name", 50)
-    val endTime = integer("end_time")
-    val bidder = varchar("current_bidder", 50).nullable()
-    val bid = integer("current_bid").nullable()
     val item = binary("item", 100000)
+    val startingBid = float("starting_bid")
+    val creator = varchar("creator", 50)
+    val endTime = integer("end_time")
+    val currentBidder = varchar("current_bidder", 50).nullable()
+    val highestBid = integer("highest_bid")
     val id = integer("id").autoIncrement()
 }

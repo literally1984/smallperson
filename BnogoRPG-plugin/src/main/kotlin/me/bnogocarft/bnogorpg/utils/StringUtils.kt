@@ -75,6 +75,6 @@ fun deserializeAuction(s: String): Auction {
 
     val task = Bukkit.getScheduler().runTaskTimer(Main.instance, AuctionTimer(deserializedAuc), 0, 20)
     deserializedAuc.task = task
-    Main.auctions.add(deserializedAuc)
+    Main.activeAuctions.add(deserializedAuc)
     return deserializedAuc
 }

@@ -11,6 +11,8 @@ import org.bukkit.inventory.ItemStack
 open class BItem(item: ItemStack) {
     open val item = item
 
+    val lore: MutableList<String> = item.itemMeta.lore
+
     var material: String
     val abilities = ArrayList<IAbility>()
 

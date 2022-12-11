@@ -53,11 +53,7 @@ class Ticker {
                                 (s.currentStamina.toFloat() to s.maxStamina.toFloat())
                                     .getBar("${ChatColor.GRAY}", "${ChatColor.GOLD}")
                     onlineBPlayer.sendActionBar(message)
-                }
-            }, 0, 2)
 
-            Bukkit.getScheduler().scheduleSyncRepeatingTask(Main.instance, {
-                for (player in Bukkit.getOnlinePlayers()) {
                     val lA = lastArmor[player]
                     for ((index, item) in player.inventory.armorContents.withIndex()) {
                         val oldItem = try {
@@ -69,24 +65,20 @@ class Ticker {
                             Bukkit.getPluginManager().callEvent(event)
                         }
                     }
+
+                    if (onlineBPlayer.rcLastTick) {
+                        onlineBPlayer.rcLastTick = false
+                    } else {
+                        onlineBPlayer.isRightClicking = false
+                    }
+
+                    if (onlineBPlayer.lcLastTick) {
+                        onlineBPlayer.lcLastTick = false
+                    } else {
+                        onlineBPlayer.isLeftClicking = false
+                    }
                 }
             }, 0, 2)
-
-            Bukkit.getScheduler().scheduleSyncRepeatingTask(Main.instance, {
-                for (player in Bukkit.getOnlinePlayers()) {
-                    val lA = lastArmor[player]
-                    for ((index, item) in player.inventory.armorContents.withIndex()) {
-                        val oldItem = try {
-                            lA!![index]
-                        } catch (e: NullPointerException) { null }
-                        if (item == oldItem) continue else {
-                            val event = ArmorChangeEvent(player, index, lA!!)
-                            Bukkit.getPluginManager().callEvent(event)
-                        }
-                    }
-                    lastArmor[player] = player.inventory.armorContents
-                }
-            }, 0, 1)
         }
     }
 }

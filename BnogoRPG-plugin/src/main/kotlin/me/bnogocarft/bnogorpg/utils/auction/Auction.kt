@@ -32,18 +32,22 @@ data class Auction(
         item: ItemStack,
         startingBid: Double,
         creator: String,
-        timeLeft: Int,
+        endTimeUnix: Int,
         currentBidder: String?,
         highestBid: Double,
-        ID: String
-    ) : this(item, startingBid, creator, timeLeft) {
-        this.ID = ID
+        ID: Int
+    ) : this(item, startingBid, creator, endTimeUnix) {
+        var id = ""
+        id += ID
+        while (id.length < 6) {
+            id = id.toCharArray().toMutableList().add(0, '0').toString()
+        }
         this.currentBidder = currentBidder
         this.highestBid = highestBid
     }
 
     fun endAuction() {
-        Main.auctions.remove(this)
+        Main.activeAuctions.remove(this)
         auctions.deleteWhere {
             id eq ID.toInt()
         }
@@ -98,7 +102,7 @@ data class Auction(
     }
 
     init {
-        Main.auctions.add(this)
+        Main.activeAuctions.add(this)
         transaction {
             auctions.insert {
                 it[seller] = creator
